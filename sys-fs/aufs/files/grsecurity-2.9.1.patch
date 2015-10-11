@@ -1,0 +1,15 @@
+--- linux/include/linux/fs.h
++++ linux/include/linux/fs.h
+@@ -385,7 +385,11 @@
+ 	int (*swap_activate)(struct swap_info_struct *sis, struct file *file,
+ 				sector_t *span);
+ 	void (*swap_deactivate)(struct file *file);
+-};
++}
++#ifdef CONFIG_GRKERNSEC
++__no_const
++#endif
++;
+ 
+ extern const struct address_space_operations empty_aops;
+ 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>martin@mvath.de</email>
+		<name>Martin Väth</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>VEF00200@nifty.ne.jp</email>
+			<name>Tom Sato</name>
+		</maintainer>
+	</upstream>
+</pkgmetadata>

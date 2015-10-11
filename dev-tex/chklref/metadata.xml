@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>martin@mvath.de</email>
+		<name>Martin Väth</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>jerome.lelong@imag.fr</email>
+			<name>Jérôme Lelong</name>
+		</maintainer>
+		<bugs-to>mailto:jerome.lelong@imag.fr</bugs-to>
+	</upstream>
+</pkgmetadata>

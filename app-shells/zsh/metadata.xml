@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+  <email>tove@gentoo.org</email>
+  <name>Torsten Veller</name>
+  <description>Interim maintainer</description>
+</maintainer>
+<maintainer>
+  <email>radhermit@gentoo.org</email>
+  <name>Tim Harder</name>
+  <description>Co-maintainer</description>
+</maintainer>
+<maintainer>
+  <email>martin@mvath.de</email>
+  <name>Martin Väth</name>
+  <description>Maintainer of run-help, compile, and completion_* USE-flags</description>
+</maintainer>
+<longdescription>
+  Zsh is a shell designed for interactive use, although it is also a
+  powerful scripting language. Many of the useful features of bash, ksh,
+  and tcsh were incorporated into zsh; many original features were
+  added.
+</longdescription>
+<use>
+  <flag name="compile">Byte-compile. This costs disk space and may make things faster or slower. Do not use this if you are cross-compiling</flag>
+  <flag name='completion_AIX'>Install zsh completions for AIX</flag>
+  <flag name='completion_BSD'>Install zsh completions for BSD</flag>
+  <flag name='completion_Cygwin'>Install zsh completions for Cygwin</flag>
+  <flag name='completion_Darwin'>Install zsh completions for Darwin</flag>
+  <flag name='completion_Debian'>Install zsh completions for Debian</flag>
+  <flag name='completion_Linux'>Install zsh completions for Linux</flag>
+  <flag name='completion_Mandriva'>Install zsh completions for Mandriva</flag>
+  <flag name='completion_openSUSE'>Install zsh completions for openSUSE</flag>
+  <flag name='completion_Redhat'>Install zsh completions for Redhat</flag>
+  <flag name='completion_Solaris'>Install zsh completions for Solaris</flag>
+  <flag name='completion_Unix'>Install zsh completions for Unix</flag>
+  <flag name='completion_X'>Install zsh completions for X</flag>
+</use>
+</pkgmetadata>

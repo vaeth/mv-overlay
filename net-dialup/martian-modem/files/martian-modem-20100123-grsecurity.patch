@@ -1,0 +1,15 @@
+--- kmodule/mfifo.h
++++ kmodule/mfifo.h
+@@ -20,7 +20,11 @@
+ 
+ 	void (*wrap) (mfifo_t *fifo, int *ending);
+ 	int  (*space) (mfifo_t *fifo);
+-};
++}
++#ifdef __no_const
++__no_const
++#endif
++;
+ 
+ struct _mfifo {
+ 	/* struct circ_buf header; */

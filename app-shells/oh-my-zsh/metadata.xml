@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>martin@mvath.de</email>
+		<name>Martin Väth</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email></email>
+			<name>Robby Russell</name>
+		</maintainer>
+		<bugs-to>https://github.com/robbyrussell/oh-my-zsh/issues</bugs-to>
+		<remote-id type="github">robbyrussell/oh-my-zsh</remote-id>
+	</upstream>
+</pkgmetadata>

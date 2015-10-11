@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+  <email>jer@gentoo.org</email>
+</maintainer>
+<use>
+	<flag name='kernel3-13'>Install unofficial patches for linux-3.13 and newer</flag>
+	<flag name='kernel3-14'>Install unofficial patches for linux-3.14 and newer</flag>
+	<flag name='kernel3-17'>Install unofficial patches for linux-3.17 and newer</flag>
+	<flag name='pax_kernel'>Patch to compile with hardened-sources/grsecurity</flag>
+	<flag name='tools'>Install additional tools such as nvidia-settings</flag>
+</use>
+</pkgmetadata>

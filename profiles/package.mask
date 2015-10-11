@@ -1,0 +1,4 @@
+# Martin Väth <martin@mvath.de> (10 Jan 2015)
+# sys-fs/squash_dir is no longer maintained. Use instead the successor project
+# sys-fs/squashmount (or sys-apps/openrc-wrapper for the openrc-wrapper script)
+sys-fs/squash_dir

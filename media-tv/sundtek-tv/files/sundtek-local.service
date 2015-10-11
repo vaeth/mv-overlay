@@ -1,0 +1,11 @@
+[Unit]
+Description=Sundtek MediaTV Local Settings
+After=sundtek.service
+Wants=sundtek.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sleep 60 ; /usr/bin/mediaclient.video -c external
+
+[Install]
+WantedBy=multi-user.target

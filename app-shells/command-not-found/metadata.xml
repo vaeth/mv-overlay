@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>martin@mvath.de</email>
+		<name>Martin Väth</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>matthias@maennich.net</email>
+			<name>Matthias Maennich</name>
+		</maintainer>
+		<bugs-to>mailto:matthias@maennich.net</bugs-to>
+		<remote-id type="github">metti/command-not-found</remote-id>
+	</upstream>
+</pkgmetadata>

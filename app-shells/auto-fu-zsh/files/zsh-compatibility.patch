@@ -1,0 +1,15 @@
+--- 1/auto-fu.zsh
++++ 1/auto-fu.zsh
+@@ -305,7 +305,11 @@
+ afu+vi-ins-mode () { zle -K afu      ; }; zle -N afu+vi-ins-mode
+ afu+vi-cmd-mode () { zle -K afu-vicmd; }; zle -N afu+vi-cmd-mode
+ 
+-auto-fu-zle-keymap-select () { afu-track-keymap "$@" afu-adjust-main-keymap }
++# Some zsh versions omit the first argument:
++auto-fu-zle-keymap-select() {
++[[ $# -ge 2 ]] || set -- zle-keymap-select "${@}"
++afu-track-keymap "${@}" afu-adjust-main-keymap
++}
+ 
+ afu-adjust-main-keymap () { [[ "$KEYMAP" == 'main' ]] && { zle -K "$1" } }
+ 

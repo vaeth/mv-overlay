@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>martin@mvath.de</email>
+		<name>Martin Väth</name>
+	</maintainer>
+	<use>
+		<flag name="antiword">Support doc files with app-text/antiword; this overrides catdoc</flag>
+		<flag name="cabextract">Support cabextract files</flag>
+		<flag name="catdoc">Support doc files with app-text/catdoc; unused if antiword is set</flag>
+		<flag name="cpio">Support cpio files</flag>
+		<flag name="djvu">Support djvu files</flag>
+		<flag name="dpkg">Support Debian package files</flag>
+		<flag name="dvi2tty">Support dvi files with dev-tex/dvi2tty</flag>
+		<flag name="elinks">Support html files with www-client/elinks; ignored if html2text, links, or lynx is set; this overrides w3m</flag>
+		<flag name="fastjar">Support jar files with app-arch/fastjar</flag>
+		<flag name="ghostscript">Support ps files with app-text/ghostscript-gpl; ignored if pstotext is set</flag>
+		<flag name="gpg">Support gpg files</flag>
+		<flag name="groff">Support man and nroff files</flag>
+		<flag name="hdf5">Support h5dump from sci-libs/hdf5</flag>
+		<flag name="html2text">Support html files with app-text/html2text; this overrides links, lynx, elinks, w3m</flag>
+		<flag name="id3v2">Support mp3 files with media-sound/id3v2; this overrides mp3info2, mp3info</flag>
+		<flag name="image">Support image/jpg files</flag>
+		<flag name="isoinfo">Support CD/DVD-iso files</flag>
+		<flag name="libplist">Support Apple Property List files</flag>
+		<flag name="links">Support html files with www-client/links; ignored if html2text is set; this overrides lynx, elinks, w3m</flag>
+		<flag name="lynx">Support html files with www-client/lynx; ignored if html2text or links is set; this overrides elinks, w3m</flag>
+		<flag name="lzip">Support lzip files</flag>
+		<flag name="mp3info">Support mp3 files with media-sound/mp3info; unused if id3v2 or mp3info2 is set</flag>
+		<flag name="mp3info2">Support mp3 files with dev-perl/MP3-Tag (mp3info2); ignored if id3v2 is set; this overrides mp3info</flag>
+		<flag name="netcdf">Support ncdump from sci-libs/netcdf</flag>
+		<flag name="ooffice">Support OpenOffice files</flag>
+		<flag name="p7zip">Support p7zip files</flag>
+		<flag name="pdf">Support pdf files</flag>
+		<flag name="pstotext">Support ps files with app-text/pstotext; this overrides ghostscript</flag>
+		<flag name="rar">Support rar files with app-arch/rar; unused if unrar is set</flag>
+		<flag name="rpm">Support rpm files with app-arch/rpm or rpm5; ignored if rpm2targz is set</flag>
+		<flag name="rpm2targz">Support rpm files with app-arch/rpm2targz; this overrides rpm</flag>
+		<flag name="unrar">Support rar files with app-arch/unrar; this overrides rar</flag>
+		<flag name="unrtf">Support rtf files with app-text/unrtf</flag>
+		<flag name="unzip">Support zip files with app-arch/unzip</flag>
+		<flag name="w3m">Support html files with www-client/w3m; ignored if html2text, links, lynx, or elinks is set</flag>
+		<flag name="xlhtml">Support Excel and Powerpoint files with app-arch/xlhtml</flag>
+	</use>
+</pkgmetadata>

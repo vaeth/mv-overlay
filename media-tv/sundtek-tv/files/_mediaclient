@@ -1,0 +1,202 @@
+#compdef mediaclient mediaclient.video mediaclient.radio mediaclient.dvb
+local curcontext="$curcontext" state state_descr line
+typeset -A opt_args
+local service_opts
+service_opts=(
+'--help[help]'
+{'(--enumdevices)-e','(-e)--enumdevices'}'[show up devices]'
+{'(--mode)-m+','(-m)--mode='}'[MODE (device mode)]:device mode:(DVBT DVBT2 DVBC DVBS DVBS2 ATSC ATV RADIO)'
+{'(--tuner)-t+','(-t)--tuner'}'[ID (tuner id)]:tuner id:->tunerid'
+{'(--setdtvmode)-D+','(-D)--setdtvmode='}'[MODE (dtv mode)]:dtv mode:(DVBT DVBC ATSC)'
+{'(--listatvstd)-L','(-L)--listatvstd'}'[list analog TV standards]'
+'--crc=[MODE (crc check for PSI on/off)]:check active:(on off)'
+{'(--vmode)-v+','(-v)--vmode='}'[MODE (set analog TV mode)]:tv mode:(PAL-BG PAL-DK PAL-I PAL-M NTSC-M Secam-L Secam-LC Secam-K Secam-B Secam-G Secam-H)'
+'--setvcr=[DEVICE (lock device)]:video device:(/dev/video*)'
+{'(--inputs)-i','(-i)--inputs'}'[list analog TV inputs]'
+{'(--size)-s+','(-s)--size='}'[DIM (set scalar size)]:dimension:(720x576)'
+{'(--Input)-I+','(-I)--Input='}'[INPUT (set TV input)]:input:(Television Composite S-Video)'
+{'(--frequency)-f+','(-f)--frequency='}'[HZ (frequency)]:frequency:()'
+'--rawfreq[HZ (raw DVB-S/S2 frequency)]:frequency:()'
+{'(--listarea)-a','(-a)--listarea'}'[list Area]'
+{'(--setarea)-A+','(-A)--setarea='}'[AREA (set Area)]:Area:()'
+{'(--Modulation)-M+','(-M)--Modulation='}'[MODULATION (for DVB-C)]:Modulation:(Q16 Q32 Q64 Q128 Q256)'
+{'(--Symbolrate)-S+','(-S)--Symbolrate='}'[HZ (Symbolrate for DVB-C)]:Symbolrate:()'
+{'(--voltage)-V+','(-V)--voltage='}'[VOLTAGE (DVB-S/S2 Polarisation)]:voltage:->voltage'
+'--band=[BAND (set band)]:band:(C-BAND UNIVERSAL)'
+{'(--fec)-E','(-E)--fec'}'[forward error connection]'
+{'(--polarisation)-p+','(-p)--polarisation='}'[DIRECTION (polarisation)]:polarisation:->polarisation'
+{'(--bandwidth)-b+','(-b)--bandwidth='}'[MHZ (set bandwidth for DVB-T)]:bandwidth:(6 7 8)'
+{'(--rds)-r','(-r)--rds'}'[get RDS information]'
+{'(--properties)-C','(-C)--properties'}'[list device properties]'
+'--loglevel=[LOGLEVEL (set log verbosity)]:loglevel:(off min max)'
+'--signalreporting=[MODE (set signal mode)]:signal reporting:->signalreporting'
+'--readsignal=[N (read signalstrength N times)]:signalstrength:()'
+'--powerlevel=[N (read powerlevel N times)]:powerlevel:()'
+'--powerlevel=[N (read powerlevel N times)]:powerlevel:()'
+'--lockstatus[check dvb/atsc channel lock]'
+'--enable5v=[5V output for DVB-C/T/T2]:enable 5V output:(on off)'
+'--wssdecoder=[DEVICE (VBI for wss)]:VBI device:(dev/vbi*)'
+'--dumpvbi=[DEVICE (dump VBI for wss)]:VBI device:(dev/vbi*)'
+'--wsscallback=[SCRIPT (Aspect ratio change wss)]:aspect ratio script:_files'
+'--stopwdd[stop background wss server]'
+'--cc-list[list closed caption]'
+'--cc-flush[clear closed caption settings]'
+'--cc-enable[CAP (enable closed caption)]:closed caption:(CC1 CC2 T1 T2)'
+'--cc-disable[CAP (disable closed caption)]:closed caption:(CC1 CC2 T1 T2)'
+{'(--pidfilter)-P+','(-P)--pidfilter='}'[MODE (DVB pidfilter on/off)]:pidfilter:(on off)'
+{'(--addpid)-H+','(-H)--addpid='}'[PIDS (add DVB pids)]:pids:("0x10" 16 "0x10,16")'
+{'(--removepid)-x+','(-x)--removepid='}'[PIDS (remove DVB pids)]:pids:("0x10" 16 "0x10,16")'
+{'(--listpids)-w','(-w)--listpids'}'[list filtered DVB pids]'
+{'(--flushpids)-F+','(-F)--flushpids='}'[flush DVB pidtable]'
+'--softpidfilter=[MODE (software DVB PID filter)]:pidfilter mode:(on off passthrough)'
+{'(--internalaudio)-c+','(-c)--internalaudio='}'[MODE (internal audio)]:internal audio:->internalaudio'
+'--audiothreshold=[N (audio threshold N ms)]:audio threshold:(0 2000)'
+'--loudness=[N (loudness)]:loudness:(0 15)'
+'--volume=[N (volume)]:volume:(0 255)'
+'--treble=[N (treble)]:treble:(0 255)'
+'--audiomode=[MODE (mono/stereo)]:audio mode:(mono stereo)'
+{'(--mute)-g+','(-g)--mute='}'[MODE (FM mute)]:FM mute mode:(on off)'
+'--diseqc-support=[MODE (diseqc)]:diseqc mode:(on off)'
+'--diseqc=[COMMAND (diseqc)]:diseqc command:(E0 10 38 F0)'
+'--list-diseqc[list diseqc dish configuration]'
+'--set-diseqc=[CONFIG (set diseqc dish)]:diseqc dish configuration:(S19.2E)'
+'--setmini=[SEC_MINI_A/B (set burst tone)]:burst tone:(A B)'
+{'(--listrc)-l','(-l)--listrc'}'[list rc protocols]'
+{'(--setrc)-s+','(-s)--setrc='}'[PROTOCOL (set rc)]:protocol:()'
+'--enablerc=[DEVICE (enable rc polling)]:rc device:(/dev/mediainput*)'
+'--disablerc=[DEVICE (disable rc polling)]:rc device:(/dev/mediainput*)'
+'--pollrc[poll raw rc]'
+'--dumprcmap[dump rc map]'
+'--setrcmap=[MAP (set rc MAP)]:rc map:_files'
+'--updaterc=[update rc layout]:rc layout:->rclayout'
+'--transfermode=[MODE (usb transfer mode)]:transfer mode:(bulk iso)'
+'--nullpackets=[MODE (usb null packets)]:pass null packets:->nullpackets'
+'--bulkpackets=[N (usb bulk transfer)]:bulk transfer number:()'
+'--ts-settle-timemout=[N (usb timeout in ms)]:timeout:(0 4000)'
+'--disable-dvb=[ADAPTER (disable dvb)]:dvb adapter:(/dev/dvb/adapter*)'
+'--enable-dvb=[ADAPTER (enable dvb)]:dvb adapter:(/dev/dvb/adapter*)'
+'--setver=[API (set DVB API)]:DVB API:(5.0)'
+'--vfilter=[MODE (analog deinterlacer)]:deinterlacer:(on off)'
+'--vfilterid=[ID (analog deinterlacer type)]:deinterlacer id:->deinterlacerid'
+'--lc[list connected clients]'
+'--lc=[PID (disconnect client)]:pid:()'
+'--shutdown[shutdown multimediastack]'
+'--start=[N (start multimediastack in N sec)]:seconds:(1)'
+'--systemdcheck[start via systemd]'
+'--wait-for-devices[start when devices are ready]'
+'--enablenetwork=[MODE (network listening)]:network mode:(on off)'
+'--mount=[ADAPTER (create virtual)]:virtual adapter:->createmount'
+'--unmount=[ADAPTER (delete virtual)]:virtual adapter:(1)'
+'--lrc=[RC (list remote clients)]:rc clients:(1 192.168.1.2:0)'
+'--tvdummy[add tv-dummydevice]'
+'--remove=[N (delete dummy adapter)]:dummy adapter:(1)'
+'--scan-network[scan for IPTV devices]'
+'--nettransfermode=[MODE (set transfer mode)]:transfer mode:(tcp udp)'
+'--nti=[N (increase maximum packet)]:maximum packet:(0 10000)'
+'--netrecoverymode=[MODE (netrecoverymode)]:net recover mode:(on off)'
+'--enabledreambox=[DEVICE (connect vtuner)]:vtuner device:(/dev/dvb/adapter*/frontend*)'
+'--disabledreambox=[DEVICE (disconnect vtuner)]:vtuner device:(/dev/dvb/adapter*/frontend*)'
+'--nimbus[display dreambox nimbus]'
+'--avoffset=[N (dreambox AV offset in ms)]:AV PTS offset:()'
+'--audiooffset=[N (dreambox audio offset in ms)]:Audio PTS offset:()'
+'--videooffset=[N (dreambox video offset in ms)]:Video PTS offset:()'
+'--portforward=[N (debugging)]:port:()'
+'--pipecount=[N (read stdin)]:seconds:(1)'
+'--cat=[FILE (read FILE)]:file:_files'
+'--strings=[FILE (strings FILE)]:file:_files'
+'--lsusb=[DEVICE (print usb ids)]:usb device:(/dev/bus/usb)'
+'--reset=[DEVICE (reset usb device)]:usb device:(/dev/bus/usb/*)'
+'--tsscan=[DEVICE (scan channel)]:transponder:(/dev/dvb/adapter*/dvr*)'
+'--nitscan=[DEVICE (scan NIT)]:transponder:(/dev/dvb/adapter*/dvr*)'
+'--blindscan=[DEVICE (blindscan)]:transponder:(nim_socket /dev/dvb/adapter*/dvr*)'
+'--timeout=[N (nitscan timeout in ms)]:timeout:()'
+'--zf=[N (ZF/IF universal frequesncy)]:frequency:()'
+'--frontendinfo=[DEVICE (get DVB API)]:dvb device:(/dev/dvb/adapter*/frontend*)'
+'--createadapter[create dvb loopback]'
+#'--remove=[N (remove dvb loopback)]:loopback device:()'
+)
+case $service in
+(*mediaclient)
+	service_opts+=(
+{'(--device)-d+','(-d)--device='}'[DEVICE (video device)]:video device:(/dev/dvb/adapter*/frontend* /dev/radio* /dev/video*)'
+);
+esac
+_arguments -C -s -S -A '-*' : $service_opts
+local ret=$?
+case $state in
+(tunerid)
+	local tunerids
+	tunerids=(
+	'0:FM receiver'
+	'1:FM transmitter'
+	)
+	_describe -t tunerid 'tuner id' tunerids
+	ret=$?;;
+(voltage)
+	local voltages
+	voltages=(
+	'H:18V'
+	'V:13V'
+	'OFF:0V'
+	)
+	_describe -t voltage 'voltage' voltages
+	ret=$?;;
+(polarisation)
+	local polarisations
+	polarisations=(
+	'H:horizontal'
+	'V:vertical'
+	)
+	_describe -t polarisation 'polarisation' polarisations
+	ret=$?;;
+(signalreporting)
+	local signalreport
+	signalreport=(
+	'0:videodecoder (fast, default)'
+	'1:demodulator (slow, detailed)'
+	)
+	_describe -t signalreporting 'signal reporting' signalreport
+	ret=$?;;
+(internalaudio)
+	local internalaudios
+	internalaudios=(
+	'auto:on if tvtime gets started'
+	'internal:use internal bridge'
+	'external:require external application'
+	'audioonly:only initialize audio transfer'
+	)
+	_describe -t internalaudio 'internal audio' internalaudios
+	ret=$?;;
+(rclayout)
+	local rclayouts
+	rclayouts=(
+	'0:internal keymap for flat remote control'
+	'1:internal keymap for black VCR remote control'
+	)
+	_describe -t rclayout 'rc layout' rclayouts
+	ret=$?;;
+(nullpackets)
+	local nullpackets
+	nullpackets=(
+	'on'
+	'off:default'
+	)
+	_describe -t nullpackets 'pass null packets' nullpackets
+	ret=$?;;
+(deinterlacerid)
+	local deinterlacerids
+	deinterlacerids=(
+	'0:default'
+	)
+	_describe -t deinterlacerid 'deinterlacer id' deinterlacerids
+	ret=$?;;
+(createmount)
+	local virtualadapters
+	virtualadapters=(
+	'0:local device'
+	'192.168.1.2:0:remote device'
+	)
+	_describe -t virtualadapter 'virtual adapter' virtualadapters
+	ret=$?;;
+esac
+return ret

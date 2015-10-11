@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>base-system</herd>
+	<maintainer>
+		<email>martin@mvath.de</email>
+		<name>Martin Väth</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>martin@mvath.de</email>
+			<name>Martin Väth</name>
+			<description>Maintainer of the less-select patch</description>
+		</maintainer>
+		<bugs-to>mailto:martin@mvath.de</bugs-to>
+		<remote-id type="github">vaeth/less-select</remote-id>
+	</upstream>
+	<use>
+		<flag name="original-gentoo">Use the gentoo default for the LESS variable.</flag>
+		<flag name="lesspipe">Use sys-apps/lesspipe instead of Gentoo's default lesspipe.sh.</flag>
+		<flag name="less-select">Add the less-select feature (additional options and a binary helper).</flag>
+		<flag name="source">Install sources for keybindings (only useful with less-select).</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,61 @@
+--- linux/include/linux/fs.h
++++ linux/include/linux/fs.h
+@@ -575,41 +575,41 @@
+ 		unsigned long, unsigned long);
+ 
+ struct address_space_operations {
+-	int (* const writepage)(struct page *page, struct writeback_control *wbc);
+-	int (* const readpage)(struct file *, struct page *);
+-	void (* const sync_page)(struct page *);
++	int (*writepage)(struct page *page, struct writeback_control *wbc);
++	int (*readpage)(struct file *, struct page *);
++	void (*sync_page)(struct page *);
+ 
+ 	/* Write back some dirty pages from this mapping. */
+-	int (* const writepages)(struct address_space *, struct writeback_control *);
++	int (*writepages)(struct address_space *, struct writeback_control *);
+ 
+ 	/* Set a page dirty.  Return true if this dirtied it */
+-	int (* const set_page_dirty)(struct page *page);
++	int (*set_page_dirty)(struct page *page);
+ 
+-	int (* const readpages)(struct file *filp, struct address_space *mapping,
++	int (*readpages)(struct file *filp, struct address_space *mapping,
+ 			struct list_head *pages, unsigned nr_pages);
+ 
+-	int (* const write_begin)(struct file *, struct address_space *mapping,
++	int (*write_begin)(struct file *, struct address_space *mapping,
+ 				loff_t pos, unsigned len, unsigned flags,
+ 				struct page **pagep, void **fsdata);
+-	int (* const write_end)(struct file *, struct address_space *mapping,
++	int (*write_end)(struct file *, struct address_space *mapping,
+ 				loff_t pos, unsigned len, unsigned copied,
+ 				struct page *page, void *fsdata);
+ 
+ 	/* Unfortunately this kludge is needed for FIBMAP. Don't use it */
+-	sector_t (* const bmap)(struct address_space *, sector_t);
+-	void (* const invalidatepage) (struct page *, unsigned long);
+-	int (* const releasepage) (struct page *, gfp_t);
+-	ssize_t (* const direct_IO)(int, struct kiocb *, const struct iovec *iov,
++	sector_t (*bmap)(struct address_space *, sector_t);
++	void (*invalidatepage) (struct page *, unsigned long);
++	int (*releasepage) (struct page *, gfp_t);
++	ssize_t (*direct_IO)(int, struct kiocb *, const struct iovec *iov,
+ 			loff_t offset, unsigned long nr_segs);
+-	int (* const get_xip_mem)(struct address_space *, pgoff_t, int,
++	int (*get_xip_mem)(struct address_space *, pgoff_t, int,
+ 						void **, unsigned long *);
+ 	/* migrate the contents of a page to the specified target */
+-	int (* const migratepage) (struct address_space *,
++	int (*migratepage) (struct address_space *,
+ 			struct page *, struct page *);
+-	int (* const launder_page) (struct page *);
+-	int (* const is_partially_uptodate) (struct page *, read_descriptor_t *,
++	int (*launder_page) (struct page *);
++	int (*is_partially_uptodate) (struct page *, read_descriptor_t *,
+ 					unsigned long);
+-	int (* const error_remove_page)(struct address_space *, struct page *);
++	int (*error_remove_page)(struct address_space *, struct page *);
+ };
+ 
+ /*

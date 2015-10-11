@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>martin@mvath.de</email>
+		<name>Martin Väth</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>takebi@laafc.net</email>
+			<name>Takeshi Banse</name>
+		</maintainer>
+		<remote-id type="github">hchbaw/auto-fu.zsh</remote-id>
+	</upstream>
+	<use>
+		<flag name="compile">Byte-compile to speed up. Do not use this if you are cross-compiling</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,15 @@
+--- linux/include/linux/fs.h
++++ linux/include/linux/fs.h
+@@ -619,7 +619,11 @@
+ 	int (*is_partially_uptodate) (struct page *, read_descriptor_t *,
+ 					unsigned long);
+ 	int (*error_remove_page)(struct address_space *, struct page *);
+-};
++}
++#ifdef CONFIG_GRKERNSEC
++__no_const
++#endif
++;
+ 
+ extern const struct address_space_operations empty_aops;
+ 

@@ -1,0 +1,31 @@
+#!/bin/sh
+Echo() {
+	printf '%s\n' "${*}"
+}
+Die() {
+	Echo "${0##*/}: ${*}" >&2
+	exit 1
+}
+EchoExec() {
+	Echo "# ${*}"
+	exec "${@}"
+	Die "failed to exec ${1}"
+}
+mediaclient=`PATH="${PATH}${PATH:+:}/bin:/opt/bin" command -v mediaclient` \
+	&& [ -n "${mediaclient}" ] || Die 'cannot find mediaclient executable'
+case ${0} in
+*video*)
+	regexp='video[0-9]*'
+	text='video';;
+*radio)
+	regexp='radio[0-9]*'
+	text='radio';;
+*)
+	regexp='dvb\/adapter[0-9]*\/frontend[0-9]*'
+	text='adapter';;
+esac
+regexp='\/dev\/'${regexp}
+sedx='/'${regexp}'/{s/^.*\('${regexp}'\).*$/\1/p;q}'
+device=`"${mediaclient}" -e | sed -n -e "${sedx}"`
+[ -n "${device}" ] || Die "${mediaclient} -e returned no ${text} device"
+EchoExec "${mediaclient}" -d "${device}" "${@}"

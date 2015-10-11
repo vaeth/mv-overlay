@@ -1,0 +1,11 @@
+--- 1/auto-fu.zsh
++++ 1/auto-fu.zsh
+@@ -370,7 +370,7 @@
+       [[ -z ${hi} ]] || region_highlight=("0 ${#BUFFER} ${hi}")
+     }
+     zstyle -T ':auto-fu:var' postdisplay/clearp && POSTDISPLAY=''
+-    return 0
++    echo -en '\e[0m'
+   }
+   zle -N $afufun
+ EOT

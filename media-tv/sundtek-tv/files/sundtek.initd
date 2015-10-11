@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+
+description="sundtek TV mediaclient"
+#command=/opt/bin/mediasrv
+#command_args="-d --pluginpath /opt/bin"
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	/opt/bin/mediaclient --start=4
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	/opt/bin/mediaclient --shutdown
+	eend $?
+}

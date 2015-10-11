@@ -1,0 +1,125 @@
+# This file is deprecated as per GLEP 56 in favor of metadata.xml. Please add
+# your descriptions to your package's metadata.xml ONLY.
+# * generated automatically using egencache *
+
+app-portage/eix:debug - Build with upstream's CXXFLAGS/LDFLAGS for debugging support; not recommended for normal use.
+app-portage/eix:dep - Make DEP=true the default which enables support for {,R,P}DEPEND but requires roughly double disk and memory.
+app-portage/eix:doc - Create description of the eix cache file additionally in html format
+app-portage/eix:optimization - Accept upstream's choices for CXXFLAGS/LDFLAGS for optimization. Absense of this USE flag does not strip user's *FLAGS
+app-portage/eix:security - This adds some checks which can prevent certain exploits if e.g. the eix code has a bug. If you use the hardened toolchain, using this flag does not increase security and can even lead to problems.
+app-portage/eix:sqlite - Compile in support for portage's sqlite backend; to actually use it you need additional configuration of portage and eix
+app-portage/eix:strong-optimization - Adds several more agressive CXXFLAGS/LDFLAGS for optimization like graphite (if available). May cause trouble with some buggy compiler versions. Absense of this USE flag does not strip user's *FLAGS
+app-portage/eix:strong-security - Add many checks to prevent exploits if eix code has a bug. This will slow down eix considerably. Use only if you are paranoid or have reasons to suspect a bug.
+app-portage/eix:swap-remote - Swap role of remote addresses in eix-remote, making the data from gpo.zugaina.org the first choice.
+app-portage/eix:tools - Create separate binary for script helper tools; useful if they are called extremely often
+app-shells/auto-fu-zsh:compile - Byte-compile to speed up. Do not use this if you are cross-compiling
+app-shells/termcolors-mv:create - Install DIR_COLORS-create perl script
+app-shells/termcolors-mv:perl - Install 256colors perl script
+app-shells/zsh:compile - Byte-compile. This costs disk space and may make things faster or slower. Do not use this if you are cross-compiling
+app-shells/zsh:completion_AIX - Install zsh completions for AIX
+app-shells/zsh:completion_BSD - Install zsh completions for BSD
+app-shells/zsh:completion_Cygwin - Install zsh completions for Cygwin
+app-shells/zsh:completion_Darwin - Install zsh completions for Darwin
+app-shells/zsh:completion_Debian - Install zsh completions for Debian
+app-shells/zsh:completion_Linux - Install zsh completions for Linux
+app-shells/zsh:completion_Mandriva - Install zsh completions for Mandriva
+app-shells/zsh:completion_Redhat - Install zsh completions for Redhat
+app-shells/zsh:completion_Solaris - Install zsh completions for Solaris
+app-shells/zsh:completion_Unix - Install zsh completions for Unix
+app-shells/zsh:completion_X - Install zsh completions for X
+app-shells/zsh:completion_openSUSE - Install zsh completions for openSUSE
+app-shells/zsh-completions:completion_Android - Install zsh completions for Android-related programs
+app-shells/zsh-completions:completion_Google - Install zsh completions for googlecl
+app-shells/zsh-completions:completion_Unix - Install zsh completion for unix system tools
+app-shells/zsh-completions:completion_database - Install zsh completions for database programs
+app-shells/zsh-completions:completion_dev - Install zsh completions for development (build systems, editors, web)
+app-shells/zsh-completions:completion_disk - Install zsh completions for disk tools
+app-shells/zsh-completions:completion_distribute - Install zsh completions for tools for distributing tasks to machines
+app-shells/zsh-completions:completion_filesystem - Install zsh completions for filesystem tools
+app-shells/zsh-completions:completion_git - Install zsh completions for special git tools
+app-shells/zsh-completions:completion_hardware - Install zsh completions for low-level hardware tools
+app-shells/zsh-completions:completion_haskell - Install zsh completions for Haskell tools
+app-shells/zsh-completions:completion_managers - Install zsh completions for package managers (not portage)
+app-shells/zsh-completions:completion_multimedia - Install zsh completions for multimedia programs
+app-shells/zsh-completions:completion_net - Install zsh completions for net-related tools
+app-shells/zsh-completions:completion_nfs - Install zsh completions for network filesystem tools
+app-shells/zsh-completions:completion_perl - Install zsh completion for perl-related tools
+app-shells/zsh-completions:completion_pip - Install zsh completion for dev-python/pip (instead of completion of dev-python/pip project)
+app-shells/zsh-completions:completion_python - Install zsh completion for python development tools
+app-shells/zsh-completions:completion_ruby - Install zsh completion for ruby tools and tools in ruby
+app-shells/zsh-completions:completion_search - Install zsh completion for search tools like sys-apps/ack and sys-apps/the_silver_searcher
+app-shells/zsh-completions:completion_session - Install zsh completion for session-handling frontends
+app-shells/zsh-completions:completion_subtitles - Install zsh completion for subtitle tools
+app-shells/zsh-completions:completion_virtualization - Install zsh completion for virtualization programs
+app-shells/zsh-completions:completion_web - Install zsh completion for web-related tools incl. java/javascript/scala
+app-text/stardict:espeak - Enable text to speech synthesizer using espeak engine
+app-text/stardict:gnome2 - Enable deprecated gnome2 support
+app-text/stardict:gucharmap - Enable gucharmap dictionary plugin
+app-text/stardict:pronounce - Install WyabdcRealPeopleTTS package (it is just many .wav files) to make StarDict pronounce English words
+app-text/stardict:qqwry - Enable QQWry plugin, which provides information (in Chinese language) about geographical positions, owner, etc. for IP addresses
+app-text/stardict:tools - Build and install the extra stardict tools
+games-rpg/m5figur-mv:examples - Compile example character sheet as PDF
+games-rpg/magus:acroread - Depend on acroread (otherwise you are responsible to install/configure a pdf viewer)
+games-rpg/magus:imagemagick - Use convert from graphicsmagick/imagemagick to scale pictures before installation
+games-rpg/magus:konqueror - Depend on konqueror browser instead of firefox
+games-rpg/magus:pngcrush - Use pngcrush for opimizing png before installation
+games-rpg/magus:postgres - Use postgresql instead of sqlite
+games-rpg/magus:seamonkey - Depend on seamonkey browser instead of firefox
+media-gfx/pqiv:gtk2 - Use gtk:2 instead of gtk:3
+media-tv/sundtek-tv:ld-preload-env - Install LD_PRELOAD in /etc/env.d/50sundtek-tv
+media-tv/sundtek-tv:ld-preload-file - Install /etc/ld.so.preload
+media-tv/sundtek-tv:pax_kernel - Mark package which is necessary if you use a PAX kernel
+net-misc/sshstart:keychain - Pull in keychain as dependency. Not required, but recommended for smoother operation.
+sys-apps/less:less-select - Add the less-select feature (additional options and a binary helper).
+sys-apps/less:lesspipe - Use sys-apps/lesspipe instead of Gentoo's default lesspipe.sh.
+sys-apps/less:original-gentoo - Use the gentoo default for the LESS variable.
+sys-apps/less:source - Install sources for keybindings (only useful with less-select).
+sys-apps/lesspipe:antiword - Support doc files with app-text/antiword; this overrides catdoc
+sys-apps/lesspipe:cabextract - Support cabextract files
+sys-apps/lesspipe:catdoc - Support doc files with app-text/catdoc; unused if antiword is set
+sys-apps/lesspipe:cpio - Support cpio files
+sys-apps/lesspipe:djvu - Support djvu files
+sys-apps/lesspipe:dpkg - Support Debian package files
+sys-apps/lesspipe:dvi2tty - Support dvi files with dev-tex/dvi2tty
+sys-apps/lesspipe:elinks - Support html files with www-client/elinks; ignored if html2text, links, or lynx is set; this overrides w3m
+sys-apps/lesspipe:fastjar - Support jar files with app-arch/fastjar
+sys-apps/lesspipe:ghostscript - Support ps files with app-text/ghostscript-gpl; ignored if pstotext is set
+sys-apps/lesspipe:gpg - Support gpg files
+sys-apps/lesspipe:groff - Support man and nroff files
+sys-apps/lesspipe:hdf5 - Support h5dump from sci-libs/hdf5
+sys-apps/lesspipe:html2text - Support html files with app-text/html2text; this overrides links, lynx, elinks, w3m
+sys-apps/lesspipe:id3v2 - Support mp3 files with media-sound/id3v2; this overrides mp3info2, mp3info
+sys-apps/lesspipe:image - Support image/jpg files
+sys-apps/lesspipe:isoinfo - Support CD/DVD-iso files
+sys-apps/lesspipe:libplist - Support Apple Property List files
+sys-apps/lesspipe:links - Support html files with www-client/links; ignored if html2text is set; this overrides lynx, elinks, w3m
+sys-apps/lesspipe:lynx - Support html files with www-client/lynx; ignored if html2text or links is set; this overrides elinks, w3m
+sys-apps/lesspipe:lzip - Support lzip files
+sys-apps/lesspipe:mp3info - Support mp3 files with media-sound/mp3info; unused if id3v2 or mp3info2 is set
+sys-apps/lesspipe:mp3info2 - Support mp3 files with dev-perl/MP3-Tag (mp3info2); ignored if id3v2 is set; this overrides mp3info
+sys-apps/lesspipe:netcdf - Support ncdump from sci-libs/netcdf
+sys-apps/lesspipe:ooffice - Support OpenOffice files
+sys-apps/lesspipe:p7zip - Support p7zip files
+sys-apps/lesspipe:pdf - Support pdf files
+sys-apps/lesspipe:pstotext - Support ps files with app-text/pstotext; this overrides ghostscript
+sys-apps/lesspipe:rar - Support rar files with app-arch/rar; unused if unrar is set
+sys-apps/lesspipe:rpm - Support rpm files with app-arch/rpm or rpm5; ignored if rpm2targz is set
+sys-apps/lesspipe:rpm2targz - Support rpm files with app-arch/rpm2targz; this overrides rpm
+sys-apps/lesspipe:unrar - Support rar files with app-arch/unrar; this overrides rar
+sys-apps/lesspipe:unrtf - Support rtf files with app-text/unrtf
+sys-apps/lesspipe:unzip - Support zip files with app-arch/unzip
+sys-apps/lesspipe:w3m - Support html files with www-client/w3m; ignored if html2text, links, lynx, or elinks is set
+sys-apps/lesspipe:xlhtml - Support Excel and Powerpoint files with app-arch/xlhtml
+sys-fs/aufs:all-patches - Apply all patches - also those which do not start with aufs
+sys-fs/aufs:kernel-patch - Apply the aufs kernel patches instead of just copying them
+sys-fs/squash_dir:aufs - Prefer aufs
+sys-fs/squash_dir:bundled-openrc-wrapper - Install the bundled openrc-wrapper
+sys-fs/squash_dir:overlayfs - Prefer overlayfs
+sys-fs/squash_dir:unionfs-fuse - Prefer unionfs-fuse
+sys-fs/squashfs-tools:lz4 - Enable support for LZ4 compression using app-arch/lz4
+sys-fs/squashfs-tools:xz - Enable support for XZ ("LZMA2") compression using app-arch/xz-utils
+x11-drivers/nvidia-drivers:kernel3-13 - Install unofficial patches for linux-3.13 and newer
+x11-drivers/nvidia-drivers:kernel3-14 - Install unofficial patches for linux-3.14 and newer
+x11-drivers/nvidia-drivers:kernel3-17 - Install unofficial patches for linux-3.17 and newer
+x11-drivers/nvidia-drivers:pax_kernel - Patch to compile with hardened-sources/grsecurity
+x11-drivers/nvidia-drivers:tools - Install additional tools such as nvidia-settings
