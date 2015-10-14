@@ -21,8 +21,7 @@ EMACSNAME="google-c-style"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 COMMON="emacs? ( virtual/emacs )"
 DEPEND="${COMMON}"
-RDEPEND="dev-lang/python
-	${PYTHON_DEPS}
+RDEPEND="${PYTHON_DEPS}
 	${COMMON}"
 
 src_prepare() {
