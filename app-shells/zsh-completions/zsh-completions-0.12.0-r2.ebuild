@@ -28,7 +28,7 @@ LICENSE="ZSH"
 SLOT="0"
 if ${LIVE}
 then	DEPEND=""
-else	DEPEND="completion_pip? ( !dev-python/pip[zsh-completion] )"
+else	DEPEND=""
 fi
 
 IUSE=""
@@ -82,22 +82,26 @@ calculate_data \
 	'+filesystem _zfs' \
 	'+git _git-flow _git-pulls' \
 	'+hardware _optirun _perf _primus' \
-	'+haskell _cabal _ghc' \
-	'+managers _bower _brew *_cask _debuild _lein _pactree _pkcon _port _yaourt' \
+	'+haskell _cabal _ghc *_stack' \
+	'+managers *_ansible *_ansible-galaxy *_ansible-playbook _bower _brew *_cask _debuild _lein _pactree _pkcon _port _yaourt' \
 	'+multimedia _id3 _id3v2 _showoff' \
 	'+net _dget _dhcpcd _httpie _iw _mosh _rfkill _socat _ssh-copy-id _vpnc _vnstat' \
 	'+nfs _exportfs' \
 	'+perl _cpanm' \
-	'/+pip _pip' \
 	'+python _bpython _pygmentize _setup.py' \
 	'+ruby _bundle _cap _ditz _gas _gem _gist _github _git-wtf _jekyll _lunchy _rails _rspec _rubocop _rvm' \
 	'+search _ack _ag _jq' \
 	'+session _atach _teamocil _tmuxinator _wemux' \
 	'+subtitles _language_codes _periscope _subliminal' \
-	'+virtualization _boot2docker *_docker-machine /_docker _virtualbox _virsh' \
-	'+web _coffee _composer _docpad _drush _heroku *_hledger _jonas _jmeter _jmeter-plugins _lunar _middleman _node _nvm _ralio _salt _sbt _scala _svm'
+	'+virtualization _boot2docker *_docker-compose *_docker-machine _virtualbox _virsh' \
+	'+web _coffee _composer _docpad _drush _heroku *_hledger _jonas _jmeter _jmeter-plugins _lunar _middleman _node _nvm _ralio *_salt _sbt _scala _svm'
 
 src_prepare() {
+	# Remove colliding completions
+	if ${LIVE}
+	then	mv src/_docker . || eerror "mv failed"
+	else	mv src/_docker src/_pip . || die
+	fi
 	epatch_user
 }
 
@@ -120,4 +124,12 @@ src_install() {
 	do	elog "listed file ${i} not found"
 	done
 	dodoc README.md zsh-completions-howto.org
+}
+
+pkg_postinst() {
+	elog
+	elog "If you happen to compile your functions, you may need to delete"
+	elog "~/.zcompdump{,.zwc} and recompile to make the new completions available"
+	elog "to your shell."
+	elog
 }
