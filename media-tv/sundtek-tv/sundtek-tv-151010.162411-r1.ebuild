@@ -116,7 +116,9 @@ src_prepare() {
 		>etc/revdep-rebuild/50-sundtek-tv
 	if use ld-preload-file
 	then	echo "/${mylibdir}/libmediaclient.so" >etc/ld.so.preload
+	else	sed -i -e 's/preload:-NO/preload:-YES/' sundtek.initd
 	fi
+	sed -i -e "s'preload_lib:-/usr/lib'preload_lib:-/${mylibdir}'" sundtek.initd
 	if use ld-preload-env
 	then	mkdir etc/env.d
 		echo "LD_PRELOAD=\"/${mylibdir}/libmediaclient.so\"" >etc/env.d/50sundtek-tv
