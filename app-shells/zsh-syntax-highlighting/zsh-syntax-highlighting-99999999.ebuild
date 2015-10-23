@@ -46,7 +46,7 @@ src_prepare() {
 src_install() {
 	dodoc *.md
 	insinto /usr/share/zsh/site-contrib/${PN}
-	doins *.zsh
+	doins *.zsh .revision-hash .version
 	doins -r highlighters
 	readme.gentoo_create_doc
 }
