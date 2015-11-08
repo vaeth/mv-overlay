@@ -1,6 +1,6 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
+# $Id$
 
   25 Jan 2015; Martin Väth <martin@mvath.de>:
   avoid use_if_iuse in mv_mozextenstion.eclass to be fully pms compatible
