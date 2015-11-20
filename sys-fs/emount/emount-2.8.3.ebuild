@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
-inherit eutils
 
 DESCRIPTION="mount/unmount (and create/remove) dm-crypt filesystems according to your /etc/fstab"
 HOMEPAGE="https://github.com/vaeth/emount/"
@@ -24,7 +23,7 @@ src_prepare() {
 	use prefix || sed -i \
 		-e '1s"^#!/usr/bin/env perl$"#!'"${EPREFIX}/usr/bin/perl"'"' \
 		-- bin/* || die
-	epatch_user
+	eapply_user
 }
 
 src_install() {

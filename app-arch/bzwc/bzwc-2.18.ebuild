@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
-inherit eutils
 
 DESCRIPTION="A POSIX shell wrapper for wc, supporting compressed files (xz, lzma, bz2, gz)"
 HOMEPAGE="https://github.com/vaeth/bzwc/"
@@ -24,7 +23,7 @@ src_prepare() {
 		sed -i -e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' -- "${i}" \
 			|| die
 	done
-	epatch_user
+	eapply_user
 }
 
 src_install() {

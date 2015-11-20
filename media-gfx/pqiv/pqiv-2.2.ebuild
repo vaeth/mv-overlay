@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit linux-info toolchain-funcs eutils
+EAPI=6
+inherit linux-info toolchain-funcs
 
 DESCRIPTION="Modern rewrite of Quick Image Viewer"
 HOMEPAGE="https://github.com/phillipberndt/pqiv http://www.pberndt.com/Programme/Linux/pqiv/"
@@ -26,10 +26,6 @@ pkg_setup() {
 		CONFIG_CHECK="~INOTIFY_USER"
 		linux-info_pkg_setup
 	fi
-}
-
-src_prepare() {
-	epatch_user
 }
 
 src_configure() {

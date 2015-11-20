@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit autotools eutils flag-o-matic
 RESTRICT="mirror"
 
@@ -180,7 +180,7 @@ my_autoreconf() {
 src_prepare() {
 	local i
 	src_patch
-	epatch_user
+	eapply_user
 	set_browser
 	einfo
 	einfo "Calling eautoreconf for all subprojects:"

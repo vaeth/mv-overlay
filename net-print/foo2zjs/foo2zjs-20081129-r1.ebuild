@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Support for printing to ZjStream-based printers. Fixes bug 271079"
 HOMEPAGE="http://foo2zjs.rkkda.com/"
@@ -82,11 +81,7 @@ RDEPEND="cups? ( net-print/cups )
 KEYWORDS="~x86 ~amd64 ~ppc"
 S="${WORKDIR}/${PN}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-Makefile.patch
-	epatch "${FILESDIR}"/${P}-udevfwld.patch
-	epatch_user
-}
+PATCHES=("${FILESDIR}"/${P}-Makefile.patch "${FILESDIR}"/${P}-udevfwld.patch)
 
 src_unpack() {
 	unpack ${P}.tar.gz

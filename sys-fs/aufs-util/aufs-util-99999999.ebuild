@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 EGIT_REPO_URI="git://aufs.git.sourceforge.net/gitroot/aufs/aufs-util.git"
 EGIT_BRANCH="aufs3.9"
-inherit eutils git-r3 linux-info multilib
+inherit git-r3 linux-info
 
 DESCRIPTION="Userspace tools for aufs"
 HOMEPAGE="http://aufs.sourceforge.net/"
@@ -38,5 +38,5 @@ src_prepare() {
 		sed -i -e "1iCFLAGS += -I../local_kernel" -e "${l}" "${i}" || \
 			die "Patching ${i} failed"
 	done
-	epatch_user
+	eapply_user
 }

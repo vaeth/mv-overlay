@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
 inherit eutils
 
@@ -20,10 +20,6 @@ RDEPEND=">=dev-lang/perl-5.12"
 #	|| ( >=dev-lang/perl-5.6.1 >=virtual/perl-Getopt-Long-2.24 )
 #	|| ( >=dev-lang/perl-5.7.3 virtual/perl-Digest-MD5 )
 #	|| ( >=dev-lang/perl-5.7.3 virtual/perl-Time-HiRes )
-
-src_prepare() {
-	epatch_user
-}
 
 src_install() {
 	dobin bin/*

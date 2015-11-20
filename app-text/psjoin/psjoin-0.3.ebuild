@@ -2,10 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
-
-inherit eutils
 
 DESCRIPTION="concatenate postscript files. From new PostScript Utilities"
 HOMEPAGE="http://homepage3.nifty.com/tsato/tools/psjoin.html"
@@ -23,10 +21,6 @@ DEPEND="${RDEPEND}
 src_unpack() {
 	mkdir --  "${S}"
 	cp -p -- "${DISTDIR}/${P}" "${S}/${PN}"
-}
-
-src_prepare() {
-	epatch_user
 }
 
 src_install() {

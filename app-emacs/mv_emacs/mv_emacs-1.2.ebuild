@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
-inherit elisp-common eutils
+inherit elisp-common
 
 DESCRIPTION="(X)Emacs extensions: block support, macrorecorder, verify change"
 HOMEPAGE="https://github.com/vaeth/mv_emacs/"
@@ -26,10 +26,6 @@ src_unpack() {
 (add-to-list 'load-path "@SITELISP@")
 (load "mv_emacs-autoloads")
 EOF
-}
-
-src_prepare() {
-	epatch_user
 }
 
 src_compile() {

@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
-inherit eutils
 
 DESCRIPTION="An intelligent prompt for zsh or bash with status line (window title) support"
 HOMEPAGE="https://github.com/vaeth/set_prompt/"
@@ -20,7 +19,7 @@ src_prepare() {
 		-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}"'/bin/sh"' \
 		-e '1s"^#!/usr/bin/env zsh$"#!'"${EPREFIX}"'/bin/zsh"' \
 		-- * || die
-	epatch_user
+	eapply_user
 }
 
 src_install() {

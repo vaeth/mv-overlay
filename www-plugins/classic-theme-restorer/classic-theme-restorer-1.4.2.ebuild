@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 MV_MOZ_MOZILLAS="firefox"
 inherit mv_mozextension
 RESTRICT="mirror"

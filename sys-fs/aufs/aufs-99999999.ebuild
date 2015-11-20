@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 EGIT_REPO_URI="git://aufs.git.sourceforge.net/gitroot/aufs/aufs3-standalone.git"
 EGIT_BRANCH="aufs3.0"
-inherit eutils git-r3 linux-info
+inherit git-r3 linux-info
 
 DESCRIPTION="An entirely re-designed and re-implemented Unionfs"
 HOMEPAGE="http://aufs.sourceforge.net/"
@@ -125,7 +125,7 @@ pkg_setup() {
 
 src_prepare() {
 	local i j w v newest all
-	epatch_user
+	eapply_user
 	all="2.2.0 2.2.1 2.2.2 2.2.2.r1 2.9.1"
 	newest=${all##* }
 	v=

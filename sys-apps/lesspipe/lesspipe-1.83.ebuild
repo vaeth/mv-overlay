@@ -2,10 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
-
-inherit eutils
 
 DESCRIPTION="Wolfgang Friebel's preprocessor for sys-apps/less. Append colon to filename to disable"
 HOMEPAGE="http://www-zeuthen.desy.de/~friebel/unix/lesspipe.html"
@@ -197,7 +195,7 @@ src_prepare() {
 	use netcdf; ModifyX 'ncdump'
 	ModifyEnd
 	printf '%s\n' 'LESS_ADVANCED_PREPROCESSOR=1' >70lesspipe
-	epatch_user
+	eapply_user
 }
 
 src_configure() {

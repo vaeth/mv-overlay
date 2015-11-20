@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
-inherit eutils
 
 DESCRIPTION="Start ssh-agent/ssh-add only if you really use ssh or friends"
 HOMEPAGE="https://github.com/vaeth/sshstart/"
@@ -22,7 +21,7 @@ src_prepare() {
 	use prefix || sed -i \
 		-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
 		-- "${PN}" || die
-	epatch_user
+	eapply_user
 }
 
 src_install() {

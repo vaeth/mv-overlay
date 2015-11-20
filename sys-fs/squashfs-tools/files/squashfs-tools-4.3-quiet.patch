@@ -1,5 +1,5 @@
---- 1/squashfs-tools/mksquashfs.c
-+++ 1/squashfs-tools/mksquashfs.c
+--- 1/mksquashfs.c
++++ 1/mksquashfs.c
 @@ -78,6 +78,7 @@
  #include "process_fragments.h"
  

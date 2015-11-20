@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils rpm toolchain-funcs
+EAPI=6
+inherit rpm toolchain-funcs
 RESTRICT="mirror"
 
 MY_PN="smpppd"
@@ -28,7 +28,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-test -z "${ACCOUNTING_LOG}" && ACCOUNTING_LOG="/var/log/accounting.log"
+: ${ACCOUNTING_LOG:="/var/log/accounting.log"}
 
 DEPEND=">=net-dialup/ppp-2.4.4-r13"
 RDEPEND="${DEPEND}"
@@ -42,7 +42,7 @@ src_prepare() {
 		"${CDIR}"/defines.h
 	sed -i -e's!/var/log/[^.]*\.log!'"${ACCOUNTING_LOG}"'!' \
 		"${DDIR}"/accounting.1
-	epatch_user
+	eapply_user
 }
 
 src_configure() {

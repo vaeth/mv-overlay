@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
-inherit eutils
 
 DESCRIPTION="sudox is a wrapper for sudo which can pass X authority data and deal with screen and tmux"
 HOMEPAGE="https://github.com/vaeth/sudox/"
@@ -17,10 +16,6 @@ IUSE=""
 RDEPEND="app-admin/sudo
 	app-shells/push"
 DEPEND=""
-
-src_prepare() {
-	epatch_user
-}
 
 src_install() {
 	dobin "${PN}"

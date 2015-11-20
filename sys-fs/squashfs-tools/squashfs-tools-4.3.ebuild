@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils flag-o-matic toolchain-funcs
+EAPI=6
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Tool for creating compressed filesystem type squashfs. Patched to support -quiet"
 HOMEPAGE="http://squashfs.sourceforge.net"
@@ -27,10 +27,7 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/squashfs${PV}/${PN}"
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}-quiet.patch"
-	epatch_user
-}
+PATCHES=("${FILESDIR}/${P}-quiet.patch")
 
 src_configure() {
 	# set up make command line variables in EMAKE_SQUASHFS_CONF

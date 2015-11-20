@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils
+EAPI=6
 
 pPN=${PN%-zsh}
 mPN="${pPN}.zsh"
@@ -105,13 +104,13 @@ src_prepare() {
 	if ! ${LIVE}
 	then
 		# Make Ctrl-D return correctly.
-		epatch "${FILESDIR}"/exit.patch
+		eapply "${FILESDIR}"/exit.patch
 		# Reset color with "return":
-		epatch "${FILESDIR}"/reset-color.patch
+		eapply "${FILESDIR}"/reset-color.patch
 		# Make it work with older zsh versions:
-		epatch "${FILESDIR}"/zsh-compatibility.patch
+		eapply "${FILESDIR}"/zsh-compatibility.patch
 	fi
-	epatch_user
+	eapply_user
 }
 
 src_compile() {

@@ -2,10 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 # Do *not* inherit latex-package: It DEPENDS unconditionally on texinfo.
 # Moreover, it would attempt to compile the *.tex example with texinfo to dvi.
-inherit eutils
 RESTRICT="mirror"
 
 DESCRIPTION="LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)"

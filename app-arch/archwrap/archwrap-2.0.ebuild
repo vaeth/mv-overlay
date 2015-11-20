@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
-inherit eutils
 
 DESCRIPTION="A collection of POSIX shell scripts to invoke archiver programs"
 HOMEPAGE="https://github.com/vaeth/archwrap/"
@@ -25,7 +24,7 @@ src_prepare() {
 			-e 's"^\. archwrap\.sh$". '"${EPREFIX}/usr/share/archwrap/archwrap.sh"'"' \
 			-- "${i}" || die
 	done
-	epatch_user
+	eapply_user
 }
 
 src_install() {

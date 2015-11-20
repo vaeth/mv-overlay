@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils
+EAPI=6
 
 case ${PV} in
 99999999*)
@@ -15,7 +14,7 @@ case ${PV} in
 	SRC_URI="";;
 *)
 	LIVE=false
-	RESTRICT="mirror"
+	#RESTRICT="mirror"
 	TARBALL_VERSION='0.12.0'
 	SRC_URI="https://github.com/zsh-users/${PN}/archive/${TARBALL_VERSION}.tar.gz -> ${PN}-${PV}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
@@ -39,11 +38,11 @@ USEFILE=()
 FILEINDEX=()
 used_value() {
 	case ${!1} in
-	'*'*)
-		eval ${1}=\${${1}#?}
+	'#'*)
+		eval "${1}=\${${1}#?}"
 		${LIVE};;
 	'/'*)
-		eval ${1}=\${${1}#?}
+		eval "${1}=\${${1}#?}"
 		! ${LIVE};;
 	esac
 }
@@ -82,8 +81,8 @@ calculate_data \
 	'+filesystem _zfs' \
 	'+git _git-flow _git-pulls' \
 	'+hardware _optirun _perf _primus' \
-	'+haskell _cabal _ghc *_stack' \
-	'+managers *_ansible *_ansible-galaxy *_ansible-playbook _bower _brew *_cask _debuild _lein _pactree _pkcon _port _yaourt' \
+	'+haskell _cabal _ghc #_stack' \
+	'+managers #_ansible #_ansible-galaxy #_ansible-playbook _bower _brew #_cask _debuild _lein _pactree _pkcon _port _yaourt' \
 	'+multimedia _id3 _id3v2 _showoff' \
 	'+net _dget _dhcpcd _httpie _iw _mosh _rfkill _socat _ssh-copy-id _vpnc _vnstat' \
 	'+nfs _exportfs' \
@@ -93,8 +92,8 @@ calculate_data \
 	'+search _ack _ag _jq' \
 	'+session _atach _teamocil _tmuxinator _wemux' \
 	'+subtitles _language_codes _periscope _subliminal' \
-	'+virtualization _boot2docker *_docker-compose *_docker-machine _virtualbox _virsh' \
-	'+web _coffee _composer _docpad _drush _heroku *_hledger _jonas _jmeter _jmeter-plugins _lunar _middleman _node _nvm _ralio *_salt _sbt _scala _svm'
+	'+virtualization _boot2docker #_docker-compose #_docker-machine _virtualbox _virsh' \
+	'+web _coffee _composer _docpad _drush _heroku #_hledger _jonas _jmeter _jmeter-plugins _lunar _middleman _node _nvm _ralio /_salt _sbt _scala _svm'
 
 src_prepare() {
 	# Remove colliding completions
@@ -102,7 +101,7 @@ src_prepare() {
 	then	mv src/_docker . || eerror "mv failed"
 	else	mv src/_docker src/_pip . || die
 	fi
-	epatch_user
+	eapply_user
 }
 
 src_install() {

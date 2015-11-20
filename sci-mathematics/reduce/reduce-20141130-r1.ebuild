@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
-inherit elisp-common eutils multilib
+inherit elisp-common
 
 DESCRIPTION="A general-purpose computer algebra system"
 HOMEPAGE="http://reduce-algebra.sourceforge.net/
@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	sed -i -e '2iecho gentoo; exit' -- "${S}"/scripts/findos.sh
 	# sed -i -e 's/\${l}/"\${l}"/g' -- "${S}"/scripts/make.sh
-	epatch_user
+	eapply_user
 }
 
 src_configure() {

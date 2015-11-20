@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
 inherit eutils
 
@@ -15,10 +15,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 RDEPEND="!app-shells/auto-fu-zsh[kill-line(-)]"
-
-src_prepare() {
-	epatch_user
-}
 
 src_install() {
 	dodoc README
