@@ -13,7 +13,7 @@ HOMEPAGE="http://support.sundtek.com/index.php/topic,2.0.html"
 # Current version number can be found in http://sundtek.de/media/latest.phtml
 SRC_URI="http://www.sundtek.de/media/sundtek_installer_${PV}.sh"
 
-RESTRICT="mirror strip"
+RESTRICT="binchecks mirror strip"
 LICENSE="sundtek"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
@@ -27,10 +27,6 @@ DOC_CONTENTS="To initialize sundtek drivers during booting call
 	systemctl enable sundtek-local.service # for systemd
 You will probably need to adapt sundtek-local.service to your defaults
 "
-
-pkg_setup() {
-	QA_PREBUILT="opt/bin/* opt/bin/*/* usr/$(get_libdir)/* usr/share/doc/*/*/*"
-}
 
 src_unpack() {
 	local subdir a
