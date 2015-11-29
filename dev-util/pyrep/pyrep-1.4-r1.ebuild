@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
 PYTHON_COMPAT=( jython2_7 pypy{,3} python{2_7,3_{4,5}} )
-inherit eutils python-single-r1
+inherit python-single-r1
 
 DESCRIPTION="Search and/or replace regular expressions within many files interactively"
 HOMEPAGE="https://github.com/vaeth/pyrep/"
@@ -24,7 +24,7 @@ src_prepare() {
 	use prefix || sed -i \
 		-e '1s"^#!/usr/bin/env python$"#!'"${EPREFIX}/usr/bin/python"'"' \
 		-- "${PN}" || die
-	epatch_user
+	eapply_user
 }
 
 src_install() {

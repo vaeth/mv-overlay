@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
 inherit eutils readme.gentoo user systemd
 
@@ -40,7 +40,7 @@ src_prepare() {
 		-e 's"^/usr/share/schedule"${EPREFIX}/usr/share/${PN}"' \
 		-e '/^use FindBin;/,/^\}$/d' \
 		-- bin/* || die
-	epatch_user
+	eapply_user
 }
 
 src_install() {
@@ -59,6 +59,7 @@ src_install() {
 		umask 027
 		: >"${ED}/etc/schedule.password"
 	)
+	readme.gentoo_create_doc
 }
 
 generate_password() (
@@ -84,4 +85,5 @@ pkg_postinst() {
 		else	ewarn "failed to generate ${EPREFIX}/etc/schedule.password"
 		fi
 	fi
+	readme.gentoo_print_elog
 }

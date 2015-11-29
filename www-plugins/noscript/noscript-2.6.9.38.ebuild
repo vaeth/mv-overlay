@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit mv_mozextension
+inherit mv_mozextension-r1
 RESTRICT="mirror"
 
 DESCRIPTION="Mozilla plugin: Restrict active contents like java/javascript/flash"
@@ -16,5 +16,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-# NOTES:
-# can also be used for Flock, MidBrowser, eMusic, Toolkit, Songbird, Fennec
+moz_defaults

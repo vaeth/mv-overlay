@@ -3,8 +3,7 @@
 # $Id$
 
 EAPI=6
-MV_MOZ_MOZILLAS="firefox"
-inherit mv_mozextension
+inherit mv_mozextension-r1
 RESTRICT="mirror"
 
 mPN="${PN}_plus-${PV}"
@@ -16,3 +15,5 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+
+moz_defaults firefox

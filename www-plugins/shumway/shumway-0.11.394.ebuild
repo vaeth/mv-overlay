@@ -3,10 +3,9 @@
 # $Id$
 
 EAPI=6
-
-EGIT_REPO_URI="git://github.com/mozilla/shumway.git"
-inherit mv_mozextension
+#EGIT_REPO_URI="git://github.com/mozilla/shumway.git"
 #inherit git-r3
+inherit mv_mozextension-r1
 
 DESCRIPTION="Mozilla plugin: Flashplayer emulation with javascript and html5"
 HOMEPAGE="http://mozilla.github.io/shumway/"
@@ -16,3 +15,5 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+
+moz_defaults

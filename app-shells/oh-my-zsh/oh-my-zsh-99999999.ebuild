@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI="git://github.com/robbyrussell/${PN}.git"
-inherit eutils git-r3 readme.gentoo
+inherit git-r3 readme.gentoo
 
 DESCRIPTION="A ready-to-use zsh configuration with plugins"
 HOMEPAGE="https://github.com/robbyrussell/oh-my-zsh"
@@ -39,11 +39,15 @@ src_prepare() {
 	sed -i -e 's!~/.oh-my-zsh!'"${ZSH_EDEST}"'!' \
 		"${S}/plugins/dirpersist/dirpersist.plugin.zsh"
 	sed -i -e '/zstyle.*cache/d' "${S}/lib/completion.zsh"
-	epatch_user
+	eapply_user
 }
 
 src_install() {
 	insinto "${ZSH_DEST}"
 	doins -r *
 	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }

@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
-inherit eutils readme.gentoo
+inherit readme.gentoo
 
 DESCRIPTION="256colors sample script and dircolors configuration for standard or 256 colors"
 HOMEPAGE="https://github.com/vaeth/termcolors-mv/"
@@ -30,7 +30,7 @@ src_prepare() {
 		-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
 		-e '1s"^#!/usr/bin/env perl$"#!'"${EPREFIX}/usr/bin/perl"'"' \
 		-- bin/* || die
-	epatch_user
+	eapply_user
 }
 
 src_compile() {
@@ -45,4 +45,8 @@ src_install() {
 	insinto /etc/dir_colors
 	doins DIR_COLORS*
 	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }

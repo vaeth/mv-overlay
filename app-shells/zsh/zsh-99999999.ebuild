@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils flag-o-matic multilib prefix readme.gentoo
+inherit flag-o-matic prefix readme.gentoo
 
 MY_PV=${PV/_p/-dev-}
 S=${WORKDIR}/${PN}-${MY_PV}
@@ -115,8 +115,8 @@ src_prepare() {
 	mv Doc/zshall.1 Doc/zshall.1.soelim || die
 	soelim Doc/zshall.1.soelim > Doc/zshall.1 || die
 
-	epatch "${FILESDIR}"/${PN}-init.d-gentoo-r1.diff
-	epatch "${FILESDIR}"/${PN}-5.1.0-gcc-5.patch #547950
+	eapply "${FILESDIR}"/${PN}-init.d-gentoo-r1.diff
+	eapply "${FILESDIR}"/${PN}-5.1.0-gcc-5.patch #547950
 
 	cp "${FILESDIR}"/zprofile-1 "${T}"/zprofile || die
 	eprefixify "${T}"/zprofile || die
@@ -138,7 +138,7 @@ src_prepare() {
 	done
 	[ ${#} -eq 0 ] || sed -i "${@}" -- "${S}/${file}" \
 		|| die "patching ${file} failed"
-	epatch_user
+	eapply_user
 	! ${LIVE} || eautoreconf
 	PVPATH=$(. "${S}"/Config/version.mk && printf '%s' "${VERSION}") && \
 		[ -n "${PVPATH}" ] || PVPATH=${PV}
@@ -296,6 +296,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	readme.gentoo_pkg_postinst
+	readme.gentoo_print_elog
 	touch_zwc
 }

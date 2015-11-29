@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
 WANT_LIBTOOL=none
 AUTOTOOLS_IN_SOURCE_BUILD=true
-inherit autotools autotools-utils eutils linux-info readme.gentoo systemd
+inherit autotools eutils linux-info readme.gentoo systemd
 
 DESCRIPTION="Keep directories compressed with squashfs. Useful for portage tree, texmf-dist"
 HOMEPAGE="http://forums.gentoo.org/viewtopic-t-465367.html"
@@ -52,7 +52,7 @@ src_prepare() {
 			-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
 			-- bin/* sbin/* || die
 	fi
-	epatch_user
+	eapply_user
 	eautoreconf
 }
 
@@ -61,21 +61,23 @@ src_configure() {
 	use unionfs-fuse && order=unionfs-fuse
 	use aufs && order=aufs
 	use overlayfs && order=overlayfs
-	local myeconfargs=(
-		--with-zsh-completion
-		"$(use_enable bundled-openrc-wrapper openrc-wrapper)"
-		"$(systemd_with_unitdir)"
+	econf --with-zsh-completion \
+		"$(use_enable bundled-openrc-wrapper openrc-wrapper)" \
+		--with-systemdsystemunitdir="$(systemd_get_unitdir)" \
 		${order:+"--with-first-order=${order}"}
-	)
-	autotools-utils_src_configure
 }
+
+src_install() {
+	default
+	readme.gentoo_create_doc
+}
+
 
 linux_config_missing() {
 	! linux_config_exists || ! linux_chkconfig_present "${1}"
 }
 
 pkg_postinst() {
-	readme.gentoo_pkg_postinst
 	local fs=overlayfs
 	use unionfs-fuse && fs=unionfs-fuse
 	use aufs && fs=aufs
@@ -97,4 +99,5 @@ pkg_postinst() {
 	esac
 	optfeature "improved output" 'sys-fs/squashfs-tools[progress-redirect]'
 	optfeature "status bar support" 'app-shells/runtitle'
+	readme.gentoo_print_elog
 }

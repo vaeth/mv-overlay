@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
-inherit eutils systemd
+inherit systemd
 
 DESCRIPTION="Initialize iptables and net-related sysctl variables"
 HOMEPAGE="https://github.com/vaeth/firewall-mv/"
@@ -28,7 +28,7 @@ src_prepare() {
 			-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
 			-- sbin/* || die
 	fi
-	epatch_user
+	eapply_user
 }
 
 src_install() {

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 RESTRICT=mirror
 
 PYTHON_COMPAT=( python2_7 )
@@ -45,10 +45,6 @@ The color themes was updated to Fvwm InfoStore.
 To know how to update your custom color themes, please run
 	"${EROOT}"usr/share/"${PN}"/addons/convert_colorsets"
 
-src_prepare() {
-	epatch_user
-}
-
 src_install() {
 	emake DESTDIR="${ED}" \
 		docdir="${EPREFIX%/}/usr/share/doc/${PF}" \
@@ -61,4 +57,8 @@ src_install() {
 		"${ED}/usr/bin/${PN}".{apps,wallpaper} \
 		"${ED}/usr/share/${PN}"/fvwm/scripts/FvwmMPD/*.py
 	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }

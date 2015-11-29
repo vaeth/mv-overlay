@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
 inherit eutils readme.gentoo
 
@@ -34,7 +34,7 @@ src_prepare() {
 			-e 's"^\. _videoscript\.sh$". '"${EPREFIX}/usr/share/video-mv/_videoscript.sh"'"' \
 			-- "${i}" || die
 	done
-	epatch_user
+	eapply_user
 }
 
 src_install() {
@@ -59,5 +59,5 @@ src_install() {
 
 pkg_postinst() {
 	optfeature "status bar support" app-shells/runtitle
-	readme.gentoo_pkg_postinst
+	readme.gentoo_print_elog
 }

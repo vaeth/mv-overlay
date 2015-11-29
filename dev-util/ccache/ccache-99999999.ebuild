@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
+EAPI=6
 WANT_LIBTOOL=none
+EGIT_MIN_CLONE_TYPE=single
 EGIT_REPO_URI="git://git.samba.org/ccache.git"
-inherit autotools eutils git-r3 readme.gentoo
+inherit autotools git-r3 readme.gentoo
 
 DESCRIPTION="fast compiler cache"
 HOMEPAGE="http://ccache.samba.org/"
@@ -25,12 +25,11 @@ RDEPEND="${DEPEND}
 src_prepare() {
 	# make sure we always use system zlib
 	rm -rf zlib || die
-	epatch "${FILESDIR}"/${PN}-3.1.7-no-perl.patch #421609
-	epatch "${FILESDIR}"/${PN}-3.1.10-size-on-disk.patch #456178
+	eapply "${FILESDIR}"/${PN}-3.1.10-size-on-disk.patch #456178
 	sed \
 		-e "/^EPREFIX=/s:'':'${EPREFIX}':" \
 		"${FILESDIR}"/ccache-config-3 > ccache-config || die
-	epatch_user
+	eapply_user
 	eautoreconf
 }
 

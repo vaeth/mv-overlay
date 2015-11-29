@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit mv_mozextension readme.gentoo
+EAPI=6
+inherit mv_mozextension-r1 readme.gentoo
 RESTRICT="mirror"
 
 DESCRIPTION="Mozilla plugin to modify style of certain web pages (e.g. Gentoo forums)"
@@ -23,11 +23,13 @@ but meanwhile it is easier to surf with javascript activated to
 	http://userstyles.org/users/8172
 Note that you have to temporarily disable noscript for that site."
 
+moz_defaults
+
 src_install() {
-	mv_mozextension_src_install
+	moz_install
 	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	readme.gentoo_pkg_postinst
+	readme.gentoo_print_elog
 }

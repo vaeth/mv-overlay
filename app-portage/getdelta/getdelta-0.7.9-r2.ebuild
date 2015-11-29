@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils readme.gentoo
+EAPI=6
+inherit readme.gentoo
 
 DESCRIPTION="dynamic deltup client"
 HOMEPAGE="http://linux01.gwdg.de/~nlissne/"
@@ -23,9 +23,9 @@ FETCHCOMMAND=\"/usr/bin/getdelta.sh \\\"\\\${URI}\\\" \\\"\\\${FILE}\\\"\"
 into your /etc/make.conf to make use of getdelta"
 
 src_prepare() {
-	epatch "${FILESDIR}/eapi2.patch"
+	eapply "${FILESDIR}/eapi2.patch"
 	sed -i -e "s:/bin/sh:/bin/bash:" getdelta.sh || die
-	epatch_user
+	eapply_user
 }
 
 src_install() {
@@ -42,5 +42,5 @@ pkg_postinst() {
 	mkdir -p -- "${b}"
 	use prefix || chown -R portage:portage -- "${a}" "${b}"
 	chmod -R ug+rwX -- "${a}" "${b}"
-	readme.gentoo_pkg_postinst
+	readme.gentoo_print_elog
 }

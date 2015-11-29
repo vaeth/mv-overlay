@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit mv_mozextension
+inherit mv_mozextension-r1
 RESTRICT="mirror"
 
 DESCRIPTION="Mozilla plugin: Increases privacy and security by giving you control over cross-site requests"
@@ -14,3 +14,5 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+
+moz_defaults

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
 inherit eutils readme.gentoo systemd
 
@@ -44,7 +44,7 @@ src_prepare() {
 	use prefix || sed -i \
 		-e '1s"^#!/usr/bin/env perl$"#!'"${EPREFIX}/usr/bin/perl"'"' \
 		-- bin/* || die
-	epatch_user
+	eapply_user
 }
 
 src_install() {
@@ -52,10 +52,9 @@ src_install() {
 	dodoc README ChangeLog compress.txt etc/squashmount.pl
 	doinitd openrc/init.d/*
 	systemd_dounit systemd/system/*
+	systemd_dotmpfilesd tmpfiles.d/*
 	insinto /etc
 	doins -r etc/*
-	insinto /usr/lib/tmpfiles.d
-	doins tmpfiles.d/*
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
 	readme.gentoo_create_doc
@@ -69,5 +68,5 @@ pkg_postinst() {
 	' '[0-7].*|' '8.[0-6]*|' '8.7.[0-4]*)
 		FORCE_PRINT_ELOG="true";;
 	esac
-	readme.gentoo_pkg_postinst
+	readme.gentoo_print_elog
 }

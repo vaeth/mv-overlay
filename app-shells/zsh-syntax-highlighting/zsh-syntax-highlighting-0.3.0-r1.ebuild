@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils readme.gentoo
+inherit readme.gentoo
 
 case ${PV} in
 99999999*)
@@ -40,7 +40,7 @@ src_prepare() {
 		"${S}/highlighters/main/main-highlighter.zsh" >/dev/null 2>&1 || \
 		sed -i -e '/for cdpath_dir/ilocal cdpath_dir' \
 			-- "${S}/highlighters/main/main-highlighter.zsh" || die
-	epatch_user
+	eapply_user
 }
 
 src_install() {
@@ -49,4 +49,8 @@ src_install() {
 	doins *.zsh .revision-hash .version
 	doins -r highlighters
 	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }

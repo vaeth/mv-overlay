@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils flag-o-matic linux-mod multilib nvidia-driver portability \
-	unpacker user versionator
+	unpacker user versionator readme.gentoo
 
 X86_NV_PACKAGE="NVIDIA-Linux-x86-${PV}"
 AMD64_NV_PACKAGE="NVIDIA-Linux-x86_64-${PV}"
@@ -270,9 +270,9 @@ src_prepare() {
 	use x86-fbsd && cd doc
 
 	# Use the correct defines to make gtkglext build work
-	epatch "${FILESDIR}"/NVIDIA_glx-defines.patch
+	eapply "${FILESDIR}"/NVIDIA_glx-defines.patch
 	# Use some more sensible gl headers and make way for new glext.h
-	epatch "${FILESDIR}"/NVIDIA_glx-glheader.patch
+	eapply -p0 "${FILESDIR}"/NVIDIA_glx-glheader.patch
 
 	if use kernel_linux; then
 		# Quiet down warnings the user does not need to see
@@ -287,7 +287,7 @@ src_prepare() {
 
 	if use pax_kernel ; then
 		einfo "Enabling unofficial patches for hardened-sources/grsecurity"
-		epatch "${FILESDIR}/${PV}-grsecurity.patch"
+		eapply "${FILESDIR}/${PV}-grsecurity.patch"
 	fi
 
 	if use kernel3-17 ; then
@@ -298,16 +298,16 @@ src_prepare() {
 		einfo "Enabling unofficial patches for linux-3.13 and newer"
 	fi
 	if use kernel3-17 || use kernel3-14 || use kernel3-13 ; then
-		epatch "${FILESDIR}/${PV}-kernel-3.13.patch"
+		eapply "${FILESDIR}/${PV}-kernel-3.13.patch"
 		if use kernel3-17 || use kernel3-14 ; then
-			epatch "${FILESDIR}/${PV}-kernel-3.14.patch"
+			eapply "${FILESDIR}/${PV}-kernel-3.14.patch"
 			if use kernel3-17 ; then
-				epatch "${FILESDIR}/${PV}-kernel-3.17.patch"
+				eapply -p2 "${FILESDIR}/${PV}-kernel-3.17.patch"
 			fi
 		fi
 	fi
 
-	epatch_user
+	eapply_user
 }
 
 src_compile() {
@@ -357,11 +357,9 @@ src_install() {
 
 	# Xorg GLX driver
 	insinto /usr/$(get_libdir)/opengl/nvidia/extensions
-	doins ${NV_X11_EXT}/libglx.so.${NV_SOVER} || \
-		die "failed to install libglx.so"
+	doins ${NV_X11_EXT}/libglx.so.${NV_SOVER}
 	dosym /usr/$(get_libdir)/opengl/nvidia/extensions/libglx.so.${NV_SOVER} \
-		/usr/$(get_libdir)/opengl/nvidia/extensions/libglx.so || \
-		die "failed to create libglx.so symlink"
+		/usr/$(get_libdir)/opengl/nvidia/extensions/libglx.so
 
 	# XvMC driver
 	dolib.a ${NV_X11}/libXvMCNVIDIA.a || \
@@ -369,14 +367,11 @@ src_install() {
 	dolib.so ${NV_X11}/libXvMCNVIDIA.so.${NV_SOVER} || \
 		die "failed to install libXvMCNVIDIA.so"
 	dosym libXvMCNVIDIA.so.${NV_SOVER} \
-		/usr/$(get_libdir)/libXvMCNVIDIA.so.1 || \
-		die "failed to create libXvMCNVIDIA.so.1 symlink"
+		/usr/$(get_libdir)/libXvMCNVIDIA.so.1
 	dosym libXvMCNVIDIA.so.1 \
-		/usr/$(get_libdir)/libXvMCNVIDIA.so || \
-		die "failed to create libXvMCNVIDIA.so symlink"
+		/usr/$(get_libdir)/libXvMCNVIDIA.so
 	dosym libXvMCNVIDIA.so.${NV_SOVER} \
-		/usr/$(get_libdir)/libXvMCNVIDIA_dynamic.so.1 || \
-		die "failed to create libXvMCNVIDIA_dynamic.so.1 symlink"
+		/usr/$(get_libdir)/libXvMCNVIDIA_dynamic.so.1
 
 	# CUDA headers (driver to come)
 	if use kernel_linux && [[ -d ${S}/usr/include/cuda ]]; then

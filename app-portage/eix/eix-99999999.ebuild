@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI="git://github.com/vaeth/${PN}.git"
 WANT_LIBTOOL=none
 PLOCALES="de ru"
-inherit autotools bash-completion-r1 eutils git-r3 l10n
+inherit autotools bash-completion-r1 git-r3 l10n systemd
 
 DESCRIPTION="Search and query ebuilds, portage incl. local settings, ext. overlays, version changes, and more"
 HOMEPAGE="https://github.com/vaeth/eix/"
@@ -36,7 +36,7 @@ pkg_setup() {
 
 src_prepare() {
 	sed -i -e "s'/'${EPREFIX}/'" -- "${S}"/tmpfiles.d/eix.conf
-	epatch_user
+	eapply_user
 	eautopoint
 	eautoreconf
 }
@@ -52,16 +52,13 @@ src_configure() {
 		$(use_with dep dep-default) \
 		--with-zsh-completion \
 		--with-portage-rootpath="${ROOTPATH}" \
-		--with-eprefix-default="${EPREFIX}" \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
-		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html"
+		--with-eprefix-default="${EPREFIX}"
 }
 
 src_install() {
 	default
 	dobashcomp bash/eix
-	insinto "/usr/lib/tmpfiles.d"
-	doins tmpfiles.d/eix.conf
+	systemd_dotmpfilesd tmpfiles.d/eix.conf
 }
 
 pkg_postinst() {

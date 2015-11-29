@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( jython2_7 pypy python2_7 )
 EGIT_REPO_URI="git://github.com/google/styleguide.git"
-inherit elisp-common eutils git-r3 python-single-r1
+inherit elisp-common git-r3 python-single-r1
 RESTRICT="mirror"
 
 DESCRIPTION="The google styleguide together with cpplint and an emacs file"
@@ -43,7 +43,7 @@ EOF
 		-e '1s"^#!/usr/bin/env python$"#!'"${EPREFIX}/usr/bin/python"'"' \
 		-- "${S}/${PN}/${PN}.py" || die
 	python_fix_shebang "${S}"
-	epatch_user
+	eapply_user
 }
 
 src_compile() {

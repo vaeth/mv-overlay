@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
-inherit eutils systemd
+inherit systemd
 
 DESCRIPTION="Use openrc init scripts with systemd or other init systems"
 HOMEPAGE="https://github.com/vaeth/openrc-wrapper"
@@ -21,10 +21,6 @@ DEPEND="!!<sys-fs/squash_dir-3.2"
 RDEPEND="${DEPEND}
 || ( sys-apps/gentoo-functions sys-apps/openrc )"
 IUSE=""
-
-src_prepare() {
-	epatch_user
-}
 
 src_install() {
 	dodoc README
