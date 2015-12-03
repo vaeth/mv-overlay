@@ -1,4 +1,4 @@
-firefox - Install extension for www-client/firefox
-firefox-bin - Install extension for the www-client/firefox-bin
-seamonkey - Install extension for the www-client/seamonkey
-seamonkey-bin - Install extension for the www-client/seamonkey-bin
+browser_firefox - Install extension for www-client/firefox
+browser_firefox-bin - Install extension for the www-client/firefox-bin
+browser_seamonkey - Install extension for the www-client/seamonkey
+browser_seamonkey-bin - Install extension for the www-client/seamonkey-bin

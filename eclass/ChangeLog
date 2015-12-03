@@ -2,8 +2,16 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Id$
 
+  04 Dec 2015; Martin Väth <martin@mvath.de>:
+  mv_mozextension-r1.eclass: Use BROWSER with USE_EXPAND.
+  Allow to specify source/binary only
+
+  28 Nov 2015; Martin Väth <martin@mvath.de>:
+  Replace mv_mozextension.eclass by mv_mozextension-r1.eclass without
+  default phase functions for EAPI=6 compatibility
+
   25 Jan 2015; Martin Väth <martin@mvath.de>:
-  avoid use_if_iuse in mv_mozextenstion.eclass to be fully pms compatible
+  avoid use_if_iuse in mv_mozextension.eclass to be fully pms compatible
 
   24 Jan 2015; Martin Väth <martin@mvath.de>:
   Remove auteps from mv_mozextension.eclass

@@ -83,46 +83,69 @@ MOZ_DEPEND='app-arch/unzip'
 # @USAGE: [<browser>] [<browser>] [...]
 # @DESCRIPTION:
 # Outputs RDEPEND expression appropriate for browsers.
-# browser is firefox or seamonkey and implies source or binary version.
-# If no browser is specified, all are assumed.
+# browser is [firefox|seamonkey][-source|-bin] (no specified means both/all)
 moz_rdepend() {
 	local rdep i
 	[ ${#} -ne 0 ] || set -- "firefox seamonkey"
+	i=
 	rdep=
 	case "${*}" in
+	*firefox?source*)
+		i=a
+		rdep="browser_firefox? ( www-client/firefox )";;
+	*firefox?bin*)
+		i=a
+		rdep="browser_firefox-bin? ( www-client/firefox-bin )";;
 	*firefox*)
-		rdep="firefox? ( www-client/firefox )
-firefox-bin? ( www-client/firefox-bin )";;
+		i=aa
+		rdep="browser_firefox? ( www-client/firefox )
+browser_firefox-bin? ( www-client/firefox-bin )";;
 	esac
 	case "${*}" in
-	*seamonkey*)
+	*seamonkey?source*)
+		i=${i}a
 		rdep=${rdep}${rdep:+'
-'}"seamonkey? ( www-client/seamonkey )
-seamonkey-bin? ( www-client/seamonkey-bin )";;
+'}"browser_seamonkey? ( www-client/seamonkey )";;
+	*seamonkey?bin*)
+		i=${i}a
+		rdep=${rdep}${rdep:+'
+'}"browser_seamonkey-bin? ( www-client/seamonkey-bin )";;
+	*seamonkey*)
+		i=${i}aa
+		rdep=${rdep}${rdep:+'
+'}"browser_seamonkey? ( www-client/seamonkey )
+browser_seamonkey-bin? ( www-client/seamonkey-bin )";;
 	esac
-	[ -n "${rdep}" ] || die "moz_rdepend must be called with \"firefox\" or \"seamonkey\""
-	echo "|| ( ${rdep} )"
+	[ -n "${i}" ] || die "args must be [firefox|seamonkey][-source|-bin]"
+	[ "${i}" = a ] && echo "${rdep}" || echo "|| ( ${rdep} )"
 }
 
 # @FUNCTION: moz_iuse
 # @USAGE: [<browser>] [<browser>] [...]
 # @DESCRIPTION:
 # Outputs IUSE expression appropriate for browsers.
-# browser is firefox or seamonkey and implies source or binary version.
-# If no browser is specified, all are assumed.
+# browser is [firefox|seamonkey][-source|-bin] (no specified means both/all)
 moz_iuse() {
 	local iuse i
 	[ ${#} -ne 0 ] || set -- "firefox seamonkey"
 	iuse=
 	case "${*}" in
+	*firefox?source*)
+		iuse="browser_firefox";;
+	*firefox?bin*)
+		iuse="browser_firefox-bin";;
 	*firefox*)
-		iuse="firefox firefox-bin";;
+		iuse="browser_firefox browser_firefox-bin";;
 	esac
 	case "${*}" in
+	*seamonkey?source*)
+		iuse="${iuse}${iuse:+ }browser_seamonkey";;
+	*seamonkey?bin*)
+		iuse="${iuse}${iuse:+ }browser_seamonkey-bin";;
 	*seamonkey*)
-		iuse="${iuse}${iuse:+ }seamonkey seamonkey-bin";;
+		iuse="${iuse}${iuse:+ }browser_seamonkey browser_seamonkey-bin";;
 	esac
-	[ -n "${iuse}" ] || die "moz_iuse must be called with \"firefox\" or \"seamonkey\""
+	[ -n "${iuse}" ] || die "args must be [firefox|seamonkey][-source|-bin]"
 	echo "${iuse}"
 }
 
@@ -130,10 +153,10 @@ moz_iuse() {
 # @USAGE: [<browser>] [<browser>] [...]
 # @DESCRIPTION:
 # Outputs REQUIRED_USE expression appropriate for browsers.
-# browser is firefox or seamonkey and implies source or binary version.
-# If no browser is specified, all are assumed.
+# browser is [firefox|seamonkey][-source|-bin] (no specified means both/all)
 moz_required_use() {
-	echo "|| ( $(moz_iuse "$@") )"
+	set -- $(moz_iuse "${@}")
+	[ ${#} -lt 2 ] && echo "${*}" || echo "|| ( ${*} )"
 }
 
 # @FUNCTION: moz_unpack
@@ -218,11 +241,11 @@ moz_install_for_browser() {
 	case ${1} in
 	firefox)
 		dest="/usr/$(get_libdir)/${firefox}";;
-	firefox-bin)
+	firefox?bin)
 		dest="/opt/${firefox}";;
 	seamonkey)
 		dest="/usr/$(get_libdir)/${seamonkey}";;
-	seamonkey-bin)
+	seamonkey?bin)
 		dest="/opt/${seamonkey}";;
 	*)
 		die "unknown browser specified";;
@@ -241,7 +264,7 @@ moz_install_for_browser() {
 moz_install() {
 	local i
 	for i in firefox firefox-bin seamonkey seamonkey-bin
-	do	if in_iuse "${i}" && use "${i}"
+	do	if in_iuse "browser_${i}" && use "browser_${i}"
 		then	moz_install_for_browser "${i}" "${@}"
 		fi
 	done
