@@ -35,7 +35,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i -e "s'/'${EPREFIX}/'" -- "${S}"/tmpfiles.d/eix.conf
+	sed -i -e "s'/'${EPREFIX}/'" -- "${S}"/tmpfiles.d/eix.conf || die
 	eapply_user
 	eautopoint
 	eautoreconf
