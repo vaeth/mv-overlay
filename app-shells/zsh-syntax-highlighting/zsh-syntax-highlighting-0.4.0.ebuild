@@ -35,6 +35,11 @@ DOC_CONTENTS="In order to use ${CATEGORY}/${PN} add
 at the end of your ~/.zshrc
 For testing, you can also execute the above command in your zsh."
 
+MAKE_ARGS=(
+	"SHARE_DIR=${ED}/usr/share/zsh/site-contrib/${PN}"
+	"DOC_DIR=${ED}/usr/share/doc/${PF}"
+)
+
 src_prepare() {
 	grep -q 'local .*cdpath_dir' \
 		"${S}/highlighters/main/main-highlighter.zsh" >/dev/null 2>&1 || \
@@ -43,12 +48,18 @@ src_prepare() {
 	eapply_user
 }
 
+src_compile() {
+	emake "${MAKE_ARGS[@]}"
+}
+
 src_install() {
-	dodoc *.md
-	insinto /usr/share/zsh/site-contrib/${PN}
-	doins *.zsh .revision-hash .version
-	doins -r highlighters
+	emake "${MAKE_ARGS[@]}" install
 	readme.gentoo_create_doc
+}
+
+src_test() {
+	emake "${MAKE_ARGS[@]}" test
+	emake "${MAKE_ARGS[@]}" perf
 }
 
 pkg_postinst() {
