@@ -182,7 +182,8 @@ pkg_postinst() {
 	if ! use ld-preload-file
 	then	if use ld-preload-env
 		then	elog "You might have to call env-update and source /etc/profile"
-		else	elog "You need to set LD_PRELOAD locally, see /usr/share/doc/${PF}/README.gentoo*"
+		else	elog "You need to set LD_PRELOAD locally, see"
+				elog "${EPREFIX}/usr/share/doc/${PF}/README.gentoo*"
 		fi
 	fi
 	readme.gentoo_print_elog
