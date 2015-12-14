@@ -4,7 +4,7 @@
 
 EAPI=6
 RESTRICT="mirror"
-inherit eutils readme.gentoo
+inherit eutils readme.gentoo-r1
 
 DESCRIPTION="Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder"
 HOMEPAGE="https://github.com/vaeth/video-mv/"

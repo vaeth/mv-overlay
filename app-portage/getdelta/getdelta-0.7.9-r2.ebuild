@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit readme.gentoo
+inherit readme.gentoo-r1
 
 DESCRIPTION="dynamic deltup client"
 HOMEPAGE="http://linux01.gwdg.de/~nlissne/"

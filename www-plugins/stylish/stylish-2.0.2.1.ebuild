@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit mv_mozextension-r1 readme.gentoo
+inherit mv_mozextension-r1 readme.gentoo-r1
 RESTRICT="mirror"
 
 DESCRIPTION="Mozilla plugin to modify style of certain web pages (e.g. Gentoo forums)"

@@ -4,7 +4,7 @@
 
 EAPI=6
 RESTRICT="mirror"
-inherit readme.gentoo
+inherit readme.gentoo-r1
 
 DESCRIPTION="256colors sample script and dircolors configuration for standard or 256 colors"
 HOMEPAGE="https://github.com/vaeth/termcolors-mv/"

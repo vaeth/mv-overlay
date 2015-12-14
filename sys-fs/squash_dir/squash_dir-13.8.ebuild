@@ -6,7 +6,7 @@ EAPI=6
 RESTRICT="mirror"
 WANT_LIBTOOL=none
 AUTOTOOLS_IN_SOURCE_BUILD=true
-inherit autotools eutils linux-info readme.gentoo systemd
+inherit autotools eutils linux-info readme.gentoo-r1 systemd
 
 DESCRIPTION="Keep directories compressed with squashfs. Useful for portage tree, texmf-dist"
 HOMEPAGE="http://forums.gentoo.org/viewtopic-t-465367.html"

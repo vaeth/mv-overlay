@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit readme.gentoo
+inherit readme.gentoo-r1
 
 case ${PV} in
 99999999*)

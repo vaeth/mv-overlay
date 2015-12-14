@@ -4,7 +4,7 @@
 
 EAPI=6
 RESTRICT="mirror"
-inherit eutils readme.gentoo user systemd
+inherit eutils readme.gentoo-r1 user systemd
 
 DESCRIPTION="script to schedule jobs in a multiuser multitasking environment"
 HOMEPAGE="https://github.com/vaeth/schedule/"

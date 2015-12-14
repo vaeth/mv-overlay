@@ -4,7 +4,7 @@
 
 EAPI=6
 RESTRICT="mirror"
-inherit eutils readme.gentoo systemd
+inherit eutils readme.gentoo-r1 systemd
 
 DESCRIPTION="Keep directories compressed with squashfs. Useful for portage tree, texmf-dist"
 HOMEPAGE="http://forums.gentoo.org/viewtopic-t-465367.html

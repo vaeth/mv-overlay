@@ -6,7 +6,7 @@ EAPI=6
 RESTRICT=mirror
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils readme.gentoo python-r1
+inherit eutils readme.gentoo-r1 python-r1
 
 DESCRIPTION="Configurable and full featured FVWM theme, with lots of transparency and freedesktop compatible menu"
 HOMEPAGE="http://fvwm-crystal.sourceforge.net/"

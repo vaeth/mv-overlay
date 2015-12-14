@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit linux-mod readme.gentoo
+inherit linux-mod readme.gentoo-r1
 
 MY_P="martian-full-${PV}"
 DESCRIPTION="ltmodem alternative driver providing support for Agere Systems winmodems"

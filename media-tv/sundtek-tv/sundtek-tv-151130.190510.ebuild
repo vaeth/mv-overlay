@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit linux-info pax-utils readme.gentoo systemd unpacker
+inherit linux-info pax-utils readme.gentoo-r1 systemd unpacker
 
 # The following variable is only for testing purposes. Leave it to "false"
 keep_original=false

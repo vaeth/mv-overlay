@@ -4,8 +4,8 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic linux-mod multilib nvidia-driver portability \
-	unpacker user versionator readme.gentoo
+inherit eutils flag-o-matic linux-mod multilib portability \
+	unpacker user versionator readme.gentoo-r1
 
 X86_NV_PACKAGE="NVIDIA-Linux-x86-${PV}"
 AMD64_NV_PACKAGE="NVIDIA-Linux-x86_64-${PV}"
@@ -211,12 +211,6 @@ pkg_setup() {
 		ewarn "No official support of nvidia or gentoo is available for >=linux-3.13"
 		ewarn "Please do not report any bug to nvidia or gentoo about it."
 	fi
-
-	# Since Nvidia ships 3 different series of drivers, we need to give the user
-	# some kind of guidance as to what version they should install. This tries
-	# to point the user in the right direction but can't be perfect. check
-	# nvidia-driver.eclass
-	nvidia-driver-check-warning
 
 	# set variables to where files are in the package structure
 	if use kernel_FreeBSD; then

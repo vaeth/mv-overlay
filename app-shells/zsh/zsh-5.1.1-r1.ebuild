@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit flag-o-matic prefix readme.gentoo
+inherit flag-o-matic prefix readme.gentoo-r1
 
 MY_PV=${PV/_p/-dev-}
 S=${WORKDIR}/${PN}-${MY_PV}
