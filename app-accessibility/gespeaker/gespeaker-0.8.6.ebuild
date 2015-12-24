@@ -5,7 +5,7 @@
 EAPI=6
 RESTRICT="mirror"
 PYTHON_COMPAT=( jython2_7 pypy python2_7 )
-inherit distutils-r1 eutils
+inherit distutils-r1
 
 DESCRIPTION="A GTK+ frontend for espeak"
 HOMEPAGE="http://www.muflone.com/gespeaker/english/index.html"
@@ -41,5 +41,5 @@ src_prepare() {
 	sed -i \
 		-e 's!env python gespeaker\.py!./gespeaker.py!' \
 		-- "${S}/gespeaker" || die
-	epatch_user
+	eapply_user
 }
