@@ -13,41 +13,39 @@ EAPI=5
 GNOME2_LA_PUNT=yes
 GCONF_DEBUG=no
 
-inherit autotools eutils gnome2
+inherit autotools eutils flag-o-matic gnome2
 
 DESCRIPTION="A international dictionary supporting fuzzy and glob style matching"
 HOMEPAGE="http://stardict-4.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}-4/${P}.tar.bz2
-	pronounce? ( http://${PN}-3.googlecode.com/files/WyabdcRealPeopleTTS.tar.bz2 )
+	pronounce? ( https://${PN}-3.googlecode.com/files/WyabdcRealPeopleTTS.tar.bz2 )
 	qqwry? ( mirror://gentoo/QQWry.Dat.bz2 )"
 
 LICENSE="CPL-1.0 GPL-3 LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="espeak gnome gnome2 gucharmap qqwry pronounce spell tools"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 sparc x86"
+IUSE="espeak gnome qqwry pronounce spell tools"
 
 RESTRICT="test"
 
-COMMON_DEPEND=">=dev-libs/glib-2.16:2=
+COMMON_DEPEND="
+	>=dev-libs/glib-2.16:2
 	dev-libs/libsigc++:2=
 	sys-libs/zlib:=
-	>=x11-libs/gtk+-2.20:2=
-	gnome2? (
-		>=gnome-base/libbonobo-2
-		>=gnome-base/libgnome-2
-		>=gnome-base/libgnomeui-2
-		>=gnome-base/gconf-2
-		>=gnome-base/orbit-2
-		)
-	gucharmap? ( >=gnome-extra/gucharmap-2.22.1:0 )
+	x11-libs/gdk-pixbuf:2
+	>=x11-libs/gtk+-2.20:2
+	x11-libs/libX11
+	x11-libs/pango
 	spell? ( >=app-text/enchant-1.2 )
 	tools? (
 		dev-libs/libpcre:=
 		dev-libs/libxml2:=
 		virtual/mysql
-		)"
+		)
+"
 RDEPEND="${COMMON_DEPEND}
-	espeak? ( >=app-accessibility/espeak-1.29 )"
+	espeak? ( >=app-accessibility/espeak-1.29 )
+"
 DEPEND="${COMMON_DEPEND}
 	gnome? (
 		app-text/docbook-xml-dtd:4.3
@@ -56,7 +54,8 @@ DEPEND="${COMMON_DEPEND}
 	)
 	dev-util/intltool
 	sys-devel/gettext
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	if ! use gnome
@@ -73,20 +72,33 @@ src_prepare() {
 				dict/src/lib/Makefile.am
 			eautoreconf
 	fi
+	# From Fedora
+	# Remove unneeded sigc++ header files to make it sure
+	# that we are using system-wide libsigc++
+	# (and these does not work on gcc43)
+	find dict/src/sigc++* -name \*.h -or -name \*.cc | xargs rm -f || die
+
+	# libsigc++ started to require c++11 support
+	append-cxxflags "-std=c++11"
+
 	gnome2_src_prepare
 }
 
 src_configure() {
+	# Hint: EXTRA_ECONF="--enable-gnome-support" and manual install of
+	# libbonobo-2, libgnome-2, libgnomeui-2, gconf-2 and orbit-2 will
+	# give you GNOME 2.x support, that is otherwise considered deprecated
+	# because of the deep GNOME 2.x core library dependencies
 	gnome2_src_configure \
 		$(use_enable tools) \
 		--disable-scrollkeeper \
 		$(use_enable spell) \
-		$(use_enable gucharmap) \
+		--disable-gucharmap \
 		--disable-festival \
 		$(use_enable espeak) \
 		$(use_enable qqwry) \
 		--disable-updateinfo \
-		$(use_enable gnome2 gnome-support) \
+		--disable-gnome-support \
 		--disable-gpe-support \
 		--disable-schemas-install
 }
