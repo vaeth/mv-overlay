@@ -9,7 +9,7 @@ WANT_LIBTOOL=none
 PLOCALES="de ru"
 inherit autotools bash-completion-r1 git-r3 l10n systemd
 
-DESCRIPTION="Search and query ebuilds, portage incl. local settings, ext. overlays, version changes, and more"
+DESCRIPTION="Search and query ebuilds, portage incl. local settings, ext. overlays and more"
 HOMEPAGE="https://github.com/vaeth/eix/"
 SRC_URI=""
 PROPERTIES="live"
