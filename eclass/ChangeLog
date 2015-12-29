@@ -1,41 +1,40 @@
 # ChangeLog for eclass directory
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2016 Gentoo Foundation; Distributed under the GPL v2
 # $Id$
 
-  04 Dec 2015; Martin Väth <martin@mvath.de>:
-  mv_mozextension-r1.eclass: Use BROWSER with USE_EXPAND.
-  Allow to specify source/binary only
+  12 May 2012; Martin Väth <martin@mvath.de>:
+  Created ChangeLog
 
-  28 Nov 2015; Martin Väth <martin@mvath.de>:
-  Replace mv_mozextension.eclass by mv_mozextension-r1.eclass without
-  default phase functions for EAPI=6 compatibility
+  12 May 2012; Martin Väth <martin@mvath.de>:
+  base->eutils
 
-  25 Jan 2015; Martin Väth <martin@mvath.de>:
-  avoid use_if_iuse in mv_mozextension.eclass to be fully pms compatible
-
-  24 Jan 2015; Martin Väth <martin@mvath.de>:
-  Remove auteps from mv_mozextension.eclass
-
-  14 Aug 2013; Martin Väth <martin@mvath.de>:
-  Simplify EPREFIX
-
-  22 Sep 2012; Martin Väth <martin@mvath.de>:
-  Use AUTHOR tag. Use $ECLASS for message
-
-  21 Sep 2012; Martin Väth <martin@mvath.de>:
-  mv_mozextension: Use slot dependencies; requires at least EAPI=5
-  monotone: Remove useless DESCRIPTION
+  10 Jun 2012; Martin Väth <martin@mvath.de>:
+  Remove support for icecat. Fix headers to make repoman happy
 
   26 Aug 2012; Martin Väth <martin@mvath.de>:
   Rename IUSE={copy,symlink}_extensions to {copy,symlink}-extensions to avoid
   possible collision with USE_EXPAND
 
-  10 Jun 2012; Martin Väth <martin@mvath.de>:
-  Remove support for icecat. Fix headers to make repoman happy.
+  21 Sep 2012; Martin Väth <martin@mvath.de>:
+  mv_mozextension: Use slot dependencies; requires at least EAPI=5
+  monotone: Remove useless DESCRIPTION
 
-  12 May 2012; Martin Väth <martin@mvath.de>:
-  base->eutils
+  22 Sep 2012; Martin Väth <martin@mvath.de>:
+  Use AUTHOR tag. Use $ECLASS for message
 
-  12 May 2012; Martin Väth <martin@mvath.de>:
-  Created ChangeLog
+  14 Aug 2013; Martin Väth <martin@mvath.de>:
+  Simplify EPREFIX
 
+  24 Jan 2015; Martin Väth <martin@mvath.de>:
+  Remove auteps from mv_mozextension.eclass
+
+  25 Jan 2015; Martin Väth <martin@mvath.de>:
+  avoid use_if_iuse in mv_mozextension.eclass to be fully pms compatible
+
+  28 Nov 2015; Martin Väth <martin@mvath.de>:
+  Replace mv_mozextension.eclass by mv_mozextension-r1.eclass without
+  default phase functions for EAPI=6 compatibility
+
+  04 Dec 2015; Martin Väth <martin@mvath.de>:
+  mv_mozextension-r1.eclass: Use BROWSER="..." with USE_EXPAND
+  Allow to specify source/binary only
