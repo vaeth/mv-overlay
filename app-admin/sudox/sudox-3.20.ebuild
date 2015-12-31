@@ -5,7 +5,7 @@
 EAPI=6
 RESTRICT="mirror"
 
-DESCRIPTION="sudox is a wrapper for sudo which can pass X authority data and deal with screen and tmux"
+DESCRIPTION="wrapper for sudo which can pass X authority data and deal with screen and tmux"
 HOMEPAGE="https://github.com/vaeth/sudox/"
 SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

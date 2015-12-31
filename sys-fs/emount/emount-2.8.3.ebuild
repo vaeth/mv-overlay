@@ -5,7 +5,7 @@
 EAPI=6
 RESTRICT="mirror"
 
-DESCRIPTION="mount/unmount (and create/remove) dm-crypt filesystems according to your /etc/fstab"
+DESCRIPTION="mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab"
 HOMEPAGE="https://github.com/vaeth/emount/"
 SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

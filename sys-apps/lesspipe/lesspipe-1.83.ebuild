@@ -5,7 +5,7 @@
 EAPI=6
 RESTRICT="mirror"
 
-DESCRIPTION="Wolfgang Friebel's preprocessor for sys-apps/less. Append colon to filename to disable"
+DESCRIPTION="Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon"
 HOMEPAGE="http://www-zeuthen.desy.de/~friebel/unix/lesspipe.html"
 SRC_URI="http://www-zeuthen.desy.de/~friebel/unix/less/${P}.tar.gz"
 
@@ -21,15 +21,17 @@ REQUIRED_USE="!rpm2targz? ( rpm? ( cpio ) )
 	amd64-fbsd? ( !antiword !catdoc !dpkg !elinks !fastjar !html2text
 		!id3v2 !lzip !mp3info !mp3info2 !ooffice !p7zip !pstotext
 		!rar !rpm !unrtf !w3m !xlhtml )
-	alpha? ( !catdoc !fastjar !id3v2 !libplist !mp3info !mp3info2
+	alpha? ( !catdoc !fastjar !id3v2 !libplist !mp3info !mp3info2 !netcdf
 		!ooffice !pstotext !rar )
 	arm? ( !antiword !catdoc !fastjar !html2text !id3v2 !mp3info
 		!ooffice !pstotext !rar !xlhtml )
-	hppa? ( !catdoc !fastjar !libplist !mp3info2 !ooffice !rar !w3m !xlhtml )
+	hppa? ( !catdoc !fastjar !hdf5 !libplist !mp3info2 !netcdf
+		!ooffice !rar !w3m !xlhtml )
 	ia64? ( !antiword !catdoc !fastjar !id3v2 !libplist !mp3info !mp3info2
-		!ooffice !pstotext !rar !xlhtml )
+		!netcdf !ooffice !pstotext !rar !xlhtml )
 	ppc64? ( !catdoc !fastjar !ooffice !xlhtml )
-	sparc? ( !catdoc !fastjar !id3v2 !libplist !mp3info2 !ooffice !pstotext )"
+	sparc? ( !catdoc !fastjar !id3v2 !libplist !mp3info2 !netcdf
+		!ooffice !pstotext )"
 
 RDEPEND="sys-apps/file
 	app-arch/xz-utils
@@ -48,7 +50,6 @@ RDEPEND="sys-apps/file
 	p7zip? ( !amd64-fbsd? ( app-arch/p7zip ) )
 	cpio? ( app-arch/cpio )
 	cabextract? ( app-arch/cabextract )
-	hdf5? ( sci-libs/hdf5 )
 	html2text? ( !amd64-fbsd? ( !arm? ( app-text/html2text ) ) )
 	!html2text? (
 		links? ( www-client/links )
@@ -65,7 +66,7 @@ RDEPEND="sys-apps/file
 	groff? ( sys-apps/groff )
 	rpm2targz? ( app-arch/rpm2targz )
 	!rpm2targz? (
-		rpm? ( !amd64-fbsd? ( || ( app-arch/rpm app-arch/rpm5 ) ) )
+		rpm? ( !amd64-fbsd? ( app-arch/rpm ) )
 	)
 	antiword? ( !amd64-fbsd? ( !arm? ( !ia64? ( app-text/antiword ) ) ) )
 	!antiword? (
@@ -100,8 +101,8 @@ RDEPEND="sys-apps/file
 	isoinfo? ( || ( app-cdr/cdrtools app-cdr/dvd+rw-tools app-cdr/cdrkit ) )
 	libplist? ( !alpha? ( !hppa? ( !ia64? ( !sparc? ( app-pda/libplist ) ) ) ) )
 	dpkg? ( !amd64-fbsd? ( app-arch/dpkg ) )
-	hdf5? ( sci-libs/hdf5 )
-	netcdf? ( sci-libs/netcdf )"
+	hdf5? ( !hppa? ( sci-libs/hdf5 ) )
+	netcdf? ( !alpha? ( !hppa? ( !ia64? ( !sparc?  ( sci-libs/netcdf ) ) ) ) )"
 DEPEND="${RDEPEND}"
 
 ModifyStart() {

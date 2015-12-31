@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils latex-package
 RESTRICT="mirror"
 
-DESCRIPTION="Finds out useless references in latex files or numbered environments that should not be"
+DESCRIPTION="Finds useless references in latex files or unnecessarily numbered environments"
 HOMEPAGE="http://www-ljk.imag.fr/membres/Jerome.Lelong/soft/chklref/index.html"
 SRC_URI="http://www-ljk.imag.fr/membres/Jerome.Lelong/soft/chklref/${P}.tar.gz"
 

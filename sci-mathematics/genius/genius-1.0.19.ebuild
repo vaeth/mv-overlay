@@ -18,11 +18,11 @@ IUSE="doc gnome nls"
 
 RDEPEND="
 	dev-libs/glib:2
-	dev-libs/gmp
-	dev-libs/mpfr
+	dev-libs/gmp:0=
+	dev-libs/mpfr:0
 	dev-libs/popt
-	sys-libs/ncurses
-	sys-libs/readline
+	sys-libs/ncurses:0=
+	sys-libs/readline:0=
 	gnome? (
 		app-text/scrollkeeper
 		app-text/gnome-doc-utils
@@ -56,7 +56,6 @@ src_prepare() {
 	GCONF_DEBUG="no"
 	DOCS="AUTHORS ChangeLog NEWS README TODO"
 	USE_DESTDIR="1"
-	gnome2_src_prepare
 }
 
 src_install() {

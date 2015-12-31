@@ -24,12 +24,11 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="+lesspipe +less-select pcre original-gentoo source unicode"
 
 DEPEND=">=app-misc/editor-wrapper-3
-	>=sys-libs/ncurses-5.2
+	>=sys-libs/ncurses-5.2:0=
 	pcre? ( dev-libs/libpcre )"
 RDEPEND="${DEPEND}
-	less-select? ( dev-lang/perl
-		|| ( >=dev-lang/perl-5.10.1 >=virtual/perl-File-Temp-0.19 )
-	)"
+	less-select? ( dev-lang/perl )"
+#		|| ( >=dev-lang/perl-5.10.1 >=virtual/perl-File-Temp-0.19 )
 PDEPEND="lesspipe? ( sys-apps/lesspipe )"
 
 pkg_setup() {

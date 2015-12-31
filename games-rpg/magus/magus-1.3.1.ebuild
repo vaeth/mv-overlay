@@ -40,7 +40,7 @@ IUSE="+acroread imagemagick konqueror postgres pngcrush seamonkey"
 DEPENDCOMMON="dev-libs/libsigc++:2
 	dev-cpp/gtkmm:2.4
 	virtual/latex-base
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:= )
 	!postgres? ( dev-db/sqlite:3 )
 	|| ( media-libs/netpbm media-gfx/graphicsmagick media-gfx/imagemagick )"
 
@@ -52,7 +52,7 @@ DEPEND="${DEPENDCOMMON}
 RDEPEND="${DEPENDCOMMON}
 	seamonkey? ( www-client/seamonkey )
 	!seamonkey? (
-		konqueror? ( kde-base/konqueror )
+		konqueror? ( kde-apps/konqueror )
 		!konqueror? (
 			|| ( www-client/firefox www-client/firefox-bin )
 		)

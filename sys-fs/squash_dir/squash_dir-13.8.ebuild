@@ -14,8 +14,7 @@ SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-#KEYWORDS="~amd64 ~ppc ~x86"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="aufs overlayfs bundled-openrc-wrapper unionfs-fuse"
 
 BOTHDEPEND="bundled-openrc-wrapper? ( !!sys-apps/openrc-wrapper )"
@@ -71,7 +70,6 @@ src_install() {
 	default
 	readme.gentoo_create_doc
 }
-
 
 linux_config_missing() {
 	! linux_config_exists || ! linux_chkconfig_present "${1}"

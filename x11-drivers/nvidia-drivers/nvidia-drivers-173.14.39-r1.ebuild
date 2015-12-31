@@ -25,7 +25,7 @@ RESTRICT="bindist mirror strip"
 EMULTILIB_PKG="true"
 
 COMMON="
-	>=app-admin/eselect-opengl-1.0.9
+	>=app-eselect/eselect-opengl-1.0.9
 	kernel_linux? ( >=sys-libs/glibc-2.6.1 )
 "
 DEPEND="
@@ -38,13 +38,8 @@ RDEPEND="
 	<x11-base/xorg-server-1.15.99
 	acpi? ( sys-power/acpid )
 	multilib? (
-		|| (
-			(
-				>=x11-libs/libX11-1.6.2[abi_x86_32]
-				>=x11-libs/libXext-1.3.2[abi_x86_32]
-			)
-			app-emulation/emul-linux-x86-opengl
-		)
+		>=x11-libs/libX11-1.6.2[abi_x86_32]
+		>=x11-libs/libXext-1.3.2[abi_x86_32]
 	)
 	tools? (
 		dev-libs/atk
