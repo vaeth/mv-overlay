@@ -29,7 +29,6 @@
 		<flag name="completion_net">Install zsh completions for net-related tools</flag>
 		<flag name="completion_nfs">Install zsh completions for network filesystem tools</flag>
 		<flag name="completion_perl">Install zsh completion for perl-related tools</flag>
-		<flag name="completion_pip">Install zsh completion for dev-python/pip (instead of completion of dev-python/pip project)</flag>
 		<flag name="completion_python">Install zsh completion for python development tools</flag>
 		<flag name="completion_ruby">Install zsh completion for ruby tools and tools in ruby</flag>
 		<flag name="completion_search">Install zsh completion for search tools like sys-apps/ack and sys-apps/the_silver_searcher</flag>

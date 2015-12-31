@@ -44,7 +44,6 @@ app-shells/zsh-completions:completion_multimedia - Install zsh completions for m
 app-shells/zsh-completions:completion_net - Install zsh completions for net-related tools
 app-shells/zsh-completions:completion_nfs - Install zsh completions for network filesystem tools
 app-shells/zsh-completions:completion_perl - Install zsh completion for perl-related tools
-app-shells/zsh-completions:completion_pip - Install zsh completion for dev-python/pip (instead of completion of dev-python/pip project)
 app-shells/zsh-completions:completion_python - Install zsh completion for python development tools
 app-shells/zsh-completions:completion_ruby - Install zsh completion for ruby tools and tools in ruby
 app-shells/zsh-completions:completion_search - Install zsh completion for search tools like sys-apps/ack and sys-apps/the_silver_searcher
@@ -53,8 +52,6 @@ app-shells/zsh-completions:completion_subtitles - Install zsh completion for sub
 app-shells/zsh-completions:completion_virtualization - Install zsh completion for virtualization programs
 app-shells/zsh-completions:completion_web - Install zsh completion for web-related tools incl. java/javascript/scala
 app-text/stardict:espeak - Enable text to speech synthesizer using espeak engine
-app-text/stardict:gnome2 - Enable deprecated gnome2 support
-app-text/stardict:gucharmap - Enable gucharmap dictionary plugin
 app-text/stardict:pronounce - Install WyabdcRealPeopleTTS package (it is just many .wav files) to make StarDict pronounce English words
 app-text/stardict:qqwry - Enable QQWry plugin, which provides information (in Chinese language) about geographical positions, owner, etc. for IP addresses
 app-text/stardict:tools - Build and install the extra stardict tools
