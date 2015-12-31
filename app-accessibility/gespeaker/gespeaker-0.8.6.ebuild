@@ -4,7 +4,7 @@
 
 EAPI=6
 RESTRICT="mirror"
-PYTHON_COMPAT=( jython2_7 pypy python2_7 )
+PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="A GTK+ frontend for espeak"
