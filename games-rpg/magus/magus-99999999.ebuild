@@ -35,7 +35,8 @@ then	SRC_URI="ftp://ftp.berlios.de/pub/midgard/Source/${P}.tar.bz2"
 fi
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+acroread imagemagick konqueror postgres pngcrush seamonkey"
+IUSE="+acroread imagemagick konqueror multilib pngcrush postgres seamonkey"
+REQUIRED_USE="amd64? ( acroread? ( multilib ) )"
 
 DEPENDCOMMON="dev-libs/libsigc++:2
 	dev-cpp/gtkmm:2.4
@@ -57,7 +58,10 @@ RDEPEND="${DEPENDCOMMON}
 			|| ( www-client/firefox www-client/firefox-bin )
 		)
 	)
-	acroread? ( app-text/acroread )
+	acroread? (
+		!amd64? ( app-text/acroread )
+		amd64? ( multilib? ( app-text/acroread ) )
+	)
 	virtual/libintl"
 
 if ${LIVE_VERSION}
