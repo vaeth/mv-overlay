@@ -104,7 +104,7 @@ system zprofile.
 If PATH must be set in ~/.zshenv to affect things like non-login ssh shells,
 one method is to use a separate path-setting file that is conditionally sourced
 in ~/.zshenv and also sourced from ~/.zprofile. For more information, see the
-zshenv example in ${EROOT}/usr/share/doc/${PF}/StartupFiles/.
+zshenv example in "${EROOT}"/usr/share/doc/${PF}/StartupFiles/.
 
 See https://wiki.gentoo.org/wiki/Zsh/HOWTO for more introduction documentation.
 "
