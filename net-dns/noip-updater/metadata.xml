@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>martin@mvath.de</email>
+		<name>Martin Väth</name>
+	</maintainer>
+	<longdescription lang="en">
+		no-ip.com dynamic DNS updater
+	</longdescription>
+	<use>
+		<flag name="ezipupd">Use user/group ezipupd instead of nobody: Useful if you restrict outgoing network traffic for user nobody</flag>
+	</use>
+</pkgmetadata>

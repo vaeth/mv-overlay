@@ -2,3 +2,8 @@
 # sys-fs/squash_dir is no longer maintained. Use instead the successor project
 # sys-fs/squashmount (or sys-apps/openrc-wrapper for the openrc-wrapper script)
 sys-fs/squash_dir
+
+# Martin Väth <martin@mvath.de> (03 Jan 2016)
+# net-dns/noip-updater does not use https for transferring user sensitive data,
+# see bug #261194. So install only if you are aware about the security risk.
+~net-dns/noip-updater-2.1.9
