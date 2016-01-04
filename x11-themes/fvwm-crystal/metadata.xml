@@ -18,4 +18,9 @@ with additional programs and scripts. Some of it's features are:
    desktop pages
  * transparent window titlebars, menus and panels on the desktop
 </longdescription>
+<use>
+  <flag name="xdg">Enable xdg localized user directrories support via x11-misc/xdg-user-dirs</flag>
+  <flag name="amixer">Enable alsamixer support (alsa-sound/alsa-utils)</flag>
+  <flag name="pm-utils">Enable support for suspend/resume the system through sys-power/pm-utils</flag>
+</use>
 </pkgmetadata>

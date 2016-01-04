@@ -121,3 +121,6 @@ x11-drivers/nvidia-drivers:kernel3-14 - Install unofficial patches for linux-3.1
 x11-drivers/nvidia-drivers:kernel3-17 - Install unofficial patches for linux-3.17 and newer
 x11-drivers/nvidia-drivers:pax_kernel - Patch to compile with hardened-sources/grsecurity
 x11-drivers/nvidia-drivers:tools - Install additional tools such as nvidia-settings
+x11-themes/fvwm-crystal:amixer - Enable alsamixer support (alsa-sound/alsa-utils)
+x11-themes/fvwm-crystal:pm-utils - Enable support for suspend/resume the system through sys-power/pm-utils
+x11-themes/fvwm-crystal:xdg - Enable xdg localized user directrories support via x11-misc/xdg-user-dirs
