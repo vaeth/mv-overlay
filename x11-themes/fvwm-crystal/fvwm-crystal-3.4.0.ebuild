@@ -16,6 +16,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="+amixer jack +pm-utils +xdg"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 case ${PV} in
 *9999)
@@ -27,7 +28,7 @@ case ${PV} in
 	S="${WORKDIR}/${PN}"
 	src_unpack() {
 		subversion_src_unpack
-};;
+	};;
 esac
 
 RDEPEND="${PYTHON_DEPS}
