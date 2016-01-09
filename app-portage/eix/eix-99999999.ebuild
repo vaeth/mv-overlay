@@ -17,7 +17,7 @@ PROPERTIES="live"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug +dep doc nls optimization security strong-optimization strong-security sqlite swap-remote tools"
+IUSE="debug +dep doc nls optimization +required-use security strong-optimization strong-security sqlite swap-remote tools"
 
 BOTHDEPEND="sqlite? ( >=dev-db/sqlite-3 )
 	nls? ( virtual/libintl )"
@@ -50,6 +50,7 @@ src_configure() {
 		$(use_enable swap-remote) \
 		$(use_with prefix always-accept-keywords) \
 		$(use_with dep dep-default) \
+		$(use_with required-use required-use-default) \
 		--with-zsh-completion \
 		--with-portage-rootpath="${ROOTPATH}" \
 		--with-eprefix-default="${EPREFIX}"
