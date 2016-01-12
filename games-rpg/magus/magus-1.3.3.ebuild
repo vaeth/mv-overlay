@@ -31,7 +31,6 @@ then	SRC_URI="ftp://ftp.berlios.de/pub/midgard/Source/${P}.tar.bz2"
 # Unfortunately, the URL is down forever:
 # You can only use it, if you already downloaded the tarball earlier
 	RESTRICT="${RESTRICT} fetch"
-	KEYWORDS=""
 fi
 LICENSE="GPL-2"
 SLOT="0"
