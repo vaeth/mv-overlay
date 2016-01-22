@@ -378,7 +378,8 @@ src_install() {
 
 	# Documentation
 	dodoc ${NV_DOC}/XF86Config.sample
-	dohtml ${NV_DOC}/html/*
+	docinto html
+	dodoc ${NV_DOC}/html/*
 	if use x86-fbsd; then
 		dodoc "${NV_DOC}/README"
 		doman "${NV_MAN}/nvidia-xconfig.1"
