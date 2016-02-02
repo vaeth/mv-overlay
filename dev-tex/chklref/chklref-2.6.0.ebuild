@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils latex-package
 RESTRICT="mirror"
 
@@ -19,11 +19,13 @@ RDEPEND="virtual/latex-base
 	dev-lang/perl"
 DEPEND="${RDEPEND}"
 
+DOCS=( README )
+
 src_prepare() {
 	use prefix || sed -i \
 		-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
 		-- "${S}"/src/chklref.in || die
-	epatch_user
+	eapply_user
 }
 
 src_configure() {
@@ -36,5 +38,4 @@ src_compile() {
 
 src_install() {
 	default
-	dodoc README
 }
