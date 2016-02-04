@@ -34,7 +34,7 @@ src_prepare() {
 		-e "s:\(#define CONFIG_FILENAME\).*:\1 \"/etc/no-ip2.conf\":"
 	)
 	! use ezipupd || sedarg+=(
-		-e "s:\"nobodoy\":\"ez-ipupd\":g"
+		-e "s:\"nobody\":\"ez-ipupd\":g"
 	)
 	sed -i "${sedarg[@]}" noip2.c || die "sed failed"
 	eapply_user
