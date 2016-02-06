@@ -1,4 +1,6 @@
 browser_firefox - Install extension for www-client/firefox
 browser_firefox-bin - Install extension for the www-client/firefox-bin
+browser_palemoon - Install extension for www-client/palemoon; requires currently to patch the palemoon ebuild to install into /usr/$(get_libdir)/palemoon (without version number)
+browser_palemoon-bin - Install extension for the www-client/palemoon-bin
 browser_seamonkey - Install extension for the www-client/seamonkey
 browser_seamonkey-bin - Install extension for the www-client/seamonkey-bin

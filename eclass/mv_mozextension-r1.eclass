@@ -13,12 +13,12 @@
 # @CODE
 # inherit moz
 #
-# moz_defaults firefox seamonkey # no arguments mean all browsers
+# moz_defaults firefox palemoon seamonkey # no arguments mean all browsers
 #
 # @CODE
 # inherit moz
 #
-# MOZ="firefox seamonkey"
+# MOZ="firefox palemoon seamonkey"
 # DEPEND=${MOZ_DEPEND}
 # RDEPEND=$(moz_rdepend ${MOZ})
 # IUSE=$(moz_iuse ${MOZ})
@@ -83,69 +83,57 @@ MOZ_DEPEND='app-arch/unzip'
 # @USAGE: [<browser>] [<browser>] [...]
 # @DESCRIPTION:
 # Outputs RDEPEND expression appropriate for browsers.
-# browser is [firefox|seamonkey][-source|-bin] (no specified means both/all)
+# browser is [firefox|palemoon|seamonkey][-source|-bin] (no specified = all)
 moz_rdepend() {
-	local rdep i
-	[ ${#} -ne 0 ] || set -- "firefox seamonkey"
-	i=
+	local rdep i c mode
+	[ ${#} -ne 0 ] || set -- "firefox palemoon seamonkey"
+	c=
 	rdep=
-	case "${*}" in
-	*firefox?source*)
-		i=a
-		rdep="browser_firefox? ( www-client/firefox )";;
-	*firefox?bin*)
-		i=a
-		rdep="browser_firefox-bin? ( www-client/firefox-bin )";;
-	*firefox*)
-		i=aa
-		rdep="browser_firefox? ( www-client/firefox )
-browser_firefox-bin? ( www-client/firefox-bin )";;
-	esac
-	case "${*}" in
-	*seamonkey?source*)
-		i=${i}a
-		rdep=${rdep}${rdep:+'
-'}"browser_seamonkey? ( www-client/seamonkey )";;
-	*seamonkey?bin*)
-		i=${i}a
-		rdep=${rdep}${rdep:+'
-'}"browser_seamonkey-bin? ( www-client/seamonkey-bin )";;
-	*seamonkey*)
-		i=${i}aa
-		rdep=${rdep}${rdep:+'
-'}"browser_seamonkey? ( www-client/seamonkey )
-browser_seamonkey-bin? ( www-client/seamonkey-bin )";;
-	esac
-	[ -n "${i}" ] || die "args must be [firefox|seamonkey][-source|-bin]"
-	[ "${i}" = a ] && echo "${rdep}" || echo "|| ( ${rdep} )"
+	for i in firefox palemoon seamonkey
+	do	mode=
+		case ${*} in
+		*"${i}"?source*)
+			mode=s;;
+		*"${i}"?bin*)
+			mode=b;;
+		*"${i}"*)
+			mode=sb;;
+		esac
+		case ${mode} in
+		*s*)
+			rdep="${rdep}${rdep:+ }browser_${i}? ( www-client/${i} )"
+			c=${c}a;;
+		esac
+		case ${mode} in
+		*b*)
+			rdep="${rdep}${rdep:+ }browser_${i}-bin? ( www-client/${i}-bin )"
+			c=${c}a;;
+		esac
+	done
+	[ -n "${c}" ] || die "args must be [firefox|palemoon|seamonkey][-source|-bin]"
+	[ "${c}" = a ] && echo "${rdep}" || echo "|| ( ${rdep} )"
 }
 
 # @FUNCTION: moz_iuse
 # @USAGE: [<browser>] [<browser>] [...]
 # @DESCRIPTION:
 # Outputs IUSE expression appropriate for browsers.
-# browser is [firefox|seamonkey][-source|-bin] (no specified means both/all)
+# browser is [firefox|palemoon|seamonkey][-source|-bin] (no specified = all)
 moz_iuse() {
 	local iuse i
-	[ ${#} -ne 0 ] || set -- "firefox seamonkey"
+	[ ${#} -ne 0 ] || set -- "firefox palemoon seamonkey"
 	iuse=
-	case "${*}" in
-	*firefox?source*)
-		iuse="browser_firefox";;
-	*firefox?bin*)
-		iuse="browser_firefox-bin";;
-	*firefox*)
-		iuse="browser_firefox browser_firefox-bin";;
-	esac
-	case "${*}" in
-	*seamonkey?source*)
-		iuse="${iuse}${iuse:+ }browser_seamonkey";;
-	*seamonkey?bin*)
-		iuse="${iuse}${iuse:+ }browser_seamonkey-bin";;
-	*seamonkey*)
-		iuse="${iuse}${iuse:+ }browser_seamonkey browser_seamonkey-bin";;
-	esac
-	[ -n "${iuse}" ] || die "args must be [firefox|seamonkey][-source|-bin]"
+	for i in firefox palemoon seamonkey
+	do	case "${*}" in
+		*"${i}"?source*)
+			iuse="${iuse}${iuse:+ }browser_${i}";;
+		*"${i}"?bin*)
+			iuse="${iuse}${iuse:+ }browser_${i}-bin";;
+		*"${i}"*)
+			iuse="${iuse}${iuse:+ }browser_${i} browser_${i}-bin";;
+		esac
+	done
+	[ -n "${iuse}" ] || die "args must be [firefox|palemoon|seamonkey][-source|-bin]"
 	echo "${iuse}"
 }
 
@@ -153,7 +141,7 @@ moz_iuse() {
 # @USAGE: [<browser>] [<browser>] [...]
 # @DESCRIPTION:
 # Outputs REQUIRED_USE expression appropriate for browsers.
-# browser is [firefox|seamonkey][-source|-bin] (no specified means both/all)
+# browser is [firefox|palemoon|seamonkey][-source|-bin] (no specified means all)
 moz_required_use() {
 	set -- $(moz_iuse "${@}")
 	[ ${#} -lt 2 ] && echo "${*}" || echo "|| ( ${*} )"
@@ -234,15 +222,20 @@ moz_install_to_dir() {
 # If arguments are specified, they must contain at least one directory.
 # If no argument is specified, all directories from "${S}" are considered.
 moz_install_for_browser() {
-	local dest firefox seamonkey
+	local dest firefox palemoon seamonkey
 	[ ${#} -ne 0 ] || die "${FUNCNAME} needs at least one argument"
 	firefox="firefox/browser/extensions"
+	palemoon="palemoon/browser/extensions"
 	seamonkey="seamonkey/extensions"
 	case ${1} in
 	firefox)
 		dest="/usr/$(get_libdir)/${firefox}";;
 	firefox?bin)
 		dest="/opt/${firefox}";;
+	palemoon)
+		dest="/usr/$(get_libdir)/${palemoon}";;
+	palemoon?bin)
+		dest="/opt/${palemoon}";;
 	seamonkey)
 		dest="/usr/$(get_libdir)/${seamonkey}";;
 	seamonkey?bin)
@@ -263,7 +256,7 @@ moz_install_for_browser() {
 # If no argument is specified, all directories from "${S}" are considered.
 moz_install() {
 	local i
-	for i in firefox firefox-bin seamonkey seamonkey-bin
+	for i in firefox firefox-bin palemoon palemoon-bin seamonkey seamonkey-bin
 	do	if in_iuse "browser_${i}" && use "browser_${i}"
 		then	moz_install_for_browser "${i}" "${@}"
 		fi
