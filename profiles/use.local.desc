@@ -32,12 +32,14 @@ app-shells/zsh:completion_openSUSE - Install zsh completions for openSUSE
 app-shells/zsh-completions:completion_Android - Install zsh completions for Android-related programs
 app-shells/zsh-completions:completion_Google - Install zsh completions for googlecl
 app-shells/zsh-completions:completion_Unix - Install zsh completion for unix system tools
+app-shells/zsh-completions:completion_backup - Install zsh completions for backup programs
 app-shells/zsh-completions:completion_database - Install zsh completions for database programs
 app-shells/zsh-completions:completion_dev - Install zsh completions for development (build systems, editors, web)
 app-shells/zsh-completions:completion_disk - Install zsh completions for disk tools
 app-shells/zsh-completions:completion_distribute - Install zsh completions for tools for distributing tasks to machines
-app-shells/zsh-completions:completion_filesystem - Install zsh completions for filesystem tools
 app-shells/zsh-completions:completion_git - Install zsh completions for special git tools
+app-shells/zsh-completions:completion_go - Install zsh completions for go-related tools
+app-shells/zsh-completions:completion_gtk - Install zsh completions for gtk-related tools
 app-shells/zsh-completions:completion_hardware - Install zsh completions for low-level hardware tools
 app-shells/zsh-completions:completion_haskell - Install zsh completions for Haskell tools
 app-shells/zsh-completions:completion_managers - Install zsh completions for package managers (not portage)
