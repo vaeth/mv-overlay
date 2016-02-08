@@ -29,7 +29,6 @@
 # }
 #
 # src_install() {
-#	default
 #	moz_install
 # }
 
@@ -61,17 +60,19 @@ moz_variables() {
 }
 
 # @FUNCTION: moz_phases
-# @USAGE: [<browser>] [<browser>] [...]
+# @USAGE: [-n]
 # @DESCRIPTION:
-# Defines src_unpack and src_install to call only moz_unpack and moz_install
+# Defines src_unpack and src_install to call only moz_unpack and moz_install.
+# Option -n means that nocompression-mode is used for both phases.
 moz_phases() {
-src_unpack() {
-moz_unpack
+	local o
+	[ "${1-}" = "-n" ] && o=" -n" || o=
+	eval "src_unpack() {
+moz_unpack${o}
 }
 src_install() {
-default
-moz_install
-}
+moz_install${o}
+}"
 }
 
 # @ECLASS-VARIABLE: MOZ_DEPEND
@@ -148,16 +149,24 @@ moz_required_use() {
 }
 
 # @FUNCTION: moz_unpack
-# @USAGE: <file> <file> [...]
+# @USAGE: [-n] [--] <file> <file> [...]
 # @DESCRIPTION:
 # Unpack xpi files. If no file is specified, ${A} is used.
+# Option -n means nocompression mode which means in addition a full unpack.
 moz_unpack() {
-	local xpi srcdir xpiname
+	local xpi srcdir xpiname archiv comp
+
+	comp=:
+	if [ "${1-}" = "-n" ]
+	then	comp=false
+		shift
+	fi
+	[ "${1-}" != "--" ] || shift
 
 	[ ${#} -ne 0 ] || set -- ${A}
 	test -d "${S}" || mkdir "${S}" || die "cannot create ${S}"
 	for xpi
-	do	einfo "Unpacking ${xpi} to ${S}"
+	do	einfo "Unpacking ${xpi} to ${S} (partially)"
 		xpiname=${xpi%.*}
 		xpiname=${xpiname##*/}
 
@@ -172,57 +181,101 @@ moz_unpack() {
 
 		case ${xpi##*.} in
 		ZIP|zip|jar|xpi)
-			mkdir -- "${S}/${xpiname}" && \
-				cd -- "${S}/${xpiname}" && \
-				unzip -qo -- "${srcdir}${xpi}" \
-					|| die "failed to unpack ${xpi}"
-			chmod -R a+rX,u+w,go-w -- "${S}/${xpiname}";;
+			:;;
 		*)
 			einfo "unpack ${xpi}: file format not recognized. Ignoring.";;
 		esac
+		archiv="${S}/${xpiname}.xpi"
+		einfo "Copying ${xpi} to ${archiv}"
+		cp -p -- "${srcdir}${xpi}" "${archiv}" || die
+		chmod 644 -- "${archiv}" || die
+		mkdir -- "${S}/${xpiname}" || die
+		cd -- "${S}/${xpiname}" || die
+		if ${comp}
+		then	einfo "Extracting install.rdf for ${xpiname}"
+			unzip -qo -- "${archiv}" install.rdf || die
+		else	einfo "Unpacking ${xpiname}"
+			unzip -qo -- "${archiv}" || die
+			chmod -R a+rX,u+w,go-w -- "${S}/${xpiname}" || die
+		fi
 	done
 }
 
-# @FUNCTION: moz_install_to_dir
-# @USAGE: <extension-directory> <dir> <dir> [...]
+# @FUNCTION: moz_getid
+# @USAGE: <variable> [<path/to/[install.rdf]>]
 # @DESCRIPTION:
-# Installs dirs into a subdirectory (id) of extension-directory,
-# the name of the id being determined from ${dir}/install.rdf
+# Extracts the package id from the install.rdf manifest
+# and stores the result in the variable.
+moz_getid() {
+	local var res sub rdf
+	[ ${#} -ne 0 ] || die "${FUNCNAME} needs at least one argument"
+	var=${1}
+	rdf=${2:-.}
+	rdf=${rdf%/}
+	! test -d "${rdf}" || rdf=${rdf}"/install.rdf"
+	test -f "${rdf}" || die "${rdf} is not an ordinary file"
+	sub='{ /\<\(em:\)*id\>/!d; s/.*[\">]\([^\"<>]*\)[\"<].*/\1/; p; q }'
+	res=$(sed -n -e '/install-manifest/,$ '"${sub}" -- "${rdf}") || res=
+	[ -n "${res}" ] || die "failed to determine id from ${rdf}"
+	eval ${var}=\${res}
+}
+
+# @FUNCTION: moz_install_to_dir
+# @USAGE: [-n] [--] <extension-directory> <dir> <dir> [...]
+# @DESCRIPTION:
+# Installs dir.xpi as (id) of extension-directory,
+# the name of the id being determined from ${dir}/install.rdf.
 # Arguments which are not directories are silently ignored.
 # If arguments are specified, they must contain at least one directory.
 # If no argument is specified, all directories from "${S}" are considered.
+# Option -n means nocompression mode: Install dir instead of dir.xpi.
 moz_install_to_dir() {
-	local sub dest i s have
+	local id dest i have comp
+	comp=:
+	if [ "${1-}" = "-n" ]
+	then	comp=false
+		shift
+	fi
+	[ "${1-}" != "--" ] || shift
 	[ ${#} -ne 0 ] || die "${FUNCNAME} needs at least one argument"
-	dest=${1}
+	dest=${1%/}
 	shift
+	dodir "${dest}"
 	[ ${#} -gt 0 ] || set -- "${S}"/*
-	s='{ /\<\(em:\)*id\>/!d; s/.*[\">]\([^\"<>]*\)[\"<].*/\1/; p; q }'
 	have=false
 	for i
 	do	[ -n "${i}" ] && test -d "${i}" || continue
 		have=:
-		test -r "${i}"/install.rdf && \
-			sub=$(sed -n -e '/install-manifest/,$ '"${s}" "${i}"/install.rdf) \
-				&& [ -n "${sub}" ] || die 'failed to determine id of ${i}'
-		sub=${dest%/}/${sub}
-		dodir "${sub}" || die "failed to create ${sub}"
-		cp -RPl -- "${i}"/* "${ED}${sub}" || {
-			insinto "${sub}" && doins -r "${x}"/*
-		} || die "failed to install extension ${i}"
+		moz_getid id "${i}"
+		if ${comp}
+		then	ln -- "${i}.xpi" "${ED}${dest}/${id}.xpi" \
+			|| cp -- "${i}.xpi" "${ED}${dest}/${id}.xpi" || die
+		else	id=${dest}/${id}
+			dodir "${id}" || die "failed to create ${id}"
+			cp -RPl -- "${i}"/* "${ED}${id}" || {
+				insinto "${id}" && doins -r "${i}"/*
+			} || die
+		fi
 	done
 	${have} || die "no directory found in argument list"
 }
 
 # @FUNCTION: moz_install_for_browser
-# @USAGE: <browser> <dir> <dir> [...]
+# @USAGE: [-n] [--] <browser> <dir> <dir> [...]
 # @DESCRIPTION:
-# Installs dirs for browser (firefox firefox-bin seamonkey seamonkey-bin)
+# Installs dirs.xpi for browser ({firefox,palemoon,seymonkey}{,-bin}).
 # Arguments which are not directories are silently ignored.
 # If arguments are specified, they must contain at least one directory.
 # If no argument is specified, all directories from "${S}" are considered.
+# Option -n means nocompression mode: Install dirs instead of dirs.xpi.
 moz_install_for_browser() {
-	local dest firefox palemoon seamonkey
+	local dest firefox palemoon seamonkey o
+	o=
+	if [ "${1-}" = "-n" ]
+	then	o=-n
+		shift
+	fi
+	[ "${1-}" != "--" ] || shift
 	[ ${#} -ne 0 ] || die "${FUNCNAME} needs at least one argument"
 	firefox="firefox/browser/extensions"
 	palemoon="palemoon/browser/extensions"
@@ -244,21 +297,28 @@ moz_install_for_browser() {
 		die "unknown browser specified";;
 	esac
 	shift
-	moz_install_to_dir "${dest}" "${@}"
+	moz_install_to_dir ${o} -- "${dest}" "${@}"
 }
 
 # @FUNCTION: moz_install
-# @USAGE: <dir> <dir> [...]
+# @USAGE: [-n] [--] <dir> <dir> [...]
 # @DESCRIPTION:
-# Installs dirs into appropriate destinations, depending on USE.
+# Installs dirs.xpi into appropriate destinations, depending on USE.
 # Arguments which are not directories are silently ignored.
 # If arguments are specified, they must contain at least one directory.
 # If no argument is specified, all directories from "${S}" are considered.
+# Option -n means nocompression mode: Install dirs instead of dirs.xpi.
 moz_install() {
-	local i
+	local i o
+	o=
+	if [ "${1-}" = "-n" ]
+	then	o=-n
+		shift
+	fi
+	[ "${1-}" != "--" ] || shift
 	for i in firefox firefox-bin palemoon palemoon-bin seamonkey seamonkey-bin
 	do	if in_iuse "browser_${i}" && use "browser_${i}"
-		then	moz_install_for_browser "${i}" "${@}"
+		then	moz_install_for_browser ${o} -- "${i}" "${@}"
 		fi
 	done
 }

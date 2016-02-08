@@ -38,3 +38,9 @@
   04 Dec 2015; Martin Väth <martin@mvath.de>:
   mv_mozextension-r1.eclass: Use BROWSER="..." with USE_EXPAND
   Allow to specify source/binary only
+
+  06 Feb 2016; Martin Väth <martin@mvath.de>:
+  mv_mozextension-r1.eclass: Support palemoon
+
+  08 Feb 2016; Martin Väth <martin@mvath.de>:
+  mv_mozextension-r1.eclass: Keep *.xpi compressed by default
