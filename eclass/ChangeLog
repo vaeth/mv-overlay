@@ -44,3 +44,6 @@
 
   08 Feb 2016; Martin Väth <martin@mvath.de>:
   mv_mozextension-r1.eclass: Keep *.xpi compressed by default
+
+  08 Feb 2016; Martin Väth <martin@mvath.de>:
+  mv_mozextension-r1.eclass: Support USE=compressed

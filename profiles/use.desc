@@ -4,3 +4,4 @@ browser_palemoon - Install extension for www-client/palemoon
 browser_palemoon-bin - Install extension for the www-client/palemoon-bin
 browser_seamonkey - Install extension for the www-client/seamonkey
 browser_seamonkey-bin - Install extension for the www-client/seamonkey-bin
+compressed - Install extension as a compressed .xpi

@@ -38,39 +38,56 @@ case ${EAPI:-0} in
 esac
 
 # @FUNCTION: moz_defaults
-# @USAGE: [<browser>] [<browser>] [...]
+# @USAGE: [-c|-C|-n] [--] [<browser>] [<browser>] [...]
 # @DESCRIPTION:
-# This is just a convenience wrapper for moz_variables [arguments]; moz_phases
+# This is just a convenience wrapper for moz_variables [args]; moz_phases [args]
 moz_defaults() {
 	moz_variables "${@}"
-	moz_phases
+	moz_phases "${@}"
 }
 
 # @FUNCTION: moz_variables
-# @USAGE: [<browser>] [<browser>] [...]
+# @USAGE: [-c|-C|-n] [--] [<browser>] [<browser>] [...]
 # @DESCRIPTION:
 # Sets the variables DEPEND, RDEPEND, IUSE, REQUIRED_USE for browsers.
 # browser is firefox or seamonkey and implies source or binary version.
 # If no browser is specified, all are assumed.
+# If option -C or -n is specified, IUSE=compressed is not default/added.
 moz_variables() {
+	local o opt
+	o=
+	OPTIND=1
+	while getopts 'cCn' opt
+	do	o="-${opt}"
+	done
+	shift $(( ${OPTIND} - 1 ))
 	DEPEND=${MOZ_DEPEND}
 	RDEPEND=$(moz_rdepend "${@}")
-	IUSE=$(moz_iuse "${@}")
+	IUSE=$(moz_iuse ${o} "${@}")
 	REQUIRED_USE=$(moz_required_use "${@}")
 }
 
 # @FUNCTION: moz_phases
-# @USAGE: [-n]
+# @USAGE: [-c|-C|-n] [--] [ignored args]
 # @DESCRIPTION:
 # Defines src_unpack and src_install to call only moz_unpack and moz_install.
-# Option -n means that nocompression-mode is used for both phases.
+# If option -c or -n is specified, IUSE is ignored with compression on/off
 moz_phases() {
-	local o
-	[ "${1-}" = "-n" ] && o=" -n" || o=
+	local o opt
+	o=
+	OPTIND=1
+	while getopts 'cCn' opt
+	do	case ${opt} in
+		c)	o=" -c";;
+		n)	o=" -n";;
+		C)	o=;;
+		esac
+	done
+	shift $(( ${OPTIND} - 1 ))
 	eval "src_unpack() {
 moz_unpack${o}
 }
-src_install() {
+	src_install() {
 moz_install${o}
 }"
 }
@@ -116,14 +133,24 @@ moz_rdepend() {
 }
 
 # @FUNCTION: moz_iuse
-# @USAGE: [<browser>] [<browser>] [...]
+# @USAGE: [-c|-C|-n] [--] [<browser>] [<browser>] [...]
 # @DESCRIPTION:
 # Outputs IUSE expression appropriate for browsers.
-# browser is [firefox|palemoon|seamonkey][-source|-bin] (no specified = all)
+# browser is [firefox|palemoon|seamonkey][-source|-bin] (no specified = all).
+# If option -C or -n is specified, IUSE=compressed is not default/added.
 moz_iuse() {
-	local iuse i
+	local iuse i opt
+	iuse="+compressed"
+	OPTIND=1
+	while getopts 'cCn' opt
+	do	case ${opt} in
+		c)	iuse="+compressed";;
+		C)	iuse="compressed";;
+		n)	iuse=;;
+		esac
+	done
+	shift $(( ${OPTIND} - 1 ))
 	[ ${#} -ne 0 ] || set -- "firefox palemoon seamonkey"
-	iuse=
 	for i in firefox palemoon seamonkey
 	do	case "${*}" in
 		*"${i}"?source*)
@@ -144,25 +171,32 @@ moz_iuse() {
 # Outputs REQUIRED_USE expression appropriate for browsers.
 # browser is [firefox|palemoon|seamonkey][-source|-bin] (no specified means all)
 moz_required_use() {
-	set -- $(moz_iuse "${@}")
+	set -- $(moz_iuse -n "${@}")
 	[ ${#} -lt 2 ] && echo "${*}" || echo "|| ( ${*} )"
 }
 
 # @FUNCTION: moz_unpack
-# @USAGE: [-n] [--] <file> <file> [...]
+# @USAGE: [-c|-C|-n] [--] <file> <file> [...]
 # @DESCRIPTION:
 # Unpack xpi files. If no file is specified, ${A} is used.
-# Option -n means nocompression mode which means in addition a full unpack.
+# Option -c means compression mode (partial unpack), independent of USE
+# Option -n means no-compression mode (full unpack), independent of USE
 moz_unpack() {
-	local xpi srcdir xpiname archiv comp
-
-	comp=:
-	if [ "${1-}" = "-n" ]
+	local xpi srcdir xpiname archiv comp opt
+	comp=
+	OPTIND=1
+	while getopts 'cn' opt
+	do	case ${opt} in
+		c)	comp=:;;
+		n)	comp=false;;
+		C)	comp=;;
+		esac
+	done
+	shift $(( ${OPTIND} - 1 ))
+	if [ -z "${comp}" ] && in_iuse compressed && ! use compressed
 	then	comp=false
-		shift
+	else	comp=:
 	fi
-	[ "${1-}" != "--" ] || shift
-
 	[ ${#} -ne 0 ] || set -- ${A}
 	test -d "${S}" || mkdir "${S}" || die "cannot create ${S}"
 	for xpi
@@ -230,13 +264,16 @@ moz_getid() {
 # If no argument is specified, all directories from "${S}" are considered.
 # Option -n means nocompression mode: Install dir instead of dir.xpi.
 moz_install_to_dir() {
-	local id dest i have comp
+	local id dest i have comp opt
 	comp=:
-	if [ "${1-}" = "-n" ]
-	then	comp=false
-		shift
-	fi
-	[ "${1-}" != "--" ] || shift
+	OPTIND=1
+	while getopts 'cn' opt
+	do	case ${opt} in
+		c)	comp=:;;
+		n)	comp=false;;
+		esac
+	done
+	shift $(( ${OPTIND} - 1 ))
 	[ ${#} -ne 0 ] || die "${FUNCNAME} needs at least one argument"
 	dest=${1%/}
 	shift
@@ -269,13 +306,13 @@ moz_install_to_dir() {
 # If no argument is specified, all directories from "${S}" are considered.
 # Option -n means nocompression mode: Install dirs instead of dirs.xpi.
 moz_install_for_browser() {
-	local dest firefox palemoon seamonkey o
+	local dest firefox palemoon seamonkey o opt
 	o=
-	if [ "${1-}" = "-n" ]
-	then	o=-n
-		shift
-	fi
-	[ "${1-}" != "--" ] || shift
+	OPTIND=1
+	while getopts 'cn' opt
+	do	o="-${opt}"
+	done
+	shift $(( ${OPTIND} - 1 ))
 	[ ${#} -ne 0 ] || die "${FUNCNAME} needs at least one argument"
 	firefox="firefox/browser/extensions"
 	palemoon="palemoon/browser/extensions"
@@ -301,21 +338,30 @@ moz_install_for_browser() {
 }
 
 # @FUNCTION: moz_install
-# @USAGE: [-n] [--] <dir> <dir> [...]
+# @USAGE: [-c|-n|-C] [--] <dir> <dir> [...]
 # @DESCRIPTION:
-# Installs dirs.xpi into appropriate destinations, depending on USE.
+# Installs dirs/dirs.xpi into appropriate destinations, depending on USE.
 # Arguments which are not directories are silently ignored.
 # If arguments are specified, they must contain at least one directory.
 # If no argument is specified, all directories from "${S}" are considered.
-# Option -n means nocompression mode: Install dirs instead of dirs.xpi.
+# Option -n means to install dir instead of dirs.xpi, independent on USE.
+# Option -c means to install dir.xpi, independent on USE.
 moz_install() {
-	local i o
-	o=
-	if [ "${1-}" = "-n" ]
-	then	o=-n
-		shift
+	local i o opt
+	o="?"
+	OPTIND=1
+	while getopts 'cCn' opt
+	do	case ${opt} in
+		c)	o=;;
+		n)	o="-n";;
+		C)	o="?";;
+		esac
+	done
+	shift $(( ${OPTIND} - 1 ))
+	if [ "${o}" = "?" ] && in_iuse compressed && ! use compressed
+	then	o="-n"
+	else	o=
 	fi
-	[ "${1-}" != "--" ] || shift
 	for i in firefox firefox-bin palemoon palemoon-bin seamonkey seamonkey-bin
 	do	if in_iuse "browser_${i}" && use "browser_${i}"
 		then	moz_install_for_browser ${o} -- "${i}" "${@}"
