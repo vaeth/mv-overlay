@@ -9,7 +9,6 @@ DESCRIPTION="Tool for creating compressed filesystem type squashfs. Patched to s
 HOMEPAGE="http://squashfs.sourceforge.net"
 SRC_URI="mirror://sourceforge/squashfs/squashfs${PV}.tar.gz"
 
-
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~mips ~x86"
