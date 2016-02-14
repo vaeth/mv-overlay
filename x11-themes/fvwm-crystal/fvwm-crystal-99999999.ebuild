@@ -16,7 +16,6 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-IUSE="+amixer jack +pm-utils +xdg"
 
 case ${PV} in
 *9999)
@@ -43,15 +42,12 @@ RDEPEND="${PYTHON_DEPS}
 	sys-devel/bc
 	virtual/awk
 	x11-apps/xwd
-	xdg? ( x11-misc/xdg-user-dirs )
-	pm-utils? ( sys-power/pm-utils )
-	amixer? ( media-sound/alsa-utils )
-	jack? ( media-sound/jack-audio-connection-kit )"
+	media-sound/alsa-utils"
 
 DISABLE_AUTOFORMATTING="true"
 DOC_CONTENTS="After installation, execute the following commands:
-\ \$ cp -r "${EROOT}"usr/share/doc/"${PF}"/addons/Xresources ~/.Xresources
-\ \$ cp -r "${EROOT}"usr/share/doc/"${PF}"/addons/Xsession ~/.xinitrc
+	\$ cp -r "${EROOT}"usr/share/doc/"${PF}"/addons/Xresources ~/.Xresources
+	\$ cp -r "${EROOT}"usr/share/doc/"${PF}"/addons/Xsession ~/.xinitrc
 
 Many applications can extend functionality of fvwm-crystal.
 They are listed in "${EROOT}"usr/share/doc/"${PF}"/INSTALL.*
@@ -59,7 +55,7 @@ They are listed in "${EROOT}"usr/share/doc/"${PF}"/INSTALL.*
 To be able to use the exit menu, each user using ${PN}
 must be in the group fvwm-crystal.
 You can do that as root with:
-	useradd -G fvwm-crystal <user_name>
+	\$ useradd -G fvwm-crystal <user_name>
 and log out and in again.
 "
 
