@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>graphics</herd>
-  <upstream>
-  <maintainer>
-    <email>phillip.berndt@googlemail.com</email>
-    <name>Phillip Berndt</name>
+  <maintainer type="person">
+    <email>martin@mvath.de</email>
+    <name>Martin Väth</name>
+    <description>maintainer of the updates in the mv overlay</description>
   </maintainer>
+  <maintainer type="project">
+    <email>graphics@gentoo.org</email>
+    <name>Gentoo Graphics Project</name>
+  </maintainer>
+  <upstream>
+    <maintainer>
+      <email>phillip.berndt@googlemail.com</email>
+      <name>Phillip Berndt</name>
+    </maintainer>
+    <remote-id type="github">phillipberndt/pqiv</remote-id>
   </upstream>
   <use>
     <flag name="gtk2">Use gtk:2 instead of gtk:3</flag>
