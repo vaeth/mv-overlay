@@ -13,7 +13,7 @@
 	<upstream>
 		<remote-id type="github">slimm609/checksec.sh</remote-id>
 	</upstream>
-        <use>
-                <flag name="vanilla">Use unpatched version with self-update functionality (not recommended)</flag>
-        </use>
+	<use>
+		<flag name="update">Support self-update functionality outside of the package-manager</flag>
+	</use>
 </pkgmetadata>

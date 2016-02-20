@@ -11,7 +11,8 @@ HOMEPAGE="https://github.com/slimm609/checksec.sh"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="vanilla"
+IUSE="test update"
+DEPEND="test? ( dev-python/demjson dev-libs/libxml2 )"
 
 case ${PV} in
 99999999*)
@@ -21,25 +22,18 @@ case ${PV} in
 	KEYWORDS=""
 	SRC_URI="";;
 *)
-	#RESTRICT="mirror"
+	RESTRICT="mirror"
 	SRC_URI="https://github.com/slimm609/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}"/${MY_PN}-${PV}
+	S=${WORKDIR}/${MY_PN}-${PV}
 esac
-
 
 DOCS=( ChangeLog README.md )
 
 src_prepare() {
-	local zshcomp
-	zshcomp=extras/zsh/_${PN}
-	test -f "${zshcomp}" || zshcomp=${FILESDIR}/_${PN}
-	if use vanilla
-	then	cp "${zshcomp}" _${PN} || die
-	else	sed -e '/--update/d' "${zshcomp}" >_${PN} || die
-		cp ${PN} ${PN}.vanilla
-		sed -i -e '/--update.*)/,/;;/d' ${PN} || die
-		eapply "${FILESDIR}"/path.patch
+	if ! use update
+	then	sed -i -e '/--update/d' extras/zsh/_${PN} || die
+		sed -i -e 's/^\([ 	]*pkg_release=\)false/\1true/' ${PN} || die
 	fi
 	eapply_user
 }
@@ -47,7 +41,12 @@ src_prepare() {
 src_install() {
 	dobin ${PN}
 	insinto /usr/share/zsh/site-functions
-	doins _${PN}
+	doins extras/zsh/_${PN}
 	einstalldocs
-	! test -d extras/man || doman extras/man/*
+	doman extras/man/*
+}
+
+src_test() {
+	cd tests || return 0
+	./test-checksec.sh || die
 }
