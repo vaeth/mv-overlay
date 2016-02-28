@@ -74,7 +74,7 @@ calculate_data() {
 calculate_data \
 	'+Android /_adb _android _emulator' \
 	'+Google _google' \
-	'+Unix _cmake _dzen2 _logger /_nl #_openssl /_ps #_rebar #_setcap _shutdown /_watch _xinput /_zfs' \
+	'+Unix #_cheat  _cmake _dzen2 _logger /_nl #_openssl /_ps #_rebar #_setcap _shutdown /_watch _xinput /_zfs' \
 	'#+backup _tarsnap' \
 	'+database _redis-cli _pgsql_utils' \
 	'+dev _artisan _choc _console _geany /_gradle _phing _manage.py _mvn _pear _play _symfony _thor _vagrant _veewee' \
@@ -96,7 +96,7 @@ calculate_data \
 	'+session _atach _teamocil _tmuxinator _wemux' \
 	'+subtitles _language_codes _periscope _subliminal' \
 	'+virtualization /_boot2docker #_docker-machine _virtualbox _virsh' \
-	'+web _coffee _composer _docpad _drush _heroku #_hledger #_homestead _jonas _jmeter _jmeter-plugins _lunar _middleman #_mix _node _nvm _ralio /_salt _sbt _scala _svm'
+	'+web _coffee _composer #_diana _docpad _drush _heroku #_hledger #_homestead _jonas _jmeter _jmeter-plugins _lunar _middleman #_mix _node _nvm _ralio /_salt _sbt _scala _svm'
 
 src_prepare() {
 	# Remove colliding completions
