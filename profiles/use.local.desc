@@ -59,6 +59,7 @@ app-text/stardict:espeak - Enable text to speech synthesizer using espeak engine
 app-text/stardict:pronounce - Install WyabdcRealPeopleTTS package (it is just many .wav files) to make StarDict pronounce English words
 app-text/stardict:qqwry - Enable QQWry plugin, which provides information (in Chinese language) about geographical positions, owner, etc. for IP addresses
 app-text/stardict:tools - Build and install the extra stardict tools
+games-emulation/xmame:net - Add network support
 games-rpg/m5figur-mv:examples - Compile example character sheet as PDF
 games-rpg/magus:acroread - Depend on acroread (otherwise you are responsible to install/configure a pdf viewer)
 games-rpg/magus:imagemagick - Use convert from graphicsmagick/imagemagick to scale pictures before installation
