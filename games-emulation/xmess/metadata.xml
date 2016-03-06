@@ -33,5 +33,6 @@ There are no plans for the independent development of xmame/xmess.
 </longdescription>
 	<use>
 		<flag name="net">Add network support</flag>
+		<flag name="bundled-libs">Use bundled version of dev-libs/expat</flag>
 	</use>
 </pkgmetadata>
