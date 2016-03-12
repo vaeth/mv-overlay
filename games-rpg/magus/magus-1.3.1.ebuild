@@ -34,10 +34,30 @@ then	SRC_URI="ftp://ftp.berlios.de/pub/midgard/Source/${P}.tar.bz2"
 fi
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+acroread imagemagick konqueror multilib pngcrush postgres seamonkey"
-REQUIRED_USE="amd64? ( acroread? ( multilib ) )"
 
-DEPENDCOMMON="dev-libs/libsigc++:2
+IUSE=""
+REQUIRED_USE=""
+
+add_type_to_iuse() {
+	local t i
+	t=${1}
+	shift
+	REQUIRED_USE+=${REQUIRED_USE:+ }'^^ ('
+	for i
+	do	IUSE+="${IUSE:+ }${t}_${i}"
+		REQUIRED_USE+=" ${t}_${i}"
+	done
+	REQUIRED_USE+=' )'
+}
+
+BROWSERS="elinks firefox konqueror links lynx palemoon seamonkey"
+PDFVIEWERS="acroread apvlv evince mupdf okular qpdfview zathura"
+add_type_to_iuse browser ${BROWSERS}
+IUSE+=" imagemagick"
+add_type_to_iuse pdfviewer ${PDFVIEWERS}
+IUSE+=" pngcrush postgres"
+
+DEPENDCOMMON=">=dev-libs/libsigc++-2.6.2:2
 	dev-cpp/gtkmm:2.4
 	virtual/latex-base
 	postgres? ( dev-db/postgresql:= )
@@ -50,17 +70,13 @@ DEPEND="${DEPENDCOMMON}
 	imagemagick? ( || ( media-gfx/graphicsmagick[imagemagick] media-gfx/imagemagick ) )"
 
 RDEPEND="${DEPENDCOMMON}
-	seamonkey? ( www-client/seamonkey )
-	!seamonkey? (
-		konqueror? ( kde-apps/konqueror )
-		!konqueror? (
-			|| ( www-client/firefox www-client/firefox-bin )
-		)
-	)
-	acroread? (
-		!amd64? ( app-text/acroread )
-		amd64? ( multilib? ( app-text/acroread ) )
-	)
+	browser_elinks? ( www-client/elinks )
+	browser_firefox? ( || ( www-client/firefox www-client/firefox-bin ) )
+	browser_konqueror? ( kde-apps/konqueror )
+	browser_links? ( www-client/links )
+	browser_lynx? ( www-client/lynx )
+	browser_palemoon? ( || ( www-client/palemoon www-client/palemoon-bin ) )
+	browser_seamonkey? ( || ( www-client/seamonkey www-client/seamonkey-bin ) )
 	virtual/libintl"
 
 if ${LIVE_VERSION}
@@ -75,81 +91,50 @@ src_unpack() {
 }
 fi
 
-src_cp() {
-	einfo "cp ${1} ${2}"
-	test -f "${1}" || {
-		ewarn "File ${1} does not exist"
-		return 0
-	}
-	if ! test -e "${2}" || diff -q -- "${1}" "${2}" >/dev/null 2>&1
-	then	ewarn "cp ${1} ${2} appears no longer necessary"
-		return 0
-	fi
-	cp -- "${1}" "${2}"
-}
-
 src_sed() {
-	local short file ori ignore remove grep opt
-	ignore=false
-	remove=false
-	grep=''
-	OPTIND=1
-	while getopts 'fig:' opt
-	do	case ${opt} in
-		f)	remove=:;;
-		i)	ignore=:;;
-		g)	grep=${OPTARG};;
-		esac
-	done
-	shift $(( ${OPTIND} - 1 ))
+	local short file ori
 	short=${1}
 	file="${S}/${short}"
 	ori="${file}.ori"
-	test -e "${ori}" && ${ignore} && ori="${file}.ori-1" && remove=:
-	test -e "${ori}" && die "File ${ori} already exists"
 	if ! test -e "${file}"
 	then	die "Expected file ${short} does not exist"
 	fi
 	einfo "Patching ${short}"
-	[ -n "${grep}" ] && grep -q -- "${grep}" "${file}" \
-		&& ewarn "Redundant patching of ${short}"
-	mv -- "${file}" "${ori}"
+	mv -- "${file}" "${ori}" || die
 	shift
-	sed "${@}" -- "${ori}" >"${file}"
-	! ${ignore} && cmp -s -- "${ori}" "${file}" \
-			&& ewarn "Unneeded patching of ${short}"
-	${remove} && rm -- "${ori}"
-	return 0
+	sed "${@}" -- "${ori}" >"${file}" || die
+	cmp -s -- "${ori}" "${file}" && ewarn "Unneeded patching of ${short}"
+	rm -- "${ori}" || die
+	return
 }
 
-set_browser() {
-	local i browser
-	browser=
-	for i in seamonkey konqueror
-	do	use "${i}" || continue
-		if [ -n "${browser}" ]
-		then	ewarn "USE=${i} is overridden by USE=${browser}"
-		else	browser=${i}
-		fi
+patch_defaults() {
+	local i browser pdfviewer
+	for i in ${BROWSERS}
+	do	use "browser_${i}" && browser=${i}
+	done
+	for i in ${PDFVIEWERS}
+	do	use "pdfviewer_${i}" && pdfviewer=${i}
 	done
 	einfo
-	if [ -z "${browser}" ]
-	then	browser="firefox"
-		einfo "Patching for default browser ${browser}:"
-	elif [ "${browser}" = "mozilla" ]
-	then	einfo "Keeping upstream's default browser (mozilla)"
-			einfo
-			return
-	else	einfo "USE=${browser} overrides default browser firefox:"
-	fi
+	einfo "Patching for browser ${browser}, default pdfviewer ${pdfviewer}:"
 	einfo
 	src_sed midgard/docs/BMod_Op.html -e "s#mozilla#${browser}#"
 	src_sed midgard/libmagus/Magus_Optionen.cc -e "s#mozilla#${browser}#"
-	src_sed midgard/midgard.glade -e "s#mozilla#${browser}#"
-	src_sed midgard/src/table_optionen_glade.cc -e "s#mozilla#${browser}#"
+	src_sed midgard/midgard.glade \
+		-e "s#mozilla#${browser}#" \
+		-e "s#acroread#${pdfviewer}#"
+	src_sed midgard/src/table_optionen_glade.cc \
+		-e "s#mozilla#${browser}#" \
+		-e "s#acroread#${pdfviewer}#"
+	[ "${pdfviewer}" = "acroread" ] || {
+		src_sed midgard/docs/Bedienung_Option.html \
+			-e "s#AcrobatReader (acroread)#${pdfviewer}#"
+	}
 }
 
 src_patch() {
+	local i
 	einfo
 	einfo "Various patches:"
 	einfo
@@ -159,11 +144,33 @@ src_patch() {
 		-e 's/drache.png/Money-gray.png saebel.png drache.png/'
 	src_sed ManuProC_Widgets/configure.in \
 		-e 's/^[[:space:]]*AM_GNU_GETTEXT_VERSION/AM_GNU_GETTEXT_VERSION/'
-	src_sed -g 'AM_GNU_GETTEXT_VERSION' ManuProC_Base/configure.in \
+	grep "AM_GNU_GETTEXT_VERSION" ManuProC_Base/configure.in && \
+		ewarn "Unneeded patching of ManuProC_Base/configure.in"
+	src_sed ManuProC_Base/configure.in \
 		-e '/AC_SUBST(GETTEXT_PACKAGE)/iAM_GNU_GETTEXT_VERSION([0.17])'
-#	src_cp ManuProC_Base/macros/petig.m4 ManuProC_Widgets/macros/petig.m4
 	src_sed midgard/src/table_lernschema.cc \
 		-e '/case .*:$/{n;s/^[[:space:]]*\}/break;}/}'
+	for i in \
+		midgard/src/xml_fileselection.hh \
+		midgard/libmagus/VAbenteurer.hh \
+		ManuProC_Widgets/src/SimpleTreeModel.h \
+		ManuProC_Widgets/src/ModelWidgetConnection.h \
+		ManuProC_Widgets/src/TooltipView.h
+	do	src_sed "${i}" -e 's!^\(#include <sigc++/object.h>\)!//\1!'
+	done
+	for i in \
+		midgard/libmagus/VAbenteurer.cc \
+		ManuProC_Base/src/RadioModel.h \
+		ManuProC_Base/src/SignalPlex.h \
+		ManuProC_Base/examples/mvc.cc
+	do	src_sed "${i}" -e 's!^\(#include <sigc++/object_slot.h>\)!//\1!'
+	done
+	for i in \
+		midgard/libmagus/KiDo.hh \
+		midgard/libmagus/Zauber.hh \
+		midgard/libmagus/Zauberwerk.hh
+	do	src_sed "${i}" -e '/class .*[^;]$/{n;s/^{$/{ public:/}'
+	done
 	find . -name configure.in -exec sh -c 'for i
 	do	mv -- "${i}" "${i%in}ac"
 	done' sh '{}' +
@@ -184,7 +191,7 @@ src_prepare() {
 	local i
 	src_patch
 	eapply_user
-	set_browser
+	patch_defaults
 	einfo
 	einfo "Calling eautoreconf for all subprojects:"
 	einfo
@@ -233,6 +240,7 @@ src_configure() {
 		-fwhole-program \
 		-fuse-linker-plugin \
 		-fvisibility-inlines-hidden
+	append-cxxflags -std=gnu++11 -fpermissive
 	my_conf "ManuProC_Base"
 	my_conf "GtkmmAddons"
 	my_confmake

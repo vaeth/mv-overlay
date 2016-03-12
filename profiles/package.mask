@@ -1,3 +1,8 @@
+# Martin Väth <martin@mvath.de> (12 Mar 2016)
+# No version of magus compiles with current libsigc++ and gcc:5
+# It needs severe upstream patches, but upstream is long dead.
+games-rpg/magus
+
 # Martin Väth <martin@mvath.de> (12 Jan 2016)
 # This version is masked, since most users probably cannot obtain the tarball.
 # Upstream is dead.

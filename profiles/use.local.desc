@@ -64,9 +64,21 @@ games-emulation/xmame:net - Add network support
 games-emulation/xmess:bundled-libs - Use bundled version of dev-libs/expat
 games-emulation/xmess:net - Add network support
 games-rpg/m5figur-mv:examples - Compile example character sheet as PDF
-games-rpg/magus:acroread - Depend on acroread (otherwise you are responsible to install/configure a pdf viewer)
+games-rpg/magus:browser_elinks - Use elinks as browser
+games-rpg/magus:browser_firefox - Use firefox as browser
+games-rpg/magus:browser_konqueror - Use konqueror as browser
+games-rpg/magus:browser_links - Use links as browser
+games-rpg/magus:browser_lynx - Use lynx as browser
+games-rpg/magus:browser_palemoon - Use palemoon as browser
+games-rpg/magus:browser_seamonkey - Use seamonkey as browser
 games-rpg/magus:imagemagick - Use convert from graphicsmagick/imagemagick to scale pictures before installation
-games-rpg/magus:konqueror - Depend on konqueror browser instead of firefox
+games-rpg/magus:pdfviewer_acroread - Use acroread as default pdfviewer
+games-rpg/magus:pdfviewer_apvlv - Use apvlv as default pdfviewer
+games-rpg/magus:pdfviewer_evince - Use evince as default pdfviewer
+games-rpg/magus:pdfviewer_mupdf - Use mupdf as default pdfviewer
+games-rpg/magus:pdfviewer_okular - Use okular as default pdfviewer
+games-rpg/magus:pdfviewer_qpdfview - Use qpdfview as default pdfviewer
+games-rpg/magus:pdfviewer_zathura - Use zathura as default pdfviewer
 games-rpg/magus:pngcrush - Use pngcrush for opimizing png before installation
 games-rpg/magus:postgres - Use postgresql instead of sqlite
 games-rpg/magus:seamonkey - Depend on seamonkey browser instead of firefox

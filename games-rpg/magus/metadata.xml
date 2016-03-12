@@ -21,11 +21,23 @@
 		<bugs-to>http://midgard.berlios.de/pages/bugform.html</bugs-to>
 	</upstream>
 	<use>
-		<flag name="acroread">Depend on acroread (otherwise you are responsible to install/configure a pdf viewer)</flag>
-		<flag name="konqueror">Depend on konqueror browser instead of firefox</flag>
+		<flag name="browser_elinks">Use elinks as browser</flag>
+		<flag name="browser_firefox">Use firefox as browser</flag>
+		<flag name="browser_konqueror">Use konqueror as browser</flag>
+		<flag name="browser_links">Use links as browser</flag>
+		<flag name="browser_lynx">Use lynx as browser</flag>
+		<flag name="browser_palemoon">Use palemoon as browser</flag>
+		<flag name="browser_seamonkey">Use seamonkey as browser</flag>
+		<flag name="imagemagick">Use convert from graphicsmagick/imagemagick to scale pictures before installation</flag>
+		<flag name="pdfviewer_acroread">Use acroread as default pdfviewer</flag>
+		<flag name="pdfviewer_apvlv">Use apvlv as default pdfviewer</flag>
+		<flag name="pdfviewer_evince">Use evince as default pdfviewer</flag>
+		<flag name="pdfviewer_mupdf">Use mupdf as default pdfviewer</flag>
+		<flag name="pdfviewer_okular">Use okular as default pdfviewer</flag>
+		<flag name="pdfviewer_qpdfview">Use qpdfview as default pdfviewer</flag>
+		<flag name="pdfviewer_zathura">Use zathura as default pdfviewer</flag>
+		<flag name="pngcrush">Use pngcrush for opimizing png before installation</flag>
 		<flag name="postgres">Use postgresql instead of sqlite</flag>
 		<flag name="seamonkey">Depend on seamonkey browser instead of firefox</flag>
-		<flag name="pngcrush">Use pngcrush for opimizing png before installation</flag>
-		<flag name="imagemagick">Use convert from graphicsmagick/imagemagick to scale pictures before installation</flag>
 	</use>
 </pkgmetadata>
