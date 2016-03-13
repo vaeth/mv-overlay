@@ -6,8 +6,8 @@ EAPI=6
 RESTRICT="mirror"
 
 DESCRIPTION="concatenate postscript files. From new PostScript Utilities"
-HOMEPAGE="http://homepage3.nifty.com/tsato/tools/psjoin.html"
-SRC_URI="http://homepage3.nifty.com/tsato/tools/${PN} -> ${P}"
+HOMEPAGE="http://t-sato.in.coocan.jp/tools/psjoin.html"
+SRC_URI="http://t-sato.in.coocan.jp/tools/${PN} -> ${P}.pl"
 
 LICENSE="psutils"
 SLOT="0"
@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 
 src_unpack() {
 	mkdir --  "${S}"
-	cp -p -- "${DISTDIR}/${P}" "${S}/${PN}"
+	cp -p -- "${DISTDIR}/${P}.pl" "${S}/${PN}"
 }
 
 src_install() {
