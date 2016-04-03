@@ -1,6 +1,6 @@
 [Unit]
 Description=No-IP Dynamic DNS Update Client
-Require=network-online.target
+Requires=network-online.target
 After=network-online.target
 
 [Service]
@@ -9,4 +9,3 @@ ExecStart=/usr/sbin/noip2 -c /etc/no-ip2.conf
 
 [Install]
 WantedBy=multi-user.target
- 
