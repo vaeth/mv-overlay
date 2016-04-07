@@ -105,6 +105,7 @@ BOTH_DEPEND="sys-apps/file
 DEPEND="${BOTH_DEPEND}"
 RDEPEND="${BOTH_DEPEND}
 	sys-apps/less
+	!<sys-apps/less-483-r1
 	!sys-apps/lesspipe"
 
 ModifyStart() {
