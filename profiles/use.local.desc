@@ -117,7 +117,6 @@ games-rpg/magus:pdfviewer_qpdfview - Use qpdfview as default pdfviewer
 games-rpg/magus:pdfviewer_zathura - Use zathura as default pdfviewer
 games-rpg/magus:pngcrush - Use pngcrush for opimizing png before installation
 games-rpg/magus:postgres - Use postgresql instead of sqlite
-games-rpg/magus:seamonkey - Depend on seamonkey browser instead of firefox
 media-gfx/pqiv:gtk2 - Use gtk:2 instead of gtk:3
 media-tv/sundtek-tv:ld-preload-env - Install LD_PRELOAD in /etc/env.d/50sundtek-tv
 media-tv/sundtek-tv:ld-preload-file - Install /etc/ld.so.preload

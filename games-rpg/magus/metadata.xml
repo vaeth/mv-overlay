@@ -38,6 +38,5 @@
 		<flag name="pdfviewer_zathura">Use zathura as default pdfviewer</flag>
 		<flag name="pngcrush">Use pngcrush for opimizing png before installation</flag>
 		<flag name="postgres">Use postgresql instead of sqlite</flag>
-		<flag name="seamonkey">Depend on seamonkey browser instead of firefox</flag>
 	</use>
 </pkgmetadata>
