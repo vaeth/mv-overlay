@@ -77,8 +77,6 @@ src_install() {
 		>70less || die
 	doenvd 70less
 
-	dodoc "${FILESDIR}"/README.Gentoo
-
 	if use less-select
 	then	newdoc "${SELECTDIR}"/README README.less-select
 		dobin "${SELECTDIR}/bin/"*
