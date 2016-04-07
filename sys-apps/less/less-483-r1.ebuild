@@ -4,8 +4,6 @@
 
 EAPI=6
 
-CODE2COLOR_PV="0.2"
-CODE2COLOR_P="code2color-${CODE2COLOR_PV}"
 DESCRIPTION="Excellent text file viewer, optionally with additional selection feature"
 PATCHN="less-select"
 PATCHV="2.6"
@@ -15,8 +13,7 @@ PATCHBALL="${PATCHRUMP}.tar.gz"
 SELECTDIR="${WORKDIR}/${PATCHRUMP}"
 HOMEPAGE="http://www.greenwoodsoftware.com/less/ https://github.com/vaeth/${PATCHN}"
 SRC_URI="http://www.greenwoodsoftware.com/less/${P}.tar.gz
-	less-select? ( https://github.com/vaeth/${PATCHN}/archive/v${PATCHV}.tar.gz -> ${PATCHBALL} )
-	http://www-zeuthen.desy.de/~friebel/unix/less/code2color -> ${CODE2COLOR_P}"
+	less-select? ( https://github.com/vaeth/${PATCHN}/archive/v${PATCHV}.tar.gz -> ${PATCHBALL} )"
 
 LICENSE="|| ( GPL-3 BSD-2 )"
 SLOT="0"
@@ -29,19 +26,11 @@ DEPEND=">=app-misc/editor-wrapper-3
 RDEPEND="${DEPEND}
 	less-select? ( dev-lang/perl )"
 #		|| ( >=dev-lang/perl-5.10.1 >=virtual/perl-File-Temp-0.19 )
-PDEPEND="lesspipe? ( sys-apps/lesspipe )"
+PDEPEND="lesspipe? ( app-text/lesspipe )"
 
 pkg_setup() {
 	if use source && ! use less-select
 	then	ewarn 'ignoring USE=source without USE=less-select'
-	fi
-}
-
-src_unpack() {
-	unpack ${P}.tar.gz
-	cp "${DISTDIR}/${CODE2COLOR_P}" "${S}"/code2color || die
-	if use less-select
-	then	unpack ${PATCHBALL}
 	fi
 }
 
@@ -52,7 +41,6 @@ src_prepare() {
 		sed -i -e 's|\([^a-zA-Z]\)/etc/less-select-key.bin|\1'"${EPREFIX}"'/etc/less/select-key.bin|g' \
 			"${SELECTDIR}/bin/less-select" || die
 	fi
-	eapply -p0 "${FILESDIR}/${CODE2COLOR_P}.patch"
 	chmod a+x configure || die
 	eapply_user
 }
@@ -74,19 +62,19 @@ src_compile() {
 }
 
 src_install() {
-	local a
+	local a b
 	default
 
-	if ! use lesspipe
-	then	dobin code2color
-		newbin "${FILESDIR}"/lesspipe.sh lesspipe
-		dosym lesspipe /usr/bin/lesspipe.sh
-	fi
+	newbin "${FILESDIR}"/lesspipe.sh lesspipe
+
 	if use original-gentoo
 	then	a="-R -M --shift 5"
 	else	a="-sFRiMX --shift 5"
 	fi
-	printf '%s\n' 'LESSOPEN="|lesspipe.sh %s"' "LESS=\"${a}\"" >70less
+	printf '%s\n' \
+		'LESSOPEN="|lesspipe'$(! use lesspipe || echo .sh)'%s"' \
+		"LESS=\"${a}\"" \
+		>70less || die
 	doenvd 70less
 
 	dodoc "${FILESDIR}"/README.Gentoo
@@ -101,9 +89,4 @@ src_install() {
 			newins "${SELECTDIR}/keys/less-normal-key.src" normal-key.src
 		fi
 	fi
-}
-
-pkg_postinst() {
-	use lesspipe || \
-	elog "lesspipe offers colorization options.  Run 'lesspipe -h' for info."
 }

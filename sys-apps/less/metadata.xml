@@ -21,7 +21,7 @@
 	</upstream>
 	<use>
 		<flag name="original-gentoo">Use the gentoo default for the LESS variable.</flag>
-		<flag name="lesspipe">Use sys-apps/lesspipe instead of Gentoo's default lesspipe.sh.</flag>
+		<flag name="lesspipe">Default to lesspipe.sh from app-text/lesspipe instead of the gentoo specific lesspipe.</flag>
 		<flag name="less-select">Add the less-select feature (additional options and a binary helper).</flag>
 		<flag name="source">Install sources for keybindings (only useful with less-select).</flag>
 	</use>

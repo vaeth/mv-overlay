@@ -6,8 +6,8 @@ EAPI=6
 RESTRICT="mirror"
 
 DESCRIPTION="Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon"
-HOMEPAGE="http://www-zeuthen.desy.de/~friebel/unix/lesspipe.html"
-SRC_URI="http://www-zeuthen.desy.de/~friebel/unix/less/${P}.tar.gz"
+HOMEPAGE="https://github.com/wofr06/lesspipe"
+SRC_URI="https://www-zeuthen.desy.de/~friebel/unix/less/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -33,11 +33,10 @@ REQUIRED_USE="!rpm2targz? ( rpm? ( cpio ) )
 	sparc? ( !catdoc !fastjar !id3v2 !libplist !mp3info2 !netcdf
 		!ooffice !pstotext )"
 
-RDEPEND="sys-apps/file
+BOTH_DEPEND="sys-apps/file
 	app-arch/xz-utils
 	app-arch/bzip2
 	dev-lang/perl
-	sys-apps/less[lesspipe]
 	unzip? ( app-arch/unzip )
 	fastjar? ( !amd64-fbsd? ( !alpha? ( !arm? ( !hppa? ( !ia64? ( !ppc64?
 		( !sparc? ( app-arch/fastjar ) ) ) ) ) ) ) )
@@ -103,7 +102,10 @@ RDEPEND="sys-apps/file
 	dpkg? ( !amd64-fbsd? ( app-arch/dpkg ) )
 	hdf5? ( !hppa? ( sci-libs/hdf5 ) )
 	netcdf? ( !alpha? ( !hppa? ( !ia64? ( !sparc?  ( sci-libs/netcdf ) ) ) ) )"
-DEPEND="${RDEPEND}"
+DEPEND="${BOTH_DEPEND}"
+RDEPEND="${BOTH_DEPEND}
+	sys-apps/less
+	!sys-apps/lesspipe"
 
 ModifyStart() {
 	sedline=
@@ -200,7 +202,11 @@ src_prepare() {
 }
 
 src_configure() {
-	./configure --fixed --prefix=/usr
+	./configure --fixed --prefix=/usr || die
+}
+
+src_compile() {
+	:
 }
 
 src_install() {

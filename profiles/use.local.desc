@@ -55,6 +55,42 @@ app-shells/zsh-completions:completion_session - Install zsh completion for sessi
 app-shells/zsh-completions:completion_subtitles - Install zsh completion for subtitle tools
 app-shells/zsh-completions:completion_virtualization - Install zsh completion for virtualization programs
 app-shells/zsh-completions:completion_web - Install zsh completion for web-related tools incl. java/javascript/scala
+app-text/lesspipe:antiword - Support doc files with app-text/antiword; this overrides catdoc
+app-text/lesspipe:cabextract - Support cabextract files
+app-text/lesspipe:catdoc - Support doc files with app-text/catdoc; unused if antiword is set
+app-text/lesspipe:cpio - Support cpio files
+app-text/lesspipe:djvu - Support djvu files
+app-text/lesspipe:dpkg - Support Debian package files
+app-text/lesspipe:dvi2tty - Support dvi files with dev-tex/dvi2tty
+app-text/lesspipe:elinks - Support html files with www-client/elinks; ignored if html2text, links, or lynx is set; this overrides w3m
+app-text/lesspipe:fastjar - Support jar files with app-arch/fastjar
+app-text/lesspipe:ghostscript - Support ps files with app-text/ghostscript-gpl; ignored if pstotext is set
+app-text/lesspipe:gpg - Support gpg files
+app-text/lesspipe:groff - Support man and nroff files
+app-text/lesspipe:hdf5 - Support h5dump from sci-libs/hdf5
+app-text/lesspipe:html2text - Support html files with app-text/html2text; this overrides links, lynx, elinks, w3m
+app-text/lesspipe:id3v2 - Support mp3 files with media-sound/id3v2; this overrides mp3info2, mp3info
+app-text/lesspipe:image - Support image/jpg files
+app-text/lesspipe:isoinfo - Support CD/DVD-iso files
+app-text/lesspipe:libplist - Support Apple Property List files
+app-text/lesspipe:links - Support html files with www-client/links; ignored if html2text is set; this overrides lynx, elinks, w3m
+app-text/lesspipe:lynx - Support html files with www-client/lynx; ignored if html2text or links is set; this overrides elinks, w3m
+app-text/lesspipe:lzip - Support lzip files
+app-text/lesspipe:mp3info - Support mp3 files with media-sound/mp3info; unused if id3v2 or mp3info2 is set
+app-text/lesspipe:mp3info2 - Support mp3 files with dev-perl/MP3-Tag (mp3info2); ignored if id3v2 is set; this overrides mp3info
+app-text/lesspipe:netcdf - Support ncdump from sci-libs/netcdf
+app-text/lesspipe:ooffice - Support OpenOffice files
+app-text/lesspipe:p7zip - Support p7zip files
+app-text/lesspipe:pdf - Support pdf files
+app-text/lesspipe:pstotext - Support ps files with app-text/pstotext; this overrides ghostscript
+app-text/lesspipe:rar - Support rar files with app-arch/rar; unused if unrar is set
+app-text/lesspipe:rpm - Support rpm files with app-arch/rpm or rpm5; ignored if rpm2targz is set
+app-text/lesspipe:rpm2targz - Support rpm files with app-arch/rpm2targz; this overrides rpm
+app-text/lesspipe:unrar - Support rar files with app-arch/unrar; this overrides rar
+app-text/lesspipe:unrtf - Support rtf files with app-text/unrtf
+app-text/lesspipe:unzip - Support zip files with app-arch/unzip
+app-text/lesspipe:w3m - Support html files with www-client/w3m; ignored if html2text, links, lynx, or elinks is set
+app-text/lesspipe:xlhtml - Support Excel and Powerpoint files with app-arch/xlhtml
 app-text/stardict:espeak - Enable text to speech synthesizer using espeak engine
 app-text/stardict:pronounce - Install WyabdcRealPeopleTTS package (it is just many .wav files) to make StarDict pronounce English words
 app-text/stardict:qqwry - Enable QQWry plugin, which provides information (in Chinese language) about geographical positions, owner, etc. for IP addresses
@@ -89,45 +125,9 @@ media-tv/sundtek-tv:pax_kernel - Mark package which is necessary if you use a PA
 net-dns/noip-updater:ezipupd - Use user/group ezipupd instead of nobody: Useful if you restrict outgoing network traffic for user nobody
 net-misc/sshstart:keychain - Pull in keychain as dependency. Not required, but recommended for smoother operation.
 sys-apps/less:less-select - Add the less-select feature (additional options and a binary helper).
-sys-apps/less:lesspipe - Use sys-apps/lesspipe instead of Gentoo's default lesspipe.sh.
+sys-apps/less:lesspipe - Default to lesspipe.sh from app-text/lesspipe instead of the gentoo specific lesspipe.
 sys-apps/less:original-gentoo - Use the gentoo default for the LESS variable.
 sys-apps/less:source - Install sources for keybindings (only useful with less-select).
-sys-apps/lesspipe:antiword - Support doc files with app-text/antiword; this overrides catdoc
-sys-apps/lesspipe:cabextract - Support cabextract files
-sys-apps/lesspipe:catdoc - Support doc files with app-text/catdoc; unused if antiword is set
-sys-apps/lesspipe:cpio - Support cpio files
-sys-apps/lesspipe:djvu - Support djvu files
-sys-apps/lesspipe:dpkg - Support Debian package files
-sys-apps/lesspipe:dvi2tty - Support dvi files with dev-tex/dvi2tty
-sys-apps/lesspipe:elinks - Support html files with www-client/elinks; ignored if html2text, links, or lynx is set; this overrides w3m
-sys-apps/lesspipe:fastjar - Support jar files with app-arch/fastjar
-sys-apps/lesspipe:ghostscript - Support ps files with app-text/ghostscript-gpl; ignored if pstotext is set
-sys-apps/lesspipe:gpg - Support gpg files
-sys-apps/lesspipe:groff - Support man and nroff files
-sys-apps/lesspipe:hdf5 - Support h5dump from sci-libs/hdf5
-sys-apps/lesspipe:html2text - Support html files with app-text/html2text; this overrides links, lynx, elinks, w3m
-sys-apps/lesspipe:id3v2 - Support mp3 files with media-sound/id3v2; this overrides mp3info2, mp3info
-sys-apps/lesspipe:image - Support image/jpg files
-sys-apps/lesspipe:isoinfo - Support CD/DVD-iso files
-sys-apps/lesspipe:libplist - Support Apple Property List files
-sys-apps/lesspipe:links - Support html files with www-client/links; ignored if html2text is set; this overrides lynx, elinks, w3m
-sys-apps/lesspipe:lynx - Support html files with www-client/lynx; ignored if html2text or links is set; this overrides elinks, w3m
-sys-apps/lesspipe:lzip - Support lzip files
-sys-apps/lesspipe:mp3info - Support mp3 files with media-sound/mp3info; unused if id3v2 or mp3info2 is set
-sys-apps/lesspipe:mp3info2 - Support mp3 files with dev-perl/MP3-Tag (mp3info2); ignored if id3v2 is set; this overrides mp3info
-sys-apps/lesspipe:netcdf - Support ncdump from sci-libs/netcdf
-sys-apps/lesspipe:ooffice - Support OpenOffice files
-sys-apps/lesspipe:p7zip - Support p7zip files
-sys-apps/lesspipe:pdf - Support pdf files
-sys-apps/lesspipe:pstotext - Support ps files with app-text/pstotext; this overrides ghostscript
-sys-apps/lesspipe:rar - Support rar files with app-arch/rar; unused if unrar is set
-sys-apps/lesspipe:rpm - Support rpm files with app-arch/rpm or rpm5; ignored if rpm2targz is set
-sys-apps/lesspipe:rpm2targz - Support rpm files with app-arch/rpm2targz; this overrides rpm
-sys-apps/lesspipe:unrar - Support rar files with app-arch/unrar; this overrides rar
-sys-apps/lesspipe:unrtf - Support rtf files with app-text/unrtf
-sys-apps/lesspipe:unzip - Support zip files with app-arch/unzip
-sys-apps/lesspipe:w3m - Support html files with www-client/w3m; ignored if html2text, links, lynx, or elinks is set
-sys-apps/lesspipe:xlhtml - Support Excel and Powerpoint files with app-arch/xlhtml
 sys-fs/aufs:all-patches - Apply all patches - also those which do not start with aufs
 sys-fs/aufs:kernel-patch - Apply the aufs kernel patches instead of just copying them
 sys-fs/squash_dir:aufs - Prefer aufs
