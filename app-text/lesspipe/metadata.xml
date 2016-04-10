@@ -4,7 +4,14 @@
 	<maintainer type="person">
 		<email>martin@mvath.de</email>
 		<name>Martin Väth</name>
+		<description>maintainer of the updates in the mv overlay</description>
 	</maintainer>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">wofr06/lesspipe</remote-id>
+	</upstream>
 	<use>
 		<flag name="antiword">Support doc files with app-text/antiword; this overrides catdoc</flag>
 		<flag name="cabextract">Support cabextract files</flag>
