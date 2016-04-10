@@ -131,7 +131,7 @@ Modify() {
 
 ModifyEnd() {
 	sedline=${sedline}'}'
-	sed -i -e "${sedline}" "${S}/configure"
+	sed -i -e "${sedline}" "${S}/configure" || die
 }
 
 ModifyY() {
@@ -207,7 +207,7 @@ src_prepare() {
 	use hdf5; ModifyX 'h5dump'
 	use netcdf; ModifyX 'ncdump'
 	ModifyEnd
-	printf '%s\n' 'LESS_ADVANCED_PREPROCESSOR=1' >70lesspipe
+	printf '%s\n' 'LESS_ADVANCED_PREPROCESSOR=1' >70lesspipe || die
 	eapply_user
 }
 
