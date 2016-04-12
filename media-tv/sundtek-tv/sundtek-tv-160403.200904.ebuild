@@ -96,8 +96,9 @@ src_prepare() {
 		1/doc/libmedia.pc >"${mypkgconfig}/libmedia.pc" || die
 	sed -i -e "s#/opt#${EPREFIX}/${mybinprefix}#" \
 		etc/udev/rules.d/*.rules 1/doc/*.service sundtek.initd || die
-	sed -i -e "s/^\([^#]\)/#\1/" \
-		etc/udev/rules.d/80-mediasrv-eeti.rules || die
+	! test -r etc/udev/rules.d/80-mediasrv-eeti.rules ||
+		sed -i -e "s/^\([^#]\)/#\1/" etc/udev/rules.d/80-mediasrv-eeti.rules \
+		|| die
 	mv etc/udev/rules.d/80-mediasrv.rules etc/hal . || die
 	mv etc/udev "${myudev}" || die
 	mv 1/doc/hardware.conf 1/doc/sundtek.conf "${mylirc}" || die
@@ -106,6 +107,7 @@ src_prepare() {
 	mkdir "${S}/doc" && mkdir "${S}/doc/bin" || die
 	mv 1/doc/README 1/doc/*.conf "${S}/doc" || die
 	mv 1/doc/*.cgi "${S}/doc/bin" || die
+	rm etc/ld.so.conf.d/optlib.conf && rmdir etc/ld.so.conf.d || die
 	rmdir 1/doc || die "${S}/1/doc contains files not known to the ebuild"
 	rmdir 1 || die "${S}/1 contains files not known to the ebuild"
 	my_movlibdir "${mylibdir}"
