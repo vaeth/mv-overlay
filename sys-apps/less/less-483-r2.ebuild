@@ -72,7 +72,7 @@ src_install() {
 	else	a="-sFRiMX --shift 5"
 	fi
 	printf '%s\n' \
-		'LESSOPEN="|lesspipe'$(! use lesspipe || echo .sh)'%s"' \
+		'LESSOPEN="|lesspipe'$(! use lesspipe || echo .sh)' %s"' \
 		"LESS=\"${a}\"" \
 		>70less || die
 	doenvd 70less
