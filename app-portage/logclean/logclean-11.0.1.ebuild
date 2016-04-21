@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-lang/perl
+	dev-perl/String-ShellQuote
 	|| ( >=dev-lang/perl-5.14 virtual/perl-Term-ANSIColor )
 	|| ( >=dev-lang/perl-5.6.1 >=virtual/perl-Getopt-Long-2.24 )"
 
