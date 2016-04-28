@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=dev-lang/perl-5.12"
+RDEPEND=">=dev-lang/perl-5.22"
+#	>=dev-lang/perl-5.12
 #	|| ( >=dev-lang/perl-5.9.4 >=virtual/perl-File-Spec-3.0 )
 #	|| ( >=dev-lang/perl-5.6.1 >=virtual/perl-Getopt-Long-2.24 )
 #	|| ( >=dev-lang/perl-5.7.3 virtual/perl-Digest-MD5 )
@@ -30,4 +31,5 @@ src_install() {
 
 pkg_postinst() {
 	optfeature "support to set timestamps of symlinks" 'dev-perl/File-lchown'
+	optfeature "improved output of patchdirs-ls" 'dev-perl/String-ShellQuote'
 }
