@@ -17,11 +17,11 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE=""
 
 RDEPEND="!<sys-apps/openrc-0.13
-	>=app-shells/runtitle-2.3
-	>=dev-lang/perl-5.12
+	>=dev-lang/perl-5.22
 	|| ( dev-perl/File-Which sys-apps/which )
 	sys-fs/squashfs-tools
 	!<sys-fs/unionfs-fuse-0.25"
+#	>=dev-lang/perl-5.12
 #	|| ( >=dev-lang/perl-5.10.1 >=virtual/perl-File-Path-2.6.5 )
 #	|| ( >=dev-lang/perl-5.4.5 virtual/perl-File-Spec )
 #	|| ( >=dev-lang/perl-5.10.1 >=virtual/perl-File-Temp-0.19 )
@@ -63,7 +63,7 @@ src_install() {
 pkg_postinst() {
 	optfeature "status bar support" 'app-shells/runtitle'
 	optfeature "improved compatibility and security" 'dev-perl/File-Which'
-	optfeature "colored output" '>=dev-lang/perl-5.14' 'virtual/perl-Term-ANSIColor'
+	optfeature "improved output" 'dev-perl/String-ShellQuote'
 	case " ${REPLACING_VERSIONS}" in
 	' '[0-7].*|' '8.[0-6]*|' '8.7.[0-4]*)
 		FORCE_PRINT_ELOG="true";;
