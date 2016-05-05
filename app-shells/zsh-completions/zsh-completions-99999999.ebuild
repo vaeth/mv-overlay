@@ -74,25 +74,25 @@ calculate_data() {
 calculate_data \
 	'+Android /_adb _android _emulator' \
 	'+Google _google' \
-	'+Unix #_cheat  _cmake _dzen2 _logger /_nl #_openssl #_pixz /_ps #_rebar #_setcap _shutdown /_watch _xinput /_zfs' \
+	'+Unix #_chattr #_cheat  _cmake _dzen2 _logger #_lsattr /_nl #_openssl #_pixz /_ps #_rebar #_setcap _shutdown /_watch _xinput /_zfs' \
 	'#+backup _tarsnap' \
 	'+database _redis-cli _pgsql_utils' \
 	'+dev _artisan _choc _console _geany /_gradle _phing _manage.py _mvn _pear _play _symfony _thor _vagrant _veewee' \
-	'+disk _sdd _smartmontools _srm' \
+	'+disk #_scrub _sdd _smartmontools _srm' \
 	'+distribute _celery /_envoy _fab #_fleetctl _glances _kitchen _knife _mina _mussh' \
 	'+git _git-flow _git-pulls' \
 	'#+go _go' \
 	'#+gtk _gtk-launch' \
 	'+hardware _optirun _perf _primus' \
 	'+haskell /_cabal _ghc #_stack' \
-	'+managers #_ansible #_ansible-galaxy #_ansible-playbook #_ansible-vault _bower /_brew #_cask _debuild _lein _multirust _pactree _pkcon _port #_supervisorctl _yaourt' \
+	'+managers #_ansible #_ansible-galaxy #_ansible-playbook #_ansible-vault _bower /_brew #_cask _debuild _lein #_multirust _pactree _pkcon _port #_supervisorctl _yaourt' \
 	'+multimedia _id3 _id3v2 _showoff' \
 	'+net _dget _dhcpcd _httpie _iw /_mosh _rfkill _socat _ssh-copy-id #_ufw _vpnc _vnstat' \
 	'+nfs _exportfs' \
 	'+perl _cpanm' \
 	'+python /_bpython _pygmentize _setup.py' \
 	'+ruby _bundle _cap _ditz _gas _gem _gist _github _git-wtf _jekyll _lunchy _rails _rspec _rubocop _rvm' \
-	'+search _ack _ag _jq' \
+	'+search _ack _ag _jq #_jrnl' \
 	'+session _atach _teamocil _tmuxinator _wemux' \
 	'+subtitles _language_codes _periscope _subliminal' \
 	'+virtualization /_boot2docker #_docker-machine #_rkt _virtualbox _virsh' \
