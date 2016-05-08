@@ -4,6 +4,7 @@
 
 EAPI=6
 RESTRICT="mirror"
+inherit eutils
 
 DESCRIPTION="mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab"
 HOMEPAGE="https://github.com/vaeth/emount/"
@@ -37,4 +38,8 @@ src_install() {
 	done
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
+}
+
+pkg_postinst() {
+	optfeature "improved output" 'dev-perl/String-ShellQuote'
 }
