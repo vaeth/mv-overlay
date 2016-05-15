@@ -21,6 +21,13 @@ RDEPEND=">=dev-lang/perl-5.12"
 #	|| ( >=dev-lang/perl-5.7.3 virtual/perl-Digest-MD5 )
 #	|| ( >=dev-lang/perl-5.7.3 virtual/perl-Time-HiRes )
 
+src_prepare() {
+	use prefix || sed -i \
+		-e '1s"^#!/usr/bin/env perl$"#!'"${EPREFIX}/usr/bin/perl"'"' \
+		-- bin/* || die
+	eapply_user
+}
+
 src_install() {
 	dobin bin/*
 	dodoc README
