@@ -20,6 +20,13 @@ RDEPEND="!<dev-util/mv_perl-3
 #	|| ( >=dev-lang/perl-5.9.4 >=virtual/perl-File-Spec-3.0 )
 #	|| ( >=dev-lang/perl-5.6.1 >=virtual/perl-Getopt-Long-2.24 )
 
+src_prepare() {
+	use prefix || sed -i \
+		-e '1s"^#!/usr/bin/env perl$"#!'"${EPREFIX}/usr/bin/perl"'"' \
+		-- bin/* || die
+	eapply_user
+}
+
 src_install() {
 	dobin bin/*
 	dodoc README
