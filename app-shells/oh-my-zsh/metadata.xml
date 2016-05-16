@@ -7,7 +7,6 @@
 	</maintainer>
 	<upstream>
 		<maintainer>
-			<email></email>
 			<name>Robby Russell</name>
 		</maintainer>
 		<bugs-to>https://github.com/robbyrussell/oh-my-zsh/issues</bugs-to>

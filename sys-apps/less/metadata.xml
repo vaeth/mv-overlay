@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>martin@mvath.de</email>
 		<name>Martin Väth</name>
-		<description>maintainer of the updates in the mv overlay</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>base-system@gentoo.org</email>
@@ -14,7 +13,6 @@
 		<maintainer>
 			<email>martin@mvath.de</email>
 			<name>Martin Väth</name>
-			<description>Maintainer of the less-select patch</description>
 		</maintainer>
 		<bugs-to>mailto:martin@mvath.de</bugs-to>
 		<remote-id type="github">vaeth/less-select</remote-id>
