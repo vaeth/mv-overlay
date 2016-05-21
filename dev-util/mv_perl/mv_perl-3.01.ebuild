@@ -38,4 +38,5 @@ src_install() {
 pkg_postinst() {
 	optfeature "support to set timestamps of symlinks" 'dev-perl/File-lchown'
 	optfeature "improved output" 'dev-perl/String-ShellQuote'
+	optfeature "compatible patchdirs output" 'dev-perl/String-Escape'
 }
