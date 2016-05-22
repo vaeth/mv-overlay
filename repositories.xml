@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "http://www.gentoo.org/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name>mv</name>
+    <description><![CDATA[Ebuilds for packages not in the Gentoo tree
+        (lack of maintainer or too experimental) and live ebuilds
+        or extensions/bugfixes for packages in the tree]]></description>
+    <homepage>https://cgit.gentoo.org/user/mv.git</homepage>
+    <owner type="person">
+      <email>martin@mvath.de</email>
+      <name><![CDATA[Martin Väth]]></name>
+    </owner>
+    <source type="git">git://anongit.gentoo.org/user/mv.git</source>
+    <source type="git">https://anongit.gentoo.org/git/user/mv.git</source>
+    <source type="git">git+ssh://git@git.gentoo.org/user/mv.git</source>
+    <feed>https://cgit.gentoo.org/user/mv.git/atom/</feed>
+    <!-- <feed>https://cgit.gentoo.org/user/mv.git/rss/</feed> -->
+  </repo>
+</repositories>
