@@ -15,6 +15,38 @@ app-portage/eix:strong-security - Add many checks to prevent exploits if eix cod
 app-portage/eix:swap-remote - Swap role of remote addresses in eix-remote, making the data from gpo.zugaina.org the first choice.
 app-portage/eix:tools - Create separate binary for script helper tools; useful if they are called extremely often
 app-shells/auto-fu-zsh:compile - Byte-compile to speed up. Do not use this if you are cross-compiling
+app-shells/schily-tools:renameschily_calc - Rename calc to scalc for compatibility with sci-mathematics/calc
+app-shells/schily-tools:renameschily_compare - Rename compare to scompare for compatibility with imagemagick
+app-shells/schily-tools:renameschily_count - Rename count to scount for compatibility with sys-devel/llvm
+app-shells/schily-tools:renameschily_jsh - Rename jsh to sjsh for compatibility with app-shells/heirloom-sh
+app-shells/schily-tools:renameschily_man2html - Rename man2html to sman2html for compatibility with sys-apps/man
+app-shells/schily-tools:renameschily_p - Rename p to sp for compatibility with dev-util/wiggle
+app-shells/schily-tools:schilytools_bosh - Install bosh, a shell which aims to be fully POSIX compatible
+app-shells/schily-tools:schilytools_calc - Install calc, a bc clone
+app-shells/schily-tools:schilytools_calltree - Install calltree, a cflow clone
+app-shells/schily-tools:schilytools_change - Install change, a program to change patterns in files
+app-shells/schily-tools:schilytools_compare - Install compare, a cmp clone
+app-shells/schily-tools:schilytools_copy - Install copy, a cp clone
+app-shells/schily-tools:schilytools_count - Install count, a wc clone
+app-shells/schily-tools:schilytools_cstyle - Install Cstyle, a C-codingstyle lint
+app-shells/schily-tools:schilytools_cut - Install scut, a cut clone
+app-shells/schily-tools:schilytools_label - Install label, a sun disk label manipulator
+app-shells/schily-tools:schilytools_lndir - Install lndir, a program for creating symlinked directory trees
+app-shells/schily-tools:schilytools_man2html - Install a man2html clone
+app-shells/schily-tools:schilytools_match - Install match, a grep clone
+app-shells/schily-tools:schilytools_mdigest - Install mdigest, e.g. covering md5sum sha*sum
+app-shells/schily-tools:schilytools_mountcd - Install mountcd, a solaris CD comparison tool
+app-shells/schily-tools:schilytools_osh - Install osh, the original sVr4 (SunOS 5) shell with original bugs
+app-shells/schily-tools:schilytools_p - Install p, a more program which filters non-printable characters
+app-shells/schily-tools:schilytools_paste - Install spaste, a paste clone
+app-shells/schily-tools:schilytools_patch - Install spatch, a patch clone
+app-shells/schily-tools:schilytools_pxupgrade - Install pxupgrade: upgrading firmware in Plextor CD/DVD writers
+app-shells/schily-tools:schilytools_sfind - Install sfind, a find clone
+app-shells/schily-tools:schilytools_termcap - Install termcap, a termcap compiler
+app-shells/schily-tools:schilytools_translit - Install translit, a tr clone
+app-shells/schily-tools:schilytools_udiff - Install udiff, a diff clone
+app-shells/schily-tools:system-libschily - Rely on app-cdr/cdrtools for providing libschily
+app-shells/schily-tools:system-star - Rely on app-arch/star for the match manpage
 app-shells/termcolors-mv:create - Install DIR_COLORS-create perl script
 app-shells/termcolors-mv:perl - Install 256colors perl script
 app-shells/zsh:compile - Byte-compile. This costs disk space and may make things faster or slower. Do not use this if you are cross-compiling
