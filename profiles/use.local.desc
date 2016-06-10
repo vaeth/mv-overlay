@@ -42,9 +42,11 @@ app-shells/schily-tools:schilytools_paste - Install spaste, a paste clone
 app-shells/schily-tools:schilytools_patch - Install spatch, a patch clone
 app-shells/schily-tools:schilytools_pxupgrade - Install pxupgrade: upgrading firmware in Plextor CD/DVD writers
 app-shells/schily-tools:schilytools_sfind - Install sfind, a find clone
+app-shells/schily-tools:schilytools_smake - Install smake, a make clone
 app-shells/schily-tools:schilytools_termcap - Install termcap, a termcap compiler
 app-shells/schily-tools:schilytools_translit - Install translit, a tr clone
 app-shells/schily-tools:schilytools_udiff - Install udiff, a diff clone
+app-shells/schily-tools:schilytools_ved - Install ved, a visual editor with features from vi and emacs
 app-shells/schily-tools:system-libschily - Rely on app-cdr/cdrtools for providing libschily
 app-shells/schily-tools:system-star - Rely on app-arch/star for the match manpage
 app-shells/termcolors-mv:create - Install DIR_COLORS-create perl script

@@ -33,9 +33,11 @@
 		<flag name="schilytools_patch">Install spatch, a patch clone</flag>
 		<flag name="schilytools_pxupgrade">Install pxupgrade: upgrading firmware in Plextor CD/DVD writers</flag>
 		<flag name="schilytools_sfind">Install sfind, a find clone</flag>
+		<flag name="schilytools_smake">Install smake, a make clone</flag>
 		<flag name="schilytools_termcap">Install termcap, a termcap compiler</flag>
 		<flag name="schilytools_translit">Install translit, a tr clone</flag>
 		<flag name="schilytools_udiff">Install udiff, a diff clone</flag>
+		<flag name="schilytools_ved">Install ved, a visual editor with features from vi and emacs</flag>
 		<flag name="system-libschily">Rely on app-cdr/cdrtools for providing libschily</flag>
 		<flag name="system-star">Rely on app-arch/star for the match manpage</flag>
 	</use>

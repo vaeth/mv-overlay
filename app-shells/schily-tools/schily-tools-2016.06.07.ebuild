@@ -35,7 +35,7 @@ add_iuse_expand renameschily \
 add_iuse_expand schilytools \
 	+bosh +calc +calltree +change +compare +copy +count +cstyle +cut \
 	label +lndir +man2html +match +mdigest mountcd +osh \
-	+p +paste +patch pxupgrade +sfind termcap +translit +udiff
+	+p +paste +patch pxupgrade +sfind +smake termcap +translit +udiff +ved
 
 COMMON="system-libschily? ( app-cdr/cdrtools )
 !system-libschily? ( !app-cdr/cdrtools )
@@ -97,8 +97,13 @@ src_schily_prepare() {
 
 	# Respect libdir.
 	sed -i -e "s|\(^INSDIR=\t\t\)lib|\1$(get_libdir)|" \
-		$(find ./ -type f -exec grep -l '^INSDIR.\+lib\(/siconv\)\?$' '{}' '+') \
+		$(find ./ -type f -exec grep -l '^INSDIR.\+lib\(/\(siconv\)\?\)\?$' '{}' '+') \
 		|| die "sed multilib"
+
+	# Respect libdir for defaults.smk
+	sed -i -e "s|/lib/|/$(get_libdir)/|" \
+		smake/Makefile \
+		|| die "sed multilib for smake"
 
 	# Enable verbose build.
 	sed -i -e '/@echo.*==>.*;/s:@echo[^;]*;:&set -x;:' \
@@ -186,12 +191,17 @@ src_prepare() {
 # broken:
 #	! use schilytools_sccs || mv -v UNUSED_TARGETS/??sccs TARGETS || die
 	! use schilytools_sfind || mv -v UNUSED_TARGETS/??sfind TARGETS || die
+	! use schilytools_smake || mv -v UNUSED_TARGETS/??smake TARGETS || die
 	if use schilytools_termcap
 	then	mv -v UNUSED_TARGETS/??termcap TARGETS || die
 		s_xtermcap=:
 	fi
 	! use schilytools_translit || mv -v UNUSED_TARGETS/??translit TARGETS || die
 	! use schilytools_udiff || mv -v UNUSED_TARGETS/??udiff TARGETS || die
+	if use schilytools_ved
+	then	mv -v UNUSED_TARGETS/??ved TARGETS || die
+		s_xtermcap=:
+	fi
 	! ${s_xtermcap} || mv -v UNUSED_TARGETS/??libxtermcap TARGETS || die
 	eapply_user
 }
