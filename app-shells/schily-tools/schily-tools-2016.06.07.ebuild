@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-
+RESTRICT="mirror"
 inherit flag-o-matic gnuconfig toolchain-funcs
 
 MY_PV=${PV//./-}
@@ -13,9 +13,9 @@ S=${WORKDIR}/${MY_P}
 
 SRC_URI="mirror://sourceforge/schilytools/${MY_P}.tar.bz2"
 DESCRIPTION="A modern enhanced and POSIX compliant Bourne Shell"
-HOMEPAGE="http://schilytools.sourceforge.net/bosh.htm"
+HOMEPAGE="https://sourceforge.net/projects/schilytools/"
 KEYWORDS="~amd64 ~x86"
-IUSE="acl caps system-libschily system-star xattr"
+IUSE="acl caps static-libs system-libschily system-star xattr"
 
 add_iuse_expand() {
 	local i j
@@ -34,7 +34,7 @@ add_iuse_expand renameschily \
 	+calc +compare +count +jsh +man2html +p
 add_iuse_expand schilytools \
 	+bosh +calc +calltree +change +compare +copy +count +cstyle +cut \
-	label +lndir +man2html +match +mdigest mountcd +osh \
+	label +lndir +man2html +match +mdigest mountcd osh \
 	+p +paste +patch pxupgrade +sfind +smake termcap +translit +udiff +ved
 
 COMMON="system-libschily? ( app-cdr/cdrtools )
@@ -323,8 +323,8 @@ src_compile() {
 src_install() {
 	emake -j1 CPPOPTX="${CPPFLAGS}" COPTX="${CFLAGS}" C++OPTX="${CXXFLAGS}" \
 		LDOPTX="${LDFLAGS}" GMAKE_NOWARN="true" install
-	find "${ED}" -name '*.a' -delete
-	rm -rfv -- "${ED}"usr/{include,ccs}
+	use static-libs || find "${ED}" -name '*.a' -delete || die
+	! test -d "${ED}"usr/ccs || rm -rfv -- "${ED}"usr/ccs || die
 	if use schilytools_bosh
 	then	dodir bin || die
 		rm -v "${ED}"usr/bin/{bo,j,pf}sh \
