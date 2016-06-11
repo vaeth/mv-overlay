@@ -84,7 +84,7 @@ src_schily_prepare() {
 	gnuconfig_update
 
 	# Remove profiled make files.
-	find -name '*_p.mk' -delete
+	find -name '*_p.mk' -delete || die "delete *_p.mk"
 
 	# Adjusting hardcoded paths.
 	sed -i -e "s|opt/schily|usr|" \
@@ -111,7 +111,7 @@ src_schily_prepare() {
 		|| die "sed verbose rules"
 
 	# Respect CC/CXX variables.
-	cd "${S}"/RULES
+	cd "${S}"/RULES || die
 	local tcCC=$(tc-getCC)
 	local tcCXX=$(tc-getCXX)
 	sed -i -e "/cc-config.sh/s|\$(C_ARCH:%64=%) \$(CCOM_DEF)|${tcCC} ${tcCC}|" \
@@ -125,7 +125,7 @@ src_schily_prepare() {
 		rules.cnf || die "sed rules.cnf"
 
 	# Schily make setup.
-	cd "${S}"/DEFAULTS
+	cd "${S}"/DEFAULTS || die
 	local os=$(cdrtools_os)
 
 	sed -i \
@@ -142,6 +142,7 @@ src_schily_prepare() {
 
 src_prepare() {
 	local s_xtermcap=false
+	default
 	src_schily_prepare
 	filter-flags -fPIE -pie -flto* -fwhole-program -fno-common
 	cd "${S}" || die
@@ -312,7 +313,6 @@ src_configure() {
 		esac
 	fi
 	cd psmake || die
-
 }
 
 src_compile() {
