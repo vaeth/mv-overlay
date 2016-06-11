@@ -323,7 +323,10 @@ src_compile() {
 src_install() {
 	emake -j1 CPPOPTX="${CPPFLAGS}" COPTX="${CFLAGS}" C++OPTX="${CXXFLAGS}" \
 		LDOPTX="${LDFLAGS}" GMAKE_NOWARN="true" install
-	use static-libs || find "${ED}" -name '*.a' -delete || die
+	if ! use static-libs
+	then	find "${ED}" -name '*.a' -delete || die
+		! test -d "${ED}"usr/include || rm -rfv -- "${ED}"usr/include || die
+	fi
 	! test -d "${ED}"usr/ccs || rm -rfv -- "${ED}"usr/ccs || die
 	if use schilytools_bosh
 	then	dodir bin || die
