@@ -1,0 +1,13 @@
+--- 1/config.mk
++++ 2/config.mk
+@@ -8,8 +8,8 @@
+ 
+ CC=gcc
+ CFLAGS=-O2 -Wall
+-BISON=bison
+-#BISON=NONE
++#BISON=bison
++BISON=NONE
+ 
+ # --------------------- Installation options ----------------------
+ 
