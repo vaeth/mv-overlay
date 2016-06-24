@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -45,11 +45,11 @@ src_configure() {
 }
 
 src_compile() {
-	emake PREFIX=${EPREFIX}/usr || die
+	emake PREFIX="${EPREFIX}"/usr || die
 }
 
 src_install() {
-	emake PREFIX=${EPREFIX}/usr DESTDIR="${ED}" install || die
+	emake PREFIX="${EPREFIX}"/usr DESTDIR="${ED}" install || die
 
 	dodoc AUTHORS ChangeLog README doc/{README*,DOCUMENTATION,FAQ,TRANS*} \
 		doc/manual/README.txt
