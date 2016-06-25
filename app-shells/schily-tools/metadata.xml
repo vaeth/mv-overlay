@@ -19,11 +19,14 @@
 		<flag name="schilytools_compare">Install compare, a cmp clone</flag>
 		<flag name="schilytools_copy">Install copy, a cp clone</flag>
 		<flag name="schilytools_count">Install count, a wc clone</flag>
+		<flag name="schilytools_cpp">Install cpp, a C preprocessor</flag>
 		<flag name="schilytools_cstyle">Install Cstyle, a C-codingstyle lint</flag>
 		<flag name="schilytools_cut">Install scut, a cut clone</flag>
+		<flag name="schilytools_hdump">Install hdump, a hexdump clone</flag>
 		<flag name="schilytools_label">Install label, a sun disk label manipulator</flag>
 		<flag name="schilytools_lndir">Install lndir, a program for creating symlinked directory trees</flag>
 		<flag name="schilytools_man2html">Install a man2html clone</flag>
+		<flag name="schilytools_manmake">Install manpages about the schily makefile system</flag>
 		<flag name="schilytools_match">Install match, a grep clone</flag>
 		<flag name="schilytools_mdigest">Install mdigest, e.g. covering md5sum sha*sum</flag>
 		<flag name="schilytools_mountcd">Install mountcd, a solaris CD comparison tool</flag>
@@ -32,6 +35,7 @@
 		<flag name="schilytools_paste">Install spaste, a paste clone</flag>
 		<flag name="schilytools_patch">Install spatch, a patch clone</flag>
 		<flag name="schilytools_pxupgrade">Install pxupgrade: upgrading firmware in Plextor CD/DVD writers</flag>
+		<flag name="schilytools_sccs">Install sfind, a source code control system</flag>
 		<flag name="schilytools_sfind">Install sfind, a find clone</flag>
 		<flag name="schilytools_smake">Install smake, a make clone</flag>
 		<flag name="schilytools_termcap">Install termcap, a termcap compiler</flag>

@@ -28,11 +28,14 @@ app-shells/schily-tools:schilytools_change - Install change, a program to change
 app-shells/schily-tools:schilytools_compare - Install compare, a cmp clone
 app-shells/schily-tools:schilytools_copy - Install copy, a cp clone
 app-shells/schily-tools:schilytools_count - Install count, a wc clone
+app-shells/schily-tools:schilytools_cpp - Install cpp, a C preprocessor
 app-shells/schily-tools:schilytools_cstyle - Install Cstyle, a C-codingstyle lint
 app-shells/schily-tools:schilytools_cut - Install scut, a cut clone
+app-shells/schily-tools:schilytools_hdump - Install hdump, a hexdump clone
 app-shells/schily-tools:schilytools_label - Install label, a sun disk label manipulator
 app-shells/schily-tools:schilytools_lndir - Install lndir, a program for creating symlinked directory trees
 app-shells/schily-tools:schilytools_man2html - Install a man2html clone
+app-shells/schily-tools:schilytools_manmake - Install manpages about the schily makefile system
 app-shells/schily-tools:schilytools_match - Install match, a grep clone
 app-shells/schily-tools:schilytools_mdigest - Install mdigest, e.g. covering md5sum sha*sum
 app-shells/schily-tools:schilytools_mountcd - Install mountcd, a solaris CD comparison tool
@@ -41,6 +44,7 @@ app-shells/schily-tools:schilytools_p - Install p, a more program which filters 
 app-shells/schily-tools:schilytools_paste - Install spaste, a paste clone
 app-shells/schily-tools:schilytools_patch - Install spatch, a patch clone
 app-shells/schily-tools:schilytools_pxupgrade - Install pxupgrade: upgrading firmware in Plextor CD/DVD writers
+app-shells/schily-tools:schilytools_sccs - Install sfind, a source code control system
 app-shells/schily-tools:schilytools_sfind - Install sfind, a find clone
 app-shells/schily-tools:schilytools_smake - Install smake, a make clone
 app-shells/schily-tools:schilytools_termcap - Install termcap, a termcap compiler

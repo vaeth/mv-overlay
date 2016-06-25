@@ -35,9 +35,10 @@ add_iuse_expand() {
 add_iuse_expand renameschily \
 	+calc +compare +count +jsh +man2html +p
 add_iuse_expand schilytools \
-	+bosh +calc +calltree +change +compare +copy +count +cstyle +cut \
-	label +lndir +man2html +match +mdigest mountcd osh \
-	+p +paste +patch pxupgrade +sfind +smake termcap +translit +udiff +ved
+	+bosh +calc +calltree +change +compare +copy +count +cpp +cstyle +cut \
+	+hdump label +lndir +man2html manmake +match +mdigest mountcd osh \
+	+p +paste +patch pxupgrade +sccs +sfind +smake \
+	+termcap +translit +udiff +ved
 
 COMMON="system-libschily? ( app-cdr/cdrtools )
 !system-libschily? ( !app-cdr/cdrtools )
@@ -142,8 +143,21 @@ src_schily_prepare() {
 		Defaults.${os} || die "sed Schily make setup"
 }
 
+targets=""
+
+targets() {
+	local i
+	for i
+	do	case " ${targets} " in
+		*" ${i} "*)
+			continue;;
+		esac
+		mv -v UNUSED_TARGETS/??"${i}" TARGETS || die
+		targets=${targets}${targets:+ }${i}
+	done
+}
+
 src_prepare() {
-	local s_xtermcap=false
 	default
 	src_schily_prepare
 	filter-flags -fPIE -pie -flto* -fwhole-program -fno-common
@@ -151,61 +165,40 @@ src_prepare() {
 	sed -ie '1s!man1/sh\.1!man1/bosh.1!' -- "${S}/sh/"{jsh,pfsh}.1 || die
 	mkdir UNUSED_TARGETS || die
 	mv TARGETS/[0-9][0-9]* UNUSED_TARGETS || die
-	use system-libschily || mv -v \
-		UNUSED_TARGETS/??inc \
-		UNUSED_TARGETS/??include \
-		UNUSED_TARGETS/??libschily \
-		UNUSED_TARGETS/??libfind \
-		TARGETS || die
-	mv -v \
-		UNUSED_TARGETS/??libgetopt \
-		UNUSED_TARGETS/??libshedit \
-		TARGETS || die
-	if use schilytools_bosh
-	then	mv -v UNUSED_TARGETS/??sh TARGETS || die
-		s_xtermcap=:
-	fi
-	! use schilytools_calc || mv -v UNUSED_TARGETS/??calc TARGETS || die
-	! use schilytools_calltree || mv -v UNUSED_TARGETS/??calltree TARGETS || die
-	! use schilytools_change || mv -v UNUSED_TARGETS/??change TARGETS || die
+	targets inc
+	use system-libschily || targets include libschily libfind
+	! use schilytools_bosh || targets sh libxtermcap libshedit libgetopt
+	! use schilytools_calc || targets calc
+	! use schilytools_calltree || targets calltree
+	! use schilytools_change || targets change
 # nonexistent:
-#	! use schilytools_cmd || mv -v UNUSED_TARGETS/??cmd TARGETS || die
-	! use schilytools_compare || mv -v UNUSED_TARGETS/??compare TARGETS || die
-	! use schilytools_copy || mv -v UNUSED_TARGETS/??copy TARGETS || die
-	! use schilytools_count || mv -v UNUSED_TARGETS/??count TARGETS || die
-	! use schilytools_cstyle || mv -v UNUSED_TARGETS/??cstyle TARGETS || die
-	! use schilytools_cut || mv -v UNUSED_TARGETS/??cut TARGETS || die
-# broken:
-#	! use schilytools_hdump || mv -v UNUSED_TARGETS/??hdump TARGETS || die
-	! use schilytools_label || mv -v UNUSED_TARGETS/??label TARGETS || die
-	! use schilytools_lndir || mv -v UNUSED_TARGETS/??lndir TARGETS || die
-	! use schilytools_man2html || mv -v UNUSED_TARGETS/??man2html TARGETS || die
-	! use schilytools_match || mv -v UNUSED_TARGETS/??match TARGETS || die
-	! use schilytools_mdigest || mv -v UNUSED_TARGETS/??mdigest TARGETS || die
-	! use schilytools_mountcd || mv -v UNUSED_TARGETS/??mountcd TARGETS || die
-	! use schilytools_osh || mv -v UNUSED_TARGETS/??osh TARGETS || die
-	if use schilytools_p
-	then	mv -v UNUSED_TARGETS/??p TARGETS || die
-		s_xtermcap=:
-	fi
-	! use schilytools_paste || mv -v UNUSED_TARGETS/??paste TARGETS || die
-	! use schilytools_patch || mv -v UNUSED_TARGETS/??patch TARGETS || die
-	! use schilytools_pxupgrade || mv -v UNUSED_TARGETS/??pxupgrade TARGETS || die
-# broken:
-#	! use schilytools_sccs || mv -v UNUSED_TARGETS/??sccs TARGETS || die
-	! use schilytools_sfind || mv -v UNUSED_TARGETS/??sfind TARGETS || die
-	! use schilytools_smake || mv -v UNUSED_TARGETS/??smake TARGETS || die
-	if use schilytools_termcap
-	then	mv -v UNUSED_TARGETS/??termcap TARGETS || die
-		s_xtermcap=:
-	fi
-	! use schilytools_translit || mv -v UNUSED_TARGETS/??translit TARGETS || die
-	! use schilytools_udiff || mv -v UNUSED_TARGETS/??udiff TARGETS || die
-	if use schilytools_ved
-	then	mv -v UNUSED_TARGETS/??ved TARGETS || die
-		s_xtermcap=:
-	fi
-	! ${s_xtermcap} || mv -v UNUSED_TARGETS/??libxtermcap TARGETS || die
+#	! use schilytools_cmd || targets cmd
+	! use schilytools_compare || targets compare
+	! use schilytools_copy || targets copy
+	! use schilytools_count || targets count
+	! use schilytools_cpp || targets cpp
+	! use schilytools_cstyle || targets cstyle
+	! use schilytools_cut || targets cut
+	! use schilytools_hdump || targets hdump
+	! use schilytools_label || targets label
+	! use schilytools_lndir || targets lndir
+	! use schilytools_man2html || targets man2html
+	! use schilytools_manmake || targets man
+	! use schilytools_match || targets match
+	! use schilytools_mdigest || targets mdigest
+	! use schilytools_mountcd || targets mountcd
+	! use schilytools_osh || targets osh libgetopt
+	! use schilytools_p || targets p libxtermcap
+	! use schilytools_paste || targets paste
+	! use schilytools_patch || targets patch
+	! use schilytools_pxupgrade || targets pxupgrade
+	! use schilytools_sccs || targets sccs libgetopt
+	! use schilytools_sfind || targets sfind
+	! use schilytools_smake || targets smake
+	! use schilytools_termcap || targets termcap libxtermcap
+	! use schilytools_translit || targets translit
+	! use schilytools_udiff || targets udiff
+	! use schilytools_ved || targets ved libxtermcap
 	eapply_user
 }
 
@@ -322,6 +315,21 @@ src_compile() {
 		LDOPTX="${LDFLAGS}" GMAKE_NOWARN="true"
 }
 
+mustnothave() {
+	local i
+	for i
+	do	test -r "${ED}${i}" && die "${ED}${i} must not exist"
+	done
+}
+
+mustremove() {
+	local i
+	for i
+	do	test -r "${ED}${i}" && rm -v -- "${ED}${i}" || \
+			die "cannot remove ${ED}${i}"
+	done
+}
+
 src_install() {
 	emake -j1 CPPOPTX="${CPPFLAGS}" COPTX="${CFLAGS}" C++OPTX="${CXXFLAGS}" \
 		LDOPTX="${LDFLAGS}" GMAKE_NOWARN="true" install
@@ -329,11 +337,23 @@ src_install() {
 	then	find "${ED}" -name '*.a' -delete || die
 		! test -d "${ED}"usr/include || rm -rfv -- "${ED}"usr/include || die
 	fi
-	! test -d "${ED}"usr/ccs || rm -rfv -- "${ED}"usr/ccs || die
+	if use schilytools_sccs
+	then	mv -v "${ED}"usr/share/man/man1/{,sccs-}diff.1 || die
+	else	! test -d "${ED}"usr/ccs || rm -rfv -- "${ED}"usr/ccs || die
+		mustnothave usr/share/man/man1/diff.1
+	fi
+	if use schilytools_hdump
+	then	mustremove usr/bin/od usr/share/man/man1/od.1
+	else	mustnothave usr/bin/od usr/share/man/man1/od.1
+	fi
+	if use schilytools_patch
+	then	mustremove usr/share/man/man1/patch.1
+	else	mustnothave usr/share/man/man1/patch.1
+	fi
 	if use schilytools_bosh
 	then	dodir bin || die
 		rm -v "${ED}"usr/bin/{bo,j,pf}sh \
-			"${ED}"usr/share/man/man1/bosh.1* || die
+			"${ED}"usr/share/man/man1/bosh.1 || die
 		mv -v -- "${ED}"{usr/bin/sh,bin/bosh} || die
 		ln -s -- bosh "${ED}"/bin/jsh || die
 		ln -s -- bosh "${ED}"/bin/pfsh || die
@@ -344,7 +364,7 @@ src_install() {
 		fi
 	fi
 	if use schilytools_match && use system-star
-	then	rm -v -- "${ED}"usr/share/man/man1/match.1* || die
+	then	rm -v -- "${ED}"usr/share/man/man1/match.1 || die
 	fi
 	if use schilytools_calc && use renameschily_calc
 	then	mv -v -- "${ED}"usr/bin/{,s}calc || die
@@ -365,5 +385,8 @@ src_install() {
 	if use schilytools_p && use renameschily_p
 	then	mv -v -- "${ED}"usr/bin/{,s}p || die
 		mv -v -- "${ED}"usr/share/man/man1/{,s}p.1 || die
+	fi
+	if use schilytools_ved
+	then	docompress -x /usr/share/man/help
 	fi
 }
