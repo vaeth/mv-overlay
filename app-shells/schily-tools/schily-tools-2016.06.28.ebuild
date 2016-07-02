@@ -17,8 +17,6 @@ HOMEPAGE="https://sourceforge.net/projects/schilytools/"
 KEYWORDS="~amd64 ~x86"
 IUSE="acl caps static-libs system-libschily system-star xattr"
 
-PATCHES=("$FILESDIR"/redirect.patch)
-
 add_iuse_expand() {
 	local i j
 	j=${1}
