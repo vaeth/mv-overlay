@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit gnome2-utils eutils
+inherit gnome2-utils
 
 DESCRIPTION="Lightweight cdrtools front-end for CD and DVD writing"
 HOMEPAGE="http://www.xcdroast.org/"
@@ -22,16 +22,21 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${P/_/}
 
-src_prepare() {
-	eapply "${FILESDIR}"/cdda2wav_version.patch
-	eapply -p0 "${FILESDIR}"/fix_cddb_hidden_tracks.patch
-	eapply -p0 "${FILESDIR}"/io_compile.patch
+PATCHES=(
+	"${FILESDIR}"/cdda2wav_version.patch
+	"${FILESDIR}"/fix_cddb_hidden_tracks.patch
+	"${FILESDIR}"/io_compile.patch
+	"${FILESDIR}"/io_progressbar_fix.patch
+	"${FILESDIR}"/suid-perms.patch
+)
 
+src_prepare() {
 	# fix Norwegian locales
 	mv po/{no,nb}.po || die
 	mv po/{no,nb}.gmo || die
 	sed -i -e 's/no/nb/' po/LINGUAS || die
-	eapply_user
+	# eapply_user should be _after_ the above...
+	default
 }
 
 src_configure() {
@@ -45,17 +50,13 @@ src_configure() {
 }
 
 src_compile() {
-	emake PREFIX="${EPREFIX}"/usr || die
+	emake PREFIX="${EPREFIX}"/usr
 }
 
 src_install() {
-	emake PREFIX="${EPREFIX}"/usr DESTDIR="${ED}" install || die
+	emake PREFIX="${EPREFIX}"/usr DESTDIR="${ED}" install
 
-	dodoc AUTHORS ChangeLog README doc/{README*,DOCUMENTATION,FAQ,TRANS*} \
-		doc/manual/README.txt
-
-	insinto /usr/share/doc/${PF}/manual
-	doins doc/manual/xcdroast-manual.pdf
+	dodoc -r AUTHORS ChangeLog README doc/*
 
 	insinto /usr/share/icons/hicolor/48x48/apps
 	newins xpms/xcdricon.xpm xcdroast.xpm
