@@ -17,6 +17,8 @@ HOMEPAGE="https://sourceforge.net/projects/schilytools/"
 KEYWORDS="~amd64 ~x86"
 IUSE="acl caps static-libs system-libschily system-star xattr"
 
+PATCHES=("$FILESDIR"/setuarg.patch)
+
 add_iuse_expand() {
 	local i j
 	j=${1}
@@ -151,7 +153,7 @@ targets() {
 			continue;;
 		esac
 		mv -v UNUSED_TARGETS/??"${i}" TARGETS || die
-		targets=${targets}${targets:+ }${i}
+		targets=${targets}${targets:+\ }${i}
 	done
 }
 

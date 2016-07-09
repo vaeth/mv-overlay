@@ -6,12 +6,12 @@ description="sundtek TV mediaclient"
 
 set_preload() {
 	yesno ${preload:-NO} || return 0
-	LD_PRELOAD=${preload_lib:-/usr/lib}/libmediaclient.so${LD_PRELOAD:+ }${LD_PRELOAD-}
+	LD_PRELOAD=${preload_lib:-/usr/lib}/libmediaclient.so${LD_PRELOAD:+\ }${LD_PRELOAD-}
 	export LD_PRELOAD
 }
 
 start() {
-	ebegin "Starting ${SVCNAME}"
+	ebegin "Starting $SVCNAME"
 	(
 		set_preload
 		/opt/bin/mediaclient --start=4
@@ -20,7 +20,7 @@ start() {
 }
 
 stop() {
-	ebegin "Stopping ${SVCNAME}"
+	ebegin "Stopping $SVCNAME"
 	(
 		set_preload
 		timeout -k "${killtime:-15}" "${termtime:-15}" /opt/bin/mediaclient --shutdown

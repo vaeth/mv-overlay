@@ -78,9 +78,12 @@ moz_phases() {
 	OPTIND=1
 	while getopts 'cCn' opt
 	do	case ${opt} in
-		c)	o=" -c";;
-		n)	o=" -n";;
-		C)	o=;;
+		c)
+			o=" -c";;
+		n)
+			o=" -n";;
+		C)
+			o=;;
 		esac
 	done
 	shift $(( ${OPTIND} - 1 ))
@@ -119,12 +122,12 @@ moz_rdepend() {
 		esac
 		case ${mode} in
 		*s*)
-			rdep="${rdep}${rdep:+ }browser_${i}? ( www-client/${i} )"
+			rdep=${rdep}${rdep:+\ }"browser_${i}? ( www-client/${i} )"
 			c=${c}a;;
 		esac
 		case ${mode} in
 		*b*)
-			rdep="${rdep}${rdep:+ }browser_${i}-bin? ( www-client/${i}-bin )"
+			rdep=${rdep}${rdep:+\ }"browser_${i}-bin? ( www-client/${i}-bin )"
 			c=${c}a;;
 		esac
 	done
@@ -154,11 +157,11 @@ moz_iuse() {
 	for i in firefox palemoon seamonkey
 	do	case "${*}" in
 		*"${i}"?source*)
-			iuse="${iuse}${iuse:+ }browser_${i}";;
+			iuse=${iuse}${iuse:+\ }"browser_${i}";;
 		*"${i}"?bin*)
-			iuse="${iuse}${iuse:+ }browser_${i}-bin";;
+			iuse=${iuse}${iuse:+\ }"browser_${i}-bin";;
 		*"${i}"*)
-			iuse="${iuse}${iuse:+ }browser_${i} browser_${i}-bin";;
+			iuse=${iuse}${iuse:+\ }"browser_${i} browser_${i}-bin";;
 		esac
 	done
 	[ -n "${iuse}" ] || die "args must be [firefox|palemoon|seamonkey][-source|-bin]"

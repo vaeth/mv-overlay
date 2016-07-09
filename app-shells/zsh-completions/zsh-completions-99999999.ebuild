@@ -54,10 +54,10 @@ calculate_data() {
 		case ${curr} in
 		'+'*)
 			curr="completion_${curr#?}"
-			IUSE="${IUSE}${IUSE:+ }+${curr}";;
+			IUSE=${IUSE}${IUSE:+\ }'+'${curr};;
 		*)
 			curr="completion_${curr}"
-			IUSE="${IUSE}${IUSE:+ }${curr}";;
+			IUSE=${IUSE}${IUSE:+\ }${curr};;
 		esac
 		for currfile in ${comp#* }
 		do	used_value currfile

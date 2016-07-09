@@ -42,9 +42,9 @@ add_type_to_iuse() {
 	local t i
 	t=${1}
 	shift
-	REQUIRED_USE+=${REQUIRED_USE:+ }'^^ ('
+	REQUIRED_USE+=${REQUIRED_USE:+\ }'^^ ('
 	for i
-	do	IUSE+="${IUSE:+ }${t}_${i}"
+	do	IUSE+=${IUSE:+\ }${t}_${i}
 		REQUIRED_USE+=" ${t}_${i}"
 	done
 	REQUIRED_USE+=' )'

@@ -10,8 +10,8 @@ case ${PV} in
 	EGIT_REPO_URI="git://github.com/zsh-users/${PN}.git"
 	inherit git-r3
 	PROPERTIES="live"
-	KEYWORDS=""
-	SRC_URI="";;
+	KEYWORDS=
+	SRC_URI=;;
 *)
 	LIVE=false
 	#RESTRICT="mirror"
@@ -25,10 +25,7 @@ DESCRIPTION="Additional completion definitions for Zsh"
 HOMEPAGE="https://gentoo.org/zsh-users/zsh-completions/"
 LICENSE="ZSH"
 SLOT="0"
-if ${LIVE}
-then	DEPEND=""
-else	DEPEND=""
-fi
+DEPEND=
 
 IUSE=""
 declare -a FILES
@@ -54,10 +51,10 @@ calculate_data() {
 		case ${curr} in
 		'+'*)
 			curr="completion_${curr#?}"
-			IUSE="${IUSE}${IUSE:+ }+${curr}";;
+			IUSE=${IUSE}${IUSE:+\ }+${curr};;
 		*)
 			curr="completion_${curr}"
-			IUSE="${IUSE}${IUSE:+ }${curr}";;
+			IUSE=${IUSE}${IUSE:+\ }${curr};;
 		esac
 		for currfile in ${comp#* }
 		do	used_value currfile
