@@ -1,0 +1,18 @@
+--- 1/hplj1000
++++ 1/hplj1000
+@@ -220,14 +220,12 @@
+     fi
+ 
+     log "loading HP LaserJet $MODEL firmware $fw to $_dev ..."
+-    # There is a timeout problem with udev and FC4, so spin it off.
+-    (
+ 	if cat $fw > $_dev; then
+ 	    log "... download successful."
+ 	else
+ 	    log "... download failed."
++	    return 1
+ 	fi
+-    ) &
+     return 0
+ }
+ 
