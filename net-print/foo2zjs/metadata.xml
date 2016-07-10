@@ -1,13 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>martin@mvath.de</email>
-    <name>Martin Väth</name>
-    <description>Maintainer of patch for the abandoned ebuild in the mv overlay</description>
-  </maintainer>
-  <maintainer type="project">
-    <email>printing@gentoo.org</email>
-    <name>Gentoo Printing Project</name>
-  </maintainer>
+<maintainer type="person">
+	<email>martin@mvath.de</email>
+	<name>Martin Väth</name>
+	<description>Maintainer of patch for the abandoned ebuild in the mv overlay</description>
+</maintainer>
+<maintainer type="project">
+	<email>printing@gentoo.org</email>
+	<name>Gentoo Printing Project</name>
+</maintainer>
+<use>
+	<flag name="foo2zjs_devices_hp1000">Support for hp1000</flag>
+	<flag name="foo2zjs_devices_hp1005">Support for hp1005</flag>
+	<flag name="foo2zjs_devices_hp1018">Support for hp1018</flag>
+	<flag name="foo2zjs_devices_hp1020">Support for hp1020</flag>
+	<flag name="foo2zjs_devices_hp1215">Support for hp1215</flag>
+	<flag name="foo2zjs_devices_hp1500">Support for hp1500</flag>
+	<flag name="foo2zjs_devices_hp1600">Support for hp1600</flag>
+	<flag name="foo2zjs_devices_hp2600n">Support for hp2600n</flag>
+	<flag name="foo2zjs_devices_hpp1005">Support for hpp1005</flag>
+	<flag name="foo2zjs_devices_hpp1006">Support for hpp1006</flag>
+	<flag name="foo2zjs_devices_hpp1007">Support for hpp1007</flag>
+	<flag name="foo2zjs_devices_hpp1008">Support for hpp1008</flag>
+	<flag name="foo2zjs_devices_hpp1505">Support for hpp1505</flag>
+	<flag name="foo2zjs_devices_km2200">Support for km2200</flag>
+	<flag name="foo2zjs_devices_km2300">Support for km2300</flag>
+	<flag name="foo2zjs_devices_km2430">Support for km2430</flag>
+	<flag name="foo2zjs_devices_km2480">Support for km2480</flag>
+	<flag name="foo2zjs_devices_km2490">Support for km2490</flag>
+	<flag name="foo2zjs_devices_km2530">Support for km2530</flag>
+	<flag name="foo2zjs_devices_kmcpwl">Support for kmcpwl</flag>
+	<flag name="foo2zjs_devices_lm500">Support for lm500</flag>
+	<flag name="foo2zjs_devices_oki3200">Support for oki3200</flag>
+	<flag name="foo2zjs_devices_oki3300">Support for oki3300</flag>
+	<flag name="foo2zjs_devices_oki3400">Support for oki3400</flag>
+	<flag name="foo2zjs_devices_oki3530">Support for oki3530</flag>
+	<flag name="foo2zjs_devices_oki5100">Support for oki5100</flag>
+	<flag name="foo2zjs_devices_oki5200">Support for oki5200</flag>
+	<flag name="foo2zjs_devices_oki5500">Support for oki5500</flag>
+	<flag name="foo2zjs_devices_oki5600">Support for oki5600</flag>
+	<flag name="foo2zjs_devices_oki5800">Support for oki5800</flag>
+	<flag name="foo2zjs_devices_sa2160">Support for sa2160</flag>
+	<flag name="foo2zjs_devices_sa300">Support for sa300</flag>
+	<flag name="foo2zjs_devices_sa315">Support for sa315</flag>
+	<flag name="foo2zjs_devices_sa3160">Support for sa3160</flag>
+	<flag name="foo2zjs_devices_xp6110">Support for xp6110</flag>
+	<flag name="foo2zjs_devices_xp6115">Support for xp6115</flag>
+</use>
 </pkgmetadata>
