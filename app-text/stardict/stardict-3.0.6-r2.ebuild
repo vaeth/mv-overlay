@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 # NOTE: Even though the *.dict.dz are the same as dictd/freedict's files,
 #       their indexes seem to be in a different format. So we'll keep them
@@ -11,9 +11,8 @@ EAPI=5
 # NOTE: Festival plugin crashes, bug 188684. Disable for now.
 
 GNOME2_LA_PUNT=yes
-GCONF_DEBUG=no
 
-inherit autotools eutils flag-o-matic gnome2
+inherit autotools flag-o-matic gnome2
 
 DESCRIPTION="A international dictionary supporting fuzzy and glob style matching"
 HOMEPAGE="http://stardict-4.sourceforge.net/"
@@ -58,6 +57,7 @@ DEPEND="${COMMON_DEPEND}
 "
 
 src_prepare() {
+	eapply_user
 	if ! use gnome
 	then	sed -i \
 				-e 's/GNOME_DOC_INIT/GNOME_DOC_INIT([0.32],[:],[:])/' \

@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 RESTRICT="mirror"
-inherit cmake-utils eutils flag-o-matic multilib
+inherit cmake-utils flag-o-matic multilib
 
 DESCRIPTION="search ARCH database for packages with similar commands"
 HOMEPAGE="https://github.com/metti/command-not-found/"
@@ -31,7 +31,7 @@ src_prepare() {
 		CMakeLists.txt || die
 	sed -i -e "s/function[[:space:]]*\([^[:space:](]*\)[[:space:]]*(/\1(/" \
 		cnf.sh || die
-	epatch_user
+	eapply_user
 }
 
 src_install() {

@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools eutils gnome2
+EAPI=6
+inherit autotools gnome2
 
 DESCRIPTION="Genius Mathematics Tool and the GEL Language"
 HOMEPAGE="http://www.jirka.org/genius.html"
@@ -38,27 +38,28 @@ DEPEND="${RDEPEND}
 	sys-devel/flex
 	nls? ( sys-devel/gettext )"
 
+DOCS=(AUTHORS ChangeLog NEWS README TODO)
+
 src_prepare() {
+	eapply_user
 	if ! use gnome
-	then	sed -i \
-				-e "/GNOME_DOC_INIT/d" \
-				configure.in
+	then	sed -e "/GNOME_DOC_INIT/d" \
+				configure.in >configure.ac
+			rm configure.in
 			sed -i \
 				-e '/gnome-doc-utils\.make/d' \
 				help/Makefile.am
 			eautoreconf
 	fi
-	G2CONF="${G2CONF} $(use_enable gnome) $(use_enable nls) \
+}
+
+src_configure() {
+	gnome2_src_configure $(use_enable gnome) $(use_enable nls) \
 		--disable-update-mimedb --disable-scrollkeeper \
-		--disable-extra-gcc-optimization"
-	# gnome2.eclass adds --disable-gtk-doc or --enable-gtk-doc to G2CONF
-	# if there is the USE flag doc, thus leading to QA warnings
-	GCONF_DEBUG="no"
-	DOCS="AUTHORS ChangeLog NEWS README TODO"
-	USE_DESTDIR="1"
+		--disable-extra-gcc-optimization
 }
 
 src_install() {
-	use doc && DOCS+=" ${DISTDIR}/${PN}-reference.pdf"
+	use doc && dodoc "${DISTDIR}/${PN}-reference.pdf"
 	gnome2_src_install
 }
