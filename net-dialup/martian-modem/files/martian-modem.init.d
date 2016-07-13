@@ -13,12 +13,12 @@ pidfile=/var/run/${SVCNAME}.pid
 
 depend() {
 	need localmount
-	[ "${use_syslog}" = "YES" ] && use syslog
+	yesno "${use_syslog}" && use syslog
 }
 
 start() {
+	local modem
 	if [ -e /proc/modules ] ; then
-		local modem=
 		for modem in /dev/modem /dev/ttySM[0-9]* ; do
 			[ -e "${modem}" ] && break
 		done
