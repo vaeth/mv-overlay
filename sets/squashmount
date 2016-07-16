@@ -1,0 +1,5 @@
+app-shells/runtitle
+dev-perl/File-Which
+dev-perl/String-ShellQuote
+sys-fs/squashfs-tools::mv
+sys-fs/squashmount

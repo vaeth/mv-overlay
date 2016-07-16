@@ -1,0 +1,5 @@
+>=app-shells/auto-fu-zsh-0.0.1.13
+app-shells/set_prompt
+app-shells/termcolors-mv
+app-shells/zsh-syntax-highlighting
+app-shells/zshrc-mv
