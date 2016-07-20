@@ -1,3 +1,9 @@
+# Martin Väth <martin@mvath.de> (20 Jul 2016)
+# There is nothing wrong with sys-apps/starter, but it is hardly maintained.
+# Please switch to the successor project sys-fs/schedule which is superior
+# in practically every aspect.
+sys-apps/starter
+
 # Martin Väth <martin@mvath.de> (12 Mar 2016)
 # No version of magus compiles with current libsigc++ and gcc:5
 # It needs severe upstream patches, but upstream is long dead.
