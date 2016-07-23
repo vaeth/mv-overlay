@@ -161,7 +161,6 @@ media-tv/sundtek-tv:ld-preload-file - Install /etc/ld.so.preload
 media-tv/sundtek-tv:pax_kernel - Mark package which is necessary if you use a PAX kernel
 net-dns/noip-updater:ezipupd - Use user/group ezipupd instead of nobody: Useful if you restrict outgoing network traffic for user nobody
 net-misc/sshstart:keychain - Pull in keychain as dependency. Not required, but recommended for smoother operation.
-net-print/foo2zjs:cups - Add support for CUPS (Common Unix Printing System)
 net-print/foo2zjs:foo2zjs_devices_hp1000 - HP LJ 1000 firmware
 net-print/foo2zjs:foo2zjs_devices_hp1005 - HP LJ 1005 firmware
 net-print/foo2zjs:foo2zjs_devices_hp1018 - HP LJ 1018 firmware

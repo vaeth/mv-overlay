@@ -11,7 +11,7 @@ SRC_URI="http://foo2zjs.rkkda.com/${PN}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64 ~ppc"
-IUSE="+cups"
+IUSE=""
 IUSE_LATER="foomaticdb test"
 # due to those firmwares/icms/etc...
 RESTRICT="mirror"
@@ -20,10 +20,8 @@ PATCHES=("${FILESDIR}/foreground.patch")
 
 COMMON="foomaticdb? ( net-print/foomatic-db-engine )"
 RDEPEND="${COMMON}
-	cups? (
-		net-print/cups
-		|| ( >=net-print/cups-filters-1.0.43 net-print/foomatic-filters )
-	)
+	net-print/cups
+	|| ( >=net-print/cups-filters-1.0.43 net-print/foomatic-filters )
 	virtual/udev"
 DEPEND="${COMMON}
 	app-arch/unzip
@@ -206,8 +204,8 @@ src_install() {
 	# directories we have to create if we want foomaticdb support
 	use foomaticdb && dodir /usr/share/foomatic/db/source
 
-	# Directories we have to create if we want filters
-	use cups && dodir /usr/libexec/cups/filter
+	# Directories we have to create if we want cups filters (mandatory)
+	dodir /usr/libexec/cups/filter
 
 	emake DESTDIR="${ED%/}" \
 		USBDIR="${ED%/}/etc/hotplug/usb" \

@@ -11,7 +11,6 @@
 	<name>Gentoo Printing Project</name>
 </maintainer>
 <use>
-	<flag name="cups">Add support for CUPS (Common Unix Printing System)</flag>
 	<flag name="foo2zjs_devices_hp1000">HP LJ 1000 firmware</flag>
 	<flag name="foo2zjs_devices_hp1005">HP LJ 1005 firmware</flag>
 	<flag name="foo2zjs_devices_hp1018">HP LJ 1018 firmware</flag>
