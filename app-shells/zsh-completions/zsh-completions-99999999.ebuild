@@ -10,8 +10,8 @@ case ${PV} in
 	EGIT_REPO_URI="git://github.com/zsh-users/${PN}.git"
 	inherit git-r3
 	PROPERTIES="live"
-	KEYWORDS=""
-	SRC_URI="";;
+	KEYWORDS=
+	SRC_URI=;;
 *)
 	LIVE=false
 	#RESTRICT="mirror"
@@ -25,10 +25,7 @@ DESCRIPTION="Additional completion definitions for Zsh"
 HOMEPAGE="https://gentoo.org/zsh-users/zsh-completions/"
 LICENSE="ZSH"
 SLOT="0"
-if ${LIVE}
-then	DEPEND=""
-else	DEPEND=""
-fi
+DEPEND=
 
 IUSE=""
 declare -a FILES
@@ -54,7 +51,7 @@ calculate_data() {
 		case ${curr} in
 		'+'*)
 			curr="completion_${curr#?}"
-			IUSE=${IUSE}${IUSE:+\ }'+'${curr};;
+			IUSE=${IUSE}${IUSE:+\ }+${curr};;
 		*)
 			curr="completion_${curr}"
 			IUSE=${IUSE}${IUSE:+\ }${curr};;
@@ -85,7 +82,7 @@ calculate_data \
 	'#+gtk _gtk-launch' \
 	'+hardware _optirun _perf _primus' \
 	'+haskell /_cabal _ghc #_stack' \
-	'+managers #_ansible #_ansible-galaxy #_ansible-playbook #_ansible-vault _bower /_brew #_cask _debuild _lein #_multirust _pactree _pkcon _port #_supervisorctl _yaourt' \
+	'+managers #_ansible #_ansible-galaxy #_ansible-playbook #_ansible-vault _bower /_brew #_cask _debuild _lein #_multirust _pactree _pkcon _port #_rsvm #_supervisorctl _yaourt' \
 	'+multimedia _id3 _id3v2 _showoff' \
 	'+net _dget _dhcpcd _httpie _iw /_mosh _rfkill _socat _ssh-copy-id #_ufw _vpnc _vnstat' \
 	'+nfs _exportfs' \
@@ -96,7 +93,7 @@ calculate_data \
 	'+session _atach _teamocil _tmuxinator _wemux' \
 	'+subtitles _language_codes _periscope _subliminal' \
 	'+virtualization /_boot2docker #_docker-machine #_rkt _virtualbox _virsh' \
-	'+web _coffee _composer #_dad #_diana _docpad _drush _heroku #_hledger #_homestead _jonas _jmeter _jmeter-plugins _lunar _middleman #_mix _node _nvm _ralio /_salt _sbt _scala _svm'
+	'+web _coffee _composer #_dad #_diana _docpad _drush /_heroku #_hledger #_homestead _jonas _jmeter _jmeter-plugins _lunar _middleman #_mix _node _nvm _ralio /_salt _sbt _scala _svm'
 
 src_prepare() {
 	# Remove colliding completions
@@ -107,6 +104,13 @@ src_prepare() {
 	eapply_user
 }
 
+warn_once() {
+	ewarn "${CATEGORY}-${PF}.ebuild might need a version bump!"
+	warn_once() {
+	:
+}
+}
+
 src_install() {
 	insinto /usr/share/zsh/site-functions
 	local i j u
@@ -114,7 +118,8 @@ src_install() {
 	do	j=${i#src/}
 		u=${USEFILE["${j}"]}
 		if [ -z "${u}" ]
-		then	elog "installing unknown completion ${i#*/}"
+		then	warn_once
+			elog "installing unknown completion ${i#*/}"
 				doins "${i}"
 				continue
 		fi
@@ -123,7 +128,8 @@ src_install() {
 		FILES[${u}]=
 	done
 	for i in ${FILES[*]}
-	do	elog "listed file ${i} not found"
+	do	warn_once
+		elog "listed file ${i} not found"
 	done
 	dodoc README.md zsh-completions-howto.org
 }
