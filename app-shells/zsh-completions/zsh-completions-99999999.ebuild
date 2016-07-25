@@ -22,7 +22,7 @@ case ${PV} in
 esac
 
 DESCRIPTION="Additional completion definitions for Zsh"
-HOMEPAGE="https://gentoo.org/zsh-users/zsh-completions/"
+HOMEPAGE="https://github.com/zsh-users/zsh-completions/"
 LICENSE="ZSH"
 SLOT="0"
 DEPEND=
