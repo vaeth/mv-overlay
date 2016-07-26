@@ -17,7 +17,7 @@ HOMEPAGE="https://sourceforge.net/projects/schilytools/"
 KEYWORDS="~amd64 ~x86"
 IUSE="acl caps static-libs system-libschily system-star xattr"
 
-PATCHES=("$FILESDIR"/setuarg.patch)
+PATCHES=("$FILESDIR"/setuarg.patch "$FILESDIR"/fix_read.patch)
 
 add_iuse_expand() {
 	local i j
@@ -159,6 +159,7 @@ targets() {
 
 src_prepare() {
 	default
+	CPPFLAGS='-DPOSIX_BOTH_PATH="/bin/sh"'${CPPFLAGS:+\ }${CPPFLAGS}
 	src_schily_prepare
 	filter-flags -fPIE -pie -flto* -fwhole-program -fno-common
 	cd "${S}" || die

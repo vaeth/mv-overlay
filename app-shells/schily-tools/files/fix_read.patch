@@ -1,0 +1,25 @@
+# Fix "read a" (with one variable) in bosh
+--- 1/sh/name.c
++++ 1/sh/name.c
+@@ -527,7 +527,7 @@
+ 			else if (ch == 'r')
+ 				nextwchar = readwc;
+ 		}
+-		namec -= optv.optind;
++		namec -= --optv.optind;
+ 		names += optv.optind;
+ 	}
+ 
+@@ -535,10 +535,9 @@
+ 		a[0] = UC repname;
+ 		a[1] = NULL;
+ 		names = a;
+-	}
+-#else
+-	names++;
++	} else
+ #endif
++		names++;
+ 	ifs = ifsnod.namval;
+ 	if (ifs == NULL)
+ 		ifs = (unsigned char *)sptbnl;
