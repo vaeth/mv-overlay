@@ -1,0 +1,11 @@
+--- 1/sh/test.c
++++ 1/sh/test.c
+@@ -614,7 +614,7 @@
+ 	Intmax_t	ll_1 = 0;	/* Avoid warning from silly GCC */
+ 	Intmax_t	ll_2 = 0;	/* Avoid warning from silly GCC */
+ 
+-	if (op > TEST_EQ) {
++	if (op >= TEST_EQ) {
+ 		ll_1 = str2imax(arg1);
+ 		ll_2 = str2imax(arg2);
+ 	}

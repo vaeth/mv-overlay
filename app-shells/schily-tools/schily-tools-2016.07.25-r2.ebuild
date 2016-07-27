@@ -17,7 +17,11 @@ HOMEPAGE="https://sourceforge.net/projects/schilytools/"
 KEYWORDS="~amd64 ~x86"
 IUSE="acl caps static-libs system-libschily system-star xattr"
 
-PATCHES=("$FILESDIR"/setuarg.patch "$FILESDIR"/fix_read.patch)
+PATCHES=(
+	"$FILESDIR"/fix_read.patch
+	"$FILESDIR"/setuarg.patch
+	"$FILESDIR"/testeq.patch
+)
 
 add_iuse_expand() {
 	local i j
