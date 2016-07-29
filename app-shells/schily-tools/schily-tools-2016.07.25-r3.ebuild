@@ -4,7 +4,7 @@
 
 EAPI=6
 RESTRICT="mirror"
-inherit flag-o-matic gnuconfig toolchain-funcs
+inherit gnuconfig toolchain-funcs
 
 MY_PV=${PV//./-}
 MY_P="schily-${MY_PV}"
@@ -163,11 +163,11 @@ targets() {
 
 src_prepare() {
 	default
-	CPPFLAGS='-DPOSIX_BOTH_PATH="/bin/sh"'${CPPFLAGS:+\ }${CPPFLAGS}
 	src_schily_prepare
-	filter-flags -fPIE -pie -flto* -fwhole-program -fno-common
 	cd "${S}" || die
 	sed -ie '1s!man1/sh\.1!man1/bosh.1!' -- "${S}/sh/"{jsh,pfsh}.1 || die
+	sed -ie '/[+][=] -DPOSIX_BO[TS]H_PATH/iCPPOPTS += -DPOSIX_BOSH_PATH=\\"'"${EPREFIX}"'/bin/sh\\"' \
+		-- "${S}/sh/"Makefile || die
 	mkdir UNUSED_TARGETS || die
 	mv TARGETS/[0-9][0-9]* UNUSED_TARGETS || die
 	targets inc
