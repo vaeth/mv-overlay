@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=6
+RESTRICT="mirror"
 inherit flag-o-matic
 
 DESCRIPTION="FUSE filesystem to mount squashfs archives"
