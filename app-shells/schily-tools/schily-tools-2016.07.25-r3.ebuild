@@ -11,16 +11,20 @@ MY_P="schily-${MY_PV}"
 MY_P_TAR="${MY_P}.tar.bz2"
 S=${WORKDIR}/${MY_P}
 
-SRC_URI="mirror://sourceforge/schilytools/${MY_P}.tar.bz2"
+SRC_URI="mirror://sourceforge/schilytools/${MY_P}.tar.bz2
+mirror://sourceforge/schilytools/${MY_P}.patch
+mirror://sourceforge/schilytools/${MY_P}-patch2
+mirror://sourceforge/schilytools/${MY_P}-patch3"
 DESCRIPTION="A modern enhanced and POSIX compliant Bourne Shell"
 HOMEPAGE="https://sourceforge.net/projects/schilytools/"
 KEYWORDS="~amd64 ~x86"
 IUSE="acl caps static-libs system-libschily system-star xattr"
 
 PATCHES=(
-	"$FILESDIR"/fix_read.patch
-	"$FILESDIR"/setuarg.patch
-	"$FILESDIR"/testeq.patch
+	-p0
+	"$DISTDIR"/${MY_P}.patch
+	"$DISTDIR"/${MY_P}-patch2
+	"$DISTDIR"/${MY_P}-patch3
 )
 
 add_iuse_expand() {
