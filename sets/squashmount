@@ -2,4 +2,5 @@ app-shells/runtitle
 dev-perl/File-Which
 dev-perl/String-ShellQuote
 sys-fs/squashfs-tools::mv
+>=sys-fs/squashfuse-0.1.100
 sys-fs/squashmount
