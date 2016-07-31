@@ -22,8 +22,7 @@ COMMON_DEPEND="
 	lzo? ( >=dev-libs/lzo-2.06:= )
 	lz4? ( >=app-arch/lz4-0_p106:= )
 "
-DEPEND="app-arch/unzip
-	${COMMON_DEPEND}"
+DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
 src_configure() {
