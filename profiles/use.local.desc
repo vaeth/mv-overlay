@@ -202,6 +202,7 @@ net-print/foo2zjs:foo2zjs_devices_oki810 - Oki C810 ICM
 net-print/foo2zjs:foo2zjs_devices_oli160 - Olivetti d-Color P160W ICM
 net-print/foo2zjs:foo2zjs_devices_sa2160 - Samsung CLX-2160 ICM
 net-print/foo2zjs:foo2zjs_devices_sa300 - Samsung CLP-300 ICM
+net-print/foo2zjs:foo2zjs_devices_sa310 - Samsung CLP-310 ICM
 net-print/foo2zjs:foo2zjs_devices_sa315 - Samsung CLP-315 ICM
 net-print/foo2zjs:foo2zjs_devices_sa3160 - Samsung CLX-3160 ICM
 net-print/foo2zjs:foo2zjs_devices_sa3175 - Samsung CLX-3175 ICM

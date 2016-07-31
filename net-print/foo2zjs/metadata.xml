@@ -34,6 +34,7 @@
 	<flag name="foo2zjs_devices_hp1600">HP Color LaserJet 1600 ICM</flag>
 	<flag name="foo2zjs_devices_hp2600n">HP Color LaserJet 2600n ICM</flag>
 	<flag name="foo2zjs_devices_sa300">Samsung CLP-300 ICM</flag>
+	<flag name="foo2zjs_devices_sa310">Samsung CLP-310 ICM</flag>
 	<flag name="foo2zjs_devices_sa315">Samsung CLP-315 ICM</flag>
 	<flag name="foo2zjs_devices_sa325">Samsung CLP-325 ICM</flag>
 	<flag name="foo2zjs_devices_sa360">Samsung CLP-360 ICM</flag>
