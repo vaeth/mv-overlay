@@ -1,6 +1,5 @@
 # Copyright 2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( jython2_7 pypy python2_7 )
