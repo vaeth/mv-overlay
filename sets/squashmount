@@ -4,3 +4,4 @@ dev-perl/String-ShellQuote
 sys-fs/squashfs-tools::mv
 >=sys-fs/squashfuse-0.1.100
 sys-fs/squashmount
+>=sys-fs/unionfs-fuse-0.25

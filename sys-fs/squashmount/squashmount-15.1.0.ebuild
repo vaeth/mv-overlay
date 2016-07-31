@@ -64,7 +64,9 @@ pkg_postinst() {
 	optfeature "status bar support" 'app-shells/runtitle'
 	optfeature "improved compatibility and security" 'dev-perl/File-Which'
 	optfeature "improved output" 'dev-perl/String-ShellQuote'
-	optfeature "user mounting" '>=sys-fs/squashfuse-0.1.100'
+	optfeature "user mounting" \
+		'>=sys-fs/squashfuse-0.1.100 >=sys-fs/unionfs-fuse-0.25' \
+		'>=sys-fs/squashfuse-0.1.100 sys-fs/funionfs'
 	case " ${REPLACING_VERSIONS}" in
 	' '[0-7].*|' '8.[0-6]*|' '8.7.[0-4]*)
 		FORCE_PRINT_ELOG="true";;
