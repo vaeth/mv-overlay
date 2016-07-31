@@ -6,21 +6,27 @@ EAPI=6
 
 pPN=${PN%-zsh}
 mPN="${pPN}.zsh"
+NEED_PATCHES=false
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 case ${PV} in
 99999999*)
-	LIVE=:
 	EGIT_REPO_URI="git://github.com/hchbaw/${mPN}.git"
 	EGIT_BRANCH="pu"
 	inherit git-r3
 	PROPERTIES="live"
 	SRC_URI=""
 	KEYWORDS="";;
+0.0.1.12_p0)
+	RESTRICT="mirror"
+	EGIT_COMMIT="42dbef5da89360f132cce010004d4c674a13c951"
+	SRC_URI="https://github.com/hchbaw/${mPN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${mPN}-${PV}"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris";;
 *)
-	LIVE=false
 	RESTRICT="mirror"
 	SRC_URI="https://github.com/hchbaw/${mPN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${mPN}-${PV}"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris";;
+	NEED_PATCHES=:;;
 esac
 
 DESCRIPTION="zsh automatic complete-word and list-choices: incremental completion"
@@ -101,7 +107,7 @@ src_prepare() {
 		umask 022
 		generate_example >"${S}"/zshrc-example
 	)
-	if ! ${LIVE}
+	if ${NEED_PATCHES}
 	then
 		# Make Ctrl-D return correctly.
 		eapply "${FILESDIR}"/exit.patch
