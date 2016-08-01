@@ -227,7 +227,6 @@ sys-fs/squash_dir:overlayfs - Prefer overlayfs
 sys-fs/squash_dir:unionfs-fuse - Prefer unionfs-fuse
 sys-fs/squashfs-tools:lz4 - Enable support for LZ4 compression using app-arch/lz4
 sys-fs/squashfs-tools:xz - Enable support for XZ ("LZMA2") compression using app-arch/xz-utils
-sys-fs/squashfuse:lz4 - Enable support for LZ4 compression using app-arch/lz4
 x11-drivers/nvidia-drivers:kernel3-13 - Install unofficial patches for linux-3.13 and newer
 x11-drivers/nvidia-drivers:kernel3-14 - Install unofficial patches for linux-3.14 and newer
 x11-drivers/nvidia-drivers:kernel3-17 - Install unofficial patches for linux-3.17 and newer

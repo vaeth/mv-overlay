@@ -10,21 +10,14 @@ MY_P="schily-${MY_PV}"
 MY_P_TAR="${MY_P}.tar.bz2"
 S=${WORKDIR}/${MY_P}
 
-SRC_URI="mirror://sourceforge/schilytools/${MY_P}.tar.bz2
-mirror://sourceforge/schilytools/${MY_P}.patch
-mirror://sourceforge/schilytools/${MY_P}-patch2
-mirror://sourceforge/schilytools/${MY_P}-patch3"
-DESCRIPTION="A modern enhanced and POSIX compliant Bourne Shell"
+SRC_URI="mirror://sourceforge/schilytools/${MY_P}.tar.bz2"
+#mirror://sourceforge/schilytools/${MY_P}.patch"
+DESCRIPTION="Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell"
 HOMEPAGE="https://sourceforge.net/projects/schilytools/"
 KEYWORDS="~amd64 ~x86"
-IUSE="acl caps static-libs system-libschily system-star xattr"
+IUSE="acl caps +posix static-libs system-libschily system-star xattr"
 
-PATCHES=(
-	-p0
-	"$DISTDIR"/${MY_P}.patch
-	"$DISTDIR"/${MY_P}-patch2
-	"$DISTDIR"/${MY_P}-patch3
-)
+#PATCHES=(-p0 "$DISTDIR"/${MY_P}.patch)
 
 add_iuse_expand() {
 	local i j
@@ -169,8 +162,10 @@ src_prepare() {
 	src_schily_prepare
 	cd "${S}" || die
 	sed -ie '1s!man1/sh\.1!man1/bosh.1!' -- "${S}/sh/"{jsh,pfsh}.1 || die
-	sed -ie '/[+][=] -DPOSIX_BO[TS]H_PATH/iCPPOPTS += -DPOSIX_BOSH_PATH=\\"'"${EPREFIX}"'/bin/sh\\"' \
+	sed -ie '/[+][=] -DPOSIX_BOSH_PATH/iCPPOPTS += -DPOSIX_BOSH_PATH=\\"'"${EPREFIX}"'/bin/sh\\"' \
 		-- "${S}/sh/"Makefile || die
+	! use posix || sed -ie 's/^\#ifdef[ 	]*DO_POSIX_PATH$/flags2 |= posixflg;\n\#if 0/' \
+		-- "${S}/sh/"main.c || die
 	mkdir UNUSED_TARGETS || die
 	mv TARGETS/[0-9][0-9]* UNUSED_TARGETS || die
 	targets inc
