@@ -3,7 +3,7 @@
 
 EAPI=6
 RESTRICT="mirror"
-inherit gnuconfig toolchain-funcs
+inherit flag-o-matic gnuconfig toolchain-funcs
 
 MY_PV=${PV//./-}
 MY_P="schily-${MY_PV}"
@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="acl caps +posix static-libs system-libschily system-star xattr"
 
 #PATCHES=(-p0 "$DISTDIR"/${MY_P}.patch)
+PATCHES=("$FILESDIR"/{testt,pipe}.patch)
 
 add_iuse_expand() {
 	local i j
@@ -159,11 +160,13 @@ targets() {
 
 src_prepare() {
 	default
+	filter-flags -fPIE -pie -flto* -fwhole-program -fno-common
 	src_schily_prepare
 	cd "${S}" || die
 	sed -ie '1s!man1/sh\.1!man1/bosh.1!' -- "${S}/sh/"{jsh,pfsh}.1 || die
 	sed -ie '/[+][=] -DPOSIX_BOSH_PATH/iCPPOPTS += -DPOSIX_BOSH_PATH=\\"'"${EPREFIX}"'/bin/sh\\"' \
 		-- "${S}/sh/"Makefile || die
+	CFLAGS='-DNO_PIPE_PARENT '${CFLAGS:+\ }${CFLAGS-}
 	! use posix || sed -ie 's/^\#ifdef[ 	]*DO_POSIX_PATH$/flags2 |= posixflg;\n\#if 0/' \
 		-- "${S}/sh/"main.c || die
 	mkdir UNUSED_TARGETS || die

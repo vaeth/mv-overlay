@@ -1,0 +1,14 @@
+# Make sure -DNO_PIPE_PARENT works reliable
+--- 1/sh/defs.h
++++ 1/sh/defs.h
+@@ -394,6 +394,10 @@
+ #undef	HAVE_VFORK
+ #endif
+ 
++#ifdef	NO_PIPE_PARENT
++#undef	DO_PIPE_PARENT
++#endif
++
+ /* Function prototypes */
+ 
+ /*
