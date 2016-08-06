@@ -4,7 +4,7 @@
 EAPI=6
 DICT_PREFIX=""
 inherit stardict
-RESTRICT="mirror"
+RESTRICT="fetch"
 
 DESCRIPTION="Stardict Dictionary for Dictd.org's Longman Dictionary of Contemporary English"
 HOMEPAGE="http://stardict.sourceforge.net/Dictionaries_dictd-www.dict.org.php"

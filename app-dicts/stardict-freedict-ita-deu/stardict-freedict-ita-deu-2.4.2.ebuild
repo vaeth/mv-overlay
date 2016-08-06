@@ -6,7 +6,7 @@ FROM_LANG="Italian"
 TO_LANG="German"
 DICT_PREFIX="dictd_www.freedict.de_"
 inherit stardict
-RESTRICT="mirror"
+RESTRICT="fetch"
 
 HOMEPAGE="http://stardict.sourceforge.net/Dictionaries_dictd-www.freedict.de.php"
 KEYWORDS="~amd64 ~x86"

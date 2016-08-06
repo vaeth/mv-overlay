@@ -4,7 +4,7 @@
 EAPI=6
 DICT_PREFIX=""
 inherit stardict
-RESTRICT="mirror"
+RESTRICT="fetch"
 
 DESCRIPTION="Stardict Dictionary for Dictd.org's Merrian Webster 10th dictionary"
 HOMEPAGE="http://stardict.sourceforge.net/Dictionaries_dictd-www.dict.org.php"
