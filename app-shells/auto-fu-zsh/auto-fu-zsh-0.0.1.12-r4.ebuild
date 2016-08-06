@@ -19,7 +19,7 @@ case ${PV} in
 	RESTRICT="mirror"
 	EGIT_COMMIT="42dbef5da89360f132cce010004d4c674a13c951"
 	SRC_URI="https://github.com/hchbaw/${mPN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${mPN}-${PV}"
+	S="${WORKDIR}/${mPN}-${EGIT_COMMIT}"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris";;
 *)
 	RESTRICT="mirror"
