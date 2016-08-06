@@ -7,7 +7,7 @@ RESTRICT="mirror"
 
 DESCRIPTION="Firefox plugin: button to clear URL"
 HOMEPAGE="http://addons.mozilla.org/firefox/addon/xclear/"
-SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/13078/${P}-sm+fx.xpi"
+SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/13078/${P}-fx+sm.xpi"
 
 LICENSE="GPL-2"
 SLOT="0"
