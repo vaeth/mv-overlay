@@ -108,13 +108,17 @@ zshenv example in "${EROOT}"/usr/share/doc/${PF}/StartupFiles/.
 See https://wiki.gentoo.org/wiki/Zsh/HOWTO for more introduction documentation.
 "
 
-src_prepare() {
+fix_soelim() {
 	# fix zshall problem with soelim
 	ln -s Doc man1 || die
 	mv Doc/zshall.1 Doc/zshall.1.soelim || die
 	soelim Doc/zshall.1.soelim > Doc/zshall.1 || die
+}
 
-	eapply "${FILESDIR}"/${PN}-init.d-gentoo-r1.diff
+src_prepare() {
+	${LIVE} || fix_soelim
+
+	${LIVE} || eapply "${FILESDIR}"/${PN}-init.d-gentoo-r1.diff
 	eapply "${FILESDIR}"/${PN}-5.1.0-gcc-5.patch #547950
 
 	cp "${FILESDIR}"/zprofile-1 "${T}"/zprofile || die
@@ -199,6 +203,7 @@ src_configure() {
 src_compile() {
 	default
 	! ${LIVE} || ! use doc || emake -C Doc everything
+	! ${LIVE} || fix_soelim
 }
 
 src_test() {
