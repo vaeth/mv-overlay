@@ -3,19 +3,31 @@
 
 EAPI=6
 
+LIVE=false
 case ${PV} in
 99999999*)
-	EGIT_REPO_URI="git://git.kernel.org/pub/scm/utils/dash/dash.git"
+	LIVE=:;;
+esac
+if ${LIVE}
+then	EGIT_REPO_URI="git://git.kernel.org/pub/scm/utils/dash/dash.git"
 	WANT_LIBTOOL=none
 	AT_NOELIBTOOLIZE=true
 	inherit autotools git-r3
 	PROPERTIES="live"
 	KEYWORDS=""
-	SRC_URI="";;
-*)
+	SRC_URI=""
+else	inherit versionator
+	MY_PV="$(get_version_component_range 1-3)"
+	DEB_PATCH="$(get_version_component_range 4)"
+	MY_P="${PN}-${MY_PV}"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-	SRC_URI="http://gondor.apana.org.au/~herbert/dash/files/${P}.tar.gz";;
-esac
+	SRC_URI="http://gondor.apana.org.au/~herbert/dash/files/${MY_P}.tar.gz"
+	if [ -n "${DEB_PATCH}" ]
+	then	DEB_PF="${PN}_${MY_PV}-${DEB_PATCH}"
+		SRC_URI=${SRC_URI}" mirror://debian/pool/main/d/dash/${DEB_PF}.diff.gz"
+	fi
+	S=${WORKDIR}/${MY_P}
+fi
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -32,13 +44,24 @@ DEPEND="${RDEPEND}
 	libedit? ( static? ( dev-libs/libedit[static-libs] ) )"
 
 src_prepare() {
+	local c
+	default
+	if [ -n "${DEB_PATCH}" ]
+	then	eapply "${WORKDIR}"/${DEB_PF}.diff
+		eapply */debian/diff/*
+	fi
+	c='configure.ac configure'
+	if ${LIVE}
+	then	test -r configure || c=configure.ac
+	else	c=configure
+	fi
 	# Use pkg-config for libedit linkage
 	sed -i \
 		-e "/LIBS/s:-ledit:\`$(tc-getPKG_CONFIG) --libs libedit $(usex static --static '')\`:" \
-		configure.ac || die
+		${c} || die
 
 	eapply_user
-	eautoreconf
+	! ${LIVE} || eautoreconf
 }
 
 src_configure() {
@@ -52,4 +75,9 @@ src_configure() {
 		--enable-fnmatch \
 		--disable-lineno \
 		$(use_with libedit)
+}
+
+src_install() {
+	default
+	[ -z "${DEB_PATCH}" ] || dodoc */debian/changelog
 }
