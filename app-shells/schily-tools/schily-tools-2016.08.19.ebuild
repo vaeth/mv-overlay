@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="acl caps +posix static-libs system-libschily system-star xattr"
 
 #PATCHES=(-p0 "$DISTDIR"/${MY_P}.patch)
-PATCHES=("$FILESDIR"/pipe.patch)
+#PATCHES=("$FILESDIR"/pipe.patch)
 
 add_iuse_expand() {
 	local i j
