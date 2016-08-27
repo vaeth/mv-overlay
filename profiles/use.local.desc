@@ -157,6 +157,15 @@ games-rpg/magus:pdfviewer_zathura - Use zathura as default pdfviewer
 games-rpg/magus:pngcrush - Use pngcrush for opimizing png before installation
 games-rpg/magus:postgres - Use postgresql instead of sqlite
 media-gfx/pqiv:gtk2 - Use gtk:2 instead of gtk:3
+media-libs/avidemux-core:system-ffmpeg - Use the ffmpeg provided by the system.
+media-libs/avidemux-plugins:aften - Enable A/52 (AC-3) audio encoder support.
+media-libs/avidemux-plugins:amr - Enable Adaptive Multi-Rate format support via media-libs/opencore-amr.
+media-libs/avidemux-plugins:fribidi - Enable unicode bidirectional algorithm support via dev-libs/fribidi.
+media-libs/avidemux-plugins:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.
+media-libs/avidemux-plugins:opus - Adds support for the Opus codec via media-libs/opus.
+media-libs/avidemux-plugins:twolame - Enable TwoLAME support via media-sound/twolame, an optimised MPEG Audio Layer 2 (MP2) encoder.
+media-libs/avidemux-plugins:vpx - Enable WebM VP8 Codec SDK support via media-libs/libvpx.
+media-libs/avidemux-plugins:x265 - Enables HEVC support with media-libs/x265.
 media-tv/sundtek-tv:ld-preload-env - Install LD_PRELOAD in /etc/env.d/50sundtek-tv
 media-tv/sundtek-tv:ld-preload-file - Install /etc/ld.so.preload
 media-tv/sundtek-tv:pax_kernel - Mark package which is necessary if you use a PAX kernel
