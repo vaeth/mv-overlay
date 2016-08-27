@@ -30,3 +30,15 @@ src_install() {
 	insinto /lib/gentoo
 	doins lib/gentoo/*
 }
+
+pkg_postinst() {
+	case " ${REPLACING_VERSIONS}" in
+	*' 0.'*|*' 1.'*)
+		ewarn "The previous versions of $PN had several bugs."
+		ewarn 'It is recommended to remove from $PORTDIR/metadata the directories'
+		ewarn '	dtd/ glsa/ news/ xml-schema/'
+		ewarn 'as well as the directory $PORTDIR/local/timestamps'
+		ewarn 'to make sure that these directories contain the correct content.'
+	;;
+	esac
+}
