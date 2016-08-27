@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-RESTRICT="fetch"
+RESTRICT="mirror"
 
 PYTHON_COMPAT=( python2_7 )
 

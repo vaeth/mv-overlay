@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-RESTRICT="fetch"
+RESTRICT="mirror"
 
 PLOCALES="ca cs de el es fr it ja pt_BR ru sr sr@latin tr"
 
