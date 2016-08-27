@@ -13,6 +13,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+src_prepare() {
+	use prefix || sed -i \
+			-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
+			-- etc/portage/repo.postsync.d/*-* || die
+	eapply_user
+}
+
 src_install() {
 	dodoc README
 	insinto /etc/portage/repo.postsync.d
