@@ -18,10 +18,11 @@ KEYWORDS="~amd64 ~x86"
 
 MY_PN="${PN/-core/}"
 if [[ ${PV} == *9999* ]] ; then
+	MY_P=$P
 	KEYWORDS=""
-	EGIT_REPO_URI="git://gitorious.org/${MY_PN}2-6/${MY_PN}2-6.git https://git.gitorious.org/${MY_PN}2-6/${MY_PN}2-6.git"
-
-	inherit git-2
+	PROPERTIES="live"
+	EGIT_REPO_URI="https://github.com/mean00/avidemux2"
+	inherit git-r3
 else
 	MY_P="${MY_PN}_${PV}"
 	SRC_URI="mirror://sourceforge/${MY_PN}/${MY_PN}/${PV}/${MY_P}.tar.gz"

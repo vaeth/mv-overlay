@@ -4,9 +4,9 @@
 EAPI=6
 RESTRICT="fetch"
 
-#PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils eutils flag-o-matic # python-single-r1
+inherit cmake-utils eutils flag-o-matic python-single-r1
 
 SLOT="2.6"
 
@@ -20,16 +20,17 @@ KEYWORDS="~amd64 ~x86"
 
 MY_PN="${PN/-plugins/}"
 if [[ ${PV} == *9999* ]] ; then
+	MY_P=$P
 	KEYWORDS=""
-	EGIT_REPO_URI="git://gitorious.org/${MY_PN}2-6/${MY_PN}2-6.git https://git.gitorious.org/${MY_PN}2-6/${MY_PN}2-6.git"
-
-	inherit git-2
+	PROPERTIES="live"
+	EGIT_REPO_URI="https://github.com/mean00/avidemux2"
+	inherit git-r3
 else
 	MY_P="${MY_PN}_${PV}"
 	SRC_URI="mirror://sourceforge/${MY_PN}/${MY_PN}/${PV}/${MY_P}.tar.gz"
 fi
 
-DEPEND="
+RDEPEND="
 	~media-libs/avidemux-core-${PV}:${SLOT}[vdpau?]
 	~media-video/avidemux-${PV}:${SLOT}[opengl?,qt4?]
 	>=dev-lang/spidermonkey-1.5-r2:0=
@@ -68,8 +69,8 @@ DEPEND="
 	vorbis? ( media-libs/libvorbis:0 )
 	vpx? ( media-libs/libvpx:0 )
 "
-#	${PYTHON_DEPS}
-RDEPEND="$DEPEND"
+DEPEND="$RDEPEND
+	${PYTHON_DEPS}"
 
 S="${WORKDIR}/${MY_P}"
 

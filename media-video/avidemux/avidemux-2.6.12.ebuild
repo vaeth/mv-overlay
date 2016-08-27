@@ -19,10 +19,11 @@ IUSE="debug opengl nls qt4 sdl vaapi vdpau video_cards_fglrx xv"
 KEYWORDS="~amd64 ~x86"
 
 if [[ ${PV} == *9999* ]] ; then
+	MY_P=$P
 	KEYWORDS=""
-	EGIT_REPO_URI="git://gitorious.org/${PN}2-6/${PN}2-6.git https://git.gitorious.org/${PN}2-6/${PN}2-6.git"
-
-	inherit git-2
+	PROPERTIES="live"
+	EGIT_REPO_URI="https://github.com/mean00/avidemux2"
+	inherit git-r3
 else
 	MY_P="${PN}_${PV}"
 	SRC_URI="mirror://sourceforge/${PN}/${PN}/${PV}/${MY_P}.tar.gz"
