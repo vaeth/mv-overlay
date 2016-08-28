@@ -23,12 +23,11 @@ src_prepare() {
 src_install() {
 	dodoc README
 	insinto /etc/portage/repo.postsync.d
+	doins etc/portage/repo.postsync.d/*.sh
 	doins etc/portage/repo.postsync.d/README
 	docompress /etc/portage/repo.postsync.d/README
 	exeinto /etc/portage/repo.postsync.d
-	doexe etc/portage/repo.postsync.d/*-*
-	insinto /lib/gentoo
-	doins lib/gentoo/*
+	doexe etc/portage/repo.postsync.d/[0-9]*
 }
 
 pkg_postinst() {
