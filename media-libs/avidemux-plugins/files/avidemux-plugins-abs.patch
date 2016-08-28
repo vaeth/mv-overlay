@@ -5,7 +5,7 @@
                                  // The chosen frame doesn't match the prediction.
                                  if (predicted_metric == 0) mismatch = 0.0;
 -                                else mismatch = (100.0*abs(predicted_metric - lowest))/predicted_metric;
-+                                else mismatch = (100.0*abs(long(predicted_metric) - long(lowest)))/predicted_metric;
++                                else mismatch = (100.0*abs(int64_t(predicted_metric) - int64_t(lowest)))/predicted_metric;
                                  if (mismatch < gthresh)
                                  {
                                          // It's close enough, so use the predicted one.
@@ -14,7 +14,7 @@
                                                  // The chosen frame doesn't match the prediction.
                                                  if (predicted_metric == 0) mismatch = 0.0;
 -                                                else mismatch = (100.0*abs(predicted_metric - lowest))/predicted_metric;
-+                                                else mismatch = (100.0*abs(long(predicted_metric) - long(lowest)))/predicted_metric;
++                                                else mismatch = (100.0*abs(int64_t(predicted_metric) - int64_t(lowest)))/predicted_metric;
                                                  if ((int) mismatch <= gthresh)
                                                  {
                                                          // It's close enough, so use the predicted one.
