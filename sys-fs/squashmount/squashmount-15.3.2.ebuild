@@ -34,7 +34,7 @@ DOC_CONTENTS="Please adapt /etc/squashmount.pl as well as
 
 Configure the mount point 'gentoo' only if you use sync-type = squashdelta.
 
-For improved output use squasfs-tools from the mv overlay.
+For improved output use sys-fs/squashfs-tools from the mv overlay.
 
 It is recommended to put into your zshrc the line:
 alias squashmount='noglob squashmount'"
@@ -53,7 +53,10 @@ src_install() {
 	systemd_dounit systemd/system/*
 	systemd_dotmpfilesd tmpfiles.d/*
 	insinto /etc
-	doins -r etc/*
+	doins etc/squashmount.pl
+	doins -r etc/revdep-rebuild etc/systemd etc/find_cruft.d
+	exeinto /etc/portage/repo.postsync.d
+	doexe etc/portage/repo.postsync.d/*
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
 	readme.gentoo_create_doc
@@ -67,7 +70,7 @@ pkg_postinst() {
 		'>=sys-fs/squashfuse-0.1.100 >=sys-fs/unionfs-fuse-0.25' \
 		'>=sys-fs/squashfuse-0.1.100 sys-fs/funionfs'
 	case " ${REPLACING_VERSIONS}" in
-	' '[0-7].*|' '8.[0-6]*|' '8.7.[0-4]*)
+	*' '[0-9].*|*' '1[0-4].*|*' '15.[0-2].*|*' '15.3.0*)
 		FORCE_PRINT_ELOG="true";;
 	esac
 	readme.gentoo_print_elog
