@@ -10,7 +10,7 @@ inherit cmake-utils eutils flag-o-matic python-single-r1
 
 SLOT="2.6"
 
-DESCRIPTION="Plugins for avidemux; a video editor designed for simple cutting, filtering and encoding tasks"
+DESCRIPTION="Plugins for media-video/avidemux"
 HOMEPAGE="http://fixounet.free.fr/avidemux"
 
 # Multiple licenses because of all the bundled stuff.
@@ -52,7 +52,7 @@ RDEPEND="
 		libsamplerate? ( media-libs/libsamplerate:0 )
 	)
 	lame? ( media-sound/lame:0 )
-	nvenc? ( media-video/nvidia_video_sdk:0 )
+	nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) )
 	opus? ( media-libs/opus:0 )
 	oss? ( virtual/os-headers:0 )
 	pulseaudio? ( media-sound/pulseaudio:0 )
@@ -73,6 +73,8 @@ DEPEND="$RDEPEND
 	${PYTHON_DEPS}"
 
 S="${WORKDIR}/${MY_P}"
+
+REQUIRED_USE="!amd64? ( !nvenc )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.4-optional-pulse.patch
