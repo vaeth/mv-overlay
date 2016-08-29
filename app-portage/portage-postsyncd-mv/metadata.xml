@@ -13,4 +13,7 @@
 		<bugs-to>mailto:martin@mvath.de</bugs-to>
 		<remote-id type="github">vaeth/portage-postsyncd-mv</remote-id>
 	</upstream>
+	<use>
+		<flag name="portage-utils">Make /etc/portage/repo.postsync.d/q-reinit from <pkg>app-portage/portage-utils</pkg> non-executable and install a hack in /etc/portage/env/app-portage/portage-utils so that it stays so</flag>
+	</use>
 </pkgmetadata>
