@@ -8,7 +8,7 @@ inherit cmake-utils eutils flag-o-matic
 
 SLOT="2.6"
 
-DESCRIPTION="Core libraries for a video editor designed for simple cutting, filtering and encoding tasks"
+DESCRIPTION="Core libraries for media-video/avidemux"
 HOMEPAGE="http://fixounet.free.fr/avidemux"
 
 # Multiple licenses because of all the bundled stuff.
