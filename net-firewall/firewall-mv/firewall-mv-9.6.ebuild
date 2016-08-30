@@ -12,8 +12,10 @@ SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="old-openrc"
 RDEPEND="!<sys-apps/openrc-0.13
+	old-openrc? ( !>sys-apps/openrc-0.21.5 )
+	!old-openrc? ( !<=sys-apps/openrc-0.21.5 )
 	app-shells/push"
 DEPEND=""
 
@@ -39,7 +41,8 @@ src_install() {
 	doins modules-load.d/*
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
-	doconfd openrc/conf.d/*
+	doconfd openrc/conf.d/fire*
+	! use old-openrc || doconfd openrc/conf.d/modules
 	doinitd openrc/init.d/*
 	dodoc README
 	systemd_dounit systemd/*
