@@ -231,9 +231,6 @@ sys-apps/less:less-select - Add the less-select feature (additional options and 
 sys-apps/less:lesspipe - Default to lesspipe.sh from app-text/lesspipe instead of the gentoo specific lesspipe.
 sys-apps/less:original-gentoo - Use the gentoo default for the LESS variable.
 sys-apps/less:source - Install sources for keybindings (only useful with less-select).
-sys-apps/openrc:netifrc - enable Gentoo's network stack (net.* scripts)
-sys-apps/openrc:newnet - enable the new network stack (experimental)
-sys-apps/openrc:tools - build optional tools
 sys-fs/aufs:all-patches - Apply all patches - also those which do not start with aufs
 sys-fs/aufs:kernel-patch - Apply the aufs kernel patches instead of just copying them
 sys-fs/squash_dir:aufs - Prefer aufs
