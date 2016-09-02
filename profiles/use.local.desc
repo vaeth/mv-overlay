@@ -135,6 +135,10 @@ app-text/stardict:espeak - Enable text to speech synthesizer using espeak engine
 app-text/stardict:pronounce - Install WyabdcRealPeopleTTS package (it is just many .wav files) to make StarDict pronounce English words
 app-text/stardict:qqwry - Enable QQWry plugin, which provides information (in Chinese language) about geographical positions, owner, etc. for IP addresses
 app-text/stardict:tools - Build and install the extra stardict tools
+dev-libs/glib:dbus - Enable dependencies required by glib libraries using dbus service to manage settings saving
+dev-libs/glib:mime - Pull in shared MIME database that many glib-based applications require at runtime to detect or open files. Warning: do not disable this flag unless installing on a headless server.
+dev-libs/glib:systemtap - Build support for profiling and tracing using dev-util/systemtap
+dev-libs/glib:utils - Install gtester-report utility to generate test report files for your software; build gresource utility with ELF support.
 games-emulation/xmame:bundled-libs - Use bundled version of dev-libs/expat
 games-emulation/xmame:net - Add network support
 games-emulation/xmess:bundled-libs - Use bundled version of dev-libs/expat
@@ -157,6 +161,11 @@ games-rpg/magus:pdfviewer_qpdfview - Use qpdfview as default pdfviewer
 games-rpg/magus:pdfviewer_zathura - Use zathura as default pdfviewer
 games-rpg/magus:pngcrush - Use pngcrush for opimizing png before installation
 games-rpg/magus:postgres - Use postgresql instead of sqlite
+mail-client/alpine:chappa - enhance alpine by applying Eduardo Chappa's patches
+mail-client/alpine:onlyalpine - installs only the alpine binary, so it does not collied with app-editors/pico and/or mail-client/pine
+mail-client/alpine:passfile - Adds support for caching passwords into a file between sessions
+mail-client/alpine:smime - Enable support for S/MIME
+mail-client/alpine:topal - Enable support for net-mail/topal
 media-gfx/pqiv:gtk2 - Use gtk:2 instead of gtk:3
 media-libs/avidemux-core:system-ffmpeg - Use the ffmpeg provided by the system.
 media-libs/avidemux-plugins:aften - Enable A/52 (AC-3) audio encoder support.
@@ -244,3 +253,9 @@ x11-drivers/nvidia-drivers:kernel3-14 - Install unofficial patches for linux-3.1
 x11-drivers/nvidia-drivers:kernel3-17 - Install unofficial patches for linux-3.17 and newer
 x11-drivers/nvidia-drivers:pax_kernel - Patch to compile with hardened-sources/grsecurity
 x11-drivers/nvidia-drivers:tools - Install additional tools such as nvidia-settings
+x11-libs/gtk+:adwaita-icon-theme - Force the adwaita-icon-theme
+x11-libs/gtk+:at-spi2-atk - Enable the gtk3-atk-bridge, hard depending on app-accessibility/at-spi2-atk and thus on sys-apps/dbus
+x11-libs/gtk+:broadway - Enable the GDK Broadway backend.
+x11-libs/gtk+:cloudprint - Enable printing via Google Cloud Print.
+x11-libs/gtk+:colord - Use x11-misc/colord for color management in printing
+x11-libs/motif:motif22-compatibility - Compatibility with Open Motif 2.2
