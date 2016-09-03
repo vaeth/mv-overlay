@@ -53,10 +53,3 @@ src_install() {
 	emake -j1 install
 	dodoc CHANGES Contributors README WISHES
 }
-
-pkg_postinst() {
-	echo
-	ewarn "If you just updated from an older version of ${PN} you *have* to re-emerge"
-	ewarn "all your dictionaries to avoid segmentation faults and other problems."
-	echo
-}
