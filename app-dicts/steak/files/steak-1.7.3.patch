@@ -1,0 +1,18 @@
+--- woerterbuch.alt	2004-12-04 23:34:28.115707552 +0100
++++ woerterbuch	2004-12-04 23:41:19.259204240 +0100
+@@ -6,13 +6,13 @@
+ ################################################################
+ #
+ # Unter diesem Verzeichnis ist die Woerterbuch-Datei zu finden  
+-SteakDIR=$HOME/bin/Steak/Datensatz
++SteakDIR=/usr/share/Steak/Datensatz
+ #SteakDIR=$HOME/bin/Steak/Datensatz
+ # Der Name der Woerterbuch-Datei
+ SteakFILE=ger-eng.txt
+ #SteakFILE=Datenbank.txt
+ # Unter diesem Verzeichnis ist die ausfuehrbaren Dateien zu finden  
+-BINDIR=$HOME/bin/Steak
++BINDIR=/usr/bin
+ #BINDIR=$HOME/bin/Steak
+ # Temp-Dir
+ TMPDIR=/tmp
