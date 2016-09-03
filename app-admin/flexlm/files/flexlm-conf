@@ -1,0 +1,13 @@
+# Copyright 2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Logfile path: (NOTE: This must be uid/gid owned by the value of $LMUSER!)
+LMLOG="/var/log/flexlm/flexlm.log"
+
+# Run the lmgrd user as:
+LMUSER="flexlm"
+
+# List all license files delimeted by a colon
+LMLICENSE="/etc/flexlm/license.dat"
+#LMLICENSE="${LMLICENSE}:/var/flexlm/aw.dat"
+#LMLICENSE="${LMLICENSE}:/opt/shake/keys/license.dat"
