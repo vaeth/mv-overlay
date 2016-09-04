@@ -18,7 +18,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="acl caps static-libs system-libschily system-star xattr"
 
 #PATCHES=(-p0 "$DISTDIR"/${MY_P}.patch)
-PATCHES=("$FILESDIR"/bosh-strict-aliasing.patch)
 
 add_iuse_expand() {
 	local i j
