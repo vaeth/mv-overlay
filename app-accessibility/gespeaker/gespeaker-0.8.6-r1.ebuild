@@ -18,7 +18,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="linguas_ar linguas_bg linguas_de linguas_en linguas_es linguas_fo linguas_fr linguas_it linguas_pl linguas_tr linguas_vi"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-DEPEND="<dev-lang/python-3"
 RDEPEND="app-accessibility/espeak
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/pygtk[${PYTHON_USEDEP}]
@@ -28,7 +27,7 @@ RDEPEND="app-accessibility/espeak
 
 src_prepare() {
 	distutils-r1_python_prepare_all
-	use prefix || sed -i \
+	! use prefix || sed -i \
 			-e '1s"^#!/usr/bin/env python$"#!'"${EPREFIX}/usr/bin/python"'"' \
 			-- "${S}/setup.py" "${S}/src/gespeaker.py" || die
 	python_setup 'python2*'

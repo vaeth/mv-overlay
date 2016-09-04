@@ -1,8 +1,7 @@
-# Martin Väth <martin@mvath.de> (20 Jul 2016)
-# There is nothing wrong with sys-apps/starter, but it is hardly maintained.
-# Please switch to the successor project sys-fs/schedule which is superior
-# in practically every aspect.
-sys-apps/starter
+# Martin Väth <martin@mvath.de> (04 Sep 2016)
+# app-accessibility/gespeaker-0.8.6_p0 is a first attempt for a gtk-3 version.
+# It does not yet compile.
+=app-accessibility/gespeaker-0.8.6_p0
 
 # Martin Väth <martin@mvath.de> (12 Mar 2016)
 # No version of magus compiles with current libsigc++ and gcc:5
@@ -18,6 +17,12 @@ games-rpg/magus
 # net-dns/noip-updater does not use https for transferring user sensitive data,
 # see bug #261194. So install only if you are aware about the security risk.
 ~net-dns/noip-updater-2.1.9
+
+# Martin Väth <martin@mvath.de> (20 Jul 2016)
+# There is nothing wrong with sys-apps/starter, but it is hardly maintained.
+# Please switch to the successor project sys-fs/schedule which is superior
+# in practically every aspect.
+sys-apps/starter
 
 # Martin Väth <martin@mvath.de> (10 Jan 2015)
 # sys-fs/squash_dir is no longer maintained. Use instead the successor project
