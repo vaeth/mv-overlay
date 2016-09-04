@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( pypy python2_7 python3_3 python3_4 python3_5 )
+PYTHON_COMPAT=( pypy python2_7 python3_4 python3_5 )
 
 case ${PV} in
 99999999*)
