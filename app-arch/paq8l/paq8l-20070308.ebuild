@@ -6,8 +6,8 @@ RESTRICT="mirror"
 inherit toolchain-funcs
 
 DESCRIPTION="Open source file compressor and archiver"
-HOMEPAGE="http://www.cs.fit.edu/~mmahoney/compression"
-SRC_URI="http://www.cs.fit.edu/~mmahoney/compression/${PN}.zip"
+HOMEPAGE="http://mattmahoney.net/dc/"
+SRC_URI="http://mattmahoney.net/dc/${PN}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
