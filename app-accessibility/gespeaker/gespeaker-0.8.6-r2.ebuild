@@ -27,7 +27,7 @@ RDEPEND="app-accessibility/espeak
 
 src_prepare() {
 	distutils-r1_python_prepare_all
-	! use prefix || sed -i \
+	use prefix || sed -i \
 			-e '1s"^#!/usr/bin/env python$"#!'"${EPREFIX}/usr/bin/python"'"' \
 			-- "${S}/setup.py" "${S}/src/gespeaker.py" || die
 	python_setup 'python2*'
