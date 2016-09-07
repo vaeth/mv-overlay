@@ -14,13 +14,20 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+portage-utils"
 
 src_prepare() {
-	use prefix || sed -i \
-			-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
-			-- etc/portage/repo.postsync.d/*-* || die
+	use prefix || {
+		sed -i \
+				-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
+				-- etc/portage/repo.postsync.d/*-* || die
+		sed -i \
+			-e '1s"^#!/usr/bin/env $"#!'"${EPREFIX}/usr/bin/"'"' \
+				-- usr/bin/* || die
+	}
 	eapply_user
 }
 
 src_install() {
+	exeinto /usr/bin
+	doexe usr/bin/*
 	dodoc README
 	insinto /etc/portage/repo.postsync.d
 	doins etc/portage/repo.postsync.d/*.sh
