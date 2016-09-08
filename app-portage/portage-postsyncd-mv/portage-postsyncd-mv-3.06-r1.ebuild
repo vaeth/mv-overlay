@@ -11,6 +11,8 @@ SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RDEPEND=">=dev-lang/perl-5.6.1"
+# || ( >=dev-lang/perl-5.6.1 >=virtual/perl-Getopt-Long-2.24 )
 IUSE="+portage-utils"
 
 src_prepare() {
