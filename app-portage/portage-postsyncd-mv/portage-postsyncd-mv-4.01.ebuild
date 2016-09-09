@@ -30,7 +30,7 @@ src_prepare() {
 src_install() {
 	exeinto /usr/bin
 	doexe usr/bin/*
-	dodoc README
+	dodoc README ChangeLog
 	insinto /etc/portage/repo.postsync.d
 	doins etc/portage/repo.postsync.d/*.sh
 	doins etc/portage/repo.postsync.d/README
@@ -68,12 +68,24 @@ pkg_postinst() {
 		}
 	fi
 	case " ${REPLACING_VERSIONS}" in
-	*' 0.'*|*' 1.'*)
+	*' '[01].*)
 		ewarn "The previous versions of $PN had several bugs."
 		ewarn 'It is recommended to remove from $PORTDIR/metadata the directories'
 		ewarn '	dtd/ glsa/ news/ xml-schema/'
 		ewarn 'as well as the directory $PORTDIR/local/timestamps'
 		ewarn 'to make sure that these directories contain the correct content.'
-	;;
+		ewarn 'Moreover:';;
+	esac
+	case " ${REPLACING_VERSIONS}" in
+	*' '[0-3].*)
+		ewarn "The previous versions of $PN cleaned too aggressively."
+		ewarn 'It is recommended to refetch all repositories.'
+		ewarn 'Also remove the files'
+		ewarn '	$PORTDIR/local/timestamp/git-gc.date'
+		ewarn '	$REPO/.git/git-gc.date'
+		ewarn 'where $PORTDIR and $REPO should be replaced by the paths to'
+		ewarn 'your main repository or to each of your overlays, respectively.'
+		ewarn 'Also note renaming of some configuration variables.'
+		ewarn 'See the new ChangeLog file for details';;
 	esac
 }
