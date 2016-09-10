@@ -35,6 +35,8 @@ src_install() {
 	doins etc/portage/repo.postsync.d/*.sh
 	doins etc/portage/repo.postsync.d/README
 	docompress /etc/portage/repo.postsync.d/README
+	insinto /usr/share/zsh/site-functions
+	doins usr/share/zsh/site-functions/*
 	exeinto /etc/portage/repo.postsync.d
 	doexe etc/portage/repo.postsync.d/[0-9]*
 	insinto /usr/lib/portage-postsyncd-mv
