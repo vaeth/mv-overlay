@@ -250,7 +250,8 @@ touch_zwc() {
 }
 
 src_install() {
-	emake DESTDIR="${ED}" install install.info
+	# install.info needs texinfo unless the doc tarball is available
+	emake DESTDIR="${ED}" install $(usex doc "install.info" "")
 
 	insinto /etc/zsh
 	doins "${T}"/zprofile
