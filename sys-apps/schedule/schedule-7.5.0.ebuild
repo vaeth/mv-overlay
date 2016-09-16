@@ -45,8 +45,8 @@ src_prepare() {
 src_install() {
 	dobin bin/*
 	dodoc README ChangeLog
-	insinto "/usr/share/${PN}"
-	doins -r lib/*
+	insinto /usr
+	doins -r share
 	doinitd openrc/init.d/*
 	doconfd openrc/conf.d/*
 	systemd_dounit systemd/system/*
