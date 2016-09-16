@@ -7,7 +7,7 @@ inherit elisp-common
 
 DESCRIPTION="(X)Emacs extensions: block support, macrorecorder, verify change"
 HOMEPAGE="https://github.com/vaeth/mv_emacs/"
-SRC_URI="https://github.com/vaeth/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
