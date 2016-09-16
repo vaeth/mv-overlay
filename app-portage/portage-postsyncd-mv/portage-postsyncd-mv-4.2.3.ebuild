@@ -21,7 +21,7 @@ src_prepare() {
 				-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
 				-- etc/portage/repo.postsync.d/*-* || die
 		sed -i \
-			-e '1s"^#!/usr/bin/env $"#!'"${EPREFIX}/usr/bin/"'"' \
+			-e '1s"^#!/usr/bin/env "#!'"${EPREFIX}/usr/bin/"'"' \
 				-- usr/bin/* || die
 	}
 	eapply_user
