@@ -7,15 +7,15 @@ inherit eutils
 
 DESCRIPTION="Print or save the current USE-flag state and compare with older versions"
 HOMEPAGE="https://github.com/vaeth/useflags/"
-SRC_URI="https://github.com/vaeth/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-lang/perl
-	|| ( >=dev-lang/perl-5.6.1 >=virtual/perl-Getopt-Long-2.24 )"
+RDEPEND=">=dev-lang/perl-5.6.1"
+#	|| ( >=dev-lang/perl-5.6.1 >=virtual/perl-Getopt-Long-2.24 )"
 
 src_prepare() {
 	use prefix || sed -i \
