@@ -3,6 +3,7 @@
 
 EAPI=6
 RESTRICT="mirror"
+inherit eutils
 
 DESCRIPTION="postsync hooks for portage to sync from git"
 HOMEPAGE="https://github.com/vaeth/portage-postsyncd-mv/"
@@ -90,4 +91,7 @@ pkg_postinst() {
 		ewarn 'Also note renaming of some configuration variables.'
 		ewarn 'See the new ChangeLog file for details';;
 	esac
+	optfeature "faster execution" 'app-portage/eix'
+	optfeature "improved compatibility and security" 'dev-perl/File-Which'
+	optfeature "improved security" 'dev-perl/String-ShellQuote'
 }
