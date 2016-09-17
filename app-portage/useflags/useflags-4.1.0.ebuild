@@ -33,4 +33,6 @@ src_install() {
 pkg_postinst() {
 	optfeature "faster execution" 'app-portage/eix'
 	optfeature "increased security" '>=app-portage/eix-0.27.7'
+	optfeature "improved compatibility and security" 'dev-perl/File-Which'
+	optfeature "improved security" 'dev-perl/String-ShellQuote'
 }

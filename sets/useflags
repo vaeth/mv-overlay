@@ -1,2 +1,4 @@
 >=app-portage/eix-0.27.7
 app-portage/useflags
+dev-perl/File-Which
+dev-perl/String-ShellQuote
