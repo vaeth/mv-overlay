@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="!<dev-util/mv_perl-3
->=dev-lang/perl-5.12"
+>=dev-lang/perl-5.8"
 #	|| ( >=dev-lang/perl-5.9.4 >=virtual/perl-File-Spec-3.0 )
 #	|| ( >=dev-lang/perl-5.6.1 >=virtual/perl-Getopt-Long-2.24 )
 
