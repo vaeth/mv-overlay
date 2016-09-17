@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=dev-lang/perl-5.12
+RDEPEND=">=dev-lang/perl-5.8
 	dev-perl/String-ShellQuote
 	|| ( >=dev-lang/perl-5.14 virtual/perl-Term-ANSIColor )"
 #	|| ( >=dev-lang/perl-5.6.1 >=virtual/perl-Getopt-Long-2.24 )
@@ -36,4 +36,5 @@ src_install() {
 
 pkg_postinst() {
 	optfeature "faster execution" 'app-portage/eix'
+	optfeature "improved compatibility and security" 'dev-perl/File-Which'
 }
