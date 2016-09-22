@@ -16,7 +16,15 @@ RDEPEND="app-admin/sudo
 	app-shells/push"
 DEPEND=""
 
+src_prepare() {
+	use prefix || sed -i \
+		-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}"'/bin/sh"' \
+		-- "${PN}" || die
+	eapply_user
+}
+
 src_install() {
+	dodoc README ChangeLog
 	dobin "${PN}"
 	insinto /usr/share/zsh/site-functions
 	doins "_${PN}"
