@@ -26,6 +26,8 @@ src_prepare() {
 src_install() {
 	dodoc README ChangeLog
 	dobin "${PN}"
+	insinto /usr/bin
+	doins "${PN}e"
 	insinto /usr/share/zsh/site-functions
 	doins "_${PN}"
 }
