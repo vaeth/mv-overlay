@@ -19,15 +19,26 @@ DEPEND=""
 src_prepare() {
 	use prefix || sed -i \
 		-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}"'/bin/sh"' \
-		-- "${PN}" || die
+		-- bin/* || die
 	eapply_user
 }
 
 src_install() {
 	dodoc README ChangeLog
-	dobin "${PN}"
+	doenvd env.d/*
+	dobin bin/"${PN}"
 	insinto /usr/bin
-	doins "${PN}e"
+	doins bin/"${PN}e"
 	insinto /usr/share/zsh/site-functions
-	doins "_${PN}"
+	doins zsh/*
+	insinto /etc/sudoers.d
+	insopts -m440
+	doins sudoers.d/*
+}
+
+pkg_postinst() {
+	case " ${REPLACING_VERSIONS:-0.}" in
+	*' '[0-5].*)
+		ewarn "You should call env-update and source /etc/profile";
+	esac
 }
