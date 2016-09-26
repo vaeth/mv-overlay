@@ -25,7 +25,7 @@ src_prepare() {
 
 src_install() {
 	dodoc README ChangeLog
-	newdoc /etc/sudoers.d/${PN} sudoers.d
+	newdoc sudoers.d/${PN} sudoers.d
 	dobin bin/${PN}
 	insinto /usr/bin
 	doins bin/${PN}e
