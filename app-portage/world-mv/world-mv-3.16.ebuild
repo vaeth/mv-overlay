@@ -7,7 +7,7 @@ RESTRICT="mirror"
 mPN="${PN%-*}"
 DESCRIPTION="Organize your world file and find installed packages or differences to @world"
 HOMEPAGE="https://github.com/vaeth/world/"
-SRC_URI="https://github.com/vaeth/${mPN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vaeth/${mPN}/archive/v${PV}.tar.gz -> ${mPN}-${PV}.tar.gz"
 S="${WORKDIR}/${mPN}-${PV}"
 
 LICENSE="GPL-2"
