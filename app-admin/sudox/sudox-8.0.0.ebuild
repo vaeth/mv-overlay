@@ -25,20 +25,10 @@ src_prepare() {
 
 src_install() {
 	dodoc README ChangeLog
-	doenvd env.d/*
-	dobin bin/"${PN}"
+	newdoc /etc/sudoers.d/${PN} sudoers.d
+	dobin bin/${PN}
 	insinto /usr/bin
-	doins bin/"${PN}e"
+	doins bin/${PN}e
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
-	insinto /etc/sudoers.d
-	insopts -m440
-	doins sudoers.d/*
-}
-
-pkg_postinst() {
-	case " ${REPLACING_VERSIONS:-0.}" in
-	*' '[0-5].*)
-		ewarn "You should call env-update and source /etc/profile";
-	esac
 }
