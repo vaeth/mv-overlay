@@ -66,6 +66,7 @@ schilytools_man2html? (
 schilytools_p? (
 	!renameschily_p? ( !dev-util/wiggle )
 )
+schilytools_translit? ( !dev-perl/Lingua-Translit )
 acl? ( virtual/acl )
 caps? ( sys-libs/libcap )
 xattr? ( sys-apps/attr )"
