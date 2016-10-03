@@ -13,6 +13,7 @@ SRC_URI="mirror://gnu/gettext/gettext-${PV}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos"
+IUSE=""
 
 S="${WORKDIR}/gettext-${PV}/gettext-tools/misc"
 ELISP_REMOVE="start-po.el"
