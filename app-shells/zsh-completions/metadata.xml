@@ -18,9 +18,10 @@
 	</upstream>
 	<use>
 		<flag name="completion_Android">Install zsh completions for Android-related programs</flag>
-		<flag name="completion_Google">Install zsh completions for googlecl</flag>
-		<flag name="completion_Unix">Install zsh completion for unix system tools</flag>
-		<flag name="completion_backup">Install zsh completions for backup programs</flag>
+		<flag name="completion_Google">Install zsh completions for Google tools</flag>
+		<flag name="completion_Linux">Install zsh completions for Linux</flag>
+		<flag name="completion_Unix">Install zsh completions for Unix</flag>
+		<flag name="completion_X">Install zsh completions for X</flag>
 		<flag name="completion_database">Install zsh completions for database programs</flag>
 		<flag name="completion_dev">Install zsh completions for development (build systems, editors, web)</flag>
 		<flag name="completion_disk">Install zsh completions for disk tools</flag>
