@@ -71,9 +71,10 @@ app-shells/zsh:completion_Unix - Install zsh completions for Unix
 app-shells/zsh:completion_X - Install zsh completions for X
 app-shells/zsh:completion_openSUSE - Install zsh completions for openSUSE
 app-shells/zsh-completions:completion_Android - Install zsh completions for Android-related programs
-app-shells/zsh-completions:completion_Google - Install zsh completions for googlecl
-app-shells/zsh-completions:completion_Unix - Install zsh completion for unix system tools
-app-shells/zsh-completions:completion_backup - Install zsh completions for backup programs
+app-shells/zsh-completions:completion_Google - Install zsh completions for Google tools
+app-shells/zsh-completions:completion_Linux - Install zsh completions for Linux
+app-shells/zsh-completions:completion_Unix - Install zsh completions for Unix
+app-shells/zsh-completions:completion_X - Install zsh completions for X
 app-shells/zsh-completions:completion_database - Install zsh completions for database programs
 app-shells/zsh-completions:completion_dev - Install zsh completions for development (build systems, editors, web)
 app-shells/zsh-completions:completion_disk - Install zsh completions for disk tools
