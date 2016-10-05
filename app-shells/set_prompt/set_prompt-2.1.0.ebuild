@@ -15,17 +15,18 @@ IUSE=""
 
 src_prepare() {
 	use prefix || sed -i \
-		-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}"'/bin/sh"' \
-		-e '1s"^#!/usr/bin/env zsh$"#!'"${EPREFIX}"'/bin/zsh"' \
-		-- * || die
+		-e '1s"^#!/usr/bin/env "#!'"${EPREFIX}"'/bin/"' \
+		-- bin/* || die
 	eapply_user
 }
 
 src_install() {
 	insinto /etc
-	doins set_prompt.config
+	doins bin/*.config
 	insinto /usr/bin
-	doins set_prompt.sh git_prompt.zsh
-	dobin set_prompt git_update
+	doins bin/*.sh bin/*.zsh
+	dobin bin/set_prompt bin/git_update
+	insinto /usr/share/zsh/site-functions
+	doins zsh/*
 	dodoc README
 }
