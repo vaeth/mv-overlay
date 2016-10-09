@@ -20,14 +20,14 @@ RDEPEND=">=dev-lang/perl-5.6.1"
 src_prepare() {
 	use prefix || sed -i \
 		-e '1s"^#!/usr/bin/env perl$"#!'"${EPREFIX}/usr/bin/perl"'"' \
-		-- "${PN}" || die
+		-- bin/* || die
 	eapply_user
 }
 
 src_install() {
-	dobin "${PN}"
+	dobin bin/*
 	insinto /usr/share/zsh/site-functions
-	doins "_${PN}"
+	doins zsh/*
 }
 
 pkg_postinst() {
