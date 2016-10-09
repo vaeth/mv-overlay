@@ -20,28 +20,27 @@ src_prepare() {
 	use prefix || {
 		sed -i \
 				-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
-				-- etc/portage/repo.postsync.d/*-* || die
+				-- repo.postsync.d/[0-9]* || die
 		sed -i \
 			-e '1s"^#!/usr/bin/env "#!'"${EPREFIX}/usr/bin/"'"' \
-				-- usr/bin/* || die
+				-- bin/* || die
 	}
 	eapply_user
 }
 
 src_install() {
 	exeinto /usr/bin
-	doexe usr/bin/*
+	doexe bin/*
 	dodoc README ChangeLog
 	insinto /etc/portage/repo.postsync.d
-	doins etc/portage/repo.postsync.d/*.sh
-	doins etc/portage/repo.postsync.d/README
+	doins repo.postsync.d/*.sh repo.postsync.d/README
 	docompress /etc/portage/repo.postsync.d/README
 	insinto /usr/share/zsh/site-functions
-	doins usr/share/zsh/site-functions/*
+	doins zsh/*
 	exeinto /etc/portage/repo.postsync.d
-	doexe etc/portage/repo.postsync.d/[0-9]*
+	doexe repo.postsync.d/[0-9]*
 	insinto /usr/lib/portage-postsyncd-mv
-	doins etc/portage/env/app-portage/portage-utils
+	doins app-portage/portage-utils
 	! use portage-utils || \
 		dosym "${EPREFIX}"/usr/lib/portage-postsyncd-mv/portage-utils \
 			/etc/portage/env/app-portage/portage-utils
