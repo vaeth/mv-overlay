@@ -23,14 +23,14 @@ DEPEND=""
 src_prepare() {
 	use prefix || sed -i \
 		-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
-		-- "${PN}" || die
+		-- bin/* || die
 	eapply_user
 }
 
 src_install() {
-	dobin "${PN}"
+	dobin bin/*
 	insinto /usr/share/zsh/site-functions
-	doins _*
+	doins zsh/*
 }
 
 pkg_postinst() {
