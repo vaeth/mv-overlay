@@ -59,6 +59,8 @@ src_prepare() {
 	eend $?
 
 	! use pam || eapply "${FILESDIR}"/2.00-lpam.patch
+	sed -ie 's/AC_CHECK_LIB[^(]*([^,]*pam[^,]*,[^,]*,/AS_IF(['$(
+		usex pam true false)'],/' -- "${S}"/configure.ac
 	eapply "${FILESDIR}"/2.00-lcrypto.patch
 	eapply -p0 "${FILESDIR}"/2.00-c-client.patch
 	eapply -p0 "${FILESDIR}"/2.00-qa.patch
