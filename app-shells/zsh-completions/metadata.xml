@@ -18,6 +18,7 @@
 	</upstream>
 	<use>
 		<flag name="completion_Android">Install zsh completions for Android-related programs</flag>
+		<flag name="completion_Arch">Install zsh completions for Archlinux</flag>
 		<flag name="completion_Google">Install zsh completions for Google tools</flag>
 		<flag name="completion_Linux">Install zsh completions for Linux</flag>
 		<flag name="completion_Unix">Install zsh completions for Unix</flag>

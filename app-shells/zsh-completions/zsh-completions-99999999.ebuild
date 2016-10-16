@@ -73,10 +73,11 @@ calculate_data() {
 # (though categories are automatically marked/removed if they contain no files)
 calculate_data \
 	'+Android /_adb _android _emulator' \
+	'+Arch #_archlinux-java' \
 	'+Google _google' \
 	'+Linux #_chattr #_lsattr #_lsblk #_setcap' \
 	'+Unix #_cheat _cmake /_dzen2 /_logger /_nl #_openssl #_pixz /_ps _shutdown /_watch /_zfs' \
-	'+X _xinput' \
+	'+X #_trash-empty #_trash-list #_trash-put #_trash-restore _xinput' \
 	'+database _redis-cli _pgsql_utils' \
 	'+dev _artisan _choc _console _geany /_gradle _phing /_manage.py _mvn /_pear _play /_symfony _thor _vagrant /_veewee' \
 	'+disk #_scrub _sdd _smartmontools _srm' \
@@ -96,8 +97,8 @@ calculate_data \
 	'+search _ack _ag _jq #_jrnl' \
 	'+session _atach _teamocil _tmuxinator _wemux' \
 	'+subtitles _language_codes _periscope _subliminal' \
-	'+virtualization /_boot2docker #_rkt _virtualbox _virsh' \
-	'+web _coffee _composer #_dad #_diana _docpad _drush /_heroku #_homestead _jonas _jmeter _jmeter-plugins /_lunar _middleman #_mix _node _nvm _ralio /_salt _sbt _scala _svm'
+	'+virtualization /_boot2docker #_envdir #_rkt _virtualbox _virsh' \
+	'+web #_afew #_cf _coffee _composer #_dad #_diana _docpad _drush /_heroku #_homestead _jonas _jmeter _jmeter-plugins /_lunar _middleman #_mix _node _nvm _ralio /_salt _sbt _scala _svm'
 
 src_prepare() {
 	# Remove colliding completions
