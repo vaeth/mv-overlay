@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/schilytools/${MY_P}.tar.bz2"
 DESCRIPTION="Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell"
 HOMEPAGE="https://sourceforge.net/projects/schilytools/"
 KEYWORDS="~amd64 ~x86"
-IUSE="acl caps static-libs system-libschily system-star xattr"
+IUSE="acl caps doc static-libs system-libschily system-star xattr"
 
 #PATCHES=(-p0 "$DISTDIR"/${MY_P}.patch)
 
@@ -336,6 +336,8 @@ mustremove() {
 }
 
 src_install() {
+	! use doc || dodoc -r Schily.Copyright README.SSPM PORTING CONTRIBUTING \
+		AN-????-??-?? ANNOUNCEMENTS
 	emake -j1 CPPOPTX="${CPPFLAGS}" COPTX="${CFLAGS}" C++OPTX="${CXXFLAGS}" \
 		LDOPTX="${LDFLAGS}" GMAKE_NOWARN="true" install
 	if ! use static-libs
