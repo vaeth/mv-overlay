@@ -19,7 +19,7 @@ IUSE="doc ipv6 kerberos ldap libressl nls onlyalpine pam passfile smime spell ss
 
 DEPEND="pam? ( virtual/pam )
 	>=net-libs/c-client-2007f-r4[topal=,chappa=]
-	sys-libs/ncurses:0=
+	>=sys-libs/ncurses-5.1:0=
 	ssl? (
 		!libressl? ( dev-libs/openssl:0 )
 		libressl? ( dev-libs/libressl )
@@ -32,11 +32,6 @@ RDEPEND="${DEPEND}
 	app-misc/mime-types
 	!onlyalpine? ( !mail-client/pine )
 	!<=net-mail/uw-imap-2004g"
-
-pkg_unpack() {
-	default
-	unpack "${DISTDIR}/${P}-chappa-${CHAPPA_PL}-all.patch.gz"
-}
 
 pkg_setup() {
 	if use smime && use topal ; then
