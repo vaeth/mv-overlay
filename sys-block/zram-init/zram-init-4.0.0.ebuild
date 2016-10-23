@@ -14,13 +14,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="!<sys-apps/openrc-0.13"
+RDEPEND="app-shells/push
+	!<sys-apps/openrc-0.13"
 
 DISABLE_AUTOFORMATTING="true"
 DOC_CONTENTS="To use zram, activate it in your kernel and add it to default runlevel:
 	rc-config add zram default
 If you use systemd enable zram_swap, tmp, and/or var_tmp with systemctl.
 You might need to modify /etc/modprobe.d/zram.conf"
+
 
 src_prepare() {
 	use prefix || sed -i \
@@ -38,6 +40,7 @@ src_install() {
 	doins modprobe.d/*
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
+	dodoc AUTHORS ChangeLog README
 	readme.gentoo_create_doc
 }
 
