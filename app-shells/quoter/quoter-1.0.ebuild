@@ -5,7 +5,7 @@ EAPI=6
 inherit vcs-snapshot
 
 DESCRIPTION="Quote arguments or standard input for usage in POSIX shell by eval"
-HOMEPAGE="https://github.com/vaeth/push/"
+HOMEPAGE="https://github.com/vaeth/quoter/"
 SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
