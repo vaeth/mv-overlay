@@ -162,7 +162,7 @@ lesspipe() {
 
 	### Media ###
 	*.bmp|*.gif|*.jpeg|*.jpg|*.ico|*.pcd|*.pcx|*.png|*.ppm|*.tga|*.tiff|*.tif|*.webp)
-		identify "$1" || file -L -- "$1"
+		identify -verbose -- "$1" || file -L -- "$1"
 		;;
 	*.asf|*.avi|*.mov|*.mp4|*.mpeg|*.mpg|*.qt|*.ram|*.rm|*.webm|*.wmv)
 		midentify "$1" || file -L -- "$1"
@@ -246,7 +246,7 @@ if [[ -z $1 ]] ; then
 elif [[ $1 == "-V" || $1 == "--version" ]] ; then
 	cat <<-EOF
 		lesspipe (git)
-		Copyright 2016 Gentoo Foundation
+		Copyright 2001-2016 Gentoo Foundation
 		Mike Frysinger <vapier@gentoo.org>
 		     (with plenty of ideas stolen from other projects/distros)
 
