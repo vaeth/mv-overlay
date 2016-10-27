@@ -94,7 +94,7 @@ calculate_data \
 	'+perl /_cpanm' \
 	'+python /_bpython _pygmentize _setup.py' \
 	'+ruby _bundle _cap /_ditz _gas /_gem _gist /_github _git-wtf /_jekyll _lunchy _rails _rspec _rubocop _rvm' \
-	'+search _ack _ag _jq #_jrnl' \
+	'+search _ack _ag _jq #_jrnl #_rg' \
 	'+session _atach _teamocil _tmuxinator _wemux' \
 	'+subtitles _language_codes _periscope _subliminal' \
 	'+virtualization /_boot2docker #_envdir #_rkt _virtualbox _virsh' \
