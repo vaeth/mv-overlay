@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( jython2_7 pypy python2_7 )
+PYTHON_COMPAT=( pypy python2_7 )
 EGIT_REPO_URI="git://github.com/google/styleguide.git"
 inherit elisp-common git-r3 python-single-r1
 RESTRICT="mirror"
