@@ -16,17 +16,17 @@ then	EGIT_REPO_URI="git://git.kernel.org/pub/scm/utils/dash/dash.git"
 	PROPERTIES="live"
 	KEYWORDS=""
 	SRC_URI=""
-else	inherit versionator
-	MY_PV="$(get_version_component_range 1-3)"
-	DEB_PATCH="$(get_version_component_range 4)"
-	MY_P="${PN}-${MY_PV}"
+else	# inherit versionator
+	#MY_PV="$(get_version_component_range 1-3)"
+	DEB_PATCH="" #"$(get_version_component_range 4)"
+	#MY_P="${PN}-${MY_PV}"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-	SRC_URI="http://gondor.apana.org.au/~herbert/dash/files/${MY_P}.tar.gz"
+	SRC_URI="http://gondor.apana.org.au/~herbert/dash/files/${P}.tar.gz"
 	if [ -n "${DEB_PATCH}" ]
 	then	DEB_PF="${PN}_${MY_PV}-${DEB_PATCH}"
 		SRC_URI=${SRC_URI}" mirror://debian/pool/main/d/dash/${DEB_PF}.diff.gz"
 	fi
-	S=${WORKDIR}/${MY_P}
+	#S=${WORKDIR}/${MY_P}
 fi
 
 inherit eutils flag-o-matic toolchain-funcs
@@ -46,7 +46,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	local c
 	default
-	! use cripple || eapply "${FILESDIR}"/dumb-echo
+	! use cripple || eapply "${FILESDIR}"/dumb-echo.patch
 	if [ -n "${DEB_PATCH}" ]
 	then	eapply "${WORKDIR}"/${DEB_PF}.diff
 		eapply */debian/diff/*
