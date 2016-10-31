@@ -12,7 +12,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RDEPEND="app-shells/push"
+RDEPEND=">=app-shells/push-2.0"
 DEPEND=""
 
 src_prepare() {
@@ -20,7 +20,7 @@ src_prepare() {
 	use prefix || for i in bin/*
 	do	test -h "${i}" || sed -i \
 			-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
-			-e 's"^\. archwrap\.sh$". '"${EPREFIX}/usr/share/archwrap/archwrap.sh"'"' \
+			-e 's"^\. archwrap\.sh$". '"${EPREFIX}/usr/lib/archwrap/archwrap.sh"'"' \
 			-- "${i}" || die
 	done
 	eapply_user
@@ -36,7 +36,7 @@ src_install() {
 		then	dobin "${i}"
 		fi
 	done
-	insinto /usr/share/archwrap
+	insinto /usr/lib/archwrap
 	doins bin/archwrap.sh
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
