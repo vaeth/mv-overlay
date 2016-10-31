@@ -34,6 +34,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	optfeature "faster execution" 'app-portage/eix'
+	optfeature "faster execution" '>=app-portage/eix-0.32.2'
 	optfeature "status bar support" 'app-shells/runtitle'
 }
