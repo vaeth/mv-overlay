@@ -13,7 +13,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RDEPEND="app-shells/push
+RDEPEND=">=app-shells/push-2.0
 	>=app-shells/runtitle-2.3
 	|| ( ( media-sound/alsa-utils
 			|| ( media-video/mplayer[encode] virtual/ffmpeg ) )
