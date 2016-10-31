@@ -12,7 +12,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+keychain"
-RDEPEND="app-shells/push
+RDEPEND=">=app-shells/push-2.0
 	keychain? ( net-misc/keychain )"
 DEPEND=""
 
