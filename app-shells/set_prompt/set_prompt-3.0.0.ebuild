@@ -24,8 +24,7 @@ src_install() {
 	insinto /etc
 	doins bin/*.config
 	insinto /usr/bin
-	doins bin/*.sh bin/*.zsh
-	dobin bin/set_prompt bin/git_update
+	dobin bin/*.sh bin/*.zsh bin/set_prompt bin/git_update
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
 	dodoc README
