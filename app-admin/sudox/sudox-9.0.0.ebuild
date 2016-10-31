@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 RDEPEND="app-admin/sudo
-	app-shells/push"
+	>=app-shells/push-2.0"
 DEPEND=""
 
 src_prepare() {

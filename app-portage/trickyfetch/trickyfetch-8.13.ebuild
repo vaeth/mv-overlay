@@ -40,5 +40,5 @@ pkg_postinst() {
 	' '[0-7].*)
 		elog "Please adapt /etc/trickyfetch.conf to your needs";;
 	esac
-	optfeature "faster execution" 'app-portage/eix'
+	optfeature "faster execution" '>=app-portage/eix-0.32.2'
 }
