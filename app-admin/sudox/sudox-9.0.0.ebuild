@@ -26,9 +26,7 @@ src_prepare() {
 src_install() {
 	dodoc README ChangeLog
 	newdoc sudoers.d/${PN} sudoers.d
-	dobin bin/${PN}
-	insinto /usr/bin
-	doins bin/${PN}e
+	dobin bin/*
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
 }
