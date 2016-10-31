@@ -16,7 +16,7 @@ IUSE="old-openrc"
 RDEPEND="!<sys-apps/openrc-0.13
 	!old-openrc? ( !<sys-apps/openrc-0.21.7 )
 	old-openrc? ( !>=sys-apps/openrc-0.21.7 )
-	app-shells/push"
+	>=app-shells/push-2.0"
 DEPEND=""
 
 src_prepare() {
