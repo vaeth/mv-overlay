@@ -12,7 +12,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RDEPEND="app-shells/push"
+RDEPEND=">=app-shells/push-2.0"
 DEPEND=""
 
 src_prepare() {
@@ -29,7 +29,7 @@ src_install() {
 	local i
 	insinto /usr/bin
 	for i in bin/*
-	do	if test -h "${i}" || ! test -x "${i}"
+	do	if test -h "${i}"
 		then	doins "${i}"
 		else	dobin "${i}"
 		fi
