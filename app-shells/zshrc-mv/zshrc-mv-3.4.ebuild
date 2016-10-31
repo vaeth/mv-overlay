@@ -24,6 +24,6 @@ src_install() {
 pkg_postinst() {
 	optfeature "automagic completion" '>=app-shells/auto-fu-zsh-0.0.1.12_p0'
 	optfeature "syntax highlighting" 'app-shells/zsh-syntax-highlighting'
-	optfeature "a nice prompt" 'app-shells/set_prompt'
+	optfeature "a nice prompt" '>=app-shells/set_prompt-3.0.0'
 	optfeature "nice directory colors" 'app-shells/termcolors-mv'
 }
