@@ -36,7 +36,7 @@ HOMEPAGE="http://gondor.apana.org.au/~herbert/dash/"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="cripple libedit static"
+IUSE="dumb-echo libedit static"
 
 RDEPEND="!static? ( libedit? ( dev-libs/libedit ) )"
 DEPEND="${RDEPEND}
@@ -46,7 +46,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	local c
 	default
-	! use cripple || eapply "${FILESDIR}"/dumb-echo.patch
+	! use dumb-echo || eapply "${FILESDIR}"/dumb-echo.patch
 	if [ -n "${DEB_PATCH}" ]
 	then	eapply "${WORKDIR}"/${DEB_PF}.diff
 		eapply */debian/diff/*
