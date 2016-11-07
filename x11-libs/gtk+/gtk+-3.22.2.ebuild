@@ -1,8 +1,5 @@
-# Copyright 2016 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-RESTRICT="mirror"
 GNOME2_LA_PUNT="yes"
 
 inherit autotools eutils flag-o-matic gnome2 multilib virtualx multilib-minimal
@@ -29,7 +26,7 @@ RESTRICT="test"
 # NOTE: cairo[svg] dep is due to bug 291283 (not patched to avoid eautoreconf)
 COMMON_DEPEND="
 	>=dev-libs/atk-2.15[introspection?,${MULTILIB_USEDEP}]
-	>=dev-libs/glib-2.49.3:2[${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.49.4:2[${MULTILIB_USEDEP}]
 	media-libs/fontconfig[${MULTILIB_USEDEP}]
 	>=media-libs/libepoxy-1.0[${MULTILIB_USEDEP}]
 	>=x11-libs/cairo-1.14[aqua?,glib,svg,X?,${MULTILIB_USEDEP}]
@@ -45,7 +42,7 @@ COMMON_DEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1.39:= )
 	wayland? (
 		>=dev-libs/wayland-1.9.91[${MULTILIB_USEDEP}]
-		>=dev-libs/wayland-protocols-1.0
+		>=dev-libs/wayland-protocols-1.7
 		media-libs/mesa[wayland,${MULTILIB_USEDEP}]
 		>=x11-libs/libxkbcommon-0.2[${MULTILIB_USEDEP}]
 	)
@@ -68,9 +65,9 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.1.2
 	dev-libs/libxslt
 	dev-libs/gobject-introspection-common
-	>=dev-util/gdbus-codegen-2.38.2
+	>=dev-util/gdbus-codegen-2.48
 	>=dev-util/gtk-doc-am-1.20
-	>=sys-devel/gettext-0.18.3[${MULTILIB_USEDEP}]
+	>=sys-devel/gettext-0.19.7[${MULTILIB_USEDEP}]
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	X? (
 		x11-proto/xextproto[${MULTILIB_USEDEP}]
@@ -88,6 +85,7 @@ DEPEND="${COMMON_DEPEND}
 # >=xorg-server-1.11.4 needed for
 #  https://mail.gnome.org/archives/desktop-devel-list/2012-March/msg00024.html
 RDEPEND="${COMMON_DEPEND}
+	>=dev-util/gtk-update-icon-cache-3
 	!<gnome-base/gail-1000
 	!<x11-libs/vte-0.31.0:2.90
 	adwaita-icon-theme? ( >=x11-themes/adwaita-icon-theme-3.14 )
@@ -101,7 +99,7 @@ PDEPEND="
 "
 
 MULTILIB_CHOST_TOOLS=(
-	/usr/bin/gtk-query-immodules-3.0
+	/usr/bin/gtk-query-immodules-3.0$(get_exeext)
 )
 
 strip_builddir() {
@@ -134,7 +132,7 @@ src_prepare() {
 	fi
 
 	# gtk-update-icon-cache is installed by dev-util/gtk-update-icon-cache
-	eapply "${FILESDIR}"/${PN}-3.16.2-remove_update-icon-cache.patch
+	eapply "${FILESDIR}"/${PN}-3.22.2-update-icon-cache.patch
 
 	# Use patches from BSD to make gtk3-atk-bridge (at-spi2-atk) a true option-
 	# This was intentionally removed by upstream, see
