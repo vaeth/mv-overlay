@@ -18,8 +18,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE="debug +dep doc nls optimization +required-use security strong-optimization strong-security sqlite swap-remote tools"
 
-BOTHDEPEND="sqlite? ( >=dev-db/sqlite-3 )
-	nls? ( virtual/libintl )"
+BOTHDEPEND="nls? ( virtual/libintl )
+	sqlite? ( >=dev-db/sqlite-3:= )"
 RDEPEND="${BOTHDEPEND}
 	>=app-shells/push-2.0
 	>=app-shells/quoter-3.0"
@@ -27,11 +27,9 @@ DEPEND="${BOTHDEPEND}
 	>=sys-devel/gettext-0.19.6"
 
 pkg_setup() {
-	case " ${REPLACING_VERSIONS}" in
-	*\ 0.[0-9].*|*\ 0.1[0-9].*|*\ 0.2[0-4].*|*\ 0.25.0*)
-		local eixcache="${EROOT}/var/cache/${PN}"
-		test -f "${eixcache}" && rm -f -- "${eixcache}";;
-	esac
+	# remove stale cache file to prevent collisions
+	local old_cache="${EROOT}var/cache/${PN}"
+	test -f "${old_cache}" && rm -f -- "${old_cache}"
 }
 
 src_prepare() {
@@ -42,11 +40,16 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_with sqlite) $(use_with doc extra-doc) \
-		$(use_enable nls) $(use_enable tools separate-tools) \
-		$(use_enable security) $(use_enable optimization) \
+	econf \
+		$(use_with sqlite) \
+		$(use_with doc extra-doc) \
+		$(use_enable nls) \
+		$(use_enable tools separate-tools) \
+		$(use_enable security) \
+		$(use_enable optimization) \
 		$(use_enable strong-security) \
-		$(use_enable strong-optimization) $(use_enable debug debugging) \
+		$(use_enable strong-optimization) \
+		$(use_enable debug debugging) \
 		$(use_enable swap-remote) \
 		$(use_with prefix always-accept-keywords) \
 		$(use_with dep dep-default) \
@@ -63,14 +66,19 @@ src_install() {
 }
 
 pkg_postinst() {
-	test -d "${EROOT}var/cache/${PN}" || {
-		mkdir "${EROOT}var/cache/${PN}"
-		use prefix || chown portage:portage "${EROOT}var/cache/${PN}"
-	}
+	if ! use prefix && ! test -d "${EROOT}var/cache/${PN}"; then
+		# note: if this is done in src_install(), portage:portage
+		# ownership may be reset to root
+		fowners portage:portage "${EROOT%/}"/var/cache/eix
+	fi
 	local obs="${EROOT}var/cache/eix.previous"
-	! test -f "${obs}" || ewarn "Found obsolete ${obs}, please remove it"
+	if test -f "${obs}"; then
+		ewarn "Found obsolete ${obs}, please remove it"
+	fi
 }
 
 pkg_postrm() {
-	[ -n "${REPLACED_BY_VERSION}" ] || rm -rf -- "${EROOT}var/cache/${PN}"
+	if [ -z "${REPLACED_BY_VERSION}" ]; then
+		rm -rf -- "${EROOT}var/cache/${PN}"
+	fi
 }

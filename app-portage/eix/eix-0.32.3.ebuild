@@ -44,7 +44,7 @@ src_configure() {
 		$(use_enable security) \
 		$(use_enable optimization) \
 		$(use_enable strong-security) \
-		$(use_enable strong-optimization)
+		$(use_enable strong-optimization) \
 		$(use_enable debug debugging) \
 		$(use_enable swap-remote) \
 		$(use_with prefix always-accept-keywords) \
