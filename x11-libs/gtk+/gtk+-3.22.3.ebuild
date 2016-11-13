@@ -141,8 +141,8 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-atk-bridge-config.h.in.patch
 	eapply "${FILESDIR}"/${PN}-atk-bridge-gtkaccessibility.patch
 
+	eautoreconf
 	gnome2_src_prepare
-	AT_NOELIBTOOLIZE=yes eautoreconf
 }
 
 multilib_src_configure() {
