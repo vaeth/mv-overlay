@@ -9,7 +9,7 @@ HOMEPAGE="http://www.gtk.org/"
 
 LICENSE="LGPL-2+"
 SLOT="3"
-IUSE="adwaita-icon-theme aqua at-spi2-atk broadway cloudprint colord cups examples +introspection test vim-syntax wayland X xinerama"
+IUSE="adwaita-icon-theme aqua at-spi2-atk broadway cloudprint colord cups debug examples +introspection test vim-syntax wayland X xinerama"
 REQUIRED_USE="
 	|| ( aqua wayland X )
 	xinerama? ( X )
@@ -165,6 +165,7 @@ multilib_src_configure() {
 		$(use_enable X xrandr) \
 		$(use_enable xinerama) \
 		$(use_with at-spi2-atk atk-bridge) \
+		$(usex debug --enable-debug --enable-debug=minimum) \
 		--disable-papi \
 		--disable-mir-backend \
 		--enable-man \
