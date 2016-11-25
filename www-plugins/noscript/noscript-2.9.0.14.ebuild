@@ -11,14 +11,8 @@ SRC_URI="https://secure.informaction.com/download/releases/${P}.xpi
 https://addons.cdn.mozilla.net/user-media/addons/722/noscript_security_suite-${PV}-fx+fn+sm.xpi -> ${P}.xpi"
 
 LICENSE="GPL-2"
-SLOT="1"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-moz_defaults firefox seamonkey
-
-RDEPEND="${RDEPEND}
-browser_firefox? ( !www-plugins/noscript:0[browser_firefox] )
-browser_firefox-bin? ( !www-plugins/noscript:0[browser_firefox-bin] )
-browser_seamonkey? ( !www-plugins/noscript:0[browser_seamonkey] )
-browser_seamonkey-bin? ( !www-plugins/noscript:0[browser_seamonkey-bin] )"
+moz_defaults
