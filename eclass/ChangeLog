@@ -46,3 +46,6 @@
 
   08 Feb 2016; Martin Väth <martin@mvath.de>:
   mv_mozextension-r1.eclass: Support USE=compressed
+
+  29 Nov 2016; Martin Väth <martin@mvath.de>:
+  stardict.eclass: Add from main gentoo repository
