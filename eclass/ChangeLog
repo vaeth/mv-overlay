@@ -49,3 +49,6 @@
 
   29 Nov 2016; Martin Väth <martin@mvath.de>:
   stardict.eclass: Add from main gentoo repository
+
+  02 Dec 2016; Martin Väth <martin@mvath.de>:
+  stardict.eclass: Remove again since it stays in main gentoo repository
