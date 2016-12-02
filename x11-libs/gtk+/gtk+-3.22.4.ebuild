@@ -1,3 +1,5 @@
+# Copyright 2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
@@ -9,7 +11,7 @@ HOMEPAGE="http://www.gtk.org/"
 
 LICENSE="LGPL-2+"
 SLOT="3"
-IUSE="adwaita-icon-theme aqua at-spi2-atk broadway cloudprint colord cups debug examples +introspection test vim-syntax wayland X xinerama"
+IUSE="adwaita-icon-theme aqua atk-bridge broadway cloudprint colord cups debug examples +introspection test vim-syntax wayland X xinerama"
 REQUIRED_USE="
 	|| ( aqua wayland X )
 	xinerama? ( X )
@@ -47,7 +49,7 @@ COMMON_DEPEND="
 		>=x11-libs/libxkbcommon-0.2[${MULTILIB_USEDEP}]
 	)
 	X? (
-		at-spi2-atk? ( >=app-accessibility/at-spi2-atk-2.5.3[${MULTILIB_USEDEP}] )
+		atk-bridge? ( >=app-accessibility/at-spi2-atk-2.5.3[${MULTILIB_USEDEP}] )
 		x11-libs/libXrender[${MULTILIB_USEDEP}]
 		x11-libs/libX11[${MULTILIB_USEDEP}]
 		>=x11-libs/libXi-1.3[${MULTILIB_USEDEP}]
@@ -134,7 +136,7 @@ src_prepare() {
 	# gtk-update-icon-cache is installed by dev-util/gtk-update-icon-cache
 	eapply "${FILESDIR}"/${PN}-3.22.2-update-icon-cache.patch
 
-	# Use patches from BSD to make gtk3-atk-bridge (at-spi2-atk) a true option-
+	# Use patches from BSD to make gtk3-atk-bridge a true option -
 	# This was intentionally removed by upstream, see
 	# https://mail.gnome.org/archives/commits-list/2012-June/msg03813.html
 	eapply "${FILESDIR}"/${PN}-atk-bridge-config.ac.patch
@@ -164,7 +166,7 @@ multilib_src_configure() {
 		$(use_enable X xkb) \
 		$(use_enable X xrandr) \
 		$(use_enable xinerama) \
-		$(use_with at-spi2-atk atk-bridge) \
+		$(use_with atk-bridge) \
 		$(usex debug --enable-debug --enable-debug=minimum) \
 		--disable-papi \
 		--disable-mir-backend \

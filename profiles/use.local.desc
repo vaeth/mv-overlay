@@ -252,7 +252,7 @@ x11-drivers/nvidia-drivers:kernel3-17 - Install unofficial patches for linux-3.1
 x11-drivers/nvidia-drivers:pax_kernel - Patch to compile with hardened-sources/grsecurity
 x11-drivers/nvidia-drivers:tools - Install additional tools such as nvidia-settings
 x11-libs/gtk+:adwaita-icon-theme - Force the adwaita-icon-theme
-x11-libs/gtk+:at-spi2-atk - Enable the gtk3-atk-bridge, hard depending on app-accessibility/at-spi2-atk and thus on sys-apps/dbus
+x11-libs/gtk+:atk-bridge - Enable the gtk3-atk-bridge, hard depending on app-accessibility/at-spi2-atk and thus on sys-apps/dbus
 x11-libs/gtk+:broadway - Enable the GDK Broadway backend.
 x11-libs/gtk+:cloudprint - Enable printing via Google Cloud Print.
 x11-libs/gtk+:colord - Use x11-misc/colord for color management in printing
