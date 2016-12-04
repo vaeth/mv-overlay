@@ -61,7 +61,7 @@ done
 IUSE+=" debug doc examples gdbm maildir pcre static unicode"
 
 RDEPEND="
-	>=sys-libs/ncurses-5.1:0
+	>=sys-libs/ncurses-5.1:0=
 	static? ( >=sys-libs/ncurses-5.7-r4:0=[static-libs] )
 	caps? ( sys-libs/libcap )
 	pcre? (
@@ -174,8 +174,8 @@ src_configure() {
 		--bindir="${EPREFIX}"/bin \
 		--libdir="${EPREFIX}"/usr/$(get_libdir) \
 		--enable-etcdir="${EPREFIX}"/etc/zsh \
-		--enable-runhelpdir="${EPREFIX}"/usr/share/zsh/${PVPATH}/help \
-		--enable-fndir="${EPREFIX}"/usr/share/zsh/${PVPATH}/functions \
+		--enable-runhelpdir="${EPREFIX}"/usr/share/zsh/"${PVPATH}"/help \
+		--enable-fndir="${EPREFIX}"/usr/share/zsh/"${PVPATH}"/functions \
 		--enable-site-fndir="${EPREFIX}"/usr/share/zsh/site-functions \
 		--enable-function-subdirs \
 		--with-tcsetpgrp \
@@ -250,7 +250,8 @@ touch_zwc() {
 }
 
 src_install() {
-	emake DESTDIR="${ED}" install install.info
+	# install.info needs texinfo unless the doc tarball is available
+	emake DESTDIR="${ED}" install $(usex doc "install.info" "")
 
 	insinto /etc/zsh
 	doins "${T}"/zprofile
