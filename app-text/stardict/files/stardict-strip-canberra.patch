@@ -1,0 +1,33 @@
+--- 1/dict/src/desktop.cpp
++++ 1/dict/src/desktop.cpp
+@@ -39,9 +39,11 @@
+ 
+ 
+ #ifndef _WIN32
++#if 0
+ #  include "canberra.h"
+ #  include "canberra-gtk.h"
+ #endif
++#endif
+ 
+ 
+ 
+@@ -176,14 +178,18 @@
+ 		return; // error
+ 	}
+ #else
++#if 0
+ 	if (conf->get_bool_at("dictionary/always_use_sound_play_command")) {
++#endif
+ 		const std::string &playcmd=
+ 			conf->get_string_at("dictionary/sound_play_command");
+ 		spawn_command(playcmd.c_str(), filename.c_str());
++#if 0
+ 	} else {
+ 		ca_context_play(ca_gtk_context_get(), 0, CA_PROP_MEDIA_FILENAME, filename.c_str(), NULL);
+ 	}
+ #endif
++#endif
+ }
+ 
+ void play_video_file(const std::string& filename)
