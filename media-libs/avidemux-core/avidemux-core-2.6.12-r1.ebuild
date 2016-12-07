@@ -21,7 +21,8 @@ if [[ ${PV} == *9999* ]] ; then
 	MY_P=$P
 	KEYWORDS=""
 	PROPERTIES="live"
-	EGIT_REPO_URI="https://github.com/mean00/avidemux2"
+	EGIT_REPO_URI="git://gitorious.org/${MY_P}2-6/${MY_P}2-6.git https://git.gitorious.org/${MY_P}2-6/${MY_P}2-6.git"
+	EGIT_REPO_URI="https://github.com/mean00/${MY_P}2"
 	inherit git-r3
 else
 	MY_P="${MY_PN}_${PV}"
@@ -113,5 +114,7 @@ src_compile() {
 }
 
 src_install() {
+	# revert edit from src_prepare prior to installing
+	sed -i -e "s:getFfmpegLibNames(\"${S}/buildCore/ffmpeg/source/\"):getFfmpegLibNames(\"\${sourceDir}\"):g" cmake/admFFmpegUtil.cmake
 	cmake-utils_src_install -j1
 }

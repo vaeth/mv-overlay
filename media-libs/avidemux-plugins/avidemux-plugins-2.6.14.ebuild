@@ -15,7 +15,7 @@ HOMEPAGE="http://fixounet.free.fr/avidemux"
 
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
-IUSE="aac aften a52 alsa amr debug dts fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx nvenc opengl opus oss pulseaudio qt4 vorbis truetype twolame xv xvid x264 x265 vdpau vpx"
+IUSE="aac aften a52 alsa amr debug dts fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx nvenc opengl opus oss pulseaudio qt4 qt5 vorbis truetype twolame xv xvid x264 x265 vdpau vpx"
 KEYWORDS="~amd64 ~x86"
 
 MY_PN="${PN/-plugins/}"
@@ -33,7 +33,7 @@ fi
 
 RDEPEND="
 	~media-libs/avidemux-core-${PV}:${SLOT}[vdpau?]
-	~media-video/avidemux-${PV}:${SLOT}[opengl?,qt4?]
+	~media-video/avidemux-${PV}:${SLOT}[opengl?,qt4?,qt5?]
 	>=dev-lang/spidermonkey-1.5-r2:0=
 	dev-libs/libxml2:2
 	media-libs/libpng:0=
@@ -75,11 +75,10 @@ DEPEND="$RDEPEND
 
 S="${WORKDIR}/${MY_P}"
 
-REQUIRED_USE="!amd64? ( !nvenc )"
+REQUIRED_USE="!amd64? ( !nvenc ) qt5? ( !qt4 ) "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.6.4-optional-pulse.patch
-	"${FILESDIR}"/${PN}-abs.patch
+	"${FILESDIR}"/${PN}-2.6.14-optional-pulse.patch
 )
 
 src_prepare() {
@@ -100,7 +99,10 @@ src_configure() {
 
 	processes="buildPluginsCommon:avidemux_plugins
 		buildPluginsCLI:avidemux_plugins"
-	use qt4 && processes+=" buildPluginsQt4:avidemux_plugins"
+	if use qt4 || use qt5 ; then
+		export QT_SELECT
+		processes+=" buildPluginsQt4:avidemux_plugins"
+	fi
 
 	for process in ${processes} ; do
 		local build="${process%%:*}"
@@ -135,6 +137,12 @@ src_configure() {
 			-DLIBVORBIS="$(usex vorbis)"
 			-DVPXDEC="$(usex vpx)"
 		)
+		if use qt5 ; then
+			mycmakeargs+=( -DENABLE_QT5=True )
+			QT_SELECT=5
+		elif use qt4 ; then
+			QT_SELECT=4
+		fi
 
 		if use debug ; then
 			mycmakeargs+=( -DVERBOSE=1 -DCMAKE_BUILD_TYPE=Debug -DADM_DEBUG=1 )
