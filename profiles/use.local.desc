@@ -274,3 +274,8 @@ x11-libs/gtk+:cloudprint - Enable printing via Google Cloud Print.
 x11-libs/gtk+:colord - Use x11-misc/colord for color management in printing
 x11-libs/motif:motif22-compatibility - Compatibility with Open Motif 2.2
 x11-misc/redshift:geoclue - Control dependency on app-misc/geoclue
+x11-wm/fvwm:gtk2-perl - Enable GTK2 Perl bindings
+x11-wm/fvwm:lock - Enable screen locking
+x11-wm/fvwm:netpbm - Enable NetPBM support (used by FvwmScript-ScreenDump)
+x11-wm/fvwm:rplay - Enable rplay support
+x11-wm/fvwm:stroke - Mouse Gesture support
