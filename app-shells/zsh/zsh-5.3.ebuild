@@ -119,7 +119,6 @@ src_prepare() {
 	${LIVE} || fix_soelim
 
 	${LIVE} || eapply "${FILESDIR}"/${PN}-init.d-gentoo-r1.diff
-	eapply "${FILESDIR}"/${PN}-5.1.0-gcc-5.patch #547950
 
 	cp "${FILESDIR}"/zprofile-1 "${T}"/zprofile || die
 	eprefixify "${T}"/zprofile || die

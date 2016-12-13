@@ -1,21 +1,22 @@
---- zsh-4.3.11/Completion/Unix/Command/_init_d
-+++ zsh-4.3.11/Completion/Unix/Command/_init_d
+--- zsh-5.3/Completion/Unix/Command/_init_d
++++ zsh-5.3/Completion/Unix/Command/_init_d
 @@ -1,6 +1,6 @@
  #compdef -p */(init|rc[0-9S]#).d/*
  
 -local cmds script
 +local cmds script opts
+ local -a flags
  
  _compskip=all
- 
-@@ -83,10 +83,17 @@
+@@ -102,10 +102,18 @@
  
  script=$words[1]
  [[ $script = */* ]] || script="$(_init_d_fullpath "$script")"
 +[[ ! -f $script ]] &&
 +    { _message "${words[1]:t} is not an init script" && return }
++
  
- cmds=( $(_init_d_get_cmds) ) || return
+ cmds=( $(_init_d_get_cmds) ) || return 1
  
 -(( $#cmds )) || zstyle -a ":completion:${curcontext}:commands" commands cmds ||
 -    cmds=(start stop)
@@ -27,4 +28,4 @@
 +(( $#cmds )) || cmds=( ${(eQz)${(M)${(f)"$( <$script)"}:#[[:blank:]]#opts=*}#*=} )
 +(( $#cmds )) || cmds=($opts)
  
- _sub_commands $cmds
+ _arguments -s -A "-*" $flags ':init.d command:_sub_commands $cmds'
