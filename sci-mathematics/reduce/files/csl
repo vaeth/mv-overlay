@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/lib/reduce/csl $*
+exec /usr/lib/reduce/csl "$@"

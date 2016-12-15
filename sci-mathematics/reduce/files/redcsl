@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/lib/reduce/reduce $*
+exec /usr/lib/reduce/reduce "$@"

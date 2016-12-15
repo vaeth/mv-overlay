@@ -31,6 +31,8 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	sed -i -e '2iecho gentoo; exit' -- "${S}"/scripts/findos.sh
 	# sed -i -e 's/\${l}/"\${l}"/g' -- "${S}"/scripts/make.sh
+	sed -i -e 's/static char unmapTable/static unsigned char unmapTable/' \
+		-- "${S}"/csl/fox/src/FXShowMath.cpp
 	eapply_user
 }
 
