@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( pypy3 python3_4 python3_5 )
-inherit python-single-r1
+inherit python-single-r1 systemd
 
 DESCRIPTION="systemd units to create timers for cron directories and crontab"
 HOMEPAGE="https://github.com/systemd-cron/systemd-cron/"
@@ -61,7 +61,7 @@ src_configure() {
 		--confdir="${EPREFIX}/etc" \
 		--runparts="${EPREFIX}/bin/run-parts" \
 		--mandir="${EPREFIX}/usr/share/man" \
-		--unitdir="$(systemd_get_unitdir)" \
+		--unitdir="$(systemd_get_systemunitdir)" \
 		$(my_use_enable cron-boot boot) \
 		$(my_use_enable minutely) \
 		$(my_use_enable yearly) \
