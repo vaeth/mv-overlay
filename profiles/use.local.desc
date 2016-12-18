@@ -262,6 +262,11 @@ sys-fs/squash_dir:overlayfs - Prefer overlayfs
 sys-fs/squash_dir:unionfs-fuse - Prefer unionfs-fuse
 sys-fs/squashfs-tools:lz4 - Enable support for LZ4 compression using app-arch/lz4
 sys-fs/squashfs-tools:xz - Enable support for XZ ("LZMA2") compression using app-arch/xz-utils
+sys-process/systemd-cron:cron-boot - Include support for the boot timer.
+sys-process/systemd-cron:etc-crontab-systemd - Use dedicated /etc/crontab-systemd instead of parsing /etc/crontab
+sys-process/systemd-cron:minutely - Support /etc/cron.minutely
+sys-process/systemd-cron:setgid - Compile setgid C helper for crontab. Needs GCC or Clang.
+sys-process/systemd-cron:yearly - Support /etc/cron.yearly
 x11-drivers/nvidia-drivers:kernel3-13 - Install unofficial patches for linux-3.13 and newer
 x11-drivers/nvidia-drivers:kernel3-14 - Install unofficial patches for linux-3.14 and newer
 x11-drivers/nvidia-drivers:kernel3-17 - Install unofficial patches for linux-3.17 and newer
