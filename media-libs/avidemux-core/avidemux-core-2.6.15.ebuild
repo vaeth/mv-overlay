@@ -68,9 +68,13 @@ src_prepare() {
 		local error="Failed to remove ffmpeg."
 
 		rm -rf cmake/admFFmpeg* cmake/ffmpeg* avidemux_core/ffmpeg_package buildCore/ffmpeg || die "${error}"
-		sed -i -e 's/include(admFFmpegUtil)//g' avidemux/commonCmakeApplication.cmake || die "${error}"
-		sed -i -e '/registerFFmpeg/d' avidemux/commonCmakeApplication.cmake || die "${error}"
-		sed -i -e 's/include(admFFmpegBuild)//g' avidemux_core/CMakeLists.txt || die "${error}"
+		sed -i \
+			-e 's/include(admFFmpegUtil)//g' \
+			-e '/registerFFmpeg/d' \
+			-- cmake/commonCmakeApplication.cmake || die "${error}"
+		sed -i \
+			-e 's/include(admFFmpegBuild)//g' \
+			-- avidemux_core/CMakeLists.txt || die "${error}"
 	else
 		# Avoid existing avidemux installations from making the build process fail, bug #461496.
 		sed -i -e "s:getFfmpegLibNames(\"\${sourceDir}\"):getFfmpegLibNames(\"${S}/buildCore/ffmpeg/source/\"):g" cmake/admFFmpegUtil.cmake \
