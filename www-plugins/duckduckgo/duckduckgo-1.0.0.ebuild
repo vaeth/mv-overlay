@@ -11,12 +11,8 @@ HOMEPAGE="http://addons.mozilla.org/en-US/firefox/addon/duckduckgo-for-firefox/"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/385621/${mPN}-fx.xpi"
 
 LICENSE="GPL-2"
-SLOT="1"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 moz_defaults firefox
-
-RDEPEND="${RDEPEND}
-browser_firefox? ( !www-plugins/duckduckgo:0[browser_firefox] )
-browser_firefox-bin? ( !www-plugins/duckduckgo:0[browser_firefox-bin] )"
