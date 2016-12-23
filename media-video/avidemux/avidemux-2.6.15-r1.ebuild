@@ -15,14 +15,15 @@ HOMEPAGE="http://fixounet.free.fr/avidemux"
 
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
-IUSE="debug opengl nls qt4 sdl vaapi vdpau video_cards_fglrx xv"
+IUSE="debug opengl nls qt4 qt5 sdl vaapi vdpau video_cards_fglrx xv"
 KEYWORDS="~amd64 ~x86"
 
 if [[ ${PV} == *9999* ]] ; then
 	MY_P=$P
 	KEYWORDS=""
 	PROPERTIES="live"
-	EGIT_REPO_URI="https://github.com/mean00/avidemux2"
+	EGIT_REPO_URI="git://gitorious.org/${MY_PN}2-6/${MY_P}2-6.git https://git.gitorious.org/${MY_P}2-6/${MY_P}2-6.git"
+	EGIT_REPO_URI="https://github.com/mean00/${MY_P}2"
 	inherit git-r3
 else
 	MY_P="${PN}_${PV}"
@@ -33,13 +34,16 @@ DEPEND="
 	~media-libs/avidemux-core-${PV}:${SLOT}[nls?,sdl?,vaapi?,vdpau?,video_cards_fglrx?,xv?]
 	opengl? ( virtual/opengl:0 )
 	qt4? ( >=dev-qt/qtgui-4.8.3:4 )
+	qt5? ( dev-qt/qtgui:5 )
 	vaapi? ( x11-libs/libva:0 )
 	video_cards_fglrx? (
 		|| ( >=x11-drivers/ati-drivers-14.12-r3
 			x11-libs/xvba-video:0 )
 		)"
 RDEPEND="$DEPEND"
-PDEPEND="~media-libs/avidemux-plugins-${PV}:${SLOT}[opengl?,qt4?]"
+PDEPEND="~media-libs/avidemux-plugins-${PV}:${SLOT}[opengl?,qt4?,qt5?]"
+
+REQUIRED_USE="qt5? ( !qt4 ) "
 
 S="${WORKDIR}/${MY_P}"
 
@@ -52,7 +56,7 @@ src_prepare() {
 	# The desktop file is broken. It uses avidemux2 instead of avidemux3
 	# so it will actually launch avidemux-2.5 if it is installed.
 	sed -i -e "/^Exec/ s:${PN}2:${PN}3:" ${PN}2.desktop || die "Desktop file fix failed."
-	sed -i -re '/^Exec/ s:(avidemux3_)gtk:\1qt4:' ${PN}2.desktop || die "Desktop file fix failed."
+	sed -i -re '/^Exec/ s:(avidemux3_)gtk:\1qt'$(usex qt5 5 4)':' ${PN}2.desktop || die "Desktop file fix failed."
 
 	# Fix QA warnings that complain a trailing ; is missing and Application is deprecated.
 	sed -i -e 's/Application;AudioVideo/AudioVideo;/g' ${PN}2.desktop || die "Desktop file fix failed."
@@ -62,6 +66,10 @@ src_prepare() {
 
 	# Remove "Build Option" dialog because it doesn't reflect what the GUI can or has been built with. (Bug #463628)
 	sed -i -e '/Build Option/d' avidemux/common/ADM_commonUI/myOwnMenu.h || die "Couldn't remove \"Build Option\" dialog."
+
+	# Fix underlinking to work with gold linker
+	sed -i -e 's/\( ADM_core6\)/ Xext\1/' avidemux/common/ADM_render/CMakeLists.txt || die "Couldn't fix underlinking"
+
 	eapply_user
 }
 
@@ -76,13 +84,21 @@ src_configure() {
 		-DXVBA="$(usex video_cards_fglrx)"
 		-DXVIDEO="$(usex xv)"
 	)
+	if use qt5 ; then
+		mycmakeargs+=( -DENABLE_QT5=True )
+		QT_SELECT=5
+	elif use qt4 ; then
+		QT_SELECT=4
+	fi
 
 	if use debug ; then
 		mycmakeargs+=( -DVERBOSE=1 -DCMAKE_BUILD_TYPE=Debug -DADM_DEBUG=1 )
 	fi
 
-	processes="buildCli:avidemux/cli"
-	use qt4 && processes+=" buildQt4:avidemux/qt4"
+	if use qt4 || use qt5 ; then
+		export QT_SELECT
+		processes+=" buildQt4:avidemux/qt4"
+	fi
 
 	# Needed for gcc-6
 	append-cxxflags $(test-flags-CXX -std=gnu++98)
@@ -128,8 +144,12 @@ src_install() {
 	cd "${S}" || die "Can't enter source folder."
 	newicon ${PN}_icon.png ${PN}-2.6.png
 
-	if use qt4 ; then
+	if use qt4; then
 		fperms +x /usr/bin/avidemux3_qt4
+		domenu ${PN}-2.6.desktop
+	fi
+	if use qt5; then
+		fperms +x /usr/bin/avidemux3_qt5
 		domenu ${PN}-2.6.desktop
 	fi
 }
