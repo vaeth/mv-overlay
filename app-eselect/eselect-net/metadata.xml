@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>martin@mvath.de</email>
+		<name>Martin Väth</name>
+	</maintainer>
+	<upstream>
+		<maintainer type="person">
+			<name>reith</name>
+		</maintainer>
+		<bugs-to>https://github.com/reith/eselect-net/issues</bugs-to>
+		<remote-id type="github">reith/eselect-net</remote-id>
+	</upstream>
+</pkgmetadata>
