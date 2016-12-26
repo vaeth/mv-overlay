@@ -97,6 +97,9 @@ src_configure() {
 	# Needed for gcc-6
 	append-cxxflags $(test-flags-CXX -std=gnu++98)
 
+	# Filter problematic flags
+	filter-flags -fwhole-program -flto
+
 	processes="buildPluginsCommon:avidemux_plugins
 		buildPluginsCLI:avidemux_plugins"
 	if use qt4 || use qt5 ; then

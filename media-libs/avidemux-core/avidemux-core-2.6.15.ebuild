@@ -91,6 +91,10 @@ src_prepare() {
 
 	# Needed for gcc-6
 	append-cxxflags $(test-flags-CXX -std=gnu++98)
+
+	# Filter problematic flags
+	filter-flags -fwhole-program -flto
+
 	eapply_user
 }
 

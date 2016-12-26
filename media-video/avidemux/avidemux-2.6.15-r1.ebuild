@@ -70,6 +70,7 @@ src_prepare() {
 	# Fix underlinking to work with gold linker
 	sed -i -e 's/\( ADM_core6\)/ Xext\1/' avidemux/common/ADM_render/CMakeLists.txt || die "Couldn't fix underlinking"
 
+
 	eapply_user
 }
 
@@ -102,6 +103,9 @@ src_configure() {
 
 	# Needed for gcc-6
 	append-cxxflags $(test-flags-CXX -std=gnu++98)
+
+	# Filter problematic flags
+	filter-flags -fwhole-program -flto -ftracer
 
 	# Add lax vector typing for PowerPC.
 	if use ppc || use ppc64 ; then
