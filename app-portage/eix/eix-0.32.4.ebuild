@@ -6,7 +6,7 @@ EAPI=6
 PLOCALES="de ru"
 inherit bash-completion-r1 l10n tmpfiles
 
-DESCRIPTION="Search and query ebuilds, portage incl. local settings, ext. overlays and more"
+DESCRIPTION="Search and query ebuilds"
 HOMEPAGE="https://github.com/vaeth/eix/"
 SRC_URI="https://github.com/vaeth/eix/releases/download/v${PV}/${P}.tar.xz"
 

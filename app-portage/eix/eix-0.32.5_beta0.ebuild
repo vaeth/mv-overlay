@@ -2,16 +2,26 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-EGIT_REPO_URI="git://github.com/vaeth/${PN}.git"
+RESTRICT="mirror"
 WANT_LIBTOOL=none
 PLOCALES="de ru"
-inherit autotools bash-completion-r1 git-r3 l10n tmpfiles
+inherit autotools bash-completion-r1 l10n tmpfiles
 
-DESCRIPTION="Search and query ebuilds, portage incl. local settings, ext. overlays and more"
+case ${PV} in
+99999999*)
+	EGIT_REPO_URI="git://github.com/vaeth/${PN}.git"
+	inherit git-r3
+	SRC_URI=""
+	PROPERTIES="live";;
+*)
+	RESTRICT="mirror"
+	EGIT_COMMIT="792fec8088bc78ea916aa73c2692d4987c8142be"
+	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
+esac
+
+DESCRIPTION="Search and query ebuilds"
 HOMEPAGE="https://github.com/vaeth/eix/"
-SRC_URI=""
-PROPERTIES="live"
 
 LICENSE="GPL-2"
 SLOT="0"
