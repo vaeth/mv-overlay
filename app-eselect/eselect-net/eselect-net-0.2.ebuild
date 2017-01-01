@@ -15,12 +15,8 @@ IUSE=""
 
 DOCS=(README.md)
 
-src_prepare() {
-	sed -i -e 's#find /#find -L /#' -- net.eselect
-	default
-}
-
 src_install() {
 	insinto /usr/share/eselect/modules
 	doins net.eselect
+	dodir /etc/eselect/net/devs /etc/eselect/net/conf.d
 }
