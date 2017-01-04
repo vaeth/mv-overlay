@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -93,9 +93,6 @@ src_configure() {
 
 	# See bug 432322.
 	use x86 && replace-flags -O0 -O1
-
-	# Needed for gcc-6
-	append-cxxflags $(test-flags-CXX -std=gnu++98)
 
 	# Filter problematic flags
 	filter-flags -fwhole-program -flto
