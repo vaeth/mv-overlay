@@ -58,6 +58,10 @@ BUILD_DIR="${S}/buildCore"
 
 DOCS=( AUTHORS README )
 
+src_setup() {
+	CMAKE_MAKEFILE_GENERATOR=emake # ninja does not work, currently
+}
+
 src_prepare() {
 	mkdir "${BUILD_DIR}" || die "Can't create build folder."
 

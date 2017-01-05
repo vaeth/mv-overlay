@@ -187,6 +187,10 @@ media-libs/avidemux-plugins:amr - Enable Adaptive Multi-Rate format support via 
 media-libs/avidemux-plugins:fribidi - Enable unicode bidirectional algorithm support via dev-libs/fribidi.
 media-libs/avidemux-plugins:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.
 media-libs/avidemux-plugins:opus - Adds support for the Opus codec via media-libs/opus.
+media-libs/avidemux-plugins:system-a52dec - Use system media-libs/a52dec instead of bundled library.
+media-libs/avidemux-plugins:system-libass - Use system media-libs/libass instead of bundled library.
+media-libs/avidemux-plugins:system-libmad - Use system media-libs/libmad instead of bundled library.
+media-libs/avidemux-plugins:system-libmp4v2 - Use system media-libs/libmp4v2 instead of bundled library.
 media-libs/avidemux-plugins:twolame - Enable TwoLAME support via media-sound/twolame, an optimised MPEG Audio Layer 2 (MP2) encoder.
 media-libs/avidemux-plugins:vpx - Enable WebM VP8 Codec SDK support via media-libs/libvpx.
 media-libs/avidemux-plugins:x265 - Enables HEVC support with media-libs/x265.

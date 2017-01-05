@@ -67,10 +67,6 @@ src_prepare() {
 	# Remove "Build Option" dialog because it doesn't reflect what the GUI can or has been built with. (Bug #463628)
 	sed -i -e '/Build Option/d' avidemux/common/ADM_commonUI/myOwnMenu.h || die "Couldn't remove \"Build Option\" dialog."
 
-	# Fix underlinking to work with gold linker
-	sed -i -e 's/\( ADM_core6\)/ Xext\1/' avidemux/common/ADM_render/CMakeLists.txt || die "Couldn't fix underlinking"
-
-
 	eapply_user
 }
 

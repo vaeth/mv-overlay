@@ -15,7 +15,7 @@ HOMEPAGE="http://fixounet.free.fr/avidemux"
 
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
-IUSE="aac aften a52 alsa amr debug dts fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx nvenc opengl opus oss pulseaudio qt4 qt5 vorbis truetype twolame xv xvid x264 x265 vdpau vpx"
+IUSE="aac aften a52 alsa amr debug dts +system-a52dec +system-libass +system-libmad +system-libmp4v2 fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx nvenc opengl opus oss pulseaudio qt4 qt5 vorbis truetype twolame xv xvid x264 x265 vdpau vpx"
 KEYWORDS="~amd64 ~x86"
 
 MY_PN="${PN/-plugins/}"
@@ -69,6 +69,10 @@ RDEPEND="
 	xvid? ( media-libs/xvid:0 )
 	vorbis? ( media-libs/libvorbis:0 )
 	vpx? ( media-libs/libvpx:0 )
+	system-a52dec? ( media-libs/a52dec:0 )
+	system-libass? ( media-libs/libass:0= )
+	system-libmad? ( media-libs/libmad:0 )
+	system-libmp4v2? ( media-libs/libmp4v2:0 )
 "
 DEPEND="$RDEPEND
 	${PYTHON_DEPS}"
@@ -80,6 +84,10 @@ REQUIRED_USE="!amd64? ( !nvenc ) qt5? ( !qt4 ) "
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.14-optional-pulse.patch
 )
+
+src_setup() {
+	CMAKE_MAKEFILE_GENERATOR=emake # ninja does not work, currently
+}
 
 src_prepare() {
 	default
@@ -136,6 +144,10 @@ src_configure() {
 			-DVORBIS="$(usex vorbis)"
 			-DLIBVORBIS="$(usex vorbis)"
 			-DVPXDEC="$(usex vpx)"
+			-DUSE_EXTERNAL_LIBA52="$(usex system-a52dec)"
+			-DUSE_EXTERNAL_LIBASS="$(usex system-libass)"
+			-DUSE_EXTERNAL_LIBMAD="$(usex system-libmad)"
+			-DUSE_EXTERNAL_LIBMP4V2="$(usex system-libmp4v2)"
 		)
 		if use qt5 ; then
 			mycmakeargs+=( -DENABLE_QT5=True )
