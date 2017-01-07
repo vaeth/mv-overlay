@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,6 @@ DOC_CONTENTS="To use zram, activate it in your kernel and add it to default runl
 	rc-config add zram default
 If you use systemd enable zram_swap, tmp, and/or var_tmp with systemctl.
 You might need to modify /etc/modprobe.d/zram.conf"
-
 
 src_prepare() {
 	use prefix || sed -i \
