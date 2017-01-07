@@ -6,7 +6,7 @@
 		<name>Martin Väth</name>
 	</maintainer>
 	<upstream>
-		<maintainer type="person">
+		<maintainer>
 			<name>reith</name>
 		</maintainer>
 		<bugs-to>https://github.com/reith/eselect-net/issues</bugs-to>
