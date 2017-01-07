@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -40,6 +40,12 @@ COMMON_DEPEND="
 	x11-libs/pango
 	espeak? ( >=app-accessibility/espeak-1.29 )
 	flite? ( app-accessibility/flite )
+	gnome? (
+		gnome-base/gconf:2
+		gnome-base/libbonobo
+		gnome-base/libgnome
+		gnome-base/orbit:2
+	)
 	gucharmap? ( gnome-extra/gucharmap:0= )
 	spell? ( >=app-text/enchant-1.2 )
 	tools? (
@@ -93,11 +99,10 @@ src_prepare() {
 		sed -i '1 a # -*- coding: utf-8 -*-' tools/src/uyghur2dict.py || die
 	fi
 
-	eapply_user
 	if ! use gnome
 	then	sed -i \
 				-e '/GNOME_DOC_INIT/d' \
-				-e '/AM_GCONF_SOURCE/d' \
+				-e '/AM_GCONF_SOURCE_2/d' \
 				-e '/help\/Makefile/d' \
 				dict/configure.ac || die
 			sed -i \
@@ -113,6 +118,8 @@ src_prepare() {
 				dict/configure.ac || die
 			eapply "${FILESDIR}/${PN}-strip-canberra.patch"
 	fi
+
+	eapply_user
 	eautoreconf
 	gnome2_src_prepare
 }
@@ -127,7 +134,6 @@ src_configure() {
 	gnome2_src_configure \
 		--disable-darwin-support \
 		--disable-festival \
-		--disable-gnome-support \
 		--disable-gpe-support \
 		--disable-maemo-support \
 		--disable-schemas-install \
@@ -139,6 +145,7 @@ src_configure() {
 		$(use_enable espeak) \
 		$(use_enable flite) \
 		$(use_enable fortune) \
+		$(use_enable gnome gnome-support) \
 		$(use_enable gucharmap) \
 		$(use_enable htmlparse) \
 		$(use_enable info) \
