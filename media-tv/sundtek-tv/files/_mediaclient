@@ -132,8 +132,7 @@ case $state in
 	'0:FM receiver'
 	'1:FM transmitter'
 	)
-	_describe -t tunerid 'tuner id' tunerids
-	ret=$?;;
+	_describe -t tunerid 'tuner id' tunerids && ret=0;;
 (voltage)
 	local voltages
 	voltages=(
@@ -141,24 +140,21 @@ case $state in
 	'V:13V'
 	'OFF:0V'
 	)
-	_describe -t voltage 'voltage' voltages
-	ret=$?;;
+	_describe -t voltage 'voltage' voltages && ret=0;;
 (polarisation)
 	local polarisations
 	polarisations=(
 	'H:horizontal'
 	'V:vertical'
 	)
-	_describe -t polarisation 'polarisation' polarisations
-	ret=$?;;
+	_describe -t polarisation 'polarisation' polarisations && ret=0;;
 (signalreporting)
 	local signalreport
 	signalreport=(
 	'0:videodecoder (fast, default)'
 	'1:demodulator (slow, detailed)'
 	)
-	_describe -t signalreporting 'signal reporting' signalreport
-	ret=$?;;
+	_describe -t signalreporting 'signal reporting' signalreport && ret=0;;
 (internalaudio)
 	local internalaudios
 	internalaudios=(
@@ -167,38 +163,33 @@ case $state in
 	'external:require external application'
 	'audioonly:only initialize audio transfer'
 	)
-	_describe -t internalaudio 'internal audio' internalaudios
-	ret=$?;;
+	_describe -t internalaudio 'internal audio' internalaudios && ret=0;;
 (rclayout)
 	local rclayouts
 	rclayouts=(
 	'0:internal keymap for flat remote control'
 	'1:internal keymap for black VCR remote control'
 	)
-	_describe -t rclayout 'rc layout' rclayouts
-	ret=$?;;
+	_describe -t rclayout 'rc layout' rclayouts && ret=0;;
 (nullpackets)
 	local nullpackets
 	nullpackets=(
 	'on'
 	'off:default'
 	)
-	_describe -t nullpackets 'pass null packets' nullpackets
-	ret=$?;;
+	_describe -t nullpackets 'pass null packets' nullpackets && ret=0;;
 (deinterlacerid)
 	local deinterlacerids
 	deinterlacerids=(
 	'0:default'
 	)
-	_describe -t deinterlacerid 'deinterlacer id' deinterlacerids
-	ret=$?;;
+	_describe -t deinterlacerid 'deinterlacer id' deinterlacerids && ret=0;;
 (createmount)
 	local virtualadapters
 	virtualadapters=(
 	'0:local device'
 	'192.168.1.2:0:remote device'
 	)
-	_describe -t virtualadapter 'virtual adapter' virtualadapters
-	ret=$?;;
+	_describe -t virtualadapter 'virtual adapter' virtualadapters && ret=0;;
 esac
 return ret
