@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 src_install() {
-	dosbin "${PN}"
+	dosbin bin/*
 	insinto /usr/share/zsh/site-functions
-	doins _"${PN}"
+	doins zsh/*
 }
