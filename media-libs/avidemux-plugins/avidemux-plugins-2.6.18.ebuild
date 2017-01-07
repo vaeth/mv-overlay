@@ -4,9 +4,9 @@
 EAPI=6
 RESTRICT="mirror"
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
 
-inherit cmake-utils eutils flag-o-matic python-single-r1
+inherit cmake-utils eutils flag-o-matic python-any-r1
 
 SLOT="2.6"
 
@@ -79,7 +79,7 @@ DEPEND="$RDEPEND
 
 S="${WORKDIR}/${MY_P}"
 
-REQUIRED_USE="!amd64? ( !nvenc ) qt5? ( !qt4 ) "
+REQUIRED_USE="!amd64? ( !nvenc ) qt5? ( !qt4 )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.14-optional-pulse.patch
