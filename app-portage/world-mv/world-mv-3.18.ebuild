@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,16 +20,16 @@ src_prepare() {
 	if use prefix
 	then	sed -i \
 			-e "s'\${EPREFIX}'\\'${EPREFIX}\\''" \
-			-- "${mPN}" || die
+			-- bin/* || die
 	else	sed -i \
 			-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
-			-- "${mPN}" || die
+			-- bin/* || die
 	fi
 	eapply_user
 }
 
 src_install() {
-	dobin "${mPN}"
+	dobin bin/*
 	insinto /usr/share/zsh/site-functions
-	doins _"${mPN}"
+	doins zsh/*
 }
