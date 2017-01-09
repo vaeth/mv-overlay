@@ -13,6 +13,10 @@ games-rpg/magus
 # Upstream is dead.
 ~games-rpg/magus-1.3.3
 
+# Martin Väth <martin@mvath.de> (09 Jan 2017)
+# media-gfx/pqiv-2.6 currently doesn't recognize jpeg and gives only segfaults.
+=media-gfx/pqiv-2.6
+
 # Martin Väth <martin@mvath.de> (03 Jan 2016)
 # net-dns/noip-updater does not use https for transferring user sensitive data,
 # see bug #261194. So install only if you are aware about the security risk.
