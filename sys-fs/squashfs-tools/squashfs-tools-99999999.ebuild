@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,18 +23,18 @@ SRC_URI="mirror://sourceforge/squashfs/squashfs${PV}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="lz4 lzma lzo xattr +xz"
+IUSE="debug lz4 lzma lzo static xattr +xz"
 
-RDEPEND="
-	sys-libs/zlib
-	!xz? ( !lzo? ( sys-libs/zlib ) )
-	lz4? ( app-arch/lz4 )
-	lzma? ( app-arch/xz-utils )
-	lzo? ( dev-libs/lzo )
-	xattr? ( sys-apps/attr )
-	xz? ( app-arch/xz-utils )
-"
-DEPEND="${RDEPEND}"
+LIB_DEPEND="sys-libs/zlib[static-libs(+)]
+	!xz? ( !lzo? ( sys-libs/zlib[static-libs(+)] ) )
+	lz4? ( app-arch/lz4[static-libs(+)] )
+	lzma? ( app-arch/xz-utils[static-libs(+)] )
+	lzo? ( dev-libs/lzo[static-libs(+)] )
+	xattr? ( sys-apps/attr[static-libs(+)] )
+	xz? ( app-arch/xz-utils[static-libs(+)] )"
+RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
+DEPEND="${RDEPEND}
+	static? ( ${LIB_DEPEND} )"
 
 S="${WORKDIR}/squashfs${PV}/${PN}"
 
@@ -63,9 +63,10 @@ src_prepare() {
 	eapply -p2 "${FILESDIR}"/${Pm}-sysmacros.patch
 	eapply -p2 "${FILESDIR}"/${Pm}-aligned-data.patch
 	${LIVE} || eapply -p2 "${FILESDIR}"/${Pm}-2gb.patch
-	eapply -p1 "${FILESDIR}"/${Pm}-local-cve-fix.patch
+	eapply "${FILESDIR}"/${Pm}-local-cve-fix.patch
 	${LIVE} || eapply -p2 "${FILESDIR}"/${Pm}-mem-overflow.patch
 	eapply -p2 "${FILESDIR}"/${Pm}-xattrs.patch
+	eapply "${FILESDIR}"/${Pm}-static-inline.patch
 	eapply "${FILESDIR}"/${Pm}-quiet.patch
 	eapply_user
 }
@@ -84,6 +85,8 @@ src_configure() {
 	filter-flags -fno-common
 
 	tc-export CC
+	use debug && append-cppflags -DSQUASHFS_TRACE
+	use static && append-ldflags -static
 }
 
 src_compile() {
