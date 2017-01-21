@@ -1,9 +1,9 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils flag-o-matic linux-mod multilib portability \
+inherit eutils flag-o-matic linux-mod multilib-minimal nvidia-driver portability \
 	unpacker user versionator readme.gentoo-r1
 
 X86_NV_PACKAGE="NVIDIA-Linux-x86-${PV}"
@@ -11,13 +11,13 @@ AMD64_NV_PACKAGE="NVIDIA-Linux-x86_64-${PV}"
 X86_FBSD_NV_PACKAGE="NVIDIA-FreeBSD-x86-${PV}"
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
-HOMEPAGE="http://www.nvidia.com/"
+HOMEPAGE="http://www.nvidia.com/ http://www.nvidia.com/Download/Find.aspx"
 SRC_URI="x86? ( http://us.download.nvidia.com/XFree86/Linux-x86/${PV}/${X86_NV_PACKAGE}-pkg0.run )
 	 amd64? ( http://us.download.nvidia.com/XFree86/Linux-x86_64/${PV}/${AMD64_NV_PACKAGE}-pkg2.run )
 	 x86-fbsd? ( http://us.download.nvidia.com/freebsd/${PV}/${X86_FBSD_NV_PACKAGE}.tar.gz )"
 
 LICENSE="GPL-2 NVIDIA-r1"
-SLOT="0"
+SLOT="0/173"
 KEYWORDS="-* amd64 x86 ~x86-fbsd"
 IUSE="acpi multilib kernel3-13 kernel3-14 +kernel3-17 kernel_linux pax_kernel tools"
 RESTRICT="bindist mirror strip"
@@ -34,20 +34,19 @@ DEPEND="
 "
 RDEPEND="
 	${COMMON}
-	<x11-base/xorg-server-1.15.99
+	<x11-base/xorg-server-1.15.99:=
+	sys-libs/zlib[${MULTILIB_USEDEP}]
+	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
+	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
 	acpi? ( sys-power/acpid )
-	multilib? (
-		>=x11-libs/libX11-1.6.2[abi_x86_32]
-		>=x11-libs/libXext-1.3.2[abi_x86_32]
-	)
 	tools? (
-		dev-libs/atk
-		dev-libs/glib
-		x11-libs/gdk-pixbuf
-		x11-libs/gtk+:2
-		x11-libs/libX11
-		x11-libs/libXext
-		x11-libs/pango[X]
+		dev-libs/atk[${MULTILIB_USEDEP}]
+		dev-libs/glib:2[${MULTILIB_USEDEP}]
+		x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}]
+		x11-libs/gtk+:2[${MULTILIB_USEDEP}]
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+		x11-libs/libXext[${MULTILIB_USEDEP}]
+		x11-libs/pango[X,${MULTILIB_USEDEP}]
 	)
 "
 
