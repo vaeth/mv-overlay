@@ -22,11 +22,12 @@ src_prepare() {
 
 src_install() {
 	local i
-	insinto /usr/bin
 	for i in bin/*
 	do	test -h "$i" || dobin "$i"
 	done
 	dosym git-tag /usr/bin/git-archive
+	dosym git-commit /usr/bin/git-status
+	dosym git-commit /usr/bin/git-update-index
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
 	dodoc README
