@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: moz.eclass
@@ -99,46 +99,67 @@ moz_install${o}
 # This is an eclass-generated depend expression needed for moz_unpack to work
 MOZ_DEPEND='app-arch/unzip'
 
+# @FUNCTION: moz_atom
+# @DEFAULTUNSET
+# @USAGE: <browser>
+# Prints the atom/subexpression used in RDEPEND for the corresponding browser,
+# e.g. www-client/firefox-bin
+# browser is one of (firefox|palemoon|seamonkey)(-source|-bin)
+# If nothing is printed, the output of "moz_atom_default <browser>" is used.
+# moz_atom is meant to be defined by the ebuild if non-defaults are used.
+
+# @FUNCTION: moz_atom_default
+# @USAGE: <browser>
+# Prints the atom/subexpression used in RDEPEND for the corresponding browser,
+# when moz_atom is not defined or prints nothing.
+# brower is one of (firefox|palemoon|seamonkey)(-source|-bin)
+moz_atom_default() {
+	echo "www-client/${1%-source}"
+}
+
 # @FUNCTION: moz_rdepend
 # @USAGE: [<browser>] [<browser>] [...]
 # @DESCRIPTION:
 # Outputs RDEPEND expression appropriate for browsers.
-# browser is [firefox|palemoon|seamonkey][-source|-bin] (no specified = all)
+# browser is (firefox|palemoon|seamonkey)[-source|-bin] (no specified = all)
+# Note that moz_rdepend_atom (if defined by the ebuild) is used to calculate
+# the expression.
 moz_rdepend() {
-	local rdep i c mode
-	[ ${#} -ne 0 ] || set -- "firefox palemoon seamonkey"
-	c=
+	local rdep browser count modes mode atom useflag
+	[ ${#} -ne 0 ] || set -- firefox palemoon seamonkey
+	count=
 	rdep=
-	for i in firefox palemoon seamonkey
-	do	mode=
+	for browser in firefox palemoon seamonkey
+	do	modes=
 		case ${*} in
-		*"${i}"?source*)
-			mode=s;;
-		*"${i}"?bin*)
-			mode=b;;
-		*"${i}"*)
-			mode=sb;;
+		*"${browser}"?source*)
+			modes=source;;
+		*"${browser}"?bin*)
+			modes=bin;;
+		*"${browser}"*)
+			modes="source bin";;
 		esac
-		case ${mode} in
-		*s*)
-			rdep=${rdep}${rdep:+\ }"browser_${i}? ( www-client/${i} )"
-			c=${c}a;;
-		esac
-		case ${mode} in
-		*b*)
-			rdep=${rdep}${rdep:+\ }"browser_${i}-bin? ( www-client/${i}-bin )"
-			c=${c}a;;
-		esac
+		for mode in $modes
+		do	atom=
+			[ "$(type -t moz_atom)" != "function" ] || \
+				atom=`moz_atom "${browser}-${mode}"`
+			[ -n "$atom" ] || \
+				atom=`moz_atom_default "${browser}-${mode}"`
+			useflag=browser_${browser}
+			[ "$mode" = "source" ] || useflag=${useflag}-${mode}
+			rdep=${rdep}${rdep:+\ }"${useflag}? ( ${atom} )"
+			count=${count}a
+		done
 	done
-	[ -n "${c}" ] || die "args must be [firefox|palemoon|seamonkey][-source|-bin]"
-	[ "${c}" = a ] && echo "${rdep}" || echo "|| ( ${rdep} )"
+	[ -n "${count}" ] || die "args must be (firefox|palemoon|seamonkey)[-source|-bin]"
+	[ "${count}" = a ] && echo "${rdep}" || echo "|| ( ${rdep} )"
 }
 
 # @FUNCTION: moz_iuse
 # @USAGE: [-c|-C|-n] [--] [<browser>] [<browser>] [...]
 # @DESCRIPTION:
 # Outputs IUSE expression appropriate for browsers.
-# browser is [firefox|palemoon|seamonkey][-source|-bin] (no specified = all).
+# browser is (firefox|palemoon|seamonkey)[-source|-bin] (no specified = all).
 # If option -C or -n is specified, IUSE=compressed is not default/added.
 moz_iuse() {
 	local iuse i opt
@@ -152,7 +173,7 @@ moz_iuse() {
 		esac
 	done
 	shift $(( ${OPTIND} - 1 ))
-	[ ${#} -ne 0 ] || set -- "firefox palemoon seamonkey"
+	[ ${#} -ne 0 ] || set -- firefox palemoon seamonkey
 	for i in firefox palemoon seamonkey
 	do	case "${*}" in
 		*"${i}"?source*)
@@ -163,7 +184,7 @@ moz_iuse() {
 			iuse=${iuse}${iuse:+\ }"browser_${i} browser_${i}-bin";;
 		esac
 	done
-	[ -n "${iuse}" ] || die "args must be [firefox|palemoon|seamonkey][-source|-bin]"
+	[ -n "${iuse}" ] || die "args must be (firefox|palemoon|seamonkey)[-source|-bin]"
 	echo "${iuse}"
 }
 
@@ -171,7 +192,7 @@ moz_iuse() {
 # @USAGE: [<browser>] [<browser>] [...]
 # @DESCRIPTION:
 # Outputs REQUIRED_USE expression appropriate for browsers.
-# browser is [firefox|palemoon|seamonkey][-source|-bin] (no specified means all)
+# browser is (firefox|palemoon|seamonkey)[-source|-bin] (no specified means all)
 moz_required_use() {
 	set -- $(moz_iuse -n "${@}")
 	[ ${#} -lt 2 ] && echo "${*}" || echo "|| ( ${*} )"

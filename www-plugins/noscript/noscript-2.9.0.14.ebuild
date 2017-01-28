@@ -11,15 +11,13 @@ SRC_URI="https://secure.informaction.com/download/releases/${P}.xpi
 https://addons.cdn.mozilla.net/user-media/addons/722/noscript_security_suite-${PV}-fx+fn+sm.xpi -> ${P}.xpi"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="palemoon26"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-moz_atom() {
-	case $1 in
-	palemoon*)
-		echo ">=$(moz_atom_default "$1")-27";;
-	esac
-}
+moz_defaults palemoon
 
-moz_defaults
+DEPEND="${DEPEND}
+	browser_palemoon? ( !${CATEGORY}/${PN}:0[browser_palemoon] )
+	browser_palemoon-bin? ( !${CATEGORY}/${PN}:0[browser_palemoon-bin] )
+"

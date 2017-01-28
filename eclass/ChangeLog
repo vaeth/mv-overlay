@@ -1,5 +1,5 @@
 # ChangeLog for eclass directory
-# Copyright 2016 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 2017 Gentoo Foundation; Distributed under the GPL v2
 
   12 May 2012; Martin Väth <martin@mvath.de>:
   Created ChangeLog
@@ -52,3 +52,6 @@
 
   02 Dec 2016; Martin Väth <martin@mvath.de>:
   stardict.eclass: Remove again since it stays in main gentoo repository
+
+  28 Jan 2017; Martin Väth <martin@mvath.de>:
+  mv_mozextension-r1.eclass: Support override by moz_atom()
