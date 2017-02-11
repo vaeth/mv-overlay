@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=app-shells/push-2.0
+RDEPEND=">=app-shells/push-2.0-r2
 	!<sys-apps/openrc-0.13"
 
 DISABLE_AUTOFORMATTING="true"

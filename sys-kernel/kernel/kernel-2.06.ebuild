@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RDEPEND="app-admin/sudo
 	app-admin/sudox
-	>=app-shells/push-2.0
+	>=app-shells/push-2.0-r2
 	>=app-shells/runtitle-2.3
 	!<dev-util/ccache-3.2"
 DEPEND=""

@@ -12,7 +12,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RDEPEND=">=app-shells/push-2.0
+RDEPEND=">=app-shells/push-2.0-r2
 	>=app-shells/runtitle-2.3"
 DEPEND=""
 
