@@ -17,12 +17,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="debug optimization strong-optimization"
 
 src_prepare() {
-	if use prefix
-	then	set --
-	else	set -- -e '1s"^#!/usr/bin/env perl$"#!'"${EPREFIX}/usr/bin/perl"'"'
-	fi
-	sed -e 's!\./chessproblem!chessproblem!' \
-		"${@}" -- contrib/test.pl >test.pl || die
+	use prefix || sed -i \
+		-e '1s"^#!/usr/bin/env perl$"#!'"${EPREFIX}/usr/bin/perl"'"' \
+		-- contrib/test.pl || die
 	eapply_user
 	eautoreconf
 }
@@ -37,6 +34,6 @@ src_configure() {
 src_install() {
 	default
 	exeinto "/usr/share/doc/${PF}/"
-	doexe test.pl
+	doexe contrib/test.pl
 	docompress -x "/usr/share/doc/${PF}/test.pl"
 }
