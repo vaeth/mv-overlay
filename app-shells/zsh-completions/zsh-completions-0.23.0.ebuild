@@ -75,19 +75,19 @@ calculate_data \
 	'+Android /_adb _android _emulator' \
 	'+Arch #_archlinux-java' \
 	'+Google _google' \
-	'+Linux #_chattr #_lsattr #_lsblk #_setcap' \
-	'+Unix #_cheat _cmake /_dzen2 /_logger /_nl #_openssl #_pixz /_ps _shutdown /_watch /_zfs' \
+	'+Linux #_chattr #_column #_lsattr #_lsblk #_paste #_setcap' \
+	'+Unix #_cheat _cmake /_dzen2 /_logger /_nl #_openssl #_patool #_pixz /_ps _shutdown /_watch /_zfs' \
 	'+X #_trash-empty #_trash-list #_trash-put #_trash-restore _xinput' \
 	'+database _redis-cli _pgsql_utils' \
 	'+dev _artisan _choc _console _geany /_gradle _phing /_manage.py _mvn /_pear _play /_symfony _thor _vagrant /_veewee' \
-	'+disk #_scrub _sdd _smartmontools _srm' \
+	'+disk #_scrub _sdd _smartmontools _srm #_udisksctl' \
 	'+distribute /_celery /_envoy _fab #_fleetctl _glances _kitchen _knife _mina _mussh' \
-	'+git _git-flow _git-pulls' \
+	'+git _git-flow #_git-journal _git-pulls' \
 	'+go #_go' \
 	'+gtk #_gtk-launch' \
 	'+hardware _optirun _perf /_primus' \
 	'+haskell /_cabal _ghc #_stack' \
-	'+managers #_ansible #_ansible-galaxy #_ansible-playbook #_ansible-vault _bower /_brew #_cask _debuild /_lein #_multirust /_pactree _pkcon _port #_rsvm #_supervisorctl _yaourt' \
+	'+managers #_ansible #_ansible-galaxy #_ansible-playbook #_ansible-vault _bower /_brew #_cask _debuild /_lein #_multirust /_pactree _pkcon _port #_rsvm #_scl #_supervisorctl _yaourt' \
 	'+multimedia /_id3 /_id3v2 _showoff' \
 	'+net _dget _dhcpcd _httpie /_iw /_mosh _rfkill /_socat _ssh-copy-id #_ufw _vpnc _vnstat' \
 	'+nfs _exportfs' \
