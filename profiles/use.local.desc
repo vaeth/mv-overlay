@@ -154,6 +154,7 @@ app-text/stardict:wordnet - Enable wordnet plugin to find similar English words 
 app-text/stardict:xdxfparse - Enable plugin to parse dictionaries in xdxf (XML Dictionary eXchange Format)
 app-text/stardict:youdaodict - Enable youdao.com network plugin (for Chinese language)
 games-board/chessproblem:debug - Build with upstream's CXXFLAGS/LDFLAGS for debugging support; not recommended for normal use.
+games-board/chessproblem:multithreading - Install multithreading version
 games-board/chessproblem:optimization - Accept upstream's choices for CXXFLAGS/LDFLAGS for optimization. Absense of this USE flag does not strip user's *FLAGS
 games-board/chessproblem:strong-optimization - Adds several more agressive CXXFLAGS/LDFLAGS for optimization like graphite (if available). May cause trouble with some buggy compiler versions. Absense of this USE flag does not strip user's *FLAGS
 games-emulation/xmame:bundled-libs - Use bundled version of dev-libs/expat
