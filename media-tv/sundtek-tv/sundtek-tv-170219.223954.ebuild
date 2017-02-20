@@ -8,8 +8,8 @@ inherit linux-info pax-utils readme.gentoo-r1 systemd unpacker
 keep_original=false
 
 DESCRIPTION="Sundtek MediaTV Pro III Drivers"
-HOMEPAGE="http://support.sundtek.com/index.php/topic,2.0.html"
-# Current version number can be found in http://sundtek.de/media/latest.phtml
+HOMEPAGE="http://support.sundtek.com/index.php/topic,2.0.html
+http://sundtek.de/media/latest.phtml"
 SRC_URI="http://www.sundtek.de/media/sundtek_installer_${PV}.sh"
 
 RESTRICT="binchecks mirror strip"
