@@ -156,6 +156,7 @@ app-text/stardict:youdaodict - Enable youdao.com network plugin (for Chinese lan
 games-board/chessproblem:debug - Build with upstream's CXXFLAGS/LDFLAGS for debugging support; not recommended for normal use.
 games-board/chessproblem:multithreading - Install multithreading version
 games-board/chessproblem:optimization - Accept upstream's choices for CXXFLAGS/LDFLAGS for optimization. Absense of this USE flag does not strip user's *FLAGS
+games-board/chessproblem:propagate-signal - Use signal propagation for thread pruning. Requires more memory; it is faster in some cases, but slower in others
 games-board/chessproblem:strong-optimization - Adds several more agressive CXXFLAGS/LDFLAGS for optimization like graphite (if available). May cause trouble with some buggy compiler versions. Absense of this USE flag does not strip user's *FLAGS
 games-emulation/xmame:bundled-libs - Use bundled version of dev-libs/expat
 games-emulation/xmame:net - Add network support
