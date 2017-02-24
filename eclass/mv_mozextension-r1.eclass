@@ -100,16 +100,18 @@ moz_install${o}
 MOZ_DEPEND='app-arch/unzip'
 
 # @FUNCTION: moz_atom
-# @DEFAULTUNSET
 # @USAGE: <browser>
+# @DESCRIPTION:
 # Prints the atom/subexpression used in RDEPEND for the corresponding browser,
 # e.g. www-client/firefox-bin
 # browser is one of (firefox|palemoon|seamonkey)(-source|-bin)
 # If nothing is printed, the output of "moz_atom_default <browser>" is used.
 # moz_atom is meant to be defined by the ebuild if non-defaults are used.
+# @DEFAULT_UNSET
 
 # @FUNCTION: moz_atom_default
 # @USAGE: <browser>
+# @DESCRIPTION:
 # Prints the atom/subexpression used in RDEPEND for the corresponding browser,
 # when moz_atom is not defined or prints nothing.
 # brower is one of (firefox|palemoon|seamonkey)(-source|-bin)
