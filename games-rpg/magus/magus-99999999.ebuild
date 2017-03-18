@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils flag-o-matic
+inherit autotools flag-o-matic ltprune
 RESTRICT="mirror"
 
 FETCH_RESTRICT=false

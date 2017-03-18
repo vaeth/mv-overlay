@@ -3,7 +3,7 @@
 
 EAPI=6
 RESTRICT="mirror"
-inherit eutils
+inherit ltprune
 
 SRC_URI="https://github.com/vaeth/osformat/releases/download/v${PV}/${P}.tar.xz"
 
