@@ -5,20 +5,17 @@ EAPI=6
 inherit flag-o-matic toolchain-funcs
 
 LIVE=false
-PVm=${PV}
+PVm=4.3
 case ${PV} in
 *9999)
-	LIVE=:
-	PVm=4.3;;
+	LIVE=:;;
 esac
 Pm=${PN}-${PVm}
 DEB_VER="3"
 
-DESCRIPTION="Tool for creating compressed filesystem type squashfs. Patched to support -quiet"
-HOMEPAGE="http://squashfs.sourceforge.net"
+DESCRIPTION="Tool for creating compressed filesystem type squashfs"
+HOMEPAGE="https://github.com/plougher/squashfs-tools/ https://git.kernel.org/pub/scm/fs/squashfs/squashfs-tools.git http://squashfs.sourceforge.net"
 EXTRA_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PVm}-${DEB_VER}.debian.tar.xz"
-SRC_URI="mirror://sourceforge/squashfs/squashfs${PV}.tar.gz
-	${EXTRA_URI}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -38,8 +35,8 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/squashfs${PV}/${PN}"
 
-if ${LIVE}
-then	PROPERTIES="live"
+if ${LIVE}; then
+	PROPERTIES="live"
 	EGIT_REPO_URI="git://github.com/plougher/${PN}"
 	inherit git-r3
 	SRC_URI=${EXTRA_URI}
@@ -49,12 +46,23 @@ src_unpack() {
 	default
 	git-r3_src_unpack
 }
+else
+	RESTRICT="mirror"
+	EGIT_COMMIT="94f557524a2a08bc48a13ffff1a3c8d7f6170f09"
+	SRC_URI="https://github.com/plougher/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
+${EXTRA_URI}"
+	S="${WORKDIR}/${P}/${PN}"
+src_unpack() {
+	default
+	mv -- "${WORKDIR}/${PN}-${EGIT_COMMIT}" "${WORKDIR}/${P}"
+}
 fi
 
 src_prepare() {
 	local i j
-	for i in "${WORKDIR}"/debian/patches/*.patch
-	do	${LIVE} && j=${i##*/} && case ${j%.*} in
+	for i in "${WORKDIR}"/debian/patches/*.patch; do
+		j=${i##*/}
+		case ${j%.*} in
 		0002-fix_phys_mem_calculation)
 			continue;;
 		esac
@@ -62,16 +70,14 @@ src_prepare() {
 	done
 	eapply -p2 "${FILESDIR}"/${Pm}-sysmacros.patch
 	eapply -p2 "${FILESDIR}"/${Pm}-aligned-data.patch
-	${LIVE} || eapply -p2 "${FILESDIR}"/${Pm}-2gb.patch
 	eapply "${FILESDIR}"/${Pm}-local-cve-fix.patch
-	${LIVE} || eapply -p2 "${FILESDIR}"/${Pm}-mem-overflow.patch
-	eapply -p2 "${FILESDIR}"/${Pm}-xattrs.patch
 	eapply "${FILESDIR}"/${Pm}-static-inline.patch
-	eapply "${FILESDIR}"/${Pm}-quiet.patch
 	eapply_user
 }
 
-use10() { usex $1 1 0 ; }
+use10() {
+	usex $1 1 0
+}
 
 src_configure() {
 	# set up make command line variables in EMAKE_SQUASHFS_CONF
@@ -96,7 +102,6 @@ src_compile() {
 src_install() {
 	dobin mksquashfs unsquashfs
 	cd ..
-	dodoc CHANGES README*
-	${LIVE} || dodoc PERFORMANCE.README pseudo-file.example OLD-READMEs/*
+	dodoc CHANGES README RELEASE-README ACKNOWLEDGEMENTS RELEASE-READMEs/*
 	doman "${WORKDIR}"/debian/manpages/*.[0-9]
 }
