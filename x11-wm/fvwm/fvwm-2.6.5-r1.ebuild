@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -48,7 +48,7 @@ COMMON_DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}
 	dev-lang/perl
-	gtk2-perl? ( dev-perl/gtk2-perl )
+	gtk2-perl? ( dev-perl/Gtk2 )
 	perl? ( tk? (
 			dev-lang/tk
 			dev-perl/Tk
@@ -137,7 +137,7 @@ src_install() {
 			fi
 		fi
 
-		# Now, the Gtk2.pm file, it will require dev-perl/gtk2-perl
+		# Now, the Gtk2.pm file, it will require dev-perl/Gtk2
 		# so it implies gtk2 as well. That's why we need another use flag.
 		if ! use gtk2-perl; then
 			rm -f -- "${ED}/usr/share/fvwm/perllib/FVWM/Module/Gtk2.pm" || die
