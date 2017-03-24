@@ -1,8 +1,8 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( pypy3 python3_4 python3_5 )
+PYTHON_COMPAT=( pypy3 python3_{4,5,6} )
 inherit python-single-r1 systemd
 
 DESCRIPTION="systemd units to create timers for cron directories and crontab"

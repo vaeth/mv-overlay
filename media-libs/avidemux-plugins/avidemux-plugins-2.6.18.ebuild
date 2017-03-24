@@ -4,7 +4,7 @@
 EAPI=6
 RESTRICT="mirror"
 
-PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit cmake-utils eutils flag-o-matic python-any-r1
 

@@ -1,9 +1,9 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 RESTRICT="mirror"
-PYTHON_COMPAT=( pypy{,3} python{2_7,3_{4,5}} )
+PYTHON_COMPAT=( pypy{,3} python{2_7,3_{4,5,6}} )
 inherit python-any-r1
 
 DESCRIPTION="Search and/or replace regular expressions within many files interactively"
