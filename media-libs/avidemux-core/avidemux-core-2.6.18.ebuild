@@ -4,7 +4,7 @@
 EAPI=6
 RESTRICT="mirror"
 
-inherit cmake-utils eutils flag-o-matic
+inherit cmake-utils flag-o-matic
 
 SLOT="2.6"
 

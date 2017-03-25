@@ -1,8 +1,8 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils readme.gentoo-r1 systemd toolchain-funcs user
+inherit readme.gentoo-r1 systemd toolchain-funcs user
 
 MY_P=${P/-updater/}
 DESCRIPTION="no-ip.com dynamic DNS updater"

@@ -3,7 +3,7 @@
 
 EAPI=6
 RESTRICT="mirror"
-inherit eutils multilib toolchain-funcs
+inherit toolchain-funcs
 
 PATCH_VER="0.3"
 

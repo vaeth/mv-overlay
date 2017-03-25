@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic linux-mod multilib-minimal nvidia-driver portability \
+inherit flag-o-matic linux-mod multilib-minimal nvidia-driver portability \
 	unpacker user versionator readme.gentoo-r1
 
 X86_NV_PACKAGE="NVIDIA-Linux-x86-${PV}"

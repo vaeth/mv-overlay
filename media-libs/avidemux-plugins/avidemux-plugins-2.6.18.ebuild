@@ -6,7 +6,7 @@ RESTRICT="mirror"
 
 PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
-inherit cmake-utils eutils flag-o-matic python-any-r1
+inherit cmake-utils flag-o-matic python-any-r1
 
 SLOT="2.6"
 

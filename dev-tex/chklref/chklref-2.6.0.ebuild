@@ -1,8 +1,8 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils latex-package
+inherit latex-package
 RESTRICT="mirror"
 
 DESCRIPTION="Finds useless references in latex files or unnecessarily numbered environments"

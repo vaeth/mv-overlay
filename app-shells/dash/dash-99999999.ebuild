@@ -29,7 +29,7 @@ else	# inherit versionator
 	#S=${WORKDIR}/${MY_P}
 fi
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Descendant of the NetBSD ash. POSIX compliant except for multibyte characters"
 HOMEPAGE="http://gondor.apana.org.au/~herbert/dash/"

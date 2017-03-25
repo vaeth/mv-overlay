@@ -1,9 +1,9 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 RESTRICT="mirror"
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_P=${PN}-1.0.a15unix
 

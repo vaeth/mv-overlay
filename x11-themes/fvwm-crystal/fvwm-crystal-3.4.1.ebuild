@@ -1,11 +1,11 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 RESTRICT=mirror
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils readme.gentoo-r1 python-r1 user
+inherit readme.gentoo-r1 python-r1 user
 
 DESCRIPTION="Configurable FVWM theme with transparency and freedesktop compatible menu"
 HOMEPAGE="http://fvwm-crystal.org/"
