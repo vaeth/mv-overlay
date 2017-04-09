@@ -19,11 +19,6 @@ games-rpg/magus
 # So install only if you are aware about the security risk.
 ~net-dns/noip-updater-2.1.9
 
-# Martin Väth <martin@mvath.de> (09 Apr 2017)
-# Versions 488-490 are known to have intentional misfeatures, see e.g.
-# https://bugs.gentoo.org/show_bug.cgi?id=614942
-=sys-apps/less-490
-
 # Martin Väth <martin@mvath.de> (20 Jul 2016)
 # There is nothing wrong with sys-apps/starter, but it is hardly maintained.
 # Please switch to the successor project sys-fs/schedule which is superior
