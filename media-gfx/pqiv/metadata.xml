@@ -18,6 +18,7 @@
     <remote-id type="github">phillipberndt/pqiv</remote-id>
   </upstream>
   <use>
+    <flag name="archive">Enable support for images in archives and cbX comic book files</flag>
     <flag name="gtk2">Use gtk:2 instead of gtk:3</flag>
   </use>
 </pkgmetadata>
