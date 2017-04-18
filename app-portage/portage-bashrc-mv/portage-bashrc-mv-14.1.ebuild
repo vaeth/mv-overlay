@@ -16,7 +16,7 @@ IUSE=""
 RDEPEND="!<dev-util/ccache-3.2"
 
 src_install() {
-	dodoc NEWS README
+	dodoc AUTHORS NEWS README
 	exeinto "/usr/share/doc/${PF}"
 	doexe fix-portage-2.2.15
 	docompress -x "/usr/share/doc/${PF}/fix-portage-2.2.15"
