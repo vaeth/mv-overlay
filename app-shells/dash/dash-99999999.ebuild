@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ else	# inherit versionator
 	#MY_PV="$(get_version_component_range 1-3)"
 	DEB_PATCH="" #"$(get_version_component_range 4)"
 	#MY_P="${PN}-${MY_PV}"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 	SRC_URI="http://gondor.apana.org.au/~herbert/dash/files/${P}.tar.gz"
 	if [ -n "${DEB_PATCH}" ]
 	then	DEB_PF="${PN}_${MY_PV}-${DEB_PATCH}"

@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ PATCHES=("${FILESDIR}/foreground.patch")
 COMMON="foomaticdb? ( net-print/foomatic-db-engine )"
 RDEPEND="${COMMON}
 	net-print/cups
-	|| ( >=net-print/cups-filters-1.0.43 net-print/foomatic-filters )
+	net-print/cups-filters
 	virtual/udev"
 DEPEND="${COMMON}
 	app-arch/unzip

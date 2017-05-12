@@ -38,10 +38,7 @@ DEPEND="
 	xv? ( x11-libs/libXv:0 )
 	vaapi? ( x11-libs/libva:0 )
 	vdpau? ( x11-libs/libvdpau:0 )
-	video_cards_fglrx? (
-		|| ( >=x11-drivers/ati-drivers-14.12-r3
-			x11-libs/xvba-video:0 )
-		)"
+"
 RDEPEND="
 	$DEPEND
 	nls? ( virtual/libintl:0 )
