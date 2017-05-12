@@ -6,11 +6,11 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="An extremely powerful ICCCM-compliant multiple virtual desktop window manager"
 HOMEPAGE="http://www.fvwm.org/"
-SRC_URI="https://github.com/fvwmorg/fvwm/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="ftp://ftp.fvwm.org/pub/fvwm/version-2/${P}.tar.bz2"
 
 LICENSE="GPL-2 FVWM"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="bidi debug doc gtk2-perl iconv netpbm nls perl png readline rplay stroke svg tk truetype +vanilla xinerama lock"
 
 COMMON_DEPEND="
@@ -67,8 +67,6 @@ DEPEND="${COMMON_DEPEND}
 	x11-proto/xproto
 "
 
-DOCS=( NEWS )
-
 src_prepare() {
 	if ! use vanilla; then
 		# Enables fast translucent menus; patch from fvwm-user mailing list.
@@ -84,7 +82,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf="--libexecdir=/usr/lib --with-imagepath=/usr/include/X11/bitmaps:/usr/include/X11/pixmaps:/usr/share/icons/fvwm --enable-package-subdirs"
+	local myconf="--libexecdir=/usr/$(get_libdir) --with-imagepath=/usr/include/X11/bitmaps:/usr/include/X11/pixmaps:/usr/share/icons/fvwm --enable-package-subdirs --without-gnome"
 
 	# Non-upstream email where bugs should be sent; used in fvwm-bug.
 	export FVWM_BUGADDR="desktop-wm@gentoo.org"
@@ -94,6 +92,8 @@ src_configure() {
 
 	# Signed chars are required.
 	use ppc && append-flags -fsigned-char
+
+	myconf="${myconf} --disable-gtk"
 
 	use readline && myconf="${myconf} --without-termcap-library"
 
@@ -105,7 +105,7 @@ src_configure() {
 		$(use_enable iconv) \
 		$(use_enable nls) \
 		$(use_enable perl perllib) \
-		$(use_enable png) \
+		$(use_with png png-library) \
 		$(use_with readline readline-library) \
 		$(use_with rplay rplay-library) \
 		$(use_with stroke stroke-library) \
@@ -148,8 +148,6 @@ src_install() {
 			"${ED}/usr/share/man/man1/fvwm-perllib.1" || die
 	fi
 
-	einstalldocs
-
 	# Utility for testing FVWM behaviour by creating a simple window with
 	# configurable hints.
 	if use debug; then
@@ -160,6 +158,10 @@ src_install() {
 	dodir /etc/X11/Sessions
 	echo "/usr/bin/fvwm" > "${ED}/etc/X11/Sessions/${PN}" || die
 	fperms a+x /etc/X11/Sessions/${PN} || die
+
+	dodoc AUTHORS ChangeLog NEWS README \
+		docs/{ANNOUNCE,BUGS,COMMANDS,CONVENTIONS} \
+		docs/{DEVELOPERS,error_codes,FAQ,TODO,fvwm.lsm}
 
 	# README file for translucent menus patch.
 	if ! use vanilla; then
