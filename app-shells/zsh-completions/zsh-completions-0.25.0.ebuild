@@ -87,7 +87,7 @@ calculate_data \
 	'+gtk #_gtk-launch' \
 	'+hardware _optirun _perf /_primus' \
 	'+haskell /_cabal _ghc #_stack' \
-	'+managers #_ansible #_ansible-galaxy #_ansible-playbook #_ansible-vault _bower /_brew #_cask _debuild /_lein #_multirust /_pactree _pkcon _port #_rsvm #_scl #_supervisorctl _yaourt' \
+	'+managers #_ansible #_ansible-galaxy #_ansible-playbook #_ansible-vault _bower /_brew #_cask _debuild /_lein #_multirust /_pactree _pkcon _port #_rsvm #_scl #_supervisorctl _yaourt #_yarn' \
 	'+multimedia /_id3 /_id3v2 _showoff' \
 	'+net _dget _dhcpcd _httpie /_iw /_mosh _rfkill /_socat _ssh-copy-id #_ufw _vpnc _vnstat' \
 	'+nfs _exportfs #_rclone' \
@@ -98,7 +98,7 @@ calculate_data \
 	'+session _atach _teamocil _tmuxinator _wemux' \
 	'+subtitles _language_codes _periscope _subliminal' \
 	'+virtualization /_boot2docker #_envdir #_rkt _virtualbox _virsh' \
-	'+web #_afew #_cf _coffee _composer #_dad #_diana _docpad _drush /_heroku #_homestead _jonas _jmeter _jmeter-plugins /_lunar _middleman #_mix _node _nvm _ralio /_salt _sbt _scala _svm'
+	'+web #_afew #bitcoin-cli #_cf _coffee _composer #_dad #_diana _docpad _drush /_heroku #_homestead _jonas _jmeter _jmeter-plugins /_lunar _middleman #_mix _node _nvm _ralio /_salt _sbt _scala _svm'
 
 src_prepare() {
 	# Remove colliding completions
