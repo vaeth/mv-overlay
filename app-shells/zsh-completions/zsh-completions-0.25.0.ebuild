@@ -98,7 +98,7 @@ calculate_data \
 	'+session _atach _teamocil _tmuxinator _wemux' \
 	'+subtitles _language_codes _periscope _subliminal' \
 	'+virtualization /_boot2docker #_envdir #_rkt _virtualbox _virsh' \
-	'+web #_afew #bitcoin-cli #_cf _coffee _composer #_dad #_diana _docpad _drush /_heroku #_homestead _jonas _jmeter _jmeter-plugins /_lunar _middleman #_mix _node _nvm _ralio /_salt _sbt _scala _svm'
+	'+web #_afew #_bitcoin-cli #_cf _coffee _composer #_dad #_diana _docpad _drush /_heroku #_homestead _jonas _jmeter _jmeter-plugins /_lunar _middleman #_mix _node _nvm _ralio /_salt _sbt _scala _svm'
 
 src_prepare() {
 	# Remove colliding completions
