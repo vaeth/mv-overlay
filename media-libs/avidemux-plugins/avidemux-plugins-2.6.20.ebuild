@@ -60,7 +60,7 @@ RDEPEND="
 	truetype? ( media-libs/freetype:2 )
 	twolame? ( media-sound/twolame:0 )
 	x264? ( media-libs/x264:0= )
-	x265? ( >=media-libs/x265-1.9 )
+	x265? ( media-libs/x265:0= )
 	xv? (
 		x11-libs/libX11:0
 		x11-libs/libXext:0
