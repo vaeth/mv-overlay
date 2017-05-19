@@ -152,13 +152,17 @@ src_configure() {
 		if use qt5 ; then
 			mycmakeargs+=( -DENABLE_QT5=True )
 			QT_SELECT=5
+			qt_ext=Qt5
+			export qt_ext
 		elif use qt4 ; then
 			QT_SELECT=4
 		fi
 
-		if use debug ; then
-			mycmakeargs+=( -DVERBOSE=1 -DCMAKE_BUILD_TYPE=Debug -DADM_DEBUG=1 )
-		fi
+		! use debug || mycmakeargs+=(
+			-DVERBOSE=1
+			-DCMAKE_BUILD_TYPE=Debug
+			-DADM_DEBUG=1
+		)
 
 		mkdir "${S}"/${build} || die "Can't create build folder."
 
