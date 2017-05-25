@@ -25,6 +25,8 @@ RDEPEND="${DEPEND}
 	sys-apps/gentoo-functions"
 
 python_prepare_all() {
+	sed -i -e 's/portage\.root/str(portage.root)/' \
+		-- "${S}"/pym/gentoolkit/revdep_rebuild/settings.py || die
 	python_setup
 	echo VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	VERSION="${PVR}" "${PYTHON}" setup.py set_version
