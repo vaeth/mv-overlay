@@ -46,18 +46,23 @@ moz_defaults() {
 }
 
 # @FUNCTION: moz_variables
-# @USAGE: [-c|-C|-n] [--] [<browser>] [<browser>] [...]
+# @USAGE: [-c|-C|-n] [-i id] [--] [<browser>] [<browser>] [...]
 # @DESCRIPTION:
 # Sets the variables DEPEND, RDEPEND, IUSE, REQUIRED_USE for browsers.
-# browser is firefox or seamonkey and implies source or binary version.
+# browser is (firefox|seamonkey|palemoon) and implies source or binary version.
 # If no browser is specified, all are assumed.
 # If option -C or -n is specified, IUSE=compressed is not default/added.
 moz_variables() {
 	local o opt
 	o=
 	OPTIND=1
-	while getopts 'cCn' opt
-	do	o="-${opt}"
+	while getopts 'cCni:' opt
+	do	case ${opt} in
+		[cCn])
+			o="-${opt}";;
+		*)
+			:;;
+		esac
 	done
 	shift $(( ${OPTIND} - 1 ))
 	DEPEND=${MOZ_DEPEND}
@@ -67,30 +72,32 @@ moz_variables() {
 }
 
 # @FUNCTION: moz_phases
-# @USAGE: [-c|-C|-n] [--] [ignored args]
+# @USAGE: [-cCn] [-i id] [--] [ignored args]
 # @DESCRIPTION:
 # Defines src_unpack and src_install to call only moz_unpack and moz_install.
-# If option -c or -n is specified, IUSE is ignored with compression on/off
 moz_phases() {
-	local o opt
-	o=
+	local o
+	o=()
 	OPTIND=1
-	while getopts 'cCn' opt
+	while getopts 'cCni:' opt
 	do	case ${opt} in
-		c)
-			o=" -c";;
-		n)
-			o=" -n";;
-		C)
-			o=;;
+		[cCn])
+			o+=("-${opt}");;
+		*)
+			o+=("-${opt}" "${OPTARG}");;
 		esac
 	done
 	shift $(( ${OPTIND} - 1 ))
+	set -- "${o[@]}"
+	if [ $# -eq 0 ]
+	then	quoteargs=
+	else	quoteargs=`printf ' %q' "$@"`
+	fi
 	eval "src_unpack() {
-moz_unpack${o}
+moz_unpack$quoteargs
 }
 	src_install() {
-moz_install${o}
+moz_install$quoteargs
 }"
 }
 
@@ -201,20 +208,22 @@ moz_required_use() {
 }
 
 # @FUNCTION: moz_unpack
-# @USAGE: [-c|-C|-n] [--] <file> <file> [...]
+# @USAGE: [-c|-C|-n] [-i id] [--] <file> <file> [...]
 # @DESCRIPTION:
 # Unpack xpi files. If no file is specified, ${A} is used.
 # Option -c means compression mode (partial unpack), independent of USE
 # Option -n means no-compression mode (full unpack), independent of USE
 moz_unpack() {
-	local xpi srcdir xpiname archiv comp opt
+	local xpi srcdir xpiname archiv comp opt id
+	id=false
 	comp=
 	OPTIND=1
-	while getopts 'cn' opt
+	while getopts 'Ccni:' opt
 	do	case ${opt} in
 		c)	comp=:;;
 		n)	comp=false;;
 		C)	comp=;;
+		i)	id=:;;
 		esac
 	done
 	shift $(( ${OPTIND} - 1 ))
@@ -251,8 +260,10 @@ moz_unpack() {
 		mkdir -- "${S}/${xpiname}" || die
 		cd -- "${S}/${xpiname}" || die
 		if ${comp}
-		then	einfo "Extracting install.rdf for ${xpiname}"
-			unzip -qo -- "${archiv}" install.rdf || die
+		then	if ! ${id}
+			then	einfo "Extracting install.rdf for ${xpiname}"
+				unzip -qo -- "${archiv}" install.rdf || die
+			fi
 		else	einfo "Unpacking ${xpiname}"
 			unzip -qo -- "${archiv}" || die
 			chmod -R a+rX,u+w,go-w -- "${S}/${xpiname}" || die
@@ -280,7 +291,7 @@ moz_getid() {
 }
 
 # @FUNCTION: moz_install_to_dir
-# @USAGE: [-n] [--] <extension-directory> <dir> <dir> [...]
+# @USAGE: [-n] [-i id] [--] <extension-directory> <dir> <dir> [...]
 # @DESCRIPTION:
 # Installs dir.xpi as (id) of extension-directory,
 # the name of the id being determined from ${dir}/install.rdf.
@@ -291,9 +302,11 @@ moz_getid() {
 moz_install_to_dir() {
 	local id dest i have comp opt
 	comp=:
+	id=
 	OPTIND=1
-	while getopts 'cn' opt
+	while getopts 'cni:' opt
 	do	case ${opt} in
+		i)	id=${OPTARG};;
 		c)	comp=:;;
 		n)	comp=false;;
 		esac
@@ -308,7 +321,7 @@ moz_install_to_dir() {
 	for i
 	do	[ -n "${i}" ] && test -d "${i}" || continue
 		have=:
-		moz_getid id "${i}"
+		[ -n "${id}" ] || moz_getid id "${i}"
 		if ${comp}
 		then	ln -- "${i}.xpi" "${ED}${dest}/${id}.xpi" \
 			|| cp -- "${i}.xpi" "${ED}${dest}/${id}.xpi" || die
@@ -323,7 +336,7 @@ moz_install_to_dir() {
 }
 
 # @FUNCTION: moz_install_for_browser
-# @USAGE: [-n] [--] <browser> <dir> <dir> [...]
+# @USAGE: [-n] [-i id] [--] <browser> <dir> <dir> [...]
 # @DESCRIPTION:
 # Installs dirs.xpi for browser ({firefox,palemoon,seymonkey}{,-bin}).
 # Arguments which are not directories are silently ignored.
@@ -332,10 +345,15 @@ moz_install_to_dir() {
 # Option -n means nocompression mode: Install dirs instead of dirs.xpi.
 moz_install_for_browser() {
 	local dest firefox palemoon seamonkey o opt
-	o=
+	o=()
 	OPTIND=1
-	while getopts 'cn' opt
-	do	o="-${opt}"
+	while getopts 'cni:' opt
+	do	case ${opt} in
+		[cn])
+			o+=("-$opt");;
+		*)
+			o+=("-$opt" "${OPTARG}");;
+		esac
 	done
 	shift $(( ${OPTIND} - 1 ))
 	[ ${#} -ne 0 ] || die "${FUNCNAME} needs at least one argument"
@@ -359,11 +377,11 @@ moz_install_for_browser() {
 		die "unknown browser specified";;
 	esac
 	shift
-	moz_install_to_dir ${o} -- "${dest}" "${@}"
+	moz_install_to_dir "${o[@]}" -- "${dest}" "${@}"
 }
 
 # @FUNCTION: moz_install
-# @USAGE: [-c|-n|-C] [--] <dir> <dir> [...]
+# @USAGE: [-c|-n|-C] [-i id] [--] <dir> <dir> [...]
 # @DESCRIPTION:
 # Installs dirs/dirs.xpi into appropriate destinations, depending on USE.
 # Arguments which are not directories are silently ignored.
@@ -372,14 +390,16 @@ moz_install_for_browser() {
 # Option -n means to install dir instead of dirs.xpi, independent on USE.
 # Option -c means to install dir.xpi, independent on USE.
 moz_install() {
-	local i o opt
+	local i id o opt
+	id=
 	o="?"
 	OPTIND=1
-	while getopts 'cCn' opt
+	while getopts 'cCni:' opt
 	do	case ${opt} in
 		c)	o=;;
 		n)	o="-n";;
 		C)	o="?";;
+		i)	id=$OPTARG;;
 		esac
 	done
 	shift $(( ${OPTIND} - 1 ))
@@ -389,7 +409,7 @@ moz_install() {
 	fi
 	for i in firefox firefox-bin palemoon palemoon-bin seamonkey seamonkey-bin
 	do	if in_iuse "browser_${i}" && use "browser_${i}"
-		then	moz_install_for_browser ${o} -- "${i}" "${@}"
+		then	moz_install_for_browser ${o} ${id:+-i "$id"} -- "${i}" "${@}"
 		fi
 	done
 }
