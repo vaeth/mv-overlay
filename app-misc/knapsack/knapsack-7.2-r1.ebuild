@@ -16,5 +16,5 @@ IUSE=""
 
 DOCS=(knapsack.txt README ChangeLog)
 
-RDEPEND="dev-libs/boost"
+RDEPEND="dev-libs/boost:="
 DEPEND="${RDEPEND}"
