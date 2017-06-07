@@ -55,3 +55,6 @@
 
   28 Jan 2017; Martin Väth <martin@mvath.de>:
   mv_mozextension-r1.eclass: Support override by moz_atom()
+
+  03 Jun 2017; Martin Väth <martin@mvath.de>:
+  Support new package layout by manually specifying id with option -i

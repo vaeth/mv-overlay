@@ -1,3 +1,5 @@
-/metadata/md5-cache/
+/metadata/*
+!/metadata/layout.conf
+!/metadata/pkg_desc_index
 ChangeLog
 !/eclass/ChangeLog

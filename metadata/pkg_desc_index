@@ -1,0 +1,125 @@
+app-accessibility/gespeaker 0.8.6-r2 0.8.6_p0: A GTK+ frontend for espeak
+app-admin/checksec 1.7.5 99999999: Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)
+app-admin/flexlm 9.5-r2: Macrovision FLEXlm license manager and utils
+app-admin/sudox 9.0.1: wrapper for sudo which can pass X authority data and deal with screen and tmux
+app-arch/archwrap 3.1: A collection of POSIX shell scripts to invoke archiver programs
+app-arch/bzwc 3.00: A POSIX shell wrapper for wc, supporting compressed files (xz, lzma, bz2, gz)
+app-arch/paq8l 20070308: Open source file compressor and archiver
+app-dicts/ispell-de 20161207: German and Swiss dictionaries for ispell
+app-dicts/ispell-de-alt 2-r1: German dictionary (traditional orthography) for ispell
+app-dicts/stardict-dictd-BritannicaConcise 2.4.2: Stardict Dictionary for Dictd.org's The Britannica Concise Encyclopedia
+app-dicts/stardict-dictd-cced 2.4.2: Stardict Dictionary for Dictd.org's Collins Cobuild English Dictionary
+app-dicts/stardict-dictd-longman 2.4.2: Stardict Dictionary for Dictd.org's Longman Dictionary of Contemporary English
+app-dicts/stardict-dictd-merrianwebster 2.4.2: Stardict Dictionary for Dictd.org's Merrian Webster 10th dictionary
+app-dicts/stardict-dictd-oald 2.4.2: Stardict Dictionary for Dictd.org's Oxford Advanced Learner's Dictionary
+app-dicts/stardict-dictd-thesaurus-ee 2.4.2: Stardict Dictionary for Dictd.org's English Thesaurus
+app-dicts/stardict-freedict-deu-eng 2.4.2: Stardict Dictionary German to English
+app-dicts/stardict-freedict-deu-ita 2.4.2: Stardict Dictionary German to Italian
+app-dicts/stardict-freedict-ita-deu 2.4.2: Stardict Dictionary Italian to German
+app-dicts/steak 1.7.3-r2: EN => DE Dictionary
+app-emacs/mv_emacs 1.3: (X)Emacs extensions: block support, macrorecorder, verify change
+app-emacs/po-mode 0.19.8.1-r1: Major mode for GNU gettext PO files
+app-eselect/eselect-net 0.2: eselect module for managing network open-rc service configurations
+app-misc/knapsack 7.2-r1: A fast solver for the 0/1-knapsack problem with multiple knapsacks
+app-portage/eix 0.32.9_alpha4 0.32.9 99999999: Search and query ebuilds
+app-portage/etcat 1.0.1 99999999: Updated version of an old Portage information extractor
+app-portage/find_cruft 3.1.0: find cruft files not managed by portage
+app-portage/gentoolkit 0.4.0-r1 9999: Collection of administration scripts for Gentoo
+app-portage/getdelta 0.7.9-r2: dynamic deltup client
+app-portage/logclean 14.2.0: Keep only (compressed) logs of installed packages and cleanup emerge.log
+app-portage/mirrorselect 2.2.2-r2: Tool to help select distfiles mirrors for Gentoo
+app-portage/overlint 0.5.3: Simple tool for static analysis of overlays
+app-portage/portage-bashrc-mv 14.3: Provide support for /etc/portage/bashrc.d and /etc/portage/package.cflags
+app-portage/portage-postsyncd-mv 6.0.1: postsync hooks for portage to sync from git
+app-portage/trickyfetch 8.19: Plugin for FETCHCOMMAND to help organize and cleanup your DISTDIR
+app-portage/useflags 4.1.2: Print or save the current USE-flag state and compare with older versions
+app-portage/world-mv 3.19: Organize your world file and find installed packages or differences to @world
+app-shells/auto-fu-zsh 0.0.1.12-r4 0.0.1.12_p0 99999999: zsh automatic complete-word and list-choices: incremental completion
+app-shells/command-not-found 0.4.5: search ARCH database for packages with similar commands
+app-shells/dash 99999999: Descendant of the NetBSD ash. POSIX compliant except for multibyte characters
+app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
+app-shells/push 2.0-r2: A POSIX shell function to treat a variable like an array, quoting args
+app-shells/quoter 3.0_p2-r2: Quote arguments or standard input for usage in POSIX shell by eval
+app-shells/runtitle 2.10: Scripts to run commands and set the hard status line (windows title)
+app-shells/schily-tools 2017.05.29: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
+app-shells/set_prompt 3.0.0: An intelligent prompt for zsh or bash with status line (window title) support
+app-shells/termcolors-mv 3.19: 256colors sample script and dircolors configuration for standard or 256 colors
+app-shells/zsh 5.3.1 99999999: UNIX Shell similar to the Korn shell
+app-shells/zsh-completions 0.25.0 99999999: Additional completion definitions for Zsh
+app-shells/zsh-syntax-highlighting 0.5.0 99999999: Fish shell like syntax highlighting for zsh
+app-shells/zshrc-mv 3.10: A zshrc file initializing zsh specific interactive features
+app-text/ispell 3.3.02-r1 3.4.00: fast screen-oriented spelling checker
+app-text/lesspipe 1.83 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
+app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities
+app-text/recode 3.6_p20-r1: Convert files between various character sets
+app-text/stardict 3.0.6-r3 4.0.0_pre20160518-r1: A international dictionary supporting fuzzy and glob style matching
+dev-cpp/cpplint 99999999: The google styleguide together with cpplint and an emacs file
+dev-libs/libgcrypt 1.7.5-r1: General purpose crypto library based on the code used in GnuPG
+dev-libs/osformat 1.0.3 999999999: C++ library for a typesafe printf/sprintf based on << conversion
+dev-perl/File-lchown 0.20-r1: Use the lchown(2) and lutimes(2) system call from Perl
+dev-tex/chklref 2.6.0: Finds useless references in latex files or unnecessarily numbered environments
+dev-util/ccache 99999999: fast compiler cache
+dev-util/comp 4.2.1: compare files or directories, including metadata
+dev-util/diffhelp 1.11: A frontend, beautifier, and path-fixer for diff -u
+dev-util/mv_perl 3.10: A collection of perl scripts (replacement in files, syncing dirs etc)
+dev-util/pyrep 1.4-r1: Search and/or replace regular expressions within many files interactively
+dev-vcs/git-wrappers-mv 1.13: Some personal wrappers for the most important git commands
+games-action/trackballs 1.1.4-r1: simple game similar to the classical game Marble Madness
+games-board/chessproblem 1.6 2.7: Find solutions of chess problems (mate, selfmate, and helpmate) with cooks
+games-emulation/xmame 0.106-r1: Multiple Arcade Machine Emulator for X11
+games-emulation/xmess 0.106-r1: Multiple Arcade Machine Emulator for X11
+games-engines/freesci 0.6.4-r1: Sierra script interpreter for your old Sierra adventures
+games-rpg/aklabeth 1.0-r1: A remake of Richard C. Garriott's Ultima prequel
+games-rpg/dsa-stats 1.0: calculate stat probabalities for the role playing game DSA - Das schwarze Auge
+games-rpg/m5figur-mv 2.8.2: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
+games-rpg/magus 1.3.1 1.3.3 99999999: A character generator for the popular German role playing game Midgard
+mail-client/alpine 2.00-r7: alpine is an easy to use text-based based mail and news client
+media-gfx/pqiv 2.8.5: powerful GTK based command-line image viewer with a minimal UI
+media-libs/avidemux-core 2.6.20: Core libraries for media-video/avidemux
+media-libs/avidemux-plugins 2.6.20: Plugins for media-video/avidemux
+media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
+media-tv/sundtek-tv 170518.210556: Sundtek MediaTV Pro III Drivers
+media-video/avidemux 2.6.20: Video editor designed for simple cutting, filtering and encoding tasks
+media-video/avinfo 1.0_alpha15_p1: Utility for displaying AVI information
+media-video/video-mv 11.1: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
+net-dialup/accounting 1.60.45.3.1: Give statistics about dialup connections. Originally part of SuSE's smpppd
+net-dialup/martian-modem 20100123-r2: ltmodem alternative driver providing support for Agere Systems winmodems
+net-dns/host 20070128-r1: A powerful command-line DNS query and test tool
+net-dns/noip-updater 2.1.9-r4: no-ip.com dynamic DNS updater
+net-firewall/firewall-mv 10.2: Initialize iptables and net-related sysctl variables
+net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
+net-misc/sshstart 3.00: Start ssh-agent/ssh-add only if you really use ssh or friends
+net-print/foo2zjs 20160722: Support for printing to ZjStream-based printers
+sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
+sci-mathematics/reduce 20141130-r1: A general-purpose computer algebra system
+sys-apps/cpi 2.15: A wrapper for cp -i -a, making use of diff
+sys-apps/less 487 492: Excellent text file viewer, optionally with additional selection feature
+sys-apps/openrc-wrapper 2.1: Use openrc init scripts with systemd or other init systems
+sys-apps/paxopen 1.2: A wrapper script to set PAX kernel variables to an insecure/safe state
+sys-apps/schedule 7.5.3_p1: script to schedule jobs in a multiuser multitasking environment
+sys-apps/starter 3.0: POSIX shell script and function to schedule commands
+sys-block/zram-init 6.1.0: Scripts to support compressed swap devices or ramdisks with zram
+sys-boot/grub-cfg-mv 1.1: A grub.cfg library/example for GRUB2
+sys-fs/aufs 99999999: An entirely re-designed and re-implemented Unionfs
+sys-fs/aufs-util 99999999: Userspace tools for aufs
+sys-fs/emount 3.0.4: mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab
+sys-fs/squash_dir 13.11: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
+sys-fs/squashfs-tools 4.3.1_alpha0 99999999: Tool for creating compressed filesystem type squashfs
+sys-fs/squashmount 15.4.2: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
+sys-kernel/kernel 4.2: A POSIX shell script to compile the kernel with user permissions
+sys-process/systemd-cron 1.5.4: systemd units to create timers for cron directories and crontab
+virtual/freedesktop-icon-theme 0-r1: A virtual to choose between different icon themes
+www-plugins/classic-theme-restorer 1.6.6: Firefox plugin: restore partially the functionality of non-broken firefox
+www-plugins/duckduckgo 1.1.4: Firefox plugin: enable duckduckgo search engine
+www-plugins/epubreader 1.5.0.12 2.0.2: Firefox plugin for ebook (.epub) files
+www-plugins/form-history-control 1.4.0.6: Edit the saved history of forms in mozilla
+www-plugins/locale-switcher 3-r1: Firefox plugin: button to switch GUI locale
+www-plugins/noscript 2.9.0.14 5.0.5: Mozilla plugin: Restrict active contents like java/javascript/flash
+www-plugins/requestpolicy 0.5.28-r1: Mozilla plugin: controll cross-site requests (increases privacy/security)
+www-plugins/shumway 0.11.394: Mozilla plugin: Flashplayer emulation with javascript and html5
+www-plugins/xclear 1.8.2: Firefox plugin: button to clear URL
+x11-drivers/nvidia-drivers 173.14.39-r2: NVIDIA Accelerated Graphics Driver
+x11-libs/gtk+ 2.24.31-r1 3.22.15: Gimp ToolKit +
+x11-libs/motif 2.3.6-r1: The Motif user interface component toolkit
+x11-misc/redshift 1.8: A screen color temperature adjusting software
+x11-wm/fvwm 2.6.5-r2 2.6.7-r1: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
