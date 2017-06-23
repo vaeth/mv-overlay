@@ -82,15 +82,12 @@ DEPEND="${COMMON_DEPEND}
 "
 # gtk+-3.2.2 breaks Alt key handling in <=x11-libs/vte-0.30.1:2.90
 # gtk+-3.3.18 breaks scrolling in <=x11-libs/vte-0.31.0:2.90
-# >=xorg-server-1.11.4 needed for
-#  https://mail.gnome.org/archives/desktop-devel-list/2012-March/msg00024.html
 RDEPEND="${COMMON_DEPEND}
 	>=dev-util/gtk-update-icon-cache-3
 	!<gnome-base/gail-1000
 	!<x11-libs/vte-0.31.0:2.90
 	adwaita-icon-theme? ( >=x11-themes/adwaita-icon-theme-3.14 )
 	!adwaita-icon-theme? ( x11-themes/hicolor-icon-theme virtual/freedesktop-icon-theme )
-	X? ( !<x11-base/xorg-server-1.11.4 )
 "
 # librsvg for svg icons (PDEPEND to avoid circular dep), bug #547710
 PDEPEND="
