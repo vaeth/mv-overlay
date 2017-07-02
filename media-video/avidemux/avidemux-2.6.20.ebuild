@@ -2,21 +2,19 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-RESTRICT="mirror"
 
 PLOCALES="ca cs de el es fr it ja pt_BR ru sr sr@latin tr"
 
 inherit cmake-utils eutils flag-o-matic l10n
-
-SLOT="2.6"
 
 DESCRIPTION="Video editor designed for simple cutting, filtering and encoding tasks"
 HOMEPAGE="http://fixounet.free.fr/avidemux"
 
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
-IUSE="debug opengl nls qt4 qt5 sdl vaapi vdpau video_cards_fglrx xv"
-KEYWORDS="~amd64 ~x86"
+SLOT="2.6"
+IUSE="debug opengl nls nvenc qt4 qt5 sdl vaapi vdpau video_cards_fglrx xv"
+REQUIRED_USE="qt5? ( !qt4 ) "
 
 if [[ ${PV} == *9999* ]] ; then
 	MY_P=$P
@@ -28,24 +26,37 @@ if [[ ${PV} == *9999* ]] ; then
 else
 	MY_P="${PN}_${PV}"
 	SRC_URI="mirror://sourceforge/${PN}/${PN}/${PV}/${MY_P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DEPEND="
-	~media-libs/avidemux-core-${PV}:${SLOT}[nls?,sdl?,vaapi?,vdpau?,video_cards_fglrx?,xv?]
+	~media-libs/avidemux-core-${PV}:${SLOT}[nls?,sdl?,vaapi?,vdpau?,video_cards_fglrx?,xv?,nvenc?]
 	opengl? ( virtual/opengl:0 )
 	qt4? ( >=dev-qt/qtgui-4.8.3:4 )
 	qt5? ( dev-qt/qtgui:5 )
 	vaapi? ( x11-libs/libva:0 )
+	nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) )
 "
-RDEPEND="$DEPEND"
+RDEPEND="$DEPEND
+	nls? ( virtual/libintl:0 )
+"
 PDEPEND="~media-libs/avidemux-plugins-${PV}:${SLOT}[opengl?,qt4?,qt5?]"
-
-REQUIRED_USE="qt5? ( !qt4 ) "
 
 S="${WORKDIR}/${MY_P}"
 
+DOCS=( AUTHORS README )
+
 src_prepare() {
-	#cmake-utils_src_prepare
+	default
+
+	processes="buildCli:avidemux/cli"
+	if use qt4 || use qt5 ; then
+		processes+=" buildQt4:avidemux/qt4"
+	fi
+
+	for process in ${processes} ; do
+		CMAKE_USE_DIR="${S}"/${process#*:} cmake-utils_src_prepare
+	done
 
 	# Fix icon name -> avidemux-2.6.png
 	sed -i -e "/^Icon/ s:${PN}:${PN}-2.6:" ${PN}2.desktop || die "Icon name fix failed."
@@ -66,13 +77,21 @@ src_prepare() {
 
 	# Fix underlinking with gold
 	sed -i -e 's/-lm/-lXext -lm/' avidemux/qt4/CMakeLists.txt || die
-
-	eapply_user
 }
 
 src_configure() {
-	local mycmakeargs
-	mycmakeargs=(
+	# Add lax vector typing for PowerPC.
+	if use ppc || use ppc64 ; then
+		append-cflags -flax-vector-conversions
+	fi
+
+	# See bug 432322.
+	use x86 && replace-flags -O0 -O1
+
+	# Filter problematic flags
+	filter-flags -ftracer -flto
+
+	local mycmakeargs=(
 		-DAVIDEMUX_SOURCE_DIR="'${S}'"
 		-DGETTEXT="$(usex nls)"
 		-DSDL="$(usex sdl)"
@@ -81,6 +100,7 @@ src_configure() {
 		-DXVBA="$(usex video_cards_fglrx)"
 		-DXVIDEO="$(usex xv)"
 	)
+
 	if use qt5 ; then
 		mycmakeargs+=( -DENABLE_QT5=True )
 		QT_SELECT=5
@@ -101,37 +121,23 @@ src_configure() {
 		processes+=" buildQt4:avidemux/qt4"
 	fi
 
-	# Filter problematic flags
-	filter-flags -ftracer -flto
-
-	# Add lax vector typing for PowerPC.
-	if use ppc || use ppc64 ; then
-		append-cflags -flax-vector-conversions
-	fi
-
-	# See bug 432322.
-	use x86 && replace-flags -O0 -O1
-
 	for process in ${processes} ; do
-		local build="${process%%:*}"
-
-		mkdir "${S}"/${build} || die "Can't create build folder."
-		cd "${S}"/${build} || die "Can't enter build folder."
-		CMAKE_USE_DIR="${S}"/${process#*:} BUILD_DIR="${S}"/${build} cmake-utils_src_configure
+		local build="${WORKDIR}/${P}_build/${process%%:*}"
+		CMAKE_USE_DIR="${S}"/${process#*:} BUILD_DIR="${build}" cmake-utils_src_configure
 	done
 }
 
 src_compile() {
 	for process in ${processes} ; do
-		BUILD_DIR="${S}/${process%%:*}" cmake-utils_src_compile
+		local build="${WORKDIR}/${P}_build/${process%%:*}"
+		BUILD_DIR="${build}" cmake-utils_src_compile
 	done
 }
 
-DOCS=( AUTHORS README )
-
 src_install() {
 	for process in ${processes} ; do
-		BUILD_DIR="${S}/${process%%:*}" cmake-utils_src_install
+		local build="${WORKDIR}/${P}_build/${process%%:*}"
+		BUILD_DIR="${build}" cmake-utils_src_install
 	done
 
 	if [[ -f "${ED}"/usr/bin/avidemux3_cli ]] ; then

@@ -2,33 +2,31 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-RESTRICT="mirror"
 
 PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit cmake-utils flag-o-matic python-any-r1
-
-SLOT="2.6"
 
 DESCRIPTION="Plugins for media-video/avidemux"
 HOMEPAGE="http://fixounet.free.fr/avidemux"
 
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
-IUSE="aac aften a52 alsa amr debug dts +system-a52dec +system-libass +system-libmad +system-libmp4v2 fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx nvenc opengl opus oss pulseaudio qt4 qt5 vorbis truetype twolame xv xvid x264 x265 vdpau vpx"
-KEYWORDS="~amd64 ~x86"
+SLOT="2.6"
+IUSE="aac aften a52 alsa amr dcaenc debug dts fdk fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx nvenc opengl opus oss pulseaudio qt4 qt5 vorbis truetype twolame xv xvid x264 x265 vdpau vpx"
+REQUIRED_USE="!amd64? ( !nvenc ) qt5? ( !qt4 )"
 
 MY_PN="${PN/-plugins/}"
 if [[ ${PV} == *9999* ]] ; then
 	MY_P=$P
 	KEYWORDS=""
 	PROPERTIES="live"
-	EGIT_REPO_URI="git://gitorious.org/${MY_P}2-6/${MY_P}2-6.git https://git.gitorious.org/${MY_P}2-6/${MY_P}2-6.git"
 	EGIT_REPO_URI="https://github.com/mean00/${MY_P}2"
 	inherit git-r3
 else
 	MY_P="${MY_PN}_${PV}"
 	SRC_URI="mirror://sourceforge/${MY_PN}/${MY_PN}/${PV}/${MY_P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 RDEPEND="
@@ -36,6 +34,10 @@ RDEPEND="
 	~media-video/avidemux-${PV}:${SLOT}[opengl?,qt4?,qt5?]
 	>=dev-lang/spidermonkey-1.5-r2:0=
 	dev-libs/libxml2:2
+	media-libs/a52dec:0
+	media-libs/libass:0=
+	media-libs/libmad:0
+	media-libs/libmp4v2:0
 	media-libs/libpng:0=
 	virtual/libiconv:0
 	aac? (
@@ -45,7 +47,9 @@ RDEPEND="
 	aften? ( media-libs/aften:0 )
 	alsa? ( >=media-libs/alsa-lib-1.0.3b-r2:0 )
 	amr? ( media-libs/opencore-amr:0 )
+	dcaenc? ( media-sound/dcaenc:0 )
 	dts? ( media-libs/libdca:0 )
+	fdk? ( media-libs/fdk-aac:0 )
 	fontconfig? ( media-libs/fontconfig:1.0 )
 	fribidi? ( dev-libs/fribidi:0 )
 	jack? (
@@ -55,7 +59,6 @@ RDEPEND="
 	lame? ( media-sound/lame:0 )
 	nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) )
 	opus? ( media-libs/opus:0 )
-	oss? ( virtual/os-headers:0 )
 	pulseaudio? ( media-sound/pulseaudio:0 )
 	truetype? ( media-libs/freetype:2 )
 	twolame? ( media-sound/twolame:0 )
@@ -69,21 +72,14 @@ RDEPEND="
 	xvid? ( media-libs/xvid:0 )
 	vorbis? ( media-libs/libvorbis:0 )
 	vpx? ( media-libs/libvpx:0 )
-	system-a52dec? ( media-libs/a52dec:0 )
-	system-libass? ( media-libs/libass:0= )
-	system-libmad? ( media-libs/libmad:0 )
-	system-libmp4v2? ( media-libs/libmp4v2:0 )
 "
-DEPEND="$RDEPEND
+DEPEND="${RDEPEND}
+	oss? ( virtual/os-headers:0 )
 	${PYTHON_DEPS}"
 
+
 S="${WORKDIR}/${MY_P}"
-
-REQUIRED_USE="!amd64? ( !nvenc ) qt5? ( !qt4 )"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.6.14-optional-pulse.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-2.6.20-optional-pulse.patch )
 
 src_setup() {
 	CMAKE_MAKEFILE_GENERATOR=emake # ninja does not work, currently
@@ -123,6 +119,8 @@ src_configure() {
 			-DFAAD="$(usex aac)"
 			-DALSA="$(usex alsa)"
 			-DAFTEN="$(usex aften)"
+			-DDCAENC="$(usex dcaenc)"
+			-DFDK_AAC="$(usex fdk)"
 			-DOPENCORE_AMRWB="$(usex amr)"
 			-DOPENCORE_AMRNB="$(usex amr)"
 			-DLIBDCA="$(usex dts)"
@@ -144,10 +142,10 @@ src_configure() {
 			-DVORBIS="$(usex vorbis)"
 			-DLIBVORBIS="$(usex vorbis)"
 			-DVPXDEC="$(usex vpx)"
-			-DUSE_EXTERNAL_LIBA52="$(usex system-a52dec)"
-			-DUSE_EXTERNAL_LIBASS="$(usex system-libass)"
-			-DUSE_EXTERNAL_LIBMAD="$(usex system-libmad)"
-			-DUSE_EXTERNAL_LIBMP4V2="$(usex system-libmp4v2)"
+			-DUSE_EXTERNAL_LIBA52=yes
+			-DUSE_EXTERNAL_LIBASS=yes
+			-DUSE_EXTERNAL_LIBMAD=yes
+			-DUSE_EXTERNAL_LIBMP4V2=yes
 		)
 		if use qt5 ; then
 			mycmakeargs+=( -DENABLE_QT5=True )
@@ -185,6 +183,4 @@ src_install() {
 			grep '^install/fast' Makefile && emake DESTDIR="${D}" install/fast
 		popd > /dev/null || die
 	done
-
-	#python_fix_shebang "${D}"
 }

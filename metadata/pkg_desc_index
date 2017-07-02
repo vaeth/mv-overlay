@@ -54,7 +54,6 @@ app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities
 app-text/recode 3.6_p20-r1: Convert files between various character sets
 app-text/stardict 3.0.6-r3 4.0.0_pre20160518-r1: A international dictionary supporting fuzzy and glob style matching
 dev-cpp/cpplint 99999999: The google styleguide together with cpplint and an emacs file
-dev-libs/libgcrypt 1.7.5-r1: General purpose crypto library based on the code used in GnuPG
 dev-libs/osformat 1.0.3 999999999: C++ library for a typesafe printf/sprintf based on << conversion
 dev-perl/File-lchown 0.20-r1: Use the lchown(2) and lutimes(2) system call from Perl
 dev-tex/chklref 2.6.0: Finds useless references in latex files or unnecessarily numbered environments
@@ -75,7 +74,7 @@ games-rpg/m5figur-mv 2.8.2: LaTeX2e character sheet layout for the Midgard Role 
 games-rpg/magus 1.3.1 1.3.3 99999999: A character generator for the popular German role playing game Midgard
 mail-client/alpine 2.00-r7: alpine is an easy to use text-based based mail and news client
 media-gfx/pqiv 2.8.5: powerful GTK based command-line image viewer with a minimal UI
-media-libs/avidemux-core 2.6.20: Core libraries for media-video/avidemux
+media-libs/avidemux-core 2.6.20-r1: Core libraries for media-video/avidemux
 media-libs/avidemux-plugins 2.6.20: Plugins for media-video/avidemux
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
 media-tv/sundtek-tv 170518.210556: Sundtek MediaTV Pro III Drivers
