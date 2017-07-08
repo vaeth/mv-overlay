@@ -76,6 +76,14 @@ src_prepare() {
 }
 
 src_configure() {
+	if test-flags-CXX -std=c++14 ; then
+		append-cxxflags -std=c++14
+	elif test-flags-CXX -std=c++11 ; then
+		append-cxxflags -std=c++11
+	elif use qt4 || use qt5 ; then
+		die "For qt support a compiler with c++11 support is needed"
+	fi
+
 	# Add lax vector typing for PowerPC.
 	if use ppc || use ppc64 ; then
 		append-cflags -flax-vector-conversions
