@@ -21,12 +21,12 @@ app-emacs/mv_emacs 1.3: (X)Emacs extensions: block support, macrorecorder, verif
 app-emacs/po-mode 0.19.8.1-r1: Major mode for GNU gettext PO files
 app-eselect/eselect-net 0.2: eselect module for managing network open-rc service configurations
 app-misc/knapsack 7.2-r1: A fast solver for the 0/1-knapsack problem with multiple knapsacks
-app-portage/eix 0.32.9 0.32.10_alpha1 99999999: Search and query ebuilds
+app-portage/eix 0.32.10_alpha1 0.32.10 99999999: Search and query ebuilds
 app-portage/etcat 1.0.1 99999999: Updated version of an old Portage information extractor
 app-portage/find_cruft 3.1.0: find cruft files not managed by portage
 app-portage/gentoolkit 0.4.0-r1 9999: Collection of administration scripts for Gentoo
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
-app-portage/logclean 14.2.0: Keep only (compressed) logs of installed packages and cleanup emerge.log
+app-portage/logclean 14.2.0_p1: Keep only (compressed) logs of installed packages and cleanup emerge.log
 app-portage/mirrorselect 2.2.2-r2: Tool to help select distfiles mirrors for Gentoo
 app-portage/overlint 0.5.3: Simple tool for static analysis of overlays
 app-portage/portage-bashrc-mv 14.5: Provide support for /etc/portage/bashrc.d and /etc/portage/package.cflags
