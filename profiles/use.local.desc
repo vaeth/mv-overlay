@@ -180,6 +180,10 @@ games-rpg/magus:pdfviewer_qpdfview - Use qpdfview as default pdfviewer
 games-rpg/magus:pdfviewer_zathura - Use zathura as default pdfviewer
 games-rpg/magus:pngcrush - Use pngcrush for opimizing png before installation
 games-rpg/magus:postgres - Use postgresql instead of sqlite
+mail-client/alpine:chappa - enhance alpine by applying Eduardo Chappa's patches
+mail-client/alpine:onlyalpine - installs only the alpine binary, so it does not collied with app-editors/pico and/or mail-client/pine
+mail-client/alpine:passfile - Adds support for caching passwords into a file between sessions
+mail-client/alpine:smime - Enable support for S/MIME
 media-gfx/pqiv:archive - Enable support for images in archives and cbX comic book files
 media-gfx/pqiv:gtk2 - Use gtk:2 instead of gtk:3
 media-libs/avidemux-core:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.

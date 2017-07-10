@@ -1,8 +1,7 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
 inherit flag-o-matic autotools toolchain-funcs
 
 CHAPPA_PL=115
@@ -14,34 +13,28 @@ SRC_URI="ftp://ftp.cac.washington.edu/alpine/${P}.tar.bz2
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
-IUSE="doc ipv6 kerberos ldap libressl nls onlyalpine pam passfile smime spell ssl threads topal +chappa"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86"
+IUSE="doc ipv6 kerberos ldap libressl nls onlyalpine pam passfile smime spell ssl threads +chappa"
 
 DEPEND="pam? ( virtual/pam )
-	>=net-libs/c-client-2007f-r4[topal=,chappa=]
+	>=net-libs/c-client-2007f-r4[chappa=]
 	>=sys-libs/ncurses-5.1:0=
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)
 	ldap? ( net-nds/openldap )
 	kerberos? ( app-crypt/mit-krb5 )
 	spell? ( app-text/aspell )
-	topal? ( >=net-mail/topal-72 )"
+"
 RDEPEND="${DEPEND}
 	app-misc/mime-types
 	!onlyalpine? ( !mail-client/pine )
-	!<=net-mail/uw-imap-2004g"
-
-pkg_setup() {
-	if use smime && use topal ; then
-		ewarn "You can not have USE='smime topal'. Assuming topal is more important."
-	fi
-}
+	!<=net-mail/uw-imap-2004g
+"
 
 src_prepare() {
 	use chappa && eapply "${WORKDIR}/${P}-chappa-${CHAPPA_PL}-all.patch"
-	use topal && eapply /usr/share/topal/patches/"${P}".patch-{1,2}
 
 	# do not use the bundled c-client
 	ebegin "Unbundling the c-client library"
@@ -89,7 +82,7 @@ src_configure() {
 		$(use_with spell interactive-spellcheck /usr/bin/aspell) \
 		$(use_enable nls) \
 		$(use_with ipv6) \
-		$(use topal || use_with smime) \
+		$(use_with smime) \
 		${myconf}
 }
 
