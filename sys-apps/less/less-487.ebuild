@@ -25,7 +25,7 @@ DEPEND=">=app-misc/editor-wrapper-3
 RDEPEND="${DEPEND}
 	less-select? ( dev-lang/perl )"
 #		|| ( >=dev-lang/perl-5.10.1 >=virtual/perl-File-Temp-0.19 )
-PDEPEND="lesspipe? ( app-text/lesspipe )"
+#PDEPEND="lesspipe? ( app-text/lesspipe )"
 
 pkg_setup() {
 	if use source && ! use less-select

@@ -106,7 +106,7 @@ BOTH_DEPEND="sys-apps/file
 		)
 	)
 	image? ( || ( media-gfx/graphicsmagick[imagemagick] media-gfx/imagemagick ) )
-	isoinfo? ( || ( app-cdr/cdrtools app-cdr/dvd+rw-tools app-cdr/cdrkit ) )
+	isoinfo? ( || ( app-cdr/cdrtools app-cdr/dvd+rw-tools ) )
 	libplist? ( !alpha? ( !hppa? ( !ia64? ( !sparc? ( app-pda/libplist ) ) ) ) )
 	dpkg? ( !amd64-fbsd? ( app-arch/dpkg ) )
 	hdf5? ( !hppa? ( sci-libs/hdf5 ) )

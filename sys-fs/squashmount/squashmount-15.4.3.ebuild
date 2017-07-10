@@ -19,7 +19,7 @@ IUSE=""
 # Waiting for https://bugs.gentoo.org/show_bug.cgi?id=424283
 OPTIONAL_RDEPEND="app-shells/runtitle
 dev-perl/File-Which
-dev-perl/String-ShellQuote"
+!arm? ( !ia64? ( !sparc? ( dev-perl/String-ShellQuote ) ) )"
 
 RDEPEND="!<sys-apps/openrc-0.13
 	>=dev-lang/perl-5.22
@@ -70,6 +70,9 @@ src_install() {
 }
 
 pkg_postinst() {
+	if use arm || use ia64 || use spac
+	then	optfeature "improved output" 'dev-perl/String-ShellQuote'
+	fi
 	optfeature "user mounting" \
 		'>=sys-fs/squashfuse-0.1.100 >=sys-fs/unionfs-fuse-0.25' \
 		'>=sys-fs/squashfuse-0.1.100 sys-fs/funionfs'
