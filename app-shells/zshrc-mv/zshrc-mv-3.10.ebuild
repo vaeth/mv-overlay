@@ -3,7 +3,6 @@
 
 EAPI=6
 RESTRICT="mirror"
-inherit eutils
 
 DESCRIPTION="A zshrc file initializing zsh specific interactive features"
 HOMEPAGE="https://github.com/vaeth/zshrc-mv/"
@@ -13,17 +12,19 @@ LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
-RDEPEND="!app-shells/auto-fu-zsh[kill-line(-)]"
+
+# These should really depend on USE-flags but must not by policy.
+# Waiting for https://bugs.gentoo.org/show_bug.cgi?id=424283
+OPTIONAL_RDEPEND=">=app-shells/auto-fu-zsh-0.0.1.12_p0
+>=app-shells/set_prompt-3.0.0
+app-shells/termcolors-mv
+app-shells/zsh-syntax-highlighting"
+
+RDEPEND="!app-shells/auto-fu-zsh[kill-line(-)]
+	${OPTIONAL_RDEPEND}"
 
 src_install() {
 	dodoc README
 	insinto /etc/zsh
 	doins zshrc
-}
-
-pkg_postinst() {
-	optfeature "automagic completion" '>=app-shells/auto-fu-zsh-0.0.1.12_p0'
-	optfeature "syntax highlighting" 'app-shells/zsh-syntax-highlighting'
-	optfeature "a nice prompt" '>=app-shells/set_prompt-3.0.0'
-	optfeature "nice directory colors" 'app-shells/termcolors-mv'
 }

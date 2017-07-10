@@ -77,7 +77,6 @@ DEPEND="${RDEPEND}
 	oss? ( virtual/os-headers:0 )
 	${PYTHON_DEPS}"
 
-
 S="${WORKDIR}/${MY_P}"
 PATCHES=( "${FILESDIR}"/${PN}-2.6.20-optional-pulse.patch )
 

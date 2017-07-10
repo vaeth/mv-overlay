@@ -1,4 +1,2 @@
 app-portage/eix
 app-portage/portage-postsyncd-mv
-dev-perl/File-Which
-dev-perl/String-ShellQuote

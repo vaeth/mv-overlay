@@ -3,7 +3,7 @@
 
 EAPI=6
 RESTRICT="mirror"
-inherit eutils readme.gentoo-r1 user systemd
+inherit readme.gentoo-r1 user systemd
 
 DESCRIPTION="script to schedule jobs in a multiuser multitasking environment"
 HOMEPAGE="https://github.com/vaeth/schedule/"
@@ -13,8 +13,15 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RDEPEND="!<sys-apps/openrc-0.13
-	>=dev-lang/perl-5.12"
+
+# These should really depend on USE-flags but must not by policy.
+# Waiting for https://bugs.gentoo.org/show_bug.cgi?id=424283
+OPTIONAL_RDEPEND="|| ( >=dev-lang/perl-5.14 virtual/perl-Term-ANSIColor )
+dev-perl/Crypt-Rijndael"
+
+RDEPEND=">=dev-lang/perl-5.12
+	!<sys-apps/openrc-0.13
+	${OPTIONAL_RDEPEND}"
 #	|| ( >=dev-lang/perl-5.10.1 >=virtual/perl-version-0.77 )
 #	|| ( >=dev-lang/perl-5.1 virtual/perl-File-Path )
 #	|| ( >=dev-lang/perl-5.9.4 virtual/perl-File-Spec-3.0 )
@@ -69,8 +76,6 @@ generate_password() (
 )
 
 pkg_postinst() {
-	optfeature "colored output" '>=dev-lang/perl-5.14' 'virtual/perl-Term-ANSIColor'
-	optfeature "encryption support" 'dev-perl/Crypt-Rijndael'
 	if ! use prefix
 	then	enewgroup schedule
 		enewuser schedule -1 -1 -1 schedule

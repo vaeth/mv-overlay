@@ -13,11 +13,16 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+
+# This should really depend on a USE-flag but must not by policy.
+# Waiting for https://bugs.gentoo.org/show_bug.cgi?id=424283
+OPTIONAL_RDEPEND=">=app-shells/runtitle-2.3"
+
 RDEPEND="app-admin/sudo
 	app-admin/sudox
 	>=app-shells/push-2.0-r2
-	>=app-shells/runtitle-2.3
-	!<dev-util/ccache-3.2"
+	!<dev-util/ccache-3.2
+	${OPTIONAL_RDEPEND}"
 DEPEND=""
 
 src_prepare() {
@@ -35,5 +40,4 @@ src_install() {
 
 pkg_postinst() {
 	optfeature "faster execution" '>=app-portage/eix-0.32.2'
-	optfeature "status bar support" 'app-shells/runtitle'
 }

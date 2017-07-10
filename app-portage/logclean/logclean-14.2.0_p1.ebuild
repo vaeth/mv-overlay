@@ -14,9 +14,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+# This should really depend on a USE-flag but must not by policy.
+# Waiting for https://bugs.gentoo.org/show_bug.cgi?id=424283
+OPTIONAL_RDEPEND="dev-perl/File-Which"
+
 RDEPEND=">=dev-lang/perl-5.8
 	dev-perl/String-ShellQuote
-	|| ( >=dev-lang/perl-5.14 virtual/perl-Term-ANSIColor )"
+	|| ( >=dev-lang/perl-5.14 virtual/perl-Term-ANSIColor )
+	${OPTIONAL_RDEPEND}"
 #	|| ( >=dev-lang/perl-5.6.1 >=virtual/perl-Getopt-Long-2.24 )
 
 src_prepare() {
@@ -36,5 +41,4 @@ src_install() {
 
 pkg_postinst() {
 	optfeature "faster execution" 'app-portage/eix'
-	optfeature "improved compatibility and security" 'dev-perl/File-Which'
 }

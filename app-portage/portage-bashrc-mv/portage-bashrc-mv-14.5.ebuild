@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,13 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RDEPEND="!<dev-util/ccache-3.2"
+
+# This should really depend on a USE-flag but must not by policy.
+# Waiting for https://bugs.gentoo.org/show_bug.cgi?id=424283
+OPTIONAL_RDEPEND="app-shells/runtitle"
+
+RDEPEND="!<dev-util/ccache-3.2
+	${OPTIONAL_RDEPEND}"
 
 src_install() {
 	dodoc AUTHORS NEWS README
@@ -34,7 +40,6 @@ pkg_postinst() {
 	esac
 	optfeature "improved mask handling" app-portage/eix
 	optfeature "output of expected emerge time" app-portage/portage-utils
-	optfeature "detailed information output in title bar" app-shells/runtitle
 	! test -d /var/cache/gpo || \
 		ewarn "Obsolete /var/cache/gpo found. Please remove"
 }

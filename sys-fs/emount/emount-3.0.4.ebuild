@@ -3,7 +3,6 @@
 
 EAPI=6
 RESTRICT="mirror"
-inherit eutils
 
 DESCRIPTION="mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab"
 HOMEPAGE="https://github.com/vaeth/emount/"
@@ -14,8 +13,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+# This should really depend on a USE-flag but must not by policy.
+# Waiting for https://bugs.gentoo.org/show_bug.cgi?id=424283
+OPTIONAL_RDEPEND="dev-perl/String-ShellQuote"
+
 RDEPEND=">=dev-lang/perl-5.6.1
-	sys-fs/cryptsetup"
+	sys-fs/cryptsetup
+	${OPTIONAL_RDEPEND}"
 #	|| ( >=dev-lang/perl-5.6.1 >=virtual/perl-Getopt-Long-2.24 )
 #	|| ( >=dev-lang/perl-5.4.5 virtual/perl-File-Spec )
 
@@ -37,8 +41,4 @@ src_install() {
 	done
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
-}
-
-pkg_postinst() {
-	optfeature "improved output" 'dev-perl/String-ShellQuote'
 }

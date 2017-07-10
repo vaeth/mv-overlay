@@ -3,7 +3,7 @@
 
 EAPI=6
 RESTRICT="mirror"
-inherit eutils readme.gentoo-r1
+inherit readme.gentoo-r1
 
 DESCRIPTION="Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder"
 HOMEPAGE="https://github.com/vaeth/video-mv/"
@@ -13,11 +13,16 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+
+# This should really depend on a USE-flag but must not by policy.
+# Waiting for https://bugs.gentoo.org/show_bug.cgi?id=424283
+OPTIONAL_RDEPEND=">=app-shells/runtitle-2.3"
+
 RDEPEND=">=app-shells/push-2.0-r2
-	>=app-shells/runtitle-2.3
 	|| ( ( media-sound/alsa-utils
 			|| ( media-video/mplayer[encode] virtual/ffmpeg ) )
-		media-tv/linuxtv-dvb-apps )"
+		media-tv/linuxtv-dvb-apps )
+	${OPTIONAL_RDEPEND}"
 DEPEND=""
 
 DISABLE_AUTOFORMATTING="true"
@@ -57,6 +62,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	optfeature "status bar support" app-shells/runtitle
 	readme.gentoo_print_elog
 }

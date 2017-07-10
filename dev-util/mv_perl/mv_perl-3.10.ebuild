@@ -3,7 +3,6 @@
 
 EAPI=6
 RESTRICT="mirror"
-inherit eutils
 
 DESCRIPTION="A collection of perl scripts (replacement in files, syncing dirs etc)"
 HOMEPAGE="https://github.com/vaeth/mv_perl/"
@@ -14,7 +13,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=dev-lang/perl-5.8"
+# These should really depend on USE-flags but must not by policy.
+# Waiting for https://bugs.gentoo.org/show_bug.cgi?id=424283
+OPTIONAL_RDEPEND="dev-perl/File-lchown
+dev-perl/String-Escape
+dev-perl/String-ShellQuote"
+
+RDEPEND=">=dev-lang/perl-5.8
+	${OPTIONAL_RDEPEND}"
 #	|| ( >=dev-lang/perl-5.9.4 >=virtual/perl-File-Spec-3.0 )
 #	|| ( >=dev-lang/perl-5.6.1 >=virtual/perl-Getopt-Long-2.24 )
 #	|| ( >=dev-lang/perl-5.7.3 virtual/perl-Digest-MD5 )
@@ -32,10 +38,4 @@ src_install() {
 	dodoc README
 	insinto /usr/share/zsh/site-functions
 	doins zsh/_*
-}
-
-pkg_postinst() {
-	optfeature "support to set timestamps of symlinks" 'dev-perl/File-lchown'
-	optfeature "improved output" 'dev-perl/String-ShellQuote'
-	optfeature "compatible patchdirs output" 'dev-perl/String-Escape'
 }

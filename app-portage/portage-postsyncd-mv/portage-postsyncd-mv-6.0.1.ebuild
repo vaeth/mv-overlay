@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,9 +12,16 @@ SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RDEPEND=">=dev-lang/perl-5.6.1"
-# || ( >=dev-lang/perl-5.6.1 >=virtual/perl-Getopt-Long-2.24 )
 IUSE="+portage-utils"
+
+# These should really depend on USE-flags but must not by policy.
+# Waiting for https://bugs.gentoo.org/show_bug.cgi?id=424283
+OPTIONAL_RDEPEND="dev-perl/File-Which
+dev-perl/String-ShellQuote"
+
+RDEPEND=">=dev-lang/perl-5.6.1
+${OPTIONAL_RDEPEND}"
+# || ( >=dev-lang/perl-5.6.1 >=virtual/perl-Getopt-Long-2.24 )
 
 src_prepare() {
 	use prefix || {
@@ -91,6 +98,4 @@ pkg_postinst() {
 		ewarn 'See the new ChangeLog file for details';;
 	esac
 	optfeature "faster execution" 'app-portage/eix'
-	optfeature "improved compatibility and security" 'dev-perl/File-Which'
-	optfeature "improved security" 'dev-perl/String-ShellQuote'
 }
