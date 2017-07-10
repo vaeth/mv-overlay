@@ -70,7 +70,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use arm || use ia64 || use spac
+	if use arm || use ia64 || use sparc
 	then	optfeature "improved output" 'dev-perl/String-ShellQuote'
 	fi
 	optfeature "user mounting" \
