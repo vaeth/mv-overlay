@@ -32,7 +32,7 @@ app-portage/overlint 0.5.3: Simple tool for static analysis of overlays
 app-portage/portage-bashrc-mv 14.5: Provide support for /etc/portage/bashrc.d and /etc/portage/package.cflags
 app-portage/portage-postsyncd-mv 6.0.1: postsync hooks for portage to sync from git
 app-portage/trickyfetch 8.19: Plugin for FETCHCOMMAND to help organize and cleanup your DISTDIR
-app-portage/useflags 4.1.2: Print or save the current USE-flag state and compare with older versions
+app-portage/useflags 4.1.3: Print or save the current USE-flag state and compare with older versions
 app-portage/world-mv 3.19: Organize your world file and find installed packages or differences to @world
 app-shells/auto-fu-zsh 0.0.1.12-r4 0.0.1.12_p0 99999999: zsh automatic complete-word and list-choices: incremental completion
 app-shells/command-not-found 0.4.5: search ARCH database for packages with similar commands
