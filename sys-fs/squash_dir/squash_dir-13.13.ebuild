@@ -62,6 +62,7 @@ src_configure() {
 	econf --with-zsh-completion \
 		"$(use_enable bundled-openrc-wrapper openrc-wrapper)" \
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
+		--bindir=/bind \
 		${order:+"--with-first-order=${order}"}
 }
 

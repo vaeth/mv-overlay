@@ -23,8 +23,9 @@ IUSE=""
 
 src_install() {
 	dodoc README
-	dobin bin/*
 	systemd_dounit systemd/system/*
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
+	into /
+	dobin bin/*
 }
