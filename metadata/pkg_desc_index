@@ -84,6 +84,7 @@ media-video/avinfo 1.0_alpha15_p1: Utility for displaying AVI information
 media-video/video-mv 11.1: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
 net-dialup/accounting 1.60.45.3.1: Give statistics about dialup connections. Originally part of SuSE's smpppd
 net-dialup/martian-modem 20100123-r2: ltmodem alternative driver providing support for Agere Systems winmodems
+net-dialup/wvdial 1.61: Excellent program to automatically configure PPP sessions
 net-dns/host 20070128-r1: A powerful command-line DNS query and test tool
 net-dns/noip-updater 2.1.9-r4: no-ip.com dynamic DNS updater
 net-firewall/firewall-mv 10.2: Initialize iptables and net-related sysctl variables
