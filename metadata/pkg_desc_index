@@ -50,6 +50,7 @@ app-shells/zsh-syntax-highlighting 0.5.0 99999999: Fish shell like syntax highli
 app-shells/zshrc-mv 3.10: A zshrc file initializing zsh specific interactive features
 app-text/ispell 3.3.02-r1 3.4.00: fast screen-oriented spelling checker
 app-text/lesspipe 1.83 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
+app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
 app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities
 app-text/recode 3.6_p20-r1: Convert files between various character sets
 app-text/stardict 3.0.6-r3 4.0.0_pre20160518-r1: A international dictionary supporting fuzzy and glob style matching
