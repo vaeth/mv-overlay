@@ -100,7 +100,7 @@ sys-apps/openrc-wrapper 2.2: Use openrc init scripts with systemd or other init 
 sys-apps/paxopen 1.2: A wrapper script to set PAX kernel variables to an insecure/safe state
 sys-apps/schedule 7.5.4: script to schedule jobs in a multiuser multitasking environment
 sys-apps/starter 3.0: POSIX shell script and function to schedule commands
-sys-block/zram-init 6.1.1: Scripts to support compressed swap devices or ramdisks with zram
+sys-block/zram-init 6.1.1-r1: Scripts to support compressed swap devices or ramdisks with zram
 sys-boot/grub-cfg-mv 1.2: A grub.cfg library/example for GRUB2
 sys-fs/aufs 99999999: An entirely re-designed and re-implemented Unionfs
 sys-fs/aufs-util 99999999: Userspace tools for aufs

@@ -31,7 +31,6 @@ src_prepare() {
 }
 
 src_install() {
-	dosbin sbin/*
 	doinitd openrc/init.d/*
 	doconfd openrc/conf.d/*
 	systemd_dounit systemd/system/*
@@ -41,6 +40,8 @@ src_install() {
 	doins zsh/*
 	dodoc AUTHORS ChangeLog README
 	readme.gentoo_create_doc
+	into /
+	dosbin sbin/*
 }
 
 pkg_postinst() {
