@@ -55,7 +55,7 @@ app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities
 app-text/recode 3.6_p20-r1: Convert files between various character sets
 app-text/stardict 3.0.6-r3 4.0.0_pre20160518-r1: A international dictionary supporting fuzzy and glob style matching
 dev-cpp/cpplint 99999999: The google styleguide together with cpplint and an emacs file
-dev-libs/osformat 1.0.3 999999999: C++ library for a typesafe printf/sprintf based on << conversion
+dev-libs/osformat 1.0.4 999999999: C++ library for a typesafe printf/sprintf based on << conversion
 dev-perl/File-lchown 0.20-r1: Use the lchown(2) and lutimes(2) system call from Perl
 dev-tex/chklref 2.6.0: Finds useless references in latex files or unnecessarily numbered environments
 dev-util/ccache 99999999: fast compiler cache
