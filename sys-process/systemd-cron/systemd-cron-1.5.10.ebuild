@@ -11,10 +11,10 @@ SRC_URI="https://github.com/systemd-cron/${PN}/archive/v${PV}.tar.gz -> systemd-
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="cron-boot etc-crontab-systemd minutely setgid test yearly"
 
-RDEPEND=">=sys-apps/systemd-217
+RDEPEND=">=sys-apps/systemd-234-r1
 		 sys-apps/debianutils
 		 !etc-crontab-systemd? ( !sys-process/dcron )
 		 ${PYTHON_DEPS}
@@ -63,6 +63,7 @@ src_configure() {
 		--confdir="${EPREFIX}/etc" \
 		--runparts="${EPREFIX}/bin/run-parts" \
 		--mandir="${EPREFIX}/usr/share/man" \
+		--libdir="${EPREFIX}/lib" \
 		--unitdir="$(systemd_get_systemunitdir)" \
 		$(my_use_enable cron-boot boot) \
 		$(my_use_enable minutely) \
