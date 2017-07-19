@@ -17,7 +17,7 @@ esac
 ${LIVE_VERSION} && inherit monotone
 
 DESCRIPTION="A character generator for the popular German role playing game Midgard"
-HOMEPAGE="http://sourceforge.net/projects/midgard.berlios/"
+HOMEPAGE="https://sourceforge.net/projects/midgard.berlios/"
 SRC_URI="mirror://sourceforge/midgard.berlios/${P}.tar.bz2"
 KEYWORDS="~amd64 ~x86"
 if ${LIVE_VERSION}

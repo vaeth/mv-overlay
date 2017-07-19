@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit linux-mod readme.gentoo-r1
 
 MY_P="martian-full-${PV}"
 DESCRIPTION="ltmodem alternative driver providing support for Agere Systems winmodems"
-HOMEPAGE="http://packages.debian.org/sid/martian-modem-source http://phep2.technion.ac.il/linmodems/packages/ltmodem/kernel-2.6/martian"
+HOMEPAGE="https://packages.debian.org/sid/martian-modem-source http://phep2.technion.ac.il/linmodems/packages/ltmodem/kernel-2.6/martian"
 #SRC_URI="mirror://debian/pool/non-free/m/martian-modem/${MY_P}.tar.gz"
 #SRC_URI="http://phep2.technion.ac.il/linmodems/packages/ltmodem/kernel-2.6/martian/${MY_P}.tar.gz"
 SRC_URI="http://linmodems.technion.ac.il/packages/ltmodem/kernel-2.6/martian/${MY_P}.tar.gz"

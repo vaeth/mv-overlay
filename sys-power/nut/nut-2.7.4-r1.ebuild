@@ -156,12 +156,12 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${ED}" install || die
 
-	find "${D}" -name '*.la' -exec rm -f {} +
+	find "${ED}" -name '*.la' -exec rm -f {} +
 
 	dodir /sbin
-	dosym /usr/sbin/upsdrvctl /sbin/upsdrvctl
+	dosym ../usr/sbin/upsdrvctl /sbin/upsdrvctl
 
 	if use cgi; then
 		elog "CGI monitoring scripts are installed in /usr/share/nut/cgi."

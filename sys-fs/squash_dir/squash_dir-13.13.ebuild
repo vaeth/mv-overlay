@@ -88,7 +88,7 @@ pkg_postinst() {
 		if linux_config_missing 'OVERLAYFS_FS'
 		then	ewarn "To use ${PN} activate overlayfs in your kernel."
 			ewarn "Unless you use a patched kernel, apply e.g. top patches from some head of"
-			ewarn "http://git.kernel.org/?p=linux/kernel/git/mszeredi/vfs.git;a=summary"
+			ewarn "https://git.kernel.org/?p=linux/kernel/git/mszeredi/vfs.git;a=summary"
 		fi;;
 	aufs)
 		if ! has_version sys-fs/aufs3 && ! has_version sys-fs/aufs2 && linux_config_missing 'AUFS_FS'

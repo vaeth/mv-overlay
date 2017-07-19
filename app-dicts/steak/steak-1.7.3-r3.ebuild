@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -47,7 +47,7 @@ src_install() {
 	doins mini_steak_icon.xpm pinguin_steak_icon.xpm .Steakconfig
 
 	dobin woerterbuch printbuffer iso2txt spacefilter poll
-	dosym /usr/bin/woerterbuch /usr/bin/steak
+	dosym woerterbuch /usr/bin/steak
 
 	dodoc copyrights.txt help.txt version.txt README README.eng
 }

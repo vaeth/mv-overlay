@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>robbat2@gentoo.org</email>
-    <name>Robin H. Johnson</name>
-  </maintainer>
-	<maintainer type="person">
-		<email>prometheanfire@gentoo.org</email>
-	</maintainer>
-  <use>
-    <flag name="ipmi">Support IPMI-based UPSes.</flag>
+<maintainer type="person">
+	<email>robbat2@gentoo.org</email>
+	<name>Robin H. Johnson</name>
+</maintainer>
+<maintainer type="person">
+	<email>prometheanfire@gentoo.org</email>
+</maintainer>
+<use>
+	<flag name="ipmi">Support IPMI-based UPSes.</flag>
 	<flag name="ups_drivers_al175">Driver for Eltek UPS models with AL175 alarm module</flag>
 	<flag name="ups_drivers_bcmxcp">Driver for UPSes supporting the serial BCM/XCP protocol</flag>
 	<flag name="ups_drivers_belkin">Driver for Belkin serial UPS equipment</flag>
@@ -61,5 +61,5 @@
 	<flag name="ups_drivers_netxml-ups">Driver for Eaton / MGE Network Management Card / Proxy (XML/HTTP Protocol) equipment</flag>
 	<flag name="ups_drivers_snmp-ups">Multi-MIB Driver for SNMP UPS equipment</flag>
 	<flag name="ups_drivers_nut-ipmipsu">Driver for IPMI Power Supply Units (PSU)</flag>
-  </use>
+</use>
 </pkgmetadata>
