@@ -4,8 +4,9 @@
 EAPI=6
 RESTRICT="mirror"
 WANT_LIBTOOL=none
+AUTOTOOLS_AUTO_DEPEND=no
 PLOCALES="de ru"
-inherit autotools bash-completion-r1 l10n tmpfiles
+inherit autotools bash-completion-r1 l10n meson tmpfiles
 
 case ${PV} in
 99999999*)
@@ -15,7 +16,7 @@ case ${PV} in
 	PROPERTIES="live";;
 *)
 	RESTRICT="mirror"
-	EGIT_COMMIT="5687b4c2fc1bda8d2f55237b9e2f4b3941afe1d9"
+	EGIT_COMMIT="a0ce147d0da7587ba560ed2994abc045faabab77"
 	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 esac
@@ -26,7 +27,7 @@ HOMEPAGE="https://github.com/vaeth/eix/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug +dep doc nls optimization +required-use security strong-optimization strong-security sqlite swap-remote tools"
+IUSE="debug +dep doc +meson nls optimization +required-use security strong-optimization strong-security sqlite swap-remote tools"
 
 BOTHDEPEND="nls? ( virtual/libintl )
 	sqlite? ( >=dev-db/sqlite-3:= )"
@@ -34,6 +35,8 @@ RDEPEND="${BOTHDEPEND}
 	>=app-shells/push-2.0-r2
 	>=app-shells/quoter-3.0-r2"
 DEPEND="${BOTHDEPEND}
+	meson? ( >=dev-util/meson-0.41.0 )
+	!meson? ( ${AUTOTOOLS_DEPEND} )
 	>=sys-devel/gettext-0.19.6"
 
 pkg_setup() {
@@ -45,12 +48,38 @@ pkg_setup() {
 src_prepare() {
 	sed -i -e "s'/'${EPREFIX}/'" -- "${S}"/tmpfiles.d/eix.conf || die
 	eapply_user
-	eautopoint
-	eautoreconf
+	use meson || {
+		eautopoint
+		eautoreconf
+	}
 }
 
 src_configure() {
-	econf \
+	local emesonargs
+	emesonargs=(
+		-Ddocdir="${EPREFIX}/usr/share/doc/${P}" \
+		-Dhtmldir="${EPREFIX}/usr/share/doc/${P}/html" \
+		-Dsqlite=$(usex sqlite true false) \
+		-Dextra-doc=$(usex doc true false) \
+		-Dnls=$(usex nls true false) \
+		-Dseparate-tools=$(usex tools true false) \
+		-Dsecurity=$(usex security true false) \
+		-Doptimization=$(usex optimization true false) \
+		-Dstrong-secutiry=$(usex strong-security true false) \
+		-Dstrong-optimization=$(usex strong-optimization true false) \
+		-Ddebugging=$(usex debug true false) \
+		-Dswap-remote=$(usex swap-remote true false) \
+		-Dalways-accept-keywords=$(usex prefix true false) \
+		-Ddep-default=$(usex dep true false) \
+		-Drequired-use-default=$(usex required-use true false) \
+		-Dzsh-completion="${EPREFIX}/usr/share/zsh/site-functions" \
+		-Dportage-rootpath="${ROOTPATH}" \
+		-Deprefix-default="${EPREFIX}"
+	)
+	if use meson; then
+		meson_src_configure
+	else
+		econf \
 		$(use_with sqlite) \
 		$(use_with doc extra-doc) \
 		$(use_enable nls) \
@@ -67,10 +96,31 @@ src_configure() {
 		--with-zsh-completion \
 		--with-portage-rootpath="${ROOTPATH}" \
 		--with-eprefix-default="${EPREFIX}"
+	fi
+}
+
+src_compile() {
+	if use meson; then
+		meson_src_compile
+	else
+		default
+	fi
+}
+
+src_test() {
+	if use meson; then
+		meson_src_test
+	else
+		default
+	fi
 }
 
 src_install() {
-	default
+	if use meson; then
+		meson_src_install
+	else
+		default
+	fi
 	dobashcomp bash/eix
 	dotmpfiles tmpfiles.d/eix.conf
 }

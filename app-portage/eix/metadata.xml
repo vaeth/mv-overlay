@@ -21,6 +21,7 @@
     <flag name="debug">Build with upstream's CXXFLAGS/LDFLAGS for debugging support; not recommended for normal use.</flag>
     <flag name="dep">Make DEP=true the default which enables support for {,R,P}DEPEND but requires roughly double disk and memory.</flag>
     <flag name="doc">Create description of the eix cache file additionally in html format</flag>
+    <flag name="meson">Build with meson instead of autotools. Faster but less compatible</flag>
     <flag name="optimization">Accept upstream's choices for CXXFLAGS/LDFLAGS for optimization. Absense of this USE flag does not strip user's *FLAGS</flag>
     <flag name="required-use">Make REQUIRED_USE=true the default which enables support for REQUIRED_USE but requires more disk and memory.</flag>
     <flag name="security">This adds some checks which can prevent certain exploits if e.g. the eix code has a bug. If you use the hardened toolchain, using this flag does not increase security and can even lead to problems.</flag>
