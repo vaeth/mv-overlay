@@ -5,8 +5,9 @@ EAPI=6
 RESTRICT="mirror"
 WANT_LIBTOOL=none
 AUTOTOOLS_AUTO_DEPEND=no
+MESON_AUTO_DEPEND=no
 PLOCALES="de ru"
-inherit autotools bash-completion-r1 l10n meson tmpfiles
+inherit autotools bash-completion-r1 l10n meson_optional tmpfiles
 
 case ${PV} in
 99999999*)
@@ -16,7 +17,7 @@ case ${PV} in
 	PROPERTIES="live";;
 *)
 	RESTRICT="mirror"
-	EGIT_COMMIT="a0ce147d0da7587ba560ed2994abc045faabab77"
+	EGIT_COMMIT="cea240dce2e8566714b9eec88ff50cc1b7374249"
 	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 esac
@@ -35,7 +36,10 @@ RDEPEND="${BOTHDEPEND}
 	>=app-shells/push-2.0-r2
 	>=app-shells/quoter-3.0-r2"
 DEPEND="${BOTHDEPEND}
-	meson? ( >=dev-util/meson-0.41.0 )
+	meson? (
+		>=dev-util/meson-0.41.0
+		>=dev-util/ninja-1.7.2
+	)
 	!meson? ( ${AUTOTOOLS_DEPEND} )
 	>=sys-devel/gettext-0.19.6"
 

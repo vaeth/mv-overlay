@@ -58,3 +58,7 @@
 
   03 Jun 2017; Martin Väth <martin@mvath.de>:
   Support new package layout by manually specifying id with option -i
+
+  25 Jul 2017; Martin Väth <martin@mvath.de>:
+  Copy and meson.eclass from gentoo tree, since developers refuse to make it
+  use optionally: https://bugs.gentoo.org/show_bug.cgi?id=626054
