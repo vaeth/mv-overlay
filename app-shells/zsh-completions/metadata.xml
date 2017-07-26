@@ -27,6 +27,7 @@
 		<flag name="completion_dev">Install zsh completions for development (build systems, editors, web)</flag>
 		<flag name="completion_disk">Install zsh completions for disk tools</flag>
 		<flag name="completion_distribute">Install zsh completions for tools for distributing tasks to machines</flag>
+		<flag name="completion_editor">Install zsh completions for various editors</flag>
 		<flag name="completion_git">Install zsh completions for special git tools</flag>
 		<flag name="completion_go">Install zsh completions for go-related tools</flag>
 		<flag name="completion_gtk">Install zsh completions for gtk-related tools</flag>
