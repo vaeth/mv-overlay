@@ -81,6 +81,7 @@ app-shells/zsh-completions:completion_database - Install zsh completions for dat
 app-shells/zsh-completions:completion_dev - Install zsh completions for development (build systems, editors, web)
 app-shells/zsh-completions:completion_disk - Install zsh completions for disk tools
 app-shells/zsh-completions:completion_distribute - Install zsh completions for tools for distributing tasks to machines
+app-shells/zsh-completions:completion_editor - Install zsh completions for various editors
 app-shells/zsh-completions:completion_git - Install zsh completions for special git tools
 app-shells/zsh-completions:completion_go - Install zsh completions for go-related tools
 app-shells/zsh-completions:completion_gtk - Install zsh completions for gtk-related tools
