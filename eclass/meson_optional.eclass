@@ -1,22 +1,24 @@
 # Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# @ECLASS: meson.eclass
+# @ECLASS: meson_optional.eclass
 # @MAINTAINER:
-# William Hubbs <williamh@gentoo.org>
-# Mike Gilbert <floppym@gentoo.org>
+# Martin Väth <martin<mvath.de>
 # @BLURB: common ebuild functions for meson-based packages
 # @DESCRIPTION:
 # This eclass contains the default phase functions for packages which
 # use the meson build system.
+# The only difference to meson.eclass is that it supports also the
+# MESON_AUTO_DEPEND variable which the gentoo maintainers refuse to include:
+# https://bugs.gentoo.org/show_bug.cgi?id=626054
 #
 # @EXAMPLE:
-# Typical ebuild using meson.eclass:
+# Typical ebuild using meson_optional.eclass:
 #
 # @CODE
 # EAPI=6
 #
-# inherit meson
+# inherit meson_optional
 #
 # ...
 #
@@ -51,6 +53,12 @@ _MESON_ECLASS=1
 
 MESON_DEPEND=">=dev-util/meson-0.40.0
 	>=dev-util/ninja-1.7.2"
+
+# @ECLASS-VARIABLE: MESON_AUTO_DEPEND
+# @DESCRIPTION:
+# Set to 'no' to disable automatically adding to DEPEND.  This lets
+# ebuilds former conditional depends by using ${MESON_DEPEND} in
+# their own DEPEND string.
 [ "${MESON_AUTO_DEPEND:=yes}" != yes ] || DEPEND=${MESON_DEPEND}
 
 # @ECLASS-VARIABLE: BUILD_DIR
@@ -190,9 +198,11 @@ meson_src_install() {
 	einstalldocs
 }
 
-meson_optional_src_configure() { meson_src_configure; }
-meson_optional_src_compile() { meson_src_compile; }
-meson_optional_src_test() { meson_src_test; }
-meson_optional_src_install() { meson_src_install; }
+# This is not nice but necessary if we want to keep the names of meson.eclass:
+# Without this, EXPORT_FUNCTIONS for these functions would not work...
+meson_optional_src_configure() { meson_src_configure "$@"; }
+meson_optional_src_compile() { meson_src_compile "$@"; }
+meson_optional_src_test() { meson_src_test "$@"; }
+meson_optional_src_install() { meson_src_install "$@"; }
 
 fi

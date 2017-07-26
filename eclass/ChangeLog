@@ -60,5 +60,8 @@
   Support new package layout by manually specifying id with option -i
 
   25 Jul 2017; Martin Väth <martin@mvath.de>:
-  Copy and meson.eclass from gentoo tree, since developers refuse to make it
+  Copy meson.eclass from gentoo tree, since developers refuse to make its
   use optionally: https://bugs.gentoo.org/show_bug.cgi?id=626054
+
+  26 Jul 2017; Martin Väth <martin@mvath.de>:
+  Reflect changes in documentation of meson_optional.eclass
