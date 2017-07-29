@@ -111,7 +111,7 @@ sys-fs/squashmount 15.4.3_p2: Keep directories compressed with squashfs. Useful 
 sys-kernel/kernel 4.3: A POSIX shell script to compile the kernel with user permissions
 sys-power/nut 2.7.4-r1: Network-UPS Tools
 sys-process/systemd-cron 1.5.4 1.5.10: systemd units to create timers for cron directories and crontab
-virtual/freedesktop-icon-theme 0-r1: A virtual to choose between different icon themes
+virtual/freedesktop-icon-theme 0-r2: A virtual to choose between different icon themes
 www-plugins/classic-theme-restorer 1.6.8.1: Firefox plugin: restore partially the functionality of non-broken firefox
 www-plugins/duckduckgo 1.1.14: Firefox plugin: enable duckduckgo search engine
 www-plugins/epubreader 1.5.0.12 2.0.4: Firefox plugin for ebook (.epub) files
