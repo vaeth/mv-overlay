@@ -26,6 +26,7 @@ RDEPEND="!<sys-apps/openrc-0.13
 	|| ( dev-perl/File-Which sys-apps/which )
 	sys-fs/squashfs-tools
 	!<sys-fs/unionfs-fuse-0.25
+	!<app-portage/find_cruft-4.0.0
 	${OPTIONAL_RDEPEND}"
 #	>=dev-lang/perl-5.12
 #	|| ( >=dev-lang/perl-5.10.1 >=virtual/perl-File-Path-2.6.5 )
@@ -60,11 +61,12 @@ src_install() {
 	systemd_dounit systemd/system/*
 	dotmpfiles tmpfiles.d/*
 	insinto /etc
-	doins -r etc/revdep-rebuild etc/systemd etc/find_cruft.d
+	doins -r etc/revdep-rebuild etc/systemd
 	exeinto /etc/portage/repo.postsync.d
 	doexe etc/portage/repo.postsync.d/*
 	insinto /usr/lib
 	doins lib/*
+	doins -r lib/find_cruft
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
 	readme.gentoo_create_doc
