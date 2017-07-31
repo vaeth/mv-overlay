@@ -55,15 +55,16 @@ src_prepare() {
 
 src_install() {
 	dobin bin/*
-	dodoc README ChangeLog compress.txt etc/squashmount.pl
+	dodoc README ChangeLog compress.txt
 	doinitd openrc/init.d/*
 	systemd_dounit systemd/system/*
 	dotmpfiles tmpfiles.d/*
 	insinto /etc
-	doins etc/squashmount.pl
 	doins -r etc/revdep-rebuild etc/systemd etc/find_cruft.d
 	exeinto /etc/portage/repo.postsync.d
 	doexe etc/portage/repo.postsync.d/*
+	insinto /usr/lib
+	doins lib/*
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
 	readme.gentoo_create_doc

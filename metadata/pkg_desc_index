@@ -107,7 +107,7 @@ sys-fs/aufs-util 99999999: Userspace tools for aufs
 sys-fs/emount 3.0.4: mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab
 sys-fs/squash_dir 13.13: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-fs/squashfs-tools 4.3.1_alpha1 99999999: Tool for creating compressed filesystem type squashfs
-sys-fs/squashmount 15.4.3_p2: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
+sys-fs/squashmount 16.0.0: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-kernel/kernel 4.3: A POSIX shell script to compile the kernel with user permissions
 sys-power/nut 2.7.4-r1: Network-UPS Tools
 sys-process/systemd-cron 1.5.4 1.5.10: systemd units to create timers for cron directories and crontab
