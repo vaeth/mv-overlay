@@ -28,7 +28,7 @@ src_prepare() {
 src_install() {
 	dobin bin/*
 	dodoc README
-	insinto /etc
+	insinto /usr/lib/find_cruft
 	doins -r etc/*
 	insinto /usr/share/zsh/site-functions
 	doins zsh/_*
