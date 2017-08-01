@@ -36,9 +36,11 @@ src_install() {
 	into /
 	dosbin sbin/*
 	insinto /etc
-	doins -r etc/*
+	doins -r etc/firewall.d
 	insinto /usr/lib/modules-load.d
 	doins modules-load.d/*
+	insinto /lib/firewall
+	doins etc/firewall.config
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
 	doconfd openrc/conf.d/fire*
