@@ -46,7 +46,7 @@ app-shells/set_prompt 3.0.0: An intelligent prompt for zsh or bash with status l
 app-shells/termcolors-mv 4.0: 256colors sample script and dircolors configuration for standard or 256 colors
 app-shells/zsh 5.3.1 99999999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.26.0 99999999: Additional completion definitions for Zsh
-app-shells/zsh-syntax-highlighting 0.5.0 99999999: Fish shell like syntax highlighting for zsh
+app-shells/zsh-syntax-highlighting 0.6.0_rc1 99999999: Fish shell like syntax highlighting for zsh
 app-shells/zshrc-mv 3.10: A zshrc file initializing zsh specific interactive features
 app-text/ispell 3.3.02-r1 3.4.00: fast screen-oriented spelling checker
 app-text/lesspipe 1.83 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
