@@ -41,7 +41,7 @@ src_install() {
 	dobin bin/dircolors-mv
 	use create && dobin bin/DIR_COLORS-create
 	use perl && dobin bin/256colors
-	insinto /etc/dir_colors
+	insinto /usr/lib/dir_colors
 	doins DIR_COLORS*
 	readme.gentoo_create_doc
 }
