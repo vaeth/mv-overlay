@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ DESCRIPTION="Edit the saved history of forms in mozilla"
 HOMEPAGE="http://www.formhistory.blogspot.com/"
 SRC_URI="http://addons.cdn.mozilla.net/user-media/addons/12021/${NAME}"
 
-LICENSE="GPL-2"
+LICENSE="MPL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""

@@ -9,7 +9,7 @@ DESCRIPTION="Firefox plugin for ebook (.epub) files"
 HOMEPAGE="http://addons.mozilla.org/de/firefox/addon/epubreader/"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/45281/${P}-fx+sm.xpi"
 
-LICENSE="GPL-2"
+LICENSE="epubreader"
 SLOT="1"
 KEYWORDS="~amd64 ~x86"
 IUSE=""

@@ -9,7 +9,7 @@ DESCRIPTION="Firefox plugin: Install themes and skins for many popular sites"
 HOMEPAGE="https://addons.mozilla.org/en-US/firefox/addon/styl-us/"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/814814/${PN}_beta-${PV}-an+fx.xpi"
 
-LICENSE="GPL-2"
+LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
