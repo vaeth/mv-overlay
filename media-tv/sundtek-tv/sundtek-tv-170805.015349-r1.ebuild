@@ -98,6 +98,10 @@ src_prepare() {
 	! test -r etc/udev/rules.d/80-mediasrv-eeti.rules ||
 		sed -i -e "s/^\([^#]\)/#\1/" etc/udev/rules.d/80-mediasrv-eeti.rules \
 		|| die
+	rm etc/systemd/system/multi-user.target.wants/sundtek.service || die
+	rmdir etc/systemd/system/multi-user.target.wants || die
+	rmdir etc/systemd/system || die
+	rmdir etc/systemd || die
 	mv etc/udev/rules.d/80-mediasrv.rules etc/hal . || die
 	mv etc/udev "${myudev}" || die
 	mv 1/doc/hardware.conf 1/doc/sundtek.conf "${mylirc}" || die
