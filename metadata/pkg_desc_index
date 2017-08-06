@@ -78,7 +78,7 @@ media-gfx/pqiv 2.8.5: powerful GTK based command-line image viewer with a minima
 media-libs/avidemux-core 2.6.20-r1: Core libraries for media-video/avidemux
 media-libs/avidemux-plugins 2.6.20: Plugins for media-video/avidemux
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
-media-tv/sundtek-tv 170805.015349: Sundtek MediaTV Pro III Drivers
+media-tv/sundtek-tv 170805.015349-r1: Sundtek MediaTV Pro III Drivers
 media-video/avidemux 2.6.20: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15_p1: Utility for displaying AVI information
 media-video/video-mv 11.1: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
@@ -112,6 +112,8 @@ sys-kernel/kernel 4.3: A POSIX shell script to compile the kernel with user perm
 sys-power/nut 2.7.4-r1: Network-UPS Tools
 sys-process/systemd-cron 1.5.4 1.5.10: systemd units to create timers for cron directories and crontab
 virtual/freedesktop-icon-theme 0-r2: A virtual to choose between different icon themes
+www-client/palemoon 27: This is only a dummy ebuild. Use e.g. octopus or palemoon overlay
+www-client/palemoon-bin 27: This is only a dummy ebuild. Use e.g. palemoon overlay
 www-plugins/bookmark-deduplicator 1.3.1: Firefox plugin: Deduplicate your bookmarks
 www-plugins/bookmark-duplicate-cleaner 0.2: Firefox plugin: Remove duplicate bookmarks
 www-plugins/classic-theme-restorer 1.6.8.1: Firefox plugin: restore partially the functionality of non-broken firefox
