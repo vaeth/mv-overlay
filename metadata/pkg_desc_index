@@ -123,7 +123,7 @@ www-plugins/form-history-control 1.4.0.6: Edit the saved history of forms in moz
 www-plugins/locale-switcher 3-r1: Firefox plugin: button to switch GUI locale
 www-plugins/noscript 2.9.0.14 5.0.8.1: Mozilla plugin: Restrict active contents like java/javascript/flash
 www-plugins/requestpolicy 0.5.28-r1: Mozilla plugin: controll cross-site requests (increases privacy/security)
-www-plugins/stylus 1.1.0: Firefox plugin: Install themes and skins for many popular sites
+www-plugins/stylus 1.1.2.1: Firefox plugin: Install themes and skins for many popular sites
 www-plugins/xclear 1.8.2: Firefox plugin: button to clear URL
 x11-drivers/nvidia-drivers 173.14.39-r2: NVIDIA Accelerated Graphics Driver
 x11-libs/gtk+ 2.24.31-r1 3.22.16 3.22.17: Gimp ToolKit +
