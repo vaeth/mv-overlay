@@ -23,10 +23,9 @@ umask 022
 # This way the evaluation can be short-circuited and calling whoami is
 # avoided.
 if [ "$EUID" = "0" ] || [ "$USER" = "root" ] ; then
-	@ZSH_NOPREFIX@PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${ROOTPATH}"
+	@ZSH_NOPREFIX@PATH="${ROOTPATH}"
 	@ZSH_PREFIX@PATH="@GENTOO_PORTAGE_EPREFIX@/usr/sbin:@GENTOO_PORTAGE_EPREFIX@/usr/bin:@GENTOO_PORTAGE_EPREFIX@/sbin:@GENTOO_PORTAGE_EPREFIX@/bin:${ROOTPATH}:/usr/sbin:/usr/bin:/sbin:/bin"
-else
-	@ZSH_NOPREFIX@PATH="/usr/local/bin:/usr/bin:/bin:${PATH}"
+@ZSH_PREFIX@else
 	@ZSH_PREFIX@PATH="@GENTOO_PORTAGE_EPREFIX@/usr/bin:@GENTOO_PORTAGE_EPREFIX@/bin:${PATH}:/usr/bin:/bin"
 fi
 export PATH

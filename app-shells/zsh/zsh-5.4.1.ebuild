@@ -69,6 +69,7 @@ RDEPEND="
 		static? ( >=dev-libs/libpcre-3.9[static-libs] )
 	)
 	gdbm? ( sys-libs/gdbm )
+	!<sys-apps/baselayout-2.4.1
 "
 DEPEND+="
 	sys-apps/groff
@@ -120,7 +121,7 @@ src_prepare() {
 
 	${LIVE} || eapply "${FILESDIR}"/${PN}-init.d-gentoo-r1.diff
 
-	cp "${FILESDIR}"/zprofile-1 "${T}"/zprofile || die
+	cp "${FILESDIR}"/zprofile-2 "${T}"/zprofile || die
 	eprefixify "${T}"/zprofile || die
 	if use prefix ; then
 		sed -i -e 's|@ZSH_PREFIX@||' -e '/@ZSH_NOPREFIX@/d' "${T}"/zprofile || die
