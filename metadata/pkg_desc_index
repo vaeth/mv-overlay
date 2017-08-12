@@ -63,7 +63,7 @@ dev-util/comp 4.2.1: compare files or directories, including metadata
 dev-util/diffhelp 1.11: A frontend, beautifier, and path-fixer for diff -u
 dev-util/mv_perl 3.10: A collection of perl scripts (replacement in files, syncing dirs etc)
 dev-util/pyrep 1.4-r1: Search and/or replace regular expressions within many files interactively
-dev-vcs/git-wrappers-mv 1.13: Some personal wrappers for the most important git commands
+dev-vcs/git-wrappers-mv 1.14: Some personal wrappers for the most important git commands
 games-action/trackballs 1.1.4-r1: simple game similar to the classical game Marble Madness
 games-board/chessproblem 1.7 2.8: Find solutions of chess problems (mate, selfmate, and helpmate) with cooks
 games-emulation/xmame 0.106-r1: Multiple Arcade Machine Emulator for X11
