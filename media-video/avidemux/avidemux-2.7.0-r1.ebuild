@@ -15,6 +15,7 @@ LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
 SLOT="2.6"
 IUSE="debug opengl nls nvenc qt4 qt5 sdl vaapi vdpau video_cards_fglrx xv"
 REQUIRED_USE="qt5? ( !qt4 ) "
+QA_DT_NEEDED=".*/libADM_UI_Cli6\.so"
 
 if [[ ${PV} == *9999* ]] ; then
 	MY_P=$P
