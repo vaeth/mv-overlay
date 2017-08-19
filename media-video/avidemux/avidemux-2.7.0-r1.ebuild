@@ -77,6 +77,8 @@ src_prepare() {
 
 	# Fix underlinking with gold
 	sed -i -e 's/-lm/-lXext -lm/' avidemux/qt4/CMakeLists.txt || die
+	sed -i -e 's/{QT_QTGUI_LIBRARY}/{QT_QTGUI_LIBRARY} -lXext/' \
+		avidemux/common/ADM_render/CMakeLists.txt || die
 }
 
 src_configure() {
@@ -123,7 +125,6 @@ src_configure() {
 	)
 
 	if use qt4 || use qt5 ; then
-		append-ldflags -lXext
 		export QT_SELECT
 		processes+=" buildQt4:avidemux/qt4"
 	fi
