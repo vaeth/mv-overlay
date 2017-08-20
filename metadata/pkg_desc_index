@@ -39,7 +39,7 @@ app-shells/command-not-found 0.4.5: search ARCH database for packages with simil
 app-shells/dash 99999999: Descendant of the NetBSD ash. POSIX compliant except for multibyte characters
 app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
 app-shells/push 3.0: A POSIX shell function to treat a variable like an array, quoting args
-app-shells/quoter 3.0_p2-r2: Quote arguments or standard input for usage in POSIX shell by eval
+app-shells/quoter 4.0: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/runtitle 2.10: Scripts to run commands and set the hard status line (windows title)
 app-shells/schily-tools 2017.08.14: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
 app-shells/set_prompt 3.0.0: An intelligent prompt for zsh or bash with status line (window title) support
