@@ -12,11 +12,8 @@ SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="old-openrc"
-RDEPEND="!<sys-apps/openrc-0.13
-	!old-openrc? ( !<sys-apps/openrc-0.21.7 )
-	old-openrc? ( !>=sys-apps/openrc-0.21.7 )
-	>=app-shells/push-2.0-r2"
+IUSE=""
+RDEPEND=">=app-shells/push-2.0-r2"
 DEPEND=""
 
 src_prepare() {
@@ -29,23 +26,14 @@ src_prepare() {
 			-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
 			-- sbin/* || die
 	fi
-	eapply_user
+	default
+}
+
+src_compile() {
+	emake "SYSTEMUNITDIR=$(systemd_get_systemunitdir)"
 }
 
 src_install() {
-	into /
-	dosbin sbin/*
-	insinto /etc
-	doins -r etc/firewall.d
-	insinto /usr/lib/modules-load.d
-	doins modules-load.d/*
-	insinto /lib/firewall
-	doins etc/firewall.config
-	insinto /usr/share/zsh/site-functions
-	doins zsh/*
-	doconfd openrc/conf.d/fire*
-	! use old-openrc || doconfd openrc/conf.d/modules
-	doinitd openrc/init.d/*
 	dodoc README
-	systemd_dounit systemd/*
+	emake DESTDIR="${ED}" "SYSTEMUNITDIR=$(systemd_get_systemunitdir)" install
 }

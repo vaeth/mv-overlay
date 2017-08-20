@@ -205,7 +205,6 @@ media-tv/sundtek-tv:ld-preload-file - Install /etc/ld.so.preload
 media-tv/sundtek-tv:pax_kernel - Mark package which is necessary if you use a PAX kernel
 media-video/avidemux:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.
 net-dns/noip-updater:ezipupd - Use user/group ezipupd instead of nobody: Useful if you restrict outgoing network traffic for user nobody
-net-firewall/firewall-mv:old-openrc - Install rudimentary support for /etc/modules.load.d for sys-apps/openrc-0.21.5 or older. This is a temporary hack of /etc/conf.d/modules which should not be used with more recent versions of sys-apps/openrc. Therefore, newer or older versions of openrc are blocked depending on this flag, respectively.
 net-libs/wvstreams:boost - Use dev-libs/boost to provide TR1-compatible functional interface. This USE flag is only needed with GCC earlier than version 4.1, or with other compilares not providing said interface.
 net-misc/sshstart:keychain - Pull in keychain as dependency. Not required, but recommended for smoother operation.
 net-print/foo2zjs:foo2zjs_devices_hp1000 - HP LJ 1000 firmware

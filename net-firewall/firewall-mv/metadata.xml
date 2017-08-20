@@ -13,11 +13,4 @@
 		<bugs-to>mailto:martin@mvath.de</bugs-to>
 		<remote-id type="github">vaeth/firewall-mv</remote-id>
 	</upstream>
-	<use>
-		<flag name="old-openrc">Install rudimentary support for
-/etc/modules.load.d for sys-apps/openrc-0.21.5 or older. This is a temporary
-hack of /etc/conf.d/modules which should not be used with more recent versions
-of sys-apps/openrc. Therefore, newer or older versions of openrc are blocked
-depending on this flag, respectively.</flag>
-	</use>
 </pkgmetadata>
