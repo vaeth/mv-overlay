@@ -38,7 +38,7 @@ app-shells/auto-fu-zsh 0.0.1.12-r4 0.0.1.12_p0 99999999: zsh automatic complete-
 app-shells/command-not-found 0.4.5: search ARCH database for packages with similar commands
 app-shells/dash 99999999: Descendant of the NetBSD ash. POSIX compliant except for multibyte characters
 app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
-app-shells/push 2.0-r2: A POSIX shell function to treat a variable like an array, quoting args
+app-shells/push 3.0: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 3.0_p2-r2: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/runtitle 2.10: Scripts to run commands and set the hard status line (windows title)
 app-shells/schily-tools 2017.08.14: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
@@ -79,7 +79,7 @@ media-libs/avidemux-core 2.6.20-r1 2.7.0: Core libraries for media-video/avidemu
 media-libs/avidemux-plugins 2.6.20 2.7.0: Plugins for media-video/avidemux
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
 media-tv/sundtek-tv 170805.015349-r1: Sundtek MediaTV Pro III Drivers
-media-video/avidemux 2.6.20 2.7.0: Video editor designed for simple cutting, filtering and encoding tasks
+media-video/avidemux 2.6.20 2.7.0-r1: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15_p1: Utility for displaying AVI information
 media-video/video-mv 11.1: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
 net-dialup/accounting 1.60.45.3.1: Give statistics about dialup connections. Originally part of SuSE's smpppd
