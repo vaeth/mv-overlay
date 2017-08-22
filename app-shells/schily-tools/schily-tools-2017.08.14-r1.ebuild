@@ -361,6 +361,7 @@ src_install() {
 	then	dodir bin || die
 		rm -v "${ED}"usr/bin/{bo,j,pf}sh \
 			"${ED}"usr/share/man/man1/bosh.1 || die
+		rm -rfv "${ED}"usr/xpg4 || die
 		mv -v -- "${ED}"{usr/bin/sh,bin/bosh} || die
 		ln -s -- bosh "${ED}"/bin/jsh || die
 		ln -s -- bosh "${ED}"/bin/pfsh || die
