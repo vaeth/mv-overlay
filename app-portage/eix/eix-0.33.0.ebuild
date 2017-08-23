@@ -32,11 +32,25 @@ pkg_setup() {
 	# remove stale cache file to prevent collisions
 	local old_cache="${EROOT}var/cache/${PN}"
 	test -f "${old_cache}" && rm -f -- "${old_cache}"
+
+	local i
+	if use meson && use strong-optimization
+	then	for i in /usr/*/binutils-bin/lib/bfd-plugins/liblto_plugin.*
+			do	test -h "$i" && return
+			done
+	fi
+	eerror "app-portage/eix[meson strong-optimization]' needs linker lto plugin."
+	eerror "To establish this plugin, execute as root something like"
+	eerror "	mkdir -p /usr/*/binutils-bin/lib/bfd-plugins"
+	eerror "	cd /usr/*/binutils-bin/lib/bfd-plugins"
+	eerror "	ln -sfn /usr/libexec/gcc/*/*/liblto_plugin.so.*.*.* ."
+	eerror "The * might have to be replaced by your architecture or gcc version"
+	die "app-portage/eix[meson strong-optimization] needs linker lto plugin"
 }
 
 src_prepare() {
 	sed -i -e "s'/'${EPREFIX}/'" -- "${S}"/tmpfiles.d/eix.conf || die
-	eapply_user
+	default
 }
 
 src_configure() {
