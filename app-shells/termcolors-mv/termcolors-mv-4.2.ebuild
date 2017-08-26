@@ -29,7 +29,7 @@ src_prepare() {
 		-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
 		-e '1s"^#!/usr/bin/env perl$"#!'"${EPREFIX}/usr/bin/perl"'"' \
 		-- bin/* || die
-	eapply_user
+	default
 }
 
 src_compile() {
