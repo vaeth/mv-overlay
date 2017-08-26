@@ -23,7 +23,7 @@ src_prepare() {
 			-e 's"^\. archwrap\.sh$". '"${EPREFIX}/usr/lib/archwrap/archwrap.sh"'"' \
 			-- "${i}" || die
 	done
-	eapply_user
+	default
 }
 
 src_install() {
