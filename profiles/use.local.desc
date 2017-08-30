@@ -58,19 +58,6 @@ app-shells/schily-tools:system-libschily - Rely on app-cdr/cdrtools for providin
 app-shells/schily-tools:system-star - Rely on app-arch/star for the match manpage
 app-shells/termcolors-mv:create - Install DIR_COLORS-create perl script
 app-shells/termcolors-mv:perl - Install 256colors perl script
-app-shells/zsh:compile - Byte-compile. This costs disk space and may make things faster or slower. Do not use this if you are cross-compiling
-app-shells/zsh:completion_AIX - Install zsh completions for AIX
-app-shells/zsh:completion_BSD - Install zsh completions for BSD
-app-shells/zsh:completion_Cygwin - Install zsh completions for Cygwin
-app-shells/zsh:completion_Darwin - Install zsh completions for Darwin
-app-shells/zsh:completion_Debian - Install zsh completions for Debian
-app-shells/zsh:completion_Linux - Install zsh completions for Linux
-app-shells/zsh:completion_Mandriva - Install zsh completions for Mandriva
-app-shells/zsh:completion_Redhat - Install zsh completions for Redhat
-app-shells/zsh:completion_Solaris - Install zsh completions for Solaris
-app-shells/zsh:completion_Unix - Install zsh completions for Unix
-app-shells/zsh:completion_X - Install zsh completions for X
-app-shells/zsh:completion_openSUSE - Install zsh completions for openSUSE
 app-shells/zsh-completions:completion_Android - Install zsh completions for Android-related programs
 app-shells/zsh-completions:completion_Arch - Install zsh completions for Archlinux
 app-shells/zsh-completions:completion_Google - Install zsh completions for Google tools
