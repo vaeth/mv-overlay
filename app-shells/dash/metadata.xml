@@ -14,7 +14,7 @@
 		<remote-id type="cpe">cpe:/a:dash:dash</remote-id>
 	</upstream>
 	<use>
-		<flag name="dumb-echo">Disable echo -n and character sequence interpretation for added fun</flag>
+		<flag name="vanilla">Let echo escapes and -n work as decided by upstream</flag>
 	</use>
 	<longdescription lang="en">
 		DASH is a direct descendant of the NetBSD version of ash (the Almquist SHell)
