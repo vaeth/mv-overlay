@@ -7,7 +7,7 @@ inherit readme.gentoo-r1
 
 case ${PV} in
 99999999*)
-	EGIT_REPO_URI="git://github.com/zsh-users/${PN}.git"
+	EGIT_REPO_URI="https://github.com/zsh-users/${PN}.git"
 	inherit git-r3
 	PROPERTIES="live"
 	SRC_URI=""
