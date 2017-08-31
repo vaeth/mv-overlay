@@ -21,7 +21,7 @@ app-emacs/mv_emacs 1.3: (X)Emacs extensions: block support, macrorecorder, verif
 app-emacs/po-mode 0.19.8.1-r1: Major mode for GNU gettext PO files
 app-eselect/eselect-net 0.2: eselect module for managing network open-rc service configurations
 app-misc/knapsack 7.2-r1: A fast solver for the 0/1-knapsack problem with multiple knapsacks
-app-portage/eix 0.33.0 0.33.1_alpha1 99999999: Search and query ebuilds
+app-portage/eix 0.33.0 0.33.1_alpha2 99999999: Search and query ebuilds
 app-portage/etcat 1.0.1 99999999: Updated version of an old Portage information extractor
 app-portage/find_cruft 4.0.0: find cruft files not managed by portage
 app-portage/gentoolkit 0.4.0-r1 9999: Collection of administration scripts for Gentoo
