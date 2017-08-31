@@ -3,7 +3,7 @@
 
 EAPI=6
 
-EGIT_REPO_URI="git://github.com/robbyrussell/${PN}.git"
+EGIT_REPO_URI="https://github.com/robbyrussell/${PN}.git"
 inherit git-r3 readme.gentoo-r1
 
 DESCRIPTION="A ready-to-use zsh configuration with plugins"

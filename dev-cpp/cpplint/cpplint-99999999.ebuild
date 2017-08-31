@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( pypy python2_7 )
-EGIT_REPO_URI="git://github.com/google/styleguide.git"
+EGIT_REPO_URI="https://github.com/google/styleguide.git"
 inherit elisp-common git-r3 python-single-r1
 RESTRICT="mirror"
 

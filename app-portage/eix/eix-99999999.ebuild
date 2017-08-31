@@ -11,7 +11,7 @@ inherit autotools bash-completion-r1 l10n meson_optional tmpfiles
 
 case ${PV} in
 99999999*)
-	EGIT_REPO_URI="git://github.com/vaeth/${PN}.git"
+	EGIT_REPO_URI="https://github.com/vaeth/${PN}.git"
 	inherit git-r3
 	SRC_URI=""
 	PROPERTIES="live";;

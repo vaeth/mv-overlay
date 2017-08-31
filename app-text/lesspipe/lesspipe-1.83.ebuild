@@ -13,7 +13,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 
 case ${PV} in
 9999*)
-	EGIT_REPO_URI="git://github.com/wofr06/${PN}.git"
+	EGIT_REPO_URI="https://github.com/wofr06/${PN}.git"
 	EGIT_BRANCH="master"
 	inherit git-r3
 	SRC_URI=""

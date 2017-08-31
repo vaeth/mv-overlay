@@ -4,7 +4,7 @@
 EAPI=6
 WANT_LIBTOOL=none
 EGIT_MIN_CLONE_TYPE=single
-EGIT_REPO_URI="git://git.samba.org/ccache.git"
+EGIT_REPO_URI="https://git.samba.org/ccache.git"
 inherit autotools git-r3 readme.gentoo-r1
 
 DESCRIPTION="fast compiler cache"

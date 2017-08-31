@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 case ${PV} in
 99999999*)
-	EGIT_REPO_URI="git://github.com/proteusx/${PN}.git"
+	EGIT_REPO_URI="https://github.com/proteusx/${PN}.git"
 	inherit git-r3
 	PROPERTIES="live"
 	KEYWORDS=""

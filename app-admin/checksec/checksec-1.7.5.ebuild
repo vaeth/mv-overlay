@@ -15,7 +15,7 @@ DEPEND="test? ( dev-python/demjson dev-libs/libxml2 )"
 
 case ${PV} in
 99999999*)
-	EGIT_REPO_URI="git://github.com/slimm609/${MY_PN}.git"
+	EGIT_REPO_URI="https://github.com/slimm609/${MY_PN}.git"
 	inherit git-r3
 	PROPERTIES="live"
 	KEYWORDS=""

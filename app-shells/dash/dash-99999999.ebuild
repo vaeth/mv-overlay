@@ -9,7 +9,7 @@ case ${PV} in
 	LIVE=:;;
 esac
 if ${LIVE}
-then	EGIT_REPO_URI="git://git.kernel.org/pub/scm/utils/dash/dash.git"
+then	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/dash/dash.git"
 	WANT_LIBTOOL=none
 	AT_NOELIBTOOLIZE=true
 	inherit autotools git-r3

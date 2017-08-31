@@ -37,7 +37,7 @@ S="${WORKDIR}/squashfs${PV}/${PN}"
 
 if ${LIVE}; then
 	PROPERTIES="live"
-	EGIT_REPO_URI="git://github.com/plougher/${PN}"
+	EGIT_REPO_URI="https://github.com/plougher/${PN}"
 	inherit git-r3
 	SRC_URI=${EXTRA_URI}
 	KEYWORDS=""
