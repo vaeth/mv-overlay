@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-RESTRICT="mirror"
 WANT_LIBTOOL=none
 AUTOTOOLS_AUTO_DEPEND=no
 MESON_AUTO_DEPEND=no
@@ -17,7 +16,7 @@ case ${PV} in
 	PROPERTIES="live";;
 *)
 	RESTRICT="mirror"
-	EGIT_COMMIT="80fdd968610d5967fbb1c06630170800c52a0ba7"
+	EGIT_COMMIT="3c831a8a432927c91082447f21739cc08d4f68ff"
 	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 esac
