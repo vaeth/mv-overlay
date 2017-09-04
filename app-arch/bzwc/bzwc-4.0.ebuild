@@ -22,7 +22,7 @@ src_prepare() {
 		sed -i -e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' -- "${i}" \
 			|| die
 	done
-	eapply_user
+	default
 }
 
 src_install() {
