@@ -16,7 +16,7 @@ case ${PV} in
 	PROPERTIES="live";;
 *)
 	RESTRICT="mirror"
-	EGIT_COMMIT="730c42f1b7ca184380d21b78ef1957d94408e19c"
+	EGIT_COMMIT="42cda673cd27b6869f007ba28a7b9161d85723ed"
 	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 esac
@@ -42,24 +42,25 @@ DEPEND="${BOTHDEPEND}
 	!meson? ( ${AUTOTOOLS_DEPEND} )
 	>=sys-devel/gettext-0.19.6"
 
+mesonflto() {
+	use meson && use strong-optimization || return 0
+	einfo "Checking whether compiler supports -flto and static archives"
+	bash contrib/meson-flto-test.sh && return
+	eerror "For app-portage/eix[meson strong-optimization] it is necessary"
+	eerror "that your compiler can access static archives with -flto."
+	eerror "This is perhaps not the case on your system:"
+	eerror "A linker lto plugin might be required."
+	eerror "To establish this plugin, execute as root something like"
+	eerror "	mkdir -p /usr/*/binutils-bin/lib/bfd-plugins"
+	eerror "	cd /usr/*/binutils-bin/lib/bfd-plugins"
+	eerror "	ln -sfn /usr/libexec/gcc/*/*/liblto_plugin.so.*.*.* ."
+	die "app-portage/eix[meson strong-optimization] requires flto plugin"
+}
+
 pkg_setup() {
 	# remove stale cache file to prevent collisions
 	local old_cache="${EROOT}var/cache/${PN}"
 	test -f "${old_cache}" && rm -f -- "${old_cache}"
-
-	local i
-	if use meson && use strong-optimization
-	then	for i in /usr/*/binutils-bin/lib/bfd-plugins/liblto_plugin.*
-			do	test -h "$i" && return
-			done
-		ewarn "app-portage/eix[meson strong-optimization]' might fail to"
-		ewarn "emerge (link) without the linker lto plugin."
-		ewarn "To establish this plugin, execute as root something like"
-		ewarn "	mkdir -p /usr/*/binutils-bin/lib/bfd-plugins"
-		ewarn "	cd /usr/*/binutils-bin/lib/bfd-plugins"
-		ewarn "	ln -sfn /usr/libexec/gcc/*/*/liblto_plugin.so.*.*.* ."
-		ewarn "The * might have to be replaced by your architecture or gcc version"
-	fi
 }
 
 src_prepare() {
@@ -69,6 +70,7 @@ src_prepare() {
 		eautopoint
 		eautoreconf
 	}
+	mesonflto
 }
 
 src_configure() {
