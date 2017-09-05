@@ -38,13 +38,13 @@ pkg_setup() {
 	then	for i in /usr/*/binutils-bin/lib/bfd-plugins/liblto_plugin.*
 			do	test -h "$i" && return
 			done
-		eerror "app-portage/eix[meson strong-optimization]' needs linker lto plugin."
-		eerror "To establish this plugin, execute as root something like"
-		eerror "	mkdir -p /usr/*/binutils-bin/lib/bfd-plugins"
-		eerror "	cd /usr/*/binutils-bin/lib/bfd-plugins"
-		eerror "	ln -sfn /usr/libexec/gcc/*/*/liblto_plugin.so.*.*.* ."
-		eerror "The * might have to be replaced by your architecture or gcc version"
-		die "app-portage/eix[meson strong-optimization] needs linker lto plugin"
+		ewarn "app-portage/eix[meson strong-optimization]' might fail to"
+		ewarn "emerge (link) without the linker lto plugin."
+		ewarn "To establish this plugin, execute as root something like"
+		ewarn "	mkdir -p /usr/*/binutils-bin/lib/bfd-plugins"
+		ewarn "	cd /usr/*/binutils-bin/lib/bfd-plugins"
+		ewarn "	ln -sfn /usr/libexec/gcc/*/*/liblto_plugin.so.*.*.* ."
+		ewarn "The * might have to be replaced by your architecture or gcc version"
 	fi
 }
 

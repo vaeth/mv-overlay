@@ -16,7 +16,7 @@ case ${PV} in
 	PROPERTIES="live";;
 *)
 	RESTRICT="mirror"
-	EGIT_COMMIT="3c831a8a432927c91082447f21739cc08d4f68ff"
+	EGIT_COMMIT="730c42f1b7ca184380d21b78ef1957d94408e19c"
 	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 esac
@@ -52,13 +52,13 @@ pkg_setup() {
 	then	for i in /usr/*/binutils-bin/lib/bfd-plugins/liblto_plugin.*
 			do	test -h "$i" && return
 			done
-		eerror "app-portage/eix[meson strong-optimization]' needs linker lto plugin."
-		eerror "To establish this plugin, execute as root something like"
-		eerror "	mkdir -p /usr/*/binutils-bin/lib/bfd-plugins"
-		eerror "	cd /usr/*/binutils-bin/lib/bfd-plugins"
-		eerror "	ln -sfn /usr/libexec/gcc/*/*/liblto_plugin.so.*.*.* ."
-		eerror "The * might have to be replaced by your architecture or gcc version"
-		die "app-portage/eix[meson strong-optimization] needs linker lto plugin"
+		ewarn "app-portage/eix[meson strong-optimization]' might fail to"
+		ewarn "emerge (link) without the linker lto plugin."
+		ewarn "To establish this plugin, execute as root something like"
+		ewarn "	mkdir -p /usr/*/binutils-bin/lib/bfd-plugins"
+		ewarn "	cd /usr/*/binutils-bin/lib/bfd-plugins"
+		ewarn "	ln -sfn /usr/libexec/gcc/*/*/liblto_plugin.so.*.*.* ."
+		ewarn "The * might have to be replaced by your architecture or gcc version"
 	fi
 }
 
