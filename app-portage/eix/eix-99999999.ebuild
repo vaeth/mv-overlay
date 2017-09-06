@@ -6,7 +6,7 @@ WANT_LIBTOOL=none
 AUTOTOOLS_AUTO_DEPEND=no
 MESON_AUTO_DEPEND=no
 PLOCALES="de ru"
-inherit autotools bash-completion-r1 l10n meson_optional tmpfiles
+inherit autotools bash-completion-r1 l10n meson_optional tmpfiles toolchain-funcs
 
 case ${PV} in
 99999999*)
@@ -45,6 +45,8 @@ DEPEND="${BOTHDEPEND}
 mesonflto() {
 	use meson && use strong-optimization || return 0
 	einfo "Checking whether compiler supports -flto and static archives"
+	local -x AR=$(tc-getAR)
+	local -x CXX=$(tc-getCXX)
 	bash contrib/meson-flto-test.sh && return
 	eerror "For app-portage/eix[meson strong-optimization] it is necessary"
 	eerror "that your compiler can access static archives with -flto."
