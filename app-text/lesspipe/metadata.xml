@@ -14,6 +14,7 @@
 	</upstream>
 	<use>
 		<flag name="antiword">Support doc files with app-text/antiword; this overrides catdoc</flag>
+		<flag name="brotli">Support brotli files; requires app-arch/brotli</flag>
 		<flag name="cabextract">Support cabextract files</flag>
 		<flag name="catdoc">Support doc files with app-text/catdoc; unused if antiword is set</flag>
 		<flag name="cpio">Support cpio files</flag>
@@ -33,6 +34,7 @@
 		<flag name="libplist">Support Apple Property List files</flag>
 		<flag name="links">Support html files with www-client/links; ignored if html2text is set; this overrides lynx, elinks, w3m</flag>
 		<flag name="lynx">Support html files with www-client/lynx; ignored if html2text or links is set; this overrides elinks, w3m</flag>
+		<flag name="lz4">Support lz4 files; requires app-arch/lz4</flag>
 		<flag name="lzip">Support lzip files</flag>
 		<flag name="mp3info">Support mp3 files with media-sound/mp3info; unused if id3v2 or mp3info2 is set</flag>
 		<flag name="mp3info2">Support mp3 files with dev-perl/MP3-Tag (mp3info2); ignored if id3v2 is set; this overrides mp3info</flag>
@@ -49,5 +51,6 @@
 		<flag name="unzip">Support zip files with app-arch/unzip</flag>
 		<flag name="w3m">Support html files with www-client/w3m; ignored if html2text, links, lynx, or elinks is set</flag>
 		<flag name="xlhtml">Support Excel and Powerpoint files with app-arch/xlhtml</flag>
+		<flag name="zstd">Support brotli files; requires app-arch/zstd</flag>
 	</use>
 </pkgmetadata>

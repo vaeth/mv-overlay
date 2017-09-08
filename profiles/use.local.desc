@@ -59,6 +59,7 @@ app-shells/schily-tools:system-star - Rely on app-arch/star for the match manpag
 app-shells/termcolors-mv:create - Install DIR_COLORS-create perl script
 app-shells/termcolors-mv:perl - Install 256colors perl script
 app-text/lesspipe:antiword - Support doc files with app-text/antiword; this overrides catdoc
+app-text/lesspipe:brotli - Support brotli files; requires app-arch/brotli
 app-text/lesspipe:cabextract - Support cabextract files
 app-text/lesspipe:catdoc - Support doc files with app-text/catdoc; unused if antiword is set
 app-text/lesspipe:cpio - Support cpio files
@@ -78,6 +79,7 @@ app-text/lesspipe:isoinfo - Support CD/DVD-iso files
 app-text/lesspipe:libplist - Support Apple Property List files
 app-text/lesspipe:links - Support html files with www-client/links; ignored if html2text is set; this overrides lynx, elinks, w3m
 app-text/lesspipe:lynx - Support html files with www-client/lynx; ignored if html2text or links is set; this overrides elinks, w3m
+app-text/lesspipe:lz4 - Support lz4 files; requires app-arch/lz4
 app-text/lesspipe:lzip - Support lzip files
 app-text/lesspipe:mp3info - Support mp3 files with media-sound/mp3info; unused if id3v2 or mp3info2 is set
 app-text/lesspipe:mp3info2 - Support mp3 files with dev-perl/MP3-Tag (mp3info2); ignored if id3v2 is set; this overrides mp3info
@@ -94,6 +96,7 @@ app-text/lesspipe:unrtf - Support rtf files with app-text/unrtf
 app-text/lesspipe:unzip - Support zip files with app-arch/unzip
 app-text/lesspipe:w3m - Support html files with www-client/w3m; ignored if html2text, links, lynx, or elinks is set
 app-text/lesspipe:xlhtml - Support Excel and Powerpoint files with app-arch/xlhtml
+app-text/lesspipe:zstd - Support brotli files; requires app-arch/zstd
 app-text/stardict:advertisement - Enable stardict advertisements plugin
 app-text/stardict:cal - Enable calendar support using cal program
 app-text/stardict:canberra - Use libcanberra for sound playing
