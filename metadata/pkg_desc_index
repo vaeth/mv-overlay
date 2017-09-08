@@ -2,7 +2,7 @@ app-accessibility/gespeaker 0.8.6-r2 0.8.6_p0: A GTK+ frontend for espeak
 app-admin/checksec 1.7.5 99999999: Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)
 app-admin/flexlm 9.5-r2: Macrovision FLEXlm license manager and utils
 app-admin/sudox 9.0.1: wrapper for sudo which can pass X authority data and deal with screen and tmux
-app-arch/archwrap 5.2: A collection of POSIX shell scripts to invoke archiver programs
+app-arch/archwrap 6.0: A collection of POSIX shell scripts to invoke archiver programs
 app-arch/bzwc 4.0: A POSIX shell wrapper for wc, supporting compressed files (xz, lzma, bz2, gz)
 app-arch/paq8l 20070308: Open source file compressor and archiver
 app-dicts/ispell-de 20161207: German and Swiss dictionaries for ispell
