@@ -83,7 +83,7 @@ net-dialup/martian-modem 20100123-r2: ltmodem alternative driver providing suppo
 net-dialup/wvdial 1.61: Excellent program to automatically configure PPP sessions
 net-dns/host 20070128-r1: A powerful command-line DNS query and test tool
 net-dns/noip-updater 2.1.9-r4: no-ip.com dynamic DNS updater
-net-firewall/firewall-mv 12.0: Initialize iptables and net-related sysctl variables
+net-firewall/firewall-mv 13.0: Initialize iptables and net-related sysctl variables
 net-libs/wvstreams 4.6.1-r3: A network programming library in C++
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
 net-misc/sshstart 3.00: Start ssh-agent/ssh-add only if you really use ssh or friends
