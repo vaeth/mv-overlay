@@ -112,7 +112,7 @@ www-client/palemoon 27: This is only a dummy ebuild. Use e.g. octopus or palemoo
 www-client/palemoon-bin 27: This is only a dummy ebuild. Use e.g. palemoon overlay
 www-plugins/bookmark-deduplicator 1.3.1: Firefox plugin: Deduplicate your bookmarks
 www-plugins/bookmark-duplicate-cleaner 0.2: Firefox plugin: Remove duplicate bookmarks
-www-plugins/classic-theme-restorer 1.6.9.1: Firefox plugin: restore partially the functionality of non-broken firefox
+www-plugins/classic-theme-restorer 1.7.0: Firefox plugin: restore partially the functionality of non-broken firefox
 www-plugins/duckduckgo 1.1.22: Firefox plugin: enable duckduckgo search engine
 www-plugins/epubreader 1.5.0.12 2.0.5: Firefox plugin for ebook (.epub) files
 www-plugins/form-history-control 1.4.0.6: Edit the saved history of forms in mozilla
