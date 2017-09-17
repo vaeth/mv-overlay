@@ -17,7 +17,7 @@
 # @CODE
 # inherit moz
 #
-# MOZ="firefox palemoon seamonkey"
+# MOZ="<firefox-57 palemoon seamonkey"
 # DEPEND=${MOZ_DEPEND}
 # RDEPEND=$(moz_rdepend ${MOZ})
 # IUSE=$(moz_iuse ${MOZ})
@@ -106,61 +106,125 @@ moz_install$quoteargs
 # This is an eclass-generated depend expression needed for moz_unpack to work
 MOZ_DEPEND='app-arch/unzip'
 
-# @FUNCTION: moz_atom
+# @FUNCTION: moz_split_browser
 # @USAGE: <browser>
 # @DESCRIPTION:
+# browser is one of [operator](firefox|palemoon|seamonkey)[-source|-bin][*].
+# The function outputs the "browser[-source|-bin]" part
+moz_split_browser() {
+	local browser
+	for browser in firefox palemoon seamonkey
+	do	case ${1} in
+		*"${browser}"?source*)
+			echo "${browser}-source"
+			return;;
+		*"${browser}"?bin*)
+			echo "${browser}-bin"
+			return;;
+		*"${browser}"*)
+			echo "${browser}"
+			return;;
+		esac
+	done
+	die "args must be [operator](firefox|palemoon|seamonkey)[-source|-bin][*]"
+}
+
+# @FUNCTION: moz_split_operator
+# @USAGE: <browser>
+# @DESCRIPTION:
+# browser is one of [operator](firefox|palemoon|seamonkey)[-source|-bin][*].
+# The function outputs the "[operator]" part
+moz_split_operator() {
+	local browser operator
+	for browser in firefox palemoon seamonkey
+	do	case ${1} in
+		*"${browser}"*)
+			operator=${1%%"${browser}"*}
+			echo "${operator}"
+			return;;
+		esac
+	done
+	die "args must be [operator](firefox|palemoon|seamonkey)[-source|-bin][*]"
+}
+
+# @FUNCTION: moz_split_rest
+# @USAGE: <browser>
+# @DESCRIPTION:
+# browser is one of [operator](firefox|palemoon|seamonkey)[-source|-bin][*].
+# The function outputs the "[*]" part
+moz_split_rest() {
+	local front rest
+	for front in source bin firefox palemoon seamonkey
+	do	case ${1} in
+		*"${front}"*)
+			rest=${1#*"${front}"}
+			echo "${rest}"
+			return;;
+		esac
+	done
+	die "args must be [operator](firefox|palemoon|seamonkey)[-source|-bin][*]"
+}
+
+# @FUNCTION: moz_atom
+# @USAGE: <browser> <operator> <rest>
+# @DESCRIPTION:
 # Prints the atom/subexpression used in RDEPEND for the corresponding browser,
-# e.g. www-client/firefox-bin
+# e.g. [operator]www-client/firefox-bin[rest]
 # browser is one of (firefox|palemoon|seamonkey)(-source|-bin)
-# If nothing is printed, the output of "moz_atom_default <browser>" is used.
+# If nothing is printed, the output of
+# "moz_atom_default <browser> <operator> <rest>"
+# is used (see below).
 # moz_atom is meant to be defined by the ebuild if non-defaults are used.
 # @DEFAULT_UNSET
 
 # @FUNCTION: moz_atom_default
-# @USAGE: <browser>
+# @USAGE: <browser> <operator> <rest>
 # @DESCRIPTION:
 # Prints the atom/subexpression used in RDEPEND for the corresponding browser,
 # when moz_atom is not defined or prints nothing.
-# brower is one of (firefox|palemoon|seamonkey)(-source|-bin)
+# browser is one of (firefox|palemoon|seamonkey)(-source|-bin).
 moz_atom_default() {
-	echo "www-client/${1%-source}"
+	echo "${2}www-client/${1%?source}${3}"
 }
 
 # @FUNCTION: moz_rdepend
 # @USAGE: [<browser>] [<browser>] [...]
 # @DESCRIPTION:
 # Outputs RDEPEND expression appropriate for browsers.
-# browser is (firefox|palemoon|seamonkey)[-source|-bin] (no specified = all)
+# browser is one of [operator](firefox|palemoon|seamonkey)[-source|-bin][*]
+# (none specified = all browsers)
 # Note that moz_rdepend_atom (if defined by the ebuild) is used to calculate
 # the expression.
 moz_rdepend() {
-	local rdep browser count modes mode atom useflag
+	local arg rdep browser count modes mode atom useflag operator rest
 	[ ${#} -ne 0 ] || set -- firefox palemoon seamonkey
 	count=
 	rdep=
-	for browser in firefox palemoon seamonkey
-	do	modes=
-		case ${*} in
-		*"${browser}"?source*)
+	for arg
+	do	browser=`moz_split_browser "${arg}"`
+		operator=`moz_split_operator "${arg}"`
+		rest=`moz_split_rest "${arg}"`
+		modes="source bin"
+		case ${browser} in
+		*source*)
+			browser=${browser%?source*}
 			modes=source;;
-		*"${browser}"?bin*)
+		*bin*)
+			browser=${browser%?bin*}
 			modes=bin;;
-		*"${browser}"*)
-			modes="source bin";;
 		esac
 		for mode in $modes
 		do	atom=
 			[ "$(type -t moz_atom)" != "function" ] || \
-				atom=`moz_atom "${browser}-${mode}"`
+				atom=`moz_atom "${browser}-${mode}" "${operator}" "${rest}"`
 			[ -n "$atom" ] || \
-				atom=`moz_atom_default "${browser}-${mode}"`
+				atom=`moz_atom_default "${browser}-${mode}" "${operator}" "${rest}"`
 			useflag=browser_${browser}
 			[ "$mode" = "source" ] || useflag=${useflag}-${mode}
 			rdep=${rdep}${rdep:+\ }"${useflag}? ( ${atom} )"
 			count=${count}a
 		done
 	done
-	[ -n "${count}" ] || die "args must be (firefox|palemoon|seamonkey)[-source|-bin]"
 	[ "${count}" = a ] && echo "${rdep}" || echo "|| ( ${rdep} )"
 }
 
@@ -168,7 +232,8 @@ moz_rdepend() {
 # @USAGE: [-c|-C|-n] [--] [<browser>] [<browser>] [...]
 # @DESCRIPTION:
 # Outputs IUSE expression appropriate for browsers.
-# browser is (firefox|palemoon|seamonkey)[-source|-bin] (no specified = all).
+# browser is [opertator](firefox|palemoon|seamonkey)[-source|-bin][*]
+# (none specified = all browsers).
 # If option -C or -n is specified, IUSE=compressed is not default/added.
 moz_iuse() {
 	local iuse i opt
@@ -193,7 +258,7 @@ moz_iuse() {
 			iuse=${iuse}${iuse:+\ }"browser_${i} browser_${i}-bin";;
 		esac
 	done
-	[ -n "${iuse}" ] || die "args must be (firefox|palemoon|seamonkey)[-source|-bin]"
+	[ -n "${iuse}" ] || die "args must be [operator](firefox|palemoon|seamonkey)[-source|-bin][*]"
 	echo "${iuse}"
 }
 
@@ -201,7 +266,8 @@ moz_iuse() {
 # @USAGE: [<browser>] [<browser>] [...]
 # @DESCRIPTION:
 # Outputs REQUIRED_USE expression appropriate for browsers.
-# browser is (firefox|palemoon|seamonkey)[-source|-bin] (no specified means all)
+# browser is [operator](firefox|palemoon|seamonkey)[-source|-bin][*]
+# (none specified = all browsers).
 moz_required_use() {
 	set -- $(moz_iuse -n "${@}")
 	[ ${#} -lt 2 ] && echo "${*}" || echo "|| ( ${*} )"
@@ -338,7 +404,8 @@ moz_install_to_dir() {
 # @FUNCTION: moz_install_for_browser
 # @USAGE: [-n] [-i id] [--] <browser> <dir> <dir> [...]
 # @DESCRIPTION:
-# Installs dirs.xpi for browser ({firefox,palemoon,seymonkey}{,-bin}).
+# Installs dirs.xpi for browser.
+# browser is [operator](firefox|palemoon|seymonkey)[-source|-bin][*]
 # Arguments which are not directories are silently ignored.
 # If arguments are specified, they must contain at least one directory.
 # If no argument is specified, all directories from "${S}" are considered.
@@ -361,18 +428,18 @@ moz_install_for_browser() {
 	palemoon="palemoon/browser/extensions"
 	seamonkey="seamonkey/extensions"
 	case ${1} in
-	firefox)
-		dest="/usr/$(get_libdir)/${firefox}";;
-	firefox?bin)
+	*firefox*bin*)
 		dest="/opt/${firefox}";;
-	palemoon)
-		dest="/usr/$(get_libdir)/${palemoon}";;
-	palemoon?bin)
+	*firefox*)
+		dest="/usr/$(get_libdir)/${firefox}";;
+	*palemoon?bin*)
 		dest="/opt/${palemoon}";;
-	seamonkey)
-		dest="/usr/$(get_libdir)/${seamonkey}";;
-	seamonkey?bin)
+	*palemoon*)
+		dest="/usr/$(get_libdir)/${palemoon}";;
+	*seamonkey?bin*)
 		dest="/opt/${seamonkey}";;
+	*seamonkey*)
+		dest="/usr/$(get_libdir)/${seamonkey}";;
 	*)
 		die "unknown browser specified";;
 	esac

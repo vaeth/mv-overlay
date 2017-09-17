@@ -6,7 +6,7 @@ inherit mv_mozextension-r1
 RESTRICT="mirror"
 
 mPN="${PN//-/_}-${PV}"
-DESCRIPTION="Firefox plugin: restore partially the functionality of non-broken firefox"
+DESCRIPTION="<firefox-57 add-on: restore partially the look of classical firefox"
 HOMEPAGE="https://addons.mozilla.org/de/firefox/addon/classicthemerestorer/"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/472577/${mPN}-fx.xpi"
 
@@ -15,4 +15,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-moz_defaults firefox
+moz_defaults '<firefox-57'

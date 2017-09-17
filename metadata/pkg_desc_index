@@ -110,20 +110,20 @@ sys-process/systemd-cron 1.5.4 1.5.10: systemd units to create timers for cron d
 virtual/freedesktop-icon-theme 0-r2: A virtual to choose between different icon themes
 www-client/palemoon 27: This is only a dummy ebuild. Use e.g. octopus or palemoon overlay
 www-client/palemoon-bin 27: This is only a dummy ebuild. Use e.g. palemoon overlay
-www-plugins/bookmark-deduplicator 1.3.1: Firefox plugin: Deduplicate your bookmarks
-www-plugins/bookmark-duplicate-cleaner 0.2: Firefox plugin: Remove duplicate bookmarks
-www-plugins/classic-theme-restorer 1.7.0: Firefox plugin: restore partially the functionality of non-broken firefox
-www-plugins/duckduckgo 1.1.22: Firefox plugin: enable duckduckgo search engine
-www-plugins/epubreader 1.5.0.12 2.0.5: Firefox plugin for ebook (.epub) files
-www-plugins/form-history-control 1.4.0.6: Edit the saved history of forms in mozilla
+www-plugins/bookmark-deduplicator 1.3.1-r1: <firefox-57 add-on: deduplicate your bookmarks
+www-plugins/bookmark-duplicate-cleaner 0.2-r1: <firefox-57 add-on: remove duplicate bookmarks
+www-plugins/classic-theme-restorer 1.7.0-r1: <firefox-57 add-on: restore partially the look of classical firefox
+www-plugins/duckduckgo 1.1.23: <firefox-57 add-on: enable duckduckgo search engine
+www-plugins/epubreader 1.5.0.12-r1 2.0.5-r1: Firefox webextension: read ebook (.epub) files
+www-plugins/form-history-control 1.4.0.6-r1: <firefox-57 add-on: edit the saved history of forms
 www-plugins/google-translation 2.6: Firefox webextension: translate to your native language a selected text
-www-plugins/locale-switcher 3-r1: Firefox plugin: button to switch GUI locale
+www-plugins/locale-switcher 3-r2: <firefox-57 add-on: button to switch GUI locale
 www-plugins/no-color 0.9: Firefox webextension: remove colors and background images from the page
-www-plugins/noscript 2.9.0.14 5.0.10: Mozilla plugin: Restrict active contents like java/javascript/flash
-www-plugins/requestpolicy 0.5.28-r1: Mozilla plugin: controll cross-site requests (increases privacy/security)
-www-plugins/stylus 1.1.4.1: Firefox plugin: Install themes and skins for many popular sites
+www-plugins/noscript 2.9.0.14-r1 5.0.10-r1: <firefox-57 add-on: restrict active contents like java/javascript/flash
+www-plugins/requestpolicy 0.5.28-r2: <firefox-57 add-on: control cross-site requests (increases privacy/security)
+www-plugins/stylus 1.1.4.1-r1: Firefox webextension: install themes and skins for many popular sites
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
-www-plugins/xclear 1.8.2: Firefox plugin: button to clear URL
+www-plugins/xclear 1.8.2-r1: <firefox-57 add-on: button to clear URL
 x11-drivers/nvidia-drivers 173.14.39-r2: NVIDIA Accelerated Graphics Driver
 x11-libs/gtk+ 2.24.31-r1 3.22.16 3.22.19: Gimp ToolKit +
 x11-libs/motif 2.3.6-r1: The Motif user interface component toolkit

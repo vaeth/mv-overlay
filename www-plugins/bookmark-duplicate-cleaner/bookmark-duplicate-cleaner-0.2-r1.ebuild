@@ -8,7 +8,7 @@ RESTRICT="mirror"
 MY_P="${P/-/_}"
 MY_P="${MY_P/-/_}"
 NAME="${MY_P}-fx.xpi"
-DESCRIPTION="Firefox plugin: Remove duplicate bookmarks"
+DESCRIPTION="<firefox-57 add-on: remove duplicate bookmarks"
 HOMEPAGE="https://addons.mozilla.org/de/firefox/addon/bookmark-duplicate-cleaner/"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/416156/${NAME}"
 
@@ -17,4 +17,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-moz_defaults firefox palemoon
+moz_defaults '<firefox-57' palemoon

@@ -5,7 +5,7 @@ EAPI=6
 inherit mv_mozextension-r1
 RESTRICT="mirror"
 
-DESCRIPTION="Firefox plugin: button to clear URL"
+DESCRIPTION="<firefox-57 add-on: button to clear URL"
 HOMEPAGE="http://addons.mozilla.org/firefox/addon/xclear/"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/13078/${P}-fx+sm.xpi"
 
@@ -14,4 +14,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-moz_defaults
+moz_defaults '<firefox-57' palemoon seamonkey

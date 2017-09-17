@@ -5,7 +5,7 @@ EAPI=6
 inherit mv_mozextension-r1 readme.gentoo-r1
 RESTRICT="mirror"
 
-DESCRIPTION="Firefox plugin: Install themes and skins for many popular sites"
+DESCRIPTION="Firefox webextension: install themes and skins for many popular sites"
 HOMEPAGE="https://addons.mozilla.org/en-US/firefox/addon/styl-us/"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/814814/${PN}_beta-${PV}-an+fx.xpi"
 

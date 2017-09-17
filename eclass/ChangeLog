@@ -65,3 +65,6 @@
 
   26 Jul 2017; Martin Väth <martin@mvath.de>:
   Reflect changes in documentation of meson_optional.eclass
+
+  17 Sep 2017; Martin Väth <martin@mvath.de>:
+  Support version specification in mv_mozextension-r1.eclass

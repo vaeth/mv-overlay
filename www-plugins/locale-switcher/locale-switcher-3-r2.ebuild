@@ -7,7 +7,7 @@ RESTRICT="mirror"
 
 MY_P="${P/-/_}"
 NAME="${MY_P}-fx.xpi"
-DESCRIPTION="Firefox plugin: button to switch GUI locale"
+DESCRIPTION="<firefox-57 add-on: button to switch GUI locale"
 HOMEPAGE="http://addons.mozilla.org/firefox/addon/locale-switcher/"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/356/${NAME}"
 
@@ -16,4 +16,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-moz_defaults
+moz_defaults '<firefox-57' palemoon seamonkey

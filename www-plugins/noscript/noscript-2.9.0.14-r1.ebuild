@@ -5,7 +5,7 @@ EAPI=6
 inherit mv_mozextension-r1
 RESTRICT="mirror"
 
-DESCRIPTION="Mozilla plugin: Restrict active contents like java/javascript/flash"
+DESCRIPTION="<firefox-57 add-on: restrict active contents like java/javascript/flash"
 HOMEPAGE="http://noscript.net/"
 SRC_URI="https://secure.informaction.com/download/releases/${P}.xpi
 https://addons.cdn.mozilla.net/user-media/addons/722/noscript_security_suite-${PV}-fx+fn+sm.xpi -> ${P}.xpi"
@@ -15,9 +15,4 @@ SLOT="palemoon26"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-moz_defaults palemoon
-
-DEPEND="${DEPEND}
-	browser_palemoon? ( !${CATEGORY}/${PN}:0[browser_palemoon] )
-	browser_palemoon-bin? ( !${CATEGORY}/${PN}:0[browser_palemoon-bin] )
-"
+moz_defaults '<palemoon-27'
