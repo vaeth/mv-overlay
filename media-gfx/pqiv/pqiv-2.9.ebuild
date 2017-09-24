@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/phillipberndt/pqiv http://www.pberndt.com/Programme
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="archive ffmpeg gtk2 imagemagick kernel_linux libav pdf postscript"
+IUSE="archive ffmpeg gtk2 imagemagick kernel_linux libav pdf postscript webp"
 
 RDEPEND="
 	>=dev-libs/glib-2.8:2
@@ -27,9 +27,15 @@ RDEPEND="
 	imagemagick? ( media-gfx/imagemagick:0= )
 	pdf? ( app-text/poppler:0= )
 	postscript? ( app-text/libspectre:0= )
+	webp? ( media-libs/libwebp:0= )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+doecho() {
+	echo "$@"
+	"$@" || die
+}
 
 pkg_setup() {
 	if use kernel_linux; then
@@ -41,20 +47,20 @@ pkg_setup() {
 src_configure() {
 	local backends="gdkpixbuf" gtkver=3
 	! use gtk2 || gtkver=2
-	use archive && backends="${backends},archive,archive_cbx"
-	use ffmpeg || use libav && backends="${backends},libav"
-	use imagemagick && backends="${backends},wand"
-	use pdf && backends="${backends},poppler"
-	use postscript && backends="${backends},spectre"
+	use archive && backends+=",archive,archive_cbx"
+	use ffmpeg || use libav && backends+=",libav"
+	use imagemagick && backends+=",wand"
+	use pdf && backends+=",poppler"
+	use postscript && backends+=",spectre"
+	use webp && backends+=",webp"
 
-	./configure \
+	doecho ./configure \
 		--gtk-version=${gtkver} \
 		--backends-build=shared \
 		--backends=${backends} \
 		--prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
-		--destdir="${ED}" \
-		|| die
+		--destdir="${ED}"
 }
 
 src_compile() {
