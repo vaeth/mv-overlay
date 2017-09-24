@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}"
+RDEPEND+=" !!<app-arch/archwrap-8"
 
 IUSE="doc python static-libs test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

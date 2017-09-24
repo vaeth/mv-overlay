@@ -12,8 +12,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RDEPEND=">=app-shells/push-2.0-r2
-	!<app-arch/brotli-1"
+RDEPEND=">=app-shells/push-2.0-r2"
 DEPEND=""
 
 src_prepare() {
