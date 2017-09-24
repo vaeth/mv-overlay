@@ -22,7 +22,7 @@ case ${PV} in
 	KEYWORDS="";;
 *alpha*)
 	RESTRICT="mirror"
-	EGIT_COMMIT="3c6b20973bd88e627ada262877bffc2c05763cac"
+	EGIT_COMMIT="c6ade84e8015f2c43e478bc8fc069c39820ffb92"
 	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 esac
@@ -54,7 +54,7 @@ BOTH_DEPEND="sys-apps/file
 	app-arch/bzip2
 	dev-lang/perl
 	brotli? ( !alpha? ( !arm? ( !hppa? ( !ia64? ( !ppc? ( !ppc64?
-		( !sparc? ( app-arch/brotli ) ) ) ) ) ) ) )
+		( !sparc? ( >=app-arch/brotli-1 ) ) ) ) ) ) ) )
 	lz4? ( app-arch/lz4 )
 	zstd? ( !alpha? ( !hppa? ( !ia64? ( !sparc? ( app-arch/zstd ) ) ) ) )
 	unzip? ( app-arch/unzip )
