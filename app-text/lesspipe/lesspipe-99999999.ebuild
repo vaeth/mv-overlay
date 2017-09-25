@@ -13,16 +13,15 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 
 case ${PV} in
 9999*)
-	#EGIT_REPO_URI="https://github.com/wofr06/${PN}.git"
+	EGIT_REPO_URI="https://github.com/wofr06/${PN}.git"
 	#EGIT_BRANCH="master"
-	EGIT_REPO_URI="https://github.com/vaeth/${PN}.git"
 	EGIT_BRANCH="lesspipe"
 	inherit git-r3
 	SRC_URI=""
 	KEYWORDS="";;
 *alpha*)
 	RESTRICT="mirror"
-	EGIT_COMMIT="c6ade84e8015f2c43e478bc8fc069c39820ffb92"
+	EGIT_COMMIT="ec53ace944db4777e8e0f24e520b26c7cac48dc2"
 	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 esac
