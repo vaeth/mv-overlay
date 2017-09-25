@@ -7,7 +7,7 @@ RESTRICT="mirror"
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 DISTUTILS_OPTIONAL="1"
 
-inherit cmake-utils distutils-r1
+inherit cmake-utils distutils-r1 flag-o-matic
 
 DESCRIPTION="Generic-purpose lossless compression algorithm"
 HOMEPAGE="https://github.com/google/brotli"
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}"
-RDEPEND+=" !!<app-arch/archwrap-8"
+RDEPEND+=" !<app-arch/archwrap-8"
 
 IUSE="doc python static-libs test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -41,7 +41,10 @@ src_configure() {
 		-DBUILD_TESTING="$(usex test)"
 	)
 	cmake-utils_src_configure
-	use python && distutils-r1_src_configure
+	if use python ; then
+		filter-flags -fPIE -pie
+		distutils-r1_src_configure
+	fi
 }
 
 src_compile() {
