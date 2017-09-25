@@ -15,6 +15,11 @@ app-portage/eix:strong-optimization - Adds several more agressive CXXFLAGS/LDFLA
 app-portage/eix:strong-security - Add many checks to prevent exploits if eix code has a bug. This will slow down eix considerably. Use only if you are paranoid or have reasons to suspect a bug.
 app-portage/eix:swap-remote - Swap role of remote addresses in eix-remote, making the data from gpo.zugaina.org the first choice.
 app-portage/eix:tools - Create separate binary for script helper tools; useful if they are called extremely often
+app-portage/portage-bashrc-mv:ccache - Install a script for CCACHE_* variable support. This requires dev-util/ccache
+app-portage/portage-bashrc-mv:cflags - Install a script for /etc/portage/package.cflags support. Requires app-portage/eix for fast parsing
+app-portage/portage-bashrc-mv:localepurge - Install a script to remove unneeded locales. Requires the config files of app-admin/localepurge
+app-portage/portage-bashrc-mv:remove-la - Install a script to remove unneeded .ls files
+app-portage/portage-bashrc-mv:title - Install a script to display the expected merge time. Requires app-portage/portage-utils and app-shells/runtitle
 app-portage/portage-postsyncd-mv:portage-utils - Make /etc/portage/repo.postsync.d/q-reinit from app-portage/portage-utils non-executable and install a hack in /etc/portage/env/app-portage/portage-utils so that it stays so
 app-shells/auto-fu-zsh:compile - Byte-compile to speed up. Do not use this if you are cross-compiling
 app-shells/dash:vanilla - Let echo escapes and -n work as decided by upstream

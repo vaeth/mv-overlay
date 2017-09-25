@@ -13,4 +13,11 @@
 		<bugs-to>mailto:martin@mvath.de</bugs-to>
 		<remote-id type="github">vaeth/portage-bashrc-mv</remote-id>
 	</upstream>
+	<use>
+		<flag name="ccache">Install a script for CCACHE_* variable support. This requires dev-util/ccache</flag>
+		<flag name="cflags">Install a script for /etc/portage/package.cflags support. Requires app-portage/eix for fast parsing</flag>
+		<flag name="localepurge">Install a script to remove unneeded locales. Requires the config files of app-admin/localepurge</flag>
+		<flag name="remove-la">Install a script to remove unneeded .ls files</flag>
+		<flag name="title">Install a script to display the expected merge time. Requires app-portage/portage-utils and app-shells/runtitle</flag>
+	</use>
 </pkgmetadata>
