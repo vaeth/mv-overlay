@@ -123,7 +123,7 @@ www-plugins/locale-switcher 3-r2: <firefox-57 add-on: button to switch GUI local
 www-plugins/no-color 0.9: Firefox webextension: remove colors and background images from the page
 www-plugins/noscript 2.9.0.14-r1 5.0.10-r1: <firefox-57 add-on: restrict active contents like java/javascript/flash
 www-plugins/requestpolicy 0.5.28-r2: <firefox-57 add-on: control cross-site requests (increases privacy/security)
-www-plugins/stylus 1.1.4.1-r1: Firefox webextension: install themes and skins for many popular sites
+www-plugins/stylus 1.1.4.2: Firefox webextension: install themes and skins for many popular sites
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
 www-plugins/xclear 1.8.2-r1: <firefox-57 add-on: button to clear URL
 x11-drivers/nvidia-drivers 173.14.39-r2: NVIDIA Accelerated Graphics Driver
