@@ -79,7 +79,7 @@ media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
 media-tv/sundtek-tv 170830.143825: Sundtek MediaTV Pro III Drivers
 media-video/avidemux 2.6.20 2.7.0-r1: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15_p1: Utility for displaying AVI information
-media-video/video-mv 11.1: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
+media-video/video-mv 12.0: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
 net-dialup/accounting 1.60.45.3.1: Give statistics about dialup connections. Originally part of SuSE's smpppd
 net-dialup/martian-modem 20100123-r2: ltmodem alternative driver providing support for Agere Systems winmodems
 net-dialup/wvdial 1.61: Excellent program to automatically configure PPP sessions
