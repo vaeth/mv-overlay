@@ -63,6 +63,7 @@ app-shells/schily-tools:system-libschily - Rely on app-cdr/cdrtools for providin
 app-shells/schily-tools:system-star - Rely on app-arch/star for the match manpage
 app-shells/termcolors-mv:create - Install DIR_COLORS-create perl script
 app-shells/termcolors-mv:perl - Install 256colors perl script
+app-shells/termcolors-mv:poor - Install poor man's variant which does not require coreutils-8.25 or newer
 app-text/lesspipe:antiword - Support doc files with app-text/antiword; this overrides catdoc
 app-text/lesspipe:brotli - Support brotli files; requires app-arch/brotli
 app-text/lesspipe:cabextract - Support cabextract files

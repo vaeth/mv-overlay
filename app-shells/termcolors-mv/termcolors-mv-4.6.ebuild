@@ -12,9 +12,10 @@ SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="create +perl"
+IUSE="create +perl poor"
 DEPEND="dev-lang/perl"
 RDEPEND="create? ( dev-lang/perl )
+!poor? ( >=sys-apps/coreutils-8.25 )
 perl? ( dev-lang/perl )"
 
 DISABLE_AUTOFORMATTING="true"
@@ -33,7 +34,7 @@ src_prepare() {
 }
 
 src_compile() {
-	perl bin/DIR_COLORS-create
+	perl bin/DIR_COLORS-create $(usex poor poor '')
 }
 
 src_install() {
