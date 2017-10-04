@@ -1,0 +1,14 @@
+Martin Väth <martin@mvath.de>:
+It seems that for DVB-T2 the plp_id always has to be 0.
+At least, this value seems to be correct for a Sundtek TV card in Rostock.
+--- 1/descriptors.c
++++ 1/descriptors.c
+@@ -1013,7 +1013,7 @@
+                                                                                                      // descriptor_tag               8 uimsbf
+   descriptor_length = buf[1];                                                                        // descriptor_length            8 uimsbf
+ //descriptor_tag_extension = buf[2];                                                                 // descriptor_tag_extension     8 uimsbf
+-  t->plp_id = buf[3];                                                                                // plp_id                       8 uimsbf;  uniquely identifies the PLP carrying this TS within the T2 system.
++  t->plp_id = 0;//buf[3];                                                                            // plp_id                       8 uimsbf;  uniquely identifies the PLP carrying this TS within the T2 system.
+   t->system_id = get_u16(buf + 4);                                                                   // T2_system_id                 16 uimsbf; uniquely identifies the T2 system within the network, two T2 systems with same T2_system_id && network_id ire identical, except that cell_id may differ..
+   if ((t->extended_info = (descriptor_length > 4))) {                                                // has extension
+      switch (buf[6] >> 6) {                                                                          // SISO/MISO 2 bslbf (Multiple-Input Single-Output)

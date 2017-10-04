@@ -2,6 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>hd_brummy@gentoo.org</email>
+		<email>martin@mvath.de</email>
+		<name>Martin Väth</name>
 	</maintainer>
+	<use>
+		<flag name="plp-id-zero">Apply experimental patch to force plp_id to 0 for DVB-T2. Seems to be necessary at least with some tuners in some regions</flag>
+	</use>
 </pkgmetadata>

@@ -10,10 +10,15 @@ SRC_URI="http://wirbel.htpc-forum.de/w_scan/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc examples"
+IUSE="doc examples +plp-id-zero"
 
 DEPEND=">=virtual/linuxtv-dvb-headers-5.8"
 RDEPEND=""
+
+src_prepare() {
+	use plp-id-zero && eapply "${FILESDIR}"/plp_id.patch
+	default
+}
 
 src_install() {
 	emake DESTDIR="${ED}" install
