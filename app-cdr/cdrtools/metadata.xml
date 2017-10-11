@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>martin@mvath.de</email>
+		<name>Martin Väth</name>
+		<description>maintainer of the updates in the mv overlay</description>
+	</maintainer>
+	<maintainer type="person">
+		<email>billie@gentoo.org</email>
+		<name>Daniel Pielmeier</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>joerg.schilling@fokus.fraunhofer.de</email>
+			<name>Jörg Schilling</name>
+		</maintainer>
+		<remote-id type="sourceforge">cdrtools</remote-id>
+	</upstream>
+	<use>
+		<flag name="schily-tools">Use libschily from app-shells/schily-tools</flag>
+	</use>
+	<longdescription>CD and DVD command line recording and ripping tools.</longdescription>
+</pkgmetadata>

@@ -3,6 +3,7 @@
 # * generated automatically using egencache *
 
 app-admin/checksec:update - Support self-update functionality outside of the package-manager
+app-cdr/cdrtools:schily-tools - Use libschily from app-shells/schily-tools
 app-portage/eix:debug - Build with upstream's CXXFLAGS/LDFLAGS for debugging support; not recommended for normal use.
 app-portage/eix:dep - Make DEP=true the default which enables support for {,R,P}DEPEND but requires roughly double disk and memory.
 app-portage/eix:doc - Create description of the eix cache file additionally in html format
@@ -27,6 +28,7 @@ app-shells/schily-tools:renameschily_calc - Rename calc to scalc for compatibili
 app-shells/schily-tools:renameschily_compare - Rename compare to scompare for compatibility with imagemagick
 app-shells/schily-tools:renameschily_count - Rename count to scount for compatibility with sys-devel/llvm
 app-shells/schily-tools:renameschily_jsh - Rename jsh to sjsh for compatibility with app-shells/heirloom-sh
+app-shells/schily-tools:renameschily_libschily - Rename some manpages from libschily for compatibility with sys-apps/man
 app-shells/schily-tools:renameschily_man2html - Rename man2html to sman2html for compatibility with sys-apps/man
 app-shells/schily-tools:renameschily_p - Rename p to sp for compatibility with dev-util/wiggle
 app-shells/schily-tools:schilytools_bosh - Install bosh, a shell which aims to be fully POSIX compatible

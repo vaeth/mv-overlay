@@ -11,6 +11,7 @@
 		<flag name="renameschily_count">Rename count to scount for compatibility with sys-devel/llvm</flag>
 		<flag name="renameschily_jsh">Rename jsh to sjsh for compatibility with app-shells/heirloom-sh</flag>
 		<flag name="renameschily_man2html">Rename man2html to sman2html for compatibility with sys-apps/man</flag>
+		<flag name="renameschily_libschily">Rename some manpages from libschily for compatibility with sys-apps/man</flag>
 		<flag name="renameschily_p">Rename p to sp for compatibility with dev-util/wiggle</flag>
 		<flag name="schilytools_bosh">Install bosh, a shell which aims to be fully POSIX compatible</flag>
 		<flag name="schilytools_calc">Install calc, a bc clone</flag>
