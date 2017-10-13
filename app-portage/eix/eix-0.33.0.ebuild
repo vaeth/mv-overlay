@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-RESTRICT="mirror"
 PLOCALES="de ru"
 inherit bash-completion-r1 l10n meson_optional tmpfiles
 

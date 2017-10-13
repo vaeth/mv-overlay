@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-DESCRIPTION="Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies and modulations"
+RESTRICT="mirror"
+DESCRIPTION="Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies"
 HOMEPAGE="http://wirbel.htpc-forum.de/w_scan/index2.html"
 SRC_URI="http://wirbel.htpc-forum.de/w_scan/${P}.tar.bz2"
 

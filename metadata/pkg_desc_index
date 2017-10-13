@@ -78,7 +78,7 @@ media-libs/avidemux-core 2.6.20-r1 2.7.0: Core libraries for media-video/avidemu
 media-libs/avidemux-plugins 2.6.20 2.7.0: Plugins for media-video/avidemux
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
 media-tv/sundtek-tv 171002.031615: Sundtek MediaTV Pro III Drivers
-media-tv/w_scan 20170107-r1: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies and modulations
+media-tv/w_scan 20170107-r1: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies
 media-video/avidemux 2.6.20 2.7.0-r1: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15_p1: Utility for displaying AVI information
 media-video/video-mv 12.0: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
@@ -95,7 +95,7 @@ net-print/foo2zjs 20160722: Support for printing to ZjStream-based printers
 sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
 sci-mathematics/reduce 20141130-r2: A general-purpose computer algebra system
 sys-apps/cpi 2.15: A wrapper for cp -i -a, making use of diff
-sys-apps/less 487-r1 520-r1: Excellent text file viewer, optionally with additional selection feature
+sys-apps/less 520-r1: Excellent text file viewer, optionally with additional selection feature
 sys-apps/openrc-wrapper 2.2: Use openrc init scripts with systemd or other init systems
 sys-apps/paxopen 1.2: A wrapper script to set PAX kernel variables to an insecure/safe state
 sys-apps/schedule 7.5.4: script to schedule jobs in a multiuser multitasking environment
@@ -112,8 +112,8 @@ sys-kernel/kernel 4.3: A POSIX shell script to compile the kernel with user perm
 sys-power/nut 2.7.4-r1: Network-UPS Tools
 sys-process/systemd-cron 1.5.4 1.5.10: systemd units to create timers for cron directories and crontab
 virtual/freedesktop-icon-theme 0-r2: A virtual to choose between different icon themes
-www-client/palemoon 27: This is only a dummy ebuild. Use e.g. octopus or palemoon overlay
-www-client/palemoon-bin 27: This is only a dummy ebuild. Use e.g. palemoon overlay
+www-client/palemoon 26 27: This is only a dummy ebuild. Use e.g. octopus or palemoon overlay
+www-client/palemoon-bin 26 27: This is only a dummy ebuild. Use e.g. palemoon overlay
 www-plugins/bookmark-deduplicator 1.3.1-r1: <firefox-57 add-on: deduplicate your bookmarks
 www-plugins/bookmark-duplicate-cleaner 0.2-r1: <firefox-57 add-on: remove duplicate bookmarks
 www-plugins/classic-theme-restorer 1.7.1: <firefox-57 add-on: restore partially the look of classical firefox

@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/schilytools/${MY_P}.tar.bz2"
 #mirror://sourceforge/schilytools/${MY_P}.patch"
 DESCRIPTION="Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell"
 HOMEPAGE="https://sourceforge.net/projects/schilytools/"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="acl caps doc static-libs system-libschily system-star xattr"
 REQUIRED_USE="!system-libschily"
 
