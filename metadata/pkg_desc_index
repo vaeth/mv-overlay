@@ -122,7 +122,7 @@ www-plugins/epubreader 1.5.0.12-r1 2.0.5-r1: Firefox webextension: read ebook (.
 www-plugins/form-history-control 1.4.0.6-r1: <firefox-57 add-on: edit the saved history of forms
 www-plugins/google-translation 2.6: Firefox webextension: translate to your native language a selected text
 www-plugins/locale-switcher 3-r2: <firefox-57 add-on: button to switch GUI locale
-www-plugins/no-color 0.9: Firefox webextension: remove colors and background images from the page
+www-plugins/no-color 0.9.1: Firefox webextension: remove colors and background images from the page
 www-plugins/noscript 2.9.0.14-r1 5.1.2: <firefox-57 add-on: restrict active contents like java/javascript/flash
 www-plugins/requestpolicy 0.5.28-r2: <firefox-57 add-on: control cross-site requests (increases privacy/security)
 www-plugins/stylus 1.1.4.2: Firefox webextension: install themes and skins for many popular sites

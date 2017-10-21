@@ -7,7 +7,7 @@ RESTRICT="mirror"
 
 DESCRIPTION="Firefox webextension: remove colors and background images from the page"
 HOMEPAGE="https://addons.mozilla.org/en-US/firefox/addon/no-color/"
-SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/5758/${PN//-/_}-${PV}-an+fx.xpi"
+SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/5758/${PN//-/_}-${PV}-an+fx-linux.xpi"
 
 LICENSE="MPL-1.1"
 SLOT="0"
