@@ -30,7 +30,7 @@ app-portage/find_cruft 4.0.0: find cruft files not managed by portage
 app-portage/gentoolkit 0.4.0-r1 9999: Collection of administration scripts for Gentoo
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
 app-portage/logclean 18.0.0: Keep only (compressed) logs of installed packages and cleanup emerge.log
-app-portage/portage-bashrc-mv 14.6: Provide support for /etc/portage/bashrc.d and /etc/portage/package.cflags
+app-portage/portage-bashrc-mv 14.7: Provide support for /etc/portage/bashrc.d and /etc/portage/package.cflags
 app-portage/portage-postsyncd-mv 6.0.1: postsync hooks for portage to sync from git
 app-portage/trickyfetch 8.19: Plugin for FETCHCOMMAND to help organize and cleanup your DISTDIR
 app-portage/useflags 4.1.3: Print or save the current USE-flag state and compare with older versions
