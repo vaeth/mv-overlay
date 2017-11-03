@@ -7,7 +7,7 @@ RESTRICT="mirror"
 
 MY_P="${P/-/_}"
 NAME="${MY_P}-fx.xpi"
-DESCRIPTION="Firefox webextension: translate the selected text with www.linguee.com"
+DESCRIPTION="Firefox webextension: display/remove duplicate bookmarks"
 HOMEPAGE="https://addons.mozilla.org/en-US/firefox/addon/bookmark-dupes/
 https://github.com/vaeth/bookmarkdupes/"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/870263/${NAME}"
