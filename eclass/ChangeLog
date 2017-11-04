@@ -68,3 +68,6 @@
 
   17 Sep 2017; Martin Väth <martin@mvath.de>:
   Support version specification in mv_mozextension-r1.eclass
+
+  04 Nov 2017; Martin Väth <martin@mvath.de>:
+  Support manifest.json in mv_mozextension-r1.eclass

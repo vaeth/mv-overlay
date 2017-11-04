@@ -327,8 +327,9 @@ moz_unpack() {
 		cd -- "${S}/${xpiname}" || die
 		if ${comp}
 		then	if ! ${id}
-			then	einfo "Extracting install.rdf for ${xpiname}"
-				unzip -qo -- "${archiv}" install.rdf || die
+			then	einfo "Extracting install.rdf/manifest.json for ${xpiname}"
+				unzip -qo -- "${archiv}" install.rdf manifest.json
+				# Do not die on failure: One of the two files will not exist
 			fi
 		else	einfo "Unpacking ${xpiname}"
 			unzip -qo -- "${archiv}" || die
@@ -338,21 +339,28 @@ moz_unpack() {
 }
 
 # @FUNCTION: moz_getid
-# @USAGE: <variable> [<path/to/[install.rdf]>]
+# @USAGE: <variable> [<path/to/[install.rdf,manifest.json]>]
 # @DESCRIPTION:
-# Extracts the package id from the install.rdf manifest
+# Extracts the package id from the install.rdf/manifest.json
 # and stores the result in the variable.
 moz_getid() {
-	local var res sub rdf
+	local var res sub dir file
 	[ ${#} -ne 0 ] || die "${FUNCNAME} needs at least one argument"
 	var=${1}
-	rdf=${2:-.}
-	rdf=${rdf%/}
-	! test -d "${rdf}" || rdf=${rdf}"/install.rdf"
-	test -f "${rdf}" || die "${rdf} is not an ordinary file"
-	sub='{ /\<\(em:\)*id\>/!d; s/.*[\">]\([^\"<>]*\)[\"<].*/\1/; p; q }'
-	res=$(sed -n -e '/install-manifest/,$ '"${sub}" -- "${rdf}") || res=
-	[ -n "${res}" ] || die "failed to determine id from ${rdf}"
+	dir=${2:-.}
+	dir=${dir%/}
+	test -d "${dir}" || die "moz_getid: argument must be a directory"
+	file=${dir}/install.rdf
+	if test -f "${file}"
+	then	sub='{ /\<\(em:\)*id\>/!d; s/.*[\">]\([^\"<>]*\)[\"<].*/\1/; p; q }'
+		res=$(sed -n -e '/install-manifest/,$ '"${sub}" -- "${file}") || res=
+	else	file=${dir}/manifest.json
+		test -f "${file}" || die "cannot find ${dir}/{install.rdf,manifest.json}"
+		sub='^[[:space:]]*["'\''][iI][dD]["'\''][[:space:]]*:[[:space:]]*'
+		sub=${sub}'["'\'']\(.*\)["'\''][[:space:]]*,[[:space:]]*$/\1'
+		res=$(sed -n -e "s/${sub}/p" -- "${file}") || res=
+	fi
+	[ -n "${res}" ] || die "failed to determine id from ${file} $sub"
 	eval ${var}=\${res}
 }
 
