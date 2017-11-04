@@ -22,12 +22,10 @@ but meanwhile it is easier to surf with javascript activated to
 	http://userstyles.org/users/8172
 Note that you have to temporarily disable noscript for that site."
 
-INSTALL_ID=-i'{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}'
-
-moz_defaults "${INSTALL_ID}" firefox seamonkey
+moz_defaults firefox seamonkey
 
 src_install() {
-	moz_install "${INSTALL_ID}"
+	moz_install
 	readme.gentoo_create_doc
 }
 

@@ -357,10 +357,10 @@ moz_getid() {
 	else	file=${dir}/manifest.json
 		test -f "${file}" || die "cannot find ${dir}/{install.rdf,manifest.json}"
 		sub='^[[:space:]]*["'\''][iI][dD]["'\''][[:space:]]*:[[:space:]]*'
-		sub=${sub}'["'\'']\(.*\)["'\''][[:space:]]*,[[:space:]]*$/\1'
+		sub=${sub}'["'\'']\(.*\)["'\''][[:space:]]*,\?[[:space:]]*$/\1'
 		res=$(sed -n -e "s/${sub}/p" -- "${file}") || res=
 	fi
-	[ -n "${res}" ] || die "failed to determine id from ${file} $sub"
+	[ -n "${res}" ] || die "failed to determine id from ${file}"
 	eval ${var}=\${res}
 }
 

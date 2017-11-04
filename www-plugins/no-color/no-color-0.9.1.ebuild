@@ -14,6 +14,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-INSTALL_ID='{ae443e4d-02db-4eef-bcc2-0f1b17edb941}'
-
-moz_defaults -i"${INSTALL_ID}" firefox seamonkey
+moz_defaults firefox seamonkey
