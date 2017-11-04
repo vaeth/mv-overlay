@@ -114,7 +114,7 @@ sys-kernel/kernel 4.3: A POSIX shell script to compile the kernel with user perm
 sys-power/nut 2.7.4-r1: Network-UPS Tools
 sys-process/systemd-cron 1.5.4 1.5.10: systemd units to create timers for cron directories and crontab
 virtual/freedesktop-icon-theme 0-r2: A virtual to choose between different icon themes
-www-client/palemoon 26 27: This is only a dummy ebuild. Use e.g. octopus or palemoon overlay
+www-client/palemoon 27: This is only a dummy ebuild. Use e.g. octopus or palemoon overlay
 www-client/palemoon-bin 26 27: This is only a dummy ebuild. Use e.g. palemoon overlay
 www-plugins/bookmark-deduplicator 1.3.1-r1: <firefox-57 add-on: deduplicate your bookmarks
 www-plugins/bookmark-dupes 0.1: Firefox webextension: display/remove duplicate bookmarks
