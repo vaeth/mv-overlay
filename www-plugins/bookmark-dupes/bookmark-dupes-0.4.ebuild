@@ -7,7 +7,7 @@ RESTRICT="mirror"
 
 MY_P="${P/-/_}"
 NAME="${MY_P}-fx.xpi"
-DESCRIPTION="Firefox webextension: display/remove duplicate bookmarks"
+DESCRIPTION="Firefox webextension: display/remove duplicate bookmarks, empty folders, or descriptions"
 HOMEPAGE="https://addons.mozilla.org/en-US/firefox/addon/bookmark-dupes/
 https://github.com/vaeth/bookmarkdupes/"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/870263/${NAME}"
