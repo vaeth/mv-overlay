@@ -124,6 +124,7 @@ www-plugins/duckduckgo 1.1.26 2017.11.6: <firefox-57 add-on: enable duckduckgo s
 www-plugins/epubreader 1.5.0.12-r1 2.0.5-r1: Firefox webextension: read ebook (.epub) files
 www-plugins/form-history-control 1.4.0.6-r1: <firefox-57 add-on: edit the saved history of forms
 www-plugins/google-translation 2.6: Firefox webextension: translate to your native language a selected text
+www-plugins/https-everywhere 2017.10.30: Firefox webextension: force https for all websites of a provided list
 www-plugins/locale-switcher 3-r2: <firefox-57 add-on: button to switch GUI locale
 www-plugins/no-color 0.9.3: Firefox webextension: remove colors and background images from the page
 www-plugins/noscript 5.1.5: <firefox-57 add-on: restrict active contents like java/javascript/flash
