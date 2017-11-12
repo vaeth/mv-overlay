@@ -121,7 +121,7 @@ www-plugins/bookmark-dupes 0.5: Firefox webextension: display/remove duplicate b
 www-plugins/bookmark-duplicate-cleaner 0.2-r1: <firefox-57 add-on: remove duplicate bookmarks
 www-plugins/classic-theme-restorer 1.7.3: <firefox-57 add-on: restore partially the look of classical firefox
 www-plugins/duckduckgo 1.1.26 2017.11.9: <firefox-57 add-on: enable duckduckgo search engine
-www-plugins/epubreader 1.5.0.12-r1 2.0.5-r1: Firefox webextension: read ebook (.epub) files
+www-plugins/epubreader 1.5.0.12-r2 2.0.5-r2: Firefox webextension: read ebook (.epub) files
 www-plugins/form-history-control 1.4.0.6-r1: <firefox-57 add-on: edit the saved history of forms
 www-plugins/google-translation 2.6: Firefox webextension: translate to your native language a selected text
 www-plugins/https-everywhere 2017.10.30: Firefox webextension: force https for all websites of a provided list
