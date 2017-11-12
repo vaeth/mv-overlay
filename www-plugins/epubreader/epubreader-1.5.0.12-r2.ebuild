@@ -14,4 +14,4 @@ SLOT="palemoon"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-moz_defaults '<firefox-57' palemoon seamonkey
+moz_defaults palemoon
