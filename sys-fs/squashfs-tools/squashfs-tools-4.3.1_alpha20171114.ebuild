@@ -20,15 +20,15 @@ EXTRA_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PVm}-${DEB_VER}.deb
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="debug lz4 lzma lzo static xattr +xz"
+IUSE="debug lz4 lzma lzo static xattr +xz +zstd"
 
-LIB_DEPEND="sys-libs/zlib[static-libs(+)]
-	!xz? ( !lzo? ( sys-libs/zlib[static-libs(+)] ) )
-	lz4? ( app-arch/lz4[static-libs(+)] )
-	lzma? ( app-arch/xz-utils[static-libs(+)] )
-	lzo? ( dev-libs/lzo[static-libs(+)] )
-	xattr? ( sys-apps/attr[static-libs(+)] )
-	xz? ( app-arch/xz-utils[static-libs(+)] )"
+LIB_DEPEND="sys-libs/zlib:=[static-libs(+)]
+	lz4? ( app-arch/lz4:=[static-libs(+)] )
+	lzma? ( app-arch/xz-utils:=[static-libs(+)] )
+	lzo? ( dev-libs/lzo:=[static-libs(+)] )
+	xattr? ( sys-apps/attr:=[static-libs(+)] )
+	xz? ( app-arch/xz-utils:=[static-libs(+)] )
+	zstd? ( >=app-arch/zstd-1.0:=[static-libs(+)] )"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
@@ -48,7 +48,7 @@ src_unpack() {
 }
 else
 	RESTRICT="mirror"
-	EGIT_COMMIT="5be5d61e5e5a93911256b5f2106e50da0ca81e8d"
+	EGIT_COMMIT="6113361316d5ce5bfdc118d188e5617a1fcd747c"
 	SRC_URI="https://github.com/plougher/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 ${EXTRA_URI}"
 	S="${WORKDIR}/${P}/${PN}"
@@ -87,6 +87,7 @@ src_configure() {
 		LZ4_SUPPORT=$(use10 lz4)
 		XATTR_SUPPORT=$(use10 xattr)
 		XZ_SUPPORT=$(use10 xz)
+		ZSTD_SUPPORT=$(use10 zstd)
 	)
 	filter-flags -fno-common
 

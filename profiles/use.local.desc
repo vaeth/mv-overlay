@@ -244,6 +244,7 @@ sys-fs/squash_dir:overlayfs - Prefer overlayfs
 sys-fs/squash_dir:unionfs-fuse - Prefer unionfs-fuse
 sys-fs/squashfs-tools:lz4 - Enable support for LZ4 compression using app-arch/lz4
 sys-fs/squashfs-tools:xz - Enable support for XZ ("LZMA2") compression using app-arch/xz-utils
+sys-fs/squashfs-tools:zstd - Enable support for ZSTD compression using app-arch/zstd (requires >=linux-4.14 or >=sys-fs/squashfuse-0.1.101_alpha20170917)
 sys-power/nut:ipmi - Support IPMI-based UPSes.
 sys-power/nut:ups_drivers_al175 - Driver for Eltek UPS models with AL175 alarm module
 sys-power/nut:ups_drivers_apcsmart - Driver for American Power Conversion Smart Protocol UPS equipment
