@@ -5,8 +5,8 @@ EAPI=6
 
 DESCRIPTION="Excellent text file viewer, optionally with additional selection feature"
 PATCHN="less-select"
-PATCHV="2.8"
-PATCHVER="520"
+PATCHV="2.9"
+PATCHVER="529"
 PATCHRUMP="${PATCHN}-${PATCHV}"
 PATCHBALL="${PATCHRUMP}.tar.gz"
 SELECTDIR="${WORKDIR}/${PATCHRUMP}"
