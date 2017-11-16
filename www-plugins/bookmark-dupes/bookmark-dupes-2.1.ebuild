@@ -8,7 +8,7 @@ RESTRICT="mirror"
 DESCRIPTION="Firefox webextension: display/remove duplicate bookmarks, empty folders, or descriptions"
 HOMEPAGE="https://addons.mozilla.org/en-US/firefox/addon/bookmark-dupes/
 https://github.com/vaeth/bookmarkdupes/"
-SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/870263/${PN//-/_}-${PV}-fx.xpi"
+SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/870263/lesezeichenduplikate-${PV}-fx.xpi -> ${P}-fx.xpi"
 
 LICENSE="GPL-2"
 SLOT="0"
