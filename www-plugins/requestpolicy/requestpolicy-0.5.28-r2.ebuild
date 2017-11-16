@@ -5,7 +5,7 @@ EAPI=6
 inherit mv_mozextension-r1
 RESTRICT="mirror"
 
-DESCRIPTION="<firefox-57 add-on: control cross-site requests (increases privacy/security)"
+DESCRIPTION="Firefox legacy add-on: control cross-site requests"
 HOMEPAGE="https://www.requestpolicy.com/"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/9727/${P}-sm+fx.xpi"
 

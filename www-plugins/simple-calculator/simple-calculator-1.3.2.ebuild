@@ -5,7 +5,7 @@ EAPI=6
 inherit mv_mozextension-r1
 RESTRICT="mirror"
 
-DESCRIPTION="Firefox webextension: A basic simple math calculator"
+DESCRIPTION="Firefox webextension: a basic simple math calculator"
 HOMEPAGE="https://addons.mozilla.org/de/firefox/addon/simple-calculator-1_blacktoy/"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/562742/${PN//-/_}-${PV}-an+fx-linux.xpi"
 

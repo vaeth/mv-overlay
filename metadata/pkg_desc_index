@@ -117,27 +117,27 @@ sys-process/systemd-cron 1.5.4 1.5.10: systemd units to create timers for cron d
 virtual/freedesktop-icon-theme 0-r2: A virtual to choose between different icon themes
 www-client/palemoon 27: This is only a dummy ebuild. Use e.g. octopus or palemoon overlay
 www-client/palemoon-bin 26 27: This is only a dummy ebuild. Use e.g. palemoon overlay
-www-plugins/bookmark-deduplicator 1.3.1-r1: <firefox-57 add-on: deduplicate your bookmarks
+www-plugins/bookmark-deduplicator 1.3.1-r1: Firefox legacy add-on: deduplicate your bookmarks
 www-plugins/bookmark-dupes 2.1: Firefox webextension: display/remove duplicate bookmarks, empty folders, or descriptions
-www-plugins/bookmark-duplicate-cleaner 0.2-r1: <firefox-57 add-on: remove duplicate bookmarks
+www-plugins/bookmark-duplicate-cleaner 0.2-r1: Firefox legacy add-on: remove duplicate bookmarks
 www-plugins/canvasblocker 0.4.2: Firefox webextension: block canvas API to prevent canvas fingerprinting
-www-plugins/classic-theme-restorer 1.7.3: <firefox-57 add-on: restore partially the look of classical firefox
+www-plugins/classic-theme-restorer 1.7.3: Firefox legacy add-on: restore partially the look of classical firefox
 www-plugins/decentraleyes 2.0.1: Firefox webextension: avoid centralized services
-www-plugins/duckduckgo 1.1.26 2017.11.9: <firefox-57 add-on: enable duckduckgo search engine
+www-plugins/duckduckgo 1.1.26 2017.11.9: Firefox webextension: enable duckduckgo search engine
 www-plugins/epubreader 1.5.0.12-r2 2.0.5-r2: Firefox webextension: read ebook (.epub) files
 www-plugins/form-history-control 1.4.0.6-r2 2.0.0: Firefox webextension: edit the saved history of forms
 www-plugins/google-translation 2.6: Firefox webextension: translate to your native language a selected text
 www-plugins/https-everywhere 2017.10.30: Firefox webextension: force https for all websites of a provided list
-www-plugins/locale-switcher 3-r2: <firefox-57 add-on: button to switch GUI locale
+www-plugins/locale-switcher 3-r2: Firefox legacy add-on: button to switch GUI locale
 www-plugins/no-color 0.9.3: Firefox webextension: remove colors and background images from the page
-www-plugins/noscript 5.1.5: <firefox-57 add-on: restrict active contents like java/javascript/flash
+www-plugins/noscript 5.1.5: Firefox legacy add-on: restrict active contents like java/javascript/flash
 www-plugins/open-in-google-translate 0.1.3: Firefox webextension: open selected text or webpage in google translator
-www-plugins/requestpolicy 0.5.28-r2: <firefox-57 add-on: control cross-site requests (increases privacy/security)
-www-plugins/simple-calculator 1.3.2: Firefox webextension: A basic simple math calculator
+www-plugins/requestpolicy 0.5.28-r2: Firefox legacy add-on: control cross-site requests
+www-plugins/simple-calculator 1.3.2: Firefox webextension: a basic simple math calculator
 www-plugins/skip-redirect 2.2.1: Firefox webextension: skip intermediary pages before redirecting
 www-plugins/stylus 1.1.4.2: Firefox webextension: install themes and skins for many popular sites
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
-www-plugins/xclear 1.8.2-r1: <firefox-57 add-on: button to clear URL
+www-plugins/xclear 1.8.2-r1: Firefox legacy add-on: button to clear URL
 x11-drivers/nvidia-drivers 173.14.39-r2: NVIDIA Accelerated Graphics Driver
 x11-libs/gtk+ 2.24.31-r1 3.22.16 3.22.19: Gimp ToolKit +
 x11-libs/motif 2.3.6-r1: The Motif user interface component toolkit

@@ -5,7 +5,7 @@ EAPI=6
 inherit mv_mozextension-r1
 RESTRICT="mirror"
 
-DESCRIPTION="<firefox-57 add-on: button to clear URL"
+DESCRIPTION="Firefox legacy add-on: button to clear URL"
 HOMEPAGE="http://addons.mozilla.org/firefox/addon/xclear/"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/13078/${P}-fx+sm.xpi"
 
