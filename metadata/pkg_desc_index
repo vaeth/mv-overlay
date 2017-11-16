@@ -122,6 +122,7 @@ www-plugins/bookmark-dupes 2.1: Firefox webextension: display/remove duplicate b
 www-plugins/bookmark-duplicate-cleaner 0.2-r1: <firefox-57 add-on: remove duplicate bookmarks
 www-plugins/canvasblocker 0.4.2: Firefox webextension: block canvas API to prevent canvas fingerprinting
 www-plugins/classic-theme-restorer 1.7.3: <firefox-57 add-on: restore partially the look of classical firefox
+www-plugins/decentraleyes 2.0.1: Firefox webextension: avoid centralized services
 www-plugins/duckduckgo 1.1.26 2017.11.9: <firefox-57 add-on: enable duckduckgo search engine
 www-plugins/epubreader 1.5.0.12-r2 2.0.5-r2: Firefox webextension: read ebook (.epub) files
 www-plugins/form-history-control 1.4.0.6-r2 2.0.0: Firefox webextension: edit the saved history of forms
