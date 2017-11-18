@@ -130,7 +130,7 @@ www-plugins/google-translation 2.6: Firefox webextension: translate to your nati
 www-plugins/https-everywhere 2017.10.30: Firefox webextension: force https for all websites of a provided list
 www-plugins/locale-switcher 3-r2: Firefox legacy add-on: button to switch GUI locale
 www-plugins/no-color 0.9.4: Firefox webextension: remove colors and background images from the page
-www-plugins/noscript 5.1.5: Firefox legacy add-on: restrict active contents like java/javascript/flash
+www-plugins/noscript 5.1.7: Firefox legacy add-on: restrict active contents like java/javascript/flash
 www-plugins/open-in-google-translate 0.1.3: Firefox webextension: open selected text or webpage in google translator
 www-plugins/requestpolicy 0.5.28-r2: Firefox legacy add-on: control cross-site requests
 www-plugins/simple-calculator 1.3.2: Firefox webextension: a basic simple math calculator
