@@ -38,7 +38,7 @@ src_compile() {
 }
 
 src_install() {
-	dodoc README
+	dodoc README.md
 	dobin bin/dircolors-mv
 	use create && dobin bin/DIR_COLORS-create
 	use perl && dobin bin/256colors
