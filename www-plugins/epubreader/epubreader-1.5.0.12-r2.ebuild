@@ -10,7 +10,7 @@ HOMEPAGE="http://addons.mozilla.org/de/firefox/addon/epubreader/"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/45281/${P}-fx+sm.xpi"
 
 LICENSE="epubreader"
-SLOT="palemoon"
+SLOT="legacy"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 

@@ -10,7 +10,7 @@ HOMEPAGE="http://www.formhistory.blogspot.com/"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/12021/${PN//-/_}-${PV}-sm+fx.xpi"
 
 LICENSE="MPL-1.1"
-SLOT="palemoon"
+SLOT="legacy"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
