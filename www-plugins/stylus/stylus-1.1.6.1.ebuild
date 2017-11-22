@@ -25,7 +25,7 @@ Note that you have to temporarily disable noscript for that site."
 moz_defaults firefox seamonkey
 
 src_install() {
-	moz_install
+	moz_install -i'{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}'
 	readme.gentoo_create_doc
 }
 
