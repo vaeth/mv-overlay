@@ -135,7 +135,7 @@ www-plugins/open-in-google-translate 0.1.3: Firefox webextension: open selected 
 www-plugins/requestpolicy 0.5.28-r2: Firefox legacy add-on: control cross-site requests
 www-plugins/simple-calculator 1.3.2: Firefox webextension: a basic simple math calculator
 www-plugins/skip-redirect 2.2.1: Firefox webextension: skip intermediary pages before redirecting
-www-plugins/stylus 1.1.6.1: Firefox webextension: install themes and skins for many popular sites
+www-plugins/stylus 1.1.6.3: Firefox webextension: install themes and skins for many popular sites
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
 www-plugins/xclear 1.8.2-r1: Firefox legacy add-on: button to clear URL
 x11-drivers/nvidia-drivers 173.14.39-r2: NVIDIA Accelerated Graphics Driver
