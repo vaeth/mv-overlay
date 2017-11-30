@@ -118,7 +118,7 @@ virtual/freedesktop-icon-theme 0-r2: A virtual to choose between different icon 
 www-client/palemoon 27: This is only a dummy ebuild. Use e.g. octopus or palemoon overlay
 www-client/palemoon-bin 26 27: This is only a dummy ebuild. Use e.g. palemoon overlay
 www-plugins/bookmark-deduplicator 1.3.1-r1: Firefox legacy add-on: deduplicate your bookmarks
-www-plugins/bookmark-dupes 2.2: Firefox webextension: display/remove duplicate bookmarks, empty folders, or descriptions
+www-plugins/bookmark-dupes 2.3: Firefox webextension: display/remove duplicate bookmarks, empty folders, or descriptions
 www-plugins/bookmark-duplicate-cleaner 0.2-r1: Firefox legacy add-on: remove duplicate bookmarks
 www-plugins/canvasblocker 0.4.2: Firefox webextension: block canvas API to prevent canvas fingerprinting
 www-plugins/classic-theme-restorer 1.7.3.1: Firefox legacy add-on: restore partially the look of classical firefox
