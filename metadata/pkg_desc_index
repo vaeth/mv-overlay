@@ -140,6 +140,6 @@ www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected te
 www-plugins/xclear 1.8.2-r1: Firefox legacy add-on: button to clear URL
 x11-drivers/nvidia-drivers 173.14.39-r2: NVIDIA Accelerated Graphics Driver
 x11-libs/gtk+ 2.24.31-r1 3.22.16 3.22.19: Gimp ToolKit +
-x11-libs/motif 2.3.6-r1: The Motif user interface component toolkit
+x11-libs/motif 2.3.7: The Motif user interface component toolkit
 x11-misc/redshift 1.8: A screen color temperature adjusting software
 x11-wm/fvwm 2.6.7-r1: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
