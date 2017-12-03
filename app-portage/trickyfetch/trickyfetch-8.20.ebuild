@@ -32,7 +32,7 @@ src_install() {
 	doins etc/*
 	insinto /usr/share/zsh/site-functions
 	doins zsh/_*
-	dodoc README
+	dodoc README.md
 }
 
 pkg_postinst() {
