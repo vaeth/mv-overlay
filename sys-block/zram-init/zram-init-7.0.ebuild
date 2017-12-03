@@ -38,7 +38,7 @@ src_install() {
 	doins modprobe.d/*
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
-	dodoc AUTHORS ChangeLog README
+	dodoc AUTHORS ChangeLog README.md
 	readme.gentoo_create_doc
 	into /
 	dosbin sbin/*
