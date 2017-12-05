@@ -76,47 +76,49 @@ src_prepare() {
 }
 
 src_configure() {
-	local emesonargs
-	emesonargs=(
-		-Ddocdir="${EPREFIX}/usr/share/doc/${P}" \
-		-Dhtmldir="${EPREFIX}/usr/share/doc/${P}/html" \
-		-Dsqlite=$(usex sqlite true false) \
-		-Dextra-doc=$(usex doc true false) \
-		-Dnls=$(usex nls true false) \
-		-Dseparate-tools=$(usex tools true false) \
-		-Dsecurity=$(usex security true false) \
-		-Doptimization=$(usex optimization true false) \
-		-Dstrong-secutiry=$(usex strong-security true false) \
-		-Dstrong-optimization=$(usex strong-optimization true false) \
-		-Ddebugging=$(usex debug true false) \
-		-Dswap-remote=$(usex swap-remote true false) \
-		-Dalways-accept-keywords=$(usex prefix true false) \
-		-Ddep-default=$(usex dep true false) \
-		-Drequired-use-default=$(usex required-use true false) \
-		-Dzsh-completion="${EPREFIX}/usr/share/zsh/site-functions" \
-		-Dportage-rootpath="${ROOTPATH}" \
-		-Deprefix-default="${EPREFIX}"
-	)
 	if use meson; then
+		local emesonargs
+		emesonargs=(
+		-Ddocdir="${EPREFIX}/usr/share/doc/${P}"
+		-Dhtmldir="${EPREFIX}/usr/share/doc/${P}/html"
+		-Dsqlite=$(usex sqlite true false)
+		-Dextra-doc=$(usex doc true false)
+		-Dnls=$(usex nls true false)
+		-Dseparate-tools=$(usex tools true false)
+		-Dsecurity=$(usex security true false)
+		-Doptimization=$(usex optimization true false)
+		-Dstrong-secutiry=$(usex strong-security true false)
+		-Dstrong-optimization=$(usex strong-optimization true false)
+		-Ddebugging=$(usex debug true false)
+		-Dswap-remote=$(usex swap-remote true false)
+		-Dalways-accept-keywords=$(usex prefix true false)
+		-Ddep-default=$(usex dep true false)
+		-Drequired-use-default=$(usex required-use true false)
+		-Dzsh-completion="${EPREFIX}/usr/share/zsh/site-functions"
+		-Dportage-rootpath="${ROOTPATH}"
+		-Deprefix-default="${EPREFIX}"
+		)
 		meson_src_configure
 	else
-		econf \
-		$(use_with sqlite) \
-		$(use_with doc extra-doc) \
-		$(use_enable nls) \
-		$(use_enable tools separate-tools) \
-		$(use_enable security) \
-		$(use_enable optimization) \
-		$(use_enable strong-security) \
-		$(use_enable strong-optimization) \
-		$(use_enable debug debugging) \
-		$(use_enable swap-remote) \
-		$(use_with prefix always-accept-keywords) \
-		$(use_with dep dep-default) \
-		$(use_with required-use required-use-default) \
-		--with-zsh-completion \
-		--with-portage-rootpath="${ROOTPATH}" \
+		local myconf=(
+		$(use_with sqlite)
+		$(use_with doc extra-doc)
+		$(use_enable nls)
+		$(use_enable tools separate-tools)
+		$(use_enable security)
+		$(use_enable optimization)
+		$(use_enable strong-security)
+		$(use_enable strong-optimization)
+		$(use_enable debug debugging)
+		$(use_enable swap-remote)
+		$(use_with prefix always-accept-keywords)
+		$(use_with dep dep-default)
+		$(use_with required-use required-use-default)
+		--with-zsh-completion
+		--with-portage-rootpath="${ROOTPATH}"
 		--with-eprefix-default="${EPREFIX}"
+		)
+		econf "${myconf[@]}"
 	fi
 }
 
