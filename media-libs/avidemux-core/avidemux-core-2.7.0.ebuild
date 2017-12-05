@@ -11,7 +11,7 @@ HOMEPAGE="http://fixounet.free.fr/avidemux"
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
 SLOT="2.6"
-IUSE="debug nls nvenc sdl system-ffmpeg vaapi vdpau video_cards_fglrx xv"
+IUSE="debug nls nvenc sdl system-ffmpeg vaapi vdpau xv"
 
 if [[ ${PV} == *9999* ]] ; then
 	MY_P=$P
@@ -35,7 +35,7 @@ DEPEND="
 	xv? ( x11-libs/libXv:0 )
 	vaapi? ( x11-libs/libva:0 )
 	vdpau? ( x11-libs/libvdpau:0 )
-	nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) )
+	nvenc? ( media-video/nvidia_video_sdk )
 "
 RDEPEND="
 	$DEPEND
@@ -47,8 +47,6 @@ DEPEND="
 	nls? ( sys-devel/gettext )
 	!system-ffmpeg? ( dev-lang/yasm[nls=] )
 "
-
-REQUIRED_USE="!amd64? ( !nvenc )"
 
 S="${WORKDIR}/${MY_P}"
 CMAKE_USE_DIR="${S}/${PN/-/_}"
@@ -68,20 +66,18 @@ src_prepare() {
 
 		rm -rf cmake/admFFmpeg* cmake/ffmpeg* avidemux_core/ffmpeg_package buildCore/ffmpeg || die "${error}"
 		sed -i -e 's/include(admFFmpegUtil)//g' \
-			-e '/registerFFmpeg/d' \
-			avidemux/commonCmakeApplication.cmake || die "${error}"
-		sed -i -e 's/include(admFFmpegBuild)//g' \
-			avidemux_core/CMakeLists.txt || die "${error}"
+			-e '/registerFFmpeg/d' avidemux/commonCmakeApplication.cmake || die "${error}"
+		sed -i -e 's/include(admFFmpegBuild)//g' avidemux_core/CMakeLists.txt || die "${error}"
 	fi
 }
 
 src_configure() {
-	if test-flags-CXX -std=c++14 ; then
+	if test-flags-CXX -std=c++17 ; then
+		append-cxxflags -std=c++17
+	elif test-flags-CXX -std=c++14 ; then
 		append-cxxflags -std=c++14
 	elif test-flags-CXX -std=c++11 ; then
 		append-cxxflags -std=c++11
-	elif use qt4 || use qt5 ; then
-		die "For qt support a compiler with c++11 support is needed"
 	fi
 
 	# Add lax vector typing for PowerPC.
@@ -95,20 +91,18 @@ src_configure() {
 	# Filter problematic flags
 	filter-flags -fwhole-program -flto
 
-	local mycmakeargs
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DAVIDEMUX_SOURCE_DIR="'${S}'"
 		-DGETTEXT="$(usex nls)"
 		-DSDL="$(usex sdl)"
 		-DLIBVA="$(usex vaapi)"
 		-DVDPAU="$(usex vdpau)"
-		-DXVBA="$(usex video_cards_fglrx)"
 		-DXVIDEO="$(usex xv)"
 		-DNVENC="$(usex nvenc)"
 	)
 
 	if use debug ; then
-		mycmakeargs+=( -DVERBOSE=1 -DCMAKE_BUILD_TYPE=Debug -DADM_DEBUG=1 )
+		mycmakeargs+=( -DVERBOSE=1 -DADM_DEBUG=1 )
 	fi
 
 	cmake-utils_src_configure

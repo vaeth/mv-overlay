@@ -5,7 +5,7 @@ EAPI=6
 RESTRICT="mirror"
 PLOCALES="ca cs de el es fr it ja pt_BR ru sr sr@latin tr"
 
-inherit cmake-utils eutils flag-o-matic l10n
+inherit cmake-utils desktop flag-o-matic l10n xdg-utils
 
 DESCRIPTION="Video editor designed for simple cutting, filtering and encoding tasks"
 HOMEPAGE="http://fixounet.free.fr/avidemux"
@@ -13,7 +13,7 @@ HOMEPAGE="http://fixounet.free.fr/avidemux"
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
 SLOT="2.6"
-IUSE="debug opengl nls nvenc qt4 qt5 sdl vaapi vdpau video_cards_fglrx xv"
+IUSE="debug opengl nls nvenc qt4 qt5 sdl vaapi vdpau xv"
 REQUIRED_USE="qt5? ( !qt4 ) "
 QA_DT_NEEDED=".*/libADM_UI_Cli6\.so"
 
@@ -31,7 +31,7 @@ else
 fi
 
 DEPEND="
-	~media-libs/avidemux-core-${PV}:${SLOT}[nls?,sdl?,vaapi?,vdpau?,video_cards_fglrx?,xv?,nvenc?]
+	~media-libs/avidemux-core-${PV}:${SLOT}[nls?,sdl?,vaapi?,vdpau?,xv?,nvenc?]
 	opengl? ( virtual/opengl:0 )
 	qt4? ( >=dev-qt/qtgui-4.8.3:4 )
 	qt5? ( dev-qt/qtgui:5 )
@@ -83,10 +83,14 @@ src_prepare() {
 }
 
 src_configure() {
-	if test-flags-CXX -std=c++14 ; then
+	if test-flags-CXX -std=c++17 ; then
+		append-cxxflags -std=c++17
+	elif test-flags-CXX -std=c++14 ; then
 		append-cxxflags -std=c++14
 	elif test-flags-CXX -std=c++11 ; then
 		append-cxxflags -std=c++11
+	elif use qt4 || use qt5 ; then
+		die "For qt support a compiler with c++11 support is needed"
 	fi
 
 	# Add lax vector typing for PowerPC.
@@ -106,7 +110,6 @@ src_configure() {
 		-DSDL="$(usex sdl)"
 		-DLIBVA="$(usex vaapi)"
 		-DVDPAU="$(usex vdpau)"
-		-DXVBA="$(usex video_cards_fglrx)"
 		-DXVIDEO="$(usex xv)"
 	)
 
@@ -143,6 +146,13 @@ src_compile() {
 	done
 }
 
+src_test() {
+	for process in ${processes} ; do
+		local build="${WORKDIR}/${P}_build/${process%%:*}"
+		BUILD_DIR="${build}" cmake-utils_src_test
+	done
+}
+
 src_install() {
 	for process in ${processes} ; do
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
@@ -168,4 +178,12 @@ src_install() {
 		fperms +x /usr/bin/avidemux3_qt5
 		domenu ${PN}-2.6.desktop
 	fi
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }

@@ -14,7 +14,7 @@ HOMEPAGE="http://fixounet.free.fr/avidemux"
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
 SLOT="2.6"
 IUSE="aac aften a52 alsa amr dcaenc debug dts fdk fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx nvenc opengl opus oss pulseaudio qt4 qt5 vorbis truetype twolame xv xvid x264 x265 vdpau vpx"
-REQUIRED_USE="!amd64? ( !nvenc ) qt5? ( !qt4 )"
+REQUIRED_USE="qt5? ( !qt4 )"
 
 MY_PN="${PN/-plugins/}"
 if [[ ${PV} == *9999* ]] ; then
@@ -57,7 +57,7 @@ RDEPEND="
 		libsamplerate? ( media-libs/libsamplerate:0 )
 	)
 	lame? ( media-sound/lame:0 )
-	nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) )
+	nvenc? ( media-video/nvidia_video_sdk )
 	opus? ( media-libs/opus:0 )
 	pulseaudio? ( media-sound/pulseaudio:0 )
 	truetype? ( media-libs/freetype:2 )
@@ -89,7 +89,9 @@ src_prepare() {
 }
 
 src_configure() {
-	if test-flags-CXX -std=c++14 ; then
+	if test-flags-CXX -std=c++17 ; then
+		append-cxxflags -std=c++17
+	elif test-flags-CXX -std=c++14 ; then
 		append-cxxflags -std=c++14
 	elif test-flags-CXX -std=c++11 ; then
 		append-cxxflags -std=c++11
@@ -118,8 +120,7 @@ src_configure() {
 	for process in ${processes} ; do
 		local build="${process%%:*}"
 
-		local mycmakeargs
-		mycmakeargs=(
+		local mycmakeargs=(
 			-DAVIDEMUX_SOURCE_DIR="'${S}'"
 			-DPLUGIN_UI=$(echo ${build/buildPlugins/} | tr '[:lower:]' '[:upper:]')
 			-DFAAC="$(usex aac)"
@@ -163,11 +164,7 @@ src_configure() {
 			QT_SELECT=4
 		fi
 
-		! use debug || mycmakeargs+=(
-			-DVERBOSE=1
-			-DCMAKE_BUILD_TYPE=Debug
-			-DADM_DEBUG=1
-		)
+		! use debug || mycmakeargs+=( -DVERBOSE=1 -DADM_DEBUG=1 )
 
 		mkdir "${S}"/${build} || die "Can't create build folder."
 
