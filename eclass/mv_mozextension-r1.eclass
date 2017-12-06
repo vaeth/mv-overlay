@@ -1,7 +1,7 @@
 # Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# @ECLASS: moz.eclass
+# @ECLASS: mv_mozextension-r1.eclass
 # @MAINTAINER:
 # Martin Väth <martin@mvath.de>
 # @BLURB: This eclass provides functions to install mozilla extensions
@@ -10,12 +10,12 @@
 # and compatiblity fixes.
 # @EXAMPLE:
 # @CODE
-# inherit moz
+# inherit mv_mozextension-r1
 #
 # moz_defaults firefox palemoon seamonkey # no arguments mean all browsers
 #
 # @CODE
-# inherit moz
+# inherit mv_mozextension-r1
 #
 # MOZ="<firefox-57 palemoon seamonkey"
 # DEPEND=${MOZ_DEPEND}
