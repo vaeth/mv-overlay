@@ -13,8 +13,7 @@ HOMEPAGE="http://fixounet.free.fr/avidemux"
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
 SLOT="2.6"
-IUSE="aac aften a52 alsa amr dcaenc debug dts fdk fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx nvenc opengl opus oss pulseaudio qt4 qt5 vorbis truetype twolame xv xvid x264 x265 vdpau vpx"
-REQUIRED_USE="qt5? ( !qt4 )"
+IUSE="aac aften a52 alsa amr dcaenc debug dts fdk fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx nvenc opengl opus oss pulseaudio qt5 vorbis truetype twolame xv xvid x264 x265 vdpau vpx"
 
 MY_PN="${PN/-plugins/}"
 if [[ ${PV} == *9999* ]] ; then
@@ -31,7 +30,7 @@ fi
 
 RDEPEND="
 	~media-libs/avidemux-core-${PV}:${SLOT}[vdpau?]
-	~media-video/avidemux-${PV}:${SLOT}[opengl?,qt4?,qt5?]
+	~media-video/avidemux-${PV}:${SLOT}[opengl?,qt5?]
 	>=dev-lang/spidermonkey-1.5-r2:0=
 	dev-libs/libxml2:2
 	media-libs/a52dec:0
@@ -93,7 +92,7 @@ src_configure() {
 		append-cxxflags -std=c++14
 	elif test-flags-CXX -std=c++11 ; then
 		append-cxxflags -std=c++11
-	elif use qt4 || use qt5 ; then
+	elif use qt5 ; then
 		die "For qt support a compiler with c++11 support is needed"
 	fi
 
@@ -110,9 +109,9 @@ src_configure() {
 
 	processes="buildPluginsCommon:avidemux_plugins
 		buildPluginsCLI:avidemux_plugins"
-	if use qt4 || use qt5 ; then
-		export QT_SELECT
+	if use qt5 ; then
 		processes+=" buildPluginsQt4:avidemux_plugins"
+		export qt_ext=Qt5 QT_SELECT=5
 	fi
 
 	for process in ${processes} ; do
@@ -137,7 +136,6 @@ src_configure() {
 			-DOPUS="$(usex opus)"
 			-DOSS="$(usex oss)"
 			-DPULSEAUDIOSIMPLE="$(usex pulseaudio)"
-			-DQT4="$(usex qt4)"
 			-DFREETYPE2="$(usex truetype)"
 			-DTWOLAME="$(usex twolame)"
 			-DX264="$(usex x264)"
@@ -155,11 +153,6 @@ src_configure() {
 		)
 		if use qt5 ; then
 			mycmakeargs+=( -DENABLE_QT5=True )
-			QT_SELECT=5
-			qt_ext=Qt5
-			export qt_ext
-		elif use qt4 ; then
-			QT_SELECT=4
 		fi
 
 		! use debug || mycmakeargs+=( -DVERBOSE=1 -DADM_DEBUG=1 )
