@@ -47,7 +47,6 @@ app-shells/set_prompt 3.0.0: An intelligent prompt for zsh or bash with status l
 app-shells/termcolors-mv 4.7: 256colors sample script and dircolors configuration for standard or 256 colors
 app-shells/zsh-syntax-highlighting 0.6.0 99999999: Fish shell like syntax highlighting for zsh
 app-shells/zshrc-mv 3.10: A zshrc file initializing zsh specific interactive features
-app-text/djview 4.10.6-r1: Portable DjVu viewer using Qt4
 app-text/ispell 3.3.02-r1 3.4.00: fast screen-oriented spelling checker
 app-text/lesspipe 1.83 1.84_alpha20170925 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
