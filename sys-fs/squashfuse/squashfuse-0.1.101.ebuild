@@ -1,7 +1,8 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+RESTRICT="mirror"
 inherit autotools flag-o-matic
 
 DESCRIPTION="FUSE filesystem to mount squashfs archives"
@@ -36,7 +37,7 @@ DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
 src_prepare() {
-	! $alpha ||	sed -i -e '1s:\[0\.1\.100\]:['"${PV}"']:' configure.ac || die
+	! $alpha || sed -i -e '1s:\[0\.1\.100\]:['"${PV}"']:' configure.ac || die
 	AT_M4DIR=${S}/m4 eautoreconf
 	default
 }
