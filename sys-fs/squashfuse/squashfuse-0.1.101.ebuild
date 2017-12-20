@@ -6,8 +6,17 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="FUSE filesystem to mount squashfs archives"
 HOMEPAGE="https://github.com/vasi/squashfuse"
-EGIT_COMMIT="e275db06955d3dc455d55d25c015a6b64b1e4756"
-SRC_URI="https://github.com/vasi/squashfuse/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+
+case ${PV} in
+*alpha*)
+	EGIT_COMMIT="e275db06955d3dc455d55d25c015a6b64b1e4756"
+	SRC_URI="https://github.com/vasi/squashfuse/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	S=${WORKDIR}/${PN}-${EGIT_COMMIT}
+	alpha=:;;
+*)
+	SRC_URI="https://github.com/vasi/squashfuse/archive/${PV}/${P}.tar.gz"
+	alpha=false;;
+esac
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -25,10 +34,9 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
-S=${WORKDIR}/${PN}-${EGIT_COMMIT}
 
 src_prepare() {
-	sed -i -e '1s:\[0\.1\.100\]:['"${PV}"']:' configure.ac || die
+	! $alpha ||	sed -i -e '1s:\[0\.1\.100\]:['"${PV}"']:' configure.ac || die
 	AT_M4DIR=${S}/m4 eautoreconf
 	default
 }
