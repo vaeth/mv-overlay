@@ -38,26 +38,10 @@ DEPEND="${BOTHDEPEND}
 	meson? (
 		>=dev-util/meson-0.41.0
 		>=dev-util/ninja-1.7.2
+		strong-optimization? ( >=sys-devel/gcc-config-1.9.1 )
 	)
 	!meson? ( ${AUTOTOOLS_DEPEND} )
 	>=sys-devel/gettext-0.19.6"
-
-mesonflto() {
-	use meson && use strong-optimization || return 0
-	einfo "Checking whether compiler supports -flto and static archives"
-	local -x AR=$(tc-getAR)
-	local -x CXX=$(tc-getCXX)
-	bash contrib/meson-flto-test.sh && return
-	eerror "For app-portage/eix[meson strong-optimization] it is necessary"
-	eerror "that your compiler can access static archives with -flto."
-	eerror "This is perhaps not the case on your system:"
-	eerror "A linker lto plugin might be required."
-	eerror "To establish this plugin, execute as root something like"
-	eerror "	mkdir -p /usr/*/binutils-bin/lib/bfd-plugins"
-	eerror "	cd /usr/*/binutils-bin/lib/bfd-plugins"
-	eerror "	ln -sfn /usr/libexec/gcc/*/*/liblto_plugin.so.*.*.* ."
-	die "app-portage/eix[meson strong-optimization] requires flto plugin"
-}
 
 pkg_setup() {
 	# remove stale cache file to prevent collisions
@@ -72,7 +56,6 @@ src_prepare() {
 		eautopoint
 		eautoreconf
 	}
-	mesonflto
 }
 
 src_configure() {

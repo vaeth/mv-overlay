@@ -23,6 +23,7 @@ DEPEND="${BOTHDEPEND}
 	meson? (
 		>=dev-util/meson-0.41.0
 		>=dev-util/ninja-1.7.2
+		strong-optimization? ( >=sys-devel/gcc-config-1.9.1
 	)
 	app-arch/xz-utils
 	nls? ( sys-devel/gettext )"
@@ -31,24 +32,6 @@ pkg_setup() {
 	# remove stale cache file to prevent collisions
 	local old_cache="${EROOT}var/cache/${PN}"
 	test -f "${old_cache}" && rm -f -- "${old_cache}"
-
-	local i
-	if use meson && use strong-optimization
-	then	for i in /usr/*/binutils-bin/lib/bfd-plugins/liblto_plugin.*
-			do	test -h "$i" && return
-			done
-		ewarn "app-portage/eix[meson strong-optimization] might fail to"
-		ewarn "emerge (link) without the linker lto plugin."
-		ewarn "To establish this plugin, execute as root something like"
-		ewarn "	mkdir -p /usr/*/binutils-bin/lib/bfd-plugins"
-		ewarn "	cd /usr/*/binutils-bin/lib/bfd-plugins"
-		ewarn "	ln -sfn /usr/libexec/gcc/*/*/liblto_plugin.so.*.*.* ."
-		ewarn "The * might have to be replaced by your architecture or gcc version"
-		[ -n "$I_KNOW_WHAT_I_AM_DOING" ] || die
-		ewarn
-		ewarn "You claim: I_KNOW_WHAT_I_AM_DOING"
-		ewarn
-	fi
 }
 
 src_prepare() {
