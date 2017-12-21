@@ -23,7 +23,7 @@ DEPEND="${BOTHDEPEND}
 	meson? (
 		>=dev-util/meson-0.41.0
 		>=dev-util/ninja-1.7.2
-		strong-optimization? ( >=sys-devel/gcc-config-1.9.1
+		strong-optimization? ( >=sys-devel/gcc-config-1.9.1 )
 	)
 	app-arch/xz-utils
 	nls? ( sys-devel/gettext )"
