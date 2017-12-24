@@ -56,7 +56,7 @@ src_prepare() {
 
 src_install() {
 	dobin bin/*
-	dodoc README ChangeLog compress.txt
+	dodoc README.md ChangeLog compress.txt
 	doinitd openrc/init.d/*
 	systemd_dounit systemd/system/*
 	dotmpfiles tmpfiles.d/*
