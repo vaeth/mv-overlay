@@ -32,7 +32,7 @@ src_prepare() {
 
 src_install() {
 	dobin bin/*
-	dodoc README
+	dodoc README.md
 	insinto /usr/share/zsh/site-functions
 	doins zsh/_*
 }
