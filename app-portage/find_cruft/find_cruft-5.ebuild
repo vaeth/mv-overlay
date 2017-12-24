@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ src_prepare() {
 
 src_install() {
 	dobin bin/*
-	dodoc README
+	dodoc README.md
 	insinto /usr/lib/find_cruft
 	doins -r etc/*
 	insinto /usr/share/zsh/site-functions
