@@ -57,7 +57,7 @@ src_install() {
 	doins etc/*
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
-	dodoc README
+	dodoc README.md
 	readme.gentoo_create_doc
 }
 
