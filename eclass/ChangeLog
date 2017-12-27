@@ -71,3 +71,6 @@
 
   04 Nov 2017; Martin Väth <martin@mvath.de>:
   Support manifest.json in mv_mozextension-r1.eclass
+
+  27 Dec 2017; Martin Väth <martin@mvath.de>:
+  Remove meson_optional.eclass since meson.eclass in gentoo repository is fixed

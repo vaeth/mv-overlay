@@ -6,7 +6,7 @@ WANT_LIBTOOL=none
 AUTOTOOLS_AUTO_DEPEND=no
 MESON_AUTO_DEPEND=no
 PLOCALES="de ru"
-inherit autotools bash-completion-r1 l10n meson_optional tmpfiles toolchain-funcs
+inherit autotools bash-completion-r1 l10n meson tmpfiles toolchain-funcs
 
 case ${PV} in
 99999999*)
@@ -60,23 +60,22 @@ src_prepare() {
 
 src_configure() {
 	if use meson; then
-		local emesonargs
-		emesonargs=(
+		local emesonargs=(
 		-Ddocdir="${EPREFIX}/usr/share/doc/${P}"
 		-Dhtmldir="${EPREFIX}/usr/share/doc/${P}/html"
-		-Dsqlite=$(usex sqlite true false)
-		-Dextra-doc=$(usex doc true false)
-		-Dnls=$(usex nls true false)
-		-Dseparate-tools=$(usex tools true false)
-		-Dsecurity=$(usex security true false)
-		-Doptimization=$(usex optimization true false)
-		-Dstrong-secutiry=$(usex strong-security true false)
-		-Dstrong-optimization=$(usex strong-optimization true false)
-		-Ddebugging=$(usex debug true false)
-		-Dswap-remote=$(usex swap-remote true false)
-		-Dalways-accept-keywords=$(usex prefix true false)
-		-Ddep-default=$(usex dep true false)
-		-Drequired-use-default=$(usex required-use true false)
+		$(meson_use sqlite)
+		$(meson_use doc extra-doc)
+		$(meson_use nls)
+		$(meson_use tools separate-tools)
+		$(meson_use security)
+		$(meson_use optimization)
+		$(meson_use strong-security)
+		$(meson_use strong-optimization)
+		$(meson_use debug debugging)
+		$(meson_use swap-remote)
+		$(meson_use prefix always-accept-keywords)
+		$(meson_use dep dep-default)
+		$(meson_use required-use required-use-default)
 		-Dzsh-completion="${EPREFIX}/usr/share/zsh/site-functions"
 		-Dportage-rootpath="${ROOTPATH}"
 		-Deprefix-default="${EPREFIX}"
