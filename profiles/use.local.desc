@@ -232,6 +232,8 @@ net-print/foo2zjs:foo2zjs_devices_sa610 - Samsung CLP-610 ICM
 net-print/foo2zjs:foo2zjs_devices_xp6110 - Xerox Phaser 6110 and 6110MFP ICM
 net-print/foo2zjs:foo2zjs_devices_xp6115 - Xerox Phaser 6115MFP ICM
 net-print/foo2zjs:foomaticdb - Add support for the foomatic printing driver database
+sci-geosciences/googleearth:bundled-libs - Use bundled libraries.
+sci-geosciences/googleearth:bundled-qt - Use bundled qt.
 sys-apps/less:less-select - Add the less-select feature (additional options and a binary helper).
 sys-apps/less:lesspipe - Default to lesspipe.sh from app-text/lesspipe instead of the gentoo specific lesspipe.
 sys-apps/less:original-gentoo - Use the gentoo default for the LESS variable.
