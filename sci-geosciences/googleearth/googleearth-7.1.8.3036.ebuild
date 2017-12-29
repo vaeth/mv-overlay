@@ -51,13 +51,6 @@ DEPEND="dev-util/patchelf"
 
 S=${WORKDIR}/opt/google/earth/pro
 
-pkg_nofetch() {
-	einfo "Wrong checksum or file size means that Google silently replaced the distfile with a newer version."
-	einfo "Note that Gentoo cannot mirror the distfiles due to license reasons, so we have to follow the bump."
-	einfo "Please file a version bump bug on https://bugs.gentoo.org (search existing bugs for googleearth first!)."
-	einfo "By redigesting the file yourself, you will install a different version than the ebuild says, untested!"
-}
-
 src_unpack() {
 	# default src_unpack fails with deb2targz installed, also this unpacks the data.tar.lzma as well
 	unpack_deb ${A}
