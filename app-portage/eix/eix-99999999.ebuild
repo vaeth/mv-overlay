@@ -5,8 +5,7 @@ EAPI=6
 WANT_LIBTOOL=none
 AUTOTOOLS_AUTO_DEPEND=no
 MESON_AUTO_DEPEND=no
-PLOCALES="de ru"
-inherit autotools bash-completion-r1 l10n meson tmpfiles toolchain-funcs
+inherit autotools bash-completion-r1 meson tmpfiles toolchain-funcs
 
 case ${PV} in
 99999999*)
@@ -27,7 +26,12 @@ HOMEPAGE="https://github.com/vaeth/eix/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug +dep doc +meson nls optimization +required-use security strong-optimization strong-security sqlite swap-remote tools"
+PLOCALES="de ru"
+IUSE="debug +dep doc"
+for i in ${PLOCALES}; do
+	IUSE+=" l10n_${i}"
+done
+IUSE+=" +meson nls optimization +required-use security strong-optimization strong-security sqlite swap-remote tools"
 
 BOTHDEPEND="nls? ( virtual/libintl )
 	sqlite? ( >=dev-db/sqlite-3:= )"
@@ -59,6 +63,11 @@ src_prepare() {
 }
 
 src_configure() {
+	local i
+	export LINGUAS=
+	for i in ${PLOCALES}; do
+		use l10n_${i} && LINGUAS+=${LINGUAS:+ }${i}
+	done
 	if use meson; then
 		local emesonargs=(
 		-Ddocdir="${EPREFIX}/usr/share/doc/${P}"

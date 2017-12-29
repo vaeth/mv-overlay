@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PLOCALES="de ru"
+RESTRICT="mirror" # do not access gentoo mirror until it actually is there
 MESON_AUTO_DEPEND=no
-inherit bash-completion-r1 l10n meson tmpfiles
+inherit bash-completion-r1 meson tmpfiles
 
 DESCRIPTION="Search and query ebuilds"
 HOMEPAGE="https://github.com/vaeth/eix/"
@@ -13,7 +13,12 @@ SRC_URI="https://github.com/vaeth/eix/releases/download/v${PV}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="debug +dep doc +meson nls optimization +required-use security strong-optimization strong-security sqlite swap-remote tools"
+PLOCALES="de ru"
+IUSE="debug +dep doc"
+for i in ${PLOCALES}; do
+	IUSE+=" l10n_${i}"
+done
+IUSE+=" +meson nls optimization +required-use security strong-optimization strong-security sqlite swap-remote tools"
 
 BOTHDEPEND="nls? ( virtual/libintl )
 	sqlite? ( >=dev-db/sqlite-3:= )"
@@ -41,6 +46,11 @@ src_prepare() {
 }
 
 src_configure() {
+	local i
+	export LINGUAS=
+	for i in ${PLOCALES}; do
+		use l10n_${i} && LINGUAS+=${LINGUAS:+ }${i}
+	done
 	if use meson; then
 		local emesonargs=(
 		-Ddocdir="${EPREFIX}/usr/share/doc/${P}"
