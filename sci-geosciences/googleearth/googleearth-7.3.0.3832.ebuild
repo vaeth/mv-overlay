@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit desktop eutils fdo-mime gnome2-utils pax-utils unpacker versionator
+inherit desktop eutils gnome2-utils pax-utils unpacker versionator xdg-utils
 
 DESCRIPTION="A 3D interface to the planet"
 HOMEPAGE="https://www.google.com/earth/desktop/"
@@ -160,13 +160,13 @@ pkg_postinst() {
 	elog "	eselect mesa set 32bit i965 2"
 	elog "You may need to restart X afterwards"
 
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
