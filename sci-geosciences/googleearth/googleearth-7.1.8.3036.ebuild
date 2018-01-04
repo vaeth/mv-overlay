@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -105,7 +105,7 @@ src_prepare() {
 			die "patchelf failed on ${x}"
 	done
 
-	epatch "${FILESDIR}"/${PN}-${PV%%.*}-pro-desktopfile.patch
+	eapply -p0 "${FILESDIR}"/${PN}-${PV%%.*}-pro-desktopfile.patch
 	default
 }
 
@@ -117,6 +117,7 @@ src_install() {
 
 	domenu google-earth-pro.desktop
 
+	local size
 	for size in 16 22 24 32 48 64 128 256 ; do
 		newicon -s ${size} product_logo_${size}.png google-earth-pro.png
 	done
