@@ -1,9 +1,8 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 RESTRICT="mirror"
-PLOCALES="ca cs de el es fr it ja pt_BR ru sr sr@latin tr"
 
 inherit cmake-utils desktop flag-o-matic l10n xdg-utils
 
@@ -14,6 +13,10 @@ HOMEPAGE="http://fixounet.free.fr/avidemux"
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
 SLOT="2.6"
 IUSE="debug opengl nls nvenc qt5 sdl vaapi vdpau xv"
+PLOCALES="ca cs de el es fr it ja pt_BR ru sr sr@latin tr"
+for i in ${PLOCALES}; do
+	IUSE+=" l10n_${i//_/-}"
+done
 QA_DT_NEEDED=".*/libADM_UI_Cli6\.so"
 
 if [[ ${PV} == *9999* ]] ; then
@@ -46,7 +49,11 @@ S="${WORKDIR}/${MY_P}"
 DOCS=( AUTHORS README )
 
 src_prepare() {
-	default
+	local i
+	export LINGUAS=
+	for i in ${PLOCALES}; do
+		use l10n_${i//_/-} && LINGUAS+=${LINGUAS:+ }${i}
+	done
 
 	processes="buildCli:avidemux/cli"
 	if use qt5 ; then
@@ -78,6 +85,7 @@ src_prepare() {
 	sed -i -e 's/-lm/-lXext -lm/' avidemux/qt4/CMakeLists.txt || die
 	sed -i -e 's/{QT_QTGUI_LIBRARY}/{QT_QTGUI_LIBRARY} -lXext/' \
 		avidemux/common/ADM_render/CMakeLists.txt || die
+	default
 }
 
 src_configure() {

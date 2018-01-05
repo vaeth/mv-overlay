@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,10 +14,12 @@ S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 KEYWORDS=""
-
-IUSE="linguas_ar linguas_bg linguas_de linguas_en linguas_es linguas_fo linguas_fr linguas_it linguas_pl linguas_tr linguas_vi"
+PLOCALES="ar bg de en es fo fr it pl tr vi"
+IUSE=
+for i in ${PLOCALES}; do
+	IUSE+=${IUSE:+\ }"l10n_${i}"
+done
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="app-accessibility/espeak
@@ -28,6 +30,11 @@ RDEPEND="app-accessibility/espeak
 	${PYTHON_DEPS}"
 
 src_prepare() {
+	local i
+	export LINGUAS=
+	for i in ${PLOCALES}; do
+		use l10n_${i} && LINGUAS+=${LINGUAS:+ }${i}
+	done
 	distutils-r1_python_prepare_all
 	python_setup 'python2*'
 	python_fix_shebang "${S}"
@@ -35,5 +42,5 @@ src_prepare() {
 		-e 's!share/doc/gespeaker/dbus!share/gtk-doc/gspeaker!' \
 		-e "s!share/doc/gespeaker!share/doc/${PF}!" \
 		-- "${S}/setup.py" || die
-	eapply_user
+	default
 }
