@@ -15,7 +15,8 @@ SLOT="2.6"
 IUSE="debug opengl nls nvenc qt5 sdl vaapi vdpau xv"
 PLOCALES="ca cs de el es fr it ja pt_BR ru sr sr@latin tr"
 for i in ${PLOCALES}; do
-	IUSE+=" l10n_${i//_/-}"
+	i=${i//_/-}
+	IUSE+=" l10n_${i/@latin/-Latn}"
 done
 QA_DT_NEEDED=".*/libADM_UI_Cli6\.so"
 
@@ -49,10 +50,11 @@ S="${WORKDIR}/${MY_P}"
 DOCS=( AUTHORS README )
 
 src_prepare() {
-	local i
+	local i j
 	export LINGUAS=
 	for i in ${PLOCALES}; do
-		use l10n_${i//_/-} && LINGUAS+=${LINGUAS:+ }${i}
+		i=${i//_/-}
+		use l10n_${i/@latin/-Latn} && LINGUAS+=${LINGUAS:+ }${i}
 	done
 
 	processes="buildCli:avidemux/cli"
