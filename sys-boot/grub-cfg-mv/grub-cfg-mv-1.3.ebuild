@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,5 +17,5 @@ src_install() {
 	insinto /boot/grub
 	doins boot/grub/grub-mv.cfg
 	newins boot/grub/grub.cfg grub-mv-example.cfg
-	dodoc README
+	dodoc README.md
 }
