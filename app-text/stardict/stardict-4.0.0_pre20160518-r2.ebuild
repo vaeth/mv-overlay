@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -47,7 +47,7 @@ COMMON_DEPEND="
 		gnome-base/orbit:2
 	)
 	gucharmap? ( gnome-extra/gucharmap:0= )
-	spell? ( >=app-text/enchant-1.2 )
+	spell? ( >=app-text/enchant-1.2:= )
 	tools? (
 		dev-libs/expat
 		dev-libs/libpcre:=
