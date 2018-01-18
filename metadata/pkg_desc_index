@@ -6,7 +6,7 @@ app-arch/archwrap 9.0: A collection of POSIX shell scripts to invoke archiver pr
 app-arch/brotli 1.0.2: Generic-purpose lossless compression algorithm
 app-arch/bzwc 5.0: A POSIX shell wrapper for wc, supporting compressed files (xz, lzma, bz2, gz)
 app-arch/paq8l 20070308: Open source file compressor and archiver
-app-cdr/cdrtools 3.02_alpha07-r1: A set of tools for CD/DVD reading and recording, including cdrecord
+app-cdr/cdrtools 3.02_alpha09: A set of tools for CD/DVD reading and recording, including cdrecord
 app-dicts/ispell-de 20161207: German and Swiss dictionaries for ispell
 app-dicts/ispell-de-alt 2-r1: German dictionary (traditional orthography) for ispell
 app-dicts/stardict-dictd-BritannicaConcise 2.4.2: Stardict Dictionary for Dictd.org's The Britannica Concise Encyclopedia
