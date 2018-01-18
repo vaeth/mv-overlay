@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ GNOME2_LA_PUNT="yes"
 inherit autotools eutils flag-o-matic gnome2 multilib multilib-minimal readme.gentoo-r1 virtualx
 
 DESCRIPTION="Gimp ToolKit +"
-HOMEPAGE="http://www.gtk.org/"
+HOMEPAGE="https://www.gtk.org/"
 
 LICENSE="LGPL-2+"
 SLOT="2"
@@ -16,7 +16,7 @@ REQUIRED_USE="
 	xinerama? ( !aqua )
 "
 
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 # Upstream wants us to do their job:
 # https://bugzilla.gnome.org/show_bug.cgi?id=768663#c1
@@ -222,8 +222,7 @@ multilib_src_install_all() {
 	# Also set more default variables in sync with gtk3 and other distributions
 	echo 'gtk-fallback-icon-theme = "gnome"' > "${T}/gtkrc"
 	echo 'gtk-theme-name = "Adwaita"' >> "${T}/gtkrc"
-	if use adwaita-icon-theme
-	then
+	if use adwaita-icon-theme ; then
 		echo 'gtk-icon-theme-name = "Adwaita"' >> "${T}/gtkrc"
 	else
 		echo 'gtk-icon-theme-name = "gnome"' >> "${T}/gtkrc"
@@ -237,7 +236,7 @@ multilib_src_install_all() {
 
 	# dev-util/gtk-builder-convert split off into a separate package, #402905
 	rm "${ED}"usr/bin/gtk-builder-convert || die
-	rm -f "${ED}"usr/share/man/man1/gtk-builder-convert.* || die
+	rm "${ED}"usr/share/man/man1/gtk-builder-convert.* || die
 
 	readme.gentoo_create_doc
 }

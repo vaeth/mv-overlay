@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,17 +7,17 @@ GNOME2_LA_PUNT="yes"
 inherit autotools flag-o-matic gnome2 multilib virtualx multilib-minimal
 
 DESCRIPTION="Gimp ToolKit +"
-HOMEPAGE="http://www.gtk.org/"
+HOMEPAGE="https://www.gtk.org/"
 
 LICENSE="LGPL-2+"
 SLOT="3"
-IUSE="adwaita-icon-theme aqua atk-bridge broadway cloudprint colord cups debug examples +introspection test vim-syntax wayland +X xinerama"
+IUSE="adwaita-icon-theme aqua atk-bridge broadway cloudprint colord cups examples +introspection test vim-syntax wayland +X xinerama"
 REQUIRED_USE="
 	|| ( aqua wayland X )
 	xinerama? ( X )
 "
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 # Upstream wants us to do their job:
 # https://bugzilla.gnome.org/show_bug.cgi?id=768662#c1
@@ -86,12 +86,12 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-util/gtk-update-icon-cache-3
 	!<gnome-base/gail-1000
 	!<x11-libs/vte-0.31.0:2.90
-	adwaita-icon-theme? ( >=x11-themes/adwaita-icon-theme-3.14 )
-	!adwaita-icon-theme? ( x11-themes/hicolor-icon-theme virtual/freedesktop-icon-theme )
 "
 # librsvg for svg icons (PDEPEND to avoid circular dep), bug #547710
 PDEPEND="
-	adwaita-icon-theme? ( gnome-base/librsvg[${MULTILIB_USEDEP}] )
+	adwaita-icon-theme? ( gnome-base/librsvg[${MULTILIB_USEDEP}]
+		>=x11-themes/adwaita-icon-theme-3.14 )
+	!adwaita-icon-theme? ( x11-themes/hicolor-icon-theme virtual/freedesktop-icon-theme )
 	vim-syntax? ( app-vim/gtk-syntax )
 "
 
@@ -158,7 +158,6 @@ multilib_src_configure() {
 		$(use_enable X xrandr) \
 		$(use_enable xinerama) \
 		$(use_with atk-bridge) \
-		$(usex debug --enable-debug --enable-debug=minimum) \
 		--disable-papi \
 		--disable-mir-backend \
 		--enable-man \
