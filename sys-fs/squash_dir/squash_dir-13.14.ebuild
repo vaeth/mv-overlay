@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,8 +44,8 @@ src_prepare() {
 			-e "s\":/usr/sbin:/sbin'\":${EPREFIX}/usr/sbin:${EPREFIX}/sbin:/usr/sbin:/sbin'\"" \
 			-- "sbin/${PN}" || die
 		sed -i \
-			-e "s\"'/lib/rc/bin:\":'${EPREFIX}/lib/rc/bin:/lib/rc/bin:\"" \
-			-- "sbin/openrc-wrapper" || die
+			-e "s\"'/lib\"'${EPREFIX}/lib64/rc/bin:${EPREFIX}/lib/rc/bin:/lib\"" \
+			-- "bin/openrc-wrapper" || die
 	else	sed -i \
 			-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
 			-- bin/* sbin/* || die

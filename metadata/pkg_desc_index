@@ -103,7 +103,7 @@ sys-boot/grub-cfg-mv 1.4: A grub.cfg library/example for GRUB2
 sys-fs/aufs 99999999: An entirely re-designed and re-implemented Unionfs
 sys-fs/aufs-util 99999999: Userspace tools for aufs
 sys-fs/emount 3.0.4: mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab
-sys-fs/squash_dir 13.13: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
+sys-fs/squash_dir 13.14: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-fs/squashfs-tools 4.3.1_alpha20171129 99999999: Tool for creating compressed filesystem type squashfs
 sys-fs/squashfuse 0.1.101: FUSE filesystem to mount squashfs archives
 sys-fs/squashmount 16.1.0 17.1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
