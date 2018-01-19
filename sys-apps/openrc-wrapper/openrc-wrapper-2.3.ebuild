@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}
 IUSE=""
 
 src_install() {
-	dodoc README
+	dodoc README.md
 	systemd_dounit systemd/system/*
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
