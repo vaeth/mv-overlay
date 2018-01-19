@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,5 +19,5 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${ED}" EPREFIX="${EPREFIX}" install
-	dodoc README
+	dodoc README.md
 }
