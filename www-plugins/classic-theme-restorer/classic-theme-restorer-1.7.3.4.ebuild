@@ -7,7 +7,7 @@ RESTRICT="mirror"
 
 mPN="${PN//-/_}_fx29_56-${PV}"
 DESCRIPTION="Firefox legacy add-on: restore partially the look of classical firefox"
-HOMEPAGE="https://addons.mozilla.org/de/firefox/addon/classicthemerestorer/"
+HOMEPAGE="https://addons.mozilla.org/en-US/firefox/addon/classicthemerestorer/"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/472577/${mPN}-fx.xpi"
 
 LICENSE="MPL-2.0"

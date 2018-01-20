@@ -6,7 +6,7 @@ inherit mv_mozextension-r1
 RESTRICT="mirror"
 
 DESCRIPTION="Firefox webextension: a basic simple math calculator"
-HOMEPAGE="https://addons.mozilla.org/de/firefox/addon/simple-calculator-1_blacktoy/"
+HOMEPAGE="https://addons.mozilla.org/en-US/firefox/addon/simple-calculator-1_blacktoy/"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/562742/${PN//-/_}-${PV}-an+fx-linux.xpi"
 
 LICENSE="MPL-2.0"

@@ -6,7 +6,7 @@ inherit mv_mozextension-r1 readme.gentoo-r1
 RESTRICT="mirror"
 
 DESCRIPTION="Firefox webextension: a global dark theme for the web"
-HOMEPAGE="https://addons.mozilla.org/de/firefox/addon/dark-mode-webextension/"
+HOMEPAGE="https://addons.mozilla.org/en-US/firefox/addon/dark-mode-webextension/"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/786990/${PN//-/_}_webextension-${PV}-an+fx.xpi"
 
 LICENSE="MPL-2.0"

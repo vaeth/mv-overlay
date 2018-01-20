@@ -6,7 +6,7 @@ inherit mv_mozextension-r1
 RESTRICT="mirror"
 
 DESCRIPTION="Firefox webextension: block canvas API to prevent canvas fingerprinting"
-HOMEPAGE="https://addons.mozilla.org/de/firefox/addon/canvasblocker/
+HOMEPAGE="https://addons.mozilla.org/en-US/firefox/addon/canvasblocker/
 https://github.com/kkapsner/CanvasBlocker"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/534930/${PN//-/_}-${PV}-an+fx.xpi"
 

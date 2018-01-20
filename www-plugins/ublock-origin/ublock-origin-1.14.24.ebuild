@@ -6,7 +6,7 @@ inherit mv_mozextension-r1
 RESTRICT="mirror"
 
 DESCRIPTION="Firefox webextension: An efficient list-based blocker"
-HOMEPAGE="https://addons.mozilla.org/de/firefox/addon/ublock-origin/"
+HOMEPAGE="https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/"
 SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/607454/${PN//-/_}-${PV}-an+fx.xpi"
 
 LICENSE="GPL-3"
