@@ -118,7 +118,7 @@ www-plugins/canvasblocker 0.4.4b: Firefox webextension: block canvas API to prev
 www-plugins/classic-theme-restorer 1.7.3.4: Firefox legacy add-on: restore partially the look of classical firefox
 www-plugins/dark-mode 0.2.3: Firefox webextension: a global dark theme for the web
 www-plugins/decentraleyes 2.0.2: Firefox webextension: avoid centralized services
-www-plugins/duckduckgo 1.1.26 2017.12.7: Firefox webextension: enable duckduckgo search engine
+www-plugins/duckduckgo 1.1.26 2018.1.19: Firefox webextension: enable duckduckgo search engine
 www-plugins/epubreader 1.5.0.12-r2 2.0.5-r2: Firefox webextension: read ebook (.epub) files
 www-plugins/form-history-control 1.4.0.6-r2 2.0.3.2: Firefox webextension: edit the saved history of forms
 www-plugins/google-translation 2.6: Firefox webextension: translate to your native language a selected text
