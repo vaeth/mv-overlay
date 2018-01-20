@@ -21,7 +21,7 @@ app-dicts/stardict-freedict-ita-deu 2.4.2: Stardict Dictionary Italian to German
 app-dicts/steak 1.7.3-r3: EN => DE Dictionary
 app-emacs/mv_emacs 1.3: (X)Emacs extensions: block support, macrorecorder, verify change
 app-eselect/eselect-net 0.2: eselect module for managing network open-rc service configurations
-app-misc/knapsack 7.2-r1: A fast solver for the 0/1-knapsack problem with multiple knapsacks
+app-misc/knapsack 7.2.1: A fast solver for the 0/1-knapsack problem with multiple knapsacks
 app-misc/machine-learning-mv 1.2: Some machine learning experiments
 app-portage/eix 0.33.1 99999999: Search and query ebuilds
 app-portage/etcat 1.0.1 99999999: Updated version of an old Portage information extractor
