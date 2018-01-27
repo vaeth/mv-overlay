@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,7 +30,7 @@ RDEPEND=${RDEPEND}" title? (
 )"
 
 src_install() {
-	dodoc AUTHORS NEWS README
+	dodoc AUTHORS NEWS README.md
 	exeinto "/usr/share/doc/${PF}"
 	doexe fix-portage-2.2.15
 	docompress -x "/usr/share/doc/${PF}/fix-portage-2.2.15"
