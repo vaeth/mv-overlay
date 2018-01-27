@@ -1,5 +1,5 @@
 # ChangeLog for eclass directory
-# Copyright 2017 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 2018 Gentoo Foundation; Distributed under the GPL v2
 
   12 May 2012; Martin Väth <martin@mvath.de>:
   Created ChangeLog
@@ -74,3 +74,6 @@
 
   27 Dec 2017; Martin Väth <martin@mvath.de>:
   Remove meson_optional.eclass since meson.eclass in gentoo repository is fixed
+
+  27 Jan 2018; Martin Väth <martin@mvath.de>:
+  mv_mozextension-r1.eclass: manifest.json: search "id" only inside "gecko"

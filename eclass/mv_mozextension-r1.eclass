@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mv_mozextension-r1.eclass
@@ -356,9 +356,10 @@ moz_getid() {
 		res=$(sed -n -e '/install-manifest/,$ '"${sub}" -- "${file}") || res=
 	else	file=${dir}/manifest.json
 		test -f "${file}" || die "cannot find ${dir}/{install.rdf,manifest.json}"
-		sub='^[[:space:]]*["'\''][iI][dD]["'\''][[:space:]]*:[[:space:]]*'
-		sub=${sub}'["'\'']\(.*\)["'\''][[:space:]]*,\?[[:space:]]*$/\1'
-		res=$(sed -n -e "s/${sub}/p" -- "${file}") || res=
+		sub='/^[[:space:]]*["'\'']gecko["'\''][[:space:]]*:/,/\}/s/'
+		sub=${sub}'^[[:space:]]*["'\'']id["'\''][[:space:]]*:[[:space:]]*'
+		sub=${sub}'["'\'']\(.*\)["'\''][[:space:]]*,\?[[:space:]]*$/\1/p'
+		res=$(sed -n -e "${sub}" -- "${file}") || res=
 	fi
 	[ -n "${res}" ] || die "failed to determine id from ${file}"
 	eval ${var}=\${res}
