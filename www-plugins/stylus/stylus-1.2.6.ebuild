@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ RESTRICT="mirror"
 
 DESCRIPTION="Firefox webextension: install themes and skins for many popular sites"
 HOMEPAGE="https://addons.mozilla.org/en-US/firefox/addon/styl-us/"
-SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/814814/${PN}_beta-${PV}-an+fx.xpi"
+SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/814814/${P}-an+fx.xpi"
 
 LICENSE="MPL-2.0"
 SLOT="0"
