@@ -121,7 +121,7 @@ www-plugins/duckduckgo 1.1.26 2018.1.25: Firefox webextension: privacy essential
 www-plugins/epubreader 1.5.0.12-r2 2.0.5-r2: Firefox webextension: read ebook (.epub) files
 www-plugins/form-history-control 1.4.0.6-r2 2.0.3.2: Firefox webextension: edit the saved history of forms
 www-plugins/google-translation 2.6: Firefox webextension: translate to your native language a selected text
-www-plugins/https-everywhere 2018.1.11: Firefox webextension: force https for all websites of a provided list
+www-plugins/https-everywhere 2018.1.29: Firefox webextension: force https for all websites of a provided list
 www-plugins/locale-switcher 3-r2: Firefox legacy add-on: button to switch GUI locale
 www-plugins/no-color 0.9.4: Firefox webextension: remove colors and background images from the page
 www-plugins/noscript 5.1.8.3 10.1.6.3: Firefox webextension: restrict active contents like java/javascript/flash
