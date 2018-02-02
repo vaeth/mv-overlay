@@ -8,13 +8,12 @@ inherit desktop eutils gnome2-utils pax-utils unpacker versionator xdg-utils
 DESCRIPTION="A 3D interface to the planet"
 HOMEPAGE="https://www.google.com/earth/desktop/"
 MY_PV=$(replace_all_version_separators '_' $(get_version_component_range 1-3))
-SRC_URI="x86? ( https://dl.google.com/dl/earth/client/GE7/release_${MY_PV}/google-earth-pro-stable_${PV}-r0_i386.deb )
-	amd64? ( https://dl.google.com/dl/earth/client/GE7/release_${MY_PV}/google-earth-pro-stable_${PV}-r0_amd64.deb )"
+SRC_URI="https://dl.google.com/dl/linux/direct/google-earth-pro-stable_${PV}_amd64.deb"
 LICENSE="googleearth GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 RESTRICT="mirror splitdebug"
-IUSE="+bundled-libs +bundled-qt"
+IUSE="+bundled-qt"
 
 QA_PREBUILT="*"
 
@@ -23,6 +22,9 @@ RDEPEND="
 	dev-libs/nspr
 	media-libs/fontconfig
 	media-libs/freetype
+	media-libs/gstreamer:1.0=
+	media-libs/gst-plugins-base:1.0=
+	net-libs/libproxy
 	net-misc/curl
 	sys-devel/gcc[cxx]
 	sys-libs/zlib
@@ -37,10 +39,6 @@ RDEPEND="
 	x11-libs/libXrender
 	x11-libs/libXau
 	x11-libs/libXdmcp
-	!bundled-libs? (
-		dev-libs/expat
-		sci-libs/proj
-	)
 	!bundled-qt? (
 		dev-qt/qtcore:5
 		dev-qt/qtdbus:5
@@ -68,16 +66,6 @@ src_unpack() {
 	unpack_deb ${A}
 
 	cd opt/google/earth/pro || die
-	if ! use bundled-libs ; then
-		einfo "removing bundled libs"
-		# sci-libs/gdal-1*
-		# rm -v libgdal.so.1 || die
-		# dev-libs/expat
-		rm -v libexpat.so.1 || die
-		# sci-libs/proj
-		rm -v libproj.so.0 || die
-#		rm -rv plugins/imageformats || die
-	fi
 	if ! use bundled-qt ; then
 		einfo "removing bundled qt"
 		rm -v libQt5{Core,DBus,Gui,Multimedia,MultimediaWidgets,Network,OpenGL,Positioning,PrintSupport,Qml,Quick,Script,ScriptTools,Sensors,Sql,WebChannel,WebKit,WebKitWidgets,Widgets,X11Extras,XcbQpa}.so.5 || die
