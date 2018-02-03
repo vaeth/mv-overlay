@@ -5,7 +5,7 @@ EAPI=6
 WANT_LIBTOOL=none
 AUTOTOOLS_AUTO_DEPEND=no
 MESON_AUTO_DEPEND=no
-inherit autotools bash-completion-r1 meson tmpfiles toolchain-funcs
+inherit autotools bash-completion-r1 meson tmpfiles
 
 case ${PV} in
 99999999*)
@@ -15,7 +15,7 @@ case ${PV} in
 	PROPERTIES="live";;
 *)
 	RESTRICT="mirror"
-	EGIT_COMMIT="eac7225140ab7a1f34326870fdea7e44371be7bc"
+	EGIT_COMMIT="d37ef09d8ed3532a15fe6788458576830bc14229"
 	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 esac
@@ -27,7 +27,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 PLOCALES="de ru"
-IUSE="debug +dep doc"
+IUSE="debug +dep doc +jumbo-build"
 for i in ${PLOCALES}; do
 	IUSE+=" l10n_${i}"
 done
@@ -72,6 +72,7 @@ src_configure() {
 		local emesonargs=(
 		-Ddocdir="${EPREFIX}/usr/share/doc/${P}"
 		-Dhtmldir="${EPREFIX}/usr/share/doc/${P}/html"
+		$(meson_use jumbo-build)
 		$(meson_use sqlite)
 		$(meson_use doc extra-doc)
 		$(meson_use nls)
@@ -92,6 +93,7 @@ src_configure() {
 		meson_src_configure
 	else
 		local myconf=(
+		$(use_with jumbo-build)
 		$(use_with sqlite)
 		$(use_with doc extra-doc)
 		$(use_enable nls)

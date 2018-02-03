@@ -1,20 +1,33 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-RESTRICT="mirror" # do not access gentoo mirror until it actually is there
+WANT_LIBTOOL=none
+AUTOTOOLS_AUTO_DEPEND=no
 MESON_AUTO_DEPEND=no
-inherit bash-completion-r1 meson tmpfiles
+inherit autotools bash-completion-r1 meson tmpfiles
+
+case ${PV} in
+99999999*)
+	EGIT_REPO_URI="https://github.com/vaeth/${PN}.git"
+	inherit git-r3
+	SRC_URI=""
+	PROPERTIES="live";;
+*)
+	RESTRICT="mirror"
+	EGIT_COMMIT="d37ef09d8ed3532a15fe6788458576830bc14229"
+	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
+esac
 
 DESCRIPTION="Search and query ebuilds"
 HOMEPAGE="https://github.com/vaeth/eix/"
-SRC_URI="https://github.com/vaeth/eix/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS=""
 PLOCALES="de ru"
-IUSE="debug +dep doc"
+IUSE="debug +dep doc +jumbo-build"
 for i in ${PLOCALES}; do
 	IUSE+=" l10n_${i}"
 done
@@ -31,8 +44,8 @@ DEPEND="${BOTHDEPEND}
 		>=dev-util/ninja-1.7.2
 		strong-optimization? ( >=sys-devel/gcc-config-1.9.1 )
 	)
-	app-arch/xz-utils
-	nls? ( sys-devel/gettext )"
+	!meson? ( ${AUTOTOOLS_DEPEND} )
+	>=sys-devel/gettext-0.19.6"
 
 pkg_setup() {
 	# remove stale cache file to prevent collisions
@@ -43,6 +56,10 @@ pkg_setup() {
 src_prepare() {
 	sed -i -e "s'/'${EPREFIX}/'" -- "${S}"/tmpfiles.d/eix.conf || die
 	default
+	use meson || {
+		eautopoint
+		eautoreconf
+	}
 }
 
 src_configure() {
@@ -55,6 +72,7 @@ src_configure() {
 		local emesonargs=(
 		-Ddocdir="${EPREFIX}/usr/share/doc/${P}"
 		-Dhtmldir="${EPREFIX}/usr/share/doc/${P}/html"
+		$(meson_use jumbo-build)
 		$(meson_use sqlite)
 		$(meson_use doc extra-doc)
 		$(meson_use nls)
@@ -75,6 +93,7 @@ src_configure() {
 		meson_src_configure
 	else
 		local myconf=(
+		$(use_with jumbo-build)
 		$(use_with sqlite)
 		$(use_with doc extra-doc)
 		$(use_enable nls)
