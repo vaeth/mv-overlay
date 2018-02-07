@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -56,7 +56,8 @@ src_prepare() {
 
 src_install() {
 	dobin bin/*
-	dodoc README.md ChangeLog compress.txt
+	dodoc README.md ChangeLog compress.txt demo.svg
+	docompress -x "/usr/share/doc/${PF}/demo.svg"
 	doinitd openrc/init.d/*
 	systemd_dounit systemd/system/*
 	dotmpfiles tmpfiles.d/*
