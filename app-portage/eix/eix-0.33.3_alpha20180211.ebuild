@@ -15,7 +15,7 @@ case ${PV} in
 	PROPERTIES="live";;
 *)
 	RESTRICT="mirror"
-	EGIT_COMMIT="d37ef09d8ed3532a15fe6788458576830bc14229"
+	EGIT_COMMIT="e15dad4cdecfd791db8b2f45e2f701983b660f1c"
 	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 esac
@@ -90,6 +90,12 @@ src_configure() {
 		-Dportage-rootpath="${ROOTPATH}"
 		-Deprefix-default="${EPREFIX}"
 		)
+		if use prefix; then
+			emesonarge+=(
+				-Deix-user=
+				-Deix-uid=-1
+			)
+		fi
 		meson_src_configure
 	else
 		local myconf=(
@@ -111,6 +117,12 @@ src_configure() {
 		--with-portage-rootpath="${ROOTPATH}"
 		--with-eprefix-default="${EPREFIX}"
 		)
+		if use prefix; then
+			myconf+=(
+				--with-eix-user=
+				--with-eix-uid=-1
+			)
+		fi
 		econf "${myconf[@]}"
 	fi
 }
