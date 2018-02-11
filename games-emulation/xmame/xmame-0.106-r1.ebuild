@@ -43,6 +43,7 @@ DEPEND="${RDEPEND}
 #	icc? ( dev-lang/icc )
 
 S=${WORKDIR}/xmame-${PV}
+PATCHES=( "${FILESDIR}/fix-zn1-looping-sound.patch" )
 
 toggle_feature() {
 	if use $1 ; then
@@ -57,6 +58,8 @@ toggle_feature2() {
 }
 
 src_prepare() {
+	default
+
 	local mycpu
 
 	case ${ARCH} in
