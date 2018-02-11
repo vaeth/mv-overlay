@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ TARGET="${PN}"
 
 DESCRIPTION="Multiple Arcade Machine Emulator for X11"
 HOMEPAGE="http://x.mame.net/"
-SRC_URI="http://x.mame.net/download/xmame-${PV}.tar.bz2"
+SRC_URI="http://gentoo.osuosl.org/distfiles/xmame-${PV}.tar.bz2"
 
 LICENSE="XMAME"
 SLOT="0"
@@ -43,6 +43,7 @@ DEPEND="${RDEPEND}
 #	icc? ( dev-lang/icc )
 
 S=${WORKDIR}/xmame-${PV}
+PATCHES=("${FILESDIR}"/${P}-overflow.patch)
 
 toggle_feature() {
 	if use $1 ; then
@@ -141,8 +142,7 @@ EOF
 		-e 's/doinstallsuid/doinstall/' \
 		-e '/^QUIET/s:^:#:' src/unix/unix.mak \
 		|| die "sed src/unix/unix.mak failed"
-	eapply -p0 "${FILESDIR}"/${P}-overflow.patch
-	eapply_user
+	default
 }
 
 src_compile() {

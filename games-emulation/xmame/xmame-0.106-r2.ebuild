@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -58,8 +58,6 @@ toggle_feature2() {
 }
 
 src_prepare() {
-	default
-
 	local mycpu
 
 	case ${ARCH} in
@@ -144,7 +142,7 @@ EOF
 		-e 's/doinstallsuid/doinstall/' \
 		-e '/^QUIET/s:^:#:' src/unix/unix.mak \
 		|| die "sed src/unix/unix.mak failed"
-	eapply_user
+	default
 }
 
 src_compile() {

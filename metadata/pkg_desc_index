@@ -60,7 +60,7 @@ dev-util/pyrep 1.4-r1: Search and/or replace regular expressions within many fil
 dev-vcs/git-wrappers-mv 1.16: Some personal wrappers for the most important git commands
 games-action/trackballs 1.1.4-r1: simple game similar to the classical game Marble Madness
 games-board/chessproblem 1.8 2.9: Find solutions of chess problems (mate, selfmate, and helpmate) with cooks
-games-emulation/xmame 0.106-r1: Multiple Arcade Machine Emulator for X11
+games-emulation/xmame 0.106-r2: Multiple Arcade Machine Emulator for X11
 games-emulation/xmess 0.106-r1: Multiple Arcade Machine Emulator for X11
 games-engines/freesci 0.6.4-r1: Sierra script interpreter for your old Sierra adventures
 games-rpg/aklabeth 1.0-r1: A remake of Richard C. Garriott's Ultima prequel

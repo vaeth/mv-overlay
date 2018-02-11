@@ -1,3 +1,5 @@
+# backport fix for looping sounds in the ZN-1
+# by https://github.com/Francesco149/
 diff --git a/src/sound/psx.c b/src/sound/psx.c
 index aa887e2..9c86ace 100644
 --- a/src/sound/psx.c
