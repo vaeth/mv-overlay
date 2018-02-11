@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,8 +20,8 @@ dev-perl/String-Escape
 dev-perl/String-ShellQuote"
 
 RDEPEND=">=dev-lang/perl-5.8
+	|| ( >=dev-lang/perl-5.9.4 >=virtual/perl-File-Spec-3.0 )
 	${OPTIONAL_RDEPEND}"
-#	|| ( >=dev-lang/perl-5.9.4 >=virtual/perl-File-Spec-3.0 )
 #	|| ( >=dev-lang/perl-5.6.1 >=virtual/perl-Getopt-Long-2.24 )
 #	|| ( >=dev-lang/perl-5.7.3 virtual/perl-Digest-MD5 )
 #	|| ( >=dev-lang/perl-5.7.3 virtual/perl-Time-HiRes )
