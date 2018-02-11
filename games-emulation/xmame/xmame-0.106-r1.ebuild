@@ -9,7 +9,7 @@ TARGET="${PN}"
 
 DESCRIPTION="Multiple Arcade Machine Emulator for X11"
 HOMEPAGE="http://x.mame.net/"
-SRC_URI="http://x.mame.net/download/xmame-${PV}.tar.bz2"
+SRC_URI="http://gentoo.osuosl.org/distfiles/xmame-${PV}.tar.bz2"
 
 LICENSE="XMAME"
 SLOT="0"
@@ -43,6 +43,7 @@ DEPEND="${RDEPEND}
 #	icc? ( dev-lang/icc )
 
 S=${WORKDIR}/xmame-${PV}
+PATCHES=( "${FILESDIR}/fix-zn1-looping-sound.patch" )
 
 toggle_feature() {
 	if use $1 ; then
@@ -57,6 +58,8 @@ toggle_feature2() {
 }
 
 src_prepare() {
+	default
+
 	local mycpu
 
 	case ${ARCH} in
