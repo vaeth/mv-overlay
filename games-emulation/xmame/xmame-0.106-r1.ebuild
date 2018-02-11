@@ -9,7 +9,7 @@ TARGET="${PN}"
 
 DESCRIPTION="Multiple Arcade Machine Emulator for X11"
 HOMEPAGE="http://x.mame.net/"
-SRC_URI="http://x.mame.net/download/xmame-${PV}.tar.bz2"
+SRC_URI="http://gentoo.osuosl.org/distfiles/xmame-${PV}.tar.bz2"
 
 LICENSE="XMAME"
 SLOT="0"
