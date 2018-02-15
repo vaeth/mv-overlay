@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,6 @@ RDEPEND="|| (
 	x11-themes/mate-icon-theme
 	x11-themes/elementary-xfce-icon-theme
 	x11-themes/adwaita-icon-theme
-	x11-themes/gnome-icon-theme
 	x11-themes/faenza-icon-theme
 )
 "
