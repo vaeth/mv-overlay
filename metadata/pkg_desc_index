@@ -127,7 +127,7 @@ www-plugins/simple-calculator 1.3.2: Firefox webextension: a basic simple math c
 www-plugins/skip-redirect 2.2.1: Firefox webextension: skip intermediary pages before redirecting
 www-plugins/stylus 1.2.7: Firefox webextension: install themes and skins for many popular sites
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
-www-plugins/ublock-origin 1.15.4: Firefox webextension: An efficient list-based blocker
+www-plugins/ublock-origin 1.15.6: Firefox webextension: An efficient list-based blocker
 www-plugins/xclear 1.8.2-r1: Firefox legacy add-on: button to clear URL
 x11-drivers/nvidia-drivers 173.14.39-r2: NVIDIA Accelerated Graphics Driver
 x11-libs/gtk+ 2.24.31-r1 3.22.19 3.22.26: Gimp ToolKit +
