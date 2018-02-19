@@ -8,7 +8,7 @@ RESTRICT="mirror"
 DESCRIPTION="Firefox webextension: calculate values of mathematical expressions"
 HOMEPAGE="https://addons.mozilla.org/en-US/firefox/addon/calc-extension/
 https://github.com/vaeth/calc-extension/"
-SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/937719/rechner-${PV}-an+fx.xpi -> ${P}-an+fx.xpi"
+SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/937719/${PN//-/_}-${PV}-an+fx.xpi"
 
 LICENSE="GPL-2"
 SLOT="0"
