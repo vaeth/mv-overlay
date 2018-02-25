@@ -70,7 +70,7 @@ games-rpg/magus 1.3.1 1.3.3 99999999: A character generator for the popular Germ
 mail-client/alpine 2.00-r7 2.21.1: alpine is an easy to use text-based based mail and news client
 media-gfx/pqiv 2.10.2: powerful GTK based command-line image viewer with a minimal UI
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
-media-tv/sundtek-tv 180210.163017: Sundtek MediaTV Pro III Drivers
+media-tv/sundtek-tv 180221.225950: Sundtek MediaTV Pro III Drivers
 media-tv/w_scan 20170107-r1: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies
 media-video/avinfo 1.0_alpha15_p1: Utility for displaying AVI information
 media-video/video-mv 12.1: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
