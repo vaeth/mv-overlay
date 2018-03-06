@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>martin@mvath.de</email>
+		<name>Martin Väth</name>
+		<description>maintainer of the slot in the mv overlay</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>livecd@gentoo.org</email>
+		<name>Gentoo LiveCD Project</name>
+	</maintainer>
+	<use>
+		<flag name="device-mapper">
+	Enable device-mapper support from <pkg>sys-fs/lvm2</pkg> in parted
+	</flag>
+		<flag name="debug">
+	Enable debugging as encouraged by upstream: [The default configuration]
+	includes --enable-debug (by default), which contains many assertions.
+	Obviously, these "waste" space, but in the past, they have caught
+	potentially dangerous bugs before they would have done damage, so we think
+	it's worth it.  Also, it means we get more bug reports ;)
+	</flag>
+		<flag name="standalone">
+	Install a standalone version which provides all headers and binaries
+	which collide with sys-block/parted:0. If this flag is not set,
+	sys-block/parted:0 is pulled in to provide the non-installed headers
+	and binaries.
+	</flag>
+	</use>
+</pkgmetadata>
