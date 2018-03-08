@@ -23,8 +23,8 @@ IUSE+=" +meson nls optimization +required-use security strong-optimization stron
 BOTHDEPEND="nls? ( virtual/libintl )
 	sqlite? ( >=dev-db/sqlite-3:= )"
 RDEPEND="${BOTHDEPEND}
-	>=app-shells/push-2.0-r2
-	>=app-shells/quoter-3.0-r2"
+	>=app-shells/push-3.1
+	>=app-shells/quoter-4.1"
 DEPEND="${BOTHDEPEND}
 	meson? (
 		>=dev-util/meson-0.41.0
