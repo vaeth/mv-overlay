@@ -24,7 +24,7 @@ RDEPEND="!app-shells/auto-fu-zsh[kill-line(-)]
 	${OPTIONAL_RDEPEND}"
 
 src_install() {
-	dodoc README
+	dodoc README.md
 	insinto /etc/zsh
 	doins zshrc
 }
