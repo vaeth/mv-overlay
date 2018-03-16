@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2012-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RDEPEND=">=app-shells/push-2.0-r2"
+RDEPEND=">=app-shells/push-3"
 DEPEND=""
 
 src_prepare() {
@@ -40,5 +40,5 @@ src_install() {
 	doins bin/archwrap.sh
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
-	dodoc README archwrap_alias
+	dodoc README.md archwrap_alias
 }
