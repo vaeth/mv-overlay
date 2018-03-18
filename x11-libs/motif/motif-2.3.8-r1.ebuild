@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools flag-o-matic ltprune multilib toolchain-funcs multilib-minimal
+inherit autotools flag-o-matic multilib toolchain-funcs multilib-minimal
 
 DESCRIPTION="The Motif user interface component toolkit"
 HOMEPAGE="https://sourceforge.net/projects/motif/
@@ -13,13 +13,12 @@ SRC_URI="mirror://sourceforge/project/motif/Motif%20${PV}%20Source%20Code/${P}.t
 
 LICENSE="LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="examples jpeg +motif22-compatibility png static-libs unicode xft"
 
 RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXmu-1.1.1-r1[${MULTILIB_USEDEP}]
-	>=x11-libs/libXp-1.0.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}]
 	jpeg? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}] )
@@ -67,7 +66,7 @@ src_prepare() {
 	fi
 
 	# "bison -y" causes runtime crashes #355795
-	command -v byacc >/dev/null 2>&1 &&	export YACC=byacc
+	command -v byacc >/dev/null 2>&1 && export YACC=byacc
 
 	# remember the name of the C compiler for the native ABI
 	MY_NATIVE_CC=$(tc-getCC)
@@ -76,6 +75,7 @@ src_prepare() {
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		--with-x \
+		--disable-printing \
 		$(use_enable static-libs static) \
 		$(use_enable motif22-compatibility) \
 		$(use_enable unicode utf8) \
@@ -108,7 +108,7 @@ multilib_src_install_all() {
 
 	# cleanup
 	rm -rf "${ED}"/usr/share/Xm
-	prune_libtool_files
+	find "${ED}" -type f -name "*.la" -delete || die
 
 	dodoc BUGREPORT ChangeLog README RELEASE RELNOTES TODO
 }
