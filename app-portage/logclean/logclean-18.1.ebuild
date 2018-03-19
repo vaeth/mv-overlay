@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2011-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,6 +32,7 @@ src_prepare() {
 }
 
 src_install() {
+	dodoc README.md
 	dobin bin/*
 	insinto /etc
 	doins etc/*
