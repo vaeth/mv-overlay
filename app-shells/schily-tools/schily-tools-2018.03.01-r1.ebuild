@@ -403,8 +403,8 @@ src_install() {
 	then	docompress -x /usr/share/man/help
 	fi
 	if ! use system-libschily && use renameschily_libschily
-	then	for i in error fexecve fnmatch getline printf strlen
-		do mv -- "${ED}"/usr/share/man/man3/{,s}${i}.3 || die
+	then	for i in error fexecve fnmatch getline {,f,s}printf strlen
+		do mv -- "${ED}"/usr/share/man/man3/{,schily-}${i}.3 || die
 		done
 	fi
 }
