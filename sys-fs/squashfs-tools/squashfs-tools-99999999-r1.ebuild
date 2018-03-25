@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ case ${PV} in
 	LIVE=:;;
 esac
 Pm=${PN}-${PVm}
-DEB_VER="3"
+DEB_VER="6"
 
 DESCRIPTION="Tool for creating compressed filesystem type squashfs"
 HOMEPAGE="https://github.com/plougher/squashfs-tools/ https://git.kernel.org/pub/scm/fs/squashfs/squashfs-tools.git http://squashfs.sourceforge.net"
@@ -59,15 +59,12 @@ src_unpack() {
 fi
 
 src_prepare() {
-	local i j
-	for i in "${WORKDIR}"/debian/patches/*.patch; do
-		j=${i##*/}
-		case ${j%.*} in
-		0002-fix_phys_mem_calculation)
-			continue;;
-		esac
-		eapply -p2 "${i}"
-	done
+	local debian
+	debian="${WORKDIR}"/debian/patches/
+	eapply -p2 "${debian}"/0001-kfreebsd.patch
+	eapply -p2 "${debian}"/0003-CVE-2015-4645_and_CVE-2015-4646.patch
+	eapply -p2 "${debian}"/0004-unsquashfs-add-support-for-LZMA-magics.patch
+	eapply -p2 "${debian}"/0009-unsquashfs-preserve-symlink-times.patch
 	eapply -p2 "${FILESDIR}"/${Pm}-sysmacros.patch
 	eapply -p2 "${FILESDIR}"/${Pm}-aligned-data.patch
 	eapply "${FILESDIR}"/${Pm}-local-cve-fix.patch
