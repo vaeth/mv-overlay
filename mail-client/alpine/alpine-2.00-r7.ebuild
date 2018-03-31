@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="ftp://ftp.cac.washington.edu/alpine/${P}.tar.bz2
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="alpha amd64 ia64 ppc sparc x86"
-IUSE="doc ipv6 kerberos ldap libressl nls onlyalpine pam passfile smime spell ssl threads +chappa"
+IUSE="debug doc ipv6 kerberos ldap libressl nls onlyalpine pam passfile smime spell ssl threads +chappa"
 
 DEPEND="pam? ( virtual/pam )
 	>=net-libs/c-client-2007f-r4[chappa=]
@@ -75,6 +75,7 @@ src_configure() {
 		myconf+="--without-ssl"
 	fi
 	econf \
+		$(use_enable debug) \
 		$(use_with ldap) \
 		$(use_with passfile passfile .pinepwd) \
 		$(use_with kerberos krb5) \

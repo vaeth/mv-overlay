@@ -1,4 +1,4 @@
-# Copyright 2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="http://repo.or.cz/alpine.git/snapshot/${GIT_COMMIT}.tar.gz -> ${P}.tar.
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~alpha ~ia64 ~ppc ~sparc"
-IUSE="doc ipv6 kerberos ldap libressl nls onlyalpine pam passfile smime spell ssl threads"
+IUSE="debug doc ipv6 kerberos ldap libressl nls onlyalpine pam passfile smime spell ssl threads"
 
 DEPEND="pam? ( virtual/pam )
 	>=sys-libs/ncurses-5.1:0=
@@ -52,6 +52,7 @@ src_configure() {
 		)
 	fi
 	econf \
+		$(use_enable debug) \
 		$(use_with ldap) \
 		$(use_with ssl) \
 		$(use_with passfile passfile .pinepwd) \
