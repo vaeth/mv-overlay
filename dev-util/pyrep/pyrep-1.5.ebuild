@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2012-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,11 +20,13 @@ RDEPEND="${PYTHON_DEPS}"
 src_prepare() {
 	use prefix || sed -i \
 		-e '1s"^#!/usr/bin/env python$"#!'"${EPREFIX}/usr/bin/python"'"' \
-		-- "${PN}" || die
-	eapply_user
+		-- bin/* || die
+	default
 }
 
 src_install() {
-	dobin "${PN}"
-	dodoc AUTHORS README
+	dobin bin/*
+	dodoc AUTHORS README.md
+	insinto /usr/share/zsh/site-functions
+	doins zsh/_*
 }
