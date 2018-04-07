@@ -55,7 +55,7 @@ dev-tex/chklref 2.6.0: Finds useless references in latex files or unnecessarily 
 dev-util/ccache 99999999: fast compiler cache
 dev-util/comp 4.3: compare files or directories, including metadata
 dev-util/diffhelp 1.11: A frontend, beautifier, and path-fixer for diff -u
-dev-util/mv_perl 3.15: A collection of perl scripts (replacement in files, syncing dirs etc)
+dev-util/mv_perl 3.16: A collection of perl scripts (replacement in files, syncing dirs etc)
 dev-util/pyrep 1.5: Search and/or replace regular expressions within many files interactively
 dev-util/replacer 0.1: Search and replace python regular expressions within many files interactively
 dev-vcs/git-wrappers-mv 1.17: Some personal wrappers for the most important git commands
