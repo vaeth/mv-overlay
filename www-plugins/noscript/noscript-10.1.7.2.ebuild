@@ -15,4 +15,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-moz_defaults '>=firefox-59' seamonkey
+moz_defaults '>=firefox-57' seamonkey
