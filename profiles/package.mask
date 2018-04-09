@@ -3,6 +3,13 @@
 # It does not yet compile.
 =app-accessibility/gespeaker-0.8.6_p0
 
+# Martin Väth <martin@mvath.de> (09 Apr 2018)
+# There is nothing wrong with dev-util/pyrep, but I hope that this mask will
+# make people aware about the successor project dev-util/replacer which is
+# probably better in almost any aspect. In addition, dev-util/pyrep is almost
+# unmaintained (and really old ugly code). Anyway, feel free to numask...
+dev-util/pyrep
+
 # Martin Väth <martin@mvath.de> (12 Mar 2016)
 # No version of magus compiles with current libsigc++ and gcc:5
 # It needs severe upstream patches, but upstream is long dead.
@@ -30,7 +37,7 @@ sys-apps/starter
 # sys-fs/squashmount (or sys-apps/openrc-wrapper for the openrc-wrapper script)
 sys-fs/squash_dir
 
-# Martin Väth <martin@mvath.de> (10 Jan 2015)
+# Martin Väth <martin@mvath.de> (09 Apr 2018)
 # www-plugins/noscript-10.1.7.5 requires >=firefox-59 which is not yet in the
 # gentoo repository. If you use an overlay feel free to unmask.
 ~www-plugins/noscript-10.1.7.5
