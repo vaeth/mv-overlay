@@ -12,7 +12,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RDEPEND=">=app-shells/push-3"
+RDEPEND=">=app-shells/push-3 <app-arch/brotli-1.0.4"
 DEPEND=""
 
 src_prepare() {
