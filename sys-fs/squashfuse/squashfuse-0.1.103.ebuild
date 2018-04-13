@@ -22,7 +22,7 @@ esac
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~arm-linux ~x86-linux"
-IUSE="lz4 lzma lzo +zlib zstd"
+IUSE="lz4 lzma lzo static-libs +zlib zstd"
 REQUIRED_USE="|| ( lz4 lzma lzo zlib zstd )"
 
 COMMON_DEPEND="
@@ -43,11 +43,14 @@ src_prepare() {
 }
 
 src_configure() {
-	filter-flags -flto* -fwhole-program -fno-common
-	econf \
-		$(use lz4 || echo --without-lz4) \
-		$(use lzma || echo  --without-xz) \
-		$(use lzo || echo --without-lzo) \
+	filter-flags '-flto*' -fwhole-program -fno-common
+	local myconf=(
+		$(use lz4 || echo --without-lz4)
+		$(use lzma || echo  --without-xz)
+		$(use lzo || echo --without-lzo)
 		$(use zlib || echo --without-zlib)
 		$(use zstd || echo --without-zstd)
+		$(use static-libs || echo --disable-static)
+	)
+	econf "${myconf[@]}"
 }

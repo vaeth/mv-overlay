@@ -101,7 +101,7 @@ sys-fs/aufs-util 99999999: Userspace tools for aufs
 sys-fs/emount 3.0.4: mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab
 sys-fs/squash_dir 13.14: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-fs/squashfs-tools 4.3.1_alpha20171129-r1 99999999-r1: Tool for creating compressed filesystem type squashfs
-sys-fs/squashfuse 0.1.102: FUSE filesystem to mount squashfs archives
+sys-fs/squashfuse 0.1.103: FUSE filesystem to mount squashfs archives
 sys-fs/squashmount 16.1.0 19.0.2: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-kernel/kccmp 0.3-r1: A simple tool for comparing two linux kernel .config files
 sys-kernel/kernel 4.5: A POSIX shell script to compile the kernel with user permissions
