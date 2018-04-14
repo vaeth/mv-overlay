@@ -138,23 +138,6 @@ games-emulation/xmame:net - Add network support
 games-emulation/xmess:bundled-libs - Use bundled version of dev-libs/expat
 games-emulation/xmess:net - Add network support
 games-rpg/m5figur-mv:examples - Compile example character sheet as PDF
-games-rpg/magus:browser_elinks - Use elinks as browser
-games-rpg/magus:browser_firefox - Use firefox as browser
-games-rpg/magus:browser_konqueror - Use konqueror as browser
-games-rpg/magus:browser_links - Use links as browser
-games-rpg/magus:browser_lynx - Use lynx as browser
-games-rpg/magus:browser_palemoon - Use palemoon as browser
-games-rpg/magus:browser_seamonkey - Use seamonkey as browser
-games-rpg/magus:imagemagick - Use convert from graphicsmagick/imagemagick to scale pictures before installation
-games-rpg/magus:pdfviewer_acroread - Use acroread as default pdfviewer
-games-rpg/magus:pdfviewer_apvlv - Use apvlv as default pdfviewer
-games-rpg/magus:pdfviewer_evince - Use evince as default pdfviewer
-games-rpg/magus:pdfviewer_mupdf - Use mupdf as default pdfviewer
-games-rpg/magus:pdfviewer_okular - Use okular as default pdfviewer
-games-rpg/magus:pdfviewer_qpdfview - Use qpdfview as default pdfviewer
-games-rpg/magus:pdfviewer_zathura - Use zathura as default pdfviewer
-games-rpg/magus:pngcrush - Use pngcrush for opimizing png before installation
-games-rpg/magus:postgres - Use postgresql instead of sqlite
 mail-client/alpine:chappa - enhance alpine by applying Eduardo Chappa's patches
 mail-client/alpine:onlyalpine - installs only the alpine binary, so it does not collied with app-editors/pico and/or mail-client/pine
 mail-client/alpine:passfile - Adds support for caching passwords into a file between sessions
@@ -230,8 +213,6 @@ sys-apps/less:source - Install sources for keybindings (only useful with less-se
 sys-block/parted:debug - Enable debugging as encouraged by upstream: [The default configuration] includes --enable-debug (by default), which contains many assertions. Obviously, these "waste" space, but in the past, they have caught potentially dangerous bugs before they would have done damage, so we think it's worth it. Also, it means we get more bug reports ;)
 sys-block/parted:device-mapper - Enable device-mapper support from sys-fs/lvm2 in parted
 sys-block/parted:standalone - Install a standalone version which provides all headers and binaries which collide with sys-block/parted:0. If this flag is not set, sys-block/parted:0 is pulled in to provide the non-installed headers and binaries.
-sys-fs/aufs:all-patches - Apply all patches - also those which do not start with aufs
-sys-fs/aufs:kernel-patch - Apply the aufs kernel patches instead of just copying them
 sys-fs/squash_dir:aufs - Prefer aufs
 sys-fs/squash_dir:bundled-openrc-wrapper - Install the bundled openrc-wrapper
 sys-fs/squash_dir:overlayfs - Prefer overlayfs
@@ -293,11 +274,6 @@ sys-power/nut:ups_drivers_tripplitesu - Driver for Tripp-Lite SmartOnline (SU) U
 sys-power/nut:ups_drivers_upscode2 - Driver for UPScode II compatible UPS equipment
 sys-power/nut:ups_drivers_usbhid-ups - Driver for USB/HID UPS equipment
 sys-power/nut:ups_drivers_victronups - Driver for IMV/Victron UPS unit Match, Match Lite, NetUps
-x11-drivers/nvidia-drivers:kernel3-13 - Install unofficial patches for linux-3.13 and newer
-x11-drivers/nvidia-drivers:kernel3-14 - Install unofficial patches for linux-3.14 and newer
-x11-drivers/nvidia-drivers:kernel3-17 - Install unofficial patches for linux-3.17 and newer
-x11-drivers/nvidia-drivers:pax_kernel - Patch to compile with hardened-sources/grsecurity
-x11-drivers/nvidia-drivers:tools - Install additional tools such as nvidia-settings
 x11-libs/gtk+:adwaita-icon-theme - Force the adwaita-icon-theme
 x11-libs/gtk+:atk-bridge - Enable the gtk3-atk-bridge, hard depending on app-accessibility/at-spi2-atk and thus on sys-apps/dbus
 x11-libs/gtk+:broadway - Enable the GDK Broadway backend.

@@ -68,7 +68,6 @@ games-engines/freesci 0.6.4-r1: Sierra script interpreter for your old Sierra ad
 games-rpg/aklabeth 1.0-r1: A remake of Richard C. Garriott's Ultima prequel
 games-rpg/dsa-stats 1.0: calculate stat probabalities for the role playing game DSA - Das schwarze Auge
 games-rpg/m5figur-mv 2.8.2: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
-games-rpg/magus 1.3.1 1.3.3 99999999: A character generator for the popular German role playing game Midgard
 mail-client/alpine 2.00-r7 2.21.1: alpine is an easy to use text-based based mail and news client
 media-gfx/pqiv 2.10.2: powerful GTK based command-line image viewer with a minimal UI
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
@@ -96,8 +95,6 @@ sys-apps/starter 3.0: POSIX shell script and function to schedule commands
 sys-block/parted 2.4-r2: Create, destroy, resize, check, copy partitions and file systems
 sys-block/zram-init 7.0: Scripts to support compressed swap devices or ramdisks with zram
 sys-boot/grub-cfg-mv 1.5: A grub.cfg library/example for GRUB2
-sys-fs/aufs 99999999: An entirely re-designed and re-implemented Unionfs
-sys-fs/aufs-util 99999999: Userspace tools for aufs
 sys-fs/emount 3.0.4: mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab
 sys-fs/squash_dir 13.14: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-fs/squashfs-tools 4.3.1_alpha20171129-r1 99999999-r1: Tool for creating compressed filesystem type squashfs
@@ -133,7 +130,6 @@ www-plugins/stylus 1.3.17: Firefox webextension: install themes and skins for ma
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
 www-plugins/ublock-origin 1.15.24: Firefox webextension: An efficient list-based blocker
 www-plugins/xclear 1.8.2-r1: Firefox legacy add-on: button to clear URL
-x11-drivers/nvidia-drivers 173.14.39-r2: NVIDIA Accelerated Graphics Driver
 x11-libs/gtk+ 2.24.31-r1 3.22.19 3.22.26: Gimp ToolKit +
 x11-libs/motif 2.3.7 2.3.8-r1: The Motif user interface component toolkit
 x11-misc/redshift 1.8: A screen color temperature adjusting software
