@@ -1,5 +1,5 @@
 # ChangeLog for eclass directory
-# Copyright 2018 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 2012-2018 Gentoo Foundation; Distributed under the GPL v2
 
   12 May 2012; Martin Väth <martin@mvath.de>:
   Created ChangeLog
@@ -77,3 +77,6 @@
 
   27 Jan 2018; Martin Väth <martin@mvath.de>:
   mv_mozextension-r1.eclass: manifest.json: search "id" only inside "gecko"
+
+  14 Apr 2018; Martin Väth <martin@mvath.de>:
+  mv_mozextension-r1.eclass: remove support for legacy extensions
