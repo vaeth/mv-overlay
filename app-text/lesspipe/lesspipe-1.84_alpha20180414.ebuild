@@ -1,4 +1,4 @@
-# Copyright 2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ case ${PV} in
 	KEYWORDS="";;
 *alpha*)
 	RESTRICT="mirror"
-	EGIT_COMMIT="ec53ace944db4777e8e0f24e520b26c7cac48dc2"
+	EGIT_COMMIT="87ac1d025ba3417d7703b3ca57d52da055b5b21e"
 	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 esac
