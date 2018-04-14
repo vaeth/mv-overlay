@@ -235,7 +235,7 @@ src_configure() {
 	filter-flags \
 		-pie \
 		-fPIE \
-		-flto \
+		'-flto*' \
 		-fwhole-program \
 		-fuse-linker-plugin \
 		-fvisibility-inlines-hidden
