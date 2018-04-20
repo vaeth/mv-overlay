@@ -39,7 +39,7 @@ RDEPEND="
 	x11-libs/libXdmcp
 	!bundled-libs? (
 		dev-libs/expat
-		sci-libs/proj
+		=sci-libs/proj-4.8.0
 	)
 	!bundled-qt? (
 		dev-qt/qtcore:5

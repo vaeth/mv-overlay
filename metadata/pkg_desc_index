@@ -82,7 +82,7 @@ net-firewall/firewall-mv 13.0: Initialize iptables and net-related sysctl variab
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
 net-misc/sshstart 3.00: Start ssh-agent/ssh-add only if you really use ssh or friends
 net-print/foo2zjs 20160722: Support for printing to ZjStream-based printers
-sci-geosciences/googleearth 7.1.8.3036 7.3.0.3832 7.3.1: A 3D interface to the planet
+sci-geosciences/googleearth 7.1.8.3036-r1 7.3.0.3832-r1 7.3.1: A 3D interface to the planet
 sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
 sci-mathematics/reduce 20141130-r2: A general-purpose computer algebra system
 sys-apps/cpi 3.1: A wrapper for cp -i -a, making use of diff

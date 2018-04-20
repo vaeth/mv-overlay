@@ -44,7 +44,7 @@ RDEPEND="
 		dev-db/sqlite:3
 		dev-libs/expat
 		dev-libs/nss
-		sci-libs/proj
+		=sci-libs/proj-4.8.0
 	)"
 #		sci-libs/gdal-1*
 DEPEND="dev-util/patchelf"
