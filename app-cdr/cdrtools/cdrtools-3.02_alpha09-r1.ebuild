@@ -19,7 +19,7 @@ IUSE="acl caps nls schily-tools unicode"
 RDEPEND="acl? ( virtual/acl )
 	caps? ( sys-libs/libcap )
 	nls? ( virtual/libintl )
-	schily-tools? ( app-shells/schily-tools[-system-libschily(-)] )"
+	schily-tools? ( >=app-shells/schily-tools-2018.04.17[-system-libschily(-)] )"
 DEPEND="${RDEPEND}
 	x11-misc/makedepend
 	nls? ( >=sys-devel/gettext-0.18.1.1 )"
@@ -258,7 +258,6 @@ src_install() {
 	rm -rvf "${ED}"/usr/share/man/man5 || die
 	if use schily-tools
 	then	rm -rvf "${ED}"/usr/$(get_libdir)/libschily* || die
-		rm -rvf "${ED}"/usr/$(get_libdir)/libfind* || die
 		rm -rvf "${ED}"/usr/$(get_libdir)/libmdigest* || die
 	fi
 }

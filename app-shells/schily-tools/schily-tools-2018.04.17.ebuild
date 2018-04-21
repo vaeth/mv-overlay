@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/schilytools/${MY_P}.tar.bz2"
 DESCRIPTION="Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell"
 HOMEPAGE="https://sourceforge.net/projects/schilytools/"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="acl caps doc static-libs system-libschily system-star xattr"
+IUSE="acl caps doc system-libschily system-star xattr"
 REQUIRED_USE="!system-libschily"
 
 #PATCHES=(-p0 "$DISTDIR"/${MY_P}.patch)
@@ -174,8 +174,8 @@ src_prepare() {
 		-- "${S}/sh/"Makefile || die
 	mkdir UNUSED_TARGETS || die
 	mv TARGETS/[0-9][0-9]* UNUSED_TARGETS || die
-	targets inc
-	use system-libschily || targets include libschily libfind libmdigest
+	targets inc libfind
+	use system-libschily || targets include libschily libmdigest
 	! use schilytools_bosh || targets sh libxtermcap libshedit libgetopt
 	! use schilytools_calc || targets calc
 	! use schilytools_calltree || targets calltree
@@ -345,10 +345,8 @@ src_install() {
 		AN-????-??-?? ANNOUNCEMENTS
 	emake -j1 CPPOPTX="${CPPFLAGS}" COPTX="${CFLAGS}" C++OPTX="${CXXFLAGS}" \
 		LDOPTX="${LDFLAGS}" GMAKE_NOWARN="true" install
-	if ! use static-libs
-	then	find "${ED}" -name '*.a' -delete || die
-		! test -d "${ED}"/usr/include || rm -rfv -- "${ED}"/usr/include || die
-	fi
+	find "${ED}" '(' -name '*.a' '-o' -name '*.so' ')' -delete || die
+	! test -d "${ED}"/usr/include || rm -rfv -- "${ED}"/usr/include || die
 	if use schilytools_sccs
 	then	mv -v "${ED}"/usr/share/man/man1/{,sccs-}diff.1 || die
 	else	! test -d "${ED}"/usr/ccs || rm -rfv -- "${ED}"/usr/ccs || die

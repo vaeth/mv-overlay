@@ -4,7 +4,7 @@ app-admin/sudox 9.0.1: wrapper for sudo which can pass X authority data and deal
 app-arch/archwrap 11.1: A collection of POSIX shell scripts to invoke archiver programs
 app-arch/bzwc 5.0: A POSIX shell wrapper for wc, supporting compressed files (xz, lzma, bz2, gz)
 app-arch/paq8l 20070308: Open source file compressor and archiver
-app-cdr/cdrtools 3.02_alpha09: A set of tools for CD/DVD reading and recording, including cdrecord
+app-cdr/cdrtools 3.02_alpha09-r1: A set of tools for CD/DVD reading and recording, including cdrecord
 app-dicts/ispell-de 20161207: German and Swiss dictionaries for ispell
 app-dicts/ispell-de-alt 2-r1: German dictionary (traditional orthography) for ispell
 app-dicts/stardict-dictd-BritannicaConcise 2.4.2: Stardict Dictionary for Dictd.org's The Britannica Concise Encyclopedia
@@ -38,7 +38,7 @@ app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
 app-shells/push 3.1: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 4.1: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/runtitle 2.10: Scripts to run commands and set the hard status line (windows title)
-app-shells/schily-tools 2017.09.25 2018.04.05: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
+app-shells/schily-tools 2017.09.25 2018.04.17: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
 app-shells/set_prompt 3.0.0: An intelligent prompt for zsh or bash with status line (window title) support
 app-shells/termcolors-mv 4.7: 256colors sample script and dircolors configuration for standard or 256 colors
 app-shells/zsh-syntax-highlighting 0.6.0 99999999: Fish shell like syntax highlighting for zsh
