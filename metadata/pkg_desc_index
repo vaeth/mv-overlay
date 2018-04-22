@@ -41,7 +41,7 @@ app-shells/runtitle 2.10: Scripts to run commands and set the hard status line (
 app-shells/schily-tools 2017.09.25 2018.04.17: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
 app-shells/set_prompt 3.0.0: An intelligent prompt for zsh or bash with status line (window title) support
 app-shells/termcolors-mv 4.7: 256colors sample script and dircolors configuration for standard or 256 colors
-app-shells/zsh-syntax-highlighting 0.6.0 99999999: Fish shell like syntax highlighting for zsh
+app-shells/zsh-syntax-highlighting 0.6.0 0.6.1_alpha20180411 99999999: Fish shell like syntax highlighting for zsh
 app-shells/zshrc-mv 3.11: A zshrc file initializing zsh specific interactive features
 app-text/ispell 3.3.02-r1 3.4.00: fast screen-oriented spelling checker
 app-text/lesspipe 1.83 1.84_alpha20180414 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
