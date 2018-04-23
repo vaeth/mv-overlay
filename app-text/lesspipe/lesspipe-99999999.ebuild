@@ -115,7 +115,7 @@ BOTH_DEPEND="sys-apps/file
 				( media-sound/mp3info ) ) ) ) )
 		)
 	)
-	image? ( || ( media-gfx/graphicsmagick[imagemagick] media-gfx/imagemagick ) )
+	image? ( virtual/imagemagick-tools )
 	isoinfo? ( || ( app-cdr/cdrtools app-cdr/dvd+rw-tools ) )
 	libplist? ( !alpha? ( !hppa? ( !ia64? ( !sparc? ( app-pda/libplist ) ) ) ) )
 	dpkg? ( !amd64-fbsd? ( app-arch/dpkg ) )
@@ -124,8 +124,7 @@ BOTH_DEPEND="sys-apps/file
 DEPEND="${BOTH_DEPEND}"
 RDEPEND="${BOTH_DEPEND}
 	sys-apps/less
-	!<sys-apps/less-483-r1
-	!sys-apps/lesspipe"
+	!<sys-apps/less-483-r1"
 
 ModifyStart() {
 	sedline=
