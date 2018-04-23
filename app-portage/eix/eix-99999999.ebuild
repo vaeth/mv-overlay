@@ -7,15 +7,17 @@ AUTOTOOLS_AUTO_DEPEND=no
 MESON_AUTO_DEPEND=no
 inherit autotools bash-completion-r1 meson tmpfiles
 
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 case ${PV} in
 99999999*)
 	EGIT_REPO_URI="https://github.com/vaeth/${PN}.git"
 	inherit git-r3
 	SRC_URI=""
+	KEYWORDS=""
 	PROPERTIES="live";;
 *)
 	RESTRICT="mirror"
-	EGIT_COMMIT="34c3d74b342c813283fe08cd55da2a33fb1a6626"
+	EGIT_COMMIT="98babf15749eaf12b72837dc99b6736668a67921"
 	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 esac
@@ -25,7 +27,6 @@ HOMEPAGE="https://github.com/vaeth/eix/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 PLOCALES="de ru"
 IUSE="debug +dep doc +jumbo-build"
 for i in ${PLOCALES}; do
@@ -43,9 +44,9 @@ DEPEND="${BOTHDEPEND}
 		>=dev-util/meson-0.41.0
 		>=dev-util/ninja-1.7.2
 		strong-optimization? ( >=sys-devel/gcc-config-1.9.1 )
+		nls? ( sys-devel/gettext )
 	)
-	!meson? ( ${AUTOTOOLS_DEPEND} )
-	>=sys-devel/gettext-0.19.6"
+	!meson? ( ${AUTOTOOLS_DEPEND} >=sys-devel/gettext-0.19.6 )"
 
 pkg_setup() {
 	# remove stale cache file to prevent collisions
