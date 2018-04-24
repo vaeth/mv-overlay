@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools ltprune
+inherit autotools
 
 DESCRIPTION="Create, destroy, resize, check, copy partitions and file systems"
 HOMEPAGE="https://www.gnu.org/software/parted"
@@ -77,6 +77,5 @@ src_install() {
 		mv "${ED}"/usr/sbin/parted{,2} || die
 		rm "${ED}"/usr/$(get_libdir)/libparted.so || die
 	fi
-
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }

@@ -1,9 +1,8 @@
-# Copyright 2018 Gentoo Foundation
+# Copyright 2017-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 RESTRICT="mirror"
-inherit ltprune
 
 SRC_URI="https://github.com/vaeth/osformat/releases/download/v${PV}/${P}.tar.xz"
 
@@ -17,5 +16,5 @@ IUSE=""
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }

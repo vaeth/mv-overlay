@@ -1,8 +1,8 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2017-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools ltprune
+inherit autotools
 
 case ${PV} in
 99999999*)
@@ -26,11 +26,11 @@ KEYWORDS=""
 IUSE=""
 
 src_prepare() {
-	eapply_user
+	default
 	eautoreconf
 }
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
