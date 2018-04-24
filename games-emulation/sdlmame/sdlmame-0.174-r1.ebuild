@@ -17,9 +17,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE="alsa +arcade debug +mess opengl openmp tools"
 REQUIRED_USE="|| ( arcade mess )"
 
-: ${GAMES_SYSCONFDIR:=/etc/games}
+: ${GAMES_SYSCONFDIR:=/etc}
 : ${GAMES_BINDIR:=/usr/bin}
-: ${GAMES_DATADIR:=/usr/share/games}
+: ${GAMES_DATADIR:=/usr/share}
 
 # MESS (games-emulation/sdlmess) has been merged into MAME upstream since mame-0.162 (see below)
 #  MAME/MESS build combined (default)	+arcade +mess	(mame)

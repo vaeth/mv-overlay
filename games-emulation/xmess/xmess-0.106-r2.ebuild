@@ -1,4 +1,4 @@
-# Copyright 2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 hppa ia64 ppc sparc x86"
 IUSE="alsa bundled-libs cpu_flags_x86_mmx dga ggi joystick lirc net opengl sdl svga X xinerama xv"
 
-RDEPEND="
+RDEPEND="sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
 	dga? (
 		x11-libs/libXxf86dga
@@ -43,7 +43,7 @@ DEPEND="${RDEPEND}
 #	icc? ( dev-lang/icc )
 
 S=${WORKDIR}/xmame-${PV}
-PATCHES=( "${FILESDIR}/fix-zn1-looping-sound.patch" )
+PATCHES=("${FILESDIR}"/${P}-overflow.patch)
 
 toggle_feature() {
 	if use $1 ; then
@@ -75,7 +75,6 @@ src_prepare() {
 		-e "/^PREFIX/s:=.*:=/usr:" \
 		-e "/^MY_CPU/s:i386:${mycpu}:" \
 		-e "/^MANDIR/s:man/man:share/man/man:" \
-		-e "/^XMAMEROOT/s:share:share/games:" \
 		-e "/^TARGET/s:mame:${TARGET:1}:" \
 		-e "/^INSTALL_GROUP/s:bin:root:" \
 		-e "/^CFLAGS =/d" \

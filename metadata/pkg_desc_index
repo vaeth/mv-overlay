@@ -61,9 +61,9 @@ dev-util/replacer 3.1: Search and replace python regular expressions within many
 dev-vcs/git-wrappers-mv 1.17: Some personal wrappers for the most important git commands
 games-action/trackballs 1.1.4-r1: simple game similar to the classical game Marble Madness
 games-board/chessproblem 1.8 2.9: Find solutions of chess problems (mate, selfmate, and helpmate) with cooks
-games-emulation/sdlmame 0.174: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
-games-emulation/xmame 0.106-r2: Multiple Arcade Machine Emulator for X11
-games-emulation/xmess 0.106-r1: Multiple Arcade Machine Emulator for X11
+games-emulation/sdlmame 0.174-r1: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
+games-emulation/xmame 0.106-r3: Multiple Arcade Machine Emulator for X11
+games-emulation/xmess 0.106-r2: Multiple Arcade Machine Emulator for X11
 games-engines/freesci 0.6.4-r1: Sierra script interpreter for your old Sierra adventures
 games-rpg/aklabeth 1.0-r1: A remake of Richard C. Garriott's Ultima prequel
 games-rpg/dsa-stats 1.0: calculate stat probabalities for the role playing game DSA - Das schwarze Auge
