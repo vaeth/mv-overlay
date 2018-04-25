@@ -36,8 +36,3 @@ sys-apps/starter
 # sys-fs/squash_dir is no longer maintained. Use instead the successor project
 # sys-fs/squashmount (or sys-apps/openrc-wrapper for the openrc-wrapper script)
 sys-fs/squash_dir
-
-# Martin Väth <martin@mvath.de> (09 Apr 2018)
-# www-plugins/noscript-10.1.7.5 requires >=firefox-59 which is not yet in the
-# gentoo repository. If you use an overlay feel free to unmask.
-~www-plugins/noscript-10.1.7.5
