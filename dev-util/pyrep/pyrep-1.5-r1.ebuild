@@ -3,8 +3,6 @@
 
 EAPI=6
 RESTRICT="mirror"
-PYTHON_COMPAT=( pypy{,3} python{2_7,3_{4,5,6}} )
-inherit python-any-r1
 
 DESCRIPTION="Search and/or replace regular expressions within many files interactively"
 HOMEPAGE="https://github.com/vaeth/pyrep/"
@@ -15,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="${PYTHON_DEPS}"
+RDEPEND="dev-lang/python"
 
 src_prepare() {
 	use prefix || sed -i \

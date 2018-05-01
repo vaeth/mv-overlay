@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 hppa ia64 ppc sparc x86"
 IUSE="alsa bundled-libs cpu_flags_x86_mmx dga ggi joystick lirc net opengl sdl svga X xinerama xv"
 
-RDEPEND="
+RDEPEND="sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
 	dga? (
 		x11-libs/libXxf86dga
@@ -43,7 +43,7 @@ DEPEND="${RDEPEND}
 #	icc? ( dev-lang/icc )
 
 S=${WORKDIR}/xmame-${PV}
-PATCHES=( "${FILESDIR}/fix-zn1-looping-sound.patch" )
+PATCHES=("${FILESDIR}"/${P}-overflow.patch)
 
 toggle_feature() {
 	if use $1 ; then
@@ -201,7 +201,7 @@ src_install() {
 		fi
 	done
 
-	insinto "/usr/share/games/${PN}"
+	insinto "/usr/share/${PN}"
 	doins -r ctrlr
 	dodoc doc/{changes.*,*.txt,mame/*,${TARGET}rc.dist} README todo
 	docinto html

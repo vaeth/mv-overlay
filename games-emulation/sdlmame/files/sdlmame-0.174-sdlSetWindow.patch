@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/634662
+Author of patch: Rick Harris 
+--- a/3rdparty/bgfx/include/bgfx/bgfxplatform.h
++++ b/3rdparty/bgfx/include/bgfx/bgfxplatform.h
+@@ -253,7 +253,7 @@
+ 
+ #endif // BX_PLATFORM_
+ 
+-#if defined(_SDL_syswm_h)
++#if defined(_SDL_syswm_h) || defined(SDL_syswm_h_)
+ // If SDL_syswm.h is included before bgfxplatform.h we can enable SDL window
+ // interop convenience code.
+ 

@@ -44,8 +44,7 @@ RDEPEND="!games-emulation/sdlmametools
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5 )
 	x11-libs/libX11
-	x11-libs/libXinerama
-	${PYTHON_DEPS}"
+	x11-libs/libXinerama"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	app-arch/unzip
@@ -77,7 +76,8 @@ src_unpack() {
 src_prepare() {
 	eapply \
 		"${FILESDIR}"/${P}-qt.patch \
-		"${FILESDIR}"/${P}-cxx14.patch
+		"${FILESDIR}"/${P}-cxx14.patch \
+		"${FILESDIR}"/${P}-sdlSetWindow.patch
 	# Disable using bundled libraries
 	enable_feature USE_SYSTEM_LIB_EXPAT
 	enable_feature USE_SYSTEM_LIB_FLAC

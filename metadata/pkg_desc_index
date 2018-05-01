@@ -56,14 +56,14 @@ dev-tex/chklref 2.6.0: Finds useless references in latex files or unnecessarily 
 dev-util/comp 4.3: compare files or directories, including metadata
 dev-util/diffhelp 1.11: A frontend, beautifier, and path-fixer for diff -u
 dev-util/mv_perl 3.16: A collection of perl scripts (replacement in files, syncing dirs etc)
-dev-util/pyrep 1.5: Search and/or replace regular expressions within many files interactively
-dev-util/replacer 3.1: Search and replace python regular expressions within many files interactively
+dev-util/pyrep 1.5-r1: Search and/or replace regular expressions within many files interactively
+dev-util/replacer 3.1-r1: Search and replace python regular expressions within many files interactively
 dev-vcs/git-wrappers-mv 1.17: Some personal wrappers for the most important git commands
 games-action/trackballs 1.1.4-r1: simple game similar to the classical game Marble Madness
 games-board/chessproblem 1.8 2.9: Find solutions of chess problems (mate, selfmate, and helpmate) with cooks
-games-emulation/sdlmame 0.174-r1: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
-games-emulation/xmame 0.106-r3: Multiple Arcade Machine Emulator for X11
-games-emulation/xmess 0.106-r2: Multiple Arcade Machine Emulator for X11
+games-emulation/sdlmame 0.174-r2: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
+games-emulation/xmame 0.106-r4: Multiple Arcade Machine Emulator for X11
+games-emulation/xmess 0.106-r3: Multiple Arcade Machine Emulator for X11
 games-engines/freesci 0.6.4-r1: Sierra script interpreter for your old Sierra adventures
 games-rpg/aklabeth 1.0-r1: A remake of Richard C. Garriott's Ultima prequel
 games-rpg/dsa-stats 1.0: calculate stat probabalities for the role playing game DSA - Das schwarze Auge
