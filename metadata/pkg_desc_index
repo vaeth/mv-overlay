@@ -67,7 +67,7 @@ games-emulation/xmess 0.106-r3: Multiple Arcade Machine Emulator for X11
 games-engines/freesci 0.6.4-r1: Sierra script interpreter for your old Sierra adventures
 games-rpg/aklabeth 1.0-r1: A remake of Richard C. Garriott's Ultima prequel
 games-rpg/dsa-stats 1.0: calculate stat probabalities for the role playing game DSA - Das schwarze Auge
-games-rpg/m5figur-mv 2.8.2: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
+games-rpg/m5figur-mv 3.0: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
 mail-client/alpine 2.00-r7 2.21.1: alpine is an easy to use text-based based mail and news client
 media-gfx/pqiv 2.10.2: powerful GTK based command-line image viewer with a minimal UI
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
