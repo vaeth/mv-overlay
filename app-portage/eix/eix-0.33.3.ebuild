@@ -73,6 +73,12 @@ src_configure() {
 		-Dportage-rootpath="${ROOTPATH}"
 		-Deprefix-default="${EPREFIX}"
 		)
+		if use prefix; then
+			emesonarge+=(
+				-Deix-user=
+				-Deix-uid=-1
+			)
+		fi
 		meson_src_configure
 	else
 		local myconf=(
@@ -94,6 +100,12 @@ src_configure() {
 		--with-portage-rootpath="${ROOTPATH}"
 		--with-eprefix-default="${EPREFIX}"
 		)
+		if use prefix; then
+			myconf+=(
+				--with-eix-user=
+				--with-eix-uid=-1
+			)
+		fi
 		econf "${myconf[@]}"
 	fi
 }
