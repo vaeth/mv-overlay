@@ -9,7 +9,7 @@ inherit eutils flag-o-matic gnome2 multilib multilib-minimal readme.gentoo-r1 vi
 
 DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="https://www.gtk.org/"
-SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
+SRC_URI=${SRC_URI}" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="2"

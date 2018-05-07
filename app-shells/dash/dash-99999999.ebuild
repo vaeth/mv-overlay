@@ -1,7 +1,7 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 LIVE=false
 case ${PV} in
@@ -45,7 +45,6 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	local c
-	default
 	use vanilla || eapply "${FILESDIR}"/dumb-echo.patch
 	if [ -n "${DEB_PATCH}" ]
 	then	eapply "${WORKDIR}"/${DEB_PF}.diff
@@ -61,7 +60,7 @@ src_prepare() {
 		-e "/LIBS/s:-ledit:\`$(tc-getPKG_CONFIG) --libs libedit $(usex static --static '')\`:" \
 		${c} || die
 
-	eapply_user
+	default
 	! ${LIVE} || eautoreconf
 }
 

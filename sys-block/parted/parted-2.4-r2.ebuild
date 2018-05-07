@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools
 
 DESCRIPTION="Create, destroy, resize, check, copy partitions and file systems"
@@ -27,9 +27,9 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	nls? ( >=sys-devel/gettext-0.12.1-r2 )
 	virtual/pkgconfig
 "
+BDEPEND="nls? ( >=sys-devel/gettext-0.12.1-r2 )"
 PATCHES=(
 	"${FILESDIR}"/${P}-no-gets.patch
 	"${FILESDIR}"/${P}-readline.patch

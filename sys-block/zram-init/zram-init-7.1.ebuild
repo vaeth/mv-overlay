@@ -27,7 +27,7 @@ src_prepare() {
 	use prefix || sed -i \
 		-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
 		-- sbin/* || die
-	eapply_user
+	default
 }
 
 src_install() {

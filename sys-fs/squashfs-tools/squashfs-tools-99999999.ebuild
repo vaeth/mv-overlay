@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit flag-o-matic toolchain-funcs
 
 LIVE=false
@@ -60,7 +60,7 @@ fi
 
 src_prepare() {
 	local debian
-	debian="${WORKDIR}"/debian/patches/
+	debian="${WORKDIR}"/debian/patches
 	eapply -p2 "${debian}"/0001-kfreebsd.patch
 	eapply -p2 "${debian}"/0003-CVE-2015-4645_and_CVE-2015-4646.patch
 	eapply -p2 "${debian}"/0004-unsquashfs-add-support-for-LZMA-magics.patch
@@ -69,7 +69,7 @@ src_prepare() {
 	eapply -p2 "${FILESDIR}"/${Pm}-aligned-data.patch
 	eapply "${FILESDIR}"/${Pm}-local-cve-fix.patch
 	eapply "${FILESDIR}"/${Pm}-static-inline.patch
-	eapply_user
+	default
 }
 
 use10() {

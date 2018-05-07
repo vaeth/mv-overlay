@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools flag-o-matic multilib toolchain-funcs multilib-minimal
 
@@ -28,15 +28,15 @@ RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXft-2.3.1-r1[${MULTILIB_USEDEP}]
 	)"
 
-DEPEND="${RDEPEND}
-	sys-devel/flex
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/flex
 	|| ( sys-devel/bison dev-util/byacc sys-freebsd/freebsd-ubin )
 	x11-base/xorg-proto
 	x11-misc/xbitmaps"
 
 src_prepare() {
 	eapply ../patch
-	eapply_user
+	default
 
 	# disable compilation of demo binaries
 	sed -i -e '/^SUBDIRS/{:x;/\\$/{N;bx;};s/[ \t\n\\]*demos//;}' Makefile.am

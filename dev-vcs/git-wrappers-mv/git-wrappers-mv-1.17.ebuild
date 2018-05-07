@@ -1,7 +1,7 @@
 # Copyright 2016-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 
 DESCRIPTION="Some personal wrappers for the most important git commands"
@@ -17,7 +17,7 @@ src_prepare() {
 	use prefix || sed -i \
 		-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}"'/bin/sh"' \
 		-- bin/git-[b-z]* || die
-	eapply_user
+	default
 }
 
 src_install() {

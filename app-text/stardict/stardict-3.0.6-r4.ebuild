@@ -1,4 +1,4 @@
-# Copyright 2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -84,7 +84,7 @@ src_prepare() {
 		sed -i '1 a # -*- coding: utf-8 -*-' tools/src/uyghur2dict.py || die
 	fi
 
-	eapply_user
+	default
 	if ! use gnome
 	then	sed -i \
 				-e 's/GNOME_DOC_INIT/GNOME_DOC_INIT([0.32],[:],[:])/' \

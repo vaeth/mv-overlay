@@ -1,7 +1,7 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 inherit toolchain-funcs
 
@@ -29,7 +29,7 @@ src_prepare() {
 	sed -e "s:GENTOO_LIBDIR:$(get_libdir):" -i local.h || die
 	sed -e "s:\(^#define CC\).*:\1 \"$(tc-getCC)\":" -i local.h || die
 	sed -e "s:\(^#define CFLAGS\).*:\1 \"${CFLAGS}\":" -i config.X || die
-	eapply_user
+	default
 }
 
 src_configure() {

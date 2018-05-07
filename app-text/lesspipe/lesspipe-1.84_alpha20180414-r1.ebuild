@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon"
 HOMEPAGE="https://github.com/wofr06/lesspipe"
@@ -220,7 +220,7 @@ src_prepare() {
 	use netcdf; ModifyX 'ncdump'
 	ModifyEnd
 	printf '%s\n' 'LESS_ADVANCED_PREPROCESSOR=1' >70lesspipe || die
-	eapply_user
+	default
 }
 
 src_configure() {

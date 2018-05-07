@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit flag-o-matic toolchain-funcs
 RESTRICT="mirror"
 
@@ -32,13 +32,9 @@ RDEPEND="
 	xinerama? ( x11-libs/libXinerama )
 	xv? ( x11-libs/libXv )
 	X? ( x11-libs/libXext )"
-DEPEND="${RDEPEND}
-	dga? (
-		x11-proto/xf86dgaproto
-		x11-proto/xf86vidmodeproto )
-	xinerama? ( x11-proto/xineramaproto )
-	xv? ( x11-proto/videoproto )
-	x86? ( dev-lang/nasm )"
+DEPEND="${RDEPEND}"
+BDEPEND="x86? ( dev-lang/nasm )
+	x11-base/xorg-proto"
 # Icc sucks. bug #41342
 #	icc? ( dev-lang/icc )
 

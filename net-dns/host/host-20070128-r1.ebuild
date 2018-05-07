@@ -1,7 +1,7 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 inherit toolchain-funcs multilib
 
@@ -17,15 +17,13 @@ IUSE="debug"
 # Bug 91515
 RESTRICT="${RESTRICT} test"
 
-RDEPEND=""
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
+BDEPEND=">=sys-apps/sed-4"
 
 src_prepare() {
 	eapply -p0 "${FILESDIR}/${P}-Makefile.patch"
 	sed -i  -e "s:^\(# if defined(__alpha).*\):\1 || defined(__x86_64__):" \
 		port.h || die "sed failed"
-	eapply_user
+	defalut
 }
 
 src_compile() {

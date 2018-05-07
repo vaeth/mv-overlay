@@ -1,7 +1,7 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -21,8 +21,8 @@ RDEPEND="sys-apps/pciutils[-zlib]
 		x11-libs/libXmu
 		x11-libs/libXxf86vm )"
 
-DEPEND="${RDEPEND}
-	X? ( x11-proto/xf86vidmodeproto )"
+DEPEND="${RDEPEND}"
+BDEPEND="X? ( x11-base/xorg-proto )"
 
 PATCHES=( "${FILESDIR}/respect-cflags.patch" )
 

@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,7 +44,7 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	eapply_user
+	default
 	if ! use gnome
 	then	sed \
 				-e "s/AC_PATH_PROG.\(SCROLLKEEPER_CONFIG\).*/\1=true/" \

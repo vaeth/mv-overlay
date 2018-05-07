@@ -1,7 +1,7 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools flag-o-matic
 
 DESCRIPTION="An extremely powerful ICCCM-compliant multiple virtual desktop window manager"
@@ -42,7 +42,6 @@ COMMON_DEPEND="
 		x11-libs/libXft
 	)
 	xinerama? (
-		x11-proto/xineramaproto
 		x11-libs/libXinerama
 	)
 "
@@ -60,11 +59,10 @@ RDEPEND="${COMMON_DEPEND}
 	userland_GNU? ( sys-apps/debianutils )
 	!x86-fbsd? ( netpbm? ( media-libs/netpbm ) )
 "
-DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig
+DEPEND="${COMMON_DEPEND}"
+BDEPEND="virtual/pkgconfig
 	doc? ( dev-libs/libxslt )
-	x11-proto/xextproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 
 DOCS=( NEWS )
@@ -79,7 +77,7 @@ src_prepare() {
 	fi
 
 	eapply -p0 "${FILESDIR}/${PN}-2.6.5-ar.patch" #474528
-	eapply_user
+	default
 	eautoreconf
 }
 

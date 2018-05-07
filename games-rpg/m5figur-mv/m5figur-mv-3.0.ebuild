@@ -1,7 +1,7 @@
 # Copyright 2014-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 # Do *not* inherit latex-package: It DEPENDS unconditionally on texinfo.
 # Moreover, it would attempt to compile the *.tex example with texinfo to dvi.
 RESTRICT="mirror"
@@ -15,9 +15,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+examples"
 # We need texlive-latexextra for toolbox.sty
-RDEPEND="virtual/latex-base
+DEPEND="virtual/latex-base"
+RDEPEND="${DEPEND}
 	dev-texlive/texlive-latexextra"
-DEPEND="examples? ( ${RDEPEND} )"
+BDEPEND="examples? ( ${DEPEND} )"
 
 src_compile() {
 	if use examples

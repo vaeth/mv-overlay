@@ -1,7 +1,7 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2016-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit eutils user
 RESTRICT="mirror"
 
@@ -23,8 +23,8 @@ RDEPEND="virtual/opengl
 	media-libs/sdl-image
 	media-libs/sdl-ttf
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )"
+DEPEND="${RDEPEND}"
+BDEPEND="nls? ( sys-devel/gettext )"
 
 pkg_setup(){
 	enewgroup gamestat 36
@@ -54,7 +54,7 @@ src_prepare() {
 		-e 's/\(snprintf(\(textureName\),\)63\(,textureNames\[i\])\)/\1 sizeof(\2), "%s"\3/' \
 		src/map.cc || die
 	eapply "${FILESDIR}"/${P}-warning.patch
-	eapply_user
+	default
 }
 
 src_configure() {

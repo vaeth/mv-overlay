@@ -1,7 +1,7 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 MY_P=igerman98-${PV}
 
@@ -14,7 +14,8 @@ LICENSE="GPL-2"
 IUSE=""
 KEYWORDS="alpha amd64 hppa mips ppc sparc x86"
 
-DEPEND="app-text/ispell:="
+BDEPEND="app-text/ispell:="
+RDEPEND="${BDEPEND}"
 
 S=${WORKDIR}/${MY_P}
 

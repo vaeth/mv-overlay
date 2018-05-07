@@ -1,7 +1,7 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2016-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
@@ -31,7 +31,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_prepare() {
 	python_fix_shebang "${S}"
-	eapply_user
+	default
 }
 
 src_install() {

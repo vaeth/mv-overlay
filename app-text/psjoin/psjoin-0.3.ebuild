@@ -1,7 +1,7 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2013-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 
 DESCRIPTION="concatenate postscript files. From new PostScript Utilities"

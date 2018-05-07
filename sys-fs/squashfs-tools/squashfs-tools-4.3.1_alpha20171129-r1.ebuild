@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit flag-o-matic toolchain-funcs
 
 LIVE=false
@@ -69,7 +69,7 @@ src_prepare() {
 	eapply -p2 "${FILESDIR}"/${Pm}-aligned-data.patch
 	eapply "${FILESDIR}"/${Pm}-local-cve-fix.patch
 	eapply "${FILESDIR}"/${Pm}-static-inline.patch
-	eapply_user
+	default
 }
 
 use10() {

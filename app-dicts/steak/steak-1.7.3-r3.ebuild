@@ -1,7 +1,7 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 
 DESCRIPTION="EN => DE Dictionary"
@@ -19,8 +19,8 @@ SLOT="0"
 KEYWORDS="~x86 ~ppc ~amd64"
 IUSE=""
 
-DEPEND="app-text/recode"
-! ${use_rpm} || DEPEND=${DEPEND}" app-arch/rpm2targz"
+BDEPEND="app-text/recode"
+! ${use_rpm} || BDEPEND=${BDEPEND}" app-arch/rpm2targz"
 RDEPEND=""
 
 S=${WORKDIR}/Steak
@@ -35,7 +35,7 @@ PATCHES=("${FILESDIR}/${P}.patch")
 }
 
 src_prepare() {
-	eapply_user
+	default
 	recode latin1..utf8 "${S}"/Datensatz/ger-eng.txt || die
 }
 

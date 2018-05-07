@@ -18,7 +18,7 @@
 # inherit mv_mozextension-r1
 #
 # MOZ="<firefox-57 seamonkey"
-# DEPEND=${MOZ_DEPEND}
+# BDEPEND=${MOZ_BDEPEND}
 # RDEPEND=$(moz_rdepend ${MOZ})
 # IUSE=$(moz_iuse ${MOZ})
 # REQUIRED_USE=$(moz_required_use ${MOZ})
@@ -65,7 +65,12 @@ moz_variables() {
 		esac
 	done
 	shift $(( ${OPTIND} - 1 ))
-	DEPEND=${MOZ_DEPEND}
+	case ${EAPI} in
+	6)
+		DEPEND=${MOZ_BDEPEND};;
+	*)
+		BDEPEND=${MOZ_BDEPEND};;
+	esac
 	RDEPEND=$(moz_rdepend "${@}")
 	IUSE=$(moz_iuse ${o} "${@}")
 	REQUIRED_USE=$(moz_required_use "${@}")
@@ -101,10 +106,10 @@ moz_install$quoteargs
 }"
 }
 
-# @ECLASS-VARIABLE: MOZ_DEPEND
+# @ECLASS-VARIABLE: MOZ_BDEPEND
 # @DESCRIPTION:
 # This is an eclass-generated depend expression needed for moz_unpack to work
-MOZ_DEPEND='app-arch/unzip'
+MOZ_BDEPEND='app-arch/unzip'
 
 # @FUNCTION: moz_split_browser
 # @USAGE: <browser>

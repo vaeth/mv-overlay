@@ -1,7 +1,7 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 
 DESCRIPTION="A remake of Richard C. Garriott's Ultima prequel"
@@ -17,7 +17,7 @@ DEPEND="media-libs/libsdl"
 
 src_prepare() {
 	eapply -p0 "${FILESDIR}"/${P}-gcc43.patch
-	eapply_user
+	default
 }
 
 src_install() {

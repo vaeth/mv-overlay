@@ -1,8 +1,8 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2017-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit mv_mozextension-r1 readme.gentoo-r1
+EAPI=7
+inherit mv_mozextension-r1
 RESTRICT="mirror"
 
 DESCRIPTION="Firefox webextension: a global dark theme for the web"

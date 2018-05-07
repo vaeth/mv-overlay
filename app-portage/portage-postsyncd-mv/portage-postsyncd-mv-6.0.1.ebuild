@@ -1,7 +1,7 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2016-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 inherit eutils
 
@@ -32,7 +32,7 @@ src_prepare() {
 			-e '1s"^#!/usr/bin/env "#!'"${EPREFIX}/usr/bin/"'"' \
 				-- bin/* || die
 	}
-	eapply_user
+	default
 }
 
 src_install() {

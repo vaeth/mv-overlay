@@ -1,7 +1,7 @@
 # Copyright 2011-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 
 DESCRIPTION="Provide support for /etc/portage/bashrc.d and /etc/portage/package.cflags"

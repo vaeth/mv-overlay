@@ -1,7 +1,7 @@
-# Copyright 2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Excellent text file viewer, optionally with additional selection feature"
 PATCHN="less-select"
@@ -41,7 +41,7 @@ src_prepare() {
 			"${SELECTDIR}/bin/less-select" || die
 	fi
 	chmod a+x configure || die
-	eapply_user
+	default
 }
 
 src_configure() {

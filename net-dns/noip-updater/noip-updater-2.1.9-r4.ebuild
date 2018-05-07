@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,7 +36,7 @@ src_prepare() {
 		-e "s:\"nobody\":\"ez-ipupd\":g"
 	)
 	sed -i "${sedarg[@]}" noip2.c || die "sed failed"
-	eapply_user
+	default
 }
 
 src_compile() {

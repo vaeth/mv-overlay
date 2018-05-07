@@ -1,4 +1,4 @@
-# Copyright 2018 Gentoo Foundation
+# Copyright 2011-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,7 +38,7 @@ src_prepare() {
 	sed -i -e 's!~/.oh-my-zsh!'"${ZSH_EDEST}"'!' \
 		"${S}/plugins/dirpersist/dirpersist.plugin.zsh"
 	sed -i -e '/zstyle.*cache/d' "${S}/lib/completion.zsh"
-	eapply_user
+	default
 }
 
 src_install() {

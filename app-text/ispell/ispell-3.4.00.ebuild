@@ -1,7 +1,7 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 inherit toolchain-funcs
 
@@ -30,7 +30,7 @@ src_prepare() {
 		-e 's:\(^#define CC\).*:\1 "'"$(tc-getCC)"'":' \
 		-e 's:\(^#define CFLAGS\).*:\1 "'"${CFLAGS}"'":' \
 		-- "${S}"/config.X || die
-	eapply_user
+	default
 }
 
 src_configure() {

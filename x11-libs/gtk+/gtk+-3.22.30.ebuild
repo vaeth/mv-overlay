@@ -8,6 +8,7 @@ inherit autotools flag-o-matic gnome2 multilib virtualx multilib-minimal
 
 DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="https://www.gtk.org/"
+SRC_URI=${SRC_URI}
 
 LICENSE="LGPL-2+"
 SLOT="3"

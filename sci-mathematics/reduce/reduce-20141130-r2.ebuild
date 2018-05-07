@@ -1,7 +1,7 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 inherit elisp-common
 
@@ -33,7 +33,7 @@ src_prepare() {
 	# sed -i -e 's/\${l}/"\${l}"/g' -- "${S}"/scripts/make.sh
 	sed -i -e 's/static char unmapTable/static unsigned char unmapTable/' \
 		-- "${S}"/csl/fox/src/FXShowMath.cpp
-	eapply_user
+	default
 }
 
 src_configure() {

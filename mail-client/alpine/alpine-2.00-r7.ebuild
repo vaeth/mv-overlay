@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit flag-o-matic autotools toolchain-funcs
 
 CHAPPA_PL=115
@@ -54,7 +54,7 @@ src_prepare() {
 	eapply -p0 "${FILESDIR}"/2.00-qa.patch
 	use chappa && eapply -p0 "${FILESDIR}/2.00-qa-chappa-${CHAPPA_PL}.patch"
 
-	eapply_user
+	default
 	eautoreconf
 }
 

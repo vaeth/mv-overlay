@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit fcaps multilib toolchain-funcs flag-o-matic gnuconfig
 
@@ -20,9 +20,9 @@ RDEPEND="acl? ( virtual/acl )
 	caps? ( sys-libs/libcap )
 	nls? ( virtual/libintl )
 	schily-tools? ( >=app-shells/schily-tools-2018.04.17[-system-libschily(-)] )"
-DEPEND="${RDEPEND}
-	x11-misc/makedepend
+BDEPEND="x11-misc/makedepend
 	nls? ( >=sys-devel/gettext-0.18.1.1 )"
+DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${P/_alpha[0-9][0-9]}
 

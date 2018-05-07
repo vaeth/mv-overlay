@@ -1,7 +1,7 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2010-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit rpm toolchain-funcs
 RESTRICT="mirror"
 
@@ -41,7 +41,7 @@ src_prepare() {
 		"${CDIR}"/defines.h
 	sed -i -e's!/var/log/[^.]*\.log!'"${ACCOUNTING_LOG}"'!' \
 		"${DDIR}"/accounting.1
-	eapply_user
+	default
 }
 
 src_configure() {

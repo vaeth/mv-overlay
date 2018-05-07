@@ -1,7 +1,7 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2010-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="fetch"
 FROM_LANG="German"
 TO_LANG="Italian"

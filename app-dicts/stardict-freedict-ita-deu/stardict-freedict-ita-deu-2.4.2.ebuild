@@ -1,7 +1,7 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2010-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 FROM_LANG="Italian"
 TO_LANG="German"
 DICT_PREFIX="dictd_www.freedict.de_"

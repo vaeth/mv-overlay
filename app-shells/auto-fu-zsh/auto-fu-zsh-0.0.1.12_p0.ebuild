@@ -1,7 +1,7 @@
-# Copyright 2018 Gentoo Foundation
+# Copyright 2012-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 pPN=${PN%-zsh}
 mPN="${pPN}.zsh"
@@ -115,7 +115,7 @@ src_prepare() {
 		# Make it work with older zsh versions:
 		eapply "${FILESDIR}"/zsh-compatibility.patch
 	fi
-	eapply_user
+	default
 }
 
 src_compile() {

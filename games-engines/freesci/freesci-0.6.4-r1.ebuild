@@ -1,8 +1,8 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils
+EAPI=7
+inherit desktop
 RESTRICT="mirror"
 
 DESCRIPTION="Sierra script interpreter for your old Sierra adventures"
@@ -30,7 +30,7 @@ src_prepare() {
 		Makefile.in \
 		|| die "sed failed"
 	eapply -p0 "${FILESDIR}"/${P}-glibc2.10.patch
-	eapply_user
+	default
 }
 
 src_configure() {

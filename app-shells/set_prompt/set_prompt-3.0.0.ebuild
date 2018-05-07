@@ -1,7 +1,7 @@
-# Copyright 2018 Gentoo Foundation
+# Copyright 2012-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 
 DESCRIPTION="An intelligent prompt for zsh or bash with status line (window title) support"
@@ -17,7 +17,7 @@ src_prepare() {
 	use prefix || sed -i \
 		-e '1s"^#!/usr/bin/env "#!'"${EPREFIX}"'/bin/"' \
 		-- bin/* || die
-	eapply_user
+	default
 }
 
 src_install() {

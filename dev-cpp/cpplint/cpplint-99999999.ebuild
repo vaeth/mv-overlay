@@ -1,7 +1,7 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2012-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( pypy python2_7 )
 EGIT_REPO_URI="https://github.com/google/styleguide.git"
 inherit elisp-common git-r3 python-single-r1
@@ -19,7 +19,7 @@ EMACSNAME="google-c-style"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 COMMON="emacs? ( virtual/emacs )"
-DEPEND="${COMMON}"
+BDEPEND="${COMMON}"
 RDEPEND="${PYTHON_DEPS}
 	${COMMON}"
 
@@ -42,7 +42,7 @@ EOF
 		-e '1s"^#!/usr/bin/env python$"#!'"${EPREFIX}/usr/bin/python"'"' \
 		-- "${S}/${PN}/${PN}.py" || die
 	python_fix_shebang "${S}"
-	eapply_user
+	default
 }
 
 src_compile() {

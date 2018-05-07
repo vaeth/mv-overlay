@@ -1,7 +1,7 @@
 # Copyright 2017-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 
 SRC_URI="https://github.com/vaeth/osformat/releases/download/v${PV}/${P}.tar.xz"

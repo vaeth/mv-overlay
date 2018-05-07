@@ -144,7 +144,7 @@ want to use with sundtek-tv.
 "
 	ln -sfn mediaclient.video mediaclient.audio
 	ln -sfn mediaclient.video mediaclient.dvb
-	eapply_user
+	default
 }
 
 src_install() {

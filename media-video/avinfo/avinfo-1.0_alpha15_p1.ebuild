@@ -1,7 +1,7 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 inherit toolchain-funcs
 
@@ -23,7 +23,7 @@ src_prepare() {
 	eapply "${WORKDIR}"/${MY_P}-patch1/${MY_P}-patch1.diff
 	eapply "${FILESDIR}"/no-bison.patch
 	sed -i -e 's/$(CC) $(OBJ)/$(CC) $(LDFLAGS) $(OBJ)/' src/Makefile || die
-	eapply_user
+	default
 }
 
 src_compile() {

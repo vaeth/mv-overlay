@@ -1,7 +1,7 @@
 # Copyright 2016-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 inherit flag-o-matic gnuconfig toolchain-funcs
 
@@ -208,7 +208,7 @@ src_prepare() {
 	! use schilytools_translit || targets translit
 	! use schilytools_udiff || targets udiff
 	! use schilytools_ved || targets ved libxtermcap
-	eapply_user
+	default
 }
 
 ac_cv_sizeof() {

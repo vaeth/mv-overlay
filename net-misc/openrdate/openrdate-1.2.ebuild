@@ -1,7 +1,7 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools
 
 DESCRIPTION="use TCP or UDP to retrieve the current time of another machine"
@@ -18,7 +18,7 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-1.1.3-rename.patch
-	eapply_user
+	default
 	eautomake
 	mv docs/{,open}rdate.8
 }

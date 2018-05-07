@@ -1,7 +1,7 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 DESCRIPTION="Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies"
 HOMEPAGE="http://wirbel.htpc-forum.de/w_scan/index2.html"

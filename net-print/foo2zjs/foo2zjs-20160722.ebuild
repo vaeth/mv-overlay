@@ -1,7 +1,7 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Support for printing to ZjStream-based printers"
 HOMEPAGE="http://foo2zjs.rkkda.com/"
@@ -22,8 +22,8 @@ RDEPEND="${COMMON}
 	net-print/cups
 	net-print/cups-filters
 	virtual/udev"
-DEPEND="${COMMON}
-	app-arch/unzip
+DEPEND="${COMMON}"
+BDEPEND="app-arch/unzip
 	app-editors/vim
 	sys-apps/ed
 	sys-devel/bc
@@ -184,7 +184,7 @@ src_prepare() {
 		-i hplj1000
 	sed -e 's/chmod -w/sleep 2; chmod -w/' \
 		-i osx-hotplug/Makefile
-	eapply_user
+	default
 }
 
 src_compile() {

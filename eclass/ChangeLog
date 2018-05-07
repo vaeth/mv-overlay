@@ -1,5 +1,4 @@
 # ChangeLog for eclass directory
-# Copyright 2012-2018 Gentoo Foundation; Distributed under the GPL v2
 
   12 May 2012; Martin Väth <martin@mvath.de>:
   Created ChangeLog
@@ -80,3 +79,6 @@
 
   14 Apr 2018; Martin Väth <martin@mvath.de>:
   mv_mozextension-r1.eclass: remove support for legacy extensions
+
+  07 May 2018; Martin Väth <martin@mvath.de>:
+  monotone.eclass, mv_mozextension-r1.eclass: Support EAPI=7

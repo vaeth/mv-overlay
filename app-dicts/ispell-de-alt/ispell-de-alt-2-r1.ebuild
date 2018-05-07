@@ -1,7 +1,7 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 DESCRIPTION="German dictionary (traditional orthography) for ispell"
 HOMEPAGE="http://www.lasr.cs.ucla.edu/geoff/ispell-dictionaries.html"
@@ -14,8 +14,8 @@ SLOT="0"
 KEYWORDS="alpha amd64 hppa ~mips ppc sparc x86"
 IUSE=""
 
-DEPEND="app-text/ispell:="
-RDEPEND="${DEPEND}"
+BDEPEND="app-text/ispell:="
+RDEPEND="${BDEPEND}"
 
 S="${WORKDIR}"
 

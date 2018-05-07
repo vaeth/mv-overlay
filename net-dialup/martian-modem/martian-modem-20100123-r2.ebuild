@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2012-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -71,7 +71,7 @@ src_prepare() {
 	# It contains version checking code, hence can be applied unconditionally
 		eapply "${FILESDIR}/${P}-linux-3.10.patch"
 	fi
-	eapply_user
+	default
 }
 
 src_install() {
