@@ -119,7 +119,7 @@ src_prepare() {
 			eapply "${FILESDIR}/${PN}-strip-canberra.patch"
 	fi
 
-	default
+	eapply_user
 	eautoreconf
 	gnome2_src_prepare
 }

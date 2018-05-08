@@ -137,7 +137,7 @@ src_schily_prepare() (
 		-e "s|^\(LINUX_INCL_PATH=\).*|\1|" \
 		-e "s|^\(LDPATH=\).*|\1|" \
 		-e "s|^\(RUNPATH=\).*|\1|" \
-		-e "s|^\(INS_BASE=\).*|\1\t${ED}usr|" \
+		-e "s|^\(INS_BASE=\).*|\1\t${ED}/usr|" \
 		-e "s|^\(INS_RBASE=\).*|\1\t${ED}|" \
 		-e "s|^\(DEFINSGRP=\).*|\1\t0|" \
 		-e '/^DEFUMASK/s,002,022,g' \
@@ -342,57 +342,57 @@ src_install() {
 		LDOPTX="${LDFLAGS}" GMAKE_NOWARN="true" install
 	if ! use static-libs
 	then	find "${ED}" -name '*.a' -delete || die
-		! test -d "${ED}"usr/include || rm -rfv -- "${ED}"usr/include || die
+		! test -d "${ED}"/usr/include || rm -rfv -- "${ED}"/usr/include || die
 	fi
 	if use schilytools_sccs
-	then	mv -v "${ED}"usr/share/man/man1/{,sccs-}diff.1 || die
-	else	! test -d "${ED}"usr/ccs || rm -rfv -- "${ED}"usr/ccs || die
-		mustnothave usr/share/man/man1/diff.1
+	then	mv -v "${ED}"/usr/share/man/man1/{,sccs-}diff.1 || die
+	else	! test -d "${ED}"/usr/ccs || rm -rfv -- "${ED}"/usr/ccs || die
+		mustnothave /usr/share/man/man1/diff.1
 	fi
 	if use schilytools_hdump
-	then	mustremove usr/bin/od usr/share/man/man1/od.1
-	else	mustnothave usr/bin/od usr/share/man/man1/od.1
+	then	mustremove /usr/bin/od /usr/share/man/man1/od.1
+	else	mustnothave /usr/bin/od /usr/share/man/man1/od.1
 	fi
 	if use schilytools_patch
-	then	mustremove usr/share/man/man1/patch.1
-	else	mustnothave usr/share/man/man1/patch.1
+	then	mustremove /usr/share/man/man1/patch.1
+	else	mustnothave /usr/share/man/man1/patch.1
 	fi
 	if use schilytools_bosh
 	then	dodir bin || die
-		rm -v "${ED}"usr/bin/{bo,j,pf}sh \
-			"${ED}"usr/share/man/man1/bosh.1 || die
-		rm -rfv "${ED}"usr/xpg4 || die
-		mv -v -- "${ED}"{usr/bin/sh,bin/bosh} || die
+		rm -v "${ED}"/usr/bin/{bo,j,pf}sh \
+			"${ED}"/usr/share/man/man1/bosh.1 || die
+		rm -rfv "${ED}"/usr/xpg4 || die
+		mv -v -- "${ED}"/{usr/bin/sh,bin/bosh} || die
 		ln -s -- bosh "${ED}"/bin/jsh || die
 		ln -s -- bosh "${ED}"/bin/pfsh || die
-		mv -v -- "${ED}"usr/share/man/man1/{,bo}sh.1 || die
+		mv -v -- "${ED}"/usr/share/man/man1/{,bo}sh.1 || die
 		if use renameschily_jsh
-		then	mv -v -- "${ED}"bin/{,s}jsh || die
-			mv -v -- "${ED}"usr/share/man/man1/{,s}jsh.1 || die
+		then	mv -v -- "${ED}"/bin/{,s}jsh || die
+			mv -v -- "${ED}"/usr/share/man/man1/{,s}jsh.1 || die
 		fi
 	fi
 	if use schilytools_match && use system-star
-	then	rm -v -- "${ED}"usr/share/man/man1/match.1 || die
+	then	rm -v -- "${ED}"/usr/share/man/man1/match.1 || die
 	fi
 	if use schilytools_calc && use renameschily_calc
-	then	mv -v -- "${ED}"usr/bin/{,s}calc || die
-		mv -v -- "${ED}"usr/share/man/man1/{,s}calc.1 || die
+	then	mv -v -- "${ED}"/usr/bin/{,s}calc || die
+		mv -v -- "${ED}"/usr/share/man/man1/{,s}calc.1 || die
 	fi
 	if use schilytools_compare && use renameschily_compare
-	then	mv -v -- "${ED}"usr/bin/{,s}compare || die
-		mv -v -- "${ED}"usr/share/man/man1/{,s}compare.1 || die
+	then	mv -v -- "${ED}"/usr/bin/{,s}compare || die
+		mv -v -- "${ED}"/usr/share/man/man1/{,s}compare.1 || die
 	fi
 	if use schilytools_count && use renameschily_count
-	then	mv -v -- "${ED}"usr/bin/{,s}count || die
-		mv -v -- "${ED}"usr/share/man/man1/{,s}count.1 || die
+	then	mv -v -- "${ED}"/usr/bin/{,s}count || die
+		mv -v -- "${ED}"/usr/share/man/man1/{,s}count.1 || die
 	fi
 	if use schilytools_man2html && use renameschily_man2html
-	then	mv -v -- "${ED}"usr/bin/{,s}man2html || die
-		mv -v -- "${ED}"usr/share/man/man1/{,s}man2html.1 || die
+	then	mv -v -- "${ED}"/usr/bin/{,s}man2html || die
+		mv -v -- "${ED}"/usr/share/man/man1/{,s}man2html.1 || die
 	fi
 	if use schilytools_p && use renameschily_p
-	then	mv -v -- "${ED}"usr/bin/{,s}p || die
-		mv -v -- "${ED}"usr/share/man/man1/{,s}p.1 || die
+	then	mv -v -- "${ED}"/usr/bin/{,s}p || die
+		mv -v -- "${ED}"/usr/share/man/man1/{,s}p.1 || die
 	fi
 	if use schilytools_ved
 	then	docompress -x /usr/share/man/help

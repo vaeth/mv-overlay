@@ -84,7 +84,7 @@ src_prepare() {
 		sed -i '1 a # -*- coding: utf-8 -*-' tools/src/uyghur2dict.py || die
 	fi
 
-	default
+	eapply_user
 	if ! use gnome
 	then	sed -i \
 				-e 's/GNOME_DOC_INIT/GNOME_DOC_INIT([0.32],[:],[:])/' \

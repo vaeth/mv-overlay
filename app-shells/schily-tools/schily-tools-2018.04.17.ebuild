@@ -141,7 +141,7 @@ src_schily_prepare() (
 		-e "s|^\(LINUX_INCL_PATH=\).*|\1|" \
 		-e "s|^\(LDPATH=\).*|\1|" \
 		-e "s|^\(RUNPATH=\).*|\1|" \
-		-e "s|^\(INS_BASE=\).*|\1\t${ED}usr|" \
+		-e "s|^\(INS_BASE=\).*|\1\t${ED}/usr|" \
 		-e "s|^\(INS_RBASE=\).*|\1\t${ED}|" \
 		-e "s|^\(DEFINSGRP=\).*|\1\t0|" \
 		-e '/^DEFUMASK/s,002,022,g' \
@@ -350,15 +350,15 @@ src_install() {
 	if use schilytools_sccs
 	then	mv -v "${ED}"/usr/share/man/man1/{,sccs-}diff.1 || die
 	else	! test -d "${ED}"/usr/ccs || rm -rfv -- "${ED}"/usr/ccs || die
-		mustnothave usr/share/man/man1/diff.1
+		mustnothave /usr/share/man/man1/diff.1
 	fi
 	if use schilytools_hdump
-	then	mustremove usr/bin/od usr/share/man/man1/od.1
-	else	mustnothave usr/bin/od usr/share/man/man1/od.1
+	then	mustremove /usr/bin/od /usr/share/man/man1/od.1
+	else	mustnothave /usr/bin/od /usr/share/man/man1/od.1
 	fi
 	if use schilytools_patch
-	then	mustremove usr/share/man/man1/patch.1
-	else	mustnothave usr/share/man/man1/patch.1
+	then	mustremove /usr/share/man/man1/patch.1
+	else	mustnothave /usr/share/man/man1/patch.1
 	fi
 	if use schilytools_bosh
 	then	dodir bin || die
