@@ -120,11 +120,18 @@ src_schily_prepare() (
 	local tcCXX=$(tc-getCXX)
 	sed -i -e "/cc-config.sh/s|\$(C_ARCH:%64=%) \$(CCOM_DEF)|${tcCC} ${tcCC}|" \
 		rules1.top || die "sed rules1.top"
+		# -e "s|^\(DEFCCOM_DEF=\).*|\1\t${tcCC}|" \
 	sed -i -e "/^CC_COM_DEF=/s|gcc|${tcCC}|" \
-		-e "/^CC++_COM_DEF=/s|g++|${tcCXX}|" \
+		-e "/^CC++_COM_DEF=/s|g[+][+]|${tcCXX}|" \
 		-e "/COPTOPT=/s|-O||" \
-		-e 's|$(GCCOPTOPT)||' \
+		-e 's|[$][(]GCCOPTOPT[)]||' \
+		-e 's|[$][(]GCC_OPTXX[)]||' \
 		cc-gcc.rul || die "sed cc-gcc.rul"
+	sed -i -e "/^CC_COM_DEF=/s|clang|${tcCC}|" \
+		-e "/^CC++_COM_DEF=/s|clang[+][+]|${tcCXX}|" \
+		-e "/COPTOPT=/s|-O||" \
+		-e 's|[$][(]CLANGOPTXX[)]||' \
+		cc-clang.rul || die "sed cc-gcc.rul"
 	sed -i -e "s|^#\(CONFFLAGS +=\).*|\1\t-cc=${tcCC}|" \
 		rules.cnf || die "sed rules.cnf"
 
@@ -140,6 +147,7 @@ src_schily_prepare() (
 		-e "s|^\(INS_BASE=\).*|\1\t${ED}/usr|" \
 		-e "s|^\(INS_RBASE=\).*|\1\t${ED}|" \
 		-e "s|^\(DEFINSGRP=\).*|\1\t0|" \
+		-e "s|^\(DEFCCOM=\).*|\1\t${tcCC}|" \
 		-e '/^DEFUMASK/s,002,022,g' \
 		Defaults.${os} || die "sed Schily make setup"
 )
@@ -161,6 +169,7 @@ targets() {
 src_prepare() {
 	default
 	filter-flags -fPIE -pie '-flto*' -fwhole-program -fno-common
+	append-cflags $(test-flags-CC -fno-strict-overflow)
 	src_schily_prepare
 	sed -i -e '1s!man1/sh\.1!man1/bosh.1!' -- "${S}/sh/"{jsh,pfsh}.1 || die
 	sed -i \
