@@ -3,7 +3,7 @@
 
 EAPI=7
 RESTRICT="mirror"
-inherit desktop flag-o-matic qmake-utils toolchain-funcs
+inherit desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="Drawing editor for creating figures in PDF or PS formats"
 HOMEPAGE="http://ipe.otfried.org/"
@@ -27,11 +27,12 @@ BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${P}/src"
 
+PATCHES=("${FILESDIR}"/xlocale.patch)
+
 src_prepare() {
 	filter-flags -fPIE -pie '-flto*' -fwhole-program +D_GLIBCXX_ASSERTIONS
 	sed -i \
 		-e 's/fpic/fPIC/' \
-		-e 's/moc-qt4/moc/' \
 		-e "s'\$(IPEPREFIX)/lib'\$(IPEPREFIX)/$(get_libdir)'g" \
 		-e "s'\(LUA_CFLAGS.*=\).*'\1 -I${EROOT}/usr/include/lua5.3'" \
 		-e 's/\(LUA_LIBS.*=\).*/\1 -llua5.3/' \

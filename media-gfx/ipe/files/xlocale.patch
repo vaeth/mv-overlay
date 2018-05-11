@@ -1,0 +1,12 @@
+# https://bugs.gentoo.org/489190
+--- a/ipelib/ipeplatform.cpp
++++ b/ipelib/ipeplatform.cpp
+@@ -38,7 +38,7 @@
+ #include <gdiplus.h>
+ #else
+ #include <sys/wait.h>
+-#include <xlocale.h>
++#include_next <locale.h>
+ #include <dirent.h>
+ #endif
+ #ifdef __APPLE__
