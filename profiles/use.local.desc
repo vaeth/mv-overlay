@@ -153,6 +153,7 @@ games-emulation/xmame:bundled-libs - Use bundled version of dev-libs/expat
 games-emulation/xmame:net - Add network support
 games-emulation/xmess:bundled-libs - Use bundled version of dev-libs/expat
 games-emulation/xmess:net - Add network support
+games-puzzle/fish-fillets:lua-slotted - Support slotted lua version
 games-rpg/m5figur-mv:examples - Compile example character sheet as PDF
 mail-client/alpine:chappa - enhance alpine by applying Eduardo Chappa's patches
 mail-client/alpine:onlyalpine - installs only the alpine binary, so it does not collied with app-editors/pico and/or mail-client/pine
