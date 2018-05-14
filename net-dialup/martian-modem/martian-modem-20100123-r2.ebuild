@@ -12,7 +12,7 @@ HOMEPAGE="https://packages.debian.org/sid/martian-modem-source http://phep2.tech
 SRC_URI="http://linmodems.technion.ac.il/packages/ltmodem/kernel-2.6/martian/${MY_P}.tar.gz"
 
 LICENSE="GPL-2 AgereSystems-WinModem"
-KEYWORDS="~amd64 ~x86 -*"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 SLOT=0
 

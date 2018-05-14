@@ -20,15 +20,20 @@ case ${PV} in
 	KEYWORDS=""
 ;;
 esac
+inherit required-use-warn
+pkg_pretend() {
+	required-use-warn
+}
 
 IUSE="antiword cabextract catdoc +cpio +djvu dpkg +dvi2tty +elinks fastjar +ghostscript gpg +groff hdf5 +html2text id3v2 image isoinfo libplist +links +lynx lzip mp3info mp3info2 netcdf ooffice p7zip pdf pstotext rar rpm +rpm2targz unrar unrtf +unzip +w3m xlhtml"
 
 htmlmode="( || ( html2text links lynx elinks w3m ) )"
 REQUIRED_USE="!rpm2targz? ( rpm? ( cpio ) )
 	ooffice? ${htmlmode}
-	xlhtml? ${htmlmode}
-	amd64-fbsd? ( !antiword !catdoc !dpkg !elinks !fastjar !html2text
-		!id3v2 !lzip !mp3info !mp3info2 !ooffice !p7zip !pstotext
+	xlhtml? ${htmlmode}"
+REQUIRED_USE_WARN="
+	amd64-fbsd? ( !antiword !catdoc !dpkg !elinks !fastjar !hdf5 !html2text
+		!id3v2 !lzip !mp3info !mp3info2 !netcdf !ooffice !p7zip !pstotext
 		!rar !rpm !unrtf !w3m !xlhtml )
 	alpha? ( !catdoc !fastjar !id3v2 !libplist !mp3info !mp3info2 !netcdf
 		!ooffice !pstotext !rar )
@@ -109,8 +114,8 @@ BOTH_DEPEND="sys-apps/file
 	isoinfo? ( || ( app-cdr/cdrtools app-cdr/dvd+rw-tools ) )
 	libplist? ( !alpha? ( !hppa? ( !ia64? ( !sparc? ( app-pda/libplist ) ) ) ) )
 	dpkg? ( !amd64-fbsd? ( app-arch/dpkg ) )
-	hdf5? ( !hppa? ( sci-libs/hdf5 ) )
-	netcdf? ( !alpha? ( !hppa? ( !ia64? ( !sparc?  ( sci-libs/netcdf ) ) ) ) )"
+	hdf5? ( !amd64-fbsd? ( !hppa? ( sci-libs/hdf5 ) ) )
+	netcdf? ( !amd64-fbsd? ( !alpha? ( !hppa? ( !ia64? ( !sparc?  ( sci-libs/netcdf ) ) ) ) ) )"
 DEPEND="${BOTH_DEPEND}"
 RDEPEND="${BOTH_DEPEND}
 	sys-apps/less

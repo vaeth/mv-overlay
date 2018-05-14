@@ -3,22 +3,16 @@
 # It does not yet compile.
 =app-accessibility/gespeaker-0.8.6_p0
 
+# Martin Väth <martin@mvath.de> (14 May 2018)
+# Sources no longer available. Probably long outdated.
+=app-admin/flexlm-9.5
+
 # Martin Väth <martin@mvath.de> (09 Apr 2018)
-# There is nothing wrong with dev-util/pyrep, but I hope that this mask will
+# There is nothing wrong with dev-util/pyrep, but hopefully this mask will
 # make people aware about the successor project dev-util/replacer which is
 # probably better in almost any aspect. In addition, dev-util/pyrep is almost
-# unmaintained (and really old ugly code). Anyway, feel free to numask...
+# unmaintained (and really old ugly code). Anyway, feel free to unmask...
 dev-util/pyrep
-
-# Martin Väth <martin@mvath.de> (12 Mar 2016)
-# No version of magus compiles with current libsigc++ and gcc:5
-# It needs severe upstream patches, but upstream is long dead.
-games-rpg/magus
-
-# Martin Väth <martin@mvath.de> (12 Jan 2016)
-# This version is masked, since most users probably cannot obtain the tarball.
-# Upstream is dead.
-~games-rpg/magus-1.3.3
 
 # Martin Väth <martin@mvath.de> (03 Jan 2016)
 # net-dns/noip-updater does not use https for transferring user sensitive data,

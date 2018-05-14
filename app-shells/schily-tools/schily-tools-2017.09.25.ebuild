@@ -3,7 +3,7 @@
 
 EAPI=7
 RESTRICT="mirror"
-inherit flag-o-matic gnuconfig toolchain-funcs
+inherit flag-o-matic gnuconfig required-use-warn toolchain-funcs
 
 MY_PV=${PV//./-}
 MY_P="schily-${MY_PV}"
@@ -11,13 +11,11 @@ MY_P_TAR="${MY_P}.tar.bz2"
 S=${WORKDIR}/${MY_P}
 
 SRC_URI="mirror://sourceforge/schilytools/${MY_P}.tar.bz2"
-#mirror://sourceforge/schilytools/${MY_P}.patch"
 DESCRIPTION="Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell"
 HOMEPAGE="https://sourceforge.net/projects/schilytools/"
-KEYWORDS="~amd64 ~x86"
-IUSE="acl caps doc static-libs system-libschily system-star xattr"
-
-#PATCHES=(-p0 "$DISTDIR"/${MY_P}.patch)
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+IUSE="acl caps doc system-libschily system-star xattr"
+REQUIRED_USE_WARN="amd64-fbsd? ( !xattr )"
 
 add_iuse_expand() {
 	local i j
@@ -43,7 +41,6 @@ add_iuse_expand schilytools \
 COMMON="system-libschily? ( app-cdr/cdrtools )
 !system-libschily? ( !app-cdr/cdrtools )
 schilytools_match? (
-	system-star? ( app-arch/star )
 	!system-star? ( !app-arch/star )
 )
 schilytools_calc? (
@@ -69,11 +66,15 @@ schilytools_p? (
 schilytools_translit? ( !dev-perl/Lingua-Translit )
 acl? ( virtual/acl )
 caps? ( sys-libs/libcap )
-xattr? ( sys-apps/attr )"
+xattr? ( !amd64-fbsd? ( sys-apps/attr ) )"
 DEPEND="${COMMON}"
 RDEPEND="${COMMON}"
 LICENSE="GPL-2 LGPL-2.1 CDDL-Schily"
 SLOT="0"
+
+pkg_pretend() {
+	required-use-warn
+}
 
 # Lot of this code is taken from app-cdr/cdrtools
 
@@ -243,7 +244,7 @@ ac_cv_sizeof() {
 src_configure() {
 	use acl || export ac_cv_header_sys_acl_h="no"
 	use caps || export ac_cv_lib_cap_cap_get_proc="no"
-	use xattr || export ac_cv_header_attr_xattr_h="no"
+	use xattr && ! use amd64-bsd || export ac_cv_header_attr_xattr_h="no"
 
 	# skip obsolete configure script
 	if tc-is-cross-compiler ; then

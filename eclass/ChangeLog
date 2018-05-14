@@ -82,3 +82,6 @@
 
   07 May 2018; Martin Väth <martin@mvath.de>:
   monotone.eclass, mv_mozextension-r1.eclass: Support EAPI=7
+
+  14 May 2018; Martin Väth <martin@mvath.de>:
+  rquired-use-warn.eclass: new eclass

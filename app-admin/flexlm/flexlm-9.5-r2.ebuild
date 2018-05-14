@@ -20,7 +20,7 @@ SRC_URI="doc? ( http://www.ni.com/pdf/manuals/flexusr.pdf )
 
 LICENSE="all-rights-reserved GPL-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 QA_PREBUILT="

@@ -1,0 +1,3 @@
+# Martin Väth <martin@mvath.de> (14 May 2018)
+# Mask until slotted lua gets unmasked:
+lua-slotted
