@@ -15,8 +15,8 @@ DESCRIPTION="Many tools from Joerg Schilling, including a POSIX compliant Bourne
 HOMEPAGE="https://sourceforge.net/projects/schilytools/"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="acl caps doc system-libschily system-star xattr"
-REQUIRED_USE_WARN="!system-libschily
-	amd64-fbsd? ( !xattr )"
+REQUIRED_USE="!system-libschily"
+REQUIRED_USE_WARN="amd64-fbsd? ( !xattr )"
 
 add_iuse_expand() {
 	local i j
@@ -43,9 +43,7 @@ COMMON="system-libschily? ( app-cdr/cdrtools )
 !system-libschily? ( !app-cdr/cdrtools[-schily-tools(-)] )
 !system-libschily? (
 	!renameschily_libschily? ( !sys-apps/man )
-)"
-COMMON="!app-cdr/cdrtools[-schily-tools(-)]
-!renameschily_libschily? ( !sys-apps/man )""
+)
 schilytools_match? (
 	!system-star? ( !app-arch/star )
 )
@@ -413,7 +411,7 @@ src_install() {
 	if use schilytools_ved
 	then	docompress -x /usr/share/man/help
 	fi
-	if use renameschily_libschily # && ! use system-libschily
+	if use renameschily_libschily && ! use system-libschily
 	then	for i in error fexecve fnmatch getline {,f,s}printf strlen
 		do mv -v -- "${ED}"/usr/share/man/man3/{,schily-}${i}.3 || die
 		done
