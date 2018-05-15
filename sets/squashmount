@@ -1,4 +1,0 @@
->=sys-fs/squashfs-tools-4.3.1_alpha
->=sys-fs/squashfuse-0.1.100
-sys-fs/squashmount
->=sys-fs/unionfs-fuse-0.25
