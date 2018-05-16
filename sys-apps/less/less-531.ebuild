@@ -40,16 +40,17 @@ src_prepare() {
 		sed -i -e 's|\([^a-zA-Z]\)/etc/less-select-key.bin|\1'"${EPREFIX}"'/etc/less/select-key.bin|g' \
 			"${SELECTDIR}/bin/less-select" || die
 	fi
-	chmod a+x configure || die
 	default
 }
 
 src_configure() {
 	export ac_cv_lib_ncursesw_initscr=$(usex unicode)
 	export ac_cv_lib_ncurses_initscr=$(usex !unicode)
-	econf \
-		--with-regex=$(usex pcre pcre posix) \
+	local myeconfargs=(
+		--with-regex=$(usex pcre pcre posix)
 		--with-editor="${EPREFIX}"/usr/libexec/editor
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
