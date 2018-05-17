@@ -5,7 +5,14 @@
 
 # Martin Väth <martin@mvath.de> (14 May 2018)
 # Sources no longer available. Probably long outdated.
-=app-admin/flexlm-9.5
+=app-admin/flexlm-9.5*
+
+# Martin Väth <martin@mvath.de> (17 May 2018)
+# The package will probably be removed from the mv repository: It is
+# useful only for arch users. The ebuild is practically unmaintained,
+# and bumps from upstream have not been made since ages.
+# Stick it in your local overlay if you really want to keep it.
+app-shells/command-not-found
 
 # Martin Väth <martin@mvath.de> (09 Apr 2018)
 # There is nothing wrong with dev-util/pyrep, but hopefully this mask will
