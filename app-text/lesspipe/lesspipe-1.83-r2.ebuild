@@ -14,23 +14,18 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 case ${PV} in
 9999*)
 	EGIT_REPO_URI="https://github.com/wofr06/${PN}.git"
-	#EGIT_BRANCH="master"
-	EGIT_BRANCH="lesspipe"
+	EGIT_BRANCH="master"
 	inherit git-r3
 	SRC_URI=""
-	KEYWORDS="";;
-*alpha*)
-	RESTRICT="mirror"
-	EGIT_COMMIT="87ac1d025ba3417d7703b3ca57d52da055b5b21e"
-	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
+	KEYWORDS=""
+;;
 esac
 inherit required-use-warn
 pkg_pretend() {
 	required-use-warn
 }
 
-IUSE="antiword brotli cabextract catdoc +cpio +djvu dpkg +dvi2tty +elinks fastjar +ghostscript gpg +groff hdf5 +html2text id3v2 image isoinfo libplist +links +lynx lz4 lzip mp3info mp3info2 netcdf ooffice p7zip pdf pstotext rar rpm +rpm2targz unrar unrtf +unzip +w3m xlhtml zstd"
+IUSE="antiword cabextract catdoc +cpio +djvu dpkg +dvi2tty +elinks fastjar +ghostscript gpg +groff hdf5 +html2text id3v2 image isoinfo libplist +links +lynx lzip mp3info mp3info2 netcdf ooffice p7zip pdf pstotext rar rpm +rpm2targz unrar unrtf +unzip +w3m xlhtml"
 
 htmlmode="( || ( html2text links lynx elinks w3m ) )"
 REQUIRED_USE="!rpm2targz? ( rpm? ( cpio ) )
@@ -39,28 +34,23 @@ REQUIRED_USE="!rpm2targz? ( rpm? ( cpio ) )
 REQUIRED_USE_WARN="
 	amd64-fbsd? ( !antiword !catdoc !dpkg !elinks !fastjar !hdf5 !html2text
 		!id3v2 !lzip !mp3info !mp3info2 !netcdf !ooffice !p7zip !pstotext
-		!rar !rpm !unrtf !w3m !xlhtml !zstd )
-	alpha? ( !brotli !catdoc !fastjar !id3v2 !libplist !mp3info !mp3info2
-		!netcdf !ooffice !pstotext !rar !zstd )
-	arm? ( !antiword !brotli !catdoc !fastjar !html2text !id3v2 !mp3info
+		!rar !rpm !unrtf !w3m !xlhtml )
+	alpha? ( !catdoc !fastjar !id3v2 !libplist !mp3info !mp3info2 !netcdf
+		!ooffice !pstotext !rar )
+	arm? ( !antiword !catdoc !fastjar !html2text !id3v2 !mp3info
 		!ooffice !pstotext !rar !xlhtml )
-	hppa? ( !catdoc !brotli !fastjar !hdf5 !libplist !mp3info2 !netcdf
-		!ooffice !rar !w3m !xlhtml !zstd )
-	ia64? ( !antiword !brotli !catdoc !fastjar !id3v2 !libplist !mp3info
-		!mp3info2 !netcdf !ooffice !pstotext !rar !xlhtml !zstd )
-	ppc? ( !brotli )
-	ppc64? ( !brotli !catdoc !fastjar !ooffice !xlhtml )
-	sparc? ( !brotli !catdoc !fastjar !id3v2 !libplist !mp3info2 !netcdf
-		!ooffice !pstotext !zstd )"
+	hppa? ( !catdoc !fastjar !hdf5 !libplist !mp3info2 !netcdf
+		!ooffice !rar !w3m !xlhtml )
+	ia64? ( !antiword !catdoc !fastjar !id3v2 !libplist !mp3info !mp3info2
+		!netcdf !ooffice !pstotext !rar !xlhtml )
+	ppc64? ( !catdoc !fastjar !ooffice !xlhtml )
+	sparc? ( !catdoc !fastjar !id3v2 !libplist !mp3info2 !netcdf
+		!ooffice !pstotext )"
 
 BOTH_DEPEND="sys-apps/file
 	app-arch/xz-utils
 	app-arch/bzip2
 	dev-lang/perl
-	brotli? ( !alpha? ( !arm? ( !hppa? ( !ia64? ( !ppc? ( !ppc64?
-		( !sparc? ( >=app-arch/brotli-1 ) ) ) ) ) ) ) )
-	lz4? ( app-arch/lz4 )
-	zstd? ( !amd64-fbsd? ( !alpha? ( !hppa? ( !ia64? ( !sparc? ( app-arch/zstd ) ) ) ) ) )
 	unzip? ( app-arch/unzip )
 	fastjar? ( !amd64-fbsd? ( !alpha? ( !arm? ( !hppa? ( !ia64? ( !ppc64?
 		( !sparc? ( app-arch/fastjar ) ) ) ) ) ) ) )
@@ -121,7 +111,7 @@ BOTH_DEPEND="sys-apps/file
 		)
 	)
 	image? ( virtual/imagemagick-tools )
-	isoinfo? ( || ( app-cdr/cdrtools app-cdr/dvd+rw-tools ) )
+	isoinfo? ( || ( virtual/cdrtools app-cdr/dvd+rw-tools ) )
 	libplist? ( !alpha? ( !hppa? ( !ia64? ( !sparc? ( app-pda/libplist ) ) ) ) )
 	dpkg? ( !amd64-fbsd? ( app-arch/dpkg ) )
 	hdf5? ( !amd64-fbsd? ( !hppa? ( sci-libs/hdf5 ) ) )
@@ -196,10 +186,7 @@ src_prepare() {
 	ModifyY 'perldoc'
 	ModifyU 'unzip' 'fastjar'
 	Modify1 'unrar' 'rar'
-	ModifyU 'brotli'
-	ModifyU 'lz4'
 	ModifyU 'lzip'
-	ModifyU 'zstd'
 	use p7zip; ModifyX '7za'
 	ModifyU 'cpio' 'cabextract' 'groff'
 	Modify1 'html2text' 'links' 'lynx' 'elinks' 'w3m'

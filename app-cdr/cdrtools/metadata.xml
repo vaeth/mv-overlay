@@ -4,11 +4,6 @@
 	<maintainer type="person">
 		<email>martin@mvath.de</email>
 		<name>Martin Väth</name>
-		<description>maintainer of the updates in the mv overlay</description>
-	</maintainer>
-	<maintainer type="person">
-		<email>billie@gentoo.org</email>
-		<name>Daniel Pielmeier</name>
 	</maintainer>
 	<upstream>
 		<maintainer>

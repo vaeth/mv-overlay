@@ -5,6 +5,13 @@
 		<email>martin@mvath.de</email>
 		<name>Martin Väth</name>
 	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>joerg.schilling@fokus.fraunhofer.de</email>
+			<name>Jörg Schilling</name>
+		</maintainer>
+		<remote-id type="sourceforge">schilytools</remote-id>
+	</upstream>
 	<use>
 		<flag name="renameschily_calc">Rename calc to scalc for compatibility with sci-mathematics/calc</flag>
 		<flag name="renameschily_compare">Rename compare to scompare for compatibility with imagemagick</flag>
@@ -16,6 +23,7 @@
 		<flag name="schilytools_bosh">Install bosh, a shell which aims to be fully POSIX compatible</flag>
 		<flag name="schilytools_calc">Install calc, a bc clone</flag>
 		<flag name="schilytools_calltree">Install calltree, a cflow clone</flag>
+		<flag name="schilytools_cdrtools">Install programs provided by app-cdr/cdrtools</flag>
 		<flag name="schilytools_change">Install change, a program to change patterns in files</flag>
 		<flag name="schilytools_compare">Install compare, a cmp clone</flag>
 		<flag name="schilytools_copy">Install copy, a cp clone</flag>
@@ -39,11 +47,11 @@
 		<flag name="schilytools_sccs">Install sfind, a source code control system</flag>
 		<flag name="schilytools_sfind">Install sfind, a find clone</flag>
 		<flag name="schilytools_smake">Install smake, a make clone</flag>
+		<flag name="schilytools_star">Install programs provided by app-arch/star</flag>
 		<flag name="schilytools_termcap">Install termcap, a termcap compiler</flag>
 		<flag name="schilytools_translit">Install translit, a tr clone</flag>
 		<flag name="schilytools_udiff">Install udiff, a diff clone</flag>
 		<flag name="schilytools_ved">Install ved, a visual editor with features from vi and emacs</flag>
-		<flag name="system-libschily">Rely on app-cdr/cdrtools for providing libschily</flag>
-		<flag name="system-star">Rely on app-arch/star for the match manpage</flag>
+		<flag name="suid">Install rscsi as SUID root</flag>
 	</use>
 </pkgmetadata>

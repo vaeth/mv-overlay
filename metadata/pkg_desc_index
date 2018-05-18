@@ -4,7 +4,7 @@ app-admin/sudox 9.0.1: wrapper for sudo which can pass X authority data and deal
 app-arch/archwrap 11.1: A collection of POSIX shell scripts to invoke archiver programs
 app-arch/bzwc 5.0: A POSIX shell wrapper for wc, supporting compressed files (xz, lzma, bz2, gz)
 app-arch/paq8l 20070308: Open source file compressor and archiver
-app-cdr/cdrtools 3.02_alpha09-r1: A set of tools for CD/DVD reading and recording, including cdrecord
+app-cdr/cdrtools 99999999: A set of tools for CD/DVD reading and recording, including cdrecord
 app-dicts/ispell-de 20161207: German and Swiss dictionaries for ispell
 app-dicts/ispell-de-alt 2-r1: German dictionary (traditional orthography) for ispell
 app-dicts/stardict-dictd-BritannicaConcise 2.4.2: Stardict Dictionary for Dictd.org's The Britannica Concise Encyclopedia
@@ -38,13 +38,13 @@ app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
 app-shells/push 3.1: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 4.1: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/runtitle 2.10: Scripts to run commands and set the hard status line (windows title)
-app-shells/schily-tools 2017.09.25 2018.05.17: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
+app-shells/schily-tools 2018.05.17: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
 app-shells/set_prompt 3.0.0: An intelligent prompt for zsh or bash with status line (window title) support
 app-shells/termcolors-mv 4.7: 256colors sample script and dircolors configuration for standard or 256 colors
 app-shells/zsh-syntax-highlighting 0.6.0 0.6.1_alpha20180411 99999999: Fish shell like syntax highlighting for zsh
 app-shells/zshrc-mv 3.11: A zshrc file initializing zsh specific interactive features
 app-text/ispell 3.3.02-r1 3.4.00: fast screen-oriented spelling checker
-app-text/lesspipe 1.83-r1 1.84_alpha20180414-r1 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
+app-text/lesspipe 1.83-r2 1.84_alpha20180414-r2 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
 app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities
 app-text/stardict 3.0.6-r4 4.0.0_pre20160518-r2: A international dictionary supporting fuzzy and glob style matching
@@ -105,6 +105,7 @@ sys-fs/squashmount 16.1.0 19.0.2: Keep directories compressed with squashfs. Use
 sys-kernel/kccmp 0.3-r1: A simple tool for comparing two linux kernel .config files
 sys-kernel/kernel 4.5: A POSIX shell script to compile the kernel with user permissions
 sys-power/nut 2.7.4-r1: Network-UPS Tools
+virtual/cdrtools 1: Virtual for command-line recorders cdrtools and cdrkit
 virtual/freedesktop-icon-theme 0-r3: A virtual to choose between different icon themes
 www-plugins/bookmark-dupes 5.7: Firefox webextension: remove duplicate bookmarks/empty folders/descriptions
 www-plugins/calc-extension 5.1: Firefox webextension: calculate values of mathematical expressions

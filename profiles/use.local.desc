@@ -34,6 +34,7 @@ app-shells/schily-tools:renameschily_p - Rename p to sp for compatibility with d
 app-shells/schily-tools:schilytools_bosh - Install bosh, a shell which aims to be fully POSIX compatible
 app-shells/schily-tools:schilytools_calc - Install calc, a bc clone
 app-shells/schily-tools:schilytools_calltree - Install calltree, a cflow clone
+app-shells/schily-tools:schilytools_cdrtools - Install programs provided by app-cdr/cdrtools
 app-shells/schily-tools:schilytools_change - Install change, a program to change patterns in files
 app-shells/schily-tools:schilytools_compare - Install compare, a cmp clone
 app-shells/schily-tools:schilytools_copy - Install copy, a cp clone
@@ -57,12 +58,12 @@ app-shells/schily-tools:schilytools_pxupgrade - Install pxupgrade: upgrading fir
 app-shells/schily-tools:schilytools_sccs - Install sfind, a source code control system
 app-shells/schily-tools:schilytools_sfind - Install sfind, a find clone
 app-shells/schily-tools:schilytools_smake - Install smake, a make clone
+app-shells/schily-tools:schilytools_star - Install programs provided by app-arch/star
 app-shells/schily-tools:schilytools_termcap - Install termcap, a termcap compiler
 app-shells/schily-tools:schilytools_translit - Install translit, a tr clone
 app-shells/schily-tools:schilytools_udiff - Install udiff, a diff clone
 app-shells/schily-tools:schilytools_ved - Install ved, a visual editor with features from vi and emacs
-app-shells/schily-tools:system-libschily - Rely on app-cdr/cdrtools for providing libschily
-app-shells/schily-tools:system-star - Rely on app-arch/star for the match manpage
+app-shells/schily-tools:suid - Install rscsi as SUID root
 app-shells/termcolors-mv:create - Install DIR_COLORS-create perl script
 app-shells/termcolors-mv:perl - Install 256colors perl script
 app-shells/termcolors-mv:poor - Install poor man's variant which does not require coreutils-8.25 or newer

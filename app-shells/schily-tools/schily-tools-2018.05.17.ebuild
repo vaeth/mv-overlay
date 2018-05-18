@@ -3,7 +3,7 @@
 
 EAPI=7
 RESTRICT="mirror"
-inherit flag-o-matic gnuconfig required-use-warn toolchain-funcs
+inherit fcaps flag-o-matic gnuconfig required-use-warn toolchain-funcs
 
 MY_PV=${PV//./-}
 MY_P="schily-${MY_PV}"
@@ -14,8 +14,7 @@ SRC_URI="mirror://sourceforge/schilytools/${MY_P}.tar.bz2"
 DESCRIPTION="Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell"
 HOMEPAGE="https://sourceforge.net/projects/schilytools/"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="acl caps doc system-libschily system-star xattr"
-REQUIRED_USE="!system-libschily"
+IUSE="acl caps doc nls suid unicode xattr"
 REQUIRED_USE_WARN="amd64-fbsd? ( !xattr )"
 
 add_iuse_expand() {
@@ -33,20 +32,15 @@ add_iuse_expand() {
 }
 add_iuse_expand renameschily \
 	+calc +compare +count +jsh +libschily +man2html +p
-add_iuse_expand schilytools \
-	+bosh +calc +calltree +change +compare +copy +count +cpp +cstyle +cut \
+add_iuse_expand schilytools +bosh +calc +calltree +cdrtools \
+	+change +compare +copy +count +cpp +cstyle +cut \
 	+hdump label +lndir +man2html manmake +match +mdigest mountcd osh \
-	+p +paste +patch pxupgrade +sccs +sfind +smake \
+	+p +paste +patch pxupgrade +sccs +sfind +smake +star \
 	+termcap +translit +udiff +ved
 
-COMMON="system-libschily? ( app-cdr/cdrtools )
-!system-libschily? ( !app-cdr/cdrtools[-schily-tools(-)] )
-!system-libschily? (
-	!renameschily_libschily? ( !sys-apps/man )
-)
-schilytools_match? (
-	!system-star? ( !app-arch/star )
-)
+COMMON="!!app-cdr/cdrtools[-schily-tools(-)]
+!!app-arch/star
+!renameschily_libschily? ( !sys-apps/man )
 schilytools_calc? (
 	!renameschily_calc? ( !sci-mathematics/calc )
 )
@@ -70,9 +64,11 @@ schilytools_p? (
 schilytools_translit? ( !dev-perl/Lingua-Translit )
 acl? ( virtual/acl )
 caps? ( sys-libs/libcap )
+nls? ( virtual/libintl )
 !amd64-fbsd? ( xattr? ( sys-apps/attr ) )"
 DEPEND="${COMMON}"
 RDEPEND="${COMMON}"
+BDEPEND="nls? ( >=sys-devel/gettext-0.18.1.1 )"
 LICENSE="GPL-2 LGPL-2.1 CDDL-Schily"
 SLOT="0"
 
@@ -81,6 +77,12 @@ pkg_pretend() {
 }
 
 # Lot of this code is taken from app-cdr/cdrtools
+
+FILECAPS=(
+	cap_sys_resource,cap_dac_override,cap_sys_admin,cap_sys_nice,cap_net_bind_service,cap_ipc_lock,cap_sys_rawio+ep usr/bin/cdrecord --
+	cap_dac_override,cap_sys_admin,cap_sys_nice,cap_net_bind_service,cap_sys_rawio+ep usr/bin/cdda2wav --
+	cap_dac_override,cap_sys_admin,cap_net_bind_service,cap_sys_rawio+ep usr/bin/readcd
+)
 
 cdrtools_os() {
 	local os="linux"
@@ -91,6 +93,12 @@ cdrtools_os() {
 
 src_schily_prepare() (
 	gnuconfig_update
+
+	# This fixes a clash with clone() on uclibc.  Upstream isn't
+	# going to include this so let's try to carry it forward.
+	# Contact me if it needs updating.  Bug #486782.
+	# Anthony G. Basile <blueness@gentoo.org>.
+	use elibc_uclibc && eapply "${FILESDIR}"/${PN}-fix-clone-uclibc.patch
 
 	# Remove profiled make files.
 	find -name '*_p.mk' -delete || die "delete *_p.mk"
@@ -136,7 +144,7 @@ src_schily_prepare() (
 		-e "/^CC++_COM_DEF=/s|clang[+][+]|${tcCXX}|" \
 		-e "/COPTOPT=/s|-O||" \
 		-e 's|[$][(]CLANGOPTXX[)]||' \
-		cc-clang.rul || die "sed cc-gcc.rul"
+		cc-clang.rul || die "sed cc-clang.rul"
 	sed -i -e "s|^#\(CONFFLAGS +=\).*|\1\t-cc=${tcCC}|" \
 		rules.cnf || die "sed rules.cnf"
 
@@ -155,6 +163,11 @@ src_schily_prepare() (
 		-e "s|^\(DEFCCOM=\).*|\1\t${tcCC}|" \
 		-e '/^DEFUMASK/s,002,022,g' \
 		Defaults.${os} || die "sed Schily make setup"
+	# re DEFUMASK above:
+	# bug 486680: grsec TPE will block the exec if the directory is
+	# group-writable. This is painful with cdrtools, because it makes a bunch of
+	# group-writable directories during build. Change the umask on their
+	# creation to prevent this.
 )
 
 targets=""
@@ -184,12 +197,18 @@ src_prepare() {
 	mkdir UNUSED_TARGETS || die
 	mv TARGETS/[0-9][0-9]* UNUSED_TARGETS || die
 	targets inc libfind
-	# use system-libschily || \
-		targets include libschily libmdigest
+	targets include libschily libmdigest
 	! use schilytools_bosh || targets sh libxtermcap libshedit libgetopt
 	! use schilytools_calc || targets calc
 	! use schilytools_calltree || targets calltree
 	! use schilytools_change || targets change
+	if use schilytools_cdrtools; then
+		targets btcflash cdda2wav cdrecord mkisofs 'mkisofs!@!diag' \
+			libdeflt libscg 'libscg!@!scg' \
+			readcd rscsi scgcheck scgskeleton \
+			libcdrdeflt libedc libfile libhfs_iso libparanoia \
+			librscg libscgcmd libsiconv 'libsiconv!@!tables'
+	fi
 # nonexistent:
 #	! use schilytools_cmd || targets cmd
 	! use schilytools_compare || targets compare
@@ -214,6 +233,7 @@ src_prepare() {
 	! use schilytools_sccs || targets sccs libgetopt
 	! use schilytools_sfind || targets sfind
 	! use schilytools_smake || targets smake
+	! use schilytools_star || targets mt rmt star star_sym tartest librmt
 	! use schilytools_termcap || targets termcap libxtermcap
 	! use schilytools_translit || targets translit
 	! use schilytools_udiff || targets udiff
@@ -249,6 +269,7 @@ src_configure() {
 	use acl || export ac_cv_header_sys_acl_h="no"
 	use caps || export ac_cv_lib_cap_cap_get_proc="no"
 	use xattr || export ac_cv_header_attr_xattr_h="no"
+	export ac_cv_header_pulse_pulseaudio_h="no"
 
 	# skip obsolete configure script
 	if tc-is-cross-compiler ; then
@@ -326,25 +347,41 @@ src_configure() {
 			;;
 		esac
 	fi
-	cd psmake || die
 }
 
 src_compile() {
-	emake -j1 CPPOPTX="${CPPFLAGS}" COPTX="${CFLAGS}" C++OPTX="${CXXFLAGS}" \
+	if use unicode; then
+		local flags="$(test-flags -finput-charset=ISO-8859-1 -fexec-charset=UTF-8)"
+		if [[ -n ${flags} ]]; then
+			append-flags ${flags}
+		else
+			ewarn "Your compiler does not support the options required to build"
+			ewarn "cdrtools with unicode in USE. unicode flag will be ignored."
+		fi
+	fi
+	emake CPPOPTX="${CPPFLAGS}" COPTX="${CFLAGS}" C++OPTX="${CXXFLAGS}" \
 		LDOPTX="${LDFLAGS}" GMAKE_NOWARN="true"
 }
 
 mustnothave() {
 	local i
-	for i
-	do	test -r "${ED}${i}" && die "${ED}${i} must not exist"
+	for i; do
+		test -r "${ED}${i}" && die "${ED}${i} must not exist"
 	done
 }
 
 mustremove() {
 	local i
-	for i
-	do	test -r "${ED}${i}" && rm -v -- "${ED}${i}" || \
+	for i; do
+		test -r "${ED}${i}" && rm -v -- "${ED}${i}" || \
+			die "cannot remove ${ED}${i}"
+	done
+}
+
+removedirs() {
+	local i
+	for i; do
+		! test -d "${ED}${i}" || rm -rfv -- "${ED}${i}" || \
 			die "cannot remove ${ED}${i}"
 	done
 }
@@ -352,26 +389,48 @@ mustremove() {
 src_install() {
 	local i
 	! use doc || dodoc -r Schily.Copyright README.SSPM PORTING CONTRIBUTING \
-		AN-????-??-?? ANNOUNCEMENTS
-	emake -j1 CPPOPTX="${CPPFLAGS}" COPTX="${CFLAGS}" C++OPTX="${CXXFLAGS}" \
+		AN-????-??-?? ANNOUNCEMENTS READMEs/README.linux
+	emake CPPOPTX="${CPPFLAGS}" COPTX="${CFLAGS}" C++OPTX="${CXXFLAGS}" \
 		LDOPTX="${LDFLAGS}" GMAKE_NOWARN="true" install
 	find "${ED}" '(' -name '*.a' '-o' -name '*.so' ')' -delete || die
-	! test -d "${ED}"/usr/include || rm -rfv -- "${ED}"/usr/include || die
-	if use schilytools_sccs
-	then	mv -v "${ED}"/usr/share/man/man1/{,sccs-}diff.1 || die
-	else	! test -d "${ED}"/usr/ccs || rm -rfv -- "${ED}"/usr/ccs || die
+	use suid || find "$ED" -perm /4000 -exec chmod -v -- -s '{}' '+' || die
+	if use schilytools_cdrtools; then
+		# These symlinks are for compat with cdrkit.
+		dosym schily /usr/include/scsilib
+		dosym ../scg /usr/include/schily/scg
+
+		cd "${S}"/cdda2wav || die
+		docinto cdda2wav
+		dodoc Changelog FAQ Frontends HOWTOUSE NEEDED README THANKS TODO
+
+		cd "${S}"/mkisofs || die
+		docinto mkisofs
+		dodoc ChangeLog* TODO
+	fi
+	removedirs /usr/include
+	if use schilytools_star; then
+		removedirs /usr/share/doc/star || die
+		mustremove /usr/bin/{gnu,}tar
+		mv -i "${ED}"/usr/sbin/rmt{,.star} || die
+	fi
+	if use schilytools_sccs; then
+		mv -v "${ED}"/usr/share/man/man1/{,sccs-}diff.1 || die
+	else
+		! test -d "${ED}"/usr/ccs || rm -rfv -- "${ED}"/usr/ccs || die
 		mustnothave /usr/share/man/man1/diff.1
 	fi
-	if use schilytools_hdump
-	then	mustremove /usr/bin/od /usr/share/man/man1/od.1
-	else	mustnothave /usr/bin/od /usr/share/man/man1/od.1
+	if use schilytools_hdump; then
+		mustremove /usr/bin/od /usr/share/man/man1/od.1
+	else
+		mustnothave /usr/bin/od /usr/share/man/man1/od.1
 	fi
-	if use schilytools_patch
-	then	mustremove /usr/share/man/man1/patch.1
-	else	mustnothave /usr/share/man/man1/patch.1
+	if use schilytools_patch; then
+		mustremove /usr/share/man/man1/patch.1
+	else
+		mustnothave /usr/share/man/man1/patch.1
 	fi
-	if use schilytools_bosh
-	then	dodir bin || die
+	if use schilytools_bosh; then
+		dodir bin || die
 		rm -v "${ED}"/usr/bin/{bo,j,pf}sh \
 			"${ED}"/usr/share/man/man1/bosh.1 || die
 		rm -rfv "${ED}"/usr/xpg4 || die
@@ -379,40 +438,52 @@ src_install() {
 		ln -s -- bosh "${ED}"/bin/jsh || die
 		ln -s -- bosh "${ED}"/bin/pfsh || die
 		mv -v -- "${ED}"/usr/share/man/man1/{,bo}sh.1 || die
-		if use renameschily_jsh
-		then	mv -v -- "${ED}"/bin/{,s}jsh || die
+		if use renameschily_jsh; then
+			mv -v -- "${ED}"/bin/{,s}jsh || die
 			mv -v -- "${ED}"/usr/share/man/man1/{,s}jsh.1 || die
 		fi
 	fi
-	if use schilytools_match && use system-star
-	then	rm -v -- "${ED}"/usr/share/man/man1/match.1 || die
-	fi
-	if use schilytools_calc && use renameschily_calc
-	then	mv -v -- "${ED}"/usr/bin/{,s}calc || die
+	if use schilytools_calc && use renameschily_calc; then
+		mv -v -- "${ED}"/usr/bin/{,s}calc || die
 		mv -v -- "${ED}"/usr/share/man/man1/{,s}calc.1 || die
 	fi
-	if use schilytools_compare && use renameschily_compare
-	then	mv -v -- "${ED}"/usr/bin/{,s}compare || die
+	if use schilytools_compare && use renameschily_compare; then
+		mv -v -- "${ED}"/usr/bin/{,s}compare || die
 		mv -v -- "${ED}"/usr/share/man/man1/{,s}compare.1 || die
 	fi
-	if use schilytools_count && use renameschily_count
-	then	mv -v -- "${ED}"/usr/bin/{,s}count || die
+	if use schilytools_count && use renameschily_count; then
+		mv -v -- "${ED}"/usr/bin/{,s}count || die
 		mv -v -- "${ED}"/usr/share/man/man1/{,s}count.1 || die
 	fi
-	if use schilytools_man2html && use renameschily_man2html
-	then	mv -v -- "${ED}"/usr/bin/{,s}man2html || die
+	if use schilytools_man2html && use renameschily_man2html; then
+		mv -v -- "${ED}"/usr/bin/{,s}man2html || die
 		mv -v -- "${ED}"/usr/share/man/man1/{,s}man2html.1 || die
 	fi
-	if use schilytools_p && use renameschily_p
-	then	mv -v -- "${ED}"/usr/bin/{,s}p || die
+	if use schilytools_p && use renameschily_p; then
+		mv -v -- "${ED}"/usr/bin/{,s}p || die
 		mv -v -- "${ED}"/usr/share/man/man1/{,s}p.1 || die
 	fi
-	if use schilytools_ved
-	then	docompress -x /usr/share/man/help
+	if use schilytools_ved; then
+		docompress -x /usr/share/man/help
 	fi
-	if use renameschily_libschily && ! use system-libschily
-	then	for i in error fexecve fnmatch getline {,f,s}printf strlen
+	if use renameschily_libschily; then
+		for i in error fexecve fnmatch getline {,f,s}printf strlen
 		do mv -v -- "${ED}"/usr/share/man/man3/{,schily-}${i}.3 || die
 		done
+	fi
+}
+
+pkg_postinst() {
+	use schilytools_cdrtools || return 0
+	fcaps_pkg_postinst
+
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		einfo
+		einfo "Darwin/OS X use the following device names:"
+		einfo
+		einfo "CD burners: (probably) ./cdrecord dev=IOCompactDiscServices"
+		einfo
+		einfo "DVD burners: (probably) ./cdrecord dev=IODVDServices"
+		einfo
 	fi
 }

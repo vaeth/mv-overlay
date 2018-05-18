@@ -121,7 +121,7 @@ BOTH_DEPEND="sys-apps/file
 		)
 	)
 	image? ( virtual/imagemagick-tools )
-	isoinfo? ( || ( app-cdr/cdrtools app-cdr/dvd+rw-tools ) )
+	isoinfo? ( || ( virtual/cdrtools app-cdr/dvd+rw-tools ) )
 	libplist? ( !alpha? ( !hppa? ( !ia64? ( !sparc? ( app-pda/libplist ) ) ) ) )
 	dpkg? ( !amd64-fbsd? ( app-arch/dpkg ) )
 	hdf5? ( !amd64-fbsd? ( !hppa? ( sci-libs/hdf5 ) ) )
