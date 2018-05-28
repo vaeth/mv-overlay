@@ -18,7 +18,7 @@ IUSE=""
 OPTIONAL_RDEPEND=">=app-shells/auto-fu-zsh-0.0.1.12_p0
 >=app-shells/set_prompt-3.0.0
 app-shells/termcolors-mv
-app-shells/zsh-syntax-highlighting"
+|| ( app-shells/fast-syntax-highlighting app-shells/zsh-syntax-highlighting )"
 
 RDEPEND="!app-shells/auto-fu-zsh[kill-line(-)]
 	${OPTIONAL_RDEPEND}"
