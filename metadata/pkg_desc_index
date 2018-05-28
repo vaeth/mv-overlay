@@ -34,7 +34,7 @@ app-portage/world-mv 3.19: Organize your world file and find installed packages 
 app-shells/auto-fu-zsh 0.0.1.12-r4 0.0.1.12_p0 99999999: zsh automatic complete-word and list-choices: incremental completion
 app-shells/command-not-found 0.4.5: search ARCH database for packages with similar commands
 app-shells/dash 99999999: Descendant of the NetBSD ash. POSIX compliant except for multibyte characters
-app-shells/fast-syntax-highlighting 0_alpha20180528 99999999: Optimized and extended zsh-syntax-highlighting
+app-shells/fast-syntax-highlighting 1.1_alpha20180528 1.1 99999999: Optimized and extended zsh-syntax-highlighting
 app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
 app-shells/push 3.1: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 4.1: Quote arguments or standard input for usage in POSIX shell by eval
