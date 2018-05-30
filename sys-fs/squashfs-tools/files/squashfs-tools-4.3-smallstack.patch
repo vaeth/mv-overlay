@@ -1,0 +1,15 @@
+# Do not require a large stack. This is necessary for e.g. musl, see
+# https://sourceforge.net/p/squashfs/bugs/59/
+--- a/unsquashfs.c
++++ b/unsquashfs.c
+@@ -2136,7 +2136,9 @@
+  */
+ void *inflator(void *arg)
+ {
+-	char tmp[block_size];
++	char *tmp = malloc(block_size);
++	if(tmp == NULL)
++		EXIT_UNSQUASH("Out of memory allocating block buffer\n");
+ 
+ 	while(1) {
+ 		struct cache_entry *entry = queue_get(to_inflate);

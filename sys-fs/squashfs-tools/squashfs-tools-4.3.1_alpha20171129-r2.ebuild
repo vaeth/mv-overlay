@@ -69,6 +69,7 @@ src_prepare() {
 	eapply -p2 "${FILESDIR}"/${Pm}-aligned-data.patch
 	eapply "${FILESDIR}"/${Pm}-local-cve-fix.patch
 	eapply "${FILESDIR}"/${Pm}-static-inline.patch
+	eapply "${FILESDIR}"/${Pm}-smallstack.patch
 	default
 }
 
