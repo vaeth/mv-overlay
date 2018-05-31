@@ -15,7 +15,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="create +perl poor"
 DEPEND="dev-lang/perl"
 RDEPEND="create? ( dev-lang/perl )
-!poor? ( >=sys-apps/coreutils-8.25 )
 perl? ( dev-lang/perl )"
 
 DISABLE_AUTOFORMATTING="true"
