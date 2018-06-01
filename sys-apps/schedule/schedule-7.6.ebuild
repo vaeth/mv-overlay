@@ -51,7 +51,7 @@ src_prepare() {
 
 src_install() {
 	dobin bin/*
-	dodoc README ChangeLog
+	dodoc README.md ChangeLog
 	insinto /usr
 	doins -r share
 	doinitd openrc/init.d/*
