@@ -94,7 +94,7 @@ sys-apps/cpi 3.1: A wrapper for cp -i -a, making use of diff
 sys-apps/less 531: Excellent text file viewer, optionally with additional selection feature
 sys-apps/openrc-wrapper 2.3: Use openrc init scripts with systemd or other init systems
 sys-apps/paxopen 1.2: A wrapper script to set PAX kernel variables to an insecure/safe state
-sys-apps/schedule 7.6: script to schedule jobs in a multiuser multitasking environment
+sys-apps/schedule 8.0: script to schedule jobs in a multiuser multitasking environment
 sys-apps/starter 3.0: POSIX shell script and function to schedule commands
 sys-block/parted 2.4-r2: Create, destroy, resize, check, copy partitions and file systems
 sys-block/zram-init 7.1: Scripts to support compressed swap devices or ramdisks with zram
