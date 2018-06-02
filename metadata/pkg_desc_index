@@ -34,7 +34,7 @@ app-portage/world-mv 3.19: Organize your world file and find installed packages 
 app-shells/auto-fu-zsh 0.0.1.12-r4 0.0.1.12_p0 99999999: zsh automatic complete-word and list-choices: incremental completion
 app-shells/command-not-found 0.4.5: search ARCH database for packages with similar commands
 app-shells/dash 99999999: Descendant of the NetBSD ash. POSIX compliant except for multibyte characters
-app-shells/fast-syntax-highlighting 1.1_alpha20180528 1.1 99999999: Optimized and extended zsh-syntax-highlighting
+app-shells/fast-syntax-highlighting 1.18 99999999: Optimized and extended zsh-syntax-highlighting
 app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
 app-shells/push 3.1: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 4.1: Quote arguments or standard input for usage in POSIX shell by eval
@@ -43,7 +43,7 @@ app-shells/schily-tools 2018.05.25: Many tools from Joerg Schilling, including a
 app-shells/set_prompt 3.0.0: An intelligent prompt for zsh or bash with status line (window title) support
 app-shells/termcolors-mv 4.7-r1: 256colors sample script and dircolors configuration for standard or 256 colors
 app-shells/zsh-syntax-highlighting 0.6.0 0.6.1_alpha20180411 99999999: Fish shell like syntax highlighting for zsh
-app-shells/zshrc-mv 4.0: A zshrc file initializing zsh specific interactive features
+app-shells/zshrc-mv 4.1: A zshrc file initializing zsh specific interactive features
 app-text/ispell 3.3.02-r1 3.4.00: fast screen-oriented spelling checker
 app-text/lesspipe 1.83-r2 1.84_alpha20180414-r2 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
@@ -75,7 +75,7 @@ mail-client/alpine 2.00-r7 2.21.1: alpine is an easy to use text-based based mai
 media-gfx/ipe 7.2.7: Drawing editor for creating figures in PDF or PS formats
 media-gfx/pqiv 2.10.2: powerful GTK based command-line image viewer with a minimal UI
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
-media-tv/sundtek-tv 180507.101237: Sundtek MediaTV Pro III Drivers
+media-tv/sundtek-tv 180531.174726: Sundtek MediaTV Pro III Drivers
 media-tv/w_scan 20170107-r1: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies
 media-video/avinfo 1.0_alpha15_p1: Utility for displaying AVI information
 media-video/video-mv 13.0: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
@@ -120,7 +120,7 @@ www-plugins/form-history-control 2.0.3.2: Firefox webextension: edit the saved h
 www-plugins/google-translation 2.6: Firefox webextension: translate to your native language a selected text
 www-plugins/https-everywhere 2018.4.11: Firefox webextension: force https for all websites of a provided list
 www-plugins/no-color 0.9.4: Firefox webextension: remove colors and background images from the page
-www-plugins/noscript 10.1.8.1: Firefox webextension: restrict active contents like java/javascript/flash
+www-plugins/noscript 10.1.8.2: Firefox webextension: restrict active contents like java/javascript/flash
 www-plugins/open-in-google-translate 0.1.3: Firefox webextension: open selected text or webpage in google translator
 www-plugins/skip-redirect 2.2.1: Firefox webextension: skip intermediary pages before redirecting
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
