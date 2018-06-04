@@ -27,5 +27,5 @@ src_install() {
 	dobin bin/*.sh bin/*.zsh bin/set_prompt bin/git_update
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
-	dodoc README
+	dodoc README.md
 }
