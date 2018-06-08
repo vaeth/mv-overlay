@@ -21,10 +21,16 @@ RDEPEND="${DEPEND}
 BDEPEND="examples? ( ${DEPEND} )"
 
 src_compile() {
+	local i j
 	if use examples
 	then	einfo "Compiling example character sheet as pdf"
 		export VARTEXFONTS="${T}/fonts"
-		pdflatex *.tex && test -s *.pdf || die "could not create example"
+		for i in *.tex beispiele/*.tex; do
+			j=${i##*/}
+			pdflatex "${i}" && test -s "${j%.tex}.pdf" \
+				|| die "could not compile ${i}"
+			[ "${j}" = "${i}" ] || mv "${j%.tex}.pdf" "${i%.tex}.pdf" || die
+		done
 	fi
 }
 
@@ -34,6 +40,7 @@ src_install() {
 	doins *.cls
 	insinto "${TEXMF}/doc/latex/${PN}"
 	doins *.tex
+	doins -r beispiele
 	if use examples
 	then	doins *.pdf
 	fi
