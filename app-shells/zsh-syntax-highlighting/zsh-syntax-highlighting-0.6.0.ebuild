@@ -1,7 +1,7 @@
 # Copyright 2011-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit readme.gentoo-r1
 
@@ -32,12 +32,6 @@ IUSE=""
 RDEPEND="app-shells/zsh"
 DEPEND=""
 
-DISABLE_AUTOFORMATTING="true"
-DOC_CONTENTS="In order to use ${CATEGORY}/${PN} add
-. /usr/share/zsh/site-contrib/${PN}/zsh-syntax-highlighting.zsh
-at the end of your ~/.zshrc
-For testing, you can also execute the above command in your zsh."
-
 MAKE_ARGS=(
 	"SHARE_DIR=${ED}/usr/share/zsh/site-contrib/${PN}"
 	"DOC_DIR=${ED}/usr/share/doc/${PF}"
@@ -56,7 +50,13 @@ src_compile() {
 }
 
 src_install() {
+	local DISABLE_AUTOFORMATTING DOC_CONTENTS
 	emake "${MAKE_ARGS[@]}" install
+	DISABLE_AUTOFORMATTING="true"
+	DOC_CONTENTS="In order to use ${CATEGORY}/${PN} add
+. /usr/share/zsh/site-contrib/${PN}/zsh-syntax-highlighting.zsh
+at the end of your ~/.zshrc
+For testing, you can also execute the above command in your zsh."
 	readme.gentoo_create_doc
 }
 

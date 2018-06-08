@@ -1,7 +1,7 @@
-# Copyright 2012-2017 Gentoo Foundation
+# Copyright 2012-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 inherit readme.gentoo-r1
 
@@ -25,11 +25,6 @@ RDEPEND=">=app-shells/push-2.0-r2
 	${OPTIONAL_RDEPEND}"
 DEPEND=""
 
-DISABLE_AUTOFORMATTING="true"
-DOC_CONTENTS="If you use dvb-t with zsh completion, you might want to put
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
-into your ~/.zshrc or /etc/zshrc for case-insensitive matching."
-
 src_prepare() {
 	local i
 	use prefix || for i in bin/*
@@ -42,7 +37,7 @@ src_prepare() {
 }
 
 src_install() {
-	local i
+	local i DISABLE_AUTOFORMATTING DOC_CONTENTS
 	insinto /usr/bin
 	for i in bin/*
 	do	if test -h "${i}"
@@ -58,6 +53,10 @@ src_install() {
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
 	dodoc README.md
+	DISABLE_AUTOFORMATTING="true"
+	DOC_CONTENTS="If you use dvb-t with zsh completion, you might want to put
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+into your ~/.zshrc or /etc/zshrc for case-insensitive matching."
 	readme.gentoo_create_doc
 }
 

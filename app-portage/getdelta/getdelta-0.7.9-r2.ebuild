@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit readme.gentoo-r1
 
 DESCRIPTION="dynamic deltup client"
@@ -16,11 +16,6 @@ S="${WORKDIR}"
 RDEPEND="app-portage/deltup
 	dev-util/bdelta"
 
-DISABLE_AUTOFORMATTING="true"
-DOC_CONTENTS="You need to put
-FETCHCOMMAND=\"/usr/bin/getdelta.sh \\\"\\\${URI}\\\" \\\"\\\${FILE}\\\"\"
-into your /etc/make.conf to make use of getdelta"
-
 src_prepare() {
 	eapply "${FILESDIR}/eapi2.patch"
 	sed -i -e "s:/bin/sh:/bin/bash:" getdelta.sh || die
@@ -28,7 +23,12 @@ src_prepare() {
 }
 
 src_install() {
+	local DISABLE_AUTOFORMATTING DOC_CONTENTS
 	dobin "${WORKDIR}"/getdelta.sh
+	DISABLE_AUTOFORMATTING="true"
+	DOC_CONTENTS="You need to put
+FETCHCOMMAND=\"/usr/bin/getdelta.sh \\\"\\\${URI}\\\" \\\"\\\${FILE}\\\"\"
+into your /etc/make.conf to make use of getdelta"
 	readme.gentoo_create_doc
 }
 

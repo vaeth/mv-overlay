@@ -1,7 +1,7 @@
 # Copyright 2011-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit readme.gentoo-r1
 
@@ -19,7 +19,7 @@ case ${PV} in
 	SRC_URI="https://github.com/zdharma/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 *)
-	SRC_URI="https://github.com/zdharma/${PN}/archive/${PV/_rc/-rc}.tar.gz -> ${P}.tar.gz";;
+	SRC_URI="https://github.com/zdharma/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz";;
 esac
 
 DESCRIPTION="Optimized and extended zsh-syntax-highlighting"
