@@ -9,23 +9,23 @@ RESTRICT="mirror"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 case ${PV} in
 99999999*)
-	EGIT_REPO_URI="https://github.com/zdharma/${PN}.git"
+	EGIT_REPO_URI="https://github.com/zsh-users/${PN}.git"
 	inherit git-r3
 	PROPERTIES="live"
 	SRC_URI=""
 	KEYWORDS="";;
 *alpha*)
-	EGIT_COMMIT="7bec6e57829e1020165a03371ea38a4adae7176d"
-	SRC_URI="https://github.com/zdharma/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	EGIT_COMMIT="d7c796719e6352666f7a9c94da9ddaed10f3217d"
+	SRC_URI="https://github.com/zsh-users/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 *)
-	SRC_URI="https://github.com/zdharma/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz";;
+	SRC_URI="https://github.com/zsh-users/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz";;
 esac
 
-DESCRIPTION="Optimized and extended zsh-syntax-highlighting"
-HOMEPAGE="https://github.com/zdharma/fast-syntax-highlighting/"
+DESCRIPTION="Fish-like autosuggestions for zsh"
+HOMEPAGE="https://github.com/zsh-users/zsh-autosuggestions/"
 
-LICENSE="HPND"
+LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
@@ -37,12 +37,14 @@ src_install() {
 	dir="/usr/share/zsh/site-contrib/${PN}"
 	DISABLE_AUTOFORMATTING="true"
 	DOC_CONTENTS="In order to use ${CATEGORY}/${PN} add
-. ${EPREFIX}${dir}/fast-syntax-highlighting.plugin.zsh"'
+. ${EPREFIX}${dir}/zsh-autosuggestions.zsh"'
 at the end of your ~/.zshrc
 For testing, you can also execute the above command in your zsh.'
 	readme.gentoo_create_doc
 	insinto "${dir}"
-	doins -r *
+	doins *.zsh
+	doins -r spec src
+	dodoc *.md
 }
 
 pkg_postinst() {

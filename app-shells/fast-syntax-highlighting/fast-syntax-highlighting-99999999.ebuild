@@ -32,17 +32,6 @@ IUSE=""
 RDEPEND="app-shells/zsh"
 DEPEND=""
 
-DISABLE_AUTOFORMATTING="true"
-DOC_CONTENTS="In order to use ${CATEGORY}/${PN} add
-. /usr/share/zsh/site-contrib/${PN}/fast-syntax-highlighting.plugin.zsh
-at the end of your ~/.zshrc
-For testing, you can also execute the above command in your zsh."
-
-MAKE_ARGS=(
-	"SHARE_DIR=${ED}/usr/share/zsh/site-contrib/${PN}"
-	"DOC_DIR=${ED}/usr/share/doc/${PF}"
-)
-
 src_install() {
 	local DISABLE_AUTOFORMATTING DOC_CONTENTS dir
 	dir="/usr/share/zsh/site-contrib/${PN}"

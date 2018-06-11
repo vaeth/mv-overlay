@@ -23,7 +23,7 @@ case ${PV} in
 esac
 
 DESCRIPTION="Fish shell like syntax highlighting for zsh"
-HOMEPAGE="https://github.com/zsh-users/zsh-syntax-highlighting"
+HOMEPAGE="https://github.com/zsh-users/zsh-syntax-highlighting/"
 
 LICENSE="HPND"
 SLOT="0"
