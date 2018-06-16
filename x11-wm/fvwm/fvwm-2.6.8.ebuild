@@ -82,7 +82,28 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf="--libexecdir=/usr/$(get_libdir) --with-imagepath=/usr/include/X11/bitmaps:/usr/include/X11/pixmaps:/usr/share/icons/fvwm --enable-package-subdirs"
+	local myconf
+	myconf=(
+		--libexecdir="/usr/$(get_libdir)"
+		--with-imagepath='/usr/include/X11/bitmaps:/usr/include/X11/pixmaps:/usr/share/icons/fvwm'
+		--enable-package-subdirs
+		$(use_enable bidi)
+		$(use_enable debug debug-msgs)
+		$(use_enable debug command-log)
+		$(use_enable doc htmldoc)
+		$(use_enable iconv)
+		$(use_enable nls)
+		$(use_enable perl perllib)
+		$(use_enable png)
+		$(use_with readline readline-library)
+		$(usex readline --without-termcap-library)
+		$(use_with rplay rplay-library)
+		$(use_with stroke stroke-library)
+		$(use_enable svg rsvg)
+		$(use_enable truetype xft)
+		$(use_enable xinerama)
+		--docdir="/usr/share/doc/${P}"
+	)
 
 	# Non-upstream email where bugs should be sent; used in fvwm-bug.
 	export FVWM_BUGADDR="desktop-wm@gentoo.org"
@@ -93,24 +114,7 @@ src_configure() {
 	# Signed chars are required.
 	use ppc && append-flags -fsigned-char
 
-	use readline && myconf="${myconf} --without-termcap-library"
-
-	econf ${myconf} \
-		$(use_enable bidi) \
-		$(use_enable debug debug-msgs) \
-		$(use_enable debug command-log) \
-		$(use_enable doc htmldoc) \
-		$(use_enable iconv) \
-		$(use_enable nls) \
-		$(use_enable perl perllib) \
-		$(use_enable png) \
-		$(use_with readline readline-library) \
-		$(use_with rplay rplay-library) \
-		$(use_with stroke stroke-library) \
-		$(use_enable svg rsvg) \
-		$(use_enable truetype xft) \
-		$(use_enable xinerama) \
-		--docdir="/usr/share/doc/${P}"
+	econf "${myconf[@]}"
 }
 
 src_install() {
