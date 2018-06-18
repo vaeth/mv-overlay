@@ -9,15 +9,15 @@ RESTRICT="mirror"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 case ${PV} in
 99999999*)
-	EGIT_REPO_URI="https://github.com/zsh-users/${PN}.git"
-	EGIT_BRANCH="features/completion-suggestions"
+	EGIT_REPO_URI="https://github.com/vaeth/${PN}.git"
+	EGIT_BRANCH="features/only-at-eol"
 	inherit git-r3
 	PROPERTIES="live"
 	SRC_URI=""
 	KEYWORDS="";;
 *alpha*)
-	EGIT_COMMIT="d7171232c30a082dc85871a09530c044dc31d3c3"
-	SRC_URI="https://github.com/zsh-users/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	EGIT_COMMIT="2d0806a362f3525fc4c3358116a3ff22eaf486a0"
+	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 *)
 	SRC_URI="https://github.com/zsh-users/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz";;
