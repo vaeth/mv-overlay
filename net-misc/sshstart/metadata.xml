@@ -13,7 +13,4 @@
 		<bugs-to>mailto:martin@mvath.de</bugs-to>
 		<remote-id type="github">vaeth/sshstart</remote-id>
 	</upstream>
-	<use>
-		<flag name="keychain">Pull in keychain as dependency. Not required, but recommended for smoother operation.</flag>
-	</use>
 </pkgmetadata>

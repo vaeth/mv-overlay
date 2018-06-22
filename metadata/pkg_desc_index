@@ -62,7 +62,7 @@ dev-util/diffhelp 1.11: A frontend, beautifier, and path-fixer for diff -u
 dev-util/mv_perl 3.16: A collection of perl scripts (replacement in files, syncing dirs etc)
 dev-util/pyrep 1.5-r1: Search and/or replace regular expressions within many files interactively
 dev-util/replacer 3.1-r1: Search and replace python regular expressions within many files interactively
-dev-vcs/git-wrappers-mv 1.17: Some personal wrappers for the most important git commands
+dev-vcs/git-wrappers-mv 2.0: Some personal wrappers for the most important git commands
 games-action/trackballs 1.1.4-r1: simple game similar to the classical game Marble Madness
 games-board/chessproblem 1.8 2.9: Find solutions of chess problems (mate, selfmate, and helpmate) with cooks
 games-emulation/sdlmame 0.174-r2: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
@@ -90,7 +90,7 @@ net-dns/host 20070128-r1: A powerful command-line DNS query and test tool
 net-dns/noip-updater 2.1.9-r4: no-ip.com dynamic DNS updater
 net-firewall/firewall-mv 13.0: Initialize iptables and net-related sysctl variables
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
-net-misc/sshstart 3.00: Start ssh-agent/ssh-add only if you really use ssh or friends
+net-misc/sshstart 4.0: Start ssh-agent/ssh-add only if you really use ssh or friends
 net-print/foo2zjs 20160722: Support for printing to ZjStream-based printers
 sci-geosciences/googleearth 7.1.8.3036-r1 7.3.0.3832-r1 7.3.1: A 3D interface to the planet
 sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language

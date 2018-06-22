@@ -11,19 +11,31 @@ SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+keychain"
+IUSE=""
 RDEPEND=">=app-shells/push-2.0-r2
-	keychain? ( net-misc/keychain )"
+	!<dev-vcs/git-wrappers-2.0"
 DEPEND=""
 
 src_prepare() {
-	use prefix || sed -i \
+	local i
+	use prefix || for i in bin/*
+	do	test -h "${i}" || sed -i \
 		-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
-		-- "${PN}" || die
+		-- "${i}" || die
+	done
 	default
 }
 
 src_install() {
-	dobin "${PN}"
-	dodoc README
+	local i
+	insinto /usr/bin
+	for i in bin/*
+	do	if test -h "${i}"
+		then	doins "${i}"
+		else	dobin "${i}"
+		fi
+	done
+	insinto /usr/share/zsh/site-functions
+	doins zsh/*
+	dodoc README.md
 }
