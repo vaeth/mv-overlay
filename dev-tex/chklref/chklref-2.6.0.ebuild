@@ -1,7 +1,7 @@
 # Copyright 2010-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit latex-package
 RESTRICT="mirror"
 
@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="virtual/latex-base
 	dev-lang/perl"
-DEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}"
 
 DOCS=( README )
 
