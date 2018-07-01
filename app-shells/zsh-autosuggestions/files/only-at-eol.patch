@@ -1,0 +1,20 @@
+commit bab861a33d0889ed13333b1202544f56ad87572f
+Author: Martin Väth <martin@mvath.de>
+Date:   Mon Jun 18 19:58:06 2018 +0200
+
+    Offer suggestion only if cursor is at end of line
+    
+    https://github.com/zsh-users/zsh-autosuggestions/issues/343
+
+diff --git a/zsh-autosuggestions.zsh b/zsh-autosuggestions.zsh
+index c4f5671..4f88fd7 100644
+--- a/zsh-autosuggestions.zsh
++++ b/zsh-autosuggestions.zsh
+@@ -350,6 +350,7 @@ _zsh_autosuggest_modify() {
+ 
+ # Fetch a new suggestion based on what's currently in the buffer
+ _zsh_autosuggest_fetch() {
++	[[ $CURSOR -eq $#BUFFER ]] || return 0
+ 	if [[ -n "${ZSH_AUTOSUGGEST_USE_ASYNC+x}" ]]; then
+ 		_zsh_autosuggest_async_request "$BUFFER"
+ 	else
