@@ -22,7 +22,7 @@ app-eselect/eselect-net 0.2: eselect module for managing network open-rc service
 app-misc/knapsack 7.2.1: A fast solver for the 0/1-knapsack problem with multiple knapsacks
 app-misc/machine-learning-mv 1.2: Some machine learning experiments
 app-portage/changelog-gitrepo 1.0: Create ChangeLog data for gentoo repositories from git
-app-portage/eix 0.33.3 0.33.4_alpha20180629 99999999: Search and query ebuilds
+app-portage/eix 0.33.3 0.33.4_alpha20180702 99999999: Search and query ebuilds
 app-portage/etcat 1.0.1 99999999: Updated version of an old Portage information extractor
 app-portage/find_cruft 5.1: find cruft files not managed by portage
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
@@ -43,9 +43,9 @@ app-shells/runtitle 2.10: Scripts to run commands and set the hard status line (
 app-shells/schily-tools 2018.06.11: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
 app-shells/set_prompt 3.1: An intelligent prompt for zsh or bash with status line (window title) support
 app-shells/termcolors-mv 4.7-r1: 256colors sample script and dircolors configuration for standard or 256 colors
-app-shells/zsh-autosuggestions 0.4.3 0.4.4_alpha20180701 99999999: Fish-like autosuggestions for zsh
+app-shells/zsh-autosuggestions 0.4.3 0.4.4_alpha20180702 99999999: Fish-like autosuggestions for zsh
 app-shells/zsh-syntax-highlighting 0.6.0 0.6.1_alpha20180411 99999999: Fish shell like syntax highlighting for zsh
-app-shells/zshrc-mv 4.4: A zshrc file initializing zsh specific interactive features
+app-shells/zshrc-mv 4.5: A zshrc file initializing zsh specific interactive features
 app-text/ispell 3.3.02-r1 3.4.00: fast screen-oriented spelling checker
 app-text/lesspipe 1.83-r2 1.84_alpha20180414-r2 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
