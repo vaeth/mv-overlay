@@ -45,7 +45,7 @@ app-shells/set_prompt 3.1: An intelligent prompt for zsh or bash with status lin
 app-shells/termcolors-mv 4.7-r1: 256colors sample script and dircolors configuration for standard or 256 colors
 app-shells/zsh-autosuggestions 0.4.3 0.4.4_alpha20180702_p1 99999999: Fish-like autosuggestions for zsh
 app-shells/zsh-syntax-highlighting 0.6.0 0.6.1_alpha20180411 99999999: Fish shell like syntax highlighting for zsh
-app-shells/zshrc-mv 4.6: A zshrc file initializing zsh specific interactive features
+app-shells/zshrc-mv 4.7: A zshrc file initializing zsh specific interactive features
 app-text/ispell 3.3.02-r1 3.4.00: fast screen-oriented spelling checker
 app-text/lesspipe 1.83-r2 1.84_alpha20180414-r2 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
@@ -90,7 +90,7 @@ net-dns/host 20070128-r1: A powerful command-line DNS query and test tool
 net-dns/noip-updater 2.1.9-r4: no-ip.com dynamic DNS updater
 net-firewall/firewall-mv 13.0: Initialize iptables and net-related sysctl variables
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
-net-misc/sshstart 4.0: Start ssh-agent/ssh-add only if you really use ssh or friends
+net-misc/sshstart 4.1: Start ssh-agent/ssh-add only if you really use ssh or friends
 net-print/foo2zjs 20160722: Support for printing to ZjStream-based printers
 sci-geosciences/googleearth 7.1.8.3036-r1 7.3.0.3832-r1 7.3.1: A 3D interface to the planet
 sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
