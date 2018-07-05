@@ -40,7 +40,7 @@ app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
 app-shells/push 3.1: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 4.1: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/runtitle 2.10: Scripts to run commands and set the hard status line (windows title)
-app-shells/schily-tools 2018.06.11: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
+app-shells/schily-tools 2018.07.02: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
 app-shells/set_prompt 3.1: An intelligent prompt for zsh or bash with status line (window title) support
 app-shells/termcolors-mv 4.7-r1: 256colors sample script and dircolors configuration for standard or 256 colors
 app-shells/zsh-autosuggestions 0.4.3 0.4.4_alpha20180702_p1 99999999: Fish-like autosuggestions for zsh
@@ -79,7 +79,7 @@ media-gfx/pqiv 2.10.2: powerful GTK based command-line image viewer with a minim
 media-libs/avidemux-core 2.7.1: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.1: Plugins for the video editor media-video/avidemux
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
-media-tv/sundtek-tv 180531.174726: Sundtek MediaTV Pro III Drivers
+media-tv/sundtek-tv 180627.222039: Sundtek MediaTV Pro III Drivers
 media-tv/w_scan 20170107-r1: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies
 media-video/avidemux 2.7.1: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15_p1: Utility for displaying AVI information
@@ -90,7 +90,7 @@ net-dns/host 20070128-r1: A powerful command-line DNS query and test tool
 net-dns/noip-updater 2.1.9-r4: no-ip.com dynamic DNS updater
 net-firewall/firewall-mv 13.0: Initialize iptables and net-related sysctl variables
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
-net-misc/sshstart 4.2: Start ssh-agent/ssh-add only if you really use ssh or friends
+net-misc/sshstart 4.3: Start ssh-agent/ssh-add only if you really use ssh or friends
 net-print/foo2zjs 20160722: Support for printing to ZjStream-based printers
 sci-geosciences/googleearth 7.1.8.3036-r1 7.3.0.3832-r1 7.3.1: A 3D interface to the planet
 sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
@@ -118,18 +118,18 @@ www-plugins/bookmark-dupes 5.7: Firefox webextension: remove duplicate bookmarks
 www-plugins/calc-extension 5.1: Firefox webextension: calculate values of mathematical expressions
 www-plugins/canvasblocker 0.4.5c: Firefox webextension: block canvas API to prevent canvas fingerprinting
 www-plugins/dark-mode 0.2.6: Firefox webextension: a global dark theme for the web
-www-plugins/decentraleyes 2.0.4: Firefox webextension: avoid centralized services
-www-plugins/duckduckgo 2018.5.24: Firefox webextension: privacy essentials, including duckduckgo search engine
+www-plugins/decentraleyes 2.0.6: Firefox webextension: avoid centralized services
+www-plugins/duckduckgo 2018.6.28: Firefox webextension: privacy essentials, including duckduckgo search engine
 www-plugins/epubreader 2.0.5-r2: Firefox webextension: read ebook (.epub) files
 www-plugins/form-history-control 2.0.3.2: Firefox webextension: edit the saved history of forms
 www-plugins/google-translation 2.6: Firefox webextension: translate to your native language a selected text
-www-plugins/https-everywhere 2018.6.13: Firefox webextension: force https for all websites of a provided list
+www-plugins/https-everywhere 2018.6.21: Firefox webextension: force https for all websites of a provided list
 www-plugins/no-color 0.9.4: Firefox webextension: remove colors and background images from the page
 www-plugins/noscript 10.1.8.2: Firefox webextension: restrict active contents like java/javascript/flash
 www-plugins/open-in-google-translate 0.1.3: Firefox webextension: open selected text or webpage in google translator
 www-plugins/skip-redirect 2.2.1: Firefox webextension: skip intermediary pages before redirecting
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
-www-plugins/ublock-origin 1.16.10: Firefox webextension: An efficient list-based blocker
+www-plugins/ublock-origin 1.16.12: Firefox webextension: An efficient list-based blocker
 x11-libs/gtk+ 2.24.32-r1 3.22.30-r1: Gimp ToolKit +
 x11-libs/motif 2.3.8-r1: The Motif user interface component toolkit
 x11-wm/fvwm 2.6.8: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
