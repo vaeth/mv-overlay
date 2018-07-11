@@ -64,7 +64,7 @@ dev-util/pyrep 1.5-r1: Search and/or replace regular expressions within many fil
 dev-util/replacer 3.1-r1: Search and replace python regular expressions within many files interactively
 dev-vcs/git-wrappers-mv 2.0: Some personal wrappers for the most important git commands
 games-action/trackballs 1.1.4-r1: simple game similar to the classical game Marble Madness
-games-board/chessproblem 1.9 2.10: Find solutions of chess problems (mate, selfmate, and helpmate) with cooks
+games-board/chessproblem 1.9 2.11: Find solutions of chess problems (mate, selfmate, and helpmate) with cooks
 games-emulation/sdlmame 0.174-r2: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
 games-emulation/xmame 0.106-r4: Multiple Arcade Machine Emulator for X11
 games-emulation/xmess 0.106-r3: Multiple Arcade Machine Emulator for X11
