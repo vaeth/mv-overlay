@@ -38,7 +38,7 @@ src_prepare() {
 src_install() {
 	exeinto /usr/bin
 	doexe bin/*
-	dodoc README ChangeLog
+	dodoc README.md ChangeLog
 	insinto /etc/portage/repo.postsync.d
 	doins repo.postsync.d/*.sh repo.postsync.d/README
 	docompress /etc/portage/repo.postsync.d/README
