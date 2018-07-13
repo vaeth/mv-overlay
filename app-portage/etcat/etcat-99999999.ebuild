@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
 
 case ${PV} in
 99999999*)
