@@ -75,7 +75,7 @@ games-rpg/dsa-stats 1.0: calculate stat probabalities for the role playing game 
 games-rpg/m5figur-mv 4.0: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
 mail-client/alpine 2.00-r7 2.21.1: alpine is an easy to use text-based based mail and news client
 media-gfx/ipe 7.2.7: Drawing editor for creating figures in PDF or PS formats
-media-gfx/pqiv 2.10.2: powerful GTK based command-line image viewer with a minimal UI
+media-gfx/pqiv 2.10.2 2.10.4: powerful GTK based command-line image viewer with a minimal UI
 media-libs/avidemux-core 2.7.1: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.1: Plugins for the video editor media-video/avidemux
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
@@ -90,7 +90,7 @@ net-dns/host 20070128-r1: A powerful command-line DNS query and test tool
 net-dns/noip-updater 2.1.9-r4: no-ip.com dynamic DNS updater
 net-firewall/firewall-mv 13.0: Initialize iptables and net-related sysctl variables
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
-net-misc/sshstart 4.6: Start ssh-agent/ssh-add only if you really use ssh or friends
+net-misc/sshstart 4.7: Start ssh-agent/ssh-add only if you really use ssh or friends
 net-print/foo2zjs 20160722: Support for printing to ZjStream-based printers
 sci-geosciences/googleearth 7.1.8.3036-r1 7.3.0.3832-r1 7.3.1: A 3D interface to the planet
 sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
