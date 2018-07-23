@@ -75,7 +75,7 @@ games-rpg/dsa-stats 1.0: calculate stat probabalities for the role playing game 
 games-rpg/m5figur-mv 4.0: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
 mail-client/alpine 2.00-r7 2.21.1: alpine is an easy to use text-based based mail and news client
 media-gfx/ipe 7.2.7: Drawing editor for creating figures in PDF or PS formats
-media-gfx/pqiv 2.10.2 2.10.4: powerful GTK based command-line image viewer with a minimal UI
+media-gfx/pqiv 2.10.4: powerful GTK based command-line image viewer with a minimal UI
 media-libs/avidemux-core 2.7.1: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.1: Plugins for the video editor media-video/avidemux
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
