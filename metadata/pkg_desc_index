@@ -35,17 +35,17 @@ app-portage/world-mv 3.19: Organize your world file and find installed packages 
 app-shells/auto-fu-zsh 0.0.1.12-r4 0.0.1.12_p0 99999999: zsh automatic complete-word and list-choices: incremental completion
 app-shells/command-not-found 0.4.5: search ARCH database for packages with similar commands
 app-shells/dash 99999999: Descendant of the NetBSD ash. POSIX compliant except for multibyte characters
-app-shells/fast-syntax-highlighting 1.22_alpha20180721 1.23 99999999: Optimized and extended zsh-syntax-highlighting
+app-shells/fast-syntax-highlighting 1.24 99999999: Optimized and extended zsh-syntax-highlighting
 app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
 app-shells/push 3.1: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 4.1: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/runtitle 2.10: Scripts to run commands and set the hard status line (windows title)
-app-shells/schily-tools 2018.07.16: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
+app-shells/schily-tools 2018.07.25: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
 app-shells/set_prompt 3.1: An intelligent prompt for zsh or bash with status line (window title) support
 app-shells/termcolors-mv 4.7-r1: 256colors sample script and dircolors configuration for standard or 256 colors
-app-shells/zsh-autosuggestions 0.4.3 0.4.4_alpha20180702_p1 99999999: Fish-like autosuggestions for zsh
+app-shells/zsh-autosuggestions 0.4.3 0.4.4_alpha20180717 99999999: Fish-like autosuggestions for zsh
 app-shells/zsh-syntax-highlighting 0.6.0 0.6.1_alpha20180411 99999999: Fish shell like syntax highlighting for zsh
-app-shells/zshrc-mv 4.7: A zshrc file initializing zsh specific interactive features
+app-shells/zshrc-mv 4.8: A zshrc file initializing zsh specific interactive features
 app-text/ispell 3.3.02-r1 3.4.00: fast screen-oriented spelling checker
 app-text/lesspipe 1.83-r2 1.84_alpha20180414-r2 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
@@ -92,7 +92,7 @@ net-firewall/firewall-mv 13.0: Initialize iptables and net-related sysctl variab
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
 net-misc/sshstart 4.7: Start ssh-agent/ssh-add only if you really use ssh or friends
 net-print/foo2zjs 20160722: Support for printing to ZjStream-based printers
-sci-geosciences/googleearth 7.1.8.3036-r1 7.3.0.3832-r1 7.3.1: A 3D interface to the planet
+sci-geosciences/googleearth 7.1.8.3036-r1 7.3.0.3832-r1 7.3.2: A 3D interface to the planet
 sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
 sci-mathematics/reduce 20141130-r2: A general-purpose computer algebra system
 sys-apps/cpi 3.1: A wrapper for cp -i -a, making use of diff
