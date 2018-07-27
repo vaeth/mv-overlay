@@ -11,7 +11,7 @@ SRC_URI="http://mattmahoney.net/dc/${PN}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 BDEPEND="app-arch/unzip"

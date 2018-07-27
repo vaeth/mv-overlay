@@ -3,11 +3,11 @@
 
 EAPI=6
 
-inherit desktop eutils gnome2-utils pax-utils unpacker versionator xdg-utils
+inherit eapi7-ver desktop eutils gnome2-utils pax-utils unpacker xdg-utils
 
 DESCRIPTION="A 3D interface to the planet"
 HOMEPAGE="https://www.google.com/earth/desktop/"
-MY_PV=$(replace_all_version_separators '_' $(get_version_component_range 1-3))
+MY_PV=$(ver_rs 1- _ $(ver_cut 1-3))
 SRC_URI="x86? ( https://dl.google.com/dl/earth/client/GE7/release_${MY_PV}/google-earth-pro-stable_${PV}-r0_i386.deb )
 	amd64? ( https://dl.google.com/dl/earth/client/GE7/release_${MY_PV}/google-earth-pro-stable_${PV}-r0_amd64.deb )"
 LICENSE="googleearth GPL-2"

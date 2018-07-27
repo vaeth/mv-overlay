@@ -9,7 +9,7 @@ SRC_URI="http://foo2zjs.rkkda.com/${PN}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ppc"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 IUSE_LATER="foomaticdb test"
 # due to those firmwares/icms/etc...

@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/nv-tv-out/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="sys-apps/pciutils[-zlib]
 	gtk? ( x11-libs/gtk+:2 )

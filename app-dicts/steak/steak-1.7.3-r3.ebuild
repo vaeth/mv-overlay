@@ -16,7 +16,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 BDEPEND="app-text/recode"
