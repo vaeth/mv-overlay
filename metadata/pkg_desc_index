@@ -77,11 +77,11 @@ mail-client/alpine 2.00-r7 2.21.1: alpine is an easy to use text-based based mai
 media-gfx/ipe 7.2.7: Drawing editor for creating figures in PDF or PS formats
 media-gfx/pqiv 2.10.4: powerful GTK based command-line image viewer with a minimal UI
 media-libs/avidemux-core 2.7.1: Core libraries for simple video cutting, filtering and encoding tasks
-media-libs/avidemux-plugins 2.7.1: Plugins for the video editor media-video/avidemux
+media-libs/avidemux-plugins 2.7.1-r1: Plugins for the video editor media-video/avidemux
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
 media-tv/sundtek-tv 180714.032522: Sundtek MediaTV Pro III Drivers
 media-tv/w_scan 20170107-r1: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies
-media-video/avidemux 2.7.1: Video editor designed for simple cutting, filtering and encoding tasks
+media-video/avidemux 2.7.1-r1: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15_p1: Utility for displaying AVI information
 media-video/video-mv 13.0: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
 net-dialup/accounting 1.60.45.3.1: Give statistics about dialup connections. Originally part of SuSE's smpppd
