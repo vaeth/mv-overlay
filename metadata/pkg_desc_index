@@ -49,7 +49,7 @@ app-shells/zshrc-mv 4.8: A zshrc file initializing zsh specific interactive feat
 app-text/ispell 3.3.02-r1 3.4.00: fast screen-oriented spelling checker
 app-text/lesspipe 1.83-r2 1.84_alpha20180414-r2 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
-app-text/podofo 0.9.6_pre20171027: PoDoFo is a C++ library to work with the PDF file format
+app-text/podofo 0.9.6_p20180715: PoDoFo is a C++ library to work with the PDF file format
 app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities
 app-text/stardict 3.0.6-r4 4.0.0_pre20160518-r2: A international dictionary supporting fuzzy and glob style matching
 dev-cpp/cpplint 99999999: The google styleguide together with cpplint and an emacs file
@@ -102,7 +102,7 @@ sys-apps/paxopen 1.2: A wrapper script to set PAX kernel variables to an insecur
 sys-apps/schedule 8.0: script to schedule jobs in a multiuser multitasking environment
 sys-apps/starter 3.0: POSIX shell script and function to schedule commands
 sys-block/parted 2.4-r2: Create, destroy, resize, check, copy partitions and file systems
-sys-block/zram-init 7.1: Scripts to support compressed swap devices or ramdisks with zram
+sys-block/zram-init 7.1-r1: Scripts to support compressed swap devices or ramdisks with zram
 sys-boot/grub-cfg-mv 1.5: A grub.cfg library/example for GRUB2
 sys-fs/emount 3.0.4: mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab
 sys-fs/squash_dir 13.14: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist

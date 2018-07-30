@@ -9,7 +9,7 @@ HOMEPAGE="https://sourceforge.net/projects/podofo/"
 SRC_URI="mirror://gentoo/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
-SLOT="0/${PV}"
+SLOT="0/${PV%_*}"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+boost idn libressl lua-slotted lua51 lua52 debug test +tools"
 REQUIRED_USE="test? ( tools ) lua52? ( lua51 )"
@@ -36,19 +36,11 @@ DEPEND="${RDEPEND}
 	boost? ( dev-util/boost-build )
 	test? ( dev-util/cppunit )"
 
-PATCHES=(
-	"${FILESDIR}/${P}-libressl-bug-635890.patch"
-)
-
 DOCS="AUTHORS ChangeLog TODO"
 
 src_prepare() {
 	cmake-utils_src_prepare
 	local x sed_args
-
-	# The 0.9.6 ABI is not necessarily stable, so make PODOFO_SOVERSION
-	# equal to ${PV}.
-	sed -e 's|${PODOFO_VERSION_PATCH}|\0_'${PV##*_}'|' -i CMakeLists.txt || die
 
 	# bug 620934 - Disable linking with cppunit when possible, since it
 	# triggers errors with some older compilers.
@@ -128,6 +120,7 @@ src_prepare() {
 }
 
 src_configure() {
+
 	# Bug #381359: undefined reference to `PoDoFo::PdfVariant::DelayedLoadImpl()'
 	filter-flags -fvisibility-inlines-hidden
 
@@ -155,6 +148,7 @@ src_configure() {
 	fi
 
 	cmake-utils_src_configure
+	mkdir -p "${S}/test/TokenizerTest/objects" || die
 }
 
 src_test() {

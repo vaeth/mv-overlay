@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-RESTRICT="mirror"
 inherit readme.gentoo-r1 systemd
 
 DESCRIPTION="Scripts to support compressed swap devices or ramdisks with zram"
@@ -11,7 +10,7 @@ SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND=">=app-shells/push-2.0-r2
