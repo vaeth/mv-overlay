@@ -12,9 +12,10 @@
       <name><![CDATA[Martin Väth]]></name>
     </owner>
     <source type="git">git://anongit.gentoo.org/user/mv.git</source>
-    <source type="git">https://anongit.gentoo.org/git/user/mv.git</source>
+    <source type="git">https://anongit.gentoo.org/user/mv.git</source>
     <source type="git">git+ssh://git@git.gentoo.org/user/mv.git</source>
     <feed>https://cgit.gentoo.org/user/mv.git/atom/</feed>
+    <!-- <feed>https://gitweb.gentoo.org/user/mv.git/</feed> -->
     <!-- <feed>https://cgit.gentoo.org/user/mv.git/rss/</feed> -->
   </repo>
 </repositories>
