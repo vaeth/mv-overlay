@@ -27,7 +27,6 @@ src_prepare() {
 }
 
 src_install() {
-	DOCS=( AUTHORS.txt MANUAL.txt NEWS.txt README.md )
 	default
 
 	insinto /usr/share/shadowman/tools
@@ -48,15 +47,12 @@ ccache now supports sys-devel/clang and dev-lang/icc, too!"
 }
 
 pkg_prerm() {
-	if [[ -z ${REPLACED_BY_VERSION} && ${ROOT} == / ]] ; then
+	[ -n "${REPLACED_BY_VERSION}${ROOT}" ] || \
 		eselect compiler-shadow remove ccache
-	fi
 }
 
 pkg_postinst() {
-	if [[ ${ROOT} == / ]]; then
-		eselect compiler-shadow update ccache
-	fi
+	[ -n "${ROOT}" ] || eselect compiler-shadow update ccache
 
 	# nuke broken symlinks from previous versions that shouldn't exist
 	rm -rf "${EROOT}"/usr/lib/ccache.backup || die
