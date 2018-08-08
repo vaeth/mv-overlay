@@ -1,0 +1,16 @@
+# Martin V\"ath <martin at mvaeth.de> 2018/08/09
+# Temporary fix of missing strlcat for schily-tools-2018.08.07, see
+# https://sourceforge.net/p/schilytools/tickets/5/
+# Should be unnecessary in later schily-tools releases
+--- 1/libschily/libschily-mapvers
++++ 2/libschily/libschily-mapvers
+@@ -61,6 +61,9 @@
+ 	js_mexval;
+ 	strlcatl;
+ 	wcslcatl;
++#ifndef HAVE_STRLCAT
++	strlcat;
++#endif
+ } SCHILY_1.6;
+ 
+ SCHILY_1.6 {
