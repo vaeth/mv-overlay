@@ -4,6 +4,7 @@ app-admin/sudox 9.0.1: wrapper for sudo which can pass X authority data and deal
 app-arch/archwrap 11.2: A collection of POSIX shell scripts to invoke archiver programs
 app-arch/bzwc 5.0: A POSIX shell wrapper for wc, supporting compressed files (xz, lzma, bz2, gz)
 app-arch/paq8l 20070308: Open source file compressor and archiver
+app-arch/zstd 1.3.5: zstd fast compression library
 app-cdr/cdrtools 99999999: A set of tools for CD/DVD reading and recording, including cdrecord
 app-dicts/ispell-de 20161207: German and Swiss dictionaries for ispell
 app-dicts/ispell-de-alt 2-r1: German dictionary (traditional orthography) for ispell
