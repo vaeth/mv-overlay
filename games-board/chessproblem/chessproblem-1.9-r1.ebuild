@@ -1,11 +1,11 @@
 # Copyright 2017-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 WANT_LIBTOOL=none
 AT_NOELIBTOOLIZE=yes
-inherit autotools vcs-snapshot
+inherit autotools
 
 DESCRIPTION="Find solutions of chess problems (mate, selfmate, and helpmate) with cooks"
 HOMEPAGE="https://github.com/vaeth/chessproblem/"

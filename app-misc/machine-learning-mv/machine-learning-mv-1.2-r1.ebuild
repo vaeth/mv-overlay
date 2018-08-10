@@ -1,9 +1,8 @@
 # Copyright 2017-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
-inherit vcs-snapshot
 
 DESCRIPTION="Some machine learning experiments"
 HOMEPAGE="https://github.com/vaeth/machine-learning-mv/"

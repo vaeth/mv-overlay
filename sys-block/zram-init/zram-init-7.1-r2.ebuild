@@ -1,7 +1,7 @@
 # Copyright 2011-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit readme.gentoo-r1 systemd
 
 DESCRIPTION="Scripts to support compressed swap devices or ramdisks with zram"

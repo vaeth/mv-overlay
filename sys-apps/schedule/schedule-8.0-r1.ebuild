@@ -1,7 +1,7 @@
 # Copyright 2014-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 inherit readme.gentoo-r1 user systemd
 

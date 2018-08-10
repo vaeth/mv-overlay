@@ -1,7 +1,7 @@
 # Copyright 2013-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 inherit systemd
 
@@ -19,7 +19,6 @@ DEPEND="!!<sys-fs/squash_dir-3.2"
 # and the costs are really not high: sys-apps/gentoo-functions is tiny
 RDEPEND="${DEPEND}
 || ( sys-apps/gentoo-functions sys-apps/openrc )"
-IUSE=""
 
 src_install() {
 	dodoc README.md

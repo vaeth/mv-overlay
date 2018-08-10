@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools bash-completion-r1 fixheadtails multilib user systemd flag-o-matic toolchain-funcs
 
 MY_P=${P/_/-}
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
 
 IUSE="cgi ipmi snmp +usb selinux ssl tcpd xml zeroconf"
-CDEPEND="
+DEPEND="
 	cgi? ( >=media-libs/gd-2[png] )
 	snmp? ( net-analyzer/net-snmp )
 	usb? ( virtual/libusb:0 )
@@ -27,10 +27,9 @@ CDEPEND="
 	ipmi? ( sys-libs/freeipmi )
 	zeroconf? ( net-dns/avahi )
 	virtual/udev"
-DEPEND="$CDEPEND
-	>=sys-apps/sed-4
+BDEPEND="
 	virtual/pkgconfig"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	!<sys-apps/systemd-234
 	selinux? ( sec-policy/selinux-nut )
 "

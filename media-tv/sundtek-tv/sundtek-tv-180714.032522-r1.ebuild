@@ -1,7 +1,7 @@
 # Copyright 2014-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit linux-info pax-utils readme.gentoo-r1 systemd unpacker
 
 # The following variable is only for testing purposes. Leave it to "false"
@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ld-preload-env +ld-preload-file pax_kernel"
 RDEPEND="!<sys-apps/openrc-0.13"
-DEPEND="pax_kernel? ( || ( sys-apps/elfix sys-apps/paxctl ) )"
+BDEPEND="pax_kernel? ( || ( sys-apps/elfix sys-apps/paxctl ) )"
 
 DISABLE_AUTOFORMATTING="true"
 DOC_CONTENTS="To initialize sundtek drivers during booting call

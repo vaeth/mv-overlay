@@ -1,8 +1,7 @@
 # Copyright 2016-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit vcs-snapshot
+EAPI=7
 
 DESCRIPTION="eselect module for managing network open-rc service configurations"
 HOMEPAGE="https://github.com/reith/eselect-net/"

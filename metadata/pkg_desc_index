@@ -19,9 +19,9 @@ app-dicts/stardict-freedict-deu-ita 2.4.2: Stardict Dictionary German to Italian
 app-dicts/stardict-freedict-ita-deu 2.4.2: Stardict Dictionary Italian to German
 app-dicts/steak 1.7.3-r3: EN => DE Dictionary
 app-emacs/mv_emacs 1.3: (X)Emacs extensions: block support, macrorecorder, verify change
-app-eselect/eselect-net 0.2: eselect module for managing network open-rc service configurations
-app-misc/knapsack 7.2.1: A fast solver for the 0/1-knapsack problem with multiple knapsacks
-app-misc/machine-learning-mv 1.2: Some machine learning experiments
+app-eselect/eselect-net 0.2-r1: eselect module for managing network open-rc service configurations
+app-misc/knapsack 7.2.1-r1: A fast solver for the 0/1-knapsack problem with multiple knapsacks
+app-misc/machine-learning-mv 1.2-r1: Some machine learning experiments
 app-portage/changelog-gitrepo 1.0: Create ChangeLog data for gentoo repositories from git
 app-portage/eix 0.33.4 0.33.5_alpha20180804 99999999: Search and query ebuilds
 app-portage/etcat 1.0.1 99999999: Updated version of an old Portage information extractor
@@ -38,8 +38,8 @@ app-shells/command-not-found 0.4.5: search ARCH database for packages with simil
 app-shells/dash 99999999: Descendant of the NetBSD ash. POSIX compliant except for multibyte characters
 app-shells/fast-syntax-highlighting 1.25 99999999: Optimized and extended zsh-syntax-highlighting
 app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
-app-shells/push 3.1: A POSIX shell function to treat a variable like an array, quoting args
-app-shells/quoter 4.1: Quote arguments or standard input for usage in POSIX shell by eval
+app-shells/push 3.1-r1: A POSIX shell function to treat a variable like an array, quoting args
+app-shells/quoter 4.1-r1: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/runtitle 2.10: Scripts to run commands and set the hard status line (windows title)
 app-shells/schily-tools 2018.07.25 2018.08.07: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
 app-shells/set_prompt 3.1: An intelligent prompt for zsh or bash with status line (window title) support
@@ -66,7 +66,7 @@ dev-util/pyrep 1.5-r1: Search and/or replace regular expressions within many fil
 dev-util/replacer 3.1-r1: Search and replace python regular expressions within many files interactively
 dev-vcs/git-wrappers-mv 2.0: Some personal wrappers for the most important git commands
 games-action/trackballs 1.1.4-r1: simple game similar to the classical game Marble Madness
-games-board/chessproblem 1.9 2.12: Find solutions of chess problems (mate, selfmate, and helpmate) with cooks
+games-board/chessproblem 1.9-r1 2.12-r1: Find solutions of chess problems (mate, selfmate, and helpmate) with cooks
 games-emulation/sdlmame 0.174-r2: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
 games-emulation/xmame 0.106-r4: Multiple Arcade Machine Emulator for X11
 games-emulation/xmess 0.106-r3: Multiple Arcade Machine Emulator for X11
@@ -75,22 +75,22 @@ games-puzzle/fish-fillets 1.0.1-r1: Underwater puzzle game - find a safe way out
 games-rpg/aklabeth 1.0-r1: A remake of Richard C. Garriott's Ultima prequel
 games-rpg/dsa-stats 1.0: calculate stat probabalities for the role playing game DSA - Das schwarze Auge
 games-rpg/m5figur-mv 4.0: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
-mail-client/alpine 2.00-r7 2.21.1: alpine is an easy to use text-based based mail and news client
+mail-client/alpine 2.00-r7 2.21.1-r1: alpine is an easy to use text-based based mail and news client
 media-gfx/ipe 7.2.7: Drawing editor for creating figures in PDF or PS formats
 media-gfx/pqiv 2.10.4: powerful GTK based command-line image viewer with a minimal UI
 media-libs/avidemux-core 2.7.1: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.1: Plugins for the video editor media-video/avidemux
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
-media-tv/sundtek-tv 180714.032522: Sundtek MediaTV Pro III Drivers
+media-tv/sundtek-tv 180714.032522-r1: Sundtek MediaTV Pro III Drivers
 media-tv/w_scan 20170107-r1: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies
 media-video/avidemux 2.7.1: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15_p1: Utility for displaying AVI information
 media-video/video-mv 13.0: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
-net-dialup/accounting 1.60.45.3.1: Give statistics about dialup connections. Originally part of SuSE's smpppd
+net-dialup/accounting 1.60.45.3.1-r1: Give statistics about dialup connections. Originally part of SuSE's smpppd
 net-dialup/martian-modem 20100123-r2: ltmodem alternative driver providing support for Agere Systems winmodems
 net-dns/host 20070128-r1: A powerful command-line DNS query and test tool
-net-dns/noip-updater 2.1.9-r4: no-ip.com dynamic DNS updater
-net-firewall/firewall-mv 13.0: Initialize iptables and net-related sysctl variables
+net-dns/noip-updater 2.1.9-r5: no-ip.com dynamic DNS updater
+net-firewall/firewall-mv 13.0-r1: Initialize iptables and net-related sysctl variables
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
 net-misc/sshstart 4.7: Start ssh-agent/ssh-add only if you really use ssh or friends
 net-print/foo2zjs 20160722: Support for printing to ZjStream-based printers
@@ -99,12 +99,12 @@ sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
 sci-mathematics/reduce 20141130-r2: A general-purpose computer algebra system
 sys-apps/cpi 3.1: A wrapper for cp -i -a, making use of diff
 sys-apps/less 531: Excellent text file viewer, optionally with additional selection feature
-sys-apps/openrc-wrapper 2.3: Use openrc init scripts with systemd or other init systems
+sys-apps/openrc-wrapper 2.3-r1: Use openrc init scripts with systemd or other init systems
 sys-apps/paxopen 1.2: A wrapper script to set PAX kernel variables to an insecure/safe state
-sys-apps/schedule 8.0: script to schedule jobs in a multiuser multitasking environment
+sys-apps/schedule 8.0-r1: script to schedule jobs in a multiuser multitasking environment
 sys-apps/starter 3.0: POSIX shell script and function to schedule commands
 sys-block/parted 2.4-r2: Create, destroy, resize, check, copy partitions and file systems
-sys-block/zram-init 7.1-r1: Scripts to support compressed swap devices or ramdisks with zram
+sys-block/zram-init 7.1-r2: Scripts to support compressed swap devices or ramdisks with zram
 sys-boot/grub-cfg-mv 1.5: A grub.cfg library/example for GRUB2
 sys-fs/emount 3.0.4: mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab
 sys-fs/squash_dir 13.14: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
@@ -113,7 +113,7 @@ sys-fs/squashfuse 0.1.103 0.1.104_alpha20180721: FUSE filesystem to mount squash
 sys-fs/squashmount 16.1.0 19.0.2: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-kernel/kccmp 0.3-r1: A simple tool for comparing two linux kernel .config files
 sys-kernel/kernel 4.7: A POSIX shell script to compile the kernel with user permissions
-sys-power/nut 2.7.4-r1: Network-UPS Tools
+sys-power/nut 2.7.4-r2: Network-UPS Tools
 virtual/cdrtools 1: Virtual for command-line recorders cdrtools and cdrkit
 virtual/freedesktop-icon-theme 0-r3: A virtual to choose between different icon themes
 www-plugins/bookmark-dupes 5.7: Firefox webextension: remove duplicate bookmarks/empty folders/descriptions

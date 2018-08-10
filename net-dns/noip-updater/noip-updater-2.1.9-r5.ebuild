@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit readme.gentoo-r1 systemd toolchain-funcs user
 
 MY_P=${P/-updater/}
@@ -13,9 +13,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 ~arm ~hppa ia64 ~mips ~ppc ppc64 sparc x86"
 IUSE="ezipupd"
-
-RDEPEND=""
-DEPEND="sys-devel/gcc"
 
 S=${WORKDIR}/${MY_P}
 
