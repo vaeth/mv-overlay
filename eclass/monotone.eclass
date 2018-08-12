@@ -6,6 +6,7 @@
 # Martin Väth <martin@mvath.de>
 # @AUTHOR:
 # Martin Väth <martin@mvath.de>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: The monotone eclass is written to fetch software sources from monotone repositories
 # @DESCRIPTION:
 # The monotone eclass provides functions to fetch software sources from

@@ -85,3 +85,6 @@
 
   14 May 2018; Martin Väth <martin@mvath.de>:
   rquired-use-warn.eclass: new eclass
+
+  12 Aug 2018; Martin Väth <martin@mvath.de>:
+  Add @SUPPORTED_EAPIS

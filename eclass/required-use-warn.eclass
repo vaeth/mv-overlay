@@ -4,6 +4,7 @@
 # @ECLASS: required-use-warn.eclass
 # @MAINTAINER:
 # Martin Väth <martin@mvath.de>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: This eclass support REQUIRED_USE_WARN
 # @DESCRIPTION:
 # The eclass provides support for REQUIRED_USE_WARN.

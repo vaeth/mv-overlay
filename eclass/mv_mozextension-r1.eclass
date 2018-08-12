@@ -4,6 +4,7 @@
 # @ECLASS: mv_mozextension-r1.eclass
 # @MAINTAINER:
 # Martin Väth <martin@mvath.de>
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: This eclass provides functions to install mozilla extensions
 # @DESCRIPTION:
 # The eclass is based on mozextension.eclass with many extensions
