@@ -39,8 +39,9 @@
 		<flag name="schilytools_match">Install match, a grep clone</flag>
 		<flag name="schilytools_mdigest">Install mdigest, e.g. covering md5sum sha*sum</flag>
 		<flag name="schilytools_mountcd">Install mountcd, a solaris CD comparison tool</flag>
-		<flag name="schilytools_osh">Install osh, the original sVr4 (SunOS 5) shell with original bugs</flag>
+		<flag name="schilytools_obosh">Install obosh (formerly: osh), the original sVr4 (SunOS 5) shell with original bugs</flag>
 		<flag name="schilytools_p">Install p, a more program which filters non-printable characters</flag>
+		<flag name="schilytools_pbosh">Install pbosh, a shell which implements all POSIX features but only those (compatbilitiy testing!)</flag>
 		<flag name="schilytools_paste">Install spaste, a paste clone</flag>
 		<flag name="schilytools_patch">Install spatch, a patch clone</flag>
 		<flag name="schilytools_pxupgrade">Install pxupgrade: upgrading firmware in Plextor CD/DVD writers</flag>

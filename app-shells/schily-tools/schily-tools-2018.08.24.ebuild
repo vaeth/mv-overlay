@@ -36,8 +36,8 @@ add_iuse_expand renameschily \
 	+calc +compare +count +jsh +libschily +man2html +p
 add_iuse_expand schilytools +bosh +calc +calltree +cdrtools \
 	+change +compare +copy +count +cpp +cstyle +cut \
-	+hdump label +lndir +man2html manmake +match +mdigest mountcd osh \
-	+p +paste +patch pxupgrade +sccs +sfind +smake +star \
+	+hdump label +lndir +man2html manmake +match +mdigest mountcd \
+	+obosh +p +paste +patch +pbosh pxupgrade +sccs +sfind +smake +star \
 	+termcap +translit +udiff +ved
 
 COMMON="!!app-cdr/cdrtools[-schily-tools(-)]
@@ -226,10 +226,11 @@ src_prepare() {
 	! use schilytools_match || targets match
 	! use schilytools_mdigest || targets mdigest
 	! use schilytools_mountcd || targets mountcd
-	! use schilytools_osh || targets osh libgetopt
+	! use schilytools_obosh || targets obosh libxtermcap libshedit libgetopt
 	! use schilytools_p || targets p libxtermcap
 	! use schilytools_paste || targets paste
 	! use schilytools_patch || targets patch
+	! use schilytools_pbosh || targets pbosh libxtermcap libshedit libgetopt
 	! use schilytools_pxupgrade || targets pxupgrade
 	! use schilytools_sccs || targets sccs libgetopt
 	! use schilytools_sfind || targets sfind
@@ -271,8 +272,6 @@ src_configure() {
 	use caps || export ac_cv_lib_cap_cap_get_proc="no"
 	use xattr || export ac_cv_header_attr_xattr_h="no"
 	export ac_cv_header_pulse_pulseaudio_h="no"
-	CPPX=$(tc-getPROG CPP cpp)
-	export CPPX
 
 	# skip obsolete configure script
 	if tc-is-cross-compiler ; then

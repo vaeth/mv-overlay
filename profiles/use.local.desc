@@ -52,10 +52,11 @@ app-shells/schily-tools:schilytools_manmake - Install manpages about the schily 
 app-shells/schily-tools:schilytools_match - Install match, a grep clone
 app-shells/schily-tools:schilytools_mdigest - Install mdigest, e.g. covering md5sum sha*sum
 app-shells/schily-tools:schilytools_mountcd - Install mountcd, a solaris CD comparison tool
-app-shells/schily-tools:schilytools_osh - Install osh, the original sVr4 (SunOS 5) shell with original bugs
+app-shells/schily-tools:schilytools_obosh - Install obosh (formerly: osh), the original sVr4 (SunOS 5) shell with original bugs
 app-shells/schily-tools:schilytools_p - Install p, a more program which filters non-printable characters
 app-shells/schily-tools:schilytools_paste - Install spaste, a paste clone
 app-shells/schily-tools:schilytools_patch - Install spatch, a patch clone
+app-shells/schily-tools:schilytools_pbosh - Install pbosh, a shell which implements all POSIX features but only those (compatbilitiy testing!)
 app-shells/schily-tools:schilytools_pxupgrade - Install pxupgrade: upgrading firmware in Plextor CD/DVD writers
 app-shells/schily-tools:schilytools_sccs - Install sfind, a source code control system
 app-shells/schily-tools:schilytools_sfind - Install sfind, a find clone
