@@ -28,7 +28,7 @@ app-portage/etcat 1.0.1 99999999: Updated version of an old Portage information 
 app-portage/find_cruft 5.1: find cruft files not managed by portage
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
 app-portage/logclean 18.2: Keep only (compressed) logs of installed packages and cleanup emerge.log
-app-portage/portage-bashrc-mv 14.13: Provide support for /etc/portage/bashrc.d and /etc/portage/package.cflags
+app-portage/portage-bashrc-mv 14.14: Provide support for /etc/portage/bashrc.d and /etc/portage/package.cflags
 app-portage/portage-postsyncd-mv 7.1: postsync hooks for portage to sync from git
 app-portage/trickyfetch 8.20: Plugin for FETCHCOMMAND to help organize and cleanup your DISTDIR
 app-portage/useflags 4.1.3: Print or save the current USE-flag state and compare with older versions
@@ -112,7 +112,7 @@ sys-fs/squashfs-tools 4.3.1_alpha20180612 99999999: Tool for creating compressed
 sys-fs/squashfuse 0.1.103 0.1.104_alpha20180721: FUSE filesystem to mount squashfs archives
 sys-fs/squashmount 16.1.0 19.1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-kernel/kccmp 0.3-r1: A simple tool for comparing two linux kernel .config files
-sys-kernel/kernel 4.7: A POSIX shell script to compile the kernel with user permissions
+sys-kernel/kernel 4.8: A POSIX shell script to compile the kernel with user permissions
 sys-power/nut 2.7.4-r2: Network-UPS Tools
 virtual/cdrtools 1: Virtual for command-line recorders cdrtools and cdrkit
 virtual/freedesktop-icon-theme 0-r3: A virtual to choose between different icon themes
