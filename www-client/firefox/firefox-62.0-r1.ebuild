@@ -182,6 +182,8 @@ src_unpack() {
 src_prepare() {
 	eapply "${WORKDIR}/firefox"
 
+	eapply "${FILESDIR}"/${PN}-60.0-blessings-TERM.patch # 654316
+
 	# Enable gnomebreakpad
 	if use debug ; then
 		sed -i -e "s:GNOME_DISABLE_CRASH_DIALOG=1:GNOME_DISABLE_CRASH_DIALOG=0:g" \
@@ -351,6 +353,9 @@ src_configure() {
 	# Disable built-in ccache support to avoid sandbox violation, #665420
 	# Use FEATURES=ccache instead!
 	mozconfig_annotate '' --without-ccache
+	sed -i -e 's/ccache_stats = None/return None/' \
+		python/mozbuild/mozbuild/controller/building.py || \
+		die "Failed to disable ccache stats call"
 
 	mozconfig_use_enable dbus
 
