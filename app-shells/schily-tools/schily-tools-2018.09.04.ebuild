@@ -361,6 +361,7 @@ src_compile() {
 			ewarn "cdrtools with unicode in USE. unicode flag will be ignored."
 		fi
 	fi
+	append-flags -I"${S}"/libschily
 	emake CPPOPTX="${CPPFLAGS}" COPTX="${CFLAGS}" C++OPTX="${CXXFLAGS}" \
 		LDOPTX="${LDFLAGS}" GMAKE_NOWARN="true"
 }

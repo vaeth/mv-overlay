@@ -41,7 +41,7 @@ app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
 app-shells/push 3.1-r1: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 4.1-r1: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/runtitle 2.10: Scripts to run commands and set the hard status line (windows title)
-app-shells/schily-tools 2018.08.24: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
+app-shells/schily-tools 2018.09.04: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
 app-shells/set_prompt 3.1: An intelligent prompt for zsh or bash with status line (window title) support
 app-shells/termcolors-mv 4.7-r1: 256colors sample script and dircolors configuration for standard or 256 colors
 app-shells/zsh-autosuggestions 0.4.3 0.4.4_alpha20180717 99999999: Fish-like autosuggestions for zsh
@@ -58,7 +58,6 @@ dev-libs/osformat 1.0.5 999999999: C++ library for a typesafe printf/sprintf bas
 dev-libs/weston 3.0.0: Wayland reference compositor
 dev-perl/File-lchown 0.20-r1: Use the lchown(2) and lutimes(2) system call from Perl
 dev-tex/chklref 2.6.0 2.6.1_alpha20170913: Finds useless references in latex files or unnecessarily numbered environments
-dev-util/ccache 3.4.2: fast compiler cache
 dev-util/comp 4.3: compare files or directories, including metadata
 dev-util/diffhelp 1.11: A frontend, beautifier, and path-fixer for diff -u
 dev-util/mv_perl 3.16: A collection of perl scripts (replacement in files, syncing dirs etc)
@@ -133,6 +132,6 @@ www-plugins/open-in-google-translate 0.1.3: Firefox webextension: open selected 
 www-plugins/skip-redirect 2.2.1: Firefox webextension: skip intermediary pages before redirecting
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
 www-plugins/ublock-origin 1.16.16: Firefox webextension: An efficient list-based blocker
-x11-libs/gtk+ 2.24.32-r1 3.22.30-r1: Gimp ToolKit +
+x11-libs/gtk+ 2.24.32-r1 3.24.0: Gimp ToolKit +
 x11-libs/motif 2.3.8-r1: The Motif user interface component toolkit
 x11-wm/fvwm 2.6.8: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
