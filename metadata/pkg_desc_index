@@ -118,20 +118,20 @@ virtual/freedesktop-icon-theme 0-r3: A virtual to choose between different icon 
 www-client/firefox 60.2.0 62.0-r1: Firefox Web Browser
 www-plugins/bookmark-dupes 5.7: Firefox webextension: remove duplicate bookmarks/empty folders/descriptions
 www-plugins/calc-extension 5.1: Firefox webextension: calculate values of mathematical expressions
-www-plugins/canvasblocker 0.5.2b: Firefox webextension: block canvas API to prevent canvas fingerprinting
+www-plugins/canvasblocker 0.5.3: Firefox webextension: block canvas API to prevent canvas fingerprinting
 www-plugins/dark-mode 0.2.8: Firefox webextension: a global dark theme for the web
 www-plugins/decentraleyes 2.0.6: Firefox webextension: avoid centralized services
-www-plugins/duckduckgo 2018.8.9: Firefox webextension: privacy essentials, including duckduckgo search engine
+www-plugins/duckduckgo 2018.9.5: Firefox webextension: privacy essentials, including duckduckgo search engine
 www-plugins/epubreader 2.0.5-r2: Firefox webextension: read ebook (.epub) files
-www-plugins/form-history-control 2.1.0.0: Firefox webextension: edit the saved history of forms
+www-plugins/form-history-control 2.2.0.0: Firefox webextension: edit the saved history of forms
 www-plugins/google-translation 2.6: Firefox webextension: translate to your native language a selected text
-www-plugins/https-everywhere 2018.6.21: Firefox webextension: force https for all websites of a provided list
+www-plugins/https-everywhere 2018.8.22: Firefox webextension: force https for all websites of a provided list
 www-plugins/no-color 0.9.4: Firefox webextension: remove colors and background images from the page
-www-plugins/noscript 10.1.8.16: Firefox webextension: restrict active contents like java/javascript/flash
+www-plugins/noscript 10.1.9.5: Firefox webextension: restrict active contents like java/javascript/flash
 www-plugins/open-in-google-translate 0.1.3: Firefox webextension: open selected text or webpage in google translator
 www-plugins/skip-redirect 2.2.1: Firefox webextension: skip intermediary pages before redirecting
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
-www-plugins/ublock-origin 1.16.16: Firefox webextension: An efficient list-based blocker
+www-plugins/ublock-origin 1.16.20: Firefox webextension: An efficient list-based blocker
 x11-libs/gtk+ 2.24.32-r1 3.24.0: Gimp ToolKit +
 x11-libs/motif 2.3.8-r1: The Motif user interface component toolkit
 x11-wm/fvwm 2.6.8: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
