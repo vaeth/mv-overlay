@@ -33,6 +33,7 @@ BDEPEND="nls? ( >=sys-devel/gettext-0.12.1-r2 )"
 PATCHES=(
 	"${FILESDIR}"/${P}-no-gets.patch
 	"${FILESDIR}"/${P}-readline.patch
+	"${FILESDIR}"/${PN}-3.2-sysmacros.patch
 )
 DOCS=( AUTHORS BUGS ChangeLog NEWS README THANKS TODO doc/{API,FAT,USER.jp} )
 
