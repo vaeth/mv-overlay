@@ -125,10 +125,10 @@ www-plugins/duckduckgo 2018.9.5: Firefox webextension: privacy essentials, inclu
 www-plugins/epubreader 2.0.5-r2: Firefox webextension: read ebook (.epub) files
 www-plugins/form-history-control 2.2.0.0: Firefox webextension: edit the saved history of forms
 www-plugins/google-translation 2.6: Firefox webextension: translate to your native language a selected text
+www-plugins/google-translator-for-firefox 3.0.3.1: Firefox webextension: translate text or page with google translator
 www-plugins/https-everywhere 2018.8.22: Firefox webextension: force https for all websites of a provided list
 www-plugins/no-color 0.9.4: Firefox webextension: remove colors and background images from the page
 www-plugins/noscript 10.1.9.5: Firefox webextension: restrict active contents like java/javascript/flash
-www-plugins/open-in-google-translate 0.1.3: Firefox webextension: open selected text or webpage in google translator
 www-plugins/skip-redirect 2.2.1: Firefox webextension: skip intermediary pages before redirecting
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
 www-plugins/ublock-origin 1.16.20: Firefox webextension: An efficient list-based blocker
