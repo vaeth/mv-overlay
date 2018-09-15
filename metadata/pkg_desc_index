@@ -120,15 +120,15 @@ www-plugins/bookmark-dupes 5.7: Firefox webextension: remove duplicate bookmarks
 www-plugins/calc-extension 5.1: Firefox webextension: calculate values of mathematical expressions
 www-plugins/canvasblocker 0.5.3: Firefox webextension: block canvas API to prevent canvas fingerprinting
 www-plugins/dark-mode 0.2.8: Firefox webextension: a global dark theme for the web
-www-plugins/decentraleyes 2.0.6: Firefox webextension: avoid centralized services
-www-plugins/duckduckgo 2018.9.5: Firefox webextension: privacy essentials, including duckduckgo search engine
+www-plugins/decentraleyes 2.0.7: Firefox webextension: avoid centralized services
+www-plugins/duckduckgo 2018.9.14: Firefox webextension: privacy essentials, including duckduckgo search engine
 www-plugins/epubreader 2.0.5-r2: Firefox webextension: read ebook (.epub) files
 www-plugins/form-history-control 2.2.0.0: Firefox webextension: edit the saved history of forms
 www-plugins/google-translation 2.6: Firefox webextension: translate to your native language a selected text
 www-plugins/google-translator-for-firefox 3.0.3.1: Firefox webextension: translate text or page with google translator
 www-plugins/https-everywhere 2018.8.22: Firefox webextension: force https for all websites of a provided list
 www-plugins/no-color 0.9.4: Firefox webextension: remove colors and background images from the page
-www-plugins/noscript 10.1.9.5: Firefox webextension: restrict active contents like java/javascript/flash
+www-plugins/noscript 10.1.9.6: Firefox webextension: restrict active contents like java/javascript/flash
 www-plugins/skip-redirect 2.2.1: Firefox webextension: skip intermediary pages before redirecting
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
 www-plugins/ublock-origin 1.16.20: Firefox webextension: An efficient list-based blocker
