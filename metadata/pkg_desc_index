@@ -120,7 +120,7 @@ www-plugins/bookmark-dupes 5.7: Firefox webextension: remove duplicate bookmarks
 www-plugins/calc-extension 5.1: Firefox webextension: calculate values of mathematical expressions
 www-plugins/canvasblocker 0.5.3: Firefox webextension: block canvas API to prevent canvas fingerprinting
 www-plugins/dark-mode 0.2.8: Firefox webextension: a global dark theme for the web
-www-plugins/decentraleyes 2.0.7: Firefox webextension: avoid centralized services
+www-plugins/decentraleyes 2.0.8: Firefox webextension: avoid centralized services
 www-plugins/duckduckgo 2018.9.14: Firefox webextension: privacy essentials, including duckduckgo search engine
 www-plugins/epubreader 2.0.5-r2: Firefox webextension: read ebook (.epub) files
 www-plugins/form-history-control 2.2.0.0: Firefox webextension: edit the saved history of forms
