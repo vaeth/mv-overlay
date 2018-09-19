@@ -17,7 +17,7 @@ case ${PV} in
 	PROPERTIES="live";;
 *)
 	RESTRICT="mirror"
-	EGIT_COMMIT="4ac7d32a0daf3c7e67c2d1b3eeb87eedf0d5a19b"
+	EGIT_COMMIT="470c9d35ed91bfac3f808c5e8625c61a04234b8f"
 	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 esac
@@ -32,7 +32,7 @@ IUSE="debug +dep doc +jumbo-build"
 for i in ${PLOCALES}; do
 	IUSE+=" l10n_${i}"
 done
-IUSE+=" +meson nls optimization +required-use security strong-optimization strong-security sqlite swap-remote tools"
+IUSE+=" +meson nls optimization +required-use security +src-uri strong-optimization strong-security sqlite swap-remote tools"
 
 BOTHDEPEND="nls? ( virtual/libintl )
 	sqlite? ( >=dev-db/sqlite-3:= )"
@@ -87,6 +87,7 @@ src_configure() {
 		$(meson_use prefix always-accept-keywords)
 		$(meson_use dep dep-default)
 		$(meson_use required-use required-use-default)
+		$(meson_use src-uri src-uri-default)
 		-Dzsh-completion="${EPREFIX}/usr/share/zsh/site-functions"
 		-Dportage-rootpath="${ROOTPATH}"
 		-Deprefix-default="${EPREFIX}"
@@ -114,6 +115,7 @@ src_configure() {
 		$(use_with prefix always-accept-keywords)
 		$(use_with dep dep-default)
 		$(use_with required-use required-use-default)
+		$(use_with src-uri src-uri-default)
 		--with-zsh-completion
 		--with-portage-rootpath="${ROOTPATH}"
 		--with-eprefix-default="${EPREFIX}"
