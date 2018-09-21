@@ -36,7 +36,7 @@ app-portage/world-mv 3.19: Organize your world file and find installed packages 
 app-shells/auto-fu-zsh 0.0.1.12-r4 0.0.1.12_p0 99999999: zsh automatic complete-word and list-choices: incremental completion
 app-shells/command-not-found 0.4.5: search ARCH database for packages with similar commands
 app-shells/dash 99999999: Descendant of the NetBSD ash. POSIX compliant except for multibyte characters
-app-shells/fast-syntax-highlighting 1.26 99999999: Optimized and extended zsh-syntax-highlighting
+app-shells/fast-syntax-highlighting 1.27 99999999: Optimized and extended zsh-syntax-highlighting
 app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
 app-shells/push 3.1-r1: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 4.1-r1: Quote arguments or standard input for usage in POSIX shell by eval
@@ -132,6 +132,6 @@ www-plugins/noscript 10.1.9.6: Firefox webextension: restrict active contents li
 www-plugins/skip-redirect 2.2.1: Firefox webextension: skip intermediary pages before redirecting
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
 www-plugins/ublock-origin 1.16.20: Firefox webextension: An efficient list-based blocker
-x11-libs/gtk+ 2.24.32-r1 3.24.0: Gimp ToolKit +
+x11-libs/gtk+ 2.24.32-r1 3.24.1: Gimp ToolKit +
 x11-libs/motif 2.3.8-r1: The Motif user interface component toolkit
 x11-wm/fvwm 2.6.8: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
