@@ -1,4 +1,4 @@
-# Copyright 2012 Gentoo Foundation
+# Copyright 2012 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Logfile path: (NOTE: This must be uid/gid owned by the value of $LMUSER!)
