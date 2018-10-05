@@ -79,7 +79,7 @@ src_configure() {
 		$(meson_use nls)
 		$(meson_use tools separate-tools)
 		$(meson_use security)
-		$(meson_use optimization)
+		$(meson_use optimization normal-optimization)
 		$(meson_use strong-security)
 		$(meson_use strong-optimization)
 		$(meson_use debug debugging)
@@ -101,7 +101,7 @@ src_configure() {
 		meson_src_configure
 	else
 		local myconf=(
-		$(use_with jumbo-build)
+		$(use_enable jumbo-build)
 		$(use_with sqlite)
 		$(use_with doc extra-doc)
 		$(use_enable nls)
