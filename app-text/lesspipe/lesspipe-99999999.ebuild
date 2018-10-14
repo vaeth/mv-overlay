@@ -37,13 +37,15 @@ REQUIRED_USE="!rpm2targz? ( rpm? ( cpio ) )
 	ooffice? ${htmlmode}
 	xlhtml? ${htmlmode}"
 REQUIRED_USE_WARN="
+	alpha? ( !brotli !catdoc !fastjar !id3v2 !libplist !mp3info !mp3info2
+		!netcdf !ooffice !pstotext !rar !zstd )
 	amd64-fbsd? ( !antiword !catdoc !dpkg !elinks !fastjar !hdf5 !html2text
 		!id3v2 !lzip !mp3info !mp3info2 !netcdf !ooffice !p7zip !pstotext
 		!rar !rpm !unrtf !w3m !xlhtml !zstd )
-	alpha? ( !brotli !catdoc !fastjar !id3v2 !libplist !mp3info !mp3info2
-		!netcdf !ooffice !pstotext !rar !zstd )
 	arm? ( !antiword !brotli !catdoc !fastjar !html2text !id3v2 !mp3info
 		!ooffice !pstotext !rar !xlhtml )
+	arm64? ( !antiword !catdoc !dpkg !elinks !fastjar !html2text !id3v2
+		!mp3info !mp3info2 !netcdf !ooffice !pstotext !rar !unrtf !xlhtml )
 	hppa? ( !catdoc !brotli !fastjar !hdf5 !libplist !mp3info2 !netcdf
 		!ooffice !rar !w3m !xlhtml !zstd )
 	ia64? ( !antiword !brotli !catdoc !fastjar !id3v2 !libplist !mp3info
@@ -60,26 +62,27 @@ BOTH_DEPEND="sys-apps/file
 	brotli? ( !alpha? ( !arm? ( !hppa? ( !ia64? ( !ppc? ( !ppc64?
 		( !sparc? ( >=app-arch/brotli-1 ) ) ) ) ) ) ) )
 	lz4? ( app-arch/lz4 )
-	zstd? ( !amd64-fbsd? ( !alpha? ( !hppa? ( !ia64? ( !sparc? ( app-arch/zstd ) ) ) ) ) )
+	zstd? ( !alpha? ( !amd64-fbsd? ( !hppa? ( !ia64? ( !sparc?
+		( app-arch/zstd ) ) ) ) ) )
 	unzip? ( app-arch/unzip )
-	fastjar? ( !amd64-fbsd? ( !alpha? ( !arm? ( !hppa? ( !ia64? ( !ppc64?
-		( !sparc? ( app-arch/fastjar ) ) ) ) ) ) ) )
+	fastjar? ( !alpha? ( !amd64-fbsd? ( !arm? ( !arm64? ( !hppa? ( !ia64?
+		( !ppc64? ( !sparc? ( app-arch/fastjar ) ) ) ) ) ) ) ) )
 	unrar? ( app-arch/unrar )
 	!unrar? (
-		rar? ( !amd64-fbsd? ( !alpha? ( !arm? ( !hppa? ( !ia64?
-			( app-text/o3read ) ) ) ) ) )
+		rar? ( !alpha? ( !amd64-fbsd? ( !arm? ( !arm64? ( !hppa? ( !ia64?
+			( app-text/o3read ) ) ) ) ) ) )
 	)
 	lzip? ( !amd64-fbsd? ( app-arch/lzip ) )
 	p7zip? ( !amd64-fbsd? ( app-arch/p7zip ) )
 	cpio? ( app-arch/cpio )
 	cabextract? ( app-arch/cabextract )
-	html2text? ( !amd64-fbsd? ( !arm? ( app-text/html2text ) ) )
+	html2text? ( !amd64-fbsd? ( !arm? ( !arm64? ( app-text/html2text ) ) ) )
 	!html2text? (
 		links? ( www-client/links )
 		!links? (
 			lynx? ( www-client/lynx )
 			!lynx? (
-				elinks? ( !amd64-fbsd? ( www-client/elinks ) )
+				elinks? ( !amd64-fbsd? ( !arm64? ( www-client/elinks ) ) )
 				!elinks? (
 					w3m? ( !amd64-fbsd? ( !hppa? ( www-client/w3m ) ) )
 				)
@@ -91,41 +94,44 @@ BOTH_DEPEND="sys-apps/file
 	!rpm2targz? (
 		rpm? ( !amd64-fbsd? ( app-arch/rpm ) )
 	)
-	antiword? ( !amd64-fbsd? ( !arm? ( !ia64? ( app-text/antiword ) ) ) )
+	antiword? ( !amd64-fbsd? ( !arm? ( !arm64? ( !ia64?
+		( app-text/antiword ) ) ) ) )
 	!antiword? (
-		catdoc? ( !amd64-fbsd? ( !alpha? ( !arm? ( !hppa? ( !ia64? ( !ppc64?
-			( !sparc? ( app-text/catdoc ) ) ) ) ) ) ) )
+		catdoc? ( !alpha? ( !amd64-fbsd? ( !arm? ( !arm64? ( !hppa? ( !ia64?
+			( !ppc64? ( !sparc? ( app-text/catdoc ) ) ) ) ) ) ) ) )
 	)
-	xlhtml? ( !amd64-fbsd? ( !arm? ( !hppa? ( !ia64? ( !ppc64?
-		( app-text/xlhtml ) ) ) ) ) )
-	unrtf? ( !amd64-fbsd? ( app-text/unrtf ) )
-	ooffice? ( !amd64-fbsd? ( !alpha? ( !arm? ( !hppa? ( !ia64? ( !ppc64?
-		( !sparc? ( app-text/o3read ) ) ) ) ) ) ) )
+	xlhtml? ( !amd64-fbsd? ( !arm? ( !arm64? ( !hppa? ( !ia64? ( !ppc64?
+		( app-text/xlhtml ) ) ) ) ) ) )
+	unrtf? ( !amd64-fbsd? ( !arm64? ( app-text/unrtf ) ) )
+	ooffice? ( !alpha? ( !amd64-fbsd? ( !arm? ( !arm64? ( !hppa? ( !ia64? (
+		!ppc64? ( !sparc? ( app-text/o3read ) ) ) ) ) ) ) ) )
 	djvu? ( app-text/djvu )
 	dvi2tty? ( dev-tex/dvi2tty )
-	pstotext? ( !amd64-fbsd? ( !alpha? ( !arm? ( !ia64? ( !sparc?
-		( app-text/pstotext ) ) ) ) ) )
+	pstotext? ( !alpha? ( !amd64-fbsd? ( !arm? ( !arm64? ( !ia64? ( !sparc?
+		( app-text/pstotext ) ) ) ) ) ) )
 	!pstotext? (
 		ghostscript? ( app-text/ghostscript-gpl )
 	)
 	gpg? ( app-crypt/gnupg )
 	pdf? ( app-text/poppler )
-	id3v2? ( !amd64-fbsd? ( !alpha? ( !arm? ( !ia64? ( !sparc?
-		( media-sound/id3v2 ) ) ) ) ) )
+	id3v2? ( !alpha? ( !amd64-fbsd? ( !arm? ( !arm64? ( !ia64? ( !sparc?
+		( media-sound/id3v2 ) ) ) ) ) ) )
 	!id3v2? (
-		mp3info2? ( !amd64-fbsd? ( !alpha? ( !hppa? ( !ia64? ( !sparc?
-			( dev-perl/MP3-Tag ) ) ) ) ) )
+		mp3info2? ( !alpha? ( !amd64-fbsd? ( !arm64? ( !hppa? ( !ia64?
+			( !sparc? ( dev-perl/MP3-Tag ) ) ) ) ) ) )
 		!mp3info2? (
-			mp3info? ( !amd64-fbsd? ( !alpha? ( !arm? ( !ia64?
-				( media-sound/mp3info ) ) ) ) )
+			mp3info? ( !alpha? ( !amd64-fbsd? ( !arm? ( !arm64? ( !ia64?
+				( media-sound/mp3info ) ) ) ) ) )
 		)
 	)
 	image? ( virtual/imagemagick-tools )
 	isoinfo? ( || ( virtual/cdrtools app-cdr/dvd+rw-tools ) )
-	libplist? ( !alpha? ( !hppa? ( !ia64? ( !sparc? ( app-pda/libplist ) ) ) ) )
-	dpkg? ( !amd64-fbsd? ( app-arch/dpkg ) )
+	libplist? ( !alpha? ( !hppa? ( !ia64? ( !sparc?
+		( app-pda/libplist ) ) ) ) )
+	dpkg? ( !amd64-fbsd? ( !arm64? ( app-arch/dpkg ) ) )
 	hdf5? ( !amd64-fbsd? ( !hppa? ( sci-libs/hdf5 ) ) )
-	netcdf? ( !amd64-fbsd? ( !alpha? ( !hppa? ( !ia64? ( !sparc?  ( sci-libs/netcdf ) ) ) ) ) )"
+	netcdf? ( !alpha? ( !amd64-fbsd? ( !arm64?  ( !hppa? ( !ia64? ( !sparc?
+		( sci-libs/netcdf ) ) ) ) ) ) )"
 DEPEND="${BOTH_DEPEND}"
 RDEPEND="${BOTH_DEPEND}
 	sys-apps/less

@@ -48,7 +48,7 @@ app-shells/zsh-autosuggestions 0.4.3 0.4.4_alpha20180717 99999999: Fish-like aut
 app-shells/zsh-syntax-highlighting 0.6.0 0.6.1_alpha20180411 99999999: Fish shell like syntax highlighting for zsh
 app-shells/zshrc-mv 4.10: A zshrc file initializing zsh specific interactive features
 app-text/ispell 3.3.02-r1 3.4.00: fast screen-oriented spelling checker
-app-text/lesspipe 1.83-r2 1.84_alpha20180414-r2 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
+app-text/lesspipe 1.83-r3 1.84_alpha20180414-r3 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
 app-text/podofo 0.9.6_p20180715: PoDoFo is a C++ library to work with the PDF file format
 app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities
