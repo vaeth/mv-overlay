@@ -40,7 +40,7 @@ app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
 app-shells/push 3.1-r1: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 4.1-r1: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/runtitle 2.10: Scripts to run commands and set the hard status line (windows title)
-app-shells/schily-tools 2018.09.26: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
+app-shells/schily-tools 2018.10.30: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
 app-shells/set_prompt 3.1: An intelligent prompt for zsh or bash with status line (window title) support
 app-shells/termcolors-mv 4.7-r1: 256colors sample script and dircolors configuration for standard or 256 colors
 app-shells/zsh-autosuggestions 0.4.3 0.4.4_alpha20180717 99999999: Fish-like autosuggestions for zsh
@@ -79,7 +79,7 @@ media-gfx/pqiv 2.10.4: powerful GTK based command-line image viewer with a minim
 media-libs/avidemux-core 2.7.1: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.1: Plugins for the video editor media-video/avidemux
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
-media-tv/sundtek-tv 181004.184248: Sundtek MediaTV Pro III Drivers
+media-tv/sundtek-tv 181023.121417: Sundtek MediaTV Pro III Drivers
 media-tv/w_scan 20170107-r1: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies
 media-video/avidemux 2.7.1: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15_p1: Utility for displaying AVI information
