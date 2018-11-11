@@ -11,7 +11,7 @@ SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="+ccache +cflags +localepurge +remove-la +title"
+IUSE="+ccache +cflags +remove-la +title"
 
 # the ccache script would run without dev-util/ccache but would be pointless:
 RDEPEND="ccache? ( >=dev-util/ccache-3.2 )"
@@ -19,9 +19,6 @@ RDEPEND="ccache? ( >=dev-util/ccache-3.2 )"
 # The flags script would run without app-portage/eix, but package.cflags
 # parsing would be much slower (and is almost not tested):
 RDEPEND=${RDEPEND}" cflags? ( app-portage/eix )"
-
-# The localepurge script uses the config files from app-admin/localepurge:
-RDEPEND=${RDEPEND}" localepurge? ( app-admin/localepurge )"
 
 # The title script would do nothing without these packages:
 RDEPEND=${RDEPEND}" title? (
@@ -41,7 +38,7 @@ src_install() {
 	docompress /etc/portage/bashrc.d/README
 	! use ccache || doins bashrc.d/*ccache*
 	! use cflags || doins bashrc.d/*flag*
-	! use localepurge || doins bashrc.d/*locale*purge*
+	doins bashrc.d/*locale*purge*
 	! use remove-la || doins bashrc.d/*remove*la*
 	! use title || doins bashrc.d/*title*
 }
