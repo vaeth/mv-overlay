@@ -34,6 +34,6 @@ src_compile() {
 }
 
 src_install() {
-	dodoc README
+	dodoc README.md
 	emake DESTDIR="${ED}" "SYSTEMUNITDIR=$(systemd_get_systemunitdir)" install
 }
