@@ -16,7 +16,7 @@ IUSE=""
 # Install into / to let sys-block/zram-init work with split /usr
 
 src_compile() {
-	emake PREFIX= EPREFX="${EPREFIX}" DATADIR=/lib/push
+	emake PREFIX= EPREFIX="${EPREFIX}" DATADIR=/lib/push
 }
 
 src_install() {
