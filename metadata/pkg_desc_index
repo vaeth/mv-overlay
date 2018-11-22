@@ -37,7 +37,7 @@ app-shells/command-not-found 0.4.5: search ARCH database for packages with simil
 app-shells/dash 99999999: Descendant of the NetBSD ash. POSIX compliant except for multibyte characters
 app-shells/fast-syntax-highlighting 1.27 99999999: Optimized and extended zsh-syntax-highlighting
 app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
-app-shells/push 3.1-r1: A POSIX shell function to treat a variable like an array, quoting args
+app-shells/push 3.1-r2: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 4.1-r1: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/runtitle 2.10: Scripts to run commands and set the hard status line (windows title)
 app-shells/schily-tools 2018.10.30: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
@@ -116,7 +116,7 @@ sys-power/nut 2.7.4-r2: Network-UPS Tools
 virtual/cdrtools 1: Virtual for command-line recorders cdrtools and cdrkit
 virtual/freedesktop-icon-theme 0-r3: A virtual to choose between different icon themes
 www-plugins/bookmark-dupes 5.10: Firefox webextension: remove duplicate bookmarks/empty folders/descriptions
-www-plugins/calc-extension 5.1: Firefox webextension: calculate values of mathematical expressions
+www-plugins/calc-extension 5.2: Firefox webextension: calculate values of mathematical expressions
 www-plugins/canvasblocker 0.5.5: Firefox webextension: block canvas API to prevent canvas fingerprinting
 www-plugins/dark-mode 0.2.8: Firefox webextension: a global dark theme for the web
 www-plugins/decentraleyes 2.0.8: Firefox webextension: avoid centralized services
