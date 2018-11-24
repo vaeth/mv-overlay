@@ -16,6 +16,7 @@
 		<flag name="renameschily_calc">Rename calc to scalc for compatibility with sci-mathematics/calc</flag>
 		<flag name="renameschily_compare">Rename compare to scompare for compatibility with imagemagick</flag>
 		<flag name="renameschily_count">Rename count to scount for compatibility with sys-devel/llvm</flag>
+		<flag name="renameschily_getopt">Rename count to scount for compatibility with sys-devel/llvm</flag>
 		<flag name="renameschily_jsh">Rename jsh to sjsh for compatibility with app-shells/heirloom-sh</flag>
 		<flag name="renameschily_man2html">Rename man2html to sman2html for compatibility with sys-apps/man</flag>
 		<flag name="renameschily_libschily">Rename some manpages from libschily for compatibility with sys-apps/man</flag>

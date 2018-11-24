@@ -33,7 +33,7 @@ add_iuse_expand() {
 	done
 }
 add_iuse_expand renameschily \
-	+calc +compare +count +jsh +libschily +man2html +p
+	+calc +compare +count +getopt +jsh +libschily +man2html +p
 add_iuse_expand schilytools +bosh +calc +calltree +cdrtools \
 	+change +compare +copy +count +cpp +cstyle +cut \
 	+hdump label +lndir +man2html manmake +match +mdigest mountcd \
@@ -43,6 +43,7 @@ add_iuse_expand schilytools +bosh +calc +calltree +cdrtools \
 COMMON="!!app-cdr/cdrtools[-schily-tools(-)]
 !!app-arch/star
 !renameschily_libschily? ( !sys-apps/man )
+!renameschily_getopt? ( !sys-apps/man )
 schilytools_calc? (
 	!renameschily_calc? ( !sci-mathematics/calc )
 )
@@ -174,13 +175,18 @@ src_schily_prepare() (
 
 targets=""
 
+have_target() {
+	case " ${targets} " in
+	*" ${1} "*)
+		return 0;;
+	esac
+	return 1
+}
+
 targets() {
 	local i
 	for i
-	do	case " ${targets} " in
-		*" ${i} "*)
-			continue;;
-		esac
+	do	have_target "${i}" && continue
 		mv -v UNUSED_TARGETS/??"${i}" TARGETS || die
 		targets=${targets}${targets:+\ }${i}
 	done
@@ -470,9 +476,12 @@ src_install() {
 		docompress -x /usr/share/man/help
 	fi
 	if use renameschily_libschily; then
-		for i in error fexecve fnmatch getline {,f,s}printf strlen
-		do mv -v -- "${ED}"/usr/share/man/man3/{,schily-}${i}.3 || die
+		for i in error fexecve fnmatch getline {,f,s}printf strlen; do
+			mv -v -- "${ED}"/usr/share/man/man3/{,schily-}${i}.3 || die
 		done
+	fi
+	if use renameschily_getopt && have_target libgetopt; then
+		mv -v -- "${ED}"/usr/share/man/man3/{,schily-}getopt.3 || die
 	fi
 }
 

@@ -16,11 +16,11 @@ case ${PV} in
 	SRC_URI=""
 	KEYWORDS="";;
 *alpha*)
-	EGIT_COMMIT="fa5d9c0ff5fb202545e12c98dae086d91d70ba50"
+	EGIT_COMMIT="4838222dde4e286b6861bb83bc21f0a3d50b7a5f"
 	SRC_URI="https://github.com/zsh-users/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 *)
-	SRC_URI="https://github.com/zsh-users/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz";;
+	SRC_URI="https://github.com/zsh-users/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz";;
 esac
 
 DESCRIPTION="Fish-like autosuggestions for zsh"
