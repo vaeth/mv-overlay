@@ -35,7 +35,7 @@ app-portage/world-mv 3.19: Organize your world file and find installed packages 
 app-shells/auto-fu-zsh 0.0.1.12-r4 0.0.1.12_p0 99999999: zsh automatic complete-word and list-choices: incremental completion
 app-shells/command-not-found 0.4.5: search ARCH database for packages with similar commands
 app-shells/dash 99999999: Descendant of the NetBSD ash. POSIX compliant except for multibyte characters
-app-shells/fast-syntax-highlighting 1.27 99999999: Optimized and extended zsh-syntax-highlighting
+app-shells/fast-syntax-highlighting 1.28 99999999: Optimized and extended zsh-syntax-highlighting
 app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
 app-shells/push 3.1-r2: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 4.1-r1: Quote arguments or standard input for usage in POSIX shell by eval
@@ -79,7 +79,7 @@ media-gfx/pqiv 2.10.4: powerful GTK based command-line image viewer with a minim
 media-libs/avidemux-core 2.7.1: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.1: Plugins for the video editor media-video/avidemux
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
-media-tv/sundtek-tv 181204.002703: Sundtek MediaTV Pro III Drivers
+media-tv/sundtek-tv 181219.051556: Sundtek MediaTV Pro III Drivers
 media-tv/w_scan 20170107-r1: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies
 media-video/avidemux 2.7.1: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15_p1: Utility for displaying AVI information
@@ -118,16 +118,16 @@ virtual/freedesktop-icon-theme 0-r3: A virtual to choose between different icon 
 www-plugins/bookmark-dupes 5.10: Firefox webextension: remove duplicate bookmarks/empty folders/descriptions
 www-plugins/calc-extension 5.3: Firefox webextension: calculate values of mathematical expressions
 www-plugins/canvasblocker 0.5.5: Firefox webextension: block canvas API to prevent canvas fingerprinting
-www-plugins/dark-mode 0.2.8: Firefox webextension: a global dark theme for the web
+www-plugins/dark-mode 0.2.9: Firefox webextension: a global dark theme for the web
 www-plugins/decentraleyes 2.0.8: Firefox webextension: avoid centralized services
 www-plugins/duckduckgo 2018.10.24: Firefox webextension: privacy essentials, including duckduckgo search engine
 www-plugins/epubreader 2.0.5-r2: Firefox webextension: read ebook (.epub) files
 www-plugins/form-history-control 2.3.0.0: Firefox webextension: edit the saved history of forms
 www-plugins/google-translation 2.6: Firefox webextension: translate to your native language a selected text
-www-plugins/google-translator-for-firefox 3.0.3.2: Firefox webextension: translate text or page with google translator
+www-plugins/google-translator-for-firefox 3.0.3.3: Firefox webextension: translate text or page with google translator
 www-plugins/https-everywhere 2018.10.31: Firefox webextension: force https for all websites of a provided list
 www-plugins/no-color 0.9.4: Firefox webextension: remove colors and background images from the page
-www-plugins/noscript 10.1.9.9: Firefox webextension: restrict active contents like java/javascript/flash
+www-plugins/noscript 10.2.0: Firefox webextension: restrict active contents like java/javascript/flash
 www-plugins/skip-redirect 2.2.1: Firefox webextension: skip intermediary pages before redirecting
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
 www-plugins/ublock-origin 1.17.2: Firefox webextension: An efficient list-based blocker
