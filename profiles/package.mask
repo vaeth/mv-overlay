@@ -37,3 +37,16 @@ sys-apps/starter
 # sys-fs/squash_dir is no longer maintained. Use instead the successor project
 # sys-fs/squashmount (or sys-apps/openrc-wrapper for the openrc-wrapper script)
 sys-fs/squash_dir
+
+# Martin Väth <mvath@google.com> (19 Dec 2018)
+# The mask only indicates my lack of time to maintain the ebuilds:
+# The masked version might be current or safe, but it might also be outdated
+# or even contain critical security bugs.
+# Unmask at your discretion if you have time to check.
+=www-plugins/canvasblocker-0.5.5
+=www-plugins/decentraleyes-2.0.8
+=www-plugins/duckduckgo-2018.10.24
+=www-plugins/google-translation-2.6
+=www-plugins/https-everywhere-2018.10.31
+=www-plugins/skip-redirect-2.2.1
+=www-plugins/ublock-origin-1.17.2
