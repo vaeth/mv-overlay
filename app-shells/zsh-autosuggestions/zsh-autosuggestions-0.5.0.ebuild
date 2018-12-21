@@ -10,13 +10,13 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 case ${PV} in
 99999999*)
 	EGIT_REPO_URI="https://github.com/zsh-users/zsh-autosuggestions"
-	EGIT_BRANCH="develop"
+	EGIT_BRANCH="features/completion-suggestions" # "develop"
 	inherit git-r3
 	PROPERTIES="live"
 	SRC_URI=""
 	KEYWORDS="";;
 *alpha*)
-	EGIT_COMMIT="4838222dde4e286b6861bb83bc21f0a3d50b7a5f"
+	EGIT_COMMIT="3a3ff5a80a702d0bd8c6dfbb57f9498d11957136"
 	SRC_URI="https://github.com/zsh-users/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 *)
