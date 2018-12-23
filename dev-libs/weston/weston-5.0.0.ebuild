@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/wayland/weston.git"
@@ -19,13 +19,13 @@ if [[ $PV = 9999* ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="https://wayland.freedesktop.org/releases/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~x86 ~arm-linux"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 LICENSE="MIT CC-BY-SA-3.0"
 SLOT="0"
 
-IUSE="colord dbus +drm editor examples fbdev +gles2 headless ivi jpeg +launch lcms pam rdp +resize-optimization screen-sharing static-libs +suid systemd test unwind wayland-compositor webp +X xwayland"
+IUSE="colord dbus +drm editor examples fbdev +gles2 headless ivi jpeg +launch lcms pam rdp +resize-optimization screen-sharing static-libs +suid systemd test wayland-compositor webp +X xwayland"
 
 REQUIRED_USE="
 	drm? ( gles2 )
@@ -38,13 +38,13 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/libinput-0.8.0
 	>=dev-libs/wayland-1.12.0
-	>=dev-libs/wayland-protocols-1.8
+	>=dev-libs/wayland-protocols-1.13
 	lcms? ( media-libs/lcms:2 )
 	media-libs/libpng:0=
 	webp? ( media-libs/libwebp:0= )
 	jpeg? ( virtual/jpeg:0= )
 	>=x11-libs/cairo-1.11.3
-	>=x11-libs/libdrm-2.4.30
+	>=x11-libs/libdrm-2.4.68
 	>=x11-libs/libxkbcommon-0.5.0
 	>=x11-libs/pixman-0.25.2
 	x11-misc/xkeyboard-config
@@ -55,7 +55,7 @@ RDEPEND="
 	colord? ( >=x11-misc/colord-0.1.27 )
 	dbus? ( >=sys-apps/dbus-1.6 )
 	drm? (
-		media-libs/mesa[gbm]
+		>=media-libs/mesa-17.1[gbm]
 		>=sys-libs/mtdev-1.1.0
 		>=virtual/udev-136
 	)
@@ -63,13 +63,12 @@ RDEPEND="
 	gles2? (
 		media-libs/mesa[gles2,wayland]
 	)
-	rdp? ( >=net-misc/freerdp-1.1.0_beta1_p20130710 )
+	rdp? ( >=net-misc/freerdp-1.1.0:= )
 	systemd? (
-		pam? ( sys-auth/pambase[systemd?] )
+		pam? ( sys-auth/pambase[systemd] )
 		>=sys-apps/systemd-209[pam?]
 	)
 	launch? ( pam? ( sys-auth/pambase ) )
-	unwind? ( sys-libs/libunwind )
 	X? (
 		>=x11-libs/libxcb-1.9
 		x11-libs/libX11
@@ -81,8 +80,9 @@ RDEPEND="
 		x11-libs/libXcursor
 	)
 "
-DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	eapply "${FILESDIR}"/pam.patch
@@ -91,11 +91,12 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
+	local myconf=()
+
 	if use examples || use test; then
-		myconf="--enable-simple-clients"
+		myconf+=( --enable-simple-clients )
 	else
-		myconf="--disable-simple-clients"
+		myconf+=( --disable-simple-clients )
 	fi
 
 	econf \
@@ -112,7 +113,6 @@ src_configure() {
 		$(use_enable launch weston-launch) \
 		$(use_enable colord) \
 		$(use_enable gles2 egl) \
-		$(use_enable unwind libunwind) \
 		$(use_enable resize-optimization) \
 		$(use_enable screen-sharing) \
 		$(use_enable suid setuid-install) \
@@ -129,7 +129,7 @@ src_configure() {
 		--disable-simple-dmabuf-v4l-client \
 		--disable-simple-egl-clients \
 		--disable-vaapi-recorder \
-		${myconf}
+		"${myconf[@]}"
 }
 
 src_test() {
