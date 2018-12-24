@@ -26,7 +26,7 @@ IUSE="lz4 lzma lzo static-libs +zlib zstd"
 REQUIRED_USE="|| ( lz4 lzma lzo zlib zstd )"
 
 COMMON_DEPEND="
-	>=sys-fs/fuse-2.8.6:=
+	>=sys-fs/fuse-2.8.6:0=
 	lzma? ( >=app-arch/xz-utils-5.0.4:= )
 	zlib? ( >=sys-libs/zlib-1.2.5-r2:= )
 	lzo? ( >=dev-libs/lzo-2.06:= )
@@ -37,9 +37,9 @@ DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
 src_prepare() {
+	default
 	! $alpha || sed -i -e '1s:\[0\.1\.100\]:['"${PV}"']:' configure.ac || die
 	AT_M4DIR=${S}/m4 eautoreconf
-	default
 }
 
 src_configure() {
