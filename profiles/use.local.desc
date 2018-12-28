@@ -187,6 +187,7 @@ media-tv/sundtek-tv:pax_kernel - Mark package which is necessary if you use a PA
 media-tv/w_scan:plp-id-zero - Apply experimental patch to force plp_id to 0 for DVB-T2. Seems to be necessary at least with some tuners in some regions
 media-video/avidemux:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.
 net-dns/noip-updater:ezipupd - Use user/group ezipupd instead of nobody: Useful if you restrict outgoing network traffic for user nobody
+net-libs/wvstreams:boost - Use dev-libs/boost to provide TR1-compatible functional interface. This USE flag is only needed with GCC earlier than version 4.1, or with other compilares not providing said interface.
 net-print/foo2zjs:foo2zjs_devices_hp1000 - HP LJ 1000 firmware
 net-print/foo2zjs:foo2zjs_devices_hp1005 - HP LJ 1005 firmware
 net-print/foo2zjs:foo2zjs_devices_hp1018 - HP LJ 1018 firmware
