@@ -95,4 +95,5 @@ src_install() {
 	for lib in $(find "${BUILD_DIR}" -name '*.so' -type l | grep -v libwvstatic); do
 		doins "${BUILD_DIR}"/pkgconfig/$(basename ${lib/.so}).pc
 	done
+	use static-libs || find "${ED}" -name '*.a' -delete || die
 }
