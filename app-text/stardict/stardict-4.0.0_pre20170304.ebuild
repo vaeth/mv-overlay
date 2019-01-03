@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2019 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -40,19 +40,13 @@ COMMON_DEPEND="
 	x11-libs/pango
 	espeak? ( >=app-accessibility/espeak-1.29 )
 	flite? ( app-accessibility/flite )
-	gnome? (
-		gnome-base/gconf:2
-		gnome-base/libbonobo
-		gnome-base/libgnome
-		gnome-base/orbit:2
-	)
-	gucharmap? ( gnome-extra/gucharmap:0= )
+	gucharmap? ( gnome-extra/gucharmap:2.90= )
 	spell? ( >=app-text/enchant-1.2:= )
 	tools? (
+		dev-db/mysql-connector-c
 		dev-libs/expat
 		dev-libs/libpcre:=
 		dev-libs/libxml2:=
-		virtual/mysql
 		python? ( ${PYTHON_DEPS} )
 	)
 "
@@ -76,7 +70,7 @@ REQUIRED_USE="tools? ( python? ( ${PYTHON_REQUIRED_USE} ) )"
 # docs are messy, installed manually below
 DOCS=""
 
-PATCHES=( "${FILESDIR}/${P}-tabfile.patch" )
+PATCHES=( "${FILESDIR}/${PN}-4.0.0_pre20160518-tabfile.patch" )
 
 src_prepare() {
 	# From Fedora
@@ -99,10 +93,12 @@ src_prepare() {
 		sed -i '1 a # -*- coding: utf-8 -*-' tools/src/uyghur2dict.py || die
 	fi
 
+	# bug 604318
+	sed -i '/AM_GCONF_SOURCE_2/d' dict/configure.ac || die
+
 	if ! use gnome
 	then	sed -i \
 				-e '/GNOME_DOC_INIT/d' \
-				-e '/AM_GCONF_SOURCE_2/d' \
 				-e '/help\/Makefile/d' \
 				dict/configure.ac || die
 			sed -i \
@@ -125,15 +121,12 @@ src_prepare() {
 }
 
 src_configure() {
-	# Hint: EXTRA_ECONF="--enable-gnome-support" and manual install of
-	# libbonobo-2, libgnome-2, libgnomeui-2, gconf-2 and orbit-2 will
-	# give you GNOME 2.x support, that is otherwise considered deprecated
-	# because of the deep GNOME 2.x core library dependencies
-
 	# Festival plugin crashes, bug 188684. Disable for now.
+	# Gnome2 support is disabled due to deprecation request, bug 644346
 	gnome2_src_configure \
 		--disable-darwin-support \
 		--disable-festival \
+		--disable-gnome-support \
 		--disable-gpe-support \
 		--disable-maemo-support \
 		--disable-schemas-install \
@@ -145,7 +138,6 @@ src_configure() {
 		$(use_enable espeak) \
 		$(use_enable flite) \
 		$(use_enable fortune) \
-		$(use_enable gnome gnome-support) \
 		$(use_enable gucharmap) \
 		$(use_enable htmlparse) \
 		$(use_enable info) \
