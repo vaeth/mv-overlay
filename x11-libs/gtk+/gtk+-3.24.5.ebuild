@@ -9,7 +9,7 @@ inherit flag-o-matic gnome2 multilib virtualx multilib-minimal
 
 DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="https://www.gtk.org/"
-SRC_URI=${SRC_URI}
+SRC_URI=${SRC_URI}" https://dev.gentoo.org/~leio/distfiles/${P}-patchset-20190206.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="3"
@@ -29,6 +29,7 @@ RESTRICT="test"
 # bug #????
 COMMON_DEPEND="
 	>=dev-libs/atk-2.15[introspection?,${MULTILIB_USEDEP}]
+	>=dev-libs/fribidi-0.19.7[${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.53.4:2[${MULTILIB_USEDEP}]
 	media-libs/fontconfig[${MULTILIB_USEDEP}]
 	>=media-libs/libepoxy-1.4[X(+)?,${MULTILIB_USEDEP}]
@@ -122,6 +123,9 @@ src_prepare() {
 		strip_builddir SRC_SUBDIRS demos Makefile.{am,in}
 		strip_builddir SRC_SUBDIRS examples Makefile.{am,in}
 	fi
+
+	# gtk-3-24 branch at morning of 2019-02-07 - fribidi explicit linking, compiler warning fixes, small bugfixes
+	eapply "${WORKDIR}"/patches
 
 	# gtk-update-icon-cache is installed by dev-util/gtk-update-icon-cache
 	eapply "${FILESDIR}"/${PN}-3.22.2-update-icon-cache.patch
