@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2019 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,6 +26,10 @@ RDEPEND="${DEPEND}
 	less-select? ( dev-lang/perl )"
 #		|| ( >=dev-lang/perl-5.10.1 >=virtual/perl-File-Temp-0.19 )
 PDEPEND="lesspipe? ( app-text/lesspipe )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-mouse_fix.patch #678102
+)
 
 pkg_setup() {
 	if use source && ! use less-select
