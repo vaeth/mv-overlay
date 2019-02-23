@@ -27,10 +27,6 @@ RDEPEND="${DEPEND}
 #		|| ( >=dev-lang/perl-5.10.1 >=virtual/perl-File-Temp-0.19 )
 PDEPEND="lesspipe? ( app-text/lesspipe )"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-mouse_fix.patch #678102
-)
-
 pkg_setup() {
 	if use source && ! use less-select
 	then	ewarn 'ignoring USE=source without USE=less-select'
