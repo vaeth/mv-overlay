@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils gnome2-utils pax-utils unpacker xdg-utils
+inherit desktop eutils pax-utils unpacker xdg-utils
 
 DESCRIPTION="A 3D interface to the planet"
 HOMEPAGE="https://www.google.com/earth/desktop/"
@@ -14,9 +14,12 @@ LICENSE="googleearth GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror splitdebug"
-IUSE="+bundled-libs +bundled-qt"
+IUSE="+bundled-libs"
 
 QA_PREBUILT="*"
+
+# TODO: find a way to unbundle libQt
+# ./googleearth-bin: symbol lookup error: ./libbase.so: undefined symbol: _Z34QBasicAtomicInt_fetchAndAddOrderedPVii
 
 RDEPEND="
 	dev-libs/glib:2
@@ -38,25 +41,10 @@ RDEPEND="
 	x11-libs/libXau
 	x11-libs/libXdmcp
 	!bundled-libs? (
+		dev-db/sqlite:3
 		dev-libs/expat
+		dev-libs/nss
 		=sci-libs/proj-4.8.0*
-	)
-	!bundled-qt? (
-		dev-qt/qtcore:5
-		dev-qt/qtdbus:5
-		dev-qt/qtdeclarative:5
-		dev-qt/qtgui:5
-		dev-qt/qtmultimedia:5[widgets]
-		dev-qt/qtnetwork:5
-		dev-qt/qtopengl:5
-		dev-qt/qtpositioning:5
-		dev-qt/qtprintsupport:5
-		dev-qt/qtsensors:5
-		dev-qt/qtscript:5[scripttools]
-		dev-qt/qtwebchannel:5
-		dev-qt/qtwebkit:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtx11extras:5
 	)"
 #		sci-libs/gdal-1*
 BDEPEND="dev-util/patchelf"
@@ -67,20 +55,24 @@ src_unpack() {
 	# default src_unpack fails with deb2targz installed, also this unpacks the data.tar.lzma as well
 	unpack_deb ${A}
 
-	cd opt/google/earth/pro || die
 	if ! use bundled-libs ; then
 		einfo "removing bundled libs"
+		cd opt/google/earth/pro || die
 		# sci-libs/gdal-1*
 		# rm -v libgdal.so.1 || die
+		# dev-db/sqlite
+		rm -v libsqlite3.so || die
+		# dev-libs/nss
+		rm -v libplc4.so libplds4.so libnspr4.so libnssckbi.so libfreebl3.so \
+			libnssdbm3.so libnss3.so libnssutil3.so libsmime3.so libnsssysinit.so \
+			libsoftokn3.so libssl3.so || die
 		# dev-libs/expat
 		rm -v libexpat.so.1 || die
 		# sci-libs/proj
 		rm -v libproj.so.0 || die
+		# dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtwebkit:4
+#		rm -v libQt{Core,Gui,Network,WebKit}.so.4 || die
 #		rm -rv plugins/imageformats || die
-	fi
-	if ! use bundled-qt ; then
-		einfo "removing bundled qt"
-		rm -v libQt5{Core,DBus,Gui,Multimedia,MultimediaWidgets,Network,OpenGL,Positioning,PrintSupport,Qml,Quick,Script,ScriptTools,Sensors,Sql,WebChannel,WebKit,WebKitWidgets,Widgets,X11Extras,XcbQpa}.so.5 || die
 	fi
 }
 
@@ -135,14 +127,10 @@ src_install() {
 	insinto /opt/${PN}
 	doins -r *
 
-	chmod +x /opt/${PN}/${PN}{,-bin} || die
-	find "${ED}" -type f -name "*.so.*" -exec chmod +x '{}' +
+	chmod +x "${ED}"/opt/${PN}/{${PN}{,-bin},gpsbabel} || die
+	find "${ED}" -type f '(' -name '*.so.*' -o -name '*.so' ')' -exec chmod +x '{}' + || die
 
 	pax-mark -m "${ED%/}"/opt/${PN}/${PN}-bin
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {

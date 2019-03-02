@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils gnome2-utils pax-utils unpacker xdg-utils
+inherit desktop eutils pax-utils unpacker xdg-utils
 
 DESCRIPTION="A 3D interface to the planet"
 HOMEPAGE="https://www.google.com/earth/desktop/"
@@ -122,14 +122,10 @@ src_install() {
 	insinto /opt/${PN}
 	doins -r *
 
-	chmod +x /opt/${PN}/${PN}{,-bin} || die
-	find "${ED}" -type f -name "*.so.*" -exec chmod +x '{}' +
+	chmod +x "${ED}"/opt/${PN}/{${PN}{,-bin},repair_tool,gpsbabel} || die
+	find "${ED}" -type f '(' -name '*.so.*' -o -name '*.so' ')' -exec chmod +x '{}' + || die
 
 	pax-mark -m "${ED%/}"/opt/${PN}/${PN}-bin
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
