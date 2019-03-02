@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2019 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/mean00/avidemux2.git"
@@ -25,7 +25,7 @@ SLOT="2.7"
 IUSE="a52 aac aften alsa amr dcaenc debug dts fdk fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx nvenc opengl opus oss pulseaudio qt5 truetype twolame vdpau vorbis vpx x264 x265 xv xvid"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-COMMON_DEPEND="${PYTHON_DEPS}
+COMMON_DEPEND="
 	~media-libs/avidemux-core-${PV}:${SLOT}[vdpau?]
 	~media-video/avidemux-${PV}:${SLOT}[opengl?,qt5?]
 	>=dev-lang/spidermonkey-1.5-r2:0=
@@ -77,7 +77,11 @@ COMMON_DEPEND="${PYTHON_DEPS}
 DEPEND="${COMMON_DEPEND}
 	oss? ( virtual/os-headers:0 )
 "
+BDEPEND="
+	${PYTHON_DEPS}
+"
 RDEPEND="${COMMON_DEPEND}
+	${PYTHON_DEPS}
 	!<media-libs/avidemux-plugins-${PV}
 "
 

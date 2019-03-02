@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Martin V\"ath and others
+# Copyright 1999-2019 Martin V\"ath and others
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror" # do not access gentoo mirror until it actually is there
 MESON_AUTO_DEPEND=no
 inherit bash-completion-r1 meson tmpfiles
@@ -20,13 +20,12 @@ for i in ${PLOCALES}; do
 done
 IUSE+=" +meson nls optimization +required-use security +src-uri strong-optimization strong-security sqlite swap-remote tools"
 
-BOTHDEPEND="nls? ( virtual/libintl )
+DEPEND="nls? ( virtual/libintl )
 	sqlite? ( >=dev-db/sqlite-3:= )"
-RDEPEND="${BOTHDEPEND}
+RDEPEND="${DEPEND}
 	>=app-shells/push-3.1
 	>=app-shells/quoter-4.1"
-DEPEND="${BOTHDEPEND}
-	meson? (
+BDEPEND="meson? (
 		>=dev-util/meson-0.41.0
 		>=dev-util/ninja-1.7.2
 		strong-optimization? ( >=sys-devel/gcc-config-1.9.1 )

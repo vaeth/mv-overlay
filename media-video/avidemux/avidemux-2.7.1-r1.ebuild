@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2019 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} == *9999* ]] ; then
 	MY_P="${P}"
@@ -22,7 +22,7 @@ LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
 SLOT="2.7"
 IUSE="debug nls nvenc opengl qt5 sdl vaapi vdpau xv"
 
-COMMON_DEPEND="
+DEPEND="
 	~media-libs/avidemux-core-${PV}:${SLOT}[nls?,sdl?,vaapi?,vdpau?,xv?,nvenc?]
 	nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) )
 	opengl? ( virtual/opengl:0 )
@@ -34,10 +34,10 @@ COMMON_DEPEND="
 	)
 	vaapi? ( x11-libs/libva:0= )
 "
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
 	qt5? ( dev-qt/linguist-tools:5 )
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	nls? ( virtual/libintl:0 )
 	!<media-video/avidemux-${PV}
 "

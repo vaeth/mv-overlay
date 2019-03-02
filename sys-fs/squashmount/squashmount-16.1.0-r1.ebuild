@@ -1,7 +1,7 @@
-# Copyright 2013-2018 Martin V\"ath
+# Copyright 2013-2019 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 inherit eutils readme.gentoo-r1 systemd tmpfiles
 
@@ -56,8 +56,7 @@ src_prepare() {
 
 src_install() {
 	dobin bin/*
-	dodoc README.md ChangeLog compress.txt demo.svg
-	docompress -x "/usr/share/doc/${PF}/demo.svg"
+	dodoc README ChangeLog compress.txt
 	doinitd openrc/init.d/*
 	systemd_dounit systemd/system/*
 	dotmpfiles tmpfiles.d/*

@@ -22,7 +22,7 @@ app-eselect/eselect-net 0.2-r1: eselect module for managing network open-rc serv
 app-misc/knapsack 7.2.1-r1: A fast solver for the 0/1-knapsack problem with multiple knapsacks
 app-misc/machine-learning-mv 1.2-r1: Some machine learning experiments
 app-portage/changelog-gitrepo 1.0: Create ChangeLog data for gentoo repositories from git
-app-portage/eix 0.33.7 99999999: Search and query ebuilds
+app-portage/eix 0.33.7-r1 0.33.8_alpha20190302 99999999: Search and query ebuilds
 app-portage/etcat 1.0.1 99999999: Updated version of an old Portage information extractor
 app-portage/find_cruft 5.1: find cruft files not managed by portage
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
@@ -48,12 +48,12 @@ app-shells/zshrc-mv 5.0: A zshrc file initializing zsh specific interactive feat
 app-text/ispell 3.3.02-r1 3.4.00: fast screen-oriented spelling checker
 app-text/lesspipe 1.83-r3 1.84_alpha20180414-r3 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
-app-text/podofo 0.9.6_p20180715: PoDoFo is a C++ library to work with the PDF file format
+app-text/podofo 0.9.6_p20180715-r1: PoDoFo is a C++ library to work with the PDF file format
 app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities
 app-text/stardict 3.0.6-r4 4.0.0_pre20170304: A international dictionary supporting fuzzy and glob style matching
 dev-cpp/cpplint 99999999: The google styleguide together with cpplint and an emacs file
 dev-libs/osformat 1.0.5 999999999: C++ library for a typesafe printf/sprintf based on << conversion
-dev-libs/weston 5.0.0: Wayland reference compositor
+dev-libs/weston 5.0.0-r1: Wayland reference compositor
 dev-perl/File-lchown 0.20-r1: Use the lchown(2) and lutimes(2) system call from Perl
 dev-tex/chklref 2.6.0 2.6.1_alpha20170913: Finds useless references in latex files or unnecessarily numbered environments
 dev-util/comp 4.3: compare files or directories, including metadata
@@ -74,17 +74,17 @@ games-rpg/dsa-stats 1.0: calculate stat probabalities for the role playing game 
 games-rpg/m5figur-mv 4.1.4: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
 mail-client/alpine 2.00-r7 2.21.1-r1: alpine is an easy to use text-based based mail and news client
 media-gfx/ipe 7.2.7: Drawing editor for creating figures in PDF or PS formats
-media-gfx/pqiv 2.10.4: powerful GTK based command-line image viewer with a minimal UI
+media-gfx/pqiv 2.11: powerful GTK based command-line image viewer with a minimal UI
 media-libs/avidemux-core 2.7.1: Core libraries for simple video cutting, filtering and encoding tasks
-media-libs/avidemux-plugins 2.7.1: Plugins for the video editor media-video/avidemux
+media-libs/avidemux-plugins 2.7.1-r1: Plugins for the video editor media-video/avidemux
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
 media-tv/sundtek-tv 181220.135032: Sundtek MediaTV Pro III Drivers
 media-tv/w_scan 20170107-r1: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies
-media-video/avidemux 2.7.1: Video editor designed for simple cutting, filtering and encoding tasks
+media-video/avidemux 2.7.1-r1: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15_p1: Utility for displaying AVI information
 media-video/video-mv 16.2: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
 net-dialup/accounting 1.60.45.3.1-r1: Give statistics about dialup connections. Originally part of SuSE's smpppd
-net-dialup/martian-modem 20100123-r2: ltmodem alternative driver providing support for Agere Systems winmodems
+net-dialup/martian-modem 20100123-r3: ltmodem alternative driver providing support for Agere Systems winmodems
 net-dns/host 20070128-r1: A powerful command-line DNS query and test tool
 net-dns/noip-updater 2.1.9-r5: no-ip.com dynamic DNS updater
 net-firewall/firewall-mv 13.1: Initialize iptables and net-related sysctl variables
@@ -93,7 +93,7 @@ net-misc/netctl 1.11: Profile based network connection tool from Arch Linux
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
 net-misc/sshstart 4.7: Start ssh-agent/ssh-add only if you really use ssh or friends
 net-print/foo2zjs 20160722: Support for printing to ZjStream-based printers
-sci-geosciences/googleearth 7.1.8.3036-r1 7.3.0.3832-r1 7.3.2: A 3D interface to the planet
+sci-geosciences/googleearth 7.1.8.3036-r2 7.3.0.3832-r2 7.3.2-r1: A 3D interface to the planet
 sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
 sci-mathematics/reduce 20141130-r2: A general-purpose computer algebra system
 sys-apps/cpi 3.1: A wrapper for cp -i -a, making use of diff
@@ -106,10 +106,10 @@ sys-block/parted 2.4-r3: Create, destroy, resize, check, copy partitions and fil
 sys-block/zram-init 7.1-r2 8.1: Scripts to support compressed swap devices or ramdisks with zram
 sys-boot/grub-cfg-mv 1.7: A grub.cfg library/example for GRUB2
 sys-fs/emount 3.0.4: mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab
-sys-fs/squash_dir 13.14: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
+sys-fs/squash_dir 13.14-r1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-fs/squashfs-tools 4.3.1_alpha20180612 99999999: Tool for creating compressed filesystem type squashfs
 sys-fs/squashfuse 0.1.103 0.1.104_alpha20180721: FUSE filesystem to mount squashfs archives
-sys-fs/squashmount 16.1.0 19.1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
+sys-fs/squashmount 16.1.0-r1 19.1-r1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-kernel/kccmp 0.3-r1: A simple tool for comparing two linux kernel .config files
 sys-kernel/kernel 4.8: A POSIX shell script to compile the kernel with user permissions
 virtual/cdrtools 1: Virtual for command-line recorders cdrtools and cdrkit

@@ -1,7 +1,7 @@
-# Copyright 2010-2018 Martin V\"ath
+# Copyright 2010-2019 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 RESTRICT="mirror"
 WANT_LIBTOOL=none
 AUTOTOOLS_IN_SOURCE_BUILD=true
@@ -16,15 +16,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="aufs overlayfs bundled-openrc-wrapper unionfs-fuse"
 
-BOTHDEPEND="bundled-openrc-wrapper? ( !!sys-apps/openrc-wrapper )"
+DEPEND="bundled-openrc-wrapper? ( !!sys-apps/openrc-wrapper )"
 RDEPEND="sys-fs/squashfs-tools
 	!bundled-openrc-wrapper? ( sys-apps/openrc-wrapper )
 	${BOTHDEPEND}
 	>=app-shells/runtitle-2.3
 	!<sys-fs/unionfs-fuse-0.25
 	unionfs-fuse? ( sys-fs/unionfs-fuse )"
-DEPEND=">=sys-devel/autoconf-2.65
-	${BOTHDEPEND}"
+BDEPEND=">=sys-devel/autoconf-2.65"
 
 DISABLE_AUTOFORMATTING="true"
 DOC_CONTENTS="Please adapt ${EPREFIX}/etc/conf.d/${PN} to your needs.

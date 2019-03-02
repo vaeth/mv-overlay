@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/wayland/weston.git"
@@ -80,9 +80,8 @@ RDEPEND="
 		x11-libs/libXcursor
 	)
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	eapply "${FILESDIR}"/pam.patch

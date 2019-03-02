@@ -1,7 +1,7 @@
-# Copyright 2012-2018 Gentoo Authors and Martin V\"ath
+# Copyright 2012-2019 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit linux-mod readme.gentoo-r1
 
 MY_P="martian-full-${PV}"

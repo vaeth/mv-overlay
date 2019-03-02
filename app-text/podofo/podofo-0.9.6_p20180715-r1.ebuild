@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2019 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit cmake-utils flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="PoDoFo is a C++ library to work with the PDF file format"
@@ -31,8 +31,8 @@ RDEPEND="!lua-slotted? ( dev-lang/lua:0= )
 	media-libs/libpng:0=
 	media-libs/tiff:0=
 	sys-libs/zlib:="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
 	boost? ( dev-util/boost-build )
 	test? ( dev-util/cppunit )"
 

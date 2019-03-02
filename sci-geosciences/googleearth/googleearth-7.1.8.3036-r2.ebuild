@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Martin V\"ath and others
+# Copyright 1999-2019 Martin V\"ath and others
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eapi7-ver desktop eutils gnome2-utils pax-utils unpacker xdg-utils
+inherit desktop eutils gnome2-utils pax-utils unpacker xdg-utils
 
 DESCRIPTION="A 3D interface to the planet"
 HOMEPAGE="https://www.google.com/earth/desktop/"
@@ -47,7 +47,7 @@ RDEPEND="
 		=sci-libs/proj-4.8.0*
 	)"
 #		sci-libs/gdal-1*
-DEPEND="dev-util/patchelf"
+BDEPEND="dev-util/patchelf"
 
 S=${WORKDIR}/opt/google/earth/pro
 
@@ -88,20 +88,20 @@ src_prepare() {
 	for x in * ; do
 		# Use \x7fELF header to separate ELF executables and libraries
 		[[ -f ${x} && $(od -t x1 -N 4 "${x}") == *"7f 45 4c 46"* ]] || continue
-		fperms u+w "${x}"
-		patchelf --set-rpath '$ORIGIN' "${x}" ||
+		chmod u+w "${x}" || die
+		patchelf --set-rpath '$ORIGIN' "${x}" || \
 			die "patchelf failed on ${x}"
 	done
-	# prepare file permissions so that >patchelf-0.8 can work on the files
-	fperms u+w plugins/*.so plugins/imageformats/*.so
 	for x in plugins/*.so ; do
 		[[ -f ${x} ]] || continue
-		patchelf --set-rpath '$ORIGIN/..' "${x}" ||
+		chmod u+w "${x}" || die
+		patchelf --set-rpath '$ORIGIN/..' "${x}" || \
 			die "patchelf failed on ${x}"
 	done
 	for x in plugins/imageformats/*.so ; do
 		[[ -f ${x} ]] || continue
-		patchelf --set-rpath '$ORIGIN/../..' "${x}" ||
+		chmod u+w "${x}" || die
+		patchelf --set-rpath '$ORIGIN/../..' "${x}" || \
 			die "patchelf failed on ${x}"
 	done
 
@@ -127,9 +127,8 @@ src_install() {
 	insinto /opt/${PN}
 	doins -r *
 
-	fperms +x /opt/${PN}/${PN}{,-bin}
-	cd "${ED}" || die
-	find . -type f -name "*.so.*" -exec fperms +x '{}' +
+	chmod +x /opt/${PN}/${PN}{,-bin} || die
+	find "${ED}" -type f -name "*.so.*" -exec chmod +x '{}' +
 
 	pax-mark -m "${ED%/}"/opt/${PN}/${PN}-bin
 }
@@ -156,11 +155,11 @@ pkg_postinst() {
 
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

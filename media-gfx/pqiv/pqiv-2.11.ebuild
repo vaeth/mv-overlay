@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2019 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit linux-info toolchain-funcs xdg-utils
 
 SRC_URI="https://github.com/phillipberndt/pqiv/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -29,8 +29,8 @@ RDEPEND="
 	postscript? ( app-text/libspectre:0= )
 	webp? ( media-libs/libwebp:0= )
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 doecho() {
 	echo "$@"
