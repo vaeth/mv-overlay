@@ -76,7 +76,7 @@ mail-client/alpine 2.00-r7 2.21.1-r1: alpine is an easy to use text-based based 
 media-gfx/ipe 7.2.7: Drawing editor for creating figures in PDF or PS formats
 media-gfx/pqiv 2.11: powerful GTK based command-line image viewer with a minimal UI
 media-libs/avidemux-core 2.7.1: Core libraries for simple video cutting, filtering and encoding tasks
-media-libs/avidemux-plugins 2.7.1-r1: Plugins for the video editor media-video/avidemux
+media-libs/avidemux-plugins 2.7.1-r2: Plugins for the video editor media-video/avidemux
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
 media-tv/sundtek-tv 181220.135032: Sundtek MediaTV Pro III Drivers
 media-tv/w_scan 20170107-r1: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies
@@ -93,7 +93,7 @@ net-misc/netctl 1.11: Profile based network connection tool from Arch Linux
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
 net-misc/sshstart 4.7: Start ssh-agent/ssh-add only if you really use ssh or friends
 net-print/foo2zjs 20160722: Support for printing to ZjStream-based printers
-sci-geosciences/googleearth 7.1.8.3036-r2 7.3.0.3832-r2 7.3.2-r1: A 3D interface to the planet
+sci-geosciences/googleearth 7.1.8.3036-r3 7.3.0.3832-r3 7.3.2-r2: A 3D interface to the planet
 sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
 sci-mathematics/reduce 20141130-r2: A general-purpose computer algebra system
 sys-apps/cpi 3.1: A wrapper for cp -i -a, making use of diff
