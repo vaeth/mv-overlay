@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+RESTRICT="mirror"
 
 if [[ ${PV} == *9999* ]] ; then
 	MY_P="${P}"
@@ -56,35 +57,6 @@ src_prepare() {
 	for process in ${processes} ; do
 		CMAKE_USE_DIR="${S}"/${process#*:} cmake-utils_src_prepare
 	done
-
-	# Fix icon name -> avidemux-2.7.png
-	sed -i -e "/^Icon/ s:${PN}:${PN}-${SLOT}:" ${PN}2.desktop || \
-		die "Icon name fix failed."
-
-	# The desktop file is broken. It uses avidemux2 instead of avidemux3
-	# so it will actually launch avidemux-2.7 if it is installed.
-	sed -i -e "/^Exec/ s:${PN}2:${PN}3:" ${PN}2.desktop || \
-		die "Desktop file fix failed."
-	if use qt5; then
-		sed -i -re '/^Exec/ s:(avidemux3_)gtk:\1qt5:' ${PN}2.desktop || \
-			die "Desktop file fix failed."
-	fi
-
-	# QA warnings: missing trailing ';' and 'Application' is deprecated.
-	sed -i -e 's/Application;AudioVideo/AudioVideo;/g' ${PN}2.desktop || \
-		die "Desktop file fix failed."
-
-	# Now rename the desktop file to not collide with 2.6.
-	mv ${PN}2.desktop ${PN}-${SLOT}.desktop || die "Collision rename failed."
-
-	# Remove "Build Option" dialog because it doesn't reflect
-	# what the GUI can or has been built with. (Bug #463628)
-	sed -i -e '/Build Option/d' avidemux/common/ADM_commonUI/myOwnMenu.h || \
-		die "Couldn't remove \"Build Option\" dialog."
-
-	# Fix underlinking with gold
-	sed -i -e 's/{QT_QTGUI_LIBRARY}/{QT_QTGUI_LIBRARY} -lXext/' \
-		avidemux/common/ADM_render/CMakeLists.txt || die
 }
 
 src_configure() {
@@ -95,10 +67,6 @@ src_configure() {
 
 	# See bug 432322.
 	use x86 && replace-flags -O0 -O1
-
-	# The build relies on an avidemux-core header that uses 'nullptr'
-	# which is from >=C++11. Let's use the GCC-6 default C++ dialect.
-	append-cxxflags -std=c++14
 
 	local mycmakeargs=(
 		-DGETTEXT="$(usex nls)"
@@ -153,19 +121,12 @@ src_install() {
 		fperms +x /usr/bin/avidemux3_jobs
 	fi
 
-	cd "${S}" || die "Can't enter source folder."
-	newicon ${PN}_icon.png ${PN}-${SLOT}.png
-
 	if [[ -f "${ED}"/usr/bin/avidemux3_qt5 ]] ; then
 		fperms +x /usr/bin/avidemux3_qt5
 	fi
 
 	if [[ -f "${ED}"/usr/bin/avidemux3_jobs_qt5 ]] ; then
 		fperms +x /usr/bin/avidemux3_jobs_qt5
-	fi
-
-	if use qt5 ; then
-		domenu ${PN}-${SLOT}.desktop
 	fi
 }
 
