@@ -21,5 +21,5 @@ src_compile() {
 
 src_install() {
 	dodoc README.md
-	emake DESTDIR="${ED}" PREFIX= EPREFX="${EPREFIX}" DATADIR=/lib/push install
+	emake DESTDIR="${ED}" PREFIX= EPREFIX="${EPREFIX}" DATADIR=/lib/push install
 }
