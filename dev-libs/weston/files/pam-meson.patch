@@ -1,0 +1,36 @@
+--- 1/libweston/meson.build
++++ 1/libweston/meson.build
+@@ -472,10 +472,14 @@
+ endif
+ 
+ if get_option('weston-launch')
+-	dep_pam = cc.find_library('pam')
++	dep_pam = systemd_dep
++	if get_option('pam')
++		config_h.set('HAVE_PAM', '1')
++		dep_pam = cc.find_library('pam')
+ 
+-	if not cc.has_function('pam_open_session', dependencies: dep_pam)
+-		error('pam_open_session not found for weston-launch')
++		if not cc.has_function('pam_open_session', dependencies: dep_pam)
++			error('pam_open_session not found for weston-launch')
++		endif
+ 	endif
+ 
+ 	executable(
+--- 1/meson_options.txt
++++ 1/meson_options.txt
+@@ -73,6 +73,13 @@
+ )
+ 
+ option(
++	'pam',
++	type: 'boolean',
++	value: true,
++	description: 'Use pam for weston-launch'
++)
++
++option(
+ 	'xwayland',
+ 	type: 'boolean',
+ 	value: true,
