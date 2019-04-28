@@ -130,5 +130,5 @@ www-plugins/noscript 10.2.1: Firefox webextension: restrict active contents like
 www-plugins/skip-redirect 2.2.1: Firefox webextension: skip intermediary pages before redirecting
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
 www-plugins/ublock-origin 1.17.2: Firefox webextension: An efficient list-based blocker
-x11-libs/gtk+ 2.24.32-r1 3.24.7: Gimp ToolKit +
+x11-libs/gtk+ 2.24.32-r1 3.24.8: Gimp ToolKit +
 x11-libs/motif 2.3.8-r1: The Motif user interface component toolkit
