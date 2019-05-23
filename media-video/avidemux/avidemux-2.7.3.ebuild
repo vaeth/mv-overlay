@@ -91,6 +91,10 @@ src_configure() {
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
 		CMAKE_USE_DIR="${S}"/${process#*:} BUILD_DIR="${build}" cmake-utils_src_configure
 	done
+
+	# Fix underlinking with gold
+	sed -i -e 's/{QT_QTGUI_LIBRARY}/{QT_QTGUI_LIBRARY} -lXext/' \
+		avidemux/common/ADM_render/CMakeLists.txt || die
 }
 
 src_compile() {
