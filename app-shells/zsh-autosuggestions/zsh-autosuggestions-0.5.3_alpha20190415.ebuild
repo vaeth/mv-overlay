@@ -1,4 +1,4 @@
-# Copyright 2011-2018 Martin V\"ath
+# Copyright 2011-2019 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,13 +10,13 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 case ${PV} in
 99999999*)
 	EGIT_REPO_URI="https://github.com/zsh-users/zsh-autosuggestions"
-	EGIT_BRANCH="features/completion-suggestions" # "develop"
+	EGIT_BRANCH="develop"
 	inherit git-r3
 	PROPERTIES="live"
 	SRC_URI=""
 	KEYWORDS="";;
 *alpha*)
-	EGIT_COMMIT="3a3ff5a80a702d0bd8c6dfbb57f9498d11957136"
+	EGIT_COMMIT="e9d8231ba7dfbf7afb3f2a57ae00b803b4ae9f83"
 	SRC_URI="https://github.com/zsh-users/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 *)
