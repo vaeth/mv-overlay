@@ -1,4 +1,4 @@
-# Copyright 2011-2018 Martin V\"ath
+# Copyright 2011-2019 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,7 @@ RDEPEND=${RDEPEND}" cflags? ( app-portage/eix )"
 
 # The title script would do nothing without these packages:
 RDEPEND=${RDEPEND}" title? (
-	app-portage/portage-utils
+	>=app-portage/portage-utils-0.80_pre20190605
 	app-shells/runtitle
 )"
 
