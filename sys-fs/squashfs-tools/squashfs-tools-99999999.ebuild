@@ -48,7 +48,7 @@ src_unpack() {
 }
 else
 	RESTRICT="mirror"
-	EGIT_COMMIT="3197524cb62f705ffd4da9b63b6c22ff7cb3dc77"
+	EGIT_COMMIT="832a7b9971053d4d741c3230f52e97afd250e956"
 	SRC_URI="https://github.com/plougher/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 ${EXTRA_URI}"
 	S="${WORKDIR}/${P}/${PN}"

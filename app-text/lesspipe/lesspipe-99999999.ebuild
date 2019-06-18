@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Martin V\"ath
+# Copyright 1999-2019 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ case ${PV} in
 	KEYWORDS="";;
 *alpha*)
 	RESTRICT="mirror"
-	EGIT_COMMIT="87ac1d025ba3417d7703b3ca57d52da055b5b21e"
+	EGIT_COMMIT="2ddec0df5979df18d072cbb5dc5a7ff86a1754f0"
 	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 esac
