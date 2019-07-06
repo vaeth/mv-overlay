@@ -244,8 +244,6 @@ net-print/foo2zjs:foo2zjs_devices_xp6115 - Xerox Phaser 6115MFP ICM
 net-print/foo2zjs:foomaticdb - Add support for the foomatic printing driver database
 sci-geosciences/googleearth:bundled-libs - Use bundled libraries.
 sci-geosciences/googleearth:bundled-qt - Use bundled qt.
-sci-libs/gsl:cblas-external - Link gsl with external cblas provided by (virtual/cblas) instead of shipped internal version
-sci-libs/gsl:deprecated - Enable deprecated functions
 sys-apps/less:less-select - Add the less-select feature (additional options and a binary helper).
 sys-apps/less:lesspipe - Default to lesspipe.sh from app-text/lesspipe instead of the gentoo specific lesspipe.
 sys-apps/less:original-gentoo - Use the gentoo default for the LESS variable.
