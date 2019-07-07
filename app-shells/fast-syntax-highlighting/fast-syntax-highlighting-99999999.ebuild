@@ -19,7 +19,9 @@ case ${PV} in
 	SRC_URI="https://github.com/zdharma/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 *)
-	SRC_URI="https://github.com/zdharma/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz";;
+	myPN=$(ver_rs 2 '')
+	SRC_URI="https://github.com/zdharma/${PN}/archive/v${myPN}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${myPN}";;
 esac
 
 DESCRIPTION="Optimized and extended zsh-syntax-highlighting"

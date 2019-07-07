@@ -48,7 +48,7 @@ src_unpack() {
 }
 else
 	RESTRICT="mirror"
-	EGIT_COMMIT="832a7b9971053d4d741c3230f52e97afd250e956"
+	EGIT_COMMIT="04ce7e5f4f5a87e4b0fb8b8fa9b4287af2bffd07"
 	SRC_URI="https://github.com/plougher/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 ${EXTRA_URI}"
 	S="${WORKDIR}/${P}/${PN}"
@@ -65,16 +65,12 @@ src_prepare() {
 	eapply -p2 "${debian}"/0003-CVE-2015-4645_and_CVE-2015-4646.patch
 	eapply -p2 "${debian}"/0004-unsquashfs-add-support-for-LZMA-magics.patch
 	eapply -p2 "${debian}"/0009-unsquashfs-preserve-symlink-times.patch
-	eapply -p2 "${debian}"/0010-fix_FTBFS_with_glibc_2.28.patch
 	eapply -p2 "${debian}"/0013-use-macros-not-raw-octal-with-chmod.patch
 	eapply -p2 "${debian}"/0014-also-set-stickybit-as-non-root.patch
 	eapply -p2 "${debian}"/0015-numeric-uid-gid_to_unsquashfs.patch
-	eapply -p2 "${debian}"/0016-remove-frag_deflator_thread.patch
-	eapply -p2 "${debian}"/0018-mksquashfs-fix-compressor-initialisation-in-frag_def.patch
 	eapply -p2 "${FILESDIR}"/${Pm}-sysmacros.patch
 	eapply -p2 "${FILESDIR}"/${Pm}-aligned-data.patch
 	eapply "${FILESDIR}"/${Pm}-local-cve-fix.patch
-	eapply "${FILESDIR}"/${Pm}-static-inline.patch
 	eapply "${FILESDIR}"/${Pm}-smallstack.patch
 	default
 }
