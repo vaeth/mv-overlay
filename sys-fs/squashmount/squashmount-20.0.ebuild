@@ -24,7 +24,7 @@ dev-perl/File-Which
 RDEPEND="!<sys-apps/openrc-0.13
 	>=dev-lang/perl-5.22
 	|| ( dev-perl/File-Which sys-apps/which )
-	sys-fs/squashfs-tools
+	|| ( sys-fs/squashfs-tools sys-fs/squashfs-tools-ng )
 	!<sys-fs/unionfs-fuse-0.25
 	!<app-portage/find_cruft-4.0.0
 	${OPTIONAL_RDEPEND}"
