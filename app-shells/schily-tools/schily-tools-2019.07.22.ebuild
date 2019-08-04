@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/schilytools/${MY_P}.tar.bz2"
 DESCRIPTION="Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell"
 HOMEPAGE="https://sourceforge.net/projects/schilytools/"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="acl caps doc nls suid unicode xattr"
+IUSE="acl caps doc nls split-usr suid unicode xattr"
 REQUIRED_USE_WARN="amd64-fbsd? ( !xattr )"
 
 PATCHES=("${FILESDIR}"/strlcat-mapvers.patch)
@@ -215,6 +215,9 @@ src_prepare() {
 			readcd rscsi scgcheck scgskeleton \
 			libcdrdeflt libedc libfile libhfs_iso libparanoia \
 			librscg libscgcmd libsiconv 'libsiconv!@!tables'
+	fi
+	if ! use acl; then
+		sed -i -e 's/^CPPOPTS.*DUSE_ACL/#&/' -- star/Makefile || die
 	fi
 # nonexistent:
 #	! use schilytools_cmd || targets cmd
@@ -483,6 +486,14 @@ src_install() {
 	if use renameschily_getopt && have_target libgetopt; then
 		mv -v -- "${ED}"/usr/share/man/man3/{,schily-}getopt.3 || die
 	fi
+	use split-usr || move_to_usr_bin "${ED}"/bin/*
+}
+
+move_to_usr_bin() {
+	test -r "$1" || return 0
+	test -d "${ED}"/usr/bin || mkdir -p -- "${ED}"/usr/bin || die
+	mv -v -- "$@" "${ED}"/usr/bin || die
+	rmdir "${ED}"/bin || die
 }
 
 pkg_postinst() {

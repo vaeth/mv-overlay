@@ -1,4 +1,4 @@
-# Copyright 2011-2018 Martin V\"ath
+# Copyright 2011-2019 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
-IUSE=""
+IUSE="split-usr"
 
 RDEPEND=">=app-shells/push-2.0-r2
 	!<sys-apps/openrc-0.13"
@@ -24,7 +24,7 @@ You might need to modify /etc/modprobe.d/zram.conf"
 
 src_prepare() {
 	use prefix || sed -i \
-		-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
+		-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}$(split_usr)/bin/sh"'"' \
 		-- sbin/* || die
 	default
 }
@@ -39,10 +39,14 @@ src_install() {
 	doins zsh/*
 	dodoc AUTHORS ChangeLog README.md
 	readme.gentoo_create_doc
-	into /
+	into $(get_usr)/
 	dosbin sbin/*
 }
 
 pkg_postinst() {
 	readme.gentoo_print_elog
+}
+
+get_usr() {
+	use split-usr || echo /usr
 }

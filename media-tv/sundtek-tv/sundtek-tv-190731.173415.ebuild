@@ -16,7 +16,7 @@ RESTRICT="binchecks mirror strip"
 LICENSE="sundtek"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="ld-preload-env +ld-preload-file pax_kernel pulseaudio"
+IUSE="ld-preload-env +ld-preload-file pax_kernel pulseaudio split-usr"
 RDEPEND="!<sys-apps/openrc-0.13
 pulseaudio? ( media-sound/pulseaudio )"
 BDEPEND="pax_kernel? ( || ( sys-apps/elfix sys-apps/paxctl ) )"
@@ -76,7 +76,12 @@ src_prepare() {
 	mybinprefix="opt"
 	mypkgconfig="usr/share/pkgconfig"
 	myinclsundtek="${myinclude}/sundtek"
-	myudev="lib/udev"
+	if use split-usr
+	then	myudev="lib/udev"
+			myrootlib="lib"
+	else	myudev="usr/lib/udev"
+			myrootlib="usr/lib"
+	fi
 	mylirc="etc/lirc"
 	umask 022
 	if use pax_kernel
@@ -84,8 +89,8 @@ src_prepare() {
 		pax-mark e opt/bin/mediaclient
 	fi
 	mv opt 1 || die
-	mkdir -p ${myusr} "${mybinprefix}" lib "${mypkgconfig}" "${mylirc}" \
-		1/lib/pm-utils || die
+	mkdir -p ${myusr} "${mybinprefix}" "${myrootlib}" "${mypkgconfig}" \
+		"${mylirc}" 1/lib/pm-utils || die
 	use pulseaudio || rm 1/bin/audio/libpulse.so || die
 	mv 1/bin "${mybinprefix}" || die
 	${keep_original} || mv 1/lib/pm 1/lib/pm-utils/sleep.d || die
