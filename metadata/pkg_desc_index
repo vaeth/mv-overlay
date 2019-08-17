@@ -75,12 +75,12 @@ games-rpg/m5figur-mv 4.1.4: LaTeX2e character sheet layout for the Midgard Role 
 mail-client/alpine 2.00-r7 2.21.1-r1: alpine is an easy to use text-based based mail and news client
 media-gfx/ipe 7.2.7: Drawing editor for creating figures in PDF or PS formats
 media-gfx/pqiv 2.11: powerful GTK based command-line image viewer with a minimal UI
-media-libs/avidemux-core 2.7.3: Core libraries for simple video cutting, filtering and encoding tasks
-media-libs/avidemux-plugins 2.7.3: Plugins for the video editor media-video/avidemux
+media-libs/avidemux-core 2.7.4: Core libraries for simple video cutting, filtering and encoding tasks
+media-libs/avidemux-plugins 2.7.4: Plugins for the video editor media-video/avidemux
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
 media-tv/sundtek-tv 190731.173415: Sundtek MediaTV Pro III Drivers
 media-tv/w_scan 20170107-r1: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies
-media-video/avidemux 2.7.3: Video editor designed for simple cutting, filtering and encoding tasks
+media-video/avidemux 2.7.4: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15_p1: Utility for displaying AVI information
 media-video/video-mv 16.2: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
 net-dialup/accounting 1.60.45.3.1-r1: Give statistics about dialup connections. Originally part of SuSE's smpppd
