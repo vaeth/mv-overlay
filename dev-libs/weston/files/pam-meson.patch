@@ -1,3 +1,4 @@
+# Supplement to pam.patch for meson by Martin Väth <mvath at google.com>
 --- 1/libweston/meson.build
 +++ 1/libweston/meson.build
 @@ -472,10 +472,14 @@

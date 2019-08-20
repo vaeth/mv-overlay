@@ -53,7 +53,7 @@ app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities
 app-text/stardict 3.0.6-r4 4.0.0_pre20170304: A international dictionary supporting fuzzy and glob style matching
 dev-cpp/cpplint 99999999: The google styleguide together with cpplint and an emacs file
 dev-libs/osformat 1.0.5 999999999: C++ library for a typesafe printf/sprintf based on << conversion
-dev-libs/weston 5.0.0-r1 6.0.1: Wayland reference compositor
+dev-libs/weston 5.0.0-r1 6.0.93: Wayland reference compositor
 dev-perl/File-lchown 0.20-r1: Use the lchown(2) and lutimes(2) system call from Perl
 dev-tex/chklref 2.6.0 2.6.1_alpha20170913: Finds useless references in latex files or unnecessarily numbered environments
 dev-util/comp 4.3: compare files or directories, including metadata
