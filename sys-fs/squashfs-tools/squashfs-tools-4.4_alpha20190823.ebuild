@@ -48,7 +48,7 @@ src_unpack() {
 }
 else
 	RESTRICT="mirror"
-	EGIT_COMMIT="12d38b9f5cac88b3c18d8eb683f1361d1a7c67d6"
+	EGIT_COMMIT="c3ab7d1d28c030a5428a6cd565a5af17ecb6498b"
 	SRC_URI="https://github.com/plougher/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 ${EXTRA_URI}"
 	S="${WORKDIR}/${P}/${PN}"
@@ -62,12 +62,9 @@ src_prepare() {
 	local debian
 	debian="${WORKDIR}"/debian/patches
 	eapply -p2 "${debian}"/0001-kfreebsd.patch
-	eapply -p2 "${debian}"/0004-unsquashfs-add-support-for-LZMA-magics.patch
-	eapply -p2 "${debian}"/0009-unsquashfs-preserve-symlink-times.patch
-	eapply -p2 "${debian}"/0013-use-macros-not-raw-octal-with-chmod.patch
-	eapply -p2 "${debian}"/0014-also-set-stickybit-as-non-root.patch
 	eapply -p2 "${FILESDIR}"/${Pm}-sysmacros.patch
 	eapply "${FILESDIR}"/${Pm}-local-cve-fix.patch
+	eapply -p2 "${FILESDIR}"/${P}-write_xattr.patch
 	default
 }
 
