@@ -24,7 +24,7 @@ You might need to modify /etc/modprobe.d/zram.conf"
 
 src_prepare() {
 	use prefix || sed -i \
-		-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}$(split_usr)/bin/sh"'"' \
+		-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}$(get_usr)/bin/sh"'"' \
 		-- sbin/* || die
 	default
 }
