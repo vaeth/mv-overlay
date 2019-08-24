@@ -18,7 +18,7 @@ if [[ $PV = 9999* ]]; then
 	SRC_URI="${SRC_PATCHES}"
 	KEYWORDS=""
 else
-	SRC_URI="https://gitlab.freedesktop.org/wayland/${PN}/-/archive/${PV}/${P}.tar.xz"
+	SRC_URI="https://gitlab.freedesktop.org/wayland/${PN}/-/archive/${PV}/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 

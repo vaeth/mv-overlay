@@ -3,6 +3,7 @@
 
 EAPI=7
 inherit readme.gentoo-r1 systemd
+RESTRICT="mirror" # until available on gentoo mirrors
 
 DESCRIPTION="Scripts to support compressed swap devices or ramdisks with zram"
 HOMEPAGE="https://github.com/vaeth/zram-init/"
