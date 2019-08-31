@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-# EAPI=7 causes cmake-utils to apply broken patches
-EAPI=6
-RESTRICT="mirror"
+EAPI=7
+
+CMAKE_MAKEFILE_GENERATOR="emake"
 
 if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/mean00/avidemux2.git"
@@ -26,8 +26,7 @@ SLOT="2.7"
 IUSE="debug nls nvenc sdl system-ffmpeg vaapi vdpau xv"
 
 # Trying to use virtual; ffmpeg misses aac,cpudetection USE flags now though, are they needed?
-COMMON_DEPEND="
-	dev-db/sqlite:3
+DEPEND="dev-db/sqlite:3
 	nvenc? ( media-video/nvidia_video_sdk )
 	sdl? ( media-libs/libsdl:0 )
 	system-ffmpeg? ( >=virtual/ffmpeg-9:0[mp3,theora] )
@@ -35,13 +34,12 @@ COMMON_DEPEND="
 	vdpau? ( x11-libs/libvdpau:0 )
 	xv? ( x11-libs/libXv:0 )
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	!<media-libs/avidemux-core-${PV}
 	!<media-video/avidemux-${PV}
 	nls? ( virtual/libintl:0 )
 "
-DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig
+BDEPEND="virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 	!system-ffmpeg? ( dev-lang/yasm[nls=] )
 "
@@ -93,9 +91,9 @@ src_configure() {
 }
 
 src_compile() {
-	cmake-utils_src_compile -j1
+	cmake-utils_src_compile
 }
 
 src_install() {
-	cmake-utils_src_install -j1
+	cmake-utils_src_install
 }

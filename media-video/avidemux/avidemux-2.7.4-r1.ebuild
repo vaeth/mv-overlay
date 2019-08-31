@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-RESTRICT="mirror"
 
 if [[ ${PV} == *9999* ]] ; then
 	MY_P="${P}"
@@ -30,6 +29,7 @@ DEPEND="
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
+		dev-qt/qtnetwork:5
 		dev-qt/qtopengl:5
 		dev-qt/qtwidgets:5
 	)
@@ -52,11 +52,34 @@ src_prepare() {
 	processes="buildCli:avidemux/cli"
 	if use qt5 ; then
 		processes+=" buildQt4:avidemux/qt4"
+		# Fix icon name -> avidemux-2.7
+		sed -i -e "/^Icon/ s:${PN}\.png:${PN}-${SLOT}:" appImage/${PN}.desktop || \
+			die "Icon name fix failed."
+
+		# The desktop file is broken. It uses avidemux3_portable instead of avidemux3_qt5
+		sed -i -re '/^Exec/ s:(avidemux3_)portable:\1qt5:' appImage/${PN}.desktop || \
+			die "Desktop file fix failed."
+
+		# QA warnings: missing trailing ';' and 'Application' is deprecated.
+		sed -i -e 's/Application;AudioVideo/AudioVideo;/g' appImage/${PN}.desktop || \
+			die "Desktop file fix failed."
+
+		# Now rename the desktop file to not collide with 2.6.
+		mv appImage/${PN}.desktop ${PN}-${SLOT}.desktop || die "Collision rename failed."
 	fi
 
 	for process in ${processes} ; do
 		CMAKE_USE_DIR="${S}"/${process#*:} cmake-utils_src_prepare
 	done
+
+	# Remove "Build Option" dialog because it doesn't reflect
+	# what the GUI can or has been built with. (Bug #463628)
+	sed -i -e '/Build Option/d' avidemux/common/ADM_commonUI/myOwnMenu.h || \
+		die "Couldn't remove \"Build Option\" dialog."
+
+	# Fix underlinking with gold
+	sed -i -e 's/{QT_QTGUI_LIBRARY}/{QT_QTGUI_LIBRARY} -lXext/' \
+		avidemux/common/ADM_render/CMakeLists.txt || die
 }
 
 src_configure() {
@@ -72,6 +95,7 @@ src_configure() {
 		-DGETTEXT="$(usex nls)"
 		-DSDL="$(usex sdl)"
 		-DLibVA="$(usex vaapi)"
+		-DOPENGL="$(usex opengl)"
 		-DVDPAU="$(usex vdpau)"
 		-DXVIDEO="$(usex xv)"
 	)
@@ -91,10 +115,6 @@ src_configure() {
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
 		CMAKE_USE_DIR="${S}"/${process#*:} BUILD_DIR="${build}" cmake-utils_src_configure
 	done
-
-	# Fix underlinking with gold
-	sed -i -e 's/{QT_QTGUI_LIBRARY}/{QT_QTGUI_LIBRARY} -lXext/' \
-		avidemux/common/ADM_render/CMakeLists.txt || die
 }
 
 src_compile() {
@@ -117,20 +137,10 @@ src_install() {
 		BUILD_DIR="${build}" cmake-utils_src_install
 	done
 
-	if [[ -f "${ED}"/usr/bin/avidemux3_cli ]] ; then
-		fperms +x /usr/bin/avidemux3_cli
-	fi
-
-	if [[ -f "${ED}"/usr/bin/avidemux3_jobs ]] ; then
-		fperms +x /usr/bin/avidemux3_jobs
-	fi
-
-	if [[ -f "${ED}"/usr/bin/avidemux3_qt5 ]] ; then
-		fperms +x /usr/bin/avidemux3_qt5
-	fi
-
-	if [[ -f "${ED}"/usr/bin/avidemux3_jobs_qt5 ]] ; then
-		fperms +x /usr/bin/avidemux3_jobs_qt5
+	if use qt5; then
+		cd "${S}" || die "Can't enter source folder"
+		newicon ${PN}_icon.png ${PN}-${SLOT}.png
+		domenu ${PN}-${SLOT}.desktop
 	fi
 }
 
