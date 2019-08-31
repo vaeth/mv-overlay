@@ -107,7 +107,7 @@ sys-block/zram-init 9.0: Scripts to support compressed swap devices or ramdisks 
 sys-boot/grub-cfg-mv 1.7: A grub.cfg library/example for GRUB2
 sys-fs/emount 3.0.4: mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab
 sys-fs/squash_dir 13.14-r1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
-sys-fs/squashfs-tools 4.4_alpha20190823 99999999: Tool for creating compressed filesystem type squashfs
+sys-fs/squashfs-tools 4.4 99999999: Tool for creating compressed filesystem type squashfs
 sys-fs/squashfuse 0.1.103 0.1.104_alpha20180721: FUSE filesystem to mount squashfs archives
 sys-fs/squashmount 16.1.0-r1 20.0: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-kernel/kccmp 0.3-r1: A simple tool for comparing two linux kernel .config files

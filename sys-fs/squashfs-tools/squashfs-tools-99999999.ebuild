@@ -4,23 +4,44 @@
 EAPI=7
 inherit flag-o-matic toolchain-funcs
 
-LIVE=false
 PVm=4.3
-case ${PV} in
-*9999)
-	LIVE=:;;
-esac
-Pm=${PN}-${PVm}
 DEB_VER="12"
 
 DESCRIPTION="Tool for creating compressed filesystem type squashfs"
 HOMEPAGE="https://github.com/plougher/squashfs-tools/ https://git.kernel.org/pub/scm/fs/squashfs/squashfs-tools.git http://squashfs.sourceforge.net"
-EXTRA_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PVm}-${DEB_VER}.debian.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="debug lz4 lzma lzo static xattr +xz +zstd"
+EXTRA_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PVm}-${DEB_VER}.debian.tar.xz"
+
+case ${PV} in
+*9999)
+	PROPERTIES="live"
+	EGIT_REPO_URI="https://github.com/plougher/${PN}"
+	inherit git-r3
+	SRC_URI=${EXTRA_URI}
+	KEYWORDS=""
+src_unpack() {
+	default
+	git-r3_src_unpack
+};;
+*alpha*)
+	RESTRICT="mirror"
+	EGIT_COMMIT="52eb4c279cd283ed9802dd1ceb686560b22ffb67"
+	SRC_URI="https://github.com/plougher/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
+${EXTRA_URI}"
+src_unpack() {
+	default
+	mv -- "${WORKDIR}/${PN}-${EGIT_COMMIT}" "${WORKDIR}/${P}"
+};;
+*)
+	RESTRICT="mirror"
+	SRC_URI="https://github.com/plougher/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+${EXTRA_URI}";;
+esac
+S="${WORKDIR}/${P}/${PN}"
 
 LIB_DEPEND="sys-libs/zlib:=[static-libs(+)]
 	lz4? ( app-arch/lz4:=[static-libs(+)] )
@@ -33,38 +54,11 @@ RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
 
-S="${WORKDIR}/squashfs${PV}/${PN}"
-
-if ${LIVE}; then
-	PROPERTIES="live"
-	EGIT_REPO_URI="https://github.com/plougher/${PN}"
-	inherit git-r3
-	SRC_URI=${EXTRA_URI}
-	KEYWORDS=""
-	S="${WORKDIR}/${P}/${PN}"
-src_unpack() {
-	default
-	git-r3_src_unpack
-}
-else
-	RESTRICT="mirror"
-	EGIT_COMMIT="c3ab7d1d28c030a5428a6cd565a5af17ecb6498b"
-	SRC_URI="https://github.com/plougher/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
-${EXTRA_URI}"
-	S="${WORKDIR}/${P}/${PN}"
-src_unpack() {
-	default
-	mv -- "${WORKDIR}/${PN}-${EGIT_COMMIT}" "${WORKDIR}/${P}"
-}
-fi
-
 src_prepare() {
-	local debian
+	local Pm debian
+	Pm=${PN}-${PVm}
 	debian="${WORKDIR}"/debian/patches
 	eapply -p2 "${debian}"/0001-kfreebsd.patch
-	eapply -p2 "${FILESDIR}"/${Pm}-sysmacros.patch
-	eapply "${FILESDIR}"/${Pm}-local-cve-fix.patch
-	eapply -p2 "${FILESDIR}"/${P}-write_xattr.patch
 	default
 }
 
@@ -96,6 +90,6 @@ src_compile() {
 src_install() {
 	dobin mksquashfs unsquashfs
 	cd ..
-	dodoc CHANGES README RELEASE-README ACKNOWLEDGEMENTS RELEASE-READMEs/*
+	dodoc CHANGES README README-4.4 ACKNOWLEDGEMENTS USAGE RELEASE-READMEs/*
 	doman "${WORKDIR}"/debian/manpages/*.[0-9]
 }
