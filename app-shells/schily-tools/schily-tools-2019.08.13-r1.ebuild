@@ -240,11 +240,13 @@ src_prepare() {
 	! use schilytools_paste || targets paste
 	! use schilytools_patch || targets patch
 	! use schilytools_pbosh || targets pbosh libxtermcap libshedit libgetopt
-	! use schilytools_pxupgrade || targets pxupgrade
+	! use schilytools_pxupgrade || targets libdeflt libscg pxupgrade
 	! use schilytools_sccs || targets sccs libgetopt
 	! use schilytools_sfind || targets sfind
 	! use schilytools_smake || targets smake
-	! use schilytools_star || targets mt rmt star star_sym tartest librmt
+	if use schilytools_star; then
+		targets libdeflt librmt mt rmt star star_sym tartest
+	fi
 	! use schilytools_termcap || targets termcap libxtermcap
 	! use schilytools_translit || targets translit
 	! use schilytools_udiff || targets udiff
@@ -421,12 +423,12 @@ src_install() {
 	fi
 	removedirs /usr/include
 	if use schilytools_star; then
-		removedirs /usr/share/doc/star || die
+		removedirs /usr/share/doc/star
 		mustremove /usr/bin/{gnu,}tar
-		mv -i "${ED}"/usr/sbin/rmt{,.star} || die
+		mv -i -- "${ED}"/usr/sbin/rmt{,.star} || die
 	fi
 	if use schilytools_sccs; then
-		mv -v "${ED}"/usr/share/man/man1/{,sccs-}diff.1 || die
+		mv -v -- "${ED}"/usr/share/man/man1/{,sccs-}diff.1 || die
 	else
 		! test -d "${ED}"/usr/ccs || rm -rfv -- "${ED}"/usr/ccs || die
 		mustnothave /usr/share/man/man1/diff.1
@@ -443,9 +445,9 @@ src_install() {
 	fi
 	if use schilytools_bosh; then
 		dodir bin || die
-		rm -v "${ED}"/usr/bin/{bo,j,pf}sh \
+		rm -v -- "${ED}"/usr/bin/{bo,j,pf}sh \
 			"${ED}"/usr/share/man/man1/bosh.1 || die
-		rm -rfv "${ED}"/usr/xpg4 || die
+		rm -rfv -- "${ED}"/usr/xpg4 || die
 		mv -v -- "${ED}"/{usr/bin/sh,bin/bosh} || die
 		ln -s -- bosh "${ED}"/bin/jsh || die
 		ln -s -- bosh "${ED}"/bin/pfsh || die
