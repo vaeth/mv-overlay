@@ -1,0 +1,70 @@
+# Compatibility patches for Python 3 by Martin V\"ath <mvath at google.com>
+--- 1/cpplint/cpplint.py
++++ 1/cpplint/cpplint.py
+@@ -55,8 +55,23 @@
+ 
+ try:
+   xrange          # Python 2
++  python2 = True
+ except NameError:
+   xrange = range  # Python 3
++  unicode = bool
++  python2 = False
++
++def iteritems(obj, **kwargs):
++  func = getattr(obj, "iteritems", None)
++  if not func:
++    func = obj.items
++  return func(**kwargs)
++
++def itervalues(obj, **kwargs):
++  func = getattr(obj, "itervalues", None)
++  if not func:
++    func = obj.values
++  return func(**kwargs)
+ 
+ 
+ _USAGE = """
+@@ -952,7 +967,7 @@
+ 
+   def PrintErrorCounts(self):
+     """Print a summary of errors by category, and the total."""
+-    for category, count in self.errors_by_category.iteritems():
++    for category, count in iteritems(self.errors_by_category):
+       sys.stderr.write('Category \'%s\' errors found: %d\n' %
+                        (category, count))
+     sys.stdout.write('Total errors found: %d\n' % self.error_count)
+@@ -4622,7 +4637,7 @@
+ 
+   # Give opening punctuations to get the matching close-punctuations.
+   matching_punctuation = {'(': ')', '{': '}', '[': ']'}
+-  closing_punctuation = set(matching_punctuation.itervalues())
++  closing_punctuation = set(itervalues(matching_punctuation))
+ 
+   # Find the position to start extracting text.
+   match = re.search(start_pattern, text, re.M)
+@@ -5570,7 +5585,7 @@
+ 
+   # include_dict is modified during iteration, so we iterate over a copy of
+   # the keys.
+-  header_keys = include_dict.keys()
++  header_keys = list(include_dict)
+   for header in header_keys:
+     (same_module, common_path) = FilesBelongToSameModule(abs_filename, header)
+     fullpath = common_path + header
+@@ -6225,10 +6240,11 @@
+ 
+   # Change stderr to write with replacement characters so we don't die
+   # if we try to print something containing non-ASCII characters.
+-  sys.stderr = codecs.StreamReaderWriter(sys.stderr,
+-                                         codecs.getreader('utf8'),
+-                                         codecs.getwriter('utf8'),
+-                                         'replace')
++  if python2:
++    sys.stderr = codecs.StreamReaderWriter(sys.stderr,
++                                           codecs.getreader('utf8'),
++                                           codecs.getwriter('utf8'),
++                                           'replace')
+ 
+   _cpplint_state.ResetErrorCounts()
+   for filename in filenames:

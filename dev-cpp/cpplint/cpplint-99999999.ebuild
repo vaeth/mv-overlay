@@ -1,8 +1,8 @@
-# Copyright 2012-2018 Martin V\"ath
+# Copyright 2012-2019 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( pypy python2_7 )
+PYTHON_COMPAT=( pypy{,3} python{2_7,3_{5,6,7}} )
 EGIT_REPO_URI="https://github.com/google/styleguide.git"
 inherit elisp-common git-r3 python-single-r1
 RESTRICT="mirror"
@@ -22,6 +22,8 @@ COMMON="emacs? ( virtual/emacs )"
 BDEPEND="${COMMON}"
 RDEPEND="${PYTHON_DEPS}
 	${COMMON}"
+
+PATCHES=("$FILESDIR"/"${PN}"-python3.patch)
 
 src_prepare() {
 	if use emacs
