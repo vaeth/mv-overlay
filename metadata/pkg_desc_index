@@ -95,7 +95,7 @@ net-misc/sshstart 4.7: Start ssh-agent/ssh-add only if you really use ssh or fri
 net-print/foo2zjs 20160722: Support for printing to ZjStream-based printers
 sci-geosciences/googleearth 7.1.8.3036-r3 7.3.0.3832-r3 7.3.2-r2: A 3D interface to the planet
 sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
-sci-mathematics/reduce 20141130-r2: A general-purpose computer algebra system
+sci-mathematics/reduce 20141130-r2 20190413: A general-purpose computer algebra system
 sys-apps/cpi 3.1: A wrapper for cp -i -a, making use of diff
 sys-apps/less 551: Excellent text file viewer, optionally with additional selection feature
 sys-apps/openrc-wrapper 2.3-r2: Use openrc init scripts with systemd or other init systems
