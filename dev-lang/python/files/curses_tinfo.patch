@@ -1,0 +1,13 @@
+# https://bugs.gentoo.org/457530
+# https://bugs.gentoo.org/692128
+--- 1/setup.py
++++ 1/setup.py
+@@ -1396,7 +1396,7 @@
+             curses_defines.append(('_XOPEN_SOURCE_EXTENDED', '1'))
+ 
+         if curses_library.startswith('ncurses'):
+-            curses_libs = [curses_library]
++            curses_libs = [curses_library, 'tinfo']
+             exts.append( Extension('_curses', ['_cursesmodule.c'],
+                                    include_dirs=curses_includes,
+                                    define_macros=curses_defines,
