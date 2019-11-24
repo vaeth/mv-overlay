@@ -163,10 +163,6 @@ games-emulation/xmess:bundled-libs - Use bundled version of dev-libs/expat
 games-emulation/xmess:net - Add network support
 games-puzzle/fish-fillets:lua-slotted - Support slotted lua version
 games-rpg/m5figur-mv:examples - Compile example character sheet as PDF
-mail-client/alpine:chappa - enhance alpine by applying Eduardo Chappa's patches
-mail-client/alpine:onlyalpine - installs only the alpine binary, so it does not collied with app-editors/pico and/or mail-client/pine
-mail-client/alpine:passfile - Adds support for caching passwords into a file between sessions
-mail-client/alpine:smime - Enable support for S/MIME
 media-gfx/pqiv:archive - Enable support for images in archives and cbX comic book files
 media-gfx/pqiv:gtk2 - Use gtk:2 instead of gtk:3
 media-libs/avidemux-core:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.
