@@ -17,7 +17,7 @@ case ${PV} in
 	PROPERTIES="live";;
 *)
 	RESTRICT="mirror"
-	EGIT_COMMIT="4d50e67db9fa54c24a4e975dc8b830a2c7d6e84f"
+	EGIT_COMMIT="5f2f9cdc5aaf5ecb481d76e419b197d675b62511"
 	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 esac
