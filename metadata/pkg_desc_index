@@ -60,7 +60,7 @@ dev-perl/File-lchown 0.20-r1: Use the lchown(2) and lutimes(2) system call from 
 dev-tex/chklref 2.6.0 2.6.1_alpha20170913: Finds useless references in latex files or unnecessarily numbered environments
 dev-util/comp 4.3: compare files or directories, including metadata
 dev-util/diffhelp 1.11: A frontend, beautifier, and path-fixer for diff -u
-dev-util/mv_perl 4.0: A collection of perl scripts (replacement in files, syncing dirs etc)
+dev-util/mv_perl 4.1: A collection of perl scripts (replacement in files, syncing dirs etc)
 dev-util/pyrep 1.5-r1: Search and/or replace regular expressions within many files interactively
 dev-util/replacer 3.1-r1: Search and replace python regular expressions within many files interactively
 dev-vcs/git-wrappers-mv 2.1: Some personal wrappers for the most important git commands
