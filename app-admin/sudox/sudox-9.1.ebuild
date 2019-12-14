@@ -1,4 +1,4 @@
-# Copyright 2011-2018 Martin V\"ath
+# Copyright 2011-2019 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ src_prepare() {
 }
 
 src_install() {
-	dodoc README ChangeLog
+	dodoc README.md ChangeLog
 	newdoc sudoers.d/${PN} sudoers.d
 	dobin bin/*
 	insinto /usr/share/zsh/site-functions
