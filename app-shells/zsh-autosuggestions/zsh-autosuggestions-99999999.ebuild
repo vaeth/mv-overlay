@@ -16,7 +16,7 @@ case ${PV} in
 	SRC_URI=""
 	KEYWORDS="";;
 *alpha*)
-	EGIT_COMMIT="3da421aa47fdcb10bf3d19f1c35946b03c1bd90e"
+	EGIT_COMMIT="7afb7364f1ba5cb87eb616516c9a7fa4b86539b6"
 	SRC_URI="https://github.com/zsh-users/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 *)
