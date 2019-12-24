@@ -53,7 +53,7 @@ app-text/podofo 0.9.6_p20180715-r1: PoDoFo is a C++ library to work with the PDF
 app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities
 app-text/stardict 3.0.6-r4 4.0.0_pre20170304: A international dictionary supporting fuzzy and glob style matching
 dev-cpp/cpplint 99999999: The google styleguide together with cpplint and an emacs file
-dev-lang/python 3.6.9 3.7.5-r1: An interpreted, interactive, object-oriented programming language
+dev-lang/python 3.6.9 3.7.5-r1 3.7.6: An interpreted, interactive, object-oriented programming language
 dev-libs/osformat 1.0.5 999999999: C++ library for a typesafe printf/sprintf based on << conversion
 dev-libs/weston 5.0.0-r1 7.0.0: Wayland reference compositor
 dev-perl/File-lchown 0.20-r1: Use the lchown(2) and lutimes(2) system call from Perl
