@@ -9,7 +9,7 @@ inherit flag-o-matic gnome2 multilib virtualx multilib-minimal
 
 DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="https://www.gtk.org/"
-SRC_URI=${SRC_URI}
+SRC_URI=${SRC_URI}" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="3"
@@ -126,6 +126,9 @@ src_prepare() {
 		strip_builddir SRC_SUBDIRS examples Makefile.{am,in}
 	fi
 
+	# Select patches from origin/gtk-3-24 on 2019-12-25
+	eapply "${WORKDIR}"/patches
+
 	# gtk-update-icon-cache is installed by dev-util/gtk-update-icon-cache
 	eapply "${FILESDIR}"/${PN}-3.24.8-update-icon-cache.patch
 
@@ -163,7 +166,6 @@ multilib_src_configure() {
 		$(use_with atk-bridge)
 		# cloudprovider is not packaged in Gentoo yet
 		--disable-cloudproviders
-		--disable-mir-backend
 		--disable-papi
 		# sysprof integration needs >=sysprof-3.33.2
 		--disable-profiler
@@ -208,8 +210,8 @@ multilib_src_install() {
 multilib_src_install_all() {
 	insinto /etc/gtk-3.0
 	doins "${FILESDIR}"/settings.ini
-	# Skip README.{in,commits,win32} and useless ChangeLog that would get installed by default
-	DOCS=( AUTHORS NEWS README )
+	# Skip README.{in,commits,win32} that would get installed by default
+	DOCS=( AUTHORS ChangeLog NEWS README )
 	einstalldocs
 }
 
