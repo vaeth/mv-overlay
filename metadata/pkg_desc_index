@@ -57,6 +57,8 @@ dev-lang/python 3.6.9 3.7.5-r1 3.7.6: An interpreted, interactive, object-orient
 dev-libs/osformat 1.0.5 999999999: C++ library for a typesafe printf/sprintf based on << conversion
 dev-libs/weston 5.0.0-r1 7.0.0: Wayland reference compositor
 dev-perl/File-lchown 0.20-r1: Use the lchown(2) and lutimes(2) system call from Perl
+dev-python/PyPDF2 1.26.0: Python library to work with pdf files
+dev-python/stapler 1.0_pre20191215: Suite of tools for PDF files manipulation written in Python
 dev-tex/chklref 2.6.0 2.6.1_alpha20170913: Finds useless references in latex files or unnecessarily numbered environments
 dev-util/comp 4.3: compare files or directories, including metadata
 dev-util/diffhelp 1.11: A frontend, beautifier, and path-fixer for diff -u
