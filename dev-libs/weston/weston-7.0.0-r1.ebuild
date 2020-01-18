@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	EXPERIMENTAL="true"
 fi
 
-inherit meson readme.gentoo-r1 xdg-utils $GIT_ECLASS
+inherit meson readme.gentoo-r1 toolchain-funcs xdg-utils $GIT_ECLASS
 
 DESCRIPTION="Wayland reference compositor"
 HOMEPAGE="https://wayland.freedesktop.org/ https://gitlab.freedesktop.org/wayland/weston"
@@ -25,7 +25,8 @@ fi
 LICENSE="MIT CC-BY-SA-3.0"
 SLOT="0"
 
-IUSE="colord +desktop +drm editor examples fbdev fullscreen +gles2 headless ivi jpeg +launch lcms pam pipewire rdp remoting +resize-optimization screen-sharing static-libs +suid systemd test wayland-compositor webp +X xwayland"
+IUSE="colord +desktop +drm editor examples fbdev fullscreen +gles2 headless ivi jpeg +launch lcms pam pipewire rdp remoting +resize-optimization screen-sharing +suid systemd test wayland-compositor webp +X xwayland"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	colord? ( lcms )
@@ -82,7 +83,7 @@ RDEPEND="
 	)
 	xwayland? (
 		x11-base/xorg-server[wayland]
-		x11-libs/cairo[xcb]
+		x11-libs/cairo[X,xcb(+)]
 		>=x11-libs/libxcb-1.9
 		x11-libs/libXcursor
 	)
@@ -127,7 +128,7 @@ src_configure() {
 		-Dtools=debug,info,terminal
 		-Dsimple-dmabuf-drm=auto
 		$(meson_use examples demo-clients)
-		$(usex examples -Dsimple-clients=damage,dmabuf-v4l,im,shm,touch$(usex gles2 ,dmabuf-egl,egl "") "")
+		-Dsimple-clients=$(usex examples damage,dmabuf-v4l,im,shm,touch$(usex gles2 ,dmabuf-egl,egl "") "")
 		$(meson_use resize-optimization resize-pool)
 		-Dtest-junit-xml=false
 		"${myconf[@]}"
