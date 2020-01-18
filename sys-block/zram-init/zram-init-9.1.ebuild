@@ -1,4 +1,4 @@
-# Copyright 2011-2019 Martin V\"ath
+# Copyright 2011-2020 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -39,6 +39,7 @@ src_install() {
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
 	dodoc AUTHORS ChangeLog README.md
+	doman man/*
 	readme.gentoo_create_doc
 	into $(get_usr)/
 	dosbin sbin/*
