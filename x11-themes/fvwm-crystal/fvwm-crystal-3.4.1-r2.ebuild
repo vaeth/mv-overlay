@@ -14,6 +14,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+IUSE=""
 
 case ${PV} in
 *9999)
