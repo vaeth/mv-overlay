@@ -88,15 +88,18 @@ app-text/lesspipe:id3v2 - Support mp3 files with media-sound/id3v2; this overrid
 app-text/lesspipe:image - Support image/jpg files
 app-text/lesspipe:isoinfo - Support CD/DVD-iso files
 app-text/lesspipe:libplist - Support Apple Property List files
+app-text/lesspipe:libreoffice - Support msword and rtf conversion using app-office/libreoffice
 app-text/lesspipe:links - Support html files with www-client/links; ignored if html2text is set; this overrides lynx, elinks, w3m
 app-text/lesspipe:lynx - Support html files with www-client/lynx; ignored if html2text or links is set; this overrides elinks, w3m
 app-text/lesspipe:lz4 - Support lz4 files; requires app-arch/lz4
 app-text/lesspipe:lzip - Support lzip files
+app-text/lesspipe:mediainfo - Support media display using media-video/mediainfo
 app-text/lesspipe:mp3info - Support mp3 files with media-sound/mp3info; unused if id3v2 or mp3info2 is set
 app-text/lesspipe:mp3info2 - Support mp3 files with dev-perl/MP3-Tag (mp3info2); ignored if id3v2 is set; this overrides mp3info
 app-text/lesspipe:netcdf - Support ncdump from sci-libs/netcdf
 app-text/lesspipe:ooffice - Support OpenOffice files
 app-text/lesspipe:p7zip - Support p7zip files
+app-text/lesspipe:pandoc - Support msword and rtf conversion using app-text/pandoc
 app-text/lesspipe:pdf - Support pdf files
 app-text/lesspipe:pstotext - Support ps files with app-text/pstotext; this overrides ghostscript
 app-text/lesspipe:rar - Support rar files with app-arch/rar; unused if unrar is set
@@ -106,6 +109,7 @@ app-text/lesspipe:unrar - Support rar files with app-arch/unrar; this overrides 
 app-text/lesspipe:unrtf - Support rtf files with app-text/unrtf
 app-text/lesspipe:unzip - Support zip files with app-arch/unzip
 app-text/lesspipe:w3m - Support html files with www-client/w3m; ignored if html2text, links, lynx, or elinks is set
+app-text/lesspipe:wv - Support msword and rtf conversion using app-text/wv
 app-text/lesspipe:xlhtml - Support Excel and Powerpoint files with app-arch/xlhtml
 app-text/lesspipe:zstd - Support brotli files; requires app-arch/zstd
 app-text/podofo:boost - Add support for boost

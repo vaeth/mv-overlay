@@ -31,16 +31,19 @@
 		<flag name="id3v2">Support mp3 files with media-sound/id3v2; this overrides mp3info2, mp3info</flag>
 		<flag name="image">Support image/jpg files</flag>
 		<flag name="isoinfo">Support CD/DVD-iso files</flag>
+		<flag name="libreoffice">Support msword and rtf conversion using app-office/libreoffice</flag>
 		<flag name="libplist">Support Apple Property List files</flag>
 		<flag name="links">Support html files with www-client/links; ignored if html2text is set; this overrides lynx, elinks, w3m</flag>
 		<flag name="lynx">Support html files with www-client/lynx; ignored if html2text or links is set; this overrides elinks, w3m</flag>
 		<flag name="lz4">Support lz4 files; requires app-arch/lz4</flag>
 		<flag name="lzip">Support lzip files</flag>
+		<flag name="mediainfo">Support media display using media-video/mediainfo</flag>
 		<flag name="mp3info">Support mp3 files with media-sound/mp3info; unused if id3v2 or mp3info2 is set</flag>
 		<flag name="mp3info2">Support mp3 files with dev-perl/MP3-Tag (mp3info2); ignored if id3v2 is set; this overrides mp3info</flag>
 		<flag name="netcdf">Support ncdump from sci-libs/netcdf</flag>
 		<flag name="ooffice">Support OpenOffice files</flag>
 		<flag name="p7zip">Support p7zip files</flag>
+		<flag name="pandoc">Support msword and rtf conversion using app-text/pandoc</flag>
 		<flag name="pdf">Support pdf files</flag>
 		<flag name="pstotext">Support ps files with app-text/pstotext; this overrides ghostscript</flag>
 		<flag name="rar">Support rar files with app-arch/rar; unused if unrar is set</flag>
@@ -50,6 +53,7 @@
 		<flag name="unrtf">Support rtf files with app-text/unrtf</flag>
 		<flag name="unzip">Support zip files with app-arch/unzip</flag>
 		<flag name="w3m">Support html files with www-client/w3m; ignored if html2text, links, lynx, or elinks is set</flag>
+		<flag name="wv">Support msword and rtf conversion using app-text/wv</flag>
 		<flag name="xlhtml">Support Excel and Powerpoint files with app-arch/xlhtml</flag>
 		<flag name="zstd">Support brotli files; requires app-arch/zstd</flag>
 	</use>
