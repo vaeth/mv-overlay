@@ -26,7 +26,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-RDEPEND="app-portage/gentoolkit[${PYTHON_USEDEP}]"
+RDEPEND=$(python_gen_cond_dep 'app-portage/gentoolkit[${PYTHON_MULTI_USEDEP}]')
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_prepare() {
