@@ -18,7 +18,7 @@ IUSE="debug +dep doc +jumbo-build"
 for i in ${PLOCALES}; do
 	IUSE+=" l10n_${i}"
 done
-IUSE+=" +meson nls optimization +required-use security +src-uri strong-optimization strong-security sqlite swap-remote tools"
+IUSE+=" +meson nls optimization +required-use security +src-uri strong-optimization strong-security sqlite swap-remote tools usr-portage"
 
 DEPEND="nls? ( virtual/libintl )
 	sqlite? ( >=dev-db/sqlite-3:= )"
@@ -69,6 +69,7 @@ src_configure() {
 		$(meson_use dep dep-default)
 		$(meson_use required-use required-use-default)
 		$(meson_use src-uri src-uri-default)
+		$(usex usr-portage -Dportdir-default=/usr/portage '')
 		-Dzsh-completion="${EPREFIX}/usr/share/zsh/site-functions"
 		-Dportage-rootpath="${ROOTPATH}"
 		-Deprefix-default="${EPREFIX}"
@@ -97,6 +98,7 @@ src_configure() {
 		$(use_with dep dep-default)
 		$(use_with required-use required-use-default)
 		$(use_with src-uri src-uri-default)
+		$(use_with usr-portage portdir-default /usr/portage)
 		--with-zsh-completion
 		--with-portage-rootpath="${ROOTPATH}"
 		--with-eprefix-default="${EPREFIX}"

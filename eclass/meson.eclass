@@ -1,4 +1,4 @@
-# Copyright 2017-2018 Gentoo Authors
+# Copyright 2017-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: meson.eclass
@@ -51,7 +51,7 @@ fi
 
 if [[ -z ${_MESON_ECLASS} ]]; then
 
-inherit ninja-utils python-utils-r1 toolchain-funcs
+inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
 
 fi
 
@@ -60,8 +60,8 @@ EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
-MESON_DEPEND=">=dev-util/meson-0.45.1
-	>=dev-util/ninja-1.7.2"
+MESON_DEPEND=">=dev-util/meson-0.51.2
+	>=dev-util/ninja-1.8.2"
 
 # @ECLASS-VARIABLE: MESON_AUTO_DEPEND
 # @DESCRIPTION:
@@ -96,6 +96,12 @@ __MESON_AUTO_DEPEND=${MESON_AUTO_DEPEND} # See top of eclass
 # @DESCRIPTION:
 # Optional meson arguments as Bash array; this should be defined before
 # calling meson_src_configure.
+
+# @VARIABLE: emesontestargs
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Optional meson test arguments as Bash array; this should be defined before
+# calling meson_src_test.
 
 
 read -d '' __MESON_ARRAY_PARSER <<"EOF"
@@ -173,6 +179,7 @@ _meson_create_cross_file() {
 	objcpp = $(_meson_env_array "$(tc-getPROG OBJCXX c++)")
 	pkgconfig = '$(tc-getPKG_CONFIG)'
 	strip = $(_meson_env_array "$(tc-getSTRIP)")
+	windres = $(_meson_env_array "$(tc-getRC)")
 
 	[properties]
 	c_args = $(_meson_env_array "${CFLAGS} ${CPPFLAGS}")
@@ -205,6 +212,19 @@ _meson_create_cross_file() {
 # If the project option is unspecified, it defaults to the USE flag.
 meson_use() {
 	usex "$1" "-D${2-$1}=true" "-D${2-$1}=false"
+}
+
+# @FUNCTION: meson_feature
+# @USAGE: <USE flag> [option name]
+# @DESCRIPTION:
+# Given a USE flag and meson project option, outputs a string like:
+#
+#   -Doption=enabled
+#   -Doption=disabled
+#
+# If the project option is unspecified, it defaults to the USE flag.
+meson_feature() {
+	usex "$1" "-D${2-$1}=enabled" "-D${2-$1}=disabled"
 }
 
 # @FUNCTION: meson_src_configure
@@ -243,30 +263,46 @@ meson_src_configure() {
 }
 
 # @FUNCTION: meson_src_compile
+# @USAGE: [extra ninja arguments]
 # @DESCRIPTION:
 # This is the meson_src_compile function.
 meson_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	eninja -C "${BUILD_DIR}"
+	eninja -C "${BUILD_DIR}" "$@"
 }
 
 # @FUNCTION: meson_src_test
+# @USAGE: [extra meson test arguments]
 # @DESCRIPTION:
 # This is the meson_src_test function.
 meson_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	eninja -C "${BUILD_DIR}" test
+	local mesontestargs=(
+		-C "${BUILD_DIR}"
+	)
+	[[ -n ${NINJAOPTS} || -n ${MAKEOPTS} ]] &&
+		mesontestargs+=(
+			--num-processes "$(makeopts_jobs ${NINJAOPTS:-${MAKEOPTS}})"
+		)
+
+	# Append additional arguments from ebuild
+	mesontestargs+=("${emesontestargs[@]}")
+
+	set -- meson test "${mesontestargs[@]}" "$@"
+	echo "$@" >&2
+	"$@" || die "tests failed"
 }
 
 # @FUNCTION: meson_src_install
+# @USAGE: [extra ninja install arguments]
 # @DESCRIPTION:
 # This is the meson_src_install function.
 meson_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	DESTDIR="${D}" eninja -C "${BUILD_DIR}" install
+	DESTDIR="${D}" eninja -C "${BUILD_DIR}" install "$@"
 	einstalldocs
 }
 
