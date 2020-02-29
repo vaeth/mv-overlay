@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2020 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ inherit flag-o-matic gnome2 multilib virtualx multilib-minimal
 
 DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="https://www.gtk.org/"
-SRC_URI=${SRC_URI}" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
+SRC_URI=${SRC_URI-}
 
 LICENSE="LGPL-2+"
 SLOT="3"
@@ -19,7 +19,7 @@ REQUIRED_USE="
 	xinerama? ( X )
 "
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 # Upstream wants us to do their job:
 # https://bugzilla.gnome.org/show_bug.cgi?id=768662#c1
@@ -46,7 +46,7 @@ COMMON_DEPEND="
 	cups? ( >=net-print/cups-2.0[${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-1.39:= )
 	wayland? (
-		>=dev-libs/wayland-1.9.91[${MULTILIB_USEDEP}]
+		>=dev-libs/wayland-1.14.91[${MULTILIB_USEDEP}]
 		>=dev-libs/wayland-protocols-1.14
 		media-libs/mesa[wayland,${MULTILIB_USEDEP}]
 		>=x11-libs/libxkbcommon-0.2[${MULTILIB_USEDEP}]
@@ -125,9 +125,6 @@ src_prepare() {
 		strip_builddir SRC_SUBDIRS demos Makefile.{am,in}
 		strip_builddir SRC_SUBDIRS examples Makefile.{am,in}
 	fi
-
-	# Select patches from origin/gtk-3-24 on 2019-12-25
-	eapply "${WORKDIR}"/patches
 
 	# gtk-update-icon-cache is installed by dev-util/gtk-update-icon-cache
 	eapply "${FILESDIR}"/${PN}-3.24.8-update-icon-cache.patch
