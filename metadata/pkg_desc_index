@@ -116,7 +116,7 @@ sys-kernel/kccmp 0.3-r1: A simple tool for comparing two linux kernel .config fi
 sys-kernel/kernel 5.0: A POSIX shell script to compile the kernel with user permissions
 virtual/cdrtools 1: Virtual for command-line recorders cdrtools and cdrkit
 virtual/freedesktop-icon-theme 0-r3: A virtual to choose between different icon themes
-www-plugins/bookmark-dupes 6.1: Firefox webextension: remove duplicate bookmarks/empty folders/descriptions
+www-plugins/bookmark-dupes 6.3: Firefox webextension: remove duplicate bookmarks/empty folders/descriptions
 www-plugins/calc-extension 5.3: Firefox webextension: calculate values of mathematical expressions
 www-plugins/canvasblocker 0.5.5: Firefox webextension: block canvas API to prevent canvas fingerprinting
 www-plugins/dark-mode 0.3.3: Firefox webextension: a global dark theme for the web
