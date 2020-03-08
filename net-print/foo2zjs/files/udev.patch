@@ -1,0 +1,11 @@
+--- 1/Makefile
+--- 1/Makefile
+@@ -933,7 +933,7 @@
+ 	    echo "      *** OR (generic linux)"; \
+ 	    echo "      ***	# rm -f $(LIBUDEVDIR)/*-printers.rules"; \
+ 	    echo "      ***"; \
+-	    exit 1; \
++	    # exit 1; \
+ 	fi
+ 	# ... OK!
+ 	#

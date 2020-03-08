@@ -189,59 +189,6 @@ media-tv/w_scan:plp-id-zero - Apply experimental patch to force plp_id to 0 for 
 media-video/avidemux:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.
 net-dns/noip-updater:ezipupd - Use user/group ezipupd instead of nobody: Useful if you restrict outgoing network traffic for user nobody
 net-libs/wvstreams:boost - Use dev-libs/boost to provide TR1-compatible functional interface. This USE flag is only needed with GCC earlier than version 4.1, or with other compilares not providing said interface.
-net-print/foo2zjs:foo2zjs_devices_hp1000 - HP LJ 1000 firmware
-net-print/foo2zjs:foo2zjs_devices_hp1005 - HP LJ 1005 firmware
-net-print/foo2zjs:foo2zjs_devices_hp1018 - HP LJ 1018 firmware
-net-print/foo2zjs:foo2zjs_devices_hp1020 - HP LJ 1020 firmware
-net-print/foo2zjs:foo2zjs_devices_hp1025 - HP LaserJet Pro CP1025nw ICM
-net-print/foo2zjs:foo2zjs_devices_hp1215 - HP Color LaserJet CP1215 ICM
-net-print/foo2zjs:foo2zjs_devices_hp1500 - HP Color LaserJet 1500 ICM
-net-print/foo2zjs:foo2zjs_devices_hp1600 - HP Color LaserJet 1600 ICM
-net-print/foo2zjs:foo2zjs_devices_hp2600n - HP Color LaserJet 2600n ICM
-net-print/foo2zjs:foo2zjs_devices_hpp1005 - HP LJ P1005 firmware
-net-print/foo2zjs:foo2zjs_devices_hpp1006 - HP LJ P1006 firmware
-net-print/foo2zjs:foo2zjs_devices_hpp1007 - HP LJ P1007 firmware
-net-print/foo2zjs:foo2zjs_devices_hpp1008 - HP LJ P1008 firmware
-net-print/foo2zjs:foo2zjs_devices_hpp1505 - HP LJ P1505 firmware
-net-print/foo2zjs:foo2zjs_devices_km2200 - Minolta 2200 DL ICM
-net-print/foo2zjs:foo2zjs_devices_km2300 - Minolta 2300 DL ICM
-net-print/foo2zjs:foo2zjs_devices_km2430 - Konica Minolta 2430 DL ICM
-net-print/foo2zjs:foo2zjs_devices_km2480 - Konica Minolta 2480 DL ICM
-net-print/foo2zjs:foo2zjs_devices_km2490 - Konica Minolta 2490 DL ICM
-net-print/foo2zjs:foo2zjs_devices_km2530 - Konica Minolta 2530 DL ICM
-net-print/foo2zjs:foo2zjs_devices_kmcpwl - Minolta Color PageWorks/Pro L ICM
-net-print/foo2zjs:foo2zjs_devices_lm500 - Lexmark C500 ICM
-net-print/foo2zjs:foo2zjs_devices_oki301 - Oki C301dn ICM
-net-print/foo2zjs:foo2zjs_devices_oki310 - Oki C310dn ICM
-net-print/foo2zjs:foo2zjs_devices_oki3100 - Oki C3100 ICM
-net-print/foo2zjs:foo2zjs_devices_oki3200 - Oki C3200 ICM
-net-print/foo2zjs:foo2zjs_devices_oki3300 - Oki C3300 ICM
-net-print/foo2zjs:foo2zjs_devices_oki3400 - Oki C3400 ICM
-net-print/foo2zjs:foo2zjs_devices_oki3530 - Oki C3530 MFP ICM
-net-print/foo2zjs:foo2zjs_devices_oki5100 - Oki C5100 ICM
-net-print/foo2zjs:foo2zjs_devices_oki511 - Oki C511dn ICM
-net-print/foo2zjs:foo2zjs_devices_oki5150 - Oki C5150n ICM
-net-print/foo2zjs:foo2zjs_devices_oki5200 - Oki C5200 ICM
-net-print/foo2zjs:foo2zjs_devices_oki5250 - Oki C5250n ICM
-net-print/foo2zjs:foo2zjs_devices_oki5500 - Oki C5500 ICM
-net-print/foo2zjs:foo2zjs_devices_oki5600 - Oki C5600 ICM
-net-print/foo2zjs:foo2zjs_devices_oki5800 - Oki C5800 ICM
-net-print/foo2zjs:foo2zjs_devices_oki810 - Oki C810 ICM
-net-print/foo2zjs:foo2zjs_devices_oli160 - Olivetti d-Color P160W ICM
-net-print/foo2zjs:foo2zjs_devices_sa2160 - Samsung CLX-2160 ICM
-net-print/foo2zjs:foo2zjs_devices_sa300 - Samsung CLP-300 ICM
-net-print/foo2zjs:foo2zjs_devices_sa310 - Samsung CLP-310 ICM
-net-print/foo2zjs:foo2zjs_devices_sa315 - Samsung CLP-315 ICM
-net-print/foo2zjs:foo2zjs_devices_sa3160 - Samsung CLX-3160 ICM
-net-print/foo2zjs:foo2zjs_devices_sa3175 - Samsung CLX-3175 ICM
-net-print/foo2zjs:foo2zjs_devices_sa3185 - Samsung CLX-3185 ICM
-net-print/foo2zjs:foo2zjs_devices_sa325 - Samsung CLP-325 ICM
-net-print/foo2zjs:foo2zjs_devices_sa360 - Samsung CLP-360 ICM
-net-print/foo2zjs:foo2zjs_devices_sa365 - Samsung CLP-365 ICM
-net-print/foo2zjs:foo2zjs_devices_sa600 - Samsung CLP-600 ICM
-net-print/foo2zjs:foo2zjs_devices_sa610 - Samsung CLP-610 ICM
-net-print/foo2zjs:foo2zjs_devices_xp6110 - Xerox Phaser 6110 and 6110MFP ICM
-net-print/foo2zjs:foo2zjs_devices_xp6115 - Xerox Phaser 6115MFP ICM
 net-print/foo2zjs:foomaticdb - Add support for the foomatic printing driver database
 sci-geosciences/googleearth:bundled-libs - Use bundled libraries.
 sci-geosciences/googleearth:bundled-qt - Use bundled qt.

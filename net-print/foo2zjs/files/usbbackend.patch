@@ -1,0 +1,11 @@
+--- 1/hplj1000
++++ 1/hplj1000
+@@ -42,7 +42,7 @@
+ # Path to the USB CUPS backend. We use this backend to upload the firmware
+ # into the printer when we are on a CUPS/libusb-based system.
+ #
+-USB_BACKEND=/usr/lib/cups/backend/usb
++USB_BACKEND=/usr/libexec/cups/backend/usb
+ 
+ #
+ # Directory to find downloadable HP firmware files sihpMMMM.dl
