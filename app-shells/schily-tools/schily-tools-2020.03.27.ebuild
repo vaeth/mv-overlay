@@ -1,4 +1,4 @@
-# Copyright 2016-2019 Martin V\"ath and Gentoo Authors
+# Copyright 2016-2020 Martin V\"ath and Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -487,6 +487,7 @@ src_install() {
 	fi
 	if use renameschily_getopt && have_target libgetopt; then
 		mv -v -- "${ED}"/usr/share/man/man3/{,schily-}getopt.3 || die
+		mv -v -- "${ED}"/usr/share/man/man3/{,schily-}getsubopt.3 || die
 	fi
 	use split-usr || move_to_usr_bin "${ED}"/bin/*
 }
