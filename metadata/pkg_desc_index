@@ -93,7 +93,7 @@ net-firewall/firewall-mv 13.1-r1: Initialize iptables and net-related sysctl var
 net-libs/wvstreams 4.6.2_alpha20181025: A network programming library in C++
 net-misc/netctl 1.11: Profile based network connection tool from Arch Linux
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
-net-misc/sshstart 4.7: Start ssh-agent/ssh-add only if you really use ssh or friends
+net-misc/sshstart 4.8: Start ssh-agent/ssh-add only if you really use ssh or friends
 net-print/foo2zjs 20200221: Support for printing to ZjStream-based printers
 sci-geosciences/googleearth 7.1.8.3036-r3 7.3.0.3832-r3 7.3.2-r2: A 3D interface to the planet
 sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
@@ -116,7 +116,7 @@ sys-kernel/kccmp 0.3-r1: A simple tool for comparing two linux kernel .config fi
 sys-kernel/kernel 5.0: A POSIX shell script to compile the kernel with user permissions
 virtual/cdrtools 1: Virtual for command-line recorders cdrtools and cdrkit
 virtual/freedesktop-icon-theme 0-r3: A virtual to choose between different icon themes
-www-plugins/bookmark-dupes 6.3: Firefox webextension: remove duplicate bookmarks/empty folders/descriptions
+www-plugins/bookmark-dupes 6.4: Firefox webextension: remove duplicate bookmarks/empty folders/descriptions
 www-plugins/calc-extension 5.3: Firefox webextension: calculate values of mathematical expressions
 www-plugins/canvasblocker 0.5.5: Firefox webextension: block canvas API to prevent canvas fingerprinting
 www-plugins/dark-mode 0.3.3: Firefox webextension: a global dark theme for the web
