@@ -74,7 +74,7 @@ games-engines/freesci 0.6.4-r1: Sierra script interpreter for your old Sierra ad
 games-puzzle/fish-fillets 1.0.1-r1: Underwater puzzle game - find a safe way out
 games-rpg/aklabeth 1.0-r1: A remake of Richard C. Garriott's Ultima prequel
 games-rpg/dsa-stats 1.0: calculate stat probabalities for the role playing game DSA - Das schwarze Auge
-games-rpg/m5figur-mv 4.1.5: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
+games-rpg/m5figur-mv 4.1.6: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
 media-gfx/ipe 7.2.7: Drawing editor for creating figures in PDF or PS formats
 media-gfx/pqiv 2.11: powerful GTK based command-line image viewer with a minimal UI
 media-libs/avidemux-core 2.7.4-r1: Core libraries for simple video cutting, filtering and encoding tasks
@@ -93,7 +93,7 @@ net-firewall/firewall-mv 13.1-r1: Initialize iptables and net-related sysctl var
 net-libs/wvstreams 4.6.2_alpha20181025: A network programming library in C++
 net-misc/netctl 1.11: Profile based network connection tool from Arch Linux
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
-net-misc/sshstart 4.8: Start ssh-agent/ssh-add only if you really use ssh or friends
+net-misc/sshstart 4.9: Start ssh-agent/ssh-add only if you really use ssh or friends
 net-print/foo2zjs 20200221: Support for printing to ZjStream-based printers
 sci-geosciences/googleearth 7.1.8.3036-r3 7.3.0.3832-r3 7.3.2-r2: A 3D interface to the planet
 sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
