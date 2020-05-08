@@ -5,8 +5,8 @@ EAPI=7
 
 DESCRIPTION="Excellent text file viewer, optionally with additional selection feature"
 PATCHN="less-select"
-PATCHV="2.9"
-PATCHVER="529"
+PATCHV="2.10"
+PATCHVER="560"
 PATCHRUMP="${PATCHN}-${PATCHV}"
 PATCHBALL="${PATCHRUMP}.tar.gz"
 SELECTDIR="${WORKDIR}/${PATCHRUMP}"
@@ -78,7 +78,7 @@ src_install() {
 	doenvd 70less
 
 	if use less-select
-	then	newdoc "${SELECTDIR}"/README README.less-select
+	then	newdoc "${SELECTDIR}"/README.md README.less-select
 		dobin "${SELECTDIR}/bin/"*
 		insinto /etc/less
 		doins select-key.bin normal-key.bin
