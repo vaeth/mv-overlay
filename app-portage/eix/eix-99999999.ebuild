@@ -32,7 +32,7 @@ IUSE="debug +dep doc +jumbo-build"
 for i in ${PLOCALES}; do
 	IUSE+=" l10n_${i}"
 done
-IUSE+=" +meson nls optimization +required-use security +src-uri strong-optimization strong-security sqlite swap-remote tools usr-portage"
+IUSE+=" +meson nls optimization protobuf +required-use security +src-uri strong-optimization strong-security sqlite swap-remote tools usr-portage"
 
 DEPEND="nls? ( virtual/libintl )
 	sqlite? ( >=dev-db/sqlite-3:= )"
@@ -45,7 +45,8 @@ BDEPEND="meson? (
 		strong-optimization? ( >=sys-devel/gcc-config-1.9.1 )
 		nls? ( sys-devel/gettext )
 	)
-	!meson? ( ${AUTOTOOLS_DEPEND} >=sys-devel/gettext-0.19.6 )"
+	!meson? ( ${AUTOTOOLS_DEPEND} >=sys-devel/gettext-0.19.6 )
+	protobuf? ( dev-libs/protobuf )"
 
 pkg_setup() {
 	# remove stale cache file to prevent collisions
@@ -74,6 +75,7 @@ src_configure() {
 		-Dhtmldir="${EPREFIX}/usr/share/doc/${P}/html"
 		$(meson_use jumbo-build)
 		$(meson_use sqlite)
+		$(meson_use protobuf)
 		$(meson_use doc extra-doc)
 		$(meson_use nls)
 		$(meson_use tools separate-tools)
@@ -103,6 +105,7 @@ src_configure() {
 		local myconf=(
 		$(use_enable jumbo-build)
 		$(use_with sqlite)
+		$(use_with protobuf)
 		$(use_with doc extra-doc)
 		$(use_enable nls)
 		$(use_enable tools separate-tools)

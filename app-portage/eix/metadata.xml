@@ -12,6 +12,7 @@
     <flag name="jumbo-build">Compile faster and produce better binary. Recommended unless compiling on a quite memory-restricted system.</flag>
     <flag name="meson">Build with meson instead of autotools. Faster but less compatible</flag>
     <flag name="optimization">Accept upstream's choices for CXXFLAGS/LDFLAGS for optimization. Absense of this USE flag does not strip user's *FLAGS</flag>
+    <flag name="protobuf">Use dev-libs/protobuf to suport proto output with --proto</flag>
     <flag name="required-use">Make REQUIRED_USE=true the default which enables support for REQUIRED_USE but requires more disk and memory.</flag>
     <flag name="security">This adds some checks which can prevent certain exploits if e.g. the eix code has a bug. If you use the hardened toolchain, using this flag does not increase security and can even lead to problems.</flag>
     <flag name="sqlite">Compile in support for portage's sqlite backend; to actually use it you need additional configuration of portage and eix</flag>
