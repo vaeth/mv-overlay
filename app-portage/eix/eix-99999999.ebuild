@@ -158,6 +158,7 @@ src_install() {
 	fi
 	dobashcomp bash/eix
 	dotmpfiles tmpfiles.d/eix.conf
+	use doc && dodoc src/output/eix.proto
 }
 
 pkg_postinst() {
