@@ -27,7 +27,6 @@ app-portage/etcat 1.0.2 99999999: Updated version of an old Portage information 
 app-portage/find_cruft 5.1: find cruft files not managed by portage
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
 app-portage/logclean 18.4: Keep only (compressed) logs of installed packages and cleanup emerge.log
-app-portage/overlint 0.5.3-r1: Simple tool for static analysis of overlays
 app-portage/portage-bashrc-mv 20.0: Provide support for /etc/portage/bashrc.d and /etc/portage/package.cflags
 app-portage/portage-postsyncd-mv 8.3: postsync hooks for portage to sync from git
 app-portage/trickyfetch 10.0: Plugin for FETCHCOMMAND to help organize and cleanup your DISTDIR
@@ -99,7 +98,7 @@ sci-geosciences/googleearth 7.1.8.3036-r3 7.3.0.3832-r3 7.3.2-r2: A 3D interface
 sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
 sci-mathematics/reduce 20141130-r2 20190413: A general-purpose computer algebra system
 sys-apps/cpi 3.1: A wrapper for cp -i -a, making use of diff
-sys-apps/less 560: Excellent text file viewer, optionally with additional selection feature
+sys-apps/less 561: Excellent text file viewer, optionally with additional selection feature
 sys-apps/man 1.6g-r1: Standard commands to read man pages
 sys-apps/openrc-wrapper 2.3-r2: Use openrc init scripts with systemd or other init systems
 sys-apps/paxopen 1.2: A wrapper script to set PAX kernel variables to an insecure/safe state
