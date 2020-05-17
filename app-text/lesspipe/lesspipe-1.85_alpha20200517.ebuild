@@ -21,7 +21,7 @@ case ${PV} in
 	KEYWORDS="";;
 *alpha*)
 	RESTRICT="mirror"
-	EGIT_COMMIT="d13c24786e7af2eecb10ebaeec811acbac8553af"
+	EGIT_COMMIT="45bec232114c0dbfba2284f1ec594eccc80db49c"
 	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 esac
