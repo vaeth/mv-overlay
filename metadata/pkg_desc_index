@@ -98,7 +98,7 @@ sci-geosciences/googleearth 7.1.8.3036-r3 7.3.0.3832-r3 7.3.2-r2: A 3D interface
 sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
 sci-mathematics/reduce 20141130-r2 20190413: A general-purpose computer algebra system
 sys-apps/cpi 3.1: A wrapper for cp -i -a, making use of diff
-sys-apps/less 561: Excellent text file viewer, optionally with additional selection feature
+sys-apps/less 562: Excellent text file viewer, optionally with additional selection feature
 sys-apps/man 1.6g-r1: Standard commands to read man pages
 sys-apps/openrc-wrapper 2.3-r2: Use openrc init scripts with systemd or other init systems
 sys-apps/paxopen 1.2: A wrapper script to set PAX kernel variables to an insecure/safe state
