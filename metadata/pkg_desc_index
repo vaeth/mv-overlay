@@ -22,7 +22,7 @@ app-eselect/eselect-net 0.2-r1: eselect module for managing network open-rc serv
 app-misc/knapsack 7.2.1-r1: A fast solver for the 0/1-knapsack problem with multiple knapsacks
 app-misc/machine-learning-mv 1.2-r1: Some machine learning experiments
 app-portage/changelog-gitrepo 1.0: Create ChangeLog data for gentoo repositories from git
-app-portage/eix 0.34.2 99999999: Search and query ebuilds
+app-portage/eix 0.34.3 99999999: Search and query ebuilds
 app-portage/etcat 1.0.2 99999999: Updated version of an old Portage information extractor
 app-portage/find_cruft 5.1: find cruft files not managed by portage
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
@@ -73,7 +73,7 @@ games-engines/freesci 0.6.4-r1: Sierra script interpreter for your old Sierra ad
 games-puzzle/fish-fillets 1.0.1-r1: Underwater puzzle game - find a safe way out
 games-rpg/aklabeth 1.0-r1: A remake of Richard C. Garriott's Ultima prequel
 games-rpg/dsa-stats 1.0: calculate stat probabalities for the role playing game DSA - Das schwarze Auge
-games-rpg/m5figur-mv 4.1.7: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
+games-rpg/m5figur-mv 4.1.8: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
 media-gfx/ipe 7.2.7: Drawing editor for creating figures in PDF or PS formats
 media-gfx/pqiv 2.11: powerful GTK based command-line image viewer with a minimal UI
 media-libs/avidemux-core 2.7.4-r1: Core libraries for simple video cutting, filtering and encoding tasks
