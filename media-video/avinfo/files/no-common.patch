@@ -1,0 +1,25 @@
+--- 1/src/avinfo.h
++++ 1/src/avinfo.h
+@@ -35,11 +35,11 @@
+ 	V_aspectX,
+ 	V_aspectY,
+ 	V_exist
+-}video_enum;
++};
+ 
+ #define VIDEO_INFO_SIZE (V_exist+1)
+ 
+-enum{
++enum audio_enum{
+ 	A_l,
+ 	A_bits,
+ 	A_cc,
+@@ -48,7 +48,7 @@
+ 	A_ch,
+ 	A_freq,
+ 	A_exist
+-}audio_enum;
++};
+ 
+ 
+ #define AUDIO_INFO_SIZE (A_exist+1)

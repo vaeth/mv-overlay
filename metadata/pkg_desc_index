@@ -39,7 +39,7 @@ app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
 app-shells/push 3.1-r4: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 4.1-r1: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/runtitle 2.10: Scripts to run commands and set the hard status line (windows title)
-app-shells/schily-tools 2020.03.27: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
+app-shells/schily-tools 2020.05.11: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
 app-shells/set_prompt 3.1: An intelligent prompt for zsh or bash with status line (window title) support
 app-shells/termcolors-mv 4.7-r1: 256colors sample script and dircolors configuration for standard or 256 colors
 app-shells/zsh-autosuggestions 0.6.4 99999999: Fish-like autosuggestions for zsh
@@ -82,7 +82,7 @@ media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
 media-tv/sundtek-tv 200325.155550: Sundtek MediaTV Pro III Drivers
 media-tv/w_scan 20170107-r1: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies
 media-video/avidemux 2.7.4-r1: Video editor designed for simple cutting, filtering and encoding tasks
-media-video/avinfo 1.0_alpha15_p1: Utility for displaying AVI information
+media-video/avinfo 1.0_alpha15_p1-r1: Utility for displaying AVI information
 media-video/video-mv 16.2: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
 net-dialup/accounting 1.60.45.3.1-r1: Give statistics about dialup connections. Originally part of SuSE's smpppd
 net-dialup/martian-modem 20100123-r3: ltmodem alternative driver providing support for Agere Systems winmodems

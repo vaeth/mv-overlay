@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2020 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,6 +22,7 @@ S="${WORKDIR}"/${PN}-1.0.a15
 src_prepare() {
 	eapply "${WORKDIR}"/${MY_P}-patch1/${MY_P}-patch1.diff
 	eapply "${FILESDIR}"/no-bison.patch
+	eapply "${FILESDIR}"/no-common.patch
 	sed -i -e 's/$(CC) $(OBJ)/$(CC) $(LDFLAGS) $(OBJ)/' src/Makefile || die
 	default
 }
