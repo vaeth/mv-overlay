@@ -4,7 +4,7 @@
 EAPI=7
 RESTRICT="mirror" # do not access gentoo mirror until it actually is there
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit eutils readme.gentoo-r1 python-r1 user
 
 DESCRIPTION="Configurable FVWM theme with transparency and freedesktop compatible menu"
