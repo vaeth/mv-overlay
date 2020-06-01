@@ -1,0 +1,11 @@
+--- 1/src/makewhatis.sh
++++ 1/src/makewhatis.sh
+@@ -348,7 +348,7 @@
+ 	            sub(/^.Li /, "");         # Kill .Li
+ 	            sub(/^.Dq /, "");         # Kill .Dq
+ 	            sub(/^.Nd */, "- ");      # Convert .Nd to dash
+-		    sub(/\\\".*/, "");        # Trim pending comments
++		    sub(/\\".*/, "");         # Trim pending comments
+ 		    sub(/  *$/, "");          # Trim pending spaces
+ 		    sub(/^\.$/, "");          # Kill blank comments
+ 		    sub(/^'"'"'.*/, "");      # Kill comment/troff lines

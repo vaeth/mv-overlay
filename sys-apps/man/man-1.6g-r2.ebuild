@@ -40,6 +40,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/man-1.6g-xz.patch #302380
 	eapply "${FILESDIR}"/man-1.6f-makewhatis-compression-cleanup.patch #331979
 	eapply "${FILESDIR}"/man-1.6g-echo-escape.patch #523874
+	eapply "${FILESDIR}"/man-1.6g-gawk-5.patch #683494
 	# make sure `less` handles escape sequences #287183
 	sed -i -e '/^DEFAULTLESSOPT=/s:"$:R":' configure
 	default
