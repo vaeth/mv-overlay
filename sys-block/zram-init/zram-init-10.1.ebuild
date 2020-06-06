@@ -36,15 +36,19 @@ src_compile() {
 }
 
 src_install() {
-	local i po
+	local i po mani18n
 	po=
+	mani18n=
 	for i in ${LINGUAS}; do
-		eval use "l10n_${i}" && po=${po}${po:+\ }i18n/${i}.po
+		if eval use "l10n_${i}"; then
+			po=${po}${po:+\ }i18n/${i}.po
+			mani18n=${mani18n}${mani18n:+\ }${i}
+		fi
 	done
 	make DESTDIR="${D}" \
 		PREFIX=/usr BINDIR="${ED}$(get_usr)/sbin" SYSCONFDIR="${EPREFIX}/etc" \
 		OPENRC=FALSE SYSTEMD=FALSE MANPAGE=FALSE \
-		GETTEXT=$(usex nls TRUE FALSE) PO="${po}" \
+		GETTEXT=$(usex nls TRUE FALSE) PO="${po}" MANI18N="${mani18n}" \
 		install
 	doinitd openrc/init.d/*
 	doconfd openrc/conf.d/*
