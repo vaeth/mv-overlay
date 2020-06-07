@@ -105,7 +105,7 @@ sys-apps/paxopen 1.2: A wrapper script to set PAX kernel variables to an insecur
 sys-apps/schedule 8.0-r1: script to schedule jobs in a multiuser multitasking environment
 sys-apps/starter 3.0: POSIX shell script and function to schedule commands
 sys-block/parted 2.4-r3: Create, destroy, resize, check, copy partitions and file systems
-sys-block/zram-init 10.1: Scripts to support compressed swap devices or ramdisks with zram
+sys-block/zram-init 10.2: Scripts to support compressed swap devices or ramdisks with zram
 sys-boot/grub-cfg-mv 1.7: A grub.cfg library/example for GRUB2
 sys-fs/emount 3.0.4: mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab
 sys-fs/squash_dir 13.14-r1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
