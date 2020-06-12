@@ -73,7 +73,7 @@ games-engines/freesci 0.6.4-r1: Sierra script interpreter for your old Sierra ad
 games-puzzle/fish-fillets 1.0.1-r1: Underwater puzzle game - find a safe way out
 games-rpg/aklabeth 1.0-r1: A remake of Richard C. Garriott's Ultima prequel
 games-rpg/dsa-stats 1.0: calculate stat probabalities for the role playing game DSA - Das schwarze Auge
-games-rpg/m5figur-mv 4.1.8: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
+games-rpg/m5figur-mv 4.1.9: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
 media-gfx/ipe 7.2.7: Drawing editor for creating figures in PDF or PS formats
 media-gfx/pqiv 2.11: powerful GTK based command-line image viewer with a minimal UI
 media-libs/avidemux-core 2.7.4-r1: Core libraries for simple video cutting, filtering and encoding tasks
@@ -105,7 +105,7 @@ sys-apps/paxopen 1.2: A wrapper script to set PAX kernel variables to an insecur
 sys-apps/schedule 8.0-r1: script to schedule jobs in a multiuser multitasking environment
 sys-apps/starter 3.0: POSIX shell script and function to schedule commands
 sys-block/parted 2.4-r3: Create, destroy, resize, check, copy partitions and file systems
-sys-block/zram-init 10.2: Scripts to support compressed swap devices or ramdisks with zram
+sys-block/zram-init 10.3: Scripts to support compressed swap devices or ramdisks with zram
 sys-boot/grub-cfg-mv 1.7: A grub.cfg library/example for GRUB2
 sys-fs/emount 3.0.4: mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab
 sys-fs/squash_dir 13.14-r1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
