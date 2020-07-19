@@ -21,6 +21,8 @@ app-emacs/mv_emacs 1.3: (X)Emacs extensions: block support, macrorecorder, verif
 app-eselect/eselect-net 0.2-r1: eselect module for managing network open-rc service configurations
 app-misc/knapsack 7.2.1-r1: A fast solver for the 0/1-knapsack problem with multiple knapsacks
 app-misc/machine-learning-mv 1.2-r1: Some machine learning experiments
+app-misc/resolve-march-native 0.9.4: Resolve GCC flag -march=native
+app-mobilephone/adb-sync 0_p20181127-r1: Synchronize files between a PC and an Android device using ADB
 app-portage/changelog-gitrepo 1.0: Create ChangeLog data for gentoo repositories from git
 app-portage/eix 0.34.4 99999999: Search and query ebuilds
 app-portage/etcat 1.0.2 99999999: Updated version of an old Portage information extractor
@@ -52,7 +54,6 @@ app-text/podofo 0.9.6_p20190928: PoDoFo is a C++ library to work with the PDF fi
 app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities
 app-text/stardict 3.0.6-r4 4.0.0_pre20170304: A international dictionary supporting fuzzy and glob style matching
 dev-cpp/cpplint 99999999: The google styleguide together with cpplint and an emacs file
-dev-lang/python 3.7.8-r1: An interpreted, interactive, object-oriented programming language
 dev-libs/osformat 1.0.6 999999999: C++ library for a typesafe printf/sprintf based on << conversion
 dev-libs/weston 5.0.0-r1 8.0.0: Wayland reference compositor
 dev-perl/File-lchown 0.20-r1: Use the lchown(2) and lutimes(2) system call from Perl
@@ -136,4 +137,5 @@ www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected te
 www-plugins/ublock-origin 1.17.2: Firefox webextension: An efficient list-based blocker
 x11-libs/gtk+ 2.24.32-r1 3.24.21: Gimp ToolKit +
 x11-libs/motif 2.3.8-r1: The Motif user interface component toolkit
+x11-misc/redshift 1.12-r3: A screen color temperature adjusting software
 x11-themes/fvwm-crystal 3.4.1-r2 3.6.2: Configurable FVWM theme with transparency and freedesktop compatible menu
