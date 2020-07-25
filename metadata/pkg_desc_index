@@ -38,7 +38,7 @@ app-shells/auto-fu-zsh 0.0.1.12-r4 0.0.1.12_p0 99999999: zsh automatic complete-
 app-shells/dash 99999999: Descendant of the NetBSD ash. POSIX compliant except for multibyte characters
 app-shells/fast-syntax-highlighting 1.5.5 99999999: Optimized and extended zsh-syntax-highlighting
 app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
-app-shells/push 3.2: A POSIX shell function to treat a variable like an array, quoting args
+app-shells/push 3.3: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 4.1-r1: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/runtitle 2.10: Scripts to run commands and set the hard status line (windows title)
 app-shells/schily-tools 2020.05.11: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
