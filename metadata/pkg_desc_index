@@ -1,8 +1,8 @@
 app-accessibility/gespeaker 0.8.6-r2 0.8.6_p0: A GTK+ frontend for espeak
 app-admin/flexlm 9.5-r2: Macrovision FLEXlm license manager and utils
-app-admin/sudox 9.1: wrapper for sudo which can pass X authority data and deal with screen and tmux
-app-arch/archwrap 11.3: A collection of POSIX shell scripts to invoke archiver programs
-app-arch/bzwc 5.0: A POSIX shell wrapper for wc, supporting compressed files (xz, lzma, bz2, gz)
+app-admin/sudox 9.1.1: wrapper for sudo which can pass X authority data and deal with screen and tmux
+app-arch/archwrap 11.4: A collection of POSIX shell scripts to invoke archiver programs
+app-arch/bzwc 5.1: A POSIX shell wrapper for wc, supporting compressed files (xz, lzma, bz2, gz)
 app-arch/paq8l 20070308: Open source file compressor and archiver
 app-cdr/cdrtools 99999999: A set of tools for CD/DVD reading and recording, including cdrecord
 app-dicts/ispell-de 20161207: German and Swiss dictionaries for ispell
@@ -17,36 +17,36 @@ app-dicts/stardict-freedict-deu-eng 2.4.2: Stardict Dictionary German to English
 app-dicts/stardict-freedict-deu-ita 2.4.2: Stardict Dictionary German to Italian
 app-dicts/stardict-freedict-ita-deu 2.4.2: Stardict Dictionary Italian to German
 app-dicts/steak 1.7.3-r3: EN => DE Dictionary
-app-emacs/mv_emacs 1.3: (X)Emacs extensions: block support, macrorecorder, verify change
+app-emacs/mv_emacs 1.4: (X)Emacs extensions: block support, macrorecorder, verify change
 app-eselect/eselect-net 0.2-r1: eselect module for managing network open-rc service configurations
-app-misc/knapsack 7.2.1-r1: A fast solver for the 0/1-knapsack problem with multiple knapsacks
-app-misc/machine-learning-mv 1.2-r1: Some machine learning experiments
+app-misc/knapsack 7.3: A fast solver for the 0/1-knapsack problem with multiple knapsacks
+app-misc/machine-learning-mv 1.3: Some machine learning experiments
 app-misc/resolve-march-native 0.9.4: Resolve GCC flag -march=native
 app-mobilephone/adb-sync 0_p20181127-r1: Synchronize files between a PC and an Android device using ADB
-app-portage/changelog-gitrepo 1.0: Create ChangeLog data for gentoo repositories from git
+app-portage/changelog-gitrepo 1.1: Create ChangeLog data for gentoo repositories from git
 app-portage/eix 0.34.4 99999999: Search and query ebuilds
 app-portage/etcat 1.0.2 99999999: Updated version of an old Portage information extractor
-app-portage/find_cruft 5.1: find cruft files not managed by portage
+app-portage/find_cruft 5.2: find cruft files not managed by portage
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
-app-portage/logclean 18.4: Keep only (compressed) logs of installed packages and cleanup emerge.log
-app-portage/portage-bashrc-mv 20.0: Provide support for /etc/portage/bashrc.d and /etc/portage/package.cflags
-app-portage/portage-postsyncd-mv 8.3: postsync hooks for portage to sync from git
-app-portage/trickyfetch 10.0: Plugin for FETCHCOMMAND to help organize and cleanup your DISTDIR
-app-portage/useflags 4.1.3: Print or save the current USE-flag state and compare with older versions
-app-portage/world-mv 3.19: Organize your world file and find installed packages or differences to @world
+app-portage/logclean 18.4.1: Keep only (compressed) logs of installed packages and cleanup emerge.log
+app-portage/portage-bashrc-mv 20.1: Provide support for /etc/portage/bashrc.d and /etc/portage/package.cflags
+app-portage/portage-postsyncd-mv 8.4: postsync hooks for portage to sync from git
+app-portage/trickyfetch 10.1: Plugin for FETCHCOMMAND to help organize and cleanup your DISTDIR
+app-portage/useflags 4.1.4: Print or save the current USE-flag state and compare with older versions
+app-portage/world-mv 3.20: Organize your world file and find installed packages or differences to @world
 app-shells/auto-fu-zsh 0.0.1.12-r4 0.0.1.12_p0 99999999: zsh automatic complete-word and list-choices: incremental completion
 app-shells/dash 99999999: Descendant of the NetBSD ash. POSIX compliant except for multibyte characters
 app-shells/fast-syntax-highlighting 1.5.5 99999999: Optimized and extended zsh-syntax-highlighting
 app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
 app-shells/push 3.3: A POSIX shell function to treat a variable like an array, quoting args
-app-shells/quoter 4.1-r1: Quote arguments or standard input for usage in POSIX shell by eval
-app-shells/runtitle 2.10: Scripts to run commands and set the hard status line (windows title)
+app-shells/quoter 4.2: Quote arguments or standard input for usage in POSIX shell by eval
+app-shells/runtitle 2.11: Scripts to run commands and set the hard status line (windows title)
 app-shells/schily-tools 2020.05.11: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
-app-shells/set_prompt 3.1: An intelligent prompt for zsh or bash with status line (window title) support
-app-shells/termcolors-mv 4.7-r1: 256colors sample script and dircolors configuration for standard or 256 colors
+app-shells/set_prompt 3.2: An intelligent prompt for zsh or bash with status line (window title) support
+app-shells/termcolors-mv 4.8: 256colors sample script and dircolors configuration for standard or 256 colors
 app-shells/zsh-autosuggestions 0.6.4 99999999: Fish-like autosuggestions for zsh
 app-shells/zsh-syntax-highlighting 99999999: Fish shell like syntax highlighting for zsh
-app-shells/zshrc-mv 6.0: A zshrc file initializing zsh specific interactive features
+app-shells/zshrc-mv 6.1: A zshrc file initializing zsh specific interactive features
 app-text/ispell 3.3.02-r1 3.4.00: fast screen-oriented spelling checker
 app-text/lesspipe 1.85_alpha20200517 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
@@ -54,27 +54,27 @@ app-text/podofo 0.9.6_p20190928: PoDoFo is a C++ library to work with the PDF fi
 app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities
 app-text/stardict 3.0.6-r4 4.0.0_pre20170304: A international dictionary supporting fuzzy and glob style matching
 dev-cpp/cpplint 99999999: The google styleguide together with cpplint and an emacs file
-dev-libs/osformat 1.0.6 999999999: C++ library for a typesafe printf/sprintf based on << conversion
+dev-libs/osformat 1.0.7 999999999: C++ library for a typesafe printf/sprintf based on << conversion
 dev-libs/weston 5.0.0-r1 8.0.0: Wayland reference compositor
 dev-perl/File-lchown 0.20-r1: Use the lchown(2) and lutimes(2) system call from Perl
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-tex/chklref 2.6.0 2.6.1_alpha20170913: Finds useless references in latex files or unnecessarily numbered environments
-dev-util/comp 4.3: compare files or directories, including metadata
-dev-util/diffhelp 1.11: A frontend, beautifier, and path-fixer for diff -u
-dev-util/mv_perl 4.1: A collection of perl scripts (replacement in files, syncing dirs etc)
+dev-util/comp 4.3.1: compare files or directories, including metadata
+dev-util/diffhelp 1.12: A frontend, beautifier, and path-fixer for diff -u
+dev-util/mv_perl 4.2: A collection of perl scripts (replacement in files, syncing dirs etc)
 dev-util/pyrep 1.5-r1: Search and/or replace regular expressions within many files interactively
-dev-util/replacer 3.1-r1: Search and replace python regular expressions within many files interactively
-dev-vcs/git-wrappers-mv 2.1: Some personal wrappers for the most important git commands
+dev-util/replacer 3.2: Search and replace python regular expressions within many files interactively
+dev-vcs/git-wrappers-mv 2.2: Some personal wrappers for the most important git commands
 games-action/trackballs 1.1.4-r1: simple game similar to the classical game Marble Madness
-games-board/chessproblem 1.9-r1 2.12-r1: Find solutions of chess problems (mate, selfmate, and helpmate) with cooks
+games-board/chessproblem 1.10 2.13: Find solutions of chess problems (mate, selfmate, and helpmate) with cooks
 games-emulation/sdlmame 0.174-r2: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
 games-emulation/xmame 0.106-r4: Multiple Arcade Machine Emulator for X11
 games-emulation/xmess 0.106-r3: Multiple Arcade Machine Emulator for X11
 games-engines/freesci 0.6.4-r1: Sierra script interpreter for your old Sierra adventures
 games-puzzle/fish-fillets 1.0.1-r1: Underwater puzzle game - find a safe way out
 games-rpg/aklabeth 1.0-r1: A remake of Richard C. Garriott's Ultima prequel
-games-rpg/dsa-stats 1.0: calculate stat probabalities for the role playing game DSA - Das schwarze Auge
-games-rpg/m5figur-mv 4.2: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
+games-rpg/dsa-stats 1.1: calculate stat probabalities for the role playing game DSA - Das schwarze Auge
+games-rpg/m5figur-mv 4.2.1: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
 media-gfx/ipe 7.2.7: Drawing editor for creating figures in PDF or PS formats
 media-gfx/pqiv 2.11: powerful GTK based command-line image viewer with a minimal UI
 media-libs/avidemux-core 2.7.4-r1: Core libraries for simple video cutting, filtering and encoding tasks
@@ -84,38 +84,38 @@ media-tv/sundtek-tv 200325.155550: Sundtek MediaTV Pro III Drivers
 media-tv/w_scan 20170107-r1: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies
 media-video/avidemux 2.7.4-r1: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15_p1-r1: Utility for displaying AVI information
-media-video/video-mv 16.2: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
+media-video/video-mv 16.3: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
 net-dialup/accounting 1.60.45.3.1-r1: Give statistics about dialup connections. Originally part of SuSE's smpppd
 net-dialup/martian-modem 20100123-r3: ltmodem alternative driver providing support for Agere Systems winmodems
 net-dns/host 20070128-r1: A powerful command-line DNS query and test tool
 net-dns/noip-updater 2.1.9-r5: no-ip.com dynamic DNS updater
-net-firewall/firewall-mv 13.1-r1: Initialize iptables and net-related sysctl variables
+net-firewall/firewall-mv 13.2: Initialize iptables and net-related sysctl variables
 net-libs/wvstreams 4.6.2_alpha20181025: A network programming library in C++
 net-misc/netctl 1.11: Profile based network connection tool from Arch Linux
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
-net-misc/sshstart 4.9: Start ssh-agent/ssh-add only if you really use ssh or friends
+net-misc/sshstart 4.10: Start ssh-agent/ssh-add only if you really use ssh or friends
 net-print/foo2zjs 20200221: Support for printing to ZjStream-based printers
 sci-geosciences/googleearth 7.1.8.3036-r3 7.3.0.3832-r3 7.3.2-r2: A 3D interface to the planet
 sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
 sci-mathematics/reduce 20141130-r2 20190413: A general-purpose computer algebra system
-sys-apps/cpi 3.1: A wrapper for cp -i -a, making use of diff
+sys-apps/cpi 3.2: A wrapper for cp -i -a, making use of diff
 sys-apps/less 563: Excellent text file viewer, optionally with additional selection feature
 sys-apps/man 1.6g-r2: Standard commands to read man pages
-sys-apps/openrc-wrapper 2.3-r2: Use openrc init scripts with systemd or other init systems
+sys-apps/openrc-wrapper 2.4: Use openrc init scripts with systemd or other init systems
 sys-apps/paxopen 1.2: A wrapper script to set PAX kernel variables to an insecure/safe state
-sys-apps/schedule 8.0-r1: script to schedule jobs in a multiuser multitasking environment
+sys-apps/schedule 8.0.1: script to schedule jobs in a multiuser multitasking environment
 sys-apps/starter 3.0: POSIX shell script and function to schedule commands
 sys-block/parted 2.4-r3: Create, destroy, resize, check, copy partitions and file systems
-sys-block/zram-init 10.4: Scripts to support compressed swap devices or ramdisks with zram
-sys-boot/grub-cfg-mv 1.7: A grub.cfg library/example for GRUB2
-sys-fs/emount 3.0.4: mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab
+sys-block/zram-init 10.5: Scripts to support compressed swap devices or ramdisks with zram
+sys-boot/grub-cfg-mv 1.8: A grub.cfg library/example for GRUB2
+sys-fs/emount 3.0.5: mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab
 sys-fs/squash_dir 13.14-r1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-fs/squashfs-tools 4.4 99999999: Tool for creating compressed filesystem type squashfs
 sys-fs/squashfuse 0.1.103 0.1.104_alpha20180721: FUSE filesystem to mount squashfs archives
-sys-fs/squashmount 22.0: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
+sys-fs/squashmount 22.0.1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-kernel/kccmp 0.3-r1: A simple tool for comparing two linux kernel .config files
 sys-kernel/kconfig-hardened-check 0.5.7 99999999: A script for checking the hardening options in the Linux kernel config
-sys-kernel/kernel 6.1: A POSIX shell script to compile the kernel with user permissions
+sys-kernel/kernel 6.2: A POSIX shell script to compile the kernel with user permissions
 virtual/cdrtools 1: Virtual for command-line recorders cdrtools and cdrkit
 virtual/freedesktop-icon-theme 0-r3: A virtual to choose between different icon themes
 virtual/man 0-r3: Virtual for man
