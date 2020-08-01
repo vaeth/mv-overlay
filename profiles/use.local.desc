@@ -169,6 +169,9 @@ games-emulation/xmame:net - Add network support
 games-emulation/xmess:bundled-libs - Use bundled version of dev-libs/expat
 games-emulation/xmess:net - Add network support
 games-puzzle/fish-fillets:lua-slotted - Support slotted lua version
+games-rpg/freedroidrpg:devtools - Compile the additional dev tools
+games-rpg/freedroidrpg:profile - Enable the integration of the ingame real-time profiler
+games-rpg/freedroidrpg:sanitize - Compile with address sanitizer
 games-rpg/m5figur-mv:examples - Compile example character sheet as PDF
 media-gfx/pqiv:archive - Enable support for images in archives and cbX comic book files
 media-gfx/pqiv:gtk2 - Use gtk:2 instead of gtk:3
