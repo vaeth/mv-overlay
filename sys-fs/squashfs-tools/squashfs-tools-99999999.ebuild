@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2020 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ src_unpack() {
 };;
 *alpha*)
 	RESTRICT="mirror"
-	EGIT_COMMIT="52eb4c279cd283ed9802dd1ceb686560b22ffb67"
+	EGIT_COMMIT="c570c6188811088b12ffdd9665487a2960c997a0"
 	SRC_URI="https://github.com/plougher/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 ${EXTRA_URI}"
 src_unpack() {

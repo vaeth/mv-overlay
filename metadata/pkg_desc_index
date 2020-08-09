@@ -41,7 +41,7 @@ app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
 app-shells/push 3.3: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 4.2: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/runtitle 2.11: Scripts to run commands and set the hard status line (windows title)
-app-shells/schily-tools 2020.05.11: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
+app-shells/schily-tools 2020.07.18: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
 app-shells/set_prompt 3.2: An intelligent prompt for zsh or bash with status line (window title) support
 app-shells/termcolors-mv 4.8: 256colors sample script and dircolors configuration for standard or 256 colors
 app-shells/zsh-autosuggestions 0.6.4 99999999: Fish-like autosuggestions for zsh
@@ -81,7 +81,7 @@ media-gfx/pqiv 2.11: powerful GTK based command-line image viewer with a minimal
 media-libs/avidemux-core 2.7.4-r1: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.4-r1: Plugins for the video editor media-video/avidemux
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
-media-tv/sundtek-tv 200325.155550: Sundtek MediaTV Pro III Drivers
+media-tv/sundtek-tv 200507.155645: Sundtek MediaTV Pro III Drivers
 media-tv/w_scan 20170107-r1: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies
 media-video/avidemux 2.7.4-r1: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15_p1-r1: Utility for displaying AVI information
@@ -96,7 +96,7 @@ net-misc/netctl 1.11: Profile based network connection tool from Arch Linux
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
 net-misc/sshstart 4.10: Start ssh-agent/ssh-add only if you really use ssh or friends
 net-print/foo2zjs 20200221: Support for printing to ZjStream-based printers
-sci-geosciences/googleearth 7.1.8.3036-r3 7.3.0.3832-r3 7.3.2-r2: A 3D interface to the planet
+sci-geosciences/googleearth 7.1.8.3036-r3 7.3.0.3832-r3 7.3.2 7.3.3: A 3D interface to the planet
 sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
 sci-mathematics/reduce 20141130-r2 20190413: A general-purpose computer algebra system
 sys-apps/cpi 3.2: A wrapper for cp -i -a, making use of diff
@@ -111,7 +111,7 @@ sys-block/zram-init 10.5: Scripts to support compressed swap devices or ramdisks
 sys-boot/grub-cfg-mv 1.8: A grub.cfg library/example for GRUB2
 sys-fs/emount 3.0.5: mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab
 sys-fs/squash_dir 13.14-r1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
-sys-fs/squashfs-tools 4.4 99999999: Tool for creating compressed filesystem type squashfs
+sys-fs/squashfs-tools 4.5_alpha20200207 99999999: Tool for creating compressed filesystem type squashfs
 sys-fs/squashfuse 0.1.103 0.1.104_alpha20180721: FUSE filesystem to mount squashfs archives
 sys-fs/squashmount 22.0.1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-kernel/kccmp 0.3-r1: A simple tool for comparing two linux kernel .config files
@@ -123,16 +123,16 @@ virtual/man 0-r3: Virtual for man
 www-plugins/bookmark-dupes 6.4: Firefox webextension: remove duplicate bookmarks/empty folders/descriptions
 www-plugins/calc-extension 5.3: Firefox webextension: calculate values of mathematical expressions
 www-plugins/canvasblocker 0.5.5: Firefox webextension: block canvas API to prevent canvas fingerprinting
-www-plugins/dark-mode 0.3.3: Firefox webextension: a global dark theme for the web
+www-plugins/dark-mode 0.3.7: Firefox webextension: a global dark theme for the web
 www-plugins/decentraleyes 2.0.8: Firefox webextension: avoid centralized services
 www-plugins/duckduckgo 2018.10.24: Firefox webextension: privacy essentials, including duckduckgo search engine
-www-plugins/epubreader 2.0.8: Firefox webextension: read ebook (.epub) files
-www-plugins/form-history-control 2.3.1.0: Firefox webextension: edit the saved history of forms
+www-plugins/epubreader 2.0.13: Firefox webextension: read ebook (.epub) files
+www-plugins/form-history-control 2.5.1.0: Firefox webextension: edit the saved history of forms
 www-plugins/google-translation 2.6: Firefox webextension: translate to your native language a selected text
 www-plugins/google-translator-for-firefox 3.0.3.3: Firefox webextension: translate text or page with google translator
 www-plugins/https-everywhere 2018.10.31: Firefox webextension: force https for all websites of a provided list
 www-plugins/no-color 0.9.4: Firefox webextension: remove colors and background images from the page
-www-plugins/noscript 10.6.3: Firefox webextension: restrict active contents like java/javascript/flash
+www-plugins/noscript 11.0.36: Firefox webextension: restrict active contents like java/javascript/flash
 www-plugins/skip-redirect 2.2.1: Firefox webextension: skip intermediary pages before redirecting
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
 www-plugins/ublock-origin 1.17.2: Firefox webextension: An efficient list-based blocker
