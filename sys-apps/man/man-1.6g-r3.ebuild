@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils prefix toolchain-funcs user
+inherit eutils prefix toolchain-funcs
 
 DESCRIPTION="Standard commands to read man pages"
 HOMEPAGE="http://primates.ximian.com/~flucifredi/man/"
@@ -15,16 +15,13 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x8
 IUSE="cache +lzma nls selinux"
 
 DEPEND="nls? ( sys-devel/gettext )"
-RDEPEND=">=sys-apps/groff-1.19.2-r1
+RDEPEND="acct-group/man
+	acct-user/man
+	>=sys-apps/groff-1.19.2-r1
 	!sys-apps/man-db
 	!<app-arch/lzma-4.63
 	lzma? ( app-arch/xz-utils )
 	selinux? ( sec-policy/selinux-makewhatis )"
-
-pkg_setup() {
-	enewgroup man 15
-	enewuser man 13 -1 /usr/share/man man
-}
 
 src_prepare() {
 	eapply -p0 "${FILESDIR}"/man-1.6f-man2html-compression-2.patch
