@@ -136,7 +136,7 @@ www-plugins/noscript 11.0.36: Firefox webextension: restrict active contents lik
 www-plugins/skip-redirect 2.2.1: Firefox webextension: skip intermediary pages before redirecting
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
 www-plugins/ublock-origin 1.17.2: Firefox webextension: An efficient list-based blocker
-x11-libs/gtk+ 2.24.32-r1 3.24.21: Gimp ToolKit +
+x11-libs/gtk+ 2.24.32-r1 3.24.22: Gimp ToolKit +
 x11-libs/motif 2.3.8-r1: The Motif user interface component toolkit
 x11-misc/redshift 1.12-r3: A screen color temperature adjusting software
 x11-themes/fvwm-crystal 3.4.1-r2 3.6.2: Configurable FVWM theme with transparency and freedesktop compatible menu
