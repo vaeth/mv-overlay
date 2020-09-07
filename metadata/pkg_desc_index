@@ -24,7 +24,7 @@ app-misc/machine-learning-mv 1.3: Some machine learning experiments
 app-misc/resolve-march-native 0.9.4: Resolve GCC flag -march=native
 app-mobilephone/adb-sync 0_p20181127-r1: Synchronize files between a PC and an Android device using ADB
 app-portage/changelog-gitrepo 1.1: Create ChangeLog data for gentoo repositories from git
-app-portage/eix 0.34.5 0.34.6_alpha20200907 99999999: Search and query ebuilds
+app-portage/eix 0.34.5 0.34.6_alpha20200908 99999999: Search and query ebuilds
 app-portage/etcat 1.0.2 99999999: Updated version of an old Portage information extractor
 app-portage/find_cruft 5.2: find cruft files not managed by portage
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
@@ -38,7 +38,7 @@ app-shells/auto-fu-zsh 0.0.1.12-r4 0.0.1.12_p0 99999999: zsh automatic complete-
 app-shells/dash 99999999: Descendant of the NetBSD ash. POSIX compliant except for multibyte characters
 app-shells/fast-syntax-highlighting 1.5.5 99999999: Optimized and extended zsh-syntax-highlighting
 app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
-app-shells/push 3.3: A POSIX shell function to treat a variable like an array, quoting args
+app-shells/push 3.4: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 4.2: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/runtitle 2.11: Scripts to run commands and set the hard status line (windows title)
 app-shells/schily-tools 2020.07.18: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
