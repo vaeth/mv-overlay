@@ -18,7 +18,7 @@ IUSE=""
 OPTIONAL_RDEPEND="dev-perl/File-Which
 dev-perl/String-ShellQuote"
 
-RDEPEND=">=app-portage/eix-0.35.7
+RDEPEND=">=app-portage/eix-0.34.7
 	>=dev-lang/perl-5.6.1
 	${OPTIONAL_RDEPEND}"
 #	|| ( >=dev-lang/perl-5.6.1 >=virtual/perl-Getopt-Long-2.24 )"
