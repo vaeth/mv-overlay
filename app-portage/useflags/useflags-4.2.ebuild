@@ -3,7 +3,6 @@
 
 EAPI=7
 RESTRICT="mirror"
-inherit eutils
 
 DESCRIPTION="Print or save the current USE-flag state and compare with older versions"
 HOMEPAGE="https://github.com/vaeth/useflags/"
@@ -19,7 +18,8 @@ IUSE=""
 OPTIONAL_RDEPEND="dev-perl/File-Which
 dev-perl/String-ShellQuote"
 
-RDEPEND=">=dev-lang/perl-5.6.1
+RDEPEND=">=app-portage/eix-0.35.7
+	>=dev-lang/perl-5.6.1
 	${OPTIONAL_RDEPEND}"
 #	|| ( >=dev-lang/perl-5.6.1 >=virtual/perl-Getopt-Long-2.24 )"
 
@@ -34,9 +34,4 @@ src_install() {
 	dobin bin/*
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
-}
-
-pkg_postinst() {
-	optfeature "faster execution" 'app-portage/eix'
-	optfeature "increased security" '>=app-portage/eix-0.27.7'
 }
