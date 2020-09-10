@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit toolchain-funcs eutils
-
 DESCRIPTION="Support for printing to ZjStream-based printers"
 HOMEPAGE="http://foo2zjs.rkkda.com/"
 
@@ -76,5 +74,5 @@ src_install() {
 
 src_test() {
 	# see bug 419787
-	: ;
+	:
 }

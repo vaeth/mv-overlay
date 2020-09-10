@@ -3,7 +3,7 @@
 
 EAPI=7
 RESTRICT="mirror"
-inherit eutils readme.gentoo-r1 systemd tmpfiles
+inherit optfeature readme.gentoo-r1 systemd tmpfiles
 
 DESCRIPTION="Keep directories compressed with squashfs. Useful for portage tree, texmf-dist"
 HOMEPAGE="http://forums.gentoo.org/viewtopic-t-465367.html

@@ -3,7 +3,7 @@
 
 EAPI=7
 RESTRICT="mirror"
-inherit eutils
+inherit optfeature
 
 DESCRIPTION="find cruft files not managed by portage"
 HOMEPAGE="https://github.com/vaeth/find_cruft/"

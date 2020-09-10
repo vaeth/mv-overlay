@@ -3,7 +3,7 @@
 
 EAPI=7
 RESTRICT="mirror"
-inherit eutils
+inherit optfeature
 
 DESCRIPTION="Plugin for FETCHCOMMAND to help organize and cleanup your DISTDIR"
 HOMEPAGE="https://github.com/vaeth/trickyfetch/"

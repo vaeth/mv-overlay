@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit bash-completion-r1 eutils
+inherit bash-completion-r1 optfeature
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="git://projects.archlinux.org/netctl.git"

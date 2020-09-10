@@ -3,7 +3,7 @@
 
 EAPI=7
 RESTRICT="mirror"
-inherit eutils
+inherit optfeature
 
 DESCRIPTION="postsync hooks for portage to sync from git"
 HOMEPAGE="https://github.com/vaeth/portage-postsyncd-mv/"

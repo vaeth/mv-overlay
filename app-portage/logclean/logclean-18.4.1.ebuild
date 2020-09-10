@@ -3,7 +3,7 @@
 
 EAPI=7
 RESTRICT="mirror"
-inherit eutils
+inherit optfeature
 
 DESCRIPTION="Keep only (compressed) logs of installed packages and cleanup emerge.log"
 HOMEPAGE="https://github.com/vaeth/logclean/"

@@ -3,7 +3,7 @@
 
 EAPI=7
 RESTRICT="mirror"
-inherit eutils
+inherit optfeature
 
 DESCRIPTION="A POSIX shell script to compile the kernel with user permissions"
 HOMEPAGE="https://github.com/vaeth/kernel/"
