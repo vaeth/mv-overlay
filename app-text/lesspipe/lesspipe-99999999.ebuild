@@ -102,7 +102,7 @@ BOTH_DEPEND="sys-apps/file
 	libreoffice? ( !alpha? ( !hppa? ( !ia64? ( !ppc? ( !sparc?
 		( app-office/libreoffice ) ) ) ) ) )
 	djvu? ( app-text/djvu )
-	dvi2tty? ( dev-tex/dvi2tty )
+	dvi2tty? ( app-text/textlive )
 	pstotext? ( !alpha? ( !arm? ( !arm64? ( !ia64? ( !sparc?
 		( app-text/pstotext ) ) ) ) ) )
 	!pstotext? ( ghostscript? ( app-text/ghostscript-gpl ) )
