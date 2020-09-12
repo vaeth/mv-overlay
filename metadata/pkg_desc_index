@@ -22,7 +22,6 @@ app-eselect/eselect-net 0.2-r1: eselect module for managing network open-rc serv
 app-misc/knapsack 7.3: A fast solver for the 0/1-knapsack problem with multiple knapsacks
 app-misc/machine-learning-mv 1.3: Some machine learning experiments
 app-misc/resolve-march-native 0.9.4: Resolve GCC flag -march=native
-app-mobilephone/adb-sync 0_p20181127-r1: Synchronize files between a PC and an Android device using ADB
 app-portage/changelog-gitrepo 1.1: Create ChangeLog data for gentoo repositories from git
 app-portage/eix 0.34.9 99999999: Search and query ebuilds
 app-portage/etcat 1.0.2 99999999: Updated version of an old Portage information extractor
@@ -48,7 +47,7 @@ app-shells/zsh-autosuggestions 0.6.4 99999999: Fish-like autosuggestions for zsh
 app-shells/zsh-syntax-highlighting 99999999: Fish shell like syntax highlighting for zsh
 app-shells/zshrc-mv 6.1: A zshrc file initializing zsh specific interactive features
 app-text/ispell 3.3.02-r1 3.4.00: fast screen-oriented spelling checker
-app-text/lesspipe 1.85_alpha20200517-r1 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
+app-text/lesspipe 1.85 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
 app-text/podofo 0.9.6_p20190928: PoDoFo is a C++ library to work with the PDF file format
 app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities

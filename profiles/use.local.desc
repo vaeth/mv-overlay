@@ -3,7 +3,6 @@
 # * generated automatically using egencache *
 
 app-cdr/cdrtools:schily-tools - Use libschily from app-shells/schily-tools
-app-mobilephone/adb-sync:channel - Install the adb-channel script
 app-portage/eix:debug - Build with upstream's CXXFLAGS/LDFLAGS for debugging support; not recommended for normal use.
 app-portage/eix:dep - Make DEP=true the default which enables support for {,R,P,B}DEPEND but requires roughly double disk and memory.
 app-portage/eix:doc - Create description of the eix cache file additionally in html format
