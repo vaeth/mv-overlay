@@ -30,7 +30,7 @@ BDEPEND="meson? (
 		>=dev-util/ninja-1.7.2
 		strong-optimization? ( >=sys-devel/gcc-config-1.9.1 )
 	)
-	protobuf? ( dev-libs/protobuf )
+	protobuf? ( dev-libs/protobuf:= )
 	app-arch/xz-utils
 	nls? ( sys-devel/gettext )"
 
