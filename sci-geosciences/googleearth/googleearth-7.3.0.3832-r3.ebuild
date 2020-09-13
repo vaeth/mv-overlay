@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Martin V\"ath and others
+# Copyright 1999-2020 Martin V\"ath and others
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop eutils pax-utils unpacker xdg-utils
+inherit desktop pax-utils unpacker wrapper xdg-utils
 
 DESCRIPTION="A 3D interface to the planet"
 HOMEPAGE="https://www.google.com/earth/desktop/"

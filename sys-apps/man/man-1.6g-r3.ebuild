@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils prefix toolchain-funcs
+inherit l10n prefix toolchain-funcs
 
 DESCRIPTION="Standard commands to read man pages"
 HOMEPAGE="http://primates.ximian.com/~flucifredi/man/"

@@ -5,7 +5,7 @@ EAPI=6
 GNOME2_LA_PUNT="yes"
 GNOME2_EAUTORECONF="yes"
 
-inherit eutils flag-o-matic gnome2 multilib multilib-minimal readme.gentoo-r1 virtualx
+inherit flag-o-matic gnome2 multilib multilib-minimal readme.gentoo-r1 virtualx
 
 DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="https://www.gtk.org/"

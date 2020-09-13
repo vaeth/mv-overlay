@@ -1,10 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 
-inherit systemd autotools eutils gnome2-utils python-r1
+inherit autotools gnome2-utils python-r1 systemd
 
 DESCRIPTION="A screen color temperature adjusting software"
 HOMEPAGE="http://jonls.dk/redshift/"
