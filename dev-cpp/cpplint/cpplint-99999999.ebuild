@@ -18,7 +18,7 @@ IUSE="emacs"
 EMACSNAME="google-c-style"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-COMMON="emacs? ( virtual/emacs )"
+COMMON="emacs? ( app-editors/emacs )"
 BDEPEND="${COMMON}"
 RDEPEND="${PYTHON_DEPS}
 	${COMMON}"

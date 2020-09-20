@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
 IUSE=""
 
-BDEPEND="virtual/emacs"
+BDEPEND="app-editors/emacs"
 RDEPEND=${DEPEND}
 
 src_unpack() {
