@@ -22,7 +22,7 @@ app-eselect/eselect-net 0.2-r1: eselect module for managing network open-rc serv
 app-misc/knapsack 7.3: A fast solver for the 0/1-knapsack problem with multiple knapsacks
 app-misc/machine-learning-mv 1.3: Some machine learning experiments
 app-portage/changelog-gitrepo 1.1: Create ChangeLog data for gentoo repositories from git
-app-portage/eix 0.34.10 99999999: Search and query ebuilds
+app-portage/eix 0.34.11 99999999: Search and query ebuilds
 app-portage/etcat 1.0.2 99999999: Updated version of an old Portage information extractor
 app-portage/find_cruft 5.2: find cruft files not managed by portage
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
@@ -105,7 +105,7 @@ sys-apps/paxopen 1.2: A wrapper script to set PAX kernel variables to an insecur
 sys-apps/schedule 8.0.1: script to schedule jobs in a multiuser multitasking environment
 sys-apps/starter 3.0: POSIX shell script and function to schedule commands
 sys-block/parted 2.4-r3: Create, destroy, resize, check, copy partitions and file systems
-sys-block/zram-init 10.6: Scripts to support compressed swap devices or ramdisks with zram
+sys-block/zram-init 10.7: Scripts to support compressed swap devices or ramdisks with zram
 sys-boot/grub-cfg-mv 1.8: A grub.cfg library/example for GRUB2
 sys-fs/emount 3.0.5: mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab
 sys-fs/squash_dir 13.14-r1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
