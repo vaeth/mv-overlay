@@ -43,7 +43,7 @@ app-shells/schily-tools 2020.11.25: Many tools from Joerg Schilling, including a
 app-shells/set_prompt 3.2: An intelligent prompt for zsh or bash with status line (window title) support
 app-shells/termcolors-mv 4.8: 256colors sample script and dircolors configuration for standard or 256 colors
 app-shells/zsh-autosuggestions 0.6.4 99999999: Fish-like autosuggestions for zsh
-app-shells/zsh-syntax-highlighting 99999999: Fish shell like syntax highlighting for zsh
+app-shells/zsh-syntax-highlighting 0.8.0_alpha1 99999999: Fish shell like syntax highlighting for zsh
 app-shells/zshrc-mv 6.6: A zshrc file initializing zsh specific interactive features
 app-text/ispell 3.3.02-r1 3.4.00: fast screen-oriented spelling checker
 app-text/lesspipe 1.85 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
@@ -113,7 +113,7 @@ sys-fs/squashfs-tools 4.5_alpha20200207 99999999: Tool for creating compressed f
 sys-fs/squashfuse 0.1.103 0.1.104_alpha20180721: FUSE filesystem to mount squashfs archives
 sys-fs/squashmount 22.0.1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-kernel/kccmp 0.3-r1: A simple tool for comparing two linux kernel .config files
-sys-kernel/kconfig-hardened-check 0.5.7 99999999: A script for checking the hardening options in the Linux kernel config
+sys-kernel/kconfig-hardened-check 0.5.9 99999999: A script for checking the hardening options in the Linux kernel config
 sys-kernel/kernel 6.2: A POSIX shell script to compile the kernel with user permissions
 virtual/cdrtools 1: Virtual for command-line recorders cdrtools and cdrkit
 virtual/freedesktop-icon-theme 0-r3: A virtual to choose between different icon themes

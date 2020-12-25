@@ -15,7 +15,9 @@ case ${PV} in
 	SRC_URI=""
 	KEYWORDS="";;
 0.8.0_alpha1)
-	SRC_URI="https://github.com/zsh-users/${PN}/archive/${PV/_alpha/-alpha}-pre-redrawhook.tar.gz -> ${P}.tar.gz";;
+	my_PV=${PV/_alpha/-alpha}-pre-redrawhook
+	SRC_URI="https://github.com/zsh-users/${PN}/archive/${my_PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${my_PV}";;
 *beta*)
 	EGIT_COMMIT="02a37dd919dc48e0821186e5f20e78bd0215f86a"
 	SRC_URI="https://github.com/zsh-users/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
