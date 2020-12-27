@@ -21,6 +21,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 DEPEND="${LUA_DEPS}
 	media-fonts/urw-fonts
+	media-gfx/libspiro
 	media-libs/freetype:2
 	media-libs/libjpeg-turbo
 	media-libs/libpng
