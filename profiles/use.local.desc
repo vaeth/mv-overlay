@@ -114,11 +114,6 @@ app-text/lesspipe:w3m - Support html files with www-client/w3m; ignored if html2
 app-text/lesspipe:wv - Support msword and rtf conversion using app-text/wv
 app-text/lesspipe:xlhtml - Support Excel and Powerpoint files with app-arch/xlhtml
 app-text/lesspipe:zstd - Support brotli files; requires app-arch/zstd
-app-text/podofo:boost - Add support for boost
-app-text/podofo:lua-slotted - Support slotted lua version (default to lua:5.3)
-app-text/podofo:lua51 - With lua-slotted use lua:5.1
-app-text/podofo:lua52 - With lua-slotted use lua:5.2
-app-text/podofo:tools - Build and install commandline tools.
 app-text/stardict:advertisement - Enable stardict advertisements plugin
 app-text/stardict:cal - Enable calendar support using cal program
 app-text/stardict:canberra - Use libcanberra for sound playing
@@ -167,7 +162,6 @@ games-emulation/xmame:bundled-libs - Use bundled version of dev-libs/expat
 games-emulation/xmame:net - Add network support
 games-emulation/xmess:bundled-libs - Use bundled version of dev-libs/expat
 games-emulation/xmess:net - Add network support
-games-puzzle/fish-fillets:lua-slotted - Support slotted lua version
 games-rpg/freedroidrpg:devtools - Compile the additional dev tools
 games-rpg/freedroidrpg:profile - Enable the integration of the ingame real-time profiler
 games-rpg/freedroidrpg:sanitize - Compile with address sanitizer

@@ -48,7 +48,6 @@ app-shells/zshrc-mv 6.6: A zshrc file initializing zsh specific interactive feat
 app-text/ispell 3.3.02-r1 3.4.00: fast screen-oriented spelling checker
 app-text/lesspipe 1.85 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
-app-text/podofo 0.9.6_p20190928: PoDoFo is a C++ library to work with the PDF file format
 app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities
 app-text/stardict 3.0.6-r4 4.0.0_pre20170304: A international dictionary supporting fuzzy and glob style matching
 dev-cpp/cpplint 99999999: The google styleguide together with cpplint and an emacs file
@@ -69,12 +68,12 @@ games-emulation/sdlmame 0.174-r2: Multiple Arcade Machine Emulator + Multi Emula
 games-emulation/xmame 0.106-r4: Multiple Arcade Machine Emulator for X11
 games-emulation/xmess 0.106-r3: Multiple Arcade Machine Emulator for X11
 games-engines/freesci 0.6.4-r1: Sierra script interpreter for your old Sierra adventures
-games-puzzle/fish-fillets 1.0.1-r1: Underwater puzzle game - find a safe way out
 games-rpg/aklabeth 1.0-r1: A remake of Richard C. Garriott's Ultima prequel
 games-rpg/dsa-stats 1.1: calculate stat probabalities for the role playing game DSA - Das schwarze Auge
 games-rpg/freedroidrpg 1.0_rc2: A modification of the classical Freedroid engine into an RPG
 games-rpg/m5figur-mv 4.2.2: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
-media-gfx/ipe 7.2.7: Drawing editor for creating figures in PDF or PS formats
+media-gfx/ipe 7.2.23: Drawing editor for creating figures in PDF or PS formats
+media-gfx/libspiro 20200505: A spline computation library
 media-gfx/pqiv 2.11: powerful GTK based command-line image viewer with a minimal UI
 media-libs/avidemux-core 2.7.4-r1: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.4-r1: Plugins for the video editor media-video/avidemux

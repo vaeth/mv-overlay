@@ -1,9 +1,12 @@
-# Copyright 1999-2018 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2020 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 RESTRICT="mirror"
-inherit desktop flag-o-matic toolchain-funcs
+
+LUA_COMPAT=( lua5-{3..4} )
+
+inherit desktop flag-o-matic lua-single toolchain-funcs
 
 DESCRIPTION="Drawing editor for creating figures in PDF or PS formats"
 HOMEPAGE="http://ipe.otfried.org/"
@@ -14,28 +17,30 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
-RDEPEND="
-	app-text/texlive-core
-	>=dev-lang/lua-5.3:=
+REQUIRED_USE="${LUA_REQUIRED_USE}"
+
+DEPEND="${LUA_DEPS}
 	media-fonts/urw-fonts
 	media-libs/freetype:2
+	media-libs/libjpeg-turbo
+	media-libs/libpng
+	sys-libs/zlib
 	x11-libs/cairo
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5"
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}
+	|| ( app-text/texlive-core net-misc/curl )"
 BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${P}/src"
-
-PATCHES=("${FILESDIR}"/xlocale.patch)
 
 src_prepare() {
 	filter-flags -fPIE -pie '-flto*' -fwhole-program +D_GLIBCXX_ASSERTIONS
 	sed -i \
 		-e 's/fpic/fPIC/' \
 		-e "s'\$(IPEPREFIX)/lib'\$(IPEPREFIX)/$(get_libdir)'g" \
-		-e "s'\(LUA_CFLAGS.*=\).*'\1 -I${EROOT}/usr/include/lua5.3'" \
-		-e 's/\(LUA_LIBS.*=\).*/\1 -llua5.3/' \
+		-e "s'\(LUA_CFLAGS.*=\).*'\1 $(lua_get_CFLAGS)'" \
+		-e "s'\(LUA_LIBS.*=\).*'\1 $(lua_get_LIBS)'" \
 		config.mak || die
 	sed -i -e 's/install -s/install/' common.mak || die
 	default
@@ -54,6 +59,5 @@ src_install() {
 		IPEDOCDIR="${EPREFIX}/usr/share/doc/${PF}/html" \
 		INSTALL_ROOT="${ED}"
 	dodoc ../{news,readme}.txt
-	doicon ipe/icons/ipe.png
 	make_desktop_entry ipe Ipe ipe
 }
