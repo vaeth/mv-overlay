@@ -78,7 +78,7 @@ media-gfx/pqiv 2.11: powerful GTK based command-line image viewer with a minimal
 media-libs/avidemux-core 2.7.4-r1: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.4-r1: Plugins for the video editor media-video/avidemux
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
-media-tv/sundtek-tv 201120.140149: Sundtek MediaTV Pro III Drivers
+media-tv/sundtek-tv 201229.123230: Sundtek MediaTV Pro III Drivers
 media-tv/w_scan 20170107-r1: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies
 media-video/avidemux 2.7.4-r1: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15_p1-r1: Utility for displaying AVI information
