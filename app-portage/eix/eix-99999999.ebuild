@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Martin V\"ath and others
+# Copyright 1999-2021 Martin V\"ath and others
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ case ${PV} in
 	PROPERTIES="live";;
 *)
 	RESTRICT="mirror"
-	EGIT_COMMIT="83e6f90231183f8b141a2bab4f665adab7d73cb9"
+	EGIT_COMMIT="b96d3026513fc35a326fcf253cc7868b02959289"
 	SRC_URI="https://github.com/vaeth/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}";;
 esac
