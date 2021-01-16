@@ -1,0 +1,12 @@
+--- 1/src/arc4random.c
++++ 1/src/arc4random.c
+@@ -44,7 +44,9 @@
+ #include <sys/types.h>
+ #include <sys/param.h>
+ #include <sys/time.h>
++#ifdef HAVE_SYSCTL
+ #include <sys/sysctl.h>
++#endif
+ 
+ #if defined __NO_SYSCTL__
+ #include <err.h>

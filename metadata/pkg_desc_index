@@ -88,7 +88,6 @@ net-dialup/martian-modem 20100123-r3: ltmodem alternative driver providing suppo
 net-dns/host 20070128-r1: A powerful command-line DNS query and test tool
 net-dns/noip-updater 2.1.9-r5: no-ip.com dynamic DNS updater
 net-firewall/firewall-mv 13.2: Initialize iptables and net-related sysctl variables
-net-libs/wvstreams 4.6.2_alpha20181025: A network programming library in C++
 net-misc/netctl 1.11: Profile based network connection tool from Arch Linux
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
 net-misc/sshstart 4.10: Start ssh-agent/ssh-add only if you really use ssh or friends

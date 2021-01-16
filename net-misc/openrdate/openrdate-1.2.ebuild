@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2021 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,8 +16,12 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.3-rename.patch
+	"${FILESDIR}"/sysctl.patch
+)
+
 src_prepare() {
-	eapply "${FILESDIR}"/${PN}-1.1.3-rename.patch
 	default
 	eautomake
 	mv docs/{,open}rdate.8
