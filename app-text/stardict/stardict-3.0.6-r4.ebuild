@@ -1,14 +1,14 @@
-# Copyright 1999-2018 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2021 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 # NOTE: Even though the *.dict.dz are the same as dictd/freedict's files,
 #       their indexes seem to be in a different format. So we'll keep them
 #       seperate for now.
 
 GNOME2_LA_PUNT=yes
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit autotools flag-o-matic gnome2 python-single-r1
 
