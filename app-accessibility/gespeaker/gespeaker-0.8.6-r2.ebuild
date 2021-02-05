@@ -1,9 +1,9 @@
-# Copyright 2015-2018 Martin V\"ath
+# Copyright 2015-2021 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 RESTRICT="mirror"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit distutils-r1
 
 DESCRIPTION="A GTK+ frontend for espeak"
