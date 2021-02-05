@@ -1,9 +1,9 @@
-# Copyright 2016-2020 Martin V\"ath
+# Copyright 2016-2021 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 case ${PV} in
 99999999*)
