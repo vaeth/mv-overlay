@@ -1,4 +1,3 @@
-app-accessibility/gespeaker 0.8.6-r2 0.8.6_p0: A GTK+ frontend for espeak
 app-admin/flexlm 9.5-r2: Macrovision FLEXlm license manager and utils
 app-admin/sudox 9.1.1: wrapper for sudo which can pass X authority data and deal with screen and tmux
 app-arch/archwrap 11.4: A collection of POSIX shell scripts to invoke archiver programs
