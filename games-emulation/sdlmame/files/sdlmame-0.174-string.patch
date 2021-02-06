@@ -1,0 +1,10 @@
+--- 1/src/osd/modules/render/bgfx/effect.h
++++ 1/src/osd/modules/render/bgfx/effect.h
+@@ -15,6 +15,7 @@
+ 
+ #include <vector>
+ #include <map>
++#include <string>
+ 
+ class bgfx_uniform;
+ 

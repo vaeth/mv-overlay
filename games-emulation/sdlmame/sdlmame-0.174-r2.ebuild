@@ -77,6 +77,8 @@ src_prepare() {
 	eapply \
 		"${FILESDIR}"/${P}-qt.patch \
 		"${FILESDIR}"/${P}-cxx14.patch \
+		"${FILESDIR}"/${P}-string.patch \
+		"${FILESDIR}"/${P}-tostring.patch \
 		"${FILESDIR}"/${P}-sdlSetWindow.patch
 	# Disable using bundled libraries
 	enable_feature USE_SYSTEM_LIB_EXPAT
