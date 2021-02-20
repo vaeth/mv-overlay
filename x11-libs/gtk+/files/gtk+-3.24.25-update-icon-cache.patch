@@ -1,4 +1,4 @@
-From 87693de873b15194b122e98438b3bc1bf37f6d0b Mon Sep 17 00:00:00 2001
+From ce23725d2b25b61a4eec8db0899d49d5a9dbcc6d Mon Sep 17 00:00:00 2001
 From: Gilles Dartiguelongue <eva@gentoo.org>
 Date: Tue, 1 Nov 2016 15:24:22 +0100
 Subject: [PATCH] Always use external gtk-update-icon-cache
@@ -10,14 +10,14 @@ used when building.
  demos/gtk-demo/Makefile.am       |  2 +-
  demos/widget-factory/Makefile.am |  2 +-
  docs/reference/gtk/Makefile.am   |  1 -
- gtk/Makefile.am                  | 44 --------------------------------
- 5 files changed, 4 insertions(+), 47 deletions(-)
+ gtk/Makefile.am                  | 27 ---------------------------
+ 5 files changed, 4 insertions(+), 30 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index f700616649..e3604fef05 100644
+index 36dda2ebaf..df9d9b0e9b 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1003,6 +1003,8 @@ dnl Look for a host system's gdk-pixbuf-csource if we are cross-compiling
+@@ -974,6 +974,8 @@ dnl Look for a host system's gdk-pixbuf-csource if we are cross-compiling
  
  AM_CONDITIONAL(CROSS_COMPILING, test $cross_compiling = yes)
  
@@ -27,10 +27,10 @@ index f700616649..e3604fef05 100644
  # Windowing system checks
  ########################################
 diff --git a/demos/gtk-demo/Makefile.am b/demos/gtk-demo/Makefile.am
-index c8529e5bf7..b2924fc081 100644
+index 4a2f827469..369ba5d3cc 100644
 --- a/demos/gtk-demo/Makefile.am
 +++ b/demos/gtk-demo/Makefile.am
-@@ -171,7 +171,7 @@ dist_appsicon32_DATA = data/32x32/gtk3-demo.png data/32x32/gtk3-demo-symbolic.sy
+@@ -174,7 +174,7 @@ dist_appsicon32_DATA = data/32x32/gtk3-demo.png data/32x32/gtk3-demo-symbolic.sy
  dist_appsicon48_DATA = data/48x48/gtk3-demo.png data/48x48/gtk3-demo-symbolic.symbolic.png
  dist_appsicon256_DATA = data/256x256/gtk3-demo.png data/256x256/gtk3-demo-symbolic.symbolic.png
  
@@ -40,7 +40,7 @@ index c8529e5bf7..b2924fc081 100644
  install-data-hook: install-update-icon-cache
  uninstall-hook: uninstall-update-icon-cache
 diff --git a/demos/widget-factory/Makefile.am b/demos/widget-factory/Makefile.am
-index 62c156aa09..7aad079dcd 100644
+index c33a6d0a95..291f389f53 100644
 --- a/demos/widget-factory/Makefile.am
 +++ b/demos/widget-factory/Makefile.am
 @@ -47,7 +47,7 @@ dist_appsicon32_DATA = data/32x32/gtk3-widget-factory.png data/32x32/gtk3-widget
@@ -53,10 +53,10 @@ index 62c156aa09..7aad079dcd 100644
  install-data-hook: install-update-icon-cache
  uninstall-hook: uninstall-update-icon-cache
 diff --git a/docs/reference/gtk/Makefile.am b/docs/reference/gtk/Makefile.am
-index abdea7fb59..0ee826c31e 100644
+index dc9b80c6c5..bcaa4032c9 100644
 --- a/docs/reference/gtk/Makefile.am
 +++ b/docs/reference/gtk/Makefile.am
-@@ -502,7 +502,6 @@ EXTRA_DIST += version.xml.in gtk3.types.in
+@@ -502,7 +502,6 @@ EXTRA_DIST += version.xml.in gtk3.types.in getting_started.xml.in
  
  man_MANS = 				\
  	gtk-query-immodules-3.0.1	\
@@ -65,10 +65,10 @@ index abdea7fb59..0ee826c31e 100644
  	gtk-launch.1			\
  	gtk3-demo.1			\
 diff --git a/gtk/Makefile.am b/gtk/Makefile.am
-index e556e9d3af..4d7973f3b1 100644
+index 9608ab3355..74792a4b40 100644
 --- a/gtk/Makefile.am
 +++ b/gtk/Makefile.am
-@@ -1653,7 +1653,6 @@ endif
+@@ -1658,7 +1658,6 @@ endif
  #
  bin_PROGRAMS = \
  	gtk-query-immodules-3.0	\
@@ -76,7 +76,7 @@ index e556e9d3af..4d7973f3b1 100644
  	gtk-encode-symbolic-svg \
  	gtk-builder-tool \
  	gtk-query-settings \
-@@ -1666,9 +1665,6 @@ gtk_query_immodules_3_0_LDADD = 		\
+@@ -1671,9 +1670,6 @@ gtk_query_immodules_3_0_LDADD = 		\
  	$(GMODULE_LIBS)				\
  	$(GTK_DEP_LIBS)
  
@@ -86,7 +86,7 @@ index e556e9d3af..4d7973f3b1 100644
  gtk_encode_symbolic_svg_SOURCES = encodesymbolic.c
  gtk_encode_symbolic_svg_LDADD =			\
  	$(GDK_PIXBUF_LIBS)			\
-@@ -1693,46 +1689,6 @@ gtk_launch_LDADD =				\
+@@ -1698,29 +1694,6 @@ gtk_launch_LDADD =				\
  	$(top_builddir)/gdk/libgdk-3.la		\
  	$(GTK_DEP_LIBS)
  
@@ -101,27 +101,10 @@ index e556e9d3af..4d7973f3b1 100644
 -GTK_UPDATE_ICON_CACHE_RC = gtk-update-icon-cache.rc
 -GTK_UPDATE_ICON_CACHE_MANIFEST_OBJECT = gtk-update-icon-cache_manifest.o
 -
--$(GTK_UPDATE_ICON_CACHE_MANIFEST):
--	(echo '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' ; \
--	 echo '<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">' ; \
--	 echo '  <assemblyIdentity version="1.0.0.0"' ; \
--	 echo '     processorArchitecture="'$(EXE_MANIFEST_ARCHITECTURE)'"' ; \
--	 echo '     name="gtk-update-icon-cache.exe"' ; \
--	 echo '     type="win32"/>' ; \
--	 echo '  <!-- Identify the application security requirements. -->' ; \
--	 echo '  <trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">' ; \
--	 echo '    <security>' ; \
--	 echo '      <requestedPrivileges>' ; \
--	 echo '        <requestedExecutionLevel' ; \
--	 echo '          level="asInvoker"' ; \
--	 echo '          uiAccess="false"/>' ; \
--	 echo '        </requestedPrivileges>' ; \
--	 echo '       </security>' ; \
--	 echo '  </trustInfo>' ; \
--	 echo '</assembly>' ) >$@
+-$(GTK_UPDATE_ICON_CACHE_MANIFEST): Makefile generate-uac-manifest.py
+-	$(PYTHON) $(srcdir)/generate-uac-manifest.py -p=gtk3 -n=gtk-update-icon-cache --pkg-version=$(GTK_VERSION) --output-dir=$(builddir)
 -
--$(GTK_UPDATE_ICON_CACHE_RC):
--	(echo -e '#include <winuser.h>\nCREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST '$(GTK_UPDATE_ICON_CACHE_MANIFEST)) >$@
+-$(GTK_UPDATE_ICON_CACHE_RC): $(GTK_UPDATE_ICON_CACHE_MANIFEST)
 -
 -$(GTK_UPDATE_ICON_CACHE_MANIFEST_OBJECT): $(GTK_UPDATE_ICON_CACHE_RC) $(GTK_UPDATE_ICON_CACHE_MANIFEST)
 -	$(WINDRES) --input $< --output $@ --output-format=coff
@@ -134,5 +117,5 @@ index e556e9d3af..4d7973f3b1 100644
  
  files:
 -- 
-2.17.0
+2.30.0
 

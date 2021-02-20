@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2021 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,6 +9,7 @@ inherit gnome2 multilib multilib-minimal virtualx
 DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="https://www.gtk.org/"
 SRC_URI=${SRC_URI-}
+SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="3"
@@ -18,7 +19,7 @@ REQUIRED_USE="
 	xinerama? ( X )
 "
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 # Upstream wants us to do their job:
 # https://bugzilla.gnome.org/show_bug.cgi?id=768662#c1
@@ -31,16 +32,17 @@ COMMON_DEPEND="
 	>=dev-libs/fribidi-0.19.7[${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.57.2:2[${MULTILIB_USEDEP}]
 	media-libs/fontconfig[${MULTILIB_USEDEP}]
+	>=media-libs/harfbuzz-0.9:=
 	>=media-libs/libepoxy-1.4[X(+)?,${MULTILIB_USEDEP}]
+	virtual/libintl[${MULTILIB_USEDEP}]
 	>=x11-libs/cairo-1.14[aqua?,glib,svg,X?,${MULTILIB_USEDEP}]
 	>=x11-libs/gdk-pixbuf-2.30:2[introspection?,${MULTILIB_USEDEP}]
 	>=x11-libs/pango-1.41.0[introspection?,${MULTILIB_USEDEP}]
-	>=media-libs/harfbuzz-0.9:=
 	x11-misc/shared-mime-info
 
 	cloudprint? (
-		>=net-libs/rest-0.7[${MULTILIB_USEDEP}]
 		>=dev-libs/json-glib-1.0[${MULTILIB_USEDEP}]
+		>=net-libs/rest-0.7[${MULTILIB_USEDEP}]
 	)
 	colord? ( >=x11-misc/colord-0.1.9:0=[${MULTILIB_USEDEP}] )
 	cups? ( >=net-print/cups-2.0[${MULTILIB_USEDEP}] )
@@ -56,21 +58,20 @@ COMMON_DEPEND="
 		atk-bridge? ( >=app-accessibility/at-spi2-atk-2.15.1[${MULTILIB_USEDEP}] )
 		media-libs/mesa[X(+),${MULTILIB_USEDEP}]
 		x11-libs/libX11[${MULTILIB_USEDEP}]
-		>=x11-libs/libXi-1.3[${MULTILIB_USEDEP}]
-		x11-libs/libXext[${MULTILIB_USEDEP}]
-		>=x11-libs/libXrandr-1.5[${MULTILIB_USEDEP}]
-		x11-libs/libXcursor[${MULTILIB_USEDEP}]
-		x11-libs/libXfixes[${MULTILIB_USEDEP}]
 		x11-libs/libXcomposite[${MULTILIB_USEDEP}]
+		x11-libs/libXcursor[${MULTILIB_USEDEP}]
 		x11-libs/libXdamage[${MULTILIB_USEDEP}]
+		x11-libs/libXext[${MULTILIB_USEDEP}]
+		x11-libs/libXfixes[${MULTILIB_USEDEP}]
+		>=x11-libs/libXi-1.3[${MULTILIB_USEDEP}]
+		>=x11-libs/libXrandr-1.5[${MULTILIB_USEDEP}]
 		xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
 	)
 "
 DEPEND="${COMMON_DEPEND}
-	>=sys-devel/gettext-0.19.7[${MULTILIB_USEDEP}]
 	test? (
-		media-fonts/font-misc-misc
 		media-fonts/font-cursor-misc
+		media-fonts/font-misc-misc
 	)
 	X? ( x11-base/xorg-proto )
 "
@@ -109,10 +110,13 @@ MULTILIB_CHOST_TOOLS=(
 
 PATCHES=(
 	# gtk-update-icon-cache is installed by dev-util/gtk-update-icon-cache
-	"${FILESDIR}"/${PN}-3.24.8-update-icon-cache.patch
+	"${FILESDIR}"/${PN}-3.24.25-update-icon-cache.patch
 
 	# Fix broken autotools logic
 	"${FILESDIR}"/${PN}-3.22.20-libcloudproviders-automagic.patch
+
+	# origin/gtk-3-24 imcontext regression fixes up to commit 5f13ee0afe0
+	"${WORKDIR}"/patches
 )
 
 strip_builddir() {
