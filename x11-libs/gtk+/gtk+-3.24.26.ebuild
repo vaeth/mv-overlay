@@ -9,7 +9,6 @@ inherit gnome2 multilib multilib-minimal virtualx
 DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="https://www.gtk.org/"
 SRC_URI=${SRC_URI-}
-SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="3"
@@ -97,6 +96,7 @@ BDEPEND="
 	>=dev-util/gdbus-codegen-2.48
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.20
+	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
 	gtk-doc? (
 		app-text/docbook-xml-dtd:4.3
@@ -114,9 +114,6 @@ PATCHES=(
 
 	# Fix broken autotools logic
 	"${FILESDIR}"/${PN}-3.22.20-libcloudproviders-automagic.patch
-
-	# origin/gtk-3-24 imcontext regression fixes up to commit 5f13ee0afe0
-	"${WORKDIR}"/patches
 )
 
 strip_builddir() {
