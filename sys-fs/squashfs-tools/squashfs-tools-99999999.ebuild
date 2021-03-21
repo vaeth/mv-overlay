@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2021 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ src_unpack() {
 };;
 *alpha*)
 	RESTRICT="mirror"
-	EGIT_COMMIT="c570c6188811088b12ffdd9665487a2960c997a0"
+	EGIT_COMMIT="248ee1eecad9e7a4425535291699d180b92112f3"
 	SRC_URI="https://github.com/plougher/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 ${EXTRA_URI}"
 src_unpack() {
@@ -55,10 +55,8 @@ DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
 
 src_prepare() {
-	local Pm debian
-	Pm=${PN}-${PVm}
-	debian="${WORKDIR}"/debian/patches
-	eapply -p2 "${debian}"/0001-kfreebsd.patch
+	sed -n -e 's/^#ifndef linux$/#if !defined(linux) && !defined(__GLIBC__)/' \
+		-- "${S}"/*.c "${S}"/*.h || die
 	default
 }
 
