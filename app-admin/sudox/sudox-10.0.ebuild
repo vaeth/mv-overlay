@@ -1,4 +1,4 @@
-# Copyright 2011-2020 Martin V\"ath
+# Copyright 2011-2021 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,4 +29,6 @@ src_install() {
 	dobin bin/*
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
+	insinto /usr/share/wayland-sessions
+	doins usr/share/wayland-sessions/*
 }
