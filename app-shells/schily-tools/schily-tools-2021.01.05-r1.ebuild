@@ -490,6 +490,12 @@ src_install() {
 		mv -v -- "${ED}"/usr/share/man/man3/{,schily-}getsubopt.3 || die
 	fi
 	use split-usr || move_to_usr_bin "${ED}"/bin/*
+	if test -d "${ED}"/usr/etc
+	then
+		dodir etc
+		mv -v -- "${ED}"/usr/etc/* "${ED}"/etc
+		rmdir -- "${ED}"/usr/etc
+	fi
 }
 
 move_to_usr_bin() {
