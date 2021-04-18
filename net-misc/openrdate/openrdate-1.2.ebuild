@@ -27,6 +27,11 @@ src_prepare() {
 	mv docs/{,open}rdate.8
 }
 
+src_configure() {
+	export CFLAGS="${CFLAGS-} -D__NO_SYSCTL__"
+	default
+}
+
 src_install(){
 	emake -j1 DESTDIR="${D}" install || die "make install failed"
 	newinitd "${FILESDIR}"/openrdate-initd openrdate
