@@ -1,15 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2021 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-GNOME2_LA_PUNT="yes"
+EAPI=7
 GNOME2_EAUTORECONF="yes"
 
 inherit flag-o-matic gnome2 multilib multilib-minimal readme.gentoo-r1 virtualx
 
 DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="https://www.gtk.org/"
-SRC_URI=${SRC_URI}" https://dev.gentoo.org/~leio/distfiles/${P}-patchset-r1.tar.xz"
+SRC_URI=${SRC_URI}
 
 LICENSE="LGPL-2+"
 SLOT="2"
@@ -18,7 +17,7 @@ REQUIRED_USE="
 	xinerama? ( !aqua )
 "
 
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 # Upstream wants us to do their job:
 # https://bugzilla.gnome.org/show_bug.cgi?id=768663#c1
@@ -28,6 +27,7 @@ COMMON_DEPEND="
 	>=dev-libs/atk-2.10.0[introspection?,${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
 	>=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}]
+	virtual/libintl[${MULTILIB_USEDEP}]
 	>=x11-libs/cairo-1.12.14-r4:=[aqua?,svg,${MULTILIB_USEDEP}]
 	>=x11-libs/gdk-pixbuf-2.30.7:2[introspection?,${MULTILIB_USEDEP}]
 	>=x11-libs/pango-1.36.3[introspection?,${MULTILIB_USEDEP}]
@@ -37,37 +37,25 @@ COMMON_DEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.9.3:= )
 	!aqua? (
 		>=x11-libs/cairo-1.12.14-r4:=[aqua?,svg,X,${MULTILIB_USEDEP}]
-		>=x11-libs/libXrender-0.9.8[${MULTILIB_USEDEP}]
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
-		>=x11-libs/libXi-1.7.2[${MULTILIB_USEDEP}]
-		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
-		>=x11-libs/libXrandr-1.5[${MULTILIB_USEDEP}]
-		>=x11-libs/libXcursor-1.1.14[${MULTILIB_USEDEP}]
-		>=x11-libs/libXfixes-5.0.1[${MULTILIB_USEDEP}]
 		>=x11-libs/libXcomposite-0.4.4-r1[${MULTILIB_USEDEP}]
+		>=x11-libs/libXcursor-1.1.14[${MULTILIB_USEDEP}]
 		>=x11-libs/libXdamage-1.1.4-r1[${MULTILIB_USEDEP}]
+		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
+		>=x11-libs/libXfixes-5.0.1[${MULTILIB_USEDEP}]
+		>=x11-libs/libXi-1.7.2[${MULTILIB_USEDEP}]
+		>=x11-libs/libXrandr-1.5[${MULTILIB_USEDEP}]
+		>=x11-libs/libXrender-0.9.8[${MULTILIB_USEDEP}]
 		xinerama? ( >=x11-libs/libXinerama-1.1.3[${MULTILIB_USEDEP}] )
 	)
 "
-# docbook-4.1.2 and xsl required for man pages
-# docbook-4.3 required for gtk-doc
 DEPEND="${COMMON_DEPEND}
-	doc? (
-		app-text/docbook-xsl-stylesheets
-		app-text/docbook-xml-dtd:4.1.2
-		app-text/docbook-xml-dtd:4.3
-		dev-libs/libxslt
-	)
-	dev-libs/gobject-introspection-common
-	dev-util/glib-utils
-	>=dev-util/gtk-doc-am-1.20
-	>=sys-devel/gettext-0.18.3[${MULTILIB_USEDEP}]
-	virtual/pkgconfig
 	!aqua? ( x11-base/xorg-proto )
 	test? (
-		x11-themes/hicolor-icon-theme
+		media-fonts/font-cursor-misc
 		media-fonts/font-misc-misc
-		media-fonts/font-cursor-misc )
+		x11-themes/hicolor-icon-theme
+	)
 "
 
 # gtk+-2.24.8 breaks Alt key handling in <=x11-libs/vte-0.28.2:0
@@ -75,19 +63,35 @@ DEPEND="${COMMON_DEPEND}
 # in sync.
 RDEPEND="${COMMON_DEPEND}
 	>=dev-util/gtk-update-icon-cache-2
-	!<gnome-base/gail-1000
-	!<dev-util/gtk-builder-convert-${PV}
-	!<x11-libs/vte-0.28.2-r201:0
 	adwaita-icon-theme? (
 		>=x11-themes/adwaita-icon-theme-3.14
 		x11-themes/gnome-themes-standard
 	)
+	!<dev-util/gtk-builder-convert-${PV}
 "
 # librsvg for svg icons (PDEPEND to avoid circular dep), bug #547710
 PDEPEND="
-	adwaita-icon-theme? ( x11-themes/gtk-engines-adwaita )
-	gnome-base/librsvg[${MULTILIB_USEDEP}]
+	adwaita-icon-theme? (
+		gnome-base/librsvg[${MULTILIB_USEDEP}]
+		x11-themes/gtk-engines-adwaita
+	)
 	vim-syntax? ( app-vim/gtk-syntax )
+"
+# docbook-4.1.2 and xsl required for man pages
+# docbook-4.3 required for gtk-doc
+BDEPEND="
+	doc? (
+		app-text/docbook-xml-dtd:4.1.2
+		app-text/docbook-xml-dtd:4.3
+		app-text/docbook-xsl-stylesheets
+		dev-libs/libxslt
+	)
+	dev-libs/gobject-introspection-common
+	dev-util/glib-utils
+	>=dev-util/gtk-doc-am-1.20
+	>=sys-devel/gettext-0.18.3
+	virtual/pkgconfig
+	examples? ( x11-libs/gdk-pixbuf )
 "
 
 DISABLE_AUTOFORMATTING="yes"
@@ -105,8 +109,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.24.24-out-of-source.patch
 	# Rely on split gtk-update-icon-cache package, bug #528810
 	"${FILESDIR}"/${PN}-2.24.31-update-icon-cache.patch # requires eautoreconf
-	# Upstream gtk-2-24 branch up to 2018-09-08 state, bug #650536 safety
-	"${WORKDIR}"/patches/ # requires eautoreconf
+	# Respect ${NM}, bug #725852
+	"${FILESDIR}"/${PN}-2.24.33-respect-NM.patch # requires eautoreconf
 )
 
 strip_builddir() {
@@ -162,7 +166,7 @@ src_prepare() {
 		# UI tests require immodules already installed; bug #413185
 		if ! has_version 'x11-libs/gtk+:2'; then
 			ewarn "Disabling UI tests because this is the first install of"
-			ewarn "gtk+:2 on this machine. Please re-run the tests after $P"
+			ewarn "gtk+:2 on this machine. Please re-run the tests after ${P}"
 			ewarn "has been installed."
 			sed '/g_test_add_func.*ui-tests/ d' \
 				-i gtk/tests/testing.c || die "sed 2 failed"
@@ -228,10 +232,13 @@ multilib_src_install_all() {
 	doins "${T}"/gtkrc
 
 	einstalldocs
+	rm "${ED}"/usr/share/doc/${P}/ChangeLog # empty file
 
 	# dev-util/gtk-builder-convert split off into a separate package, #402905
-	rm -f "${ED}"usr/bin/gtk-builder-convert || die
-	rm -f "${ED}"usr/share/man/man1/gtk-builder-convert.* || die
+	rm "${ED}"/usr/bin/gtk-builder-convert || die
+	if use doc ; then
+		rm "${ED}"/usr/share/man/man1/gtk-builder-convert.* || die
+	fi
 
 	readme.gentoo_create_doc
 }
@@ -241,12 +248,12 @@ pkg_preinst() {
 
 	multilib_pkg_preinst() {
 		# Make immodules.cache belongs to gtk+ alone
-		local cache="usr/$(get_libdir)/gtk-2.0/2.10.0/immodules.cache"
+		local cache="/usr/$(get_libdir)/gtk-2.0/2.10.0/immodules.cache"
 
-		if [[ -e ${EROOT}${cache} ]]; then
-			cp "${EROOT}"${cache} "${ED}"/${cache} || die
+		if [[ -e "${EROOT}${cache}" ]]; then
+			cp "${EROOT}${cache}" "${ED}${cache}" || die
 		else
-			touch "${ED}"/${cache} || die
+			touch "${ED}${cache}" || die
 		fi
 	}
 	multilib_parallel_foreach_abi multilib_pkg_preinst
@@ -263,35 +270,35 @@ pkg_postinst() {
 
 	set_gtk2_confdir
 
-	if [ -e "${EROOT%/}/etc/gtk-2.0/gtk.immodules" ]; then
+	if [ -e "${EROOT}/etc/gtk-2.0/gtk.immodules" ]; then
 		elog "File /etc/gtk-2.0/gtk.immodules has been moved to \$CHOST"
 		elog "aware location. Removing deprecated file."
-		rm -f ${EROOT%/}/etc/gtk-2.0/gtk.immodules
+		rm -f "${EROOT}/etc/gtk-2.0/gtk.immodules"
 	fi
 
-	if [ -e "${EROOT%/}${GTK2_CONFDIR}/gtk.immodules" ]; then
+	if [ -e "${EROOT}${GTK2_CONFDIR}/gtk.immodules" ]; then
 		elog "File /etc/gtk-2.0/gtk.immodules has been moved to"
-		elog "${EROOT%/}/usr/$(get_libdir)/gtk-2.0/2.10.0/immodules.cache"
+		elog "${EROOT}/usr/$(get_libdir)/gtk-2.0/2.10.0/immodules.cache"
 		elog "Removing deprecated file."
-		rm -f ${EROOT%/}${GTK2_CONFDIR}/gtk.immodules
+		rm -f "${EROOT}${GTK2_CONFDIR}/gtk.immodules"
 	fi
 
 	# pixbufs are now handled by x11-libs/gdk-pixbuf
-	if [ -e "${EROOT%/}${GTK2_CONFDIR}/gdk-pixbuf.loaders" ]; then
-		elog "File ${EROOT%/}${GTK2_CONFDIR}/gdk-pixbuf.loaders is now handled by x11-libs/gdk-pixbuf"
+	if [ -e "${EROOT}${GTK2_CONFDIR}/gdk-pixbuf.loaders" ]; then
+		elog "File ${EROOT}${GTK2_CONFDIR}/gdk-pixbuf.loaders is now handled by x11-libs/gdk-pixbuf"
 		elog "Removing deprecated file."
-		rm -f ${EROOT%/}${GTK2_CONFDIR}/gdk-pixbuf.loaders
+		rm -f "${EROOT}${GTK2_CONFDIR}/gdk-pixbuf.loaders"
 	fi
 
 	# two checks needed since we dropped multilib conditional
-	if [ -e "${EROOT%/}/etc/gtk-2.0/gdk-pixbuf.loaders" ]; then
-		elog "File ${EROOT%/}/etc/gtk-2.0/gdk-pixbuf.loaders is now handled by x11-libs/gdk-pixbuf"
+	if [ -e "${EROOT}/etc/gtk-2.0/gdk-pixbuf.loaders" ]; then
+		elog "File ${EROOT}/etc/gtk-2.0/gdk-pixbuf.loaders is now handled by x11-libs/gdk-pixbuf"
 		elog "Removing deprecated file."
-		rm -f ${EROOT%/}/etc/gtk-2.0/gdk-pixbuf.loaders
+		rm -f "${EROOT}/etc/gtk-2.0/gdk-pixbuf.loaders"
 	fi
 
-	if [ -e "${EROOT%/}"/usr/lib/gtk-2.0/2.[^1]* ]; then
-		elog "You need to rebuild ebuilds that installed into" "${EROOT%/}"/usr/lib/gtk-2.0/2.[^1]*
+	if [ -e "${EROOT}"/usr/lib/gtk-2.0/2.[^1]* ]; then
+		elog "You need to rebuild ebuilds that installed into" "${EROOT}"/usr/lib/gtk-2.0/2.[^1]*
 		elog "to do that you can use qfile from portage-utils:"
 		elog "emerge -va1 \$(qfile -qC ${EPREFIX}/usr/lib/gtk-2.0/2.[^1]*)"
 	fi
@@ -310,7 +317,7 @@ pkg_postrm() {
 
 	if [[ -z ${REPLACED_BY_VERSION} ]]; then
 		multilib_pkg_postrm() {
-			rm -f "${EROOT}"usr/$(get_libdir)/gtk-2.0/2.10.0/immodules.cache
+			rm -f "${EROOT}/usr/$(get_libdir)/gtk-2.0/2.10.0/immodules.cache"
 		}
 		multilib_foreach_abi multilib_pkg_postrm
 	fi
