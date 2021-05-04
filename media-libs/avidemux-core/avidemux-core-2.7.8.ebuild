@@ -1,35 +1,27 @@
-# Copyright 1999-2019 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 
-if [[ ${PV} == *9999* ]] ; then
-	EGIT_REPO_URI="https://github.com/mean00/avidemux2.git"
-	EGIT_CHECKOUT_DIR=${WORKDIR}
-	inherit git-r3
-else
-	MY_PN="${PN/-core/}"
-	MY_P="${MY_PN}_${PV}"
-	SRC_URI="mirror://sourceforge/${MY_PN}/${MY_PN}/${PV}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
-inherit cmake-utils
+inherit cmake flag-o-matic toolchain-funcs
 
 DESCRIPTION="Core libraries for simple video cutting, filtering and encoding tasks"
 HOMEPAGE="http://fixounet.free.fr/avidemux"
+SRC_URI="https://github.com/mean00/avidemux2/archive/${PV}.tar.gz -> avidemux-${PV}.tar.gz"
 
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
 SLOT="2.7"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug nls nvenc sdl system-ffmpeg vaapi vdpau xv"
 
 # Trying to use virtual; ffmpeg misses aac,cpudetection USE flags now though, are they needed?
 DEPEND="dev-db/sqlite:3
 	nvenc? ( media-video/nvidia_video_sdk )
 	sdl? ( media-libs/libsdl:0 )
-	system-ffmpeg? ( >=virtual/ffmpeg-9:0[mp3,theora] )
+	system-ffmpeg? ( >=media-video/ffmpeg-9:0[mp3,theora] )
 	vaapi? ( x11-libs/libva:0= )
 	vdpau? ( x11-libs/libvdpau:0 )
 	xv? ( x11-libs/libXv:0 )
@@ -44,11 +36,11 @@ BDEPEND="virtual/pkgconfig
 	!system-ffmpeg? ( dev-lang/yasm[nls=] )
 "
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/avidemux2-${PV}"
 CMAKE_USE_DIR="${S}/${PN/-/_}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	if use system-ffmpeg ; then
 		# Preparations to support the system ffmpeg. Currently fails because
@@ -61,15 +53,24 @@ src_prepare() {
 			-i avidemux/commonCmakeApplication.cmake || die "${error}"
 		sed -e 's/include(admFFmpegBuild)//g' \
 			-i avidemux_core/CMakeLists.txt || die "${error}"
+	else
+		local ffmpeg_args=(
+			--cc=$(tc-getCC)
+			--cxx=$(tc-getCXX)
+			--ar=$(tc-getAR)
+			--nm=$(tc-getNM)
+			--ranlib=$(tc-getRANLIB)
+			"--optflags='${CFLAGS}'"
+		)
+
+		sed -i \
+			-e "s/@@GENTOO_FFMPEG_FLAGS@@/${ffmpeg_args[*]}/" \
+			cmake/ffmpeg_configure.sh.cmake \
+			|| die
 	fi
 }
 
 src_configure() {
-	# Add lax vector typing for PowerPC.
-	if use ppc || use ppc64 ; then
-		append-cflags -flax-vector-conversions
-	fi
-
 	# See bug 432322.
 	use x86 && replace-flags -O0 -O1
 
@@ -83,17 +84,15 @@ src_configure() {
 		-DXVIDEO="$(usex xv)"
 	)
 
-	if use debug ; then
-		mycmakeargs+=( -DVERBOSE=1 -DADM_DEBUG=1 )
-	fi
+	use debug && mycmakeargs+=( -DVERBOSE=1 -DADM_DEBUG=1 )
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 }

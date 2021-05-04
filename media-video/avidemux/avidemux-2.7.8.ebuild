@@ -1,27 +1,24 @@
-# Copyright 1999-2019 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2021 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-if [[ ${PV} == *9999* ]] ; then
-	MY_P="${P}"
-	EGIT_REPO_URI="https://github.com/mean00/avidemux2.git"
-	inherit git-r3
-else
-	MY_P="${PN}_${PV}"
-	SRC_URI="mirror://sourceforge/${PN}/${PN}/${PV}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
-inherit cmake-utils qmake-utils xdg-utils
+CMAKE_MAKEFILE_GENERATOR="emake"
+inherit cmake desktop flag-o-matic qmake-utils xdg
 
 DESCRIPTION="Video editor designed for simple cutting, filtering and encoding tasks"
 HOMEPAGE="http://fixounet.free.fr/avidemux"
+SRC_URI="https://github.com/mean00/avidemux2/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/mean00/avidemux2_i18n/archive/${PV}.tar.gz -> ${PN}-i18n-${PV}.tar.gz"
 
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
 SLOT="2.7"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug nls nvenc opengl qt5 sdl vaapi vdpau xv"
 
+BDEPEND="dev-lang/yasm
+	qt5? ( dev-qt/linguist-tools:5 )"
 DEPEND="
 	~media-libs/avidemux-core-${PV}:${SLOT}[nls?,sdl?,vaapi?,vdpau?,xv?,nvenc?]
 	nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) )
@@ -35,23 +32,28 @@ DEPEND="
 	)
 	vaapi? ( x11-libs/libva:0= )
 "
-BDEPEND="
-	qt5? ( dev-qt/linguist-tools:5 )
-"
 RDEPEND="${DEPEND}
 	nls? ( virtual/libintl:0 )
 	!<media-video/avidemux-${PV}
 "
 PDEPEND="~media-libs/avidemux-plugins-${PV}:${SLOT}[opengl?,qt5?]"
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/avidemux2-${PV}"
+
+src_unpack() {
+	default
+	mv -f -T avidemux2_i18n-${PV} "${S}"/avidemux/qt4/i18n >/dev/null || die
+}
 
 src_prepare() {
-	default
-
 	processes="buildCli:avidemux/cli"
-	if use qt5 ; then
-		processes+=" buildQt4:avidemux/qt4"
+	use qt5 && processes+=" buildQt4:avidemux/qt4"
+
+	for process in ${processes} ; do
+		CMAKE_USE_DIR="${S}"/${process#*:} cmake_src_prepare
+	done
+
+	if use qt5; then
 		# Fix icon name -> avidemux-2.7
 		sed -i -e "/^Icon/ s:${PN}\.png:${PN}-${SLOT}:" appImage/${PN}.desktop || \
 			die "Icon name fix failed."
@@ -68,10 +70,6 @@ src_prepare() {
 		mv appImage/${PN}.desktop ${PN}-${SLOT}.desktop || die "Collision rename failed."
 	fi
 
-	for process in ${processes} ; do
-		CMAKE_USE_DIR="${S}"/${process#*:} cmake-utils_src_prepare
-	done
-
 	# Remove "Build Option" dialog because it doesn't reflect
 	# what the GUI can or has been built with. (Bug #463628)
 	sed -i -e '/Build Option/d' avidemux/common/ADM_commonUI/myOwnMenu.h || \
@@ -83,13 +81,12 @@ src_prepare() {
 }
 
 src_configure() {
-	# Add lax vector typing for PowerPC.
-	if use ppc || use ppc64 ; then
-		append-cflags -flax-vector-conversions
-	fi
-
 	# See bug 432322.
 	use x86 && replace-flags -O0 -O1
+
+	# The build relies on an avidemux-core header that uses 'nullptr'
+	# which is from >=C++11. Let's use the GCC-6 default C++ dialect.
+	append-cxxflags -std=c++14
 
 	local mycmakeargs=(
 		-DGETTEXT="$(usex nls)"
@@ -100,41 +97,37 @@ src_configure() {
 		-DXVIDEO="$(usex xv)"
 	)
 
-	if use qt5 ; then
-		mycmakeargs+=(
+	use qt5 && mycmakeargs+=(
 			-DENABLE_QT5="$(usex qt5)"
 			-DLRELEASE_EXECUTABLE="$(qt5_get_bindir)/lrelease"
-		)
-	fi
+	)
 
-	if use debug ; then
-		mycmakeargs+=( -DVERBOSE=1 -DADM_DEBUG=1 )
-	fi
+	use debug && mycmakeargs+=( -DVERBOSE=1 -DADM_DEBUG=1 )
 
 	for process in ${processes} ; do
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
-		CMAKE_USE_DIR="${S}"/${process#*:} BUILD_DIR="${build}" cmake-utils_src_configure
+		CMAKE_USE_DIR="${S}"/${process#*:} BUILD_DIR="${build}" cmake_src_configure
 	done
 }
 
 src_compile() {
 	for process in ${processes} ; do
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
-		BUILD_DIR="${build}" cmake-utils_src_compile
+		BUILD_DIR="${build}" cmake_src_compile
 	done
 }
 
 src_test() {
 	for process in ${processes} ; do
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
-		BUILD_DIR="${build}" cmake-utils_src_test
+		BUILD_DIR="${build}" cmake_src_test
 	done
 }
 
 src_install() {
 	for process in ${processes} ; do
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
-		BUILD_DIR="${build}" cmake-utils_src_install
+		BUILD_DIR="${build}" cmake_src_install
 	done
 
 	if use qt5; then
@@ -142,12 +135,4 @@ src_install() {
 		newicon ${PN}_icon.png ${PN}-${SLOT}.png
 		domenu ${PN}-${SLOT}.desktop
 	fi
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
 }

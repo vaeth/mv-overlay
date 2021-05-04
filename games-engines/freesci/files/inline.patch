@@ -1,0 +1,40 @@
+Martin Väth <martin@mvath.de>:
+Wrong inlines cause symbols/functions not to be found with current gcc-11
+--- 1/src/engine/klists.c
++++ 1/src/engine/klists.c
+@@ -301,7 +301,7 @@
+ 	return make_reg(0, ((l)? IS_NULL_REG(l->first) : 0));
+ }
+ 
+-inline void
++void
+ _k_add_to_front(state_t *s, reg_t listbase, reg_t nodebase)
+ {
+ 	list_t *l = LOOKUP_LIST(listbase);
+@@ -328,7 +328,7 @@
+ 	l->first = nodebase;
+ }
+ 
+-inline void
++void
+ _k_add_to_end(state_t *s, reg_t listbase, reg_t nodebase)
+ {
+ 	list_t *l = LOOKUP_LIST(listbase);
+--- ori/src/sfx/softseq/fmopl.c
++++ ori/src/sfx/softseq/fmopl.c
+@@ -443,6 +443,7 @@
+ /* operator output calcrator */
+ #define OP_OUT(slot,env,con)   slot->wavetable[((slot->Cnt + con) / (0x1000000 / SIN_ENT)) & (SIN_ENT-1)][env]
+ /* ---------- calcrate one of channel ---------- */
++void OPL_CALC_CH(OPL_CH *CH);
+ INLINE void OPL_CALC_CH(OPL_CH *CH) {
+ 	guint32 env_out;
+ 	OPL_SLOT *SLOT;
+@@ -486,6 +487,7 @@
+ 
+ /* ---------- calcrate rythm block ---------- */
+ #define WHITE_NOISE_db 6.0
++void OPL_CALC_RH(OPL_CH *CH);
+ INLINE void OPL_CALC_RH(OPL_CH *CH) {
+ 	guint32 env_tam, env_sd, env_top, env_hh;
+ 	int whitenoise = (int)((rand()&1) * (WHITE_NOISE_db / EG_STEP));

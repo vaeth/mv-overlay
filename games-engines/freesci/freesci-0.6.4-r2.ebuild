@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2021 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,6 +30,7 @@ src_prepare() {
 		Makefile.in \
 		|| die "sed failed"
 	eapply -p0 "${FILESDIR}"/${P}-glibc2.10.patch
+	eapply "${FILESDIR}"/inline.patch
 	default
 }
 

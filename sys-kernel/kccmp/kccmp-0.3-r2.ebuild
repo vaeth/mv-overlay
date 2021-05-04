@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2021 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,8 +24,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local project_file=$(qmake-utils_find_pro_file)
-	eqmake5 "${project_file}"
+	eqmake5 "${S}"/kccmp.pro
 }
 
 src_install() {

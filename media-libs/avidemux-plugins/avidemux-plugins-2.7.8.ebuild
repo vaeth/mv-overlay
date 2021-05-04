@@ -1,32 +1,26 @@
-# Copyright 1999-2021 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+CMAKE_MAKEFILE_GENERATOR="emake"
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-if [[ ${PV} == *9999* ]] ; then
-	EGIT_REPO_URI="https://github.com/mean00/avidemux2.git"
-	EGIT_CHECKOUT_DIR=${WORKDIR}
-	inherit git-r3
-else
-	MY_PN="${PN/-plugins/}"
-	MY_P="${MY_PN}_${PV}"
-	SRC_URI="mirror://sourceforge/${MY_PN}/${MY_PN}/${PV}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
-inherit cmake-utils python-single-r1
+inherit cmake flag-o-matic python-single-r1
 
 DESCRIPTION="Plugins for the video editor media-video/avidemux"
 HOMEPAGE="http://fixounet.free.fr/avidemux"
+SRC_URI="https://github.com/mean00/avidemux2/archive/${PV}.tar.gz -> avidemux-${PV}.tar.gz"
 
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
 SLOT="2.7"
 IUSE="a52 aac aften alsa amr dcaenc debug dts fdk fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx nvenc opengl opus oss pulseaudio qt5 truetype twolame vdpau vorbis vpx x264 x265 xv xvid"
+KEYWORDS="~amd64 ~x86"
+
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="
+COMMON_DEPEND="${PYTHON_DEPS}
 	~media-libs/avidemux-core-${PV}:${SLOT}[vdpau?]
 	~media-video/avidemux-${PV}:${SLOT}[opengl?,qt5?]
 	dev-lang/spidermonkey:0=
@@ -50,7 +44,7 @@ DEPEND="
 	fontconfig? ( media-libs/fontconfig:1.0 )
 	fribidi? ( dev-libs/fribidi )
 	jack? (
-		media-sound/jack-audio-connection-kit
+		virtual/jack
 		libsamplerate? ( media-libs/libsamplerate )
 	)
 	lame? ( media-sound/lame )
@@ -75,22 +69,21 @@ DEPEND="
 	)
 	xvid? ( media-libs/xvid )
 "
-BDEPEND="${PYTHON_DEPS}
-	oss? ( virtual/os-headers:0 )
+DEPEND="${COMMON_DEPEND}
+	oss? ( virtual/os-headers )
 "
-RDEPEND="${DEPEND}
-	${PYTHON_DEPS}
+RDEPEND="${COMMON_DEPEND}
 	!<media-libs/avidemux-plugins-${PV}
 "
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/avidemux2-${PV}"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.6.20-optional-pulse.patch )
 
 src_prepare() {
 	default
 
-	# Don't reapply PATCHES during cmake-utils_src_prepare
+	# Don't reapply PATCHES during cmake_src_prepare
 	unset PATCHES
 
 	processes="buildPluginsCommon:avidemux_plugins
@@ -98,16 +91,11 @@ src_prepare() {
 	use qt5 && processes+=" buildPluginsQt4:avidemux_plugins"
 
 	for process in ${processes} ; do
-		CMAKE_USE_DIR="${S}"/${process#*:} cmake-utils_src_prepare
+		CMAKE_USE_DIR="${S}"/${process#*:} cmake_src_prepare
 	done
 }
 
 src_configure() {
-	# Add lax vector typing for PowerPC.
-	if use ppc || use ppc64 ; then
-		append-cflags -flax-vector-conversions
-	fi
-
 	# See bug 432322.
 	use x86 && replace-flags -O0 -O1
 
@@ -151,28 +139,23 @@ src_configure() {
 			-DUSE_EXTERNAL_LIBMP4V2=yes
 		)
 
-		if use qt5 ; then
-			mycmakeargs+=( -DENABLE_QT5=True )
-		fi
+		use qt5 && mycmakeargs+=( -DENABLE_QT5=True )
+		use debug && mycmakeargs+=( -DVERBOSE=1 -DADM_DEBUG=1 )
 
-		if use debug ; then
-			mycmakeargs+=( -DVERBOSE=1 -DADM_DEBUG=1 )
-		fi
-
-		CMAKE_USE_DIR="${S}"/${process#*:} BUILD_DIR="${build}" cmake-utils_src_configure
+		CMAKE_USE_DIR="${S}"/${process#*:} BUILD_DIR="${build}" cmake_src_configure
 	done
 }
 
 src_compile() {
 	for process in ${processes} ; do
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
-		BUILD_DIR="${build}" cmake-utils_src_compile
+		BUILD_DIR="${build}" cmake_src_compile
 	done
 }
 
 src_install() {
 	for process in ${processes} ; do
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
-		BUILD_DIR="${build}" cmake-utils_src_install
+		BUILD_DIR="${build}" cmake_src_install
 	done
 }

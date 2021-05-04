@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Martin V\"ath
+# Copyright 1999-2021 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,5 +18,5 @@ RESTRICT=""
 
 src_install() {
 	default
-	find "${ED}" -type f -name "*.la" -delete || die
+	find "${ED}" -type f '(' -name "*.la" -o -name "*.a" ')' -delete || die
 }

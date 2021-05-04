@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2021 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ inherit desktop flag-o-matic lua-single toolchain-funcs
 
 DESCRIPTION="Drawing editor for creating figures in PDF or PS formats"
 HOMEPAGE="http://ipe.otfried.org/"
-SRC_URI="https://dl.bintray.com/otfried/generic/ipe/7.2/${P}-src.tar.gz"
+SRC_URI="https://github.com/otfried/ipe/releases/download/v${PV}/${PN}-${PV}-src.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -36,14 +36,19 @@ BDEPEND="virtual/pkgconfig"
 S="${WORKDIR}/${P}/src"
 
 src_prepare() {
-	filter-flags -fPIE -pie '-flto*' -fwhole-program +D_GLIBCXX_ASSERTIONS
+	filter-flags -fPIE -pie '-flto*' -fwhole-program -Wl,--no-undefined \
+		-DNDEBUG -D_GLIBCXX_ASSERTIONS
 	sed -i \
 		-e 's/fpic/fPIC/' \
 		-e "s'\$(IPEPREFIX)/lib'\$(IPEPREFIX)/$(get_libdir)'g" \
 		-e "s'\(LUA_CFLAGS.*=\).*'\1 $(lua_get_CFLAGS)'" \
 		-e "s'\(LUA_LIBS.*=\).*'\1 $(lua_get_LIBS)'" \
 		config.mak || die
-	sed -i -e 's/install -s/install/' common.mak || die
+	sed -i \
+		-e 's!-std=c++1.!!' \
+		-e 's/install -s/install/' \
+		-e "s'\$(CXX)'\$(CXX) -I${S}/ipecanvas -I${S}/ipecairo -I${S}/include'" \
+		common.mak || die
 	default
 }
 
