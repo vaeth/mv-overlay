@@ -3,6 +3,7 @@
 # * generated automatically using egencache *
 
 app-cdr/cdrtools:schily-tools - Use libschily from app-shells/schily-tools
+app-mobilephone/adb-sync:channel - Install the adb-channel script
 app-portage/eix:debug - Build with upstream's CXXFLAGS/LDFLAGS for debugging support; not recommended for normal use.
 app-portage/eix:dep - Make DEP=true the default which enables support for {,R,P,B}DEPEND but requires roughly double disk and memory.
 app-portage/eix:doc - Create description of the eix cache file additionally in html format
@@ -213,4 +214,3 @@ x11-libs/gtk+:broadway - Enable the GDK Broadway backend.
 x11-libs/gtk+:cloudprint - Enable printing via Google Cloud Print.
 x11-libs/gtk+:colord - Use x11-misc/colord for color management in printing
 x11-libs/motif:motif22-compatibility - Compatibility with Open Motif 2.2
-x11-misc/redshift:geoclue - Control dependency on app-misc/geoclue

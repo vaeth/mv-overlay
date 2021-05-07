@@ -20,6 +20,7 @@ app-emacs/mv_emacs 1.4-r1: (X)Emacs extensions: block support, macrorecorder, ve
 app-eselect/eselect-net 0.2-r1: eselect module for managing network open-rc service configurations
 app-misc/knapsack 7.3: A fast solver for the 0/1-knapsack problem with multiple knapsacks
 app-misc/machine-learning-mv 1.3: Some machine learning experiments
+app-mobilephone/adb-sync 0_p20190101: Synchronize files between a PC and an Android device using ADB
 app-portage/changelog-gitrepo 1.1: Create ChangeLog data for gentoo repositories from git
 app-portage/eix 0.34.12 99999999: Search and query ebuilds
 app-portage/etcat 1.0.2 99999999: Updated version of an old Portage information extractor
@@ -57,6 +58,7 @@ dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-tex/chklref 2.6.0 2.6.1_alpha20170913: Finds useless references in latex files or unnecessarily numbered environments
 dev-util/comp 4.3.1: compare files or directories, including metadata
 dev-util/diffhelp 1.12: A frontend, beautifier, and path-fixer for diff -u
+dev-util/flawfinder 2.0.15: Examines C/C++ source code for security flaws
 dev-util/mv_perl 4.2: A collection of perl scripts (replacement in files, syncing dirs etc)
 dev-util/pyrep 1.5-r1: Search and/or replace regular expressions within many files interactively
 dev-util/replacer 3.3: Search and replace python regular expressions within many files interactively
@@ -134,4 +136,5 @@ www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected te
 www-plugins/ublock-origin 1.17.2: Firefox webextension: An efficient list-based blocker
 x11-libs/gtk+ 2.24.33 3.24.29: Gimp ToolKit +
 x11-libs/motif 2.3.8-r1: The Motif user interface component toolkit
-x11-misc/redshift 1.12-r4: A screen color temperature adjusting software
+x11-terms/kitty 0.19.3: A modern, hackable, featureful, OpenGL-based terminal emulator
+x11-themes/fvwm-crystal 3.6.5: Configurable FVWM theme with transparency and freedesktop compatible menu
