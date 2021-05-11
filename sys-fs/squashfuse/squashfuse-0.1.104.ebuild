@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2021 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ IUSE="lz4 lzma lzo static-libs +zlib zstd"
 REQUIRED_USE="|| ( lz4 lzma lzo zlib zstd )"
 
 COMMON_DEPEND="
-	>=sys-fs/fuse-2.8.6:0=
+	sys-fs/fuse:3=
 	lzma? ( >=app-arch/xz-utils-5.0.4:= )
 	zlib? ( >=sys-libs/zlib-1.2.5-r2:= )
 	lzo? ( >=dev-libs/lzo-2.06:= )
