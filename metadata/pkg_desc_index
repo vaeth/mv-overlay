@@ -58,7 +58,6 @@ dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-tex/chklref 2.6.0 2.6.1_alpha20170913: Finds useless references in latex files or unnecessarily numbered environments
 dev-util/comp 4.3.1: compare files or directories, including metadata
 dev-util/diffhelp 1.12: A frontend, beautifier, and path-fixer for diff -u
-dev-util/flawfinder 2.0.15: Examines C/C++ source code for security flaws
 dev-util/mv_perl 4.2: A collection of perl scripts (replacement in files, syncing dirs etc)
 dev-util/pyrep 1.5-r1: Search and/or replace regular expressions within many files interactively
 dev-util/replacer 3.3: Search and replace python regular expressions within many files interactively
@@ -137,6 +136,4 @@ www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected te
 www-plugins/ublock-origin 1.17.2: Firefox webextension: An efficient list-based blocker
 x11-libs/gtk+ 2.24.33 3.24.29: Gimp ToolKit +
 x11-libs/motif 2.3.8-r1: The Motif user interface component toolkit
-x11-terms/kitty 0.20.1: A modern, hackable, featureful, OpenGL-based terminal emulator
-x11-terms/kitty-terminfo 0.20.1: Terminfo for kitty, an OpenGL-based terminal emulator
 x11-themes/fvwm-crystal 3.6.5: Configurable FVWM theme with transparency and freedesktop compatible menu
