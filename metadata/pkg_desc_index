@@ -113,7 +113,7 @@ sys-fs/squashfuse 0.1.104: FUSE filesystem to mount squashfs archives
 sys-fs/squashmount 22.1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-kernel/kccmp 0.3-r2: A simple tool for comparing two linux kernel .config files
 sys-kernel/kconfig-hardened-check 0.5.9 99999999: A script for checking the hardening options in the Linux kernel config
-sys-kernel/kernel 6.2: A POSIX shell script to compile the kernel with user permissions
+sys-kernel/kernel 6.3: A POSIX shell script to compile the kernel with user permissions
 sys-power/cpupower 99999999: Shows and sets processor power related values
 virtual/cdrtools 1: Virtual for command-line recorders cdrtools and cdrkit
 virtual/freedesktop-icon-theme 0-r4: Virtual to choose between different icon themes
