@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Excellent text file viewer, optionally with additional selection feature"
 PATCHN="less-select"
@@ -11,8 +11,9 @@ PATCHRUMP="${PATCHN}-${PATCHV}"
 PATCHBALL="${PATCHRUMP}.tar.gz"
 SELECTDIR="${WORKDIR}/${PATCHRUMP}"
 HOMEPAGE="http://www.greenwoodsoftware.com/less/ https://github.com/vaeth/${PATCHN}"
-SRC_URI="http://www.greenwoodsoftware.com/less/${P}.tar.gz
+SRC_URI="mirror+http://www.greenwoodsoftware.com/less/${P}.tar.gz
 	less-select? ( https://github.com/vaeth/${PATCHN}/archive/v${PATCHV}.tar.gz -> ${PATCHBALL} )"
+RESTRICT="mirror"
 
 LICENSE="|| ( GPL-3 BSD-2 )"
 SLOT="0"

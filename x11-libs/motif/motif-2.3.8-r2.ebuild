@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2021 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,9 +7,9 @@ inherit autotools flag-o-matic multilib toolchain-funcs multilib-minimal
 
 DESCRIPTION="The Motif user interface component toolkit"
 HOMEPAGE="https://sourceforge.net/projects/motif/
-	http://motif.ics.com/"
+	https://motif.ics.com/"
 SRC_URI="mirror://sourceforge/project/motif/Motif%20${PV}%20Source%20Code/${P}.tar.gz
-	https://dev.gentoo.org/~ulm/distfiles/${PN}-2.3.6-patches-2.tar.xz"
+	https://dev.gentoo.org/~ulm/distfiles/${P}-patches-1.tar.xz"
 
 LICENSE="LGPL-2.1+ MIT"
 SLOT="0"
@@ -28,21 +28,16 @@ RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXft-2.3.1-r1[${MULTILIB_USEDEP}]
 	)"
 
-DEPEND="${RDEPEND}"
-BDEPEND="sys-devel/flex
-	|| ( sys-devel/bison dev-util/byacc sys-freebsd/freebsd-ubin )
+DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	x11-misc/xbitmaps"
 
+BDEPEND="sys-devel/flex
+	|| ( sys-devel/bison dev-util/byacc sys-freebsd/freebsd-ubin )"
+
 src_prepare() {
 	eapply ../patch
-	default
-
-	# disable compilation of demo binaries
-	sed -i -e '/^SUBDIRS/{:x;/\\$/{N;bx;};s/[ \t\n\\]*demos//;}' Makefile.am
-
-	# add X.Org vendor string to aliases for virtual bindings
-	echo -e '"The X.Org Foundation"\t\t\t\t\tpc' >>bindings/xmbind.alias
+	eapply_user
 
 	AT_M4DIR=. eautoreconf
 
@@ -108,7 +103,7 @@ multilib_src_install_all() {
 	newins "${FILESDIR}"/Mwm.defaults Mwm
 
 	# cleanup
-	rm -rf "${ED}"/usr/share/Xm
+	rm -rf "${ED}"/usr/share/Xm || die
 	find "${D}" -type f -name "*.la" -delete || die
 
 	dodoc BUGREPORT ChangeLog README RELEASE RELNOTES TODO
