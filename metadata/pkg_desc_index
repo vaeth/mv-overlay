@@ -22,7 +22,7 @@ app-misc/knapsack 7.3: A fast solver for the 0/1-knapsack problem with multiple 
 app-misc/machine-learning-mv 1.3: Some machine learning experiments
 app-mobilephone/adb-sync 0_p20190101: Synchronize files between a PC and an Android device using ADB
 app-portage/changelog-gitrepo 1.1: Create ChangeLog data for gentoo repositories from git
-app-portage/eix 0.35.2 99999999: Search and query ebuilds
+app-portage/eix 0.35.2 0.35.3_alpha210709 99999999: Search and query ebuilds
 app-portage/etcat 1.0.2 99999999: Updated version of an old Portage information extractor
 app-portage/find_cruft 5.2: find cruft files not managed by portage
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
