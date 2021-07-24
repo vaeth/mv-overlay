@@ -27,6 +27,11 @@ RDEPEND="!<sys-apps/openrc-0.13
 	|| ( sys-fs/squashfs-tools sys-fs/squashfs-tools-ng )
 	!<sys-fs/unionfs-fuse-0.25
 	!<app-portage/find_cruft-4.0.0
+	|| (
+		sys-apps/systemd-tmpfiles-openrc
+		sys-apps/opentmpfiles
+		sys-apps/systemd-tmpfiles
+	)
 	${OPTIONAL_RDEPEND}"
 #	>=dev-lang/perl-5.12
 #	|| ( >=dev-lang/perl-5.10.1 >=virtual/perl-File-Path-2.6.5 )
