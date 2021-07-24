@@ -49,7 +49,7 @@ app-text/ispell 3.4.00-r1: fast screen-oriented spelling checker
 app-text/lesspipe 1.85 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
 app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities
-app-text/stardict 3.0.6-r4 4.0.0_pre20170304: A international dictionary supporting fuzzy and glob style matching
+app-text/stardict 3.0.6-r4 4.0.0_pre20170304-r1: A international dictionary supporting fuzzy and glob style matching
 dev-cpp/cpplint 99999999: The google styleguide together with cpplint and an emacs file
 dev-libs/osformat 1.0.7 999999999: C++ library for a typesafe printf/sprintf based on << conversion
 dev-libs/weston 5.0.0-r1 8.0.0: Wayland reference compositor
@@ -83,6 +83,7 @@ media-tv/w_scan 20170107-r1: Scan for DVB-C/DVB-T/DVB-S channels without prior k
 media-video/avidemux 2.7.8: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15_p1-r1: Utility for displaying AVI information
 media-video/handbrake 1.3.3-r1: Open-source, GPL-licensed, multiplatform, multithreaded video transcoder
+media-video/pipewire 0.3.32: Multimedia processing graphs
 media-video/video-mv 17.1: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
 net-dialup/accounting 1.60.45.3.1-r1: Give statistics about dialup connections. Originally part of SuSE's smpppd
 net-dialup/martian-modem 20100123-r3: ltmodem alternative driver providing support for Agere Systems winmodems

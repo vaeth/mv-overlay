@@ -194,6 +194,17 @@ media-video/handbrake:libav-aac - Support for encoding AAC using libav's interna
 media-video/handbrake:numa - Adds support for x265's NUMA capabilities.
 media-video/handbrake:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.
 media-video/handbrake:x265 - Support for encoding h265 using media-libs/x265.
+media-video/pipewire:aac - AAC over Bluetooth (iPhone compatible headphones)
+media-video/pipewire:alsa - Whether to depend on pulseaudio plugin for alsa when not using pipewire-alsa
+media-video/pipewire:aptx - aptX (HD) over Bluetooth (many Android compatible headphones)
+media-video/pipewire:extra - Build pw-cat/pw-play/pw-record
+media-video/pipewire:ffmpeg - Builds an unsupported SPA (file a Gentoo bug if you need this)
+media-video/pipewire:jack - Enable SPA JACK plugin and emulation to be able to run JACK applications on top of PipeWire
+media-video/pipewire:jack-client - Install a plugin for running PipeWire as a JACK client
+media-video/pipewire:jack-sdk - Use PipeWire as JACK replacement
+media-video/pipewire:ldac - LDAC over Bluetooth (primarily Sony headphones)
+media-video/pipewire:pipewire-alsa - Replace PulseAudio's ALSA plugin with PipeWire's plugin
+media-video/pipewire:vulkan - Uses Vulkan compute shaders to provide a CGI video source
 net-dns/noip-updater:ezipupd - Use user/group ezipupd instead of nobody: Useful if you restrict outgoing network traffic for user nobody
 net-print/foo2zjs:foomaticdb - Add support for the foomatic printing driver database
 sci-geosciences/googleearth:bundled-libs - Use bundled libraries.
