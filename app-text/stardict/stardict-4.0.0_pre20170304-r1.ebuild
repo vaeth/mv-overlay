@@ -40,7 +40,7 @@ COMMON_DEPEND="
 	espeak? ( >=app-accessibility/espeak-1.29 )
 	flite? ( app-accessibility/flite )
 	gucharmap? ( gnome-extra/gucharmap:2.90= )
-	spell? ( >=app-text/enchant-1.2:= )
+	spell? ( >=app-text/enchant-1.2:0= )
 	tools? (
 		dev-db/mysql-connector-c
 		dev-libs/expat
