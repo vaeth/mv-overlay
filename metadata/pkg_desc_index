@@ -104,7 +104,7 @@ sys-apps/openrc-wrapper 2.4: Use openrc init scripts with systemd or other init 
 sys-apps/paxopen 1.2: A wrapper script to set PAX kernel variables to an insecure/safe state
 sys-apps/schedule 8.0.1: script to schedule jobs in a multiuser multitasking environment
 sys-apps/starter 3.0: POSIX shell script and function to schedule commands
-sys-apps/systemd-tmpfiles-openrc 0: openrc init-files for systemd-tmpfiles from sys-apps/systemd
+sys-apps/systemd-tmpfiles-openrc 1: openrc init-files for systemd-tmpfiles from sys-apps/systemd
 sys-block/parted 2.4-r3: Create, destroy, resize, check, copy partitions and file systems
 sys-block/zram-init 11.0: Scripts to support compressed swap devices or ramdisks with zram
 sys-boot/grub-cfg-mv 1.8: A grub.cfg library/example for GRUB2
