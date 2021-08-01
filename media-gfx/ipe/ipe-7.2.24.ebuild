@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 RESTRICT="mirror"
 
 LUA_COMPAT=( lua5-{3..4} )
@@ -25,6 +25,7 @@ DEPEND="${LUA_DEPS}
 	media-libs/freetype:2
 	media-libs/libjpeg-turbo
 	media-libs/libpng
+	sci-libs/gsl:=
 	sys-libs/zlib
 	x11-libs/cairo
 	dev-qt/qtcore:5
