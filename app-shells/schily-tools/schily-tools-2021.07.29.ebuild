@@ -1,7 +1,7 @@
 # Copyright 2016-2021 Martin V\"ath and Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 RESTRICT="mirror"
 inherit fcaps flag-o-matic gnuconfig required-use-warn toolchain-funcs
 

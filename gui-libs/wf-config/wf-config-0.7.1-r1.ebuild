@@ -18,6 +18,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
+IUSE=""
 
 DEPEND="
 	dev-libs/libevdev

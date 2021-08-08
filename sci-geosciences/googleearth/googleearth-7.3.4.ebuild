@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Martin V\"ath and others
+# Copyright 1999-2021 Martin V\"ath and others
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7

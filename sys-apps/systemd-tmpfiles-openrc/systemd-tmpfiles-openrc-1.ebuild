@@ -1,7 +1,7 @@
 # Copyright 2020-2021 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="openrc init-files for systemd-tmpfiles from sys-apps/systemd"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
@@ -10,6 +10,7 @@ SRC_URI=""
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+IUSE=""
 
 RDEPEND="
 	!sys-apps/systemd-tmpfiles
