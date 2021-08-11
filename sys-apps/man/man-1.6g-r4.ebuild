@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Martin V\"ath and Gentoo Authors
+# Copyright 1999-2021 Martin V\"ath and Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit l10n prefix toolchain-funcs
+inherit prefix strip-linguas toolchain-funcs
 
 DESCRIPTION="Standard commands to read man pages"
 HOMEPAGE="http://primates.ximian.com/~flucifredi/man/"

@@ -101,7 +101,7 @@ sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
 sci-mathematics/reduce 20141130-r3 20190413: A general-purpose computer algebra system
 sys-apps/cpi 3.2: A wrapper for cp -i -a, making use of diff
 sys-apps/less 590: Excellent text file viewer, optionally with additional selection feature
-sys-apps/man 1.6g-r3: Standard commands to read man pages
+sys-apps/man 1.6g-r4: Standard commands to read man pages
 sys-apps/openrc-wrapper 2.4: Use openrc init scripts with systemd or other init systems
 sys-apps/paxopen 1.2: A wrapper script to set PAX kernel variables to an insecure/safe state
 sys-apps/schedule 8.0.1: script to schedule jobs in a multiuser multitasking environment
