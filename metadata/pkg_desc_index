@@ -46,7 +46,7 @@ app-shells/zsh-autosuggestions 0.7.0 99999999: Fish-like autosuggestions for zsh
 app-shells/zsh-syntax-highlighting 0.8.0_alpha1 99999999: Fish shell like syntax highlighting for zsh
 app-shells/zshrc-mv 6.7: A zshrc file initializing zsh specific interactive features
 app-text/ispell 3.4.00-r1: fast screen-oriented spelling checker
-app-text/lesspipe 1.85 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
+app-text/lesspipe 1.89 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
 app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities
 app-text/stardict 3.0.6-r4 4.0.0_pre20170304-r1: A international dictionary supporting fuzzy and glob style matching
