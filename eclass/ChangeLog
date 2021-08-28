@@ -88,3 +88,6 @@
 
   12 Aug 2018; Martin Väth <martin@mvath.de>:
   Add @SUPPORTED_EAPIS
+
+  28 Aug 2021; Martin Väth <martin@mvath.de>:
+  Update meson eclass
