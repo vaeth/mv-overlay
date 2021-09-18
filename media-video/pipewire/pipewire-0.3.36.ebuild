@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit meson-multilib optfeature python-any-r1 udev
 
@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz"
-	KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86"
+	KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Multimedia processing graphs"
@@ -20,7 +20,7 @@ HOMEPAGE="https://pipewire.org/"
 
 LICENSE="MIT LGPL-2.1+ GPL-2"
 SLOT="0/0.3"
-IUSE="alsa bluetooth doc extra gstreamer jack-client jack-sdk pipewire-alsa systemd test v4l"
+IUSE="alsa bluetooth doc echo-cancel extra gstreamer jack-client jack-sdk pipewire-alsa systemd test v4l"
 
 # Once replacing system JACK libraries is possible, it's likely that
 # jack-client IUSE will need blocking to avoid users accidentally
@@ -34,8 +34,10 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	app-doc/xmltoman
+	>=dev-util/meson-0.59
 	virtual/pkgconfig
 	${PYTHON_DEPS}
+	$(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]')
 	doc? (
 		app-doc/doxygen
 		media-gfx/graphviz
@@ -51,10 +53,11 @@ RDEPEND="
 	bluetooth? (
 		media-libs/fdk-aac
 		media-libs/libldac
-		media-libs/libopenaptx
+		media-libs/libfreeaptx
 		media-libs/sbc
 		>=net-wireless/bluez-4.101:=
 	)
+	echo-cancel? ( media-libs/webrtc-audio-processing )
 	extra? (
 		>=media-libs/libsndfile-1.0.20
 	)
@@ -70,10 +73,7 @@ RDEPEND="
 	)
 	pipewire-alsa? (
 		>=media-libs/alsa-lib-1.1.7[${MULTILIB_USEDEP}]
-		|| (
-			media-plugins/alsa-plugins[-pulseaudio]
-			!media-plugins/alsa-plugins
-		)
+		!media-plugins/alsa-plugins[${MULTILIB_USEDEP},pulseaudio]
 	)
 	!pipewire-alsa? ( alsa? ( media-plugins/alsa-plugins[${MULTILIB_USEDEP},pulseaudio] ) )
 	systemd? ( sys-apps/systemd )
@@ -96,12 +96,17 @@ DOCS=( {README,INSTALL}.md NEWS )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.25-enable-failed-mlock-warning.patch
-	"${FILESDIR}"/${PN}-0.3.31-revert-openaptx-restriction.patch
+	"${FILESDIR}"/${P}-fix-crash-uaf-media-session.patch
+	"${FILESDIR}"/${P}-fix-version.patch
 )
 
 # limitsdfile related code taken from =sys-auth/realtime-base-0.1
 # with changes as necessary.
 limitsdfile=40-${PN}.conf
+
+python_check_deps() {
+	has_version -b "dev-python/docutils[${PYTHON_USEDEP}]"
+}
 
 src_prepare() {
 	default
@@ -109,7 +114,7 @@ src_prepare() {
 	if ! use systemd; then
 		# This can be applied non-conditionally but would make for a
 		# significantly worse user experience on systemd then.
-		eapply "${FILESDIR}"/${PN}-0.3.31-non-systemd-integration.patch
+		eapply "${FILESDIR}"/${PN}-0.3.35-non-systemd-integration.patch
 	fi
 
 	einfo "Generating ${limitsdfile}"
@@ -127,7 +132,9 @@ multilib_src_configure() {
 		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
 		$(meson_native_use_feature doc docs)
 		$(meson_native_enabled examples) # Disabling this implicitly disables -Dmedia-session
-		$(meson_native_enabled media-session)
+		# Replaced upstream by -Dsession-managers=..., needs more work, bug #812809
+		# but default is same as before and right now, this is fatal with unreleased Meson.
+		#$(meson_native_enabled media-session)
 		$(meson_native_enabled man)
 		$(meson_feature test tests)
 		-Dinstalled_tests=disabled # Matches upstream; Gentoo never installs tests
@@ -149,12 +156,13 @@ multilib_src_configure() {
 		$(meson_native_use_feature bluetooth bluez5-codec-aac)
 		$(meson_native_use_feature bluetooth bluez5-codec-aptx)
 		$(meson_native_use_feature bluetooth bluez5-codec-ldac)
+		$(meson_native_use_feature echo-cancel echo-cancel-webrtc) #807889
 		-Dcontrol=enabled # Matches upstream
 		-Daudiotestsrc=enabled # Matches upstream
 		-Dffmpeg=disabled # Disabled by upstream and no major developments to spa/plugins/ffmpeg/ since May 2020
 		-Dpipewire-jack=enabled # Allows integrating JACK apps into PW graph
 		$(meson_native_use_feature jack-client jack) # Allows PW to act as a JACK client
-		$(meson_feature jack-sdk jack-devel)
+		$(meson_use jack-sdk jack-devel)
 		$(usex jack-sdk "-Dlibjack-path=${EPREFIX}/usr/$(get_libdir)" '')
 		-Dsupport=enabled # Miscellaneous/common plugins, such as null sink
 		-Devl=disabled # Matches upstream
@@ -263,7 +271,7 @@ pkg_postinst() {
 	elog
 
 	optfeature_header "The following can be installed for optional runtime features:"
-	optfeature "restricted realtime capabilities vai D-Bus" sys-auth/rtkit
+	optfeature "restricted realtime capabilities via D-Bus" sys-auth/rtkit
 	# Once hsphfpd lands in tree, both it and ofono will need to be checked for presence here!
 	if use bluetooth; then
 		optfeature "better BT headset support (daemon startup required)" net-misc/ofono
