@@ -38,7 +38,7 @@ app-shells/oh-my-zsh 99999999: A ready-to-use zsh configuration with plugins
 app-shells/push 3.4: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 4.2: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/runtitle 2.11: Scripts to run commands and set the hard status line (windows title)
-app-shells/schily-tools 2021.07.29: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
+app-shells/schily-tools 2021.09.18: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
 app-shells/set_prompt 3.2: An intelligent prompt for zsh or bash with status line (window title) support
 app-shells/termcolors-mv 4.8: 256colors sample script and dircolors configuration for standard or 256 colors
 app-shells/zsh-autosuggestions 0.7.0 99999999: Fish-like autosuggestions for zsh
@@ -71,8 +71,6 @@ games-rpg/aklabeth 1.0-r1: A remake of Richard C. Garriott's Ultima prequel
 games-rpg/dsa-stats 1.1: calculate stat probabalities for the role playing game DSA - Das schwarze Auge
 games-rpg/freedroidrpg 1.0_rc2: A modification of the classical Freedroid engine into an RPG
 games-rpg/m5figur-mv 4.2.2: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
-gui-libs/wf-config 0.7.1-r1: library for managing wayfire configuration files
-gui-wm/wayfire 0.7.2: compiz like 3D wayland compositor
 media-gfx/ipe 7.2.24: Drawing editor for creating figures in PDF or PS formats
 media-gfx/libspiro 20200505-r1: A spline computation library
 media-gfx/pqiv 2.11: powerful GTK based command-line image viewer with a minimal UI
