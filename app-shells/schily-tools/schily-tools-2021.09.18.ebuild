@@ -193,6 +193,8 @@ targets() {
 }
 
 src_prepare() {
+	# schily-tools needs smake https://bugs.gentoo.org/818544
+	unset MAKE
 	filter-flags -fPIE -pie '-flto*' -fwhole-program -fno-common
 	src_schily_prepare
 	sed -i -e '1s!man1/sh\.1!man1/bosh.1!' -- "${S}/sh/"{jsh,pfsh}.1 || die
