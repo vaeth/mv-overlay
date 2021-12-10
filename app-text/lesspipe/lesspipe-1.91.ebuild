@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon"
 HOMEPAGE="https://github.com/wofr06/lesspipe"
