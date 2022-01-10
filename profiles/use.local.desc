@@ -187,19 +187,13 @@ media-tv/sundtek-tv:ld-preload-file - Install /etc/ld.so.preload
 media-tv/sundtek-tv:pax_kernel - Mark package which is necessary if you use a PAX kernel
 media-tv/w_scan:plp-id-zero - Apply experimental patch to force plp_id to 0 for DVB-T2. Seems to be necessary at least with some tuners in some regions
 media-video/avidemux:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.
-media-video/handbrake:fdk - Support for encoding AAC using media-libs/fdk-aac.
-media-video/handbrake:gstreamer - Support for the streaming media framework from media-libs/gstreamer.
-media-video/handbrake:gtk - Install the GTK UI, ghb.
-media-video/handbrake:libav-aac - Support for encoding AAC using libav's internal encoder.
-media-video/handbrake:numa - Adds support for x265's NUMA capabilities.
-media-video/handbrake:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.
-media-video/handbrake:x265 - Support for encoding h265 using media-libs/x265.
-media-video/pipewire:alsa - Whether to depend on pulseaudio plugin for alsa when not using pipewire-alsa
 media-video/pipewire:echo-cancel - Enable WebRTC-based echo canceller via media-libs/webrtc-audio-processing
 media-video/pipewire:extra - Build pw-cat/pw-play/pw-record
 media-video/pipewire:jack-client - Install a plugin for running PipeWire as a JACK client
 media-video/pipewire:jack-sdk - Use PipeWire as JACK replacement
+media-video/pipewire:lv2 - Allow loading LV2 plugins via media-libs/lv2
 media-video/pipewire:pipewire-alsa - Replace PulseAudio's ALSA plugin with PipeWire's plugin
+media-video/pipewire:ssl - Enable raop-sink support (needs dev-libs/openssl)
 net-dns/noip-updater:ezipupd - Use user/group ezipupd instead of nobody: Useful if you restrict outgoing network traffic for user nobody
 net-print/foo2zjs:foomaticdb - Add support for the foomatic printing driver database
 sci-geosciences/googleearth:bundled-libs - Use bundled libraries.
