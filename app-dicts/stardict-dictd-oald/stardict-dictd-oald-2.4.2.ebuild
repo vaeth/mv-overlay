@@ -1,7 +1,7 @@
-# Copyright 2010-2018 Gentoo Authors and Martin V\"ath
+# Copyright 2010-2022 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 RESTRICT="fetch"
 DICT_PREFIX=""
 inherit stardict

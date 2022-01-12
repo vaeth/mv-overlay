@@ -1,10 +1,10 @@
-# Copyright 2010-2022 Gentoo Authors and Martin V\"ath
+# Copyright 2010-2021 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 RESTRICT="fetch"
 FROM_LANG="German"
-TO_LANG="English"
+TO_LANG="Italian"
 DICT_PREFIX="dictd_www.freedict.de_"
 DESCRIPTION=""
 inherit stardict
