@@ -1,4 +1,8 @@
-app-admin/flexlm 9.5-r2: Macrovision FLEXlm license manager and utils
+acct-group/flexlm 0: Group for app-admin/flexlm
+acct-group/schedule 0: Group for sys-apps/schedule
+acct-user/flexlm 0: User for app-admin/flexlm
+acct-user/schedule 0: User for sys-apps/schedule
+app-admin/flexlm 9.5-r3: Macrovision FLEXlm license manager and utils
 app-admin/sudox 10.0: wrapper for sudo which can pass X authority data and deal with screen and tmux
 app-arch/archwrap 11.4: A collection of POSIX shell scripts to invoke archiver programs
 app-arch/bzwc 5.1: A POSIX shell wrapper for wc, supporting compressed files (xz, lzma, bz2, gz)
@@ -61,7 +65,7 @@ dev-util/mv_perl 4.3: A collection of perl scripts (replacement in files, syncin
 dev-util/pyrep 1.5-r1: Search and/or replace regular expressions within many files interactively
 dev-util/replacer 3.3: Search and replace python regular expressions within many files interactively
 dev-vcs/git-wrappers-mv 2.3: Some personal wrappers for the most important git commands
-games-action/trackballs 1.1.4-r1: simple game similar to the classical game Marble Madness
+games-action/trackballs 1.1.4-r2: simple game similar to the classical game Marble Madness
 games-board/chessproblem 1.10 2.13: Find solutions of chess problems (mate, selfmate, and helpmate) with cooks
 games-emulation/sdlmame 0.174-r2: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
 games-emulation/xmame 0.106-r4: Multiple Arcade Machine Emulator for X11
@@ -86,7 +90,7 @@ media-video/video-mv 17.1: Frontends for using mplayer/mencoder, ffmpeg/libav, o
 net-dialup/accounting 1.60.45.3.1-r1: Give statistics about dialup connections. Originally part of SuSE's smpppd
 net-dialup/martian-modem 20100123-r3: ltmodem alternative driver providing support for Agere Systems winmodems
 net-dns/host 20070128-r1: A powerful command-line DNS query and test tool
-net-dns/noip-updater 2.1.9-r5: no-ip.com dynamic DNS updater
+net-dns/noip-updater 2.1.9-r6: no-ip.com dynamic DNS updater
 net-firewall/firewall-mv 13.2: Initialize iptables and net-related sysctl variables
 net-misc/netctl 1.11: Profile based network connection tool from Arch Linux
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
@@ -100,7 +104,7 @@ sys-apps/less 590: Excellent text file viewer, optionally with additional select
 sys-apps/man 1.6g-r4: Standard commands to read man pages
 sys-apps/openrc-wrapper 2.4: Use openrc init scripts with systemd or other init systems
 sys-apps/paxopen 1.2: A wrapper script to set PAX kernel variables to an insecure/safe state
-sys-apps/schedule 8.0.1: script to schedule jobs in a multiuser multitasking environment
+sys-apps/schedule 8.0.1-r1: script to schedule jobs in a multiuser multitasking environment
 sys-apps/starter 3.0: POSIX shell script and function to schedule commands
 sys-apps/systemd-tmpfiles-openrc 1: openrc init-files for systemd-tmpfiles from sys-apps/systemd
 sys-block/parted 2.4-r3: Create, destroy, resize, check, copy partitions and file systems

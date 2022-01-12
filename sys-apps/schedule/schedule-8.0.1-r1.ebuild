@@ -1,9 +1,9 @@
-# Copyright 2014-2020 Martin V\"ath
+# Copyright 2014-2022 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 RESTRICT="mirror"
-inherit readme.gentoo-r1 user systemd
+inherit readme.gentoo-r1 systemd
 
 DESCRIPTION="script to schedule jobs in a multiuser multitasking environment"
 HOMEPAGE="https://github.com/vaeth/schedule/"
@@ -28,7 +28,8 @@ RDEPEND=">=dev-lang/perl-5.12
 #	|| ( >=dev-lang/perl-5.6.1 >=virtual/perl-Getopt-Long-2.24 )
 #	|| ( >=dev-lang/perl-5.6.0 >=virtual/perl-IO-1.190.0 )
 #	|| ( >=dev-lang/perl-5.9.4 virtual/perl-Digest-SHA) # for encryption
-DEPEND=""
+DEPEND="acct-group/schedule
+	acct-user/schedule"
 
 DISABLE_AUTOFORMATTING="true"
 DOC_CONTENTS="It is recommended to put a lengthy passphrase into the first line
@@ -76,16 +77,12 @@ generate_password() (
 )
 
 pkg_postinst() {
-	if ! use prefix
-	then	enewgroup schedule
-		enewuser schedule -1 -1 -1 schedule
-	fi
 	if ! test -s "${EPREFIX}/etc/schedule.password"
 	then	if generate_password
 		then	ewarn "You should fill ${EPREFIX}/etc/schedule.password with a random password:"
 			ewarn "the current random value is not necessarily cryptographically strong."
 			chown 'schedule:schedule' -- "${EPREFIX}/etc/schedule.password" || \
-				ewarn "failed to set permissions for ${EPREFIX}/etc/schedule.password"
+			ewarn "failed to set permissions for ${EPREFIX}/etc/schedule.password"
 		else	ewarn "failed to generate ${EPREFIX}/etc/schedule.password"
 		fi
 	fi

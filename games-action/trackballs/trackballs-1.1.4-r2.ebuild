@@ -1,8 +1,8 @@
-# Copyright 2016-2018 Gentoo Authors and Martin V\"ath
+# Copyright 2016-2022 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit desktop user
+EAPI=8
+inherit desktop
 RESTRICT="mirror"
 
 DESCRIPTION="simple game similar to the classical game Marble Madness"
@@ -23,12 +23,9 @@ RDEPEND="virtual/opengl
 	media-libs/sdl-image
 	media-libs/sdl-ttf
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	acct-group/gamestat"
 BDEPEND="nls? ( sys-devel/gettext )"
-
-pkg_setup(){
-	enewgroup gamestat 36
-}
 
 src_prepare() {
 	sed -i \

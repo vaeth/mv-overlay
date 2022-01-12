@@ -1,9 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2022 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 RESTRICT="fetch"
-inherit user
 
 DESCRIPTION="Macrovision FLEXlm license manager and utils"
 HOMEPAGE="http://www.macrovision.com/services/support/flexlm/lmgrd.shtml"
@@ -22,6 +21,8 @@ LICENSE="all-rights-reserved GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
+DEPEND="acct-group/flexlm
+	acct-user/flexlm"
 
 QA_PREBUILT="
 	opt/flexlm/bin/lmgrd
@@ -66,9 +67,6 @@ src_install () {
 }
 
 pkg_postinst() {
-	enewgroup flexlm
-	enewuser flexlm -1 /bin/bash /opt/flexlm flexlm
-
 	# See bug 383787
 	chown flexlm /var/log/flexlm || eerror "'chown flexlm /var/log/flexlm' failed!"
 

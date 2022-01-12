@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2022 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit readme.gentoo-r1 systemd toolchain-funcs user
+EAPI=8
+inherit readme.gentoo-r1 systemd toolchain-funcs
 
 MY_P=${P/-updater/}
 DESCRIPTION="no-ip.com dynamic DNS updater"
@@ -13,6 +13,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 ~arm ~hppa ia64 ~mips ~ppc ppc64 sparc x86"
 IUSE="ezipupd"
+DEPEND="ezipupd? (
+	acct-group/ez-ipupd
+	acct-user/ez-ipupd
+)"
 
 S=${WORKDIR}/${MY_P}
 
@@ -53,8 +57,6 @@ src_install() {
 
 pkg_preinst() {
 	use ezipupd && ! use prefix || return 0
-	enewgroup ez-ipupd
-	enewuser ez-ipupd -1 -1 /var/cache/ez-ipupdate ez-ipupd
 	if test -d /var/cache/ez-ipupdate
 	then	chmod 750 /var/cache/ez-ipupdate
 		chown ez-ipupd:ez-ipupd /var/cache/ez-ipupdate
