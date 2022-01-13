@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Martin V\"ath and others
+# Copyright 1999-2022 Martin V\"ath and others
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 RESTRICT="mirror" # do not access gentoo mirror until it actually is there
 MESON_AUTO_DEPEND=no
 inherit bash-completion-r1 meson tmpfiles
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/vaeth/eix/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 PLOCALES="de ru"
 IUSE="cpu_flags_x86_sse2 debug +dep doc +jumbo-build"
 for i in ${PLOCALES}; do

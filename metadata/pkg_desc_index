@@ -26,7 +26,7 @@ app-misc/knapsack 7.3.1: A fast solver for the 0/1-knapsack problem with multipl
 app-misc/machine-learning-mv 1.3: Some machine learning experiments
 app-mobilephone/adb-sync 0_p20190101: Synchronize files between a PC and an Android device using ADB
 app-portage/changelog-gitrepo 1.1: Create ChangeLog data for gentoo repositories from git
-app-portage/eix 0.35.3_alpha210825 0.36.0 99999999: Search and query ebuilds
+app-portage/eix 0.35.3_alpha210825 0.36.1 99999999: Search and query ebuilds
 app-portage/etcat 1.0.2 99999999: Updated version of an old Portage information extractor
 app-portage/find_cruft 5.2: find cruft files not managed by portage
 app-portage/logclean 18.4.1: Keep only (compressed) logs of installed packages and cleanup emerge.log
@@ -108,7 +108,7 @@ sys-apps/schedule 8.0.1-r1: script to schedule jobs in a multiuser multitasking 
 sys-apps/starter 3.0: POSIX shell script and function to schedule commands
 sys-apps/systemd-tmpfiles-openrc 1: openrc init-files for systemd-tmpfiles from sys-apps/systemd
 sys-block/parted 2.4-r3: Create, destroy, resize, check, copy partitions and file systems
-sys-block/zram-init 11.0: Scripts to support compressed swap devices or ramdisks with zram
+sys-block/zram-init 11.1: Scripts to support compressed swap devices or ramdisks with zram
 sys-boot/grub-cfg-mv 1.8: A grub.cfg library/example for GRUB2
 sys-fs/emount 3.0.5: mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab
 sys-fs/squash_dir 13.14-r1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
