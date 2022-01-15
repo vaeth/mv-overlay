@@ -1,7 +1,7 @@
-# Copyright 2016-2021 Martin V\"ath
+# Copyright 2016-2022 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{7,8,9,10} )
 
@@ -26,7 +26,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-RDEPEND=$(python_gen_cond_dep 'app-portage/gentoolkit[${PYTHON_MULTI_USEDEP}]')
+RDEPEND=$(python_gen_cond_dep 'app-portage/gentoolkit[${PYTHON_USEDEP}]')
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_prepare() {
