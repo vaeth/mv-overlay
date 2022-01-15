@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Martin V\"ath and others
+# Copyright 1999-2022 Martin V\"ath and others
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop pax-utils unpacker wrapper xdg-utils
 

@@ -1,7 +1,7 @@
-# Copyright 2011-2020 Martin V\"ath
+# Copyright 2011-2022 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 RESTRICT="mirror"
 
 DESCRIPTION="Print or save the current USE-flag state and compare with older versions"

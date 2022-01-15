@@ -1,7 +1,7 @@
-# Copyright 2014-2021 Martin V\"ath
+# Copyright 2014-2022 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit linux-info pax-utils readme.gentoo-r1 systemd unpacker
 
 # The following variable is only for testing purposes. Leave it to "false"

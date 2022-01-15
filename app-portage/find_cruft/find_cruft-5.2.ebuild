@@ -1,7 +1,7 @@
-# Copyright 2013-2020 Martin V\"ath
+# Copyright 2013-2022 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 RESTRICT="mirror"
 inherit optfeature
 

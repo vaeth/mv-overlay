@@ -1,7 +1,7 @@
-# Copyright 2011-2021 Martin V\"ath
+# Copyright 2011-2022 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 RESTRICT="mirror"
 
 DESCRIPTION="wrapper for sudo which can pass X authority data and deal with screen and tmux"

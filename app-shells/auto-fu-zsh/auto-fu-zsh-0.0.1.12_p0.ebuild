@@ -1,7 +1,7 @@
-# Copyright 2012-2018 Martin V\"ath
+# Copyright 2012-2022 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 pPN=${PN%-zsh}
 mPN="${pPN}.zsh"

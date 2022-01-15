@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2022 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 # NOTE: Even though the *.dict.dz are the same as dictd/freedict's files,
 #       their indexes seem to be in a different format. So we'll keep them

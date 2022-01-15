@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2022 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 RESTRICT="mirror"
 DESCRIPTION="German dictionary (traditional orthography) for ispell"
 HOMEPAGE="http://www.lasr.cs.ucla.edu/geoff/ispell-dictionaries.html"

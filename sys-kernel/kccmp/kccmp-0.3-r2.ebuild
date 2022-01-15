@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2022 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit qmake-utils
 
 DESCRIPTION="A simple tool for comparing two linux kernel .config files"

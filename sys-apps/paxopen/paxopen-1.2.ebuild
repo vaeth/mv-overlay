@@ -1,7 +1,7 @@
-# Copyright 2016-2018 Martin V\"ath
+# Copyright 2016-2022 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 RESTRICT="mirror"
 
 DESCRIPTION="A wrapper script to set PAX kernel variables to an insecure/safe state"

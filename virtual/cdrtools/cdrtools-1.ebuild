@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Martin V\"ath
+# Copyright 1999-2022 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Virtual for command-line recorders cdrtools and cdrkit"
 SLOT="0"

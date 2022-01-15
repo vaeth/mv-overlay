@@ -1,7 +1,7 @@
-# Copyright 2012-2020 Martin V\"ath
+# Copyright 2012-2022 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 RESTRICT="mirror"
 
 DESCRIPTION="A POSIX shell wrapper for wc, supporting compressed files (xz, lzma, bz2, gz)"

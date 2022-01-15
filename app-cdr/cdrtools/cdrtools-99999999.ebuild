@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Martin V\"ath and others
+# Copyright 1999-2022 Martin V\"ath and others
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="A set of tools for CD/DVD reading and recording, including cdrecord"
 HOMEPAGE="https://sourceforge.net/projects/cdrtools/"
