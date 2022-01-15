@@ -85,7 +85,7 @@ media-tv/sundtek-tv 210803.071224: Sundtek MediaTV Pro III Drivers
 media-tv/w_scan 20170107-r1: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies
 media-video/avidemux 2.7.8: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15_p1-r1: Utility for displaying AVI information
-media-video/pipewire 0.3.36 0.3.43-r2: Multimedia processing graphs
+media-video/pipewire 0.3.36 0.3.43-r3: Multimedia processing graphs
 media-video/video-mv 17.1: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
 net-dialup/accounting 1.60.45.3.1-r1: Give statistics about dialup connections. Originally part of SuSE's smpppd
 net-dialup/martian-modem 20100123-r3: ltmodem alternative driver providing support for Agere Systems winmodems

@@ -3,7 +3,7 @@
 
 EAPI=8
 RESTRICT="mirror"
-inherit fcaps flag-o-matic gnuconfig required-use-warn toolchain-funcs
+inherit fcaps flag-o-matic gnuconfig toolchain-funcs
 
 MY_PV=${PV//./-}
 MY_P="schily-${MY_PV}"
@@ -13,9 +13,8 @@ S=${WORKDIR}/${MY_P}
 SRC_URI="mirror://sourceforge/schilytools/${MY_P}.tar.bz2"
 DESCRIPTION="Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell"
 HOMEPAGE="https://sourceforge.net/projects/schilytools/"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="acl caps doc nls split-usr suid unicode xattr"
-REQUIRED_USE_WARN="amd64-fbsd? ( !xattr )"
 
 PATCHES=("${FILESDIR}"/strlcat-mapvers.patch)
 
@@ -67,8 +66,7 @@ schilytools_p? (
 schilytools_translit? ( !dev-perl/Lingua-Translit )
 acl? ( virtual/acl )
 caps? ( sys-libs/libcap )
-nls? ( virtual/libintl )
-!amd64-fbsd? ( xattr? ( sys-apps/attr ) )"
+nls? ( virtual/libintl )"
 DEPEND="${COMMON}"
 RDEPEND="${COMMON}"
 BDEPEND="nls? ( >=sys-devel/gettext-0.18.1.1 )"
