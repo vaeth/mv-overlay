@@ -129,7 +129,7 @@ www-plugins/epubreader 2.0.13: Firefox webextension: read ebook (.epub) files
 www-plugins/form-history-control 2.5.6.1: Firefox webextension: edit the saved history of forms
 www-plugins/google-translator-for-firefox 3.0.3.3: Firefox webextension: translate text or page with google translator
 www-plugins/no-color 0.9.4: Firefox webextension: remove colors and background images from the page
-www-plugins/noscript 11.2.11: Firefox webextension: restrict active contents like java/javascript/flash
+www-plugins/noscript 11.2.14: Firefox webextension: restrict active contents like java/javascript/flash
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
 x11-libs/gtk+ 2.24.33 3.24.31: Gimp ToolKit +
 x11-libs/motif 2.3.8-r2: The Motif user interface component toolkit
