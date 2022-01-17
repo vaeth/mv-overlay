@@ -6,7 +6,7 @@ EAPI=8
 inherit readme.gentoo-r1
 
 RESTRICT="mirror"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
 case ${PV} in
 99999999*)
 	EGIT_REPO_URI="https://github.com/zsh-users/${PN}.git"
@@ -15,7 +15,10 @@ case ${PV} in
 	SRC_URI=""
 	KEYWORDS="";;
 0.8.0_alpha1)
-	SRC_URI="https://github.com/zsh-users/${PN}/archive/${PV/_alpha/-alpha}-pre-redrawhook.tar.gz -> ${P}.tar.gz";;
+	my_PV=${PV/_alpha/-alpha}-pre-redrawhook
+	SRC_URI="https://github.com/zsh-users/${PN}/archive/${my_PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${my_PV}";;
+	#SRC_URI="https://github.com/zsh-users/${PN}/archive/${PV/_alpha/-alpha}-pre-redrawhook.tar.gz -> ${P}.tar.gz";;
 *beta*)
 	EGIT_COMMIT="02a37dd919dc48e0821186e5f20e78bd0215f86a"
 	SRC_URI="https://github.com/zsh-users/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"

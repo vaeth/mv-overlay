@@ -73,49 +73,6 @@ app-shells/termcolors-mv:create - Install DIR_COLORS-create perl script
 app-shells/termcolors-mv:perl - Install 256colors perl script
 app-shells/termcolors-mv:poor - Install poor man's variant which does not require coreutils-8.25 or newer
 app-text/ispell:tinfo - Whether to support (and require) sys-libs/ncurses[tinfo].
-app-text/lesspipe:antiword - Support doc files with app-text/antiword; this overrides catdoc
-app-text/lesspipe:brotli - Support brotli files; requires app-arch/brotli
-app-text/lesspipe:cabextract - Support cabextract files
-app-text/lesspipe:catdoc - Support doc files with app-text/catdoc; unused if antiword is set
-app-text/lesspipe:cpio - Support cpio files
-app-text/lesspipe:djvu - Support djvu files
-app-text/lesspipe:dpkg - Support Debian package files
-app-text/lesspipe:dvi2tty - Support dvi files with dev-tex/dvi2tty
-app-text/lesspipe:elinks - Support html files with www-client/elinks; ignored if html2text, links, or lynx is set; this overrides w3m
-app-text/lesspipe:fastjar - Support jar files with app-arch/fastjar
-app-text/lesspipe:ghostscript - Support ps files with app-text/ghostscript-gpl; ignored if pstotext is set
-app-text/lesspipe:gpg - Support gpg files
-app-text/lesspipe:groff - Support man and nroff files
-app-text/lesspipe:hdf5 - Support h5dump from sci-libs/hdf5
-app-text/lesspipe:html2text - Support html files with app-text/html2text; this overrides links, lynx, elinks, w3m
-app-text/lesspipe:id3v2 - Support mp3 files with media-sound/id3v2; this overrides mp3info2, mp3info
-app-text/lesspipe:image - Support image/jpg files
-app-text/lesspipe:isoinfo - Support CD/DVD-iso files
-app-text/lesspipe:libplist - Support Apple Property List files
-app-text/lesspipe:libreoffice - Support msword and rtf conversion using app-office/libreoffice
-app-text/lesspipe:links - Support html files with www-client/links; ignored if html2text is set; this overrides lynx, elinks, w3m
-app-text/lesspipe:lynx - Support html files with www-client/lynx; ignored if html2text or links is set; this overrides elinks, w3m
-app-text/lesspipe:lz4 - Support lz4 files; requires app-arch/lz4
-app-text/lesspipe:lzip - Support lzip files
-app-text/lesspipe:mediainfo - Support media display using media-video/mediainfo
-app-text/lesspipe:mp3info - Support mp3 files with media-sound/mp3info; unused if id3v2 or mp3info2 is set
-app-text/lesspipe:mp3info2 - Support mp3 files with dev-perl/MP3-Tag (mp3info2); ignored if id3v2 is set; this overrides mp3info
-app-text/lesspipe:netcdf - Support ncdump from sci-libs/netcdf
-app-text/lesspipe:ooffice - Support OpenOffice files
-app-text/lesspipe:p7zip - Support p7zip files
-app-text/lesspipe:pandoc - Support msword and rtf conversion using app-text/pandoc
-app-text/lesspipe:pdf - Support pdf files
-app-text/lesspipe:pstotext - Support ps files with app-text/pstotext; this overrides ghostscript
-app-text/lesspipe:rar - Support rar files with app-arch/rar; unused if unrar is set
-app-text/lesspipe:rpm - Support rpm files with app-arch/rpm or rpm5; ignored if rpm2targz is set
-app-text/lesspipe:rpm2targz - Support rpm files with app-arch/rpm2targz; this overrides rpm
-app-text/lesspipe:unrar - Support rar files with app-arch/unrar; this overrides rar
-app-text/lesspipe:unrtf - Support rtf files with app-text/unrtf
-app-text/lesspipe:unzip - Support zip files with app-arch/unzip
-app-text/lesspipe:w3m - Support html files with www-client/w3m; ignored if html2text, links, lynx, or elinks is set
-app-text/lesspipe:wv - Support msword and rtf conversion using app-text/wv
-app-text/lesspipe:xlhtml - Support Excel and Powerpoint files with app-arch/xlhtml
-app-text/lesspipe:zstd - Support brotli files; requires app-arch/zstd
 app-text/stardict:advertisement - Enable stardict advertisements plugin
 app-text/stardict:cal - Enable calendar support using cal program
 app-text/stardict:canberra - Use libcanberra for sound playing
@@ -136,21 +93,6 @@ app-text/stardict:wikiparse - Enable plugin to parse dictionaries in wikimedia f
 app-text/stardict:wordnet - Enable wordnet plugin to find similar English words using lexical database
 app-text/stardict:xdxfparse - Enable plugin to parse dictionaries in xdxf (XML Dictionary eXchange Format)
 app-text/stardict:youdaodict - Enable youdao.com network plugin (for Chinese language)
-dev-libs/weston:colord - Allow setting color managment
-dev-libs/weston:drm - Enable drm compositor support
-dev-libs/weston:editor - Install wayland-editor example application
-dev-libs/weston:fbdev - Enable fbdev compositor support
-dev-libs/weston:gles2 - Use GLESv2 cairo instead of full GL
-dev-libs/weston:headless - Headless backend and a noop renderer, mainly for testing purposes
-dev-libs/weston:ivi - Enable the IVI shell
-dev-libs/weston:launch - Install weston-launch utility
-dev-libs/weston:rdp - Enable Remote Desktop Protocol compositor support
-dev-libs/weston:resize-optimization - Increase performance, allocate more RAM. Recommended to disable on Raspberry Pi
-dev-libs/weston:screen-sharing - Enable screen-sharing through RDP
-dev-libs/weston:unwind - Enable libunwind usage for backtraces
-dev-libs/weston:wayland-compositor - Enable Wayland compositor support
-dev-libs/weston:webp - Add support for the WebP image format
-dev-libs/weston:xwayland - Enable ability support native X11 applications
 games-board/chessproblem:debug - Build with upstream's CXXFLAGS/LDFLAGS for debugging support; not recommended for normal use.
 games-board/chessproblem:multithreading - Install multithreading version
 games-board/chessproblem:optimization - Accept upstream's choices for CXXFLAGS/LDFLAGS for optimization. Absense of this USE flag does not strip user's *FLAGS
@@ -164,9 +106,6 @@ games-emulation/xmame:bundled-libs - Use bundled version of dev-libs/expat
 games-emulation/xmame:net - Add network support
 games-emulation/xmess:bundled-libs - Use bundled version of dev-libs/expat
 games-emulation/xmess:net - Add network support
-games-rpg/freedroidrpg:devtools - Compile the additional dev tools
-games-rpg/freedroidrpg:profile - Enable the integration of the ingame real-time profiler
-games-rpg/freedroidrpg:sanitize - Compile with address sanitizer
 games-rpg/m5figur-mv:examples - Compile example character sheet as PDF
 media-gfx/pqiv:archive - Enable support for images in archives and cbX comic book files
 media-gfx/pqiv:gtk2 - Use gtk:2 instead of gtk:3

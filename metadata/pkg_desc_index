@@ -49,13 +49,11 @@ app-shells/zsh-autosuggestions 0.7.0 99999999: Fish-like autosuggestions for zsh
 app-shells/zsh-syntax-highlighting 0.8.0_alpha1 99999999: Fish shell like syntax highlighting for zsh
 app-shells/zshrc-mv 6.7: A zshrc file initializing zsh specific interactive features
 app-text/ispell 3.4.00-r1: fast screen-oriented spelling checker
-app-text/lesspipe 1.91 99999999: Wolfgang Friebel's preprocessor for sys-apps/less. Disable by appending colon
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
 app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities
 app-text/stardict 3.0.6-r4 4.0.0_pre20170304-r1: A international dictionary supporting fuzzy and glob style matching
 dev-cpp/cpplint 99999999: The google styleguide together with cpplint and an emacs file
 dev-libs/osformat 1.0.7 999999999: C++ library for a typesafe printf/sprintf based on << conversion
-dev-libs/weston 5.0.0-r1 8.0.0: Wayland reference compositor
 dev-perl/File-lchown 0.20-r1: Use the lchown(2) and lutimes(2) system call from Perl
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-tex/chklref 2.6.0 2.6.1_alpha20170913: Finds useless references in latex files or unnecessarily numbered environments
@@ -73,7 +71,6 @@ games-emulation/xmess 0.106-r3: Multiple Arcade Machine Emulator for X11
 games-engines/freesci 0.6.4-r2: Sierra script interpreter for your old Sierra adventures
 games-rpg/aklabeth 1.0-r1: A remake of Richard C. Garriott's Ultima prequel
 games-rpg/dsa-stats 1.1: calculate stat probabalities for the role playing game DSA - Das schwarze Auge
-games-rpg/freedroidrpg 1.0_rc2: A modification of the classical Freedroid engine into an RPG
 games-rpg/m5figur-mv 4.2.2: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
 media-gfx/ipe 7.2.24: Drawing editor for creating figures in PDF or PS formats
 media-gfx/libspiro 20200505-r1: A spline computation library
@@ -97,7 +94,6 @@ net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another m
 net-misc/sshstart 4.10: Start ssh-agent/ssh-add only if you really use ssh or friends
 net-print/foo2zjs 20200221: Support for printing to ZjStream-based printers
 sci-geosciences/googleearth 7.1.8.3036-r3 7.3.0.3832-r3 7.3.4: A 3D interface to the planet
-sci-mathematics/genius 1.0.21: Genius Mathematics Tool and the GEL Language
 sci-mathematics/reduce 20141130-r3 20190413: A general-purpose computer algebra system
 sys-apps/cpi 3.2: A wrapper for cp -i -a, making use of diff
 sys-apps/less 590: Excellent text file viewer, optionally with additional selection feature
@@ -112,7 +108,7 @@ sys-block/zram-init 11.1: Scripts to support compressed swap devices or ramdisks
 sys-boot/grub-cfg-mv 1.8: A grub.cfg library/example for GRUB2
 sys-fs/emount 3.0.5: mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab
 sys-fs/squash_dir 13.14-r1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
-sys-fs/squashfs-tools 4.5_alpha20210318 99999999: Tool for creating compressed filesystem type squashfs
+sys-fs/squashfs-tools 99999999: Tool for creating compressed filesystem type squashfs
 sys-fs/squashfuse 0.1.104: FUSE filesystem to mount squashfs archives
 sys-fs/squashmount 22.1-r1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-kernel/kccmp 0.3-r2: A simple tool for comparing two linux kernel .config files
@@ -121,7 +117,6 @@ sys-kernel/kernel 6.3: A POSIX shell script to compile the kernel with user perm
 sys-power/cpupower 99999999: Shows and sets processor power related values
 sys-power/pm-quirks 20100619-r1: Video Quirks database for pm-utils
 sys-power/pm-utils 1.4.1-r8: Suspend and hibernation utilities
-virtual/cdrtools 1: Virtual for command-line recorders cdrtools and cdrkit
 virtual/freedesktop-icon-theme 0-r4: Virtual to choose between different icon themes
 virtual/man 0-r4: Virtual for man
 www-plugins/bookmark-dupes 6.4: Firefox webextension: remove duplicate bookmarks/empty folders/descriptions
