@@ -112,7 +112,7 @@ sys-fs/squashfs-tools 99999999: Tool for creating compressed filesystem type squ
 sys-fs/squashfuse 0.1.104: FUSE filesystem to mount squashfs archives
 sys-fs/squashmount 22.1-r1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-kernel/kccmp 0.3-r2: A simple tool for comparing two linux kernel .config files
-sys-kernel/kconfig-hardened-check 0.5.10 99999999: A script for checking the hardening options in the Linux kernel config
+sys-kernel/kconfig-hardened-check 0.5.14 99999999: A script for checking the hardening options in the Linux kernel config
 sys-kernel/kernel 6.3: A POSIX shell script to compile the kernel with user permissions
 sys-power/cpupower 99999999: Shows and sets processor power related values
 sys-power/pm-quirks 20100619-r1: Video Quirks database for pm-utils
@@ -130,4 +130,3 @@ www-plugins/noscript 11.2.14: Firefox webextension: restrict active contents lik
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
 x11-libs/gtk+ 2.24.33 3.24.31: Gimp ToolKit +
 x11-libs/motif 2.3.8-r2: The Motif user interface component toolkit
-x11-themes/fvwm-crystal 3.6.5: Configurable FVWM theme with transparency and freedesktop compatible menu
