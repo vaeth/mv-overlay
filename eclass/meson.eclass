@@ -1,4 +1,4 @@
-# Copyright 2017-2021 Gentoo Authors
+# Copyright 2017-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: meson.eclass
@@ -52,7 +52,7 @@ inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
 
 EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 
-_MESON_DEPEND=">=dev-util/meson-0.56.0
+_MESON_DEPEND=">=dev-util/meson-0.58.2-r1
 	>=dev-util/ninja-1.8.2
 	dev-util/meson-format-array
 "
@@ -77,6 +77,11 @@ __MESON_AUTO_DEPEND=${MESON_AUTO_DEPEND} # See top of eclass
 # @DESCRIPTION:
 # Build directory, location where all generated files should be placed.
 # If this isn't set, it defaults to ${WORKDIR}/${P}-build.
+
+# @ECLASS-VARIABLE: EMESON_BUILDTYPE
+# @DESCRIPTION:
+# The buildtype value to pass to meson setup.
+: ${EMESON_BUILDTYPE=plain}
 
 # @ECLASS-VARIABLE: EMESON_SOURCE
 # @DEFAULT_UNSET
@@ -324,7 +329,6 @@ meson_src_configure() {
 
 	local mesonargs=(
 		meson setup
-		--buildtype plain
 		--libdir "$(get_libdir)"
 		--localstatedir "${EPREFIX}/var/lib"
 		--prefix "${EPREFIX}/usr"
@@ -334,6 +338,10 @@ meson_src_configure() {
 		--pkg-config-path "${PKG_CONFIG_PATH}${PKG_CONFIG_PATH:+:}${EPREFIX}/usr/share/pkgconfig"
 		--native-file "$(_meson_create_native_file)"
 	)
+
+	if [[ -n ${EMESON_BUILDTYPE} ]]; then
+		mesonargs+=( --buildtype "${EMESON_BUILDTYPE}" )
+	fi
 
 	if tc-is-cross-compiler; then
 		mesonargs+=( --cross-file "$(_meson_create_cross_file)" )
@@ -418,11 +426,11 @@ meson_src_test() {
 	"$@" || die "tests failed"
 }
 
-# @FUNCTION: meson_src_install
+# @FUNCTION: meson_install
 # @USAGE: [extra meson install arguments]
 # @DESCRIPTION:
-# This is the meson_src_install function.
-meson_src_install() {
+# Calls meson install with suitable arguments
+meson_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local mesoninstallargs=(
@@ -434,10 +442,17 @@ meson_src_install() {
 	set -- meson install "${mesoninstallargs[@]}"
 	echo "$@" >&2
 	"$@" || die "install failed"
+}
 
-	pushd "${S}" > /dev/null || die
+# @FUNCTION: meson_src_install
+# @USAGE: [extra meson install arguments]
+# @DESCRIPTION:
+# This is the meson_src_install function.
+meson_src_install() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	meson_install "$@"
 	einstalldocs
-	popd > /dev/null || die
 }
 
 fi
