@@ -4,23 +4,24 @@
 EAPI=8
 RESTRICT="mirror"
 
-DESCRIPTION="A POSIX shell wrapper for wc, supporting compressed files (xz, lzma, bz2, gz)"
-HOMEPAGE="https://github.com/vaeth/bzwc/"
+DESCRIPTION="Start ssh-agent/ssh-add only if you really use ssh or friends"
+HOMEPAGE="https://github.com/vaeth/sshstart/"
 SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="BSD"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
-RDEPEND=">=app-shells/push-2.0-r2"
+RDEPEND="app-shells/push:0/1
+	!<dev-vcs/git-wrappers-2.0"
 DEPEND=""
 
 src_prepare() {
 	local i
 	use prefix || for i in bin/*
-	do	test -h "${i}" || \
-		sed -i -e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' -- "${i}" \
-			|| die
+	do	test -h "${i}" || sed -i \
+		-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
+		-- "${i}" || die
 	done
 	default
 }
@@ -36,4 +37,5 @@ src_install() {
 	done
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
+	dodoc README.md
 }

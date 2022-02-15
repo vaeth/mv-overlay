@@ -18,7 +18,7 @@ IUSE=""
 # Waiting for https://bugs.gentoo.org/show_bug.cgi?id=424283
 OPTIONAL_RDEPEND=">=app-shells/runtitle-2.3"
 
-RDEPEND=">=app-shells/push-2.0-r2
+RDEPEND="app-shells/push:0/1
 	|| ( ( media-sound/alsa-utils
 			|| ( media-video/mplayer[encode] virtual/ffmpeg ) )
 		media-tv/linuxtv-dvb-apps )

@@ -19,7 +19,7 @@ for i in ${LINGUAS}; do
 done
 
 BDEPEND="nls? ( sys-devel/gettext )"
-RDEPEND=">=app-shells/push-2.0-r2
+RDEPEND="app-shells/push:0/1
 	!<sys-apps/openrc-0.13
 	nls? ( virtual/libintl )"
 

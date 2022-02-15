@@ -20,7 +20,7 @@ OPTIONAL_RDEPEND=">=app-shells/runtitle-2.3"
 
 RDEPEND="app-admin/sudo
 	app-admin/sudox
-	>=app-shells/push-2.0-r2
+	app-shells/push:0/1
 	!<dev-util/ccache-3.2
 	${OPTIONAL_RDEPEND}"
 DEPEND=""
