@@ -16,9 +16,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 SLOT=0
 
-DEPEND="!net-dialup/ltmodem"
-RDEPEND="!<sys-apps/openrc-0.13
-	${DEPEND}"
+DEPEND=""
+RDEPEND="!<sys-apps/openrc-0.13"
 
 # Do NOT remove this. Stripping results in broken communication
 # with core state communication channel (also see QA_* stuff below)

@@ -83,11 +83,11 @@ src_install() {
 	doins reduce.img csl.img
 	insinto /usr/share/${PN}
 	doins -r ${PN}.doc
-	mv -- "${ED}"usr/share/${PN}/${PN}.doc "${ED}"usr/share/${PN}/doc
+	mv -- "${ED}"/usr/share/${PN}/${PN}.doc "${ED}"/usr/share/${PN}/doc
 	dosym ../../share/${PN}/doc /usr/${lib}/${PN}/${PN}.doc
 	if use X; then
 		doins -r ${PN}.fonts
-		mv -- "${ED}"usr/share/${PN}/${PN}.fonts "${ED}"usr/share/${PN}/fonts
+		mv -- "${ED}"/usr/share/${PN}/${PN}.fonts "${ED}"/usr/share/${PN}/fonts
 		dosym ../../share/${PN}/fonts /usr/${lib}/${PN}/${PN}.fonts
 	fi
 	popd > /dev/null

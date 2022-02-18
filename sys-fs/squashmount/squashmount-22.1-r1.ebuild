@@ -12,7 +12,7 @@ SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc x86"
 IUSE=""
 
 # These should really depend on USE-flags but must not by policy.
@@ -25,8 +25,6 @@ RDEPEND="!<sys-apps/openrc-0.13
 	>=dev-lang/perl-5.22
 	|| ( dev-perl/File-Which sys-apps/which )
 	|| ( sys-fs/squashfs-tools sys-fs/squashfs-tools-ng )
-	!<sys-fs/unionfs-fuse-0.25
-	!<app-portage/find_cruft-4.0.0
 	|| (
 		sys-apps/systemd-tmpfiles-openrc
 		sys-apps/opentmpfiles

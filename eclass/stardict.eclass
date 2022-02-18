@@ -43,7 +43,6 @@ DEPEND="
 	|| (
 		>=app-text/stardict-2.4.2
 		app-text/sdcv
-		app-text/goldendict
 	)
 	zlib? (
 		app-arch/gzip

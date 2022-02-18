@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{7,8,9,10} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit python-any-r1 toolchain-funcs qmake-utils
 
 MY_PV="${PV/.}"
@@ -26,9 +26,7 @@ REQUIRED_USE="|| ( arcade mess )"
 #  MAME build only			+arcade -mess	(mamearcade)
 #  MESS build only			-arcade +mess	(mess)
 # games-emulation/sdlmametools is dropped and enabled instead by the 'tools' useflag
-RDEPEND="!games-emulation/sdlmametools
-	!games-emulation/sdlmess
-	dev-db/sqlite:3
+RDEPEND="dev-db/sqlite:3
 	dev-libs/expat
 	media-libs/fontconfig
 	media-libs/flac

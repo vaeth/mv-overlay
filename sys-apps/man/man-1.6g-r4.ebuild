@@ -11,7 +11,7 @@ SRC_URI="http://primates.ximian.com/~flucifredi/man/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 m68k ~mips ppc ppc64 s390 sparc x86"
 IUSE="cache +lzma nls selinux"
 
 DEPEND="nls? ( sys-devel/gettext )"
@@ -19,7 +19,6 @@ RDEPEND="acct-group/man
 	acct-user/man
 	>=sys-apps/groff-1.19.2-r1
 	!sys-apps/man-db
-	!<app-arch/lzma-4.63
 	lzma? ( app-arch/xz-utils )
 	selinux? ( sec-policy/selinux-makewhatis )"
 

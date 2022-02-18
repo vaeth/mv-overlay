@@ -5,14 +5,15 @@ EAPI=8
 inherit linux-info toolchain-funcs xdg-utils
 
 SRC_URI="https://github.com/phillipberndt/pqiv/archive/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
+
 
 DESCRIPTION="powerful GTK based command-line image viewer with a minimal UI"
 HOMEPAGE="https://github.com/phillipberndt/pqiv http://www.pberndt.com/Programme/Linux/pqiv/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="archive ffmpeg gtk2 imagemagick kernel_linux libav pdf postscript webp"
+IUSE="archive ffmpeg gtk2 imagemagick kernel_linux pdf postscript webp"
 
 RDEPEND="
 	>=dev-libs/glib-2.32:2
@@ -20,10 +21,7 @@ RDEPEND="
 	gtk2? ( x11-libs/gtk+:2 )
 	!gtk2? ( x11-libs/gtk+:3 )
 	archive? ( app-arch/libarchive:0= )
-	ffmpeg? (
-		!libav? ( media-video/ffmpeg:0= )
-		libav? ( media-video/libav:0= )
-	)
+	ffmpeg? ( media-video/ffmpeg:0= )
 	imagemagick? ( media-gfx/imagemagick:0= )
 	pdf? ( app-text/poppler:0= )
 	postscript? ( app-text/libspectre:0= )

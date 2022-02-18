@@ -44,7 +44,6 @@ RDEPEND="
 		dev-db/sqlite:3
 		dev-libs/expat
 		dev-libs/nss
-		=sci-libs/proj-4.8.0*
 	)"
 #		sci-libs/gdal-1*
 BDEPEND="dev-util/patchelf"
@@ -68,8 +67,6 @@ src_unpack() {
 			libsoftokn3.so libssl3.so || die
 		# dev-libs/expat
 		rm -v libexpat.so.1 || die
-		# sci-libs/proj
-		rm -v libproj.so.0 || die
 		# dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtwebkit:4
 #		rm -v libQt{Core,Gui,Network,WebKit}.so.4 || die
 #		rm -rv plugins/imageformats || die
@@ -130,7 +127,7 @@ src_install() {
 	chmod +x "${ED}"/opt/${PN}/{${PN}{,-bin},gpsbabel} || die
 	find "${ED}" -type f '(' -name '*.so.*' -o -name '*.so' ')' -exec chmod +x '{}' + || die
 
-	pax-mark -m "${ED%/}"/opt/${PN}/${PN}-bin
+	pax-mark -m "${ED}"/opt/${PN}/${PN}-bin
 }
 
 pkg_postinst() {

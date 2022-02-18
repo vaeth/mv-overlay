@@ -6,7 +6,7 @@ EAPI=8
 pPN=${PN%-zsh}
 mPN="${pPN}.zsh"
 NEED_PATCHES=false
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 case ${PV} in
 99999999*)
 	EGIT_REPO_URI="https://github.com/hchbaw/${mPN}.git"
@@ -19,8 +19,7 @@ case ${PV} in
 	RESTRICT="mirror"
 	EGIT_COMMIT="42dbef5da89360f132cce010004d4c674a13c951"
 	SRC_URI="https://github.com/hchbaw/${mPN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${mPN}-${EGIT_COMMIT}"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris";;
+	S="${WORKDIR}/${mPN}-${EGIT_COMMIT}";;
 *)
 	RESTRICT="mirror"
 	SRC_URI="https://github.com/hchbaw/${mPN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"

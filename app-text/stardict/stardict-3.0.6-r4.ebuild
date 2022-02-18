@@ -8,7 +8,7 @@ EAPI=8
 #       seperate for now.
 
 GNOME2_LA_PUNT=yes
-PYTHON_COMPAT=( python3_{7,8,9,10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit autotools flag-o-matic gnome2 python-single-r1
 
@@ -20,7 +20,7 @@ SRC_URI="mirror://sourceforge/${PN}-4/${P}.tar.bz2
 
 LICENSE="CPL-1.0 GPL-3 LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 IUSE="advertisement debug dictdotcn espeak examples gnome +gucharmap
 +htmlparse man perl +powerwordparse pronounce python qqwry spell
 tools updateinfo +wikiparse +wordnet +xdxfparse"
@@ -187,7 +187,7 @@ src_install() {
 				newbin "tools/src/${app}" "${PN}_${app}"
 			fi
 		done
-		use python && python_doscript "${ED}"usr/bin/*.py
+		use python && python_doscript "${ED}"/usr/bin/*.py
 
 		docinto tools
 		dodoc tools/{AUTHORS,ChangeLog,README}

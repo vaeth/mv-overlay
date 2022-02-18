@@ -1,18 +1,6 @@
-# Martin Väth <martin@mvath.de> (04 Sep 2016)
-# app-accessibility/gespeaker-0.8.6_p0 is a first attempt for a gtk-3 version.
-# It does not yet compile.
-=app-accessibility/gespeaker-0.8.6_p0
-
 # Martin Väth <martin@mvath.de> (14 May 2018)
 # Sources no longer available. Probably long outdated.
 =app-admin/flexlm-9.5*
-
-# Martin Väth <martin@mvath.de> (17 May 2018)
-# The package will probably be removed from the mv repository: It is
-# useful only for arch users. The ebuild is practically unmaintained,
-# and bumps from upstream have not been made since ages.
-# Stick it in your local overlay if you really want to keep it.
-app-shells/command-not-found
 
 # Martin Väth <martin@mvath.de> (09 Apr 2018)
 # There is nothing wrong with dev-util/pyrep, but hopefully this mask will
@@ -37,16 +25,3 @@ sys-apps/starter
 # sys-fs/squash_dir is no longer maintained. Use instead the successor project
 # sys-fs/squashmount (or sys-apps/openrc-wrapper for the openrc-wrapper script)
 sys-fs/squash_dir
-
-# Martin Väth <mvath@google.com> (19 Dec 2018)
-# The mask only indicates my lack of time to maintain the ebuilds:
-# The masked version might be current or safe, but it might also be outdated
-# or even contain critical security bugs.
-# Unmask at your discretion if you have time to check.
-=www-plugins/canvasblocker-0.5.5
-=www-plugins/decentraleyes-2.0.8
-=www-plugins/duckduckgo-2018.10.24
-=www-plugins/google-translation-2.6
-=www-plugins/https-everywhere-2018.10.31
-=www-plugins/skip-redirect-2.2.1
-=www-plugins/ublock-origin-1.17.2

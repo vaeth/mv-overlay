@@ -46,7 +46,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D%/}" SHELL=bash install
+	emake DESTDIR="${D}" SHELL=bash install
 	dodoc AUTHORS NEWS README
 	newbashcomp contrib/bash-completion netctl
 	insinto /usr/share/zsh/site-functions

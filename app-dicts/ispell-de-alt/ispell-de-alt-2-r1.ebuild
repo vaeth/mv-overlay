@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.informatik.uni-kiel.de/pub/kiel/dicts/hk${PV}-deutsch.tar.gz
 # GPL according to <http://bugs.debian.org/131124#25>
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ~mips ppc sparc x86"
+KEYWORDS="~alpha amd64 hppa ~mips ppc sparc x86"
 IUSE=""
 
 BDEPEND="app-text/ispell:="

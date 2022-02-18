@@ -14,11 +14,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="split-usr"
 
-DEPEND="!!<sys-fs/squash_dir-3.2"
-# the last dependency is not really needed, but without it the output is ugly,
+# The dependency is not really needed, but without it the output is ugly,
 # and the costs are really not high: sys-apps/gentoo-functions is tiny
-RDEPEND="${DEPEND}
-|| ( sys-apps/gentoo-functions sys-apps/openrc )"
+RDEPEND="|| ( sys-apps/gentoo-functions sys-apps/openrc )"
+DEPEND=""
 
 src_prepare() {
 	sed -i -e "s'ExecStart=/bin'ExecStart=$(get_usr)/bin'" \

@@ -4,7 +4,6 @@
 # @ECLASS: mv_mozextension-r1.eclass
 # @MAINTAINER:
 # Martin Väth <martin@mvath.de>
-# @SUPPORTED_EAPIS: 6 7
 # @BLURB: This eclass provides functions to install mozilla extensions
 # @DESCRIPTION:
 # The eclass is based on mozextension.eclass with many extensions
@@ -13,7 +12,7 @@
 # @CODE
 # inherit mv_mozextension-r1
 #
-# moz_defaults firefox seamonkey # no arguments mean all browsers
+# moz_defaults firefox seamonkey no arguments mean all browsers
 #
 # @CODE
 # inherit mv_mozextension-r1
@@ -218,6 +217,9 @@ moz_rdepend() {
 		*bin*)
 			browser=${browser%?bin*}
 			modes=bin;;
+		*seamonkey*)
+			browser=seamonkey
+			modes=source;;
 		esac
 		for mode in $modes
 		do	atom=
@@ -238,7 +240,7 @@ moz_rdepend() {
 # @USAGE: [-c|-C|-n] [--] [<browser>] [<browser>] [...]
 # @DESCRIPTION:
 # Outputs IUSE expression appropriate for browsers.
-# browser is [opertator](firefox|seamonkey)[-source|-bin][*]
+# browser is [operator](firefox|seamonkey)[-source|-bin][*]
 # (none specified = all browsers).
 # If option -C or -n is specified, IUSE=compressed is not default/added.
 moz_iuse() {
@@ -261,7 +263,10 @@ moz_iuse() {
 		*"${i}"?bin*)
 			iuse=${iuse}${iuse:+\ }"browser_${i}-bin";;
 		*"${i}"*)
-			iuse=${iuse}${iuse:+\ }"browser_${i} browser_${i}-bin";;
+			if [ "$i" = seamonkey ]
+			then	iuse=${iuse}${iuse:+\ }"browser_${i}"
+			else	iuse=${iuse}${iuse:+\ }"browser_${i} browser_${i}-bin"
+			fi;;
 		esac
 	done
 	[ -n "${iuse}" ] || die "args must be [operator](firefox|seamonkey)[-source|-bin][*]"
@@ -441,8 +446,6 @@ moz_install_for_browser() {
 		dest="/opt/${firefox}";;
 	*firefox*)
 		dest="/usr/$(get_libdir)/${firefox}";;
-	*seamonkey?bin*)
-		dest="/opt/${seamonkey}";;
 	*seamonkey*)
 		dest="/usr/$(get_libdir)/${seamonkey}";;
 	*)
@@ -479,7 +482,7 @@ moz_install() {
 	then	o="-n"
 	else	o=
 	fi
-	for i in firefox firefox-bin seamonkey seamonkey-bin
+	for i in firefox firefox-bin seamonkey
 	do	if in_iuse "browser_${i}" && use "browser_${i}"
 		then	moz_install_for_browser ${o} ${id:+-i "$id"} -- "${i}" "${@}"
 		fi

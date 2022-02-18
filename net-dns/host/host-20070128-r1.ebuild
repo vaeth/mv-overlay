@@ -3,7 +3,7 @@
 
 EAPI=8
 RESTRICT="mirror"
-inherit toolchain-funcs multilib
+inherit toolchain-funcs
 
 DESCRIPTION="A powerful command-line DNS query and test tool"
 HOMEPAGE="http://www.weird.com/~woods/projects/host.html"
@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.weird.com/pub/Planix/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 hppa ~mips ppc ppc64 sparc x86"
 IUSE="debug"
 
 # Bug 91515

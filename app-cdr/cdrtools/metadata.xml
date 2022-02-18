@@ -15,5 +15,5 @@
 	<use>
 		<flag name="schily-tools">Use libschily from app-shells/schily-tools</flag>
 	</use>
-	<longdescription>CD and DVD command line recording and ripping tools.</longdescription>
+	<longdescription>CD and DVD command line recording and ripping tools. Prefer to install the dummy 99999999 version which is only a wrapper for app-shells/schily-tools.</longdescription>
 </pkgmetadata>

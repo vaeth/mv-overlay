@@ -12,7 +12,7 @@ SRC_URI="http://j3e.de/ispell/igerman98/dict/${MY_P}.tar.bz2"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""
-KEYWORDS="alpha amd64 hppa mips ppc sparc x86"
+KEYWORDS="~alpha amd64 hppa mips ppc sparc x86"
 
 BDEPEND="app-text/ispell:="
 RDEPEND="${BDEPEND}"

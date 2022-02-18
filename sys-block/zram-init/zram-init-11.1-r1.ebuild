@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit readme.gentoo-r1 systemd
+inherit readme.gentoo-r1
 RESTRICT="mirror" # until available on gentoo mirrors
 
 DESCRIPTION="Scripts to support compressed swap devices or ramdisks with zram"

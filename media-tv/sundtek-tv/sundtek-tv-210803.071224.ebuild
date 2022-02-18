@@ -15,11 +15,11 @@ SRC_URI="http://www.sundtek.de/media/sundtek_installer_${PV}.sh"
 RESTRICT="binchecks mirror strip"
 LICENSE="sundtek"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="ld-preload-env +ld-preload-file pax_kernel pulseaudio split-usr"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+IUSE="ld-preload-env +ld-preload-file pax-kernel pulseaudio split-usr"
 RDEPEND="!<sys-apps/openrc-0.13
 pulseaudio? ( media-sound/pulseaudio )"
-BDEPEND="pax_kernel? ( || ( sys-apps/elfix sys-apps/paxctl ) )"
+BDEPEND="pax-kernel? ( || ( sys-apps/elfix sys-apps/paxctl ) )"
 
 DISABLE_AUTOFORMATTING="true"
 DOC_CONTENTS="To initialize sundtek drivers during booting call
@@ -84,7 +84,7 @@ src_prepare() {
 	fi
 	mylirc="etc/lirc"
 	umask 022
-	if use pax_kernel
+	if use pax-kernel
 	then	pax-mark em opt/bin/mediasrv
 		pax-mark e opt/bin/mediaclient
 	fi

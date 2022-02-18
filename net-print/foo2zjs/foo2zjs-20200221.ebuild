@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit toolchain-funcs
+
 DESCRIPTION="Support for printing to ZjStream-based printers"
 HOMEPAGE="http://foo2zjs.rkkda.com/"
 
@@ -64,11 +66,11 @@ src_install() {
 	# directories we have to create if we want foomaticdb support
 	use foomaticdb && dodir /usr/share/foomatic/db/source
 
-	emake DESTDIR="${ED%/}" \
-		USBDIR="${ED%/}/etc/hotplug/usb" \
-		UDEVDIR="${ED%/}/lib/udev/rules.d" \
-		LIBUDEVDIR="${ED%/}/lib/udev/rules.d" \
-		DOCDIR="${ED%}/usr/share/doc/${PF}" \
+	emake DESTDIR="${ED}" \
+		USBDIR="${ED}/etc/hotplug/usb" \
+		UDEVDIR="${ED}/lib/udev/rules.d" \
+		LIBUDEVDIR="${ED}/lib/udev/rules.d" \
+		DOCDIR="${ED}/usr/share/doc/${PF}" \
 		-j1 install install-hotplug
 }
 

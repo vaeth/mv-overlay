@@ -13,7 +13,7 @@ SRC_URI="http://gentoo.osuosl.org/distfiles/xmame-${PV}.tar.bz2"
 
 LICENSE="XMAME"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc sparc x86"
 IUSE="alsa bundled-libs cpu_flags_x86_mmx dga ggi joystick lirc net opengl sdl svga X xinerama xv"
 
 RDEPEND="

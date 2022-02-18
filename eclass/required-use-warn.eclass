@@ -4,7 +4,6 @@
 # @ECLASS: required-use-warn.eclass
 # @MAINTAINER:
 # Martin Väth <martin@mvath.de>
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: This eclass support REQUIRED_USE_WARN
 # @DESCRIPTION:
 # The eclass provides support for REQUIRED_USE_WARN.
@@ -23,7 +22,7 @@
 #
 # REQUIRED_USE_WARN="foo? ( !bar? ( !bazola ) ) !FOO? ( BAR )
 # pkg_pretend() {
-# 	required-use-warn
+#	required-use-warn
 # }
 
 # @FUNCTION: required-use-warn_internal
@@ -90,7 +89,6 @@ required-use-warn_internal() {
 
 # @FUNCTION: required-use-warn
 # @USAGE: [string]
-# @INTERNAL
 # @DESCRIPTION:
 # Print warnings according to the passed string (default is REQUIRED_USE_WARN)
 required-use-warn() {

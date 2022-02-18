@@ -3,7 +3,7 @@
 
 EAPI=8
 RESTRICT="mirror"
-inherit fcaps flag-o-matic gnuconfig toolchain-funcs
+inherit fcaps flag-o-matic gnuconfig required-use-warn toolchain-funcs
 
 MY_PV=${PV//./-}
 MY_P="schily-${MY_PV}"
@@ -13,7 +13,7 @@ S=${WORKDIR}/${MY_P}
 SRC_URI="mirror://sourceforge/schilytools/${MY_P}.tar.bz2"
 DESCRIPTION="Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell"
 HOMEPAGE="https://sourceforge.net/projects/schilytools/"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="acl caps doc nls split-usr suid unicode xattr"
 
 PATCHES=("${FILESDIR}"/strlcat-mapvers.patch)
@@ -40,7 +40,6 @@ add_iuse_expand schilytools +bosh +calc +calltree +cdrtools \
 	+termcap +translit +udiff +ved
 
 COMMON="!!app-cdr/cdrtools[-schily-tools(-)]
-!!app-arch/star
 !renameschily_libschily? ( !sys-apps/man )
 !renameschily_getopt? ( !sys-apps/man )
 schilytools_calc? (

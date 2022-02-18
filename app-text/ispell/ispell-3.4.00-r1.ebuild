@@ -11,7 +11,7 @@ SRC_URI="http://fmg-www.cs.ucla.edu/geoff/tars/${P}.tar.gz"
 
 LICENSE="HPND"
 SLOT="0/3.4.00"
-KEYWORDS="alpha amd64 ~arm hppa ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm hppa ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="+tinfo"
 
 RDEPEND="

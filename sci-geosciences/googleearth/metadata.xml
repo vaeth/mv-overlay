@@ -7,6 +7,5 @@
 	</maintainer>
 	<use>
 		<flag name="bundled-libs">Use bundled libraries.</flag>
-		<flag name="bundled-qt">Use bundled qt.</flag>
 	</use>
 </pkgmetadata>
