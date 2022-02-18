@@ -46,7 +46,7 @@ src_configure() {
 	local backends="gdkpixbuf" gtkver=3
 	! use gtk2 || gtkver=2
 	use archive && backends+=",archive,archive_cbx"
-	use ffmpeg || use libav && backends+=",libav"
+	use ffmpeg && backends+=",libav"
 	use imagemagick && backends+=",wand"
 	use pdf && backends+=",poppler"
 	use postscript && backends+=",spectre"
