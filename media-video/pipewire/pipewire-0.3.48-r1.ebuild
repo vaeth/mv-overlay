@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	if [[ ${PV} == *_p* ]] ; then
-		MY_COMMIT="d1784cfd861bb3179903b07ab87a16e929c0909f"
+		MY_COMMIT=""
 		SRC_URI="https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/${MY_COMMIT}/pipewire-${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2"
 		S="${WORKDIR}"/${PN}-${MY_COMMIT}
 	else
@@ -99,6 +99,7 @@ RDEPEND="
 	X? (
 		media-libs/libcanberra
 		x11-libs/libX11
+		x11-libs/libXfixes
 	)
 	zeroconf? ( net-dns/avahi )
 "
@@ -107,7 +108,7 @@ DEPEND="${RDEPEND}"
 
 # TODO: Consider use cases where pipewire is not used for driving audio
 # Doing so with WirePlumber currently involves editing Lua scripts
-PDEPEND="media-video/wireplumber"
+PDEPEND=">=media-video/wireplumber-0.4.8-r3"
 
 # Present RDEPEND that are currently always disabled due to the PW
 # code using them being required to be disabled by Gentoo guidelines
@@ -213,6 +214,7 @@ multilib_src_configure() {
 
 		# Just for bell sounds in X11 right now.
 		$(meson_native_use_feature X x11)
+		$(meson_native_use_feature X x11-xfixes)
 		$(meson_native_use_feature X libcanberra)
 	)
 
