@@ -32,7 +32,8 @@ BDEPEND="meson? (
 	)
 	protobuf? ( dev-libs/protobuf:= )
 	app-arch/xz-utils
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+	virtual/pkgconfig"
 
 pkg_setup() {
 	# remove stale cache file to prevent collisions

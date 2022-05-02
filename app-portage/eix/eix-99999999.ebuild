@@ -46,7 +46,8 @@ BDEPEND="meson? (
 		nls? ( sys-devel/gettext )
 	)
 	!meson? ( ${AUTOTOOLS_DEPEND} >=sys-devel/gettext-0.19.6 )
-	protobuf? ( dev-libs/protobuf:= )"
+	protobuf? ( dev-libs/protobuf:= )
+	virtual/pkgconfig"
 
 pkg_setup() {
 	# remove stale cache file to prevent collisions
