@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit meson-multilib optfeature prefix python-any-r1 systemd udev
+inherit flag-o-matic meson-multilib optfeature prefix python-any-r1 systemd udev
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}.git"
@@ -28,7 +28,7 @@ HOMEPAGE="https://pipewire.org/"
 LICENSE="MIT LGPL-2.1+ GPL-2"
 # ABI was broken in 0.3.42 for https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/49
 SLOT="0/0.4"
-IUSE="alsa bluetooth doc echo-cancel extra gstreamer jack-client jack-sdk lv2 pipewire-alsa ssl system-service systemd test v4l X zeroconf"
+IUSE="alsa bluetooth doc echo-cancel extra gstreamer jack-client jack-sdk lv2 pipewire-alsa ssl system-service systemd test udev v4l X zeroconf"
 
 # Once replacing system JACK libraries is possible, it's likely that
 # jack-client IUSE will need blocking to avoid users accidentally
@@ -60,7 +60,6 @@ RDEPEND="
 	sys-libs/readline:=
 	sys-libs/ncurses:=[unicode(+)]
 	virtual/libintl[${MULTILIB_USEDEP}]
-	virtual/libudev[${MULTILIB_USEDEP}]
 	bluetooth? (
 		media-libs/fdk-aac
 		media-libs/libldac
@@ -86,7 +85,6 @@ RDEPEND="
 	lv2? ( media-libs/lilv )
 	pipewire-alsa? (
 		>=media-libs/alsa-lib-1.1.7[${MULTILIB_USEDEP}]
-		!media-plugins/alsa-plugins[${MULTILIB_USEDEP},pulseaudio]
 	)
 	!pipewire-alsa? ( alsa? ( media-plugins/alsa-plugins[${MULTILIB_USEDEP},pulseaudio] ) )
 	ssl? ( dev-libs/openssl:= )
@@ -95,6 +93,7 @@ RDEPEND="
 		acct-user/pipewire
 		acct-group/pipewire
 	)
+	udev? ( virtual/libudev[${MULTILIB_USEDEP}] )
 	v4l? ( media-libs/libv4l )
 	X? (
 		media-libs/libcanberra
@@ -154,6 +153,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# https://bugs.gentoo.org/838301
+	filter-flags -fno-semantic-interposition
+
 	local emesonargs=(
 		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
 
@@ -206,7 +208,7 @@ multilib_src_configure() {
 		-Dvolume=enabled # Matches upstream
 		-Dvulkan=disabled # Uses pre-compiled Vulkan compute shader to provide a CGI video source (dev thing; disabled by upstream)
 		$(meson_native_use_feature extra pw-cat)
-		-Dudev=enabled
+		$(meson_feature udev)
 		-Dudevrulesdir="${EPREFIX}$(get_udevdir)/rules.d"
 		-Dsdl2=disabled # Controls SDL2 dependent code (currently only examples when -Dinstalled_tests=enabled which we never install)
 		$(meson_native_use_feature extra sndfile) # Enables libsndfile dependent code (currently only pw-cat)
@@ -234,10 +236,16 @@ multilib_src_install_all() {
 
 	if use pipewire-alsa; then
 		dodir /etc/alsa/conf.d
+
+		# Install pipewire conf loader hook
+		insinto /usr/share/alsa/alsa.conf.d
+		doins "${FILESDIR}"/99-pipewire-default-hook.conf
+		eprefixify "${ED}"/usr/share/alsa/alsa.conf.d/99-pipewire-default-hook.conf
+
 		# These will break if someone has /etc that is a symbolic link to a subfolder! See #724222
 		# And the current dosym8 -r implementation is likely affected by the same issue, too.
 		dosym ../../../usr/share/alsa/alsa.conf.d/50-pipewire.conf /etc/alsa/conf.d/50-pipewire.conf
-		dosym ../../../usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d/99-pipewire-default.conf
+		dosym ../../../usr/share/alsa/alsa.conf.d/99-pipewire-default-hook.conf /etc/alsa/conf.d/99-pipewire-default-hook.conf
 	fi
 
 	if ! use systemd; then
@@ -251,6 +259,8 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
+	use udev && udev_reload
+
 	elog "It is recommended to raise RLIMIT_MEMLOCK to 256 for users"
 	elog "using PipeWire. Do it either manually or add yourself"
 	elog "to the 'audio' group:"
