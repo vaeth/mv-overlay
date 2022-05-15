@@ -4,7 +4,7 @@ acct-user/flexlm 0: User for app-admin/flexlm
 acct-user/schedule 0: User for sys-apps/schedule
 app-admin/flexlm 9.5-r3: Macrovision FLEXlm license manager and utils
 app-admin/sudox 10.0-r1: wrapper for sudo which can pass X authority data and deal with screen and tmux
-app-arch/archwrap 11.4-r1: A collection of POSIX shell scripts to invoke archiver programs
+app-arch/archwrap 12.0: A collection of POSIX shell scripts to invoke archiver programs
 app-arch/bzwc 5.1-r1: A POSIX shell wrapper for wc, supporting compressed files (xz, lzma, bz2, gz)
 app-arch/paq8l 20070308: Open source file compressor and archiver
 app-cdr/cdrtools 99999999: A set of tools for CD/DVD reading and recording, including cdrecord
@@ -30,7 +30,7 @@ app-portage/eix 0.36.2 99999999: Search and query ebuilds
 app-portage/etcat 1.0.2 99999999: Updated version of an old Portage information extractor
 app-portage/find_cruft 5.2: find cruft files not managed by portage
 app-portage/logclean 18.4.1: Keep only (compressed) logs of installed packages and cleanup emerge.log
-app-portage/portage-bashrc-mv 20.6: Provide support for /etc/portage/bashrc.d and /etc/portage/package.cflags
+app-portage/portage-bashrc-mv 20.7: Provide support for /etc/portage/bashrc.d and /etc/portage/package.cflags
 app-portage/portage-postsyncd-mv 8.4: postsync hooks for portage to sync from git
 app-portage/trickyfetch 10.1: Plugin for FETCHCOMMAND to help organize and cleanup your DISTDIR
 app-portage/useflags 4.2: Print or save the current USE-flag state and compare with older versions
@@ -44,7 +44,7 @@ app-shells/quoter 4.2-r1: Quote arguments or standard input for usage in POSIX s
 app-shells/runtitle 2.11: Scripts to run commands and set the hard status line (windows title)
 app-shells/schily-tools 2021.09.18: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
 app-shells/set_prompt 3.2: An intelligent prompt for zsh or bash with status line (window title) support
-app-shells/termcolors-mv 4.8: 256colors sample script and dircolors configuration for standard or 256 colors
+app-shells/termcolors-mv 4.9: 256colors sample script and dircolors configuration for standard or 256 colors
 app-shells/zsh-autosuggestions 0.7.0 99999999: Fish-like autosuggestions for zsh
 app-shells/zsh-syntax-highlighting 0.8.0_alpha1 99999999: Fish shell like syntax highlighting for zsh
 app-shells/zshrc-mv 6.7: A zshrc file initializing zsh specific interactive features
