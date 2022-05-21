@@ -8,8 +8,7 @@ inherit gnome2 multilib multilib-minimal virtualx
 
 DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="https://www.gtk.org/"
-SRC_URI="${SRC_URI-}
-https://gitlab.gnome.org/GNOME/gtk/-/commit/5a0ffbbb4568e39bdf26006e1bf18c1c1d0d597a.patch -> ${P}-add-legacy-icons.patch"
+SRC_URI="${SRC_URI-}"
 
 LICENSE="LGPL-2+"
 SLOT="3"
@@ -100,7 +99,6 @@ BDEPEND="
 		app-text/docbook-xml-dtd:4.3
 		>=dev-util/gtk-doc-1.20
 	)
-	dev-vcs/git
 "
 
 MULTILIB_CHOST_TOOLS=(
@@ -139,9 +137,6 @@ src_prepare() {
 		strip_builddir SRC_SUBDIRS demos Makefile.{am,in}
 		strip_builddir SRC_SUBDIRS examples Makefile.{am,in}
 	fi
-
-	# bug #835966
-	git apply "${DISTDIR}/${P}-add-legacy-icons.patch" || die
 
 	# Use patches from BSD to make gtk3-atk-bridge a true option -
 	# This was intentionally removed by upstream, see
