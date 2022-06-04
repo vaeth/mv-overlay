@@ -8,7 +8,7 @@ EAPI=8
 #       seperate for now.
 
 GNOME2_LA_PUNT=yes
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit autotools flag-o-matic gnome2 python-single-r1
 
