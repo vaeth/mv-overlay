@@ -19,7 +19,7 @@ else
 		SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz"
 	fi
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="Multimedia processing graphs"
@@ -123,6 +123,7 @@ DOCS=( {README,INSTALL}.md NEWS )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.25-enable-failed-mlock-warning.patch
+	"${FILESDIR}"/${P}-pulse-path.patch
 )
 
 # limitsdfile related code taken from =sys-auth/realtime-base-0.1
@@ -189,6 +190,8 @@ multilib_src_configure() {
 		$(meson_native_use_feature bluetooth bluez5-codec-ldac)
 		$(meson_native_use_feature bluetooth libusb) # At least for now only used by bluez5 native (quirk detection of adapters)
 		$(meson_native_use_feature echo-cancel echo-cancel-webrtc) #807889
+		# Not yet packaged.
+		-Dbluez5-codec-lc3plus=disabled
 		-Dcontrol=enabled # Matches upstream
 		-Daudiotestsrc=enabled # Matches upstream
 		-Dffmpeg=disabled # Disabled by upstream and no major developments to spa/plugins/ffmpeg/ since May 2020
@@ -310,8 +313,9 @@ pkg_postinst() {
 		ewarn
 		if has_version 'media-sound/pulseaudio[daemon]' || has_version 'media-sound/pulseaudio-daemon'; then
 			elog "This ebuild auto-enables PulseAudio replacement. Because of that, users"
-			elog "are recommended to edit: ${EROOT}/etc/pulse/client.conf and disable"
-			elog "autospawning of the original daemon by setting:"
+			elog "are recommended to edit pulseaudio client configuration files:"
+			elog "${EROOT}/etc/pulse/client.conf and ${EROOT}/etc/pulse/client.conf.d/enable-autospawn.conf"
+			elog "if it exists, and disable autospawning of the original daemon by setting:"
 			elog
 			elog "  autospawn = no"
 			elog
