@@ -34,6 +34,11 @@ IUSE=""
 RDEPEND="app-shells/zsh"
 DEPEND=""
 
+src_prepare() {
+	sed -i -e 's/^\([[:space:]]*\)\(curl\|wget\)/\1: \2/' -- "$S/F-Sy-H.plugin.zsh" || die
+	default
+}
+
 src_install() {
 	local DISABLE_AUTOFORMATTING DOC_CONTENTS dir
 	dir="/usr/share/zsh/site-contrib/${PN}"
