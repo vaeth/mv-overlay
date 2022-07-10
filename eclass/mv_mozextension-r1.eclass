@@ -106,7 +106,7 @@ moz_install$quoteargs
 }"
 }
 
-# @ECLASS-VARIABLE: MOZ_BDEPEND
+# @ECLASS_VARIABLE: MOZ_BDEPEND
 # @DESCRIPTION:
 # This is an eclass-generated depend expression needed for moz_unpack to work
 MOZ_BDEPEND='app-arch/unzip'

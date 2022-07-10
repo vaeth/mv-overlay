@@ -100,3 +100,7 @@
   required-use-warn: Make required-use-warn function non-internal
   stardict: Drop outdated dependency
   mv_mozextension-r1: Do no longer support seamonkey-bin
+
+  10 Jul 2022; Martin Väth <martin@mvath.de>:
+  Update meson eclass
+  mv_mozextension-r1: Update docu
