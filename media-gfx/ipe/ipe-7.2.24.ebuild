@@ -44,6 +44,7 @@ src_prepare() {
 		-e "s'\$(IPEPREFIX)/lib'\$(IPEPREFIX)/$(get_libdir)'g" \
 		-e "s'\(LUA_CFLAGS.*=\).*'\1 $(lua_get_CFLAGS)'" \
 		-e "s'\(LUA_LIBS.*=\).*'\1 $(lua_get_LIBS)'" \
+		-e "s'\(MOC.*=\).*'\1 ${EPREFIX}/usr/$(get_libdir)/qt5/bin/moc'" \
 		config.mak || die
 	sed -i \
 		-e 's!-std=c++1.!!' \
@@ -54,6 +55,7 @@ src_prepare() {
 }
 
 src_compile() {
+	PATH=${EPREFIX}/$(get_libdir)/qt5/bin${PATH:+:}${PATH-}
 	emake \
 		CXX=$(tc-getCXX) \
 		IPEPREFIX="${EPREFIX}/usr" \
