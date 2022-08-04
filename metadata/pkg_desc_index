@@ -51,6 +51,7 @@ app-shells/zshrc-mv 6.8: A zshrc file initializing zsh specific interactive feat
 app-text/ispell 3.4.00-r1: fast screen-oriented spelling checker
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
 app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities
+app-text/qtspell 1.0.1: Spell checking for Qt text widgets
 app-text/stardict 3.0.6-r4 4.0.0_pre20170304-r1: A international dictionary supporting fuzzy and glob style matching
 dev-cpp/cpplint 99999999: The google styleguide together with cpplint and an emacs file
 dev-libs/osformat 1.0.7 999999999: C++ library for a typesafe printf/sprintf based on << conversion
@@ -72,7 +73,7 @@ games-rpg/aklabeth 1.0-r1: A remake of Richard C. Garriott's Ultima prequel
 games-rpg/dsa-stats 1.1: calculate stat probabalities for the role playing game DSA - Das schwarze Auge
 games-rpg/m5figur-mv 4.2.2: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
 gui-wm/wayfire 0.7.3: compiz like 3D wayland compositor
-media-gfx/ipe 7.2.24-r1: Drawing editor for creating figures in PDF or PS formats
+media-gfx/ipe 7.2.26: Drawing editor for creating figures in PDF or PS formats
 media-gfx/libspiro 20200505-r1: A spline computation library
 media-gfx/pqiv 2.11: powerful GTK based command-line image viewer with a minimal UI
 media-libs/avidemux-core 2.7.8: Core libraries for simple video cutting, filtering and encoding tasks

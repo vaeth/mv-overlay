@@ -29,7 +29,8 @@ DEPEND="${LUA_DEPS}
 	sys-libs/zlib
 	x11-libs/cairo
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5"
+	dev-qt/qtgui:5
+	app-text/qtspell"
 RDEPEND="${DEPEND}
 	|| ( app-text/texlive-core net-misc/curl )"
 BDEPEND="virtual/pkgconfig"
