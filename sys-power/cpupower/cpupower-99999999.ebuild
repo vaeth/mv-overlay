@@ -20,15 +20,16 @@ DEPEND="${RDEPEND}
 	virtual/os-headers
 	nls? ( sys-devel/gettext )"
 
+KV_SRC=${KV_MAJOR}.${KV_MINOR}
+LINUX_SRC=linux-${KV_SRC}
+S="${WORKDIR}/${LINUX_SRC}"
+
 PATCHES=(
 	"${FILESDIR}/cpupower-5.4-cflags.patch"
 )
 
 pkg_setup() {
 	linux-info_pkg_setup
-	KV_SRC=${KV_MAJOR}.${KV_MINOR}
-	LINUX_SRC=linux-${KV_SRC}
-	S="${WORKDIR}/${LINUX_SRC}"
 }
 
 src_unpack() {

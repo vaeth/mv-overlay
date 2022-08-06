@@ -153,8 +153,8 @@ src_install() {
 	dodoc lib/{AUTHORS,ChangeLog,README}
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/dict
-		doins dict/doc/stardict-textual-dict*
+		docinto /usr/share/doc/${PF}/dict
+		dodoc dict/doc/stardict-textual-dict*
 	fi
 
 	if use qqwry; then
@@ -199,8 +199,8 @@ src_install() {
 		dodoc tools/{AUTHORS,ChangeLog,README}
 
 		if use examples; then
-			insinto /usr/share/doc/${PF}/tools
-			doins tools/src/{dictbuilder.{example,readme},example.ifo,example_treedict.tar.bz2}
+			docinto /usr/share/doc/${PF}/tools
+			dodoc tools/src/{dictbuilder.{example,readme},example.ifo,example_treedict.tar.bz2}
 		fi
 	fi
 }

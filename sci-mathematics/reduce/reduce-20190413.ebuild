@@ -97,8 +97,8 @@ src_install() {
 	popd > /dev/null
 
 	if use doc; then
-		insinto /usr/share/doc/${PF}
-		doins doc/util/r38.pdf
+		docinto /usr/share/doc/${PF}
+		dodoc doc/util/r38.pdf
 	fi
 
 	if use emacs; then
