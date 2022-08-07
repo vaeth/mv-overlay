@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Open source file compressor and archiver"
 HOMEPAGE="http://mattmahoney.net/dc/"
-SRC_URI="http://mattmahoney.net/dc/${PN}.zip"
+SRC_URI="http://mattmahoney.net/dc/${PN}.zip -> ${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
