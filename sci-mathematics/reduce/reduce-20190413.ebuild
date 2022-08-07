@@ -97,7 +97,6 @@ src_install() {
 	popd > /dev/null
 
 	if use doc; then
-		docinto /usr/share/doc/${PF}
 		dodoc doc/util/r38.pdf
 	fi
 

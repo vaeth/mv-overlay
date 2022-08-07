@@ -30,11 +30,11 @@ RDEPEND="dev-db/sqlite:3
 	dev-libs/expat
 	media-libs/fontconfig
 	media-libs/flac
+	media-libs/libjpeg-turbo
 	media-libs/libsdl2[joystick,opengl?,sound,video,X]
 	media-libs/portaudio
 	media-libs/sdl2-ttf
 	sys-libs/zlib
-	virtual/jpeg:0
 	virtual/opengl
 	alsa? ( media-libs/alsa-lib
 		media-libs/portmidi )

@@ -62,7 +62,7 @@ src_install() {
 	fi
 	insinto /usr/share/vim/vimfiles/syntax
 	doins *.vim
-	docinto /usr/share/doc/${PF}/html
+	docinto html
 	dodoc -r *.css *.html *.png *.xsl include
 }
 
