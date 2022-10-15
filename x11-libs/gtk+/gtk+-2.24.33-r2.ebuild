@@ -28,7 +28,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
 	>=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}]
 	virtual/libintl[${MULTILIB_USEDEP}]
-	>=x11-libs/cairo-1.12.14-r4:=[aqua?,svg,${MULTILIB_USEDEP}]
+	>=x11-libs/cairo-1.12.14-r4:=[aqua?,svg(+),${MULTILIB_USEDEP}]
 	>=x11-libs/gdk-pixbuf-2.30.7:2[introspection?,${MULTILIB_USEDEP}]
 	>=x11-libs/pango-1.36.3[introspection?,${MULTILIB_USEDEP}]
 	x11-misc/shared-mime-info
@@ -36,7 +36,7 @@ COMMON_DEPEND="
 	cups? ( >=net-print/cups-1.7.1-r2:=[${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-0.9.3:= )
 	!aqua? (
-		>=x11-libs/cairo-1.12.14-r4:=[aqua?,svg,X,${MULTILIB_USEDEP}]
+		>=x11-libs/cairo-1.12.14-r4:=[aqua?,svg(+),X,${MULTILIB_USEDEP}]
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXcomposite-0.4.4-r1[${MULTILIB_USEDEP}]
 		>=x11-libs/libXcursor-1.1.14[${MULTILIB_USEDEP}]
@@ -219,17 +219,13 @@ multilib_src_install() {
 multilib_src_install_all() {
 	# see bug #133241
 	# Also set more default variables in sync with gtk3 and other distributions
-	echo 'gtk-fallback-icon-theme = "gnome"' > "${T}/gtkrc"
-	echo 'gtk-theme-name = "Adwaita"' >> "${T}/gtkrc"
-	if use adwaita-icon-theme ; then
-		echo 'gtk-icon-theme-name = "Adwaita"' >> "${T}/gtkrc"
-	else
-		echo 'gtk-icon-theme-name = "gnome"' >> "${T}/gtkrc"
-	fi
-	echo 'gtk-cursor-theme-name = "Adwaita"' >> "${T}/gtkrc"
-
 	insinto /usr/share/gtk-2.0
-	doins "${T}"/gtkrc
+	newins - gtkrc <<- 'EOF'
+	gtk-fallback-icon-theme = "gnome"
+	gtk-theme-name = "Adwaita"
+	gtk-icon-theme-name = "$(usex Adwaita gnome)"
+	gtk-cursor-theme-name = "Adwaita"
+	EOF
 
 	einstalldocs
 	rm "${ED}"/usr/share/doc/${P}/ChangeLog # empty file
