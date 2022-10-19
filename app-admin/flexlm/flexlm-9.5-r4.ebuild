@@ -21,8 +21,9 @@ LICENSE="all-rights-reserved GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
-DEPEND="acct-group/flexlm
+IDEPEND="acct-group/flexlm
 	acct-user/flexlm"
+RDEPEND="${IDEPEND}"
 
 QA_PREBUILT="
 	opt/flexlm/bin/lmgrd

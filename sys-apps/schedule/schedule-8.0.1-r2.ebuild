@@ -19,8 +19,11 @@ IUSE=""
 OPTIONAL_RDEPEND="|| ( >=dev-lang/perl-5.14 virtual/perl-Term-ANSIColor )
 dev-perl/Crypt-Rijndael"
 
+IDEPEND="acct-group/schedule
+	acct-user/schedule"
 RDEPEND=">=dev-lang/perl-5.12
 	!<sys-apps/openrc-0.13
+	${IDEPEND}
 	${OPTIONAL_RDEPEND}"
 #	|| ( >=dev-lang/perl-5.10.1 >=virtual/perl-version-0.77 )
 #	|| ( >=dev-lang/perl-5.1 virtual/perl-File-Path )
@@ -28,8 +31,6 @@ RDEPEND=">=dev-lang/perl-5.12
 #	|| ( >=dev-lang/perl-5.6.1 >=virtual/perl-Getopt-Long-2.24 )
 #	|| ( >=dev-lang/perl-5.6.0 >=virtual/perl-IO-1.190.0 )
 #	|| ( >=dev-lang/perl-5.9.4 virtual/perl-Digest-SHA) # for encryption
-DEPEND="acct-group/schedule
-	acct-user/schedule"
 
 DISABLE_AUTOFORMATTING="true"
 DOC_CONTENTS="It is recommended to put a lengthy passphrase into the first line
