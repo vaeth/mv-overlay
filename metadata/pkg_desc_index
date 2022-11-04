@@ -71,7 +71,6 @@ games-engines/freesci 0.6.4-r2: Sierra script interpreter for your old Sierra ad
 games-rpg/aklabeth 1.0-r1: A remake of Richard C. Garriott's Ultima prequel
 games-rpg/dsa-stats 1.1: calculate stat probabalities for the role playing game DSA - Das schwarze Auge
 games-rpg/m5figur-mv 4.2.2: LaTeX2e character sheet layout for the Midgard Role Playing Game (Edition M5)
-gui-wm/wayfire 0.7.3: compiz like 3D wayland compositor
 media-gfx/ipe 7.2.26: Drawing editor for creating figures in PDF or PS formats
 media-gfx/libspiro 20200505-r1: A spline computation library
 media-gfx/pqiv 2.11: powerful GTK based command-line image viewer with a minimal UI
