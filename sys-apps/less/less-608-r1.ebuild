@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+WANT_AUTOMAKE=none
+WANT_LIBTOOL=none
+
+inherit autotools
 
 DESCRIPTION="Excellent text file viewer, optionally with additional selection feature"
 PATCHN="less-select"
@@ -41,7 +45,13 @@ src_prepare() {
 		sed -i -e 's|\([^a-zA-Z]\)/etc/less-select-key.bin|\1'"${EPREFIX}"'/etc/less/select-key.bin|g' \
 			"${SELECTDIR}/bin/less-select" || die
 	fi
+	local PATCHES=(
+		"${FILESDIR}/less-608-procfs.patch"
+	)
 	default
+	# Upstream uses unpatched autoconf-2.69, which breaks with clang-16.
+	# https://bugs.gentoo.org/870412
+	eautoreconf
 }
 
 src_configure() {

@@ -27,7 +27,7 @@ RESTRICT="test"
 # FIXME: introspection data is built against system installation of gtk+:3,
 # bug #????
 COMMON_DEPEND="
-	>=dev-libs/atk-2.32.0[introspection?,${MULTILIB_USEDEP}]
+	atk-bridge? ( >=app-accessibility/at-spi2-core-2.46.0[introspection?,${MULTILIB_USEDEP}] )
 	>=dev-libs/fribidi-0.19.7[${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.57.2:2[${MULTILIB_USEDEP}]
 	media-libs/fontconfig[${MULTILIB_USEDEP}]
@@ -45,13 +45,12 @@ COMMON_DEPEND="
 	sysprof? ( >=dev-util/sysprof-capture-3.33.2:3[${MULTILIB_USEDEP}] )
 	wayland? (
 		>=dev-libs/wayland-1.14.91[${MULTILIB_USEDEP}]
-		>=dev-libs/wayland-protocols-1.17
+		>=dev-libs/wayland-protocols-1.21
 		media-libs/mesa[wayland,${MULTILIB_USEDEP}]
 		>=x11-libs/libxkbcommon-0.2[${MULTILIB_USEDEP}]
 	)
 	X? (
-		atk-bridge? ( >=app-accessibility/at-spi2-atk-2.15.1[${MULTILIB_USEDEP}] )
-		media-libs/mesa[X(+),${MULTILIB_USEDEP}]
+		media-libs/libglvnd[X(+),${MULTILIB_USEDEP}]
 		x11-libs/libX11[${MULTILIB_USEDEP}]
 		x11-libs/libXcomposite[${MULTILIB_USEDEP}]
 		x11-libs/libXcursor[${MULTILIB_USEDEP}]
@@ -70,11 +69,8 @@ DEPEND="${COMMON_DEPEND}
 	)
 	X? ( x11-base/xorg-proto )
 "
-# gtk+-3.2.2 breaks Alt key handling in <=x11-libs/vte-0.30.1:2.90
-# gtk+-3.3.18 breaks scrolling in <=x11-libs/vte-0.31.0:2.90
 RDEPEND="${COMMON_DEPEND}
 	>=dev-util/gtk-update-icon-cache-3
-	!<x11-libs/vte-0.31.0:2.90
 "
 # librsvg for svg icons (PDEPEND to avoid circular dep), bug #547710
 PDEPEND="
