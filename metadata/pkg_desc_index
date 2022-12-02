@@ -54,7 +54,6 @@ app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, 
 app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities
 app-text/qtspell 1.0.1: Spell checking for Qt text widgets
 app-text/stardict 3.0.6-r4 4.0.0_pre20170304-r1: A international dictionary supporting fuzzy and glob style matching
-app-text/uudeview 0.5.20-r2: uu, xx, base64, binhex decoder
 dev-cpp/cpplint 99999999: The google styleguide together with cpplint and an emacs file
 dev-libs/osformat 1.0.7 999999999: C++ library for a typesafe printf/sprintf based on << conversion
 dev-perl/File-lchown 0.20-r1: Use the lchown(2) and lutimes(2) system call from Perl
