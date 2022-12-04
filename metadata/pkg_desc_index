@@ -128,4 +128,3 @@ www-plugins/noscript 11.4.8: Firefox webextension: restrict active contents like
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
 x11-libs/gtk+ 2.24.33-r2 3.24.35: Gimp ToolKit +
 x11-libs/motif 2.3.8-r3: The Motif user interface component toolkit
-x11-misc/gtkdialog 0.8.3_p20200202: A small utility for fast and easy GUI building
