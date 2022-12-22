@@ -14,7 +14,7 @@ SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="aufs overlayfs bundled-openrc-wrapper unionfs-fuse"
+IUSE="aufs bundled-openrc-wrapper overlayfs split-usr unionfs-fuse"
 
 DEPEND="bundled-openrc-wrapper? ( !!sys-apps/openrc-wrapper )"
 RDEPEND="sys-fs/squashfs-tools
@@ -46,7 +46,7 @@ src_prepare() {
 			-e "s\"'/lib\"'${EPREFIX}/lib64/rc/bin:${EPREFIX}/lib/rc/bin:/lib\"" \
 			-- "bin/openrc-wrapper" || die
 	else	sed -i \
-			-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
+			-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}$(usex split-usr '' /usr)/bin/sh"'"' \
 			-- bin/* sbin/* || die
 	fi
 	default

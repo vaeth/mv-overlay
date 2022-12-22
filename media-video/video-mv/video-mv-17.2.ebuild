@@ -12,7 +12,7 @@ SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc x86"
-IUSE=""
+IUSE="split-usr"
 
 # This should really depend on a USE-flag but must not by policy.
 # Waiting for https://bugs.gentoo.org/show_bug.cgi?id=424283
@@ -29,7 +29,7 @@ src_prepare() {
 	local i
 	use prefix || for i in bin/*
 	do	test -h "${i}" || sed -i \
-			-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
+			-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}$(usex split-usr '' /usr)/bin/sh"'"' \
 			-e 's"^\. _videoscript\.sh$". '"${EPREFIX}/usr/share/video-mv/_videoscript.sh"'"' \
 			-- "${i}" || die
 	done

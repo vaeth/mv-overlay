@@ -12,7 +12,7 @@ SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 x86"
-IUSE=""
+IUSE="split-usr"
 
 # These should really depend on USE-flags but must not by policy.
 # Waiting for https://bugs.gentoo.org/show_bug.cgi?id=424283
@@ -27,7 +27,7 @@ ${OPTIONAL_RDEPEND}"
 src_prepare() {
 	use prefix || {
 		sed -i \
-				-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
+				-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}$(usex split-usr '' /usr)/bin/sh"'"' \
 				-- repo.postsync.d/[0-9]* || die
 		sed -i \
 			-e '1s"^#!/usr/bin/env "#!'"${EPREFIX}/usr/bin/"'"' \

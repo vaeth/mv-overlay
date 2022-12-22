@@ -13,7 +13,7 @@ S="${WORKDIR}/${mPN}-${PV}"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
-IUSE=""
+IUSE="split-usr"
 S="${WORKDIR}/${mPN}-${PV}"
 
 src_prepare() {
@@ -22,7 +22,7 @@ src_prepare() {
 			-e "s'\${EPREFIX}'\\'${EPREFIX}\\''" \
 			-- bin/* || die
 	else	sed -i \
-			-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
+			-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}$(usex split-usr '' /usr)/bin/sh"'"' \
 			-- bin/* || die
 	fi
 	default
