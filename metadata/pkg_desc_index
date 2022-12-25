@@ -111,7 +111,7 @@ sys-fs/squashfuse 0.1.104: FUSE filesystem to mount squashfs archives
 sys-fs/squashmount 22.1-r1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-kernel/kccmp 0.3-r2: A simple tool for comparing two linux kernel .config files
 sys-kernel/kconfig-hardened-check 0.5.17 99999999: A script for checking the hardening options in the Linux kernel config
-sys-kernel/kernel 6.3-r1: A POSIX shell script to compile the kernel with user permissions
+sys-kernel/kernel 6.4: A POSIX shell script to compile the kernel with user permissions
 sys-power/cpupower 99999999: Shows and sets processor power related values
 sys-power/pm-quirks 20100619-r1: Video Quirks database for pm-utils
 sys-power/pm-utils 1.4.1-r8: Suspend and hibernation utilities
