@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2023 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 WANT_AUTOMAKE=none
 WANT_LIBTOOL=none
-
 inherit autotools
 
 DESCRIPTION="Excellent text file viewer, optionally with additional selection feature"
@@ -47,7 +47,9 @@ src_prepare() {
 	fi
 	local PATCHES=(
 		"${FILESDIR}/less-608-procfs.patch"
+		"${FILESDIR}/less-608-CVE-2022-46663.patch"
 	)
+
 	default
 	# Upstream uses unpatched autoconf-2.69, which breaks with clang-16.
 	# https://bugs.gentoo.org/870412
