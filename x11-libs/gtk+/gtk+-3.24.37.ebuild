@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnome2 meson-multilib multilib
+inherit gnome2 meson-multilib multilib virtualx
 
 DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="https://www.gtk.org/"
@@ -14,14 +14,12 @@ SLOT="3"
 IUSE="adwaita-icon-theme aqua atk-bridge broadway cloudproviders colord cups examples gtk-doc +introspection sysprof test vim-syntax wayland +X xinerama"
 REQUIRED_USE="
 	|| ( aqua wayland X )
+	test? ( X )
 	xinerama? ( X )
 "
+RESTRICT="!test? ( test )"
 
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-
-# Upstream wants us to do their job:
-# https://bugzilla.gnome.org/show_bug.cgi?id=768662#c1
-RESTRICT="test"
 
 COMMON_DEPEND="
 	atk-bridge? ( >=app-accessibility/at-spi2-core-2.46.0[introspection?,${MULTILIB_USEDEP}] )
@@ -100,7 +98,6 @@ MULTILIB_CHOST_TOOLS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/${P}-introspection.patch
 	# gtk-update-icon-cache is installed by dev-util/gtk-update-icon-cache
 	"${FILESDIR}"/${PN}-3.24.36-update-icon-cache.patch
 	"${FILESDIR}"/${PN}-atk-bridge-meson.build.patch
@@ -129,7 +126,7 @@ multilib_src_configure() {
 		# user overridden GTK_IM_MODULE envvar
 		-Dbuiltin_immodules=backend
 		-Dman=true
-		-Dtests=false
+		$(meson_use test tests)
 		-Dtracker3=false
 	)
 	meson_src_configure
@@ -137,6 +134,10 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	meson_src_compile
+}
+
+multilib_src_test() {
+	virtx meson_src_test
 }
 
 multilib_src_install() {
