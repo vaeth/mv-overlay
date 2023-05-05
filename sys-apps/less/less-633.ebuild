@@ -9,8 +9,8 @@ inherit autotools
 
 DESCRIPTION="Excellent text file viewer, optionally with additional selection feature"
 PATCHN="less-select"
-PATCHV="2.14"
-PATCHVER="608"
+PATCHV="2.15"
+PATCHVER="633"
 PATCHRUMP="${PATCHN}-${PATCHV}"
 PATCHBALL="${PATCHRUMP}.tar.gz"
 SELECTDIR="${WORKDIR}/${PATCHRUMP}"
@@ -22,11 +22,13 @@ RESTRICT="mirror"
 LICENSE="|| ( GPL-3 BSD-2 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="+lesspipe +less-select pcre original-gentoo source unicode"
+IUSE="+lesspipe +less-select pcre original-gentoo source"
 
-DEPEND=">=app-misc/editor-wrapper-3
-	>=sys-libs/ncurses-5.2:0=
-	pcre? ( dev-libs/libpcre2 )"
+DEPEND="
+	>=app-misc/editor-wrapper-3
+	>=sys-libs/ncurses-5.2:=
+	pcre? ( dev-libs/libpcre2 )
+"
 RDEPEND="${DEPEND}
 	less-select? ( dev-lang/perl )"
 #		|| ( >=dev-lang/perl-5.10.1 >=virtual/perl-File-Temp-0.19 )
@@ -45,10 +47,6 @@ src_prepare() {
 		sed -i -e 's|\([^a-zA-Z]\)/etc/less-select-key.bin|\1'"${EPREFIX}"'/etc/less/select-key.bin|g' \
 			"${SELECTDIR}/bin/less-select" || die
 	fi
-	local PATCHES=(
-		"${FILESDIR}/less-608-procfs.patch"
-		"${FILESDIR}/less-608-CVE-2022-46663.patch"
-	)
 
 	default
 	# Upstream uses unpatched autoconf-2.69, which breaks with clang-16.
@@ -57,8 +55,6 @@ src_prepare() {
 }
 
 src_configure() {
-	export ac_cv_lib_ncursesw_initscr=$(usex unicode)
-	export ac_cv_lib_ncurses_initscr=$(usex !unicode)
 	local myeconfargs=(
 		--with-regex=$(usex pcre pcre2 posix)
 		--with-editor="${EPREFIX}"/usr/libexec/editor
