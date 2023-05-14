@@ -12,6 +12,7 @@ S="${WORKDIR}/cfcfg.git"
 LICENSE="GPL-3+"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 SLOT="0"
+IUSE=""
 
 src_prepare() {
 	mv cfcfg.1.man cfcfg.1
