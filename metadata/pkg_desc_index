@@ -12,12 +12,15 @@ app-dicts/ispell-de 20161207: German and Swiss dictionaries for ispell
 app-dicts/ispell-de-alt 2-r1: German dictionary (traditional orthography) for ispell
 app-dicts/stardict-dictd-BritannicaConcise 2.4.2: Stardict Dictionary for Dictd.org's The Britannica Concise Encyclopedia
 app-dicts/stardict-dictd-cced 2.4.2: Stardict Dictionary for Dictd.org's Collins Cobuild English Dictionary
+app-dicts/stardict-dictd-devils 2.4.2-r1: Stardict Dictionary for Dictd.org's Devil's Dictionary
 app-dicts/stardict-dictd-longman 2.4.2: Stardict Dictionary for Dictd.org's Longman Dictionary of Contemporary English
 app-dicts/stardict-dictd-merrianwebster 2.4.2: Stardict Dictionary for Dictd.org's Merrian Webster 10th dictionary
 app-dicts/stardict-dictd-oald 2.4.2: Stardict Dictionary for Dictd.org's Oxford Advanced Learner's Dictionary
 app-dicts/stardict-dictd-thesaurus-ee 2.4.2: Stardict Dictionary for Dictd.org's English Thesaurus
 app-dicts/stardict-freedict-deu-eng 2.4.2: Stardict Dictionary German to English
 app-dicts/stardict-freedict-deu-ita 2.4.2: Stardict Dictionary German to Italian
+app-dicts/stardict-freedict-eng-deu 2.4.2-r1: Stardict Dictionary English to German
+app-dicts/stardict-freedict-eng-rus 2.4.2-r1: Stardict Dictionary English to Russian
 app-dicts/stardict-freedict-ita-deu 2.4.2: Stardict Dictionary Italian to German
 app-dicts/steak 1.7.3-r3: EN => DE Dictionary
 app-emacs/mv_emacs 1.4-r1: (X)Emacs extensions: block support, macrorecorder, verify change
@@ -128,5 +131,5 @@ www-plugins/google-translator-for-firefox 3.0.3.3: Firefox webextension: transla
 www-plugins/no-color 0.9.4: Firefox webextension: remove colors and background images from the page
 www-plugins/noscript 11.4.8: Firefox webextension: restrict active contents like java/javascript/flash
 www-plugins/translate-to-me 1.1: Firefox webextension: translate the selected text with www.linguee.com
-x11-libs/gtk+ 2.24.33-r2 3.24.35 3.24.37: Gimp ToolKit +
+x11-libs/gtk+ 2.24.33-r3 3.24.35 3.24.37: Gimp ToolKit +
 x11-libs/motif 2.3.8-r3: The Motif user interface component toolkit
