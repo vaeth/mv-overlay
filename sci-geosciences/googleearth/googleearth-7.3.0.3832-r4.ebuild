@@ -7,12 +7,14 @@ inherit desktop pax-utils unpacker wrapper xdg-utils
 
 DESCRIPTION="A 3D interface to the planet"
 HOMEPAGE="https://www.google.com/earth/desktop/"
-SRC_URI="https://dl.google.com/dl/linux/direct/google-earth-pro-stable_${PV}_amd64.deb -> google-earth-pro-stable_${PV}-r1_amd64.deb"
+MY_PV=$(ver_rs 1- _ $(ver_cut 1-3))
+SRC_URI="x86? ( https://dl.google.com/dl/earth/client/GE7/release_${MY_PV}/google-earth-pro-stable_${PV}-r0_i386.deb )
+	amd64? ( https://dl.google.com/dl/earth/client/GE7/release_${MY_PV}/google-earth-pro-stable_${PV}-r0_amd64.deb )"
 LICENSE="googleearth GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror splitdebug"
-IUSE=""
+IUSE="+bundled-libs"
 
 QA_PREBUILT="*"
 
@@ -21,9 +23,6 @@ RDEPEND="
 	dev-libs/nspr
 	media-libs/fontconfig
 	media-libs/freetype
-	media-libs/gstreamer:1.0=
-	media-libs/gst-plugins-base:1.0=
-	net-libs/libproxy
 	net-misc/curl
 	sys-devel/gcc[cxx]
 	sys-libs/zlib
@@ -37,8 +36,10 @@ RDEPEND="
 	x11-libs/libXext
 	x11-libs/libXrender
 	x11-libs/libXau
-	x11-libs/libXdmcp"
-#		sci-libs/gdal-1*
+	x11-libs/libXdmcp
+	!bundled-libs? (
+		dev-libs/expat
+	)"
 BDEPEND="dev-util/patchelf"
 
 S=${WORKDIR}/opt/google/earth/pro
@@ -46,6 +47,16 @@ S=${WORKDIR}/opt/google/earth/pro
 src_unpack() {
 	# default src_unpack fails with deb2targz installed, also this unpacks the data.tar.lzma as well
 	unpack_deb ${A}
+
+	cd opt/google/earth/pro || die
+	if ! use bundled-libs ; then
+		einfo "removing bundled libs"
+		# sci-libs/gdal-1*
+		# rm -v libgdal.so.1 || die
+		# dev-libs/expat
+		rm -v libexpat.so.1 || die
+#		rm -rv plugins/imageformats || die
+	fi
 }
 
 src_prepare() {
@@ -61,6 +72,7 @@ src_prepare() {
 		# Use \x7fELF header to separate ELF executables and libraries
 		[[ -f ${x} && $(od -t x1 -N 4 "${x}") == *"7f 45 4c 46"* ]] || continue
 		chmod u+w "${x}" || die
+		[[ ${x} != libicudata.so.* ]] || continue
 		patchelf --set-rpath '$ORIGIN' "${x}" || \
 			die "patchelf failed on ${x}"
 	done

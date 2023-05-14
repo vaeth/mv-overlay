@@ -86,6 +86,7 @@ src_prepare() {
 		# Use \x7fELF header to separate ELF executables and libraries
 		[[ -f ${x} && $(od -t x1 -N 4 "${x}") == *"7f 45 4c 46"* ]] || continue
 		chmod u+w "${x}" || die
+		[[ ${x} != libicudata.so.* ]] || continue
 		patchelf --set-rpath '$ORIGIN' "${x}" || \
 			die "patchelf failed on ${x}"
 	done
