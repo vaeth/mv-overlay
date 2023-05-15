@@ -89,7 +89,7 @@ net-dialup/accounting 1.60.45.3.1-r1: Give statistics about dialup connections. 
 net-dialup/martian-modem 20100123-r3: ltmodem alternative driver providing support for Agere Systems winmodems
 net-dns/host 20070128-r1: A powerful command-line DNS query and test tool
 net-dns/noip-updater 2.1.9-r6: no-ip.com dynamic DNS updater
-net-firewall/firewall-mv 13.2-r1: Initialize iptables and net-related sysctl variables
+net-firewall/firewall-mv 13.3: Initialize iptables and net-related sysctl variables
 net-mail/metamail 2.7.53.3-r3: Metamail (with Debian patches) - Generic MIME package
 net-misc/netctl 1.11: Profile based network connection tool from Arch Linux
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
