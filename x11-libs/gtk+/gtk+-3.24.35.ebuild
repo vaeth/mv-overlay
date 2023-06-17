@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2023 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ RESTRICT="test"
 # FIXME: introspection data is built against system installation of gtk+:3,
 # bug #????
 COMMON_DEPEND="
-	atk-bridge? ( >=app-accessibility/at-spi2-core-2.46.0[introspection?,${MULTILIB_USEDEP}] )
+	atk-bridge? ( >=app-accessibility/at-spi2-core-2.46.0[introspection(+)?,${MULTILIB_USEDEP}] )
 	>=dev-libs/fribidi-0.19.7[${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.57.2:2[${MULTILIB_USEDEP}]
 	media-libs/fontconfig[${MULTILIB_USEDEP}]

@@ -22,7 +22,6 @@ RESTRICT="!test? ( test )"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 COMMON_DEPEND="
-	atk-bridge? ( >=app-accessibility/at-spi2-core-2.46.0[introspection?,${MULTILIB_USEDEP}] )
 	>=dev-libs/fribidi-0.19.7[${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.57.2:2[${MULTILIB_USEDEP}]
 	media-libs/fontconfig[${MULTILIB_USEDEP}]
@@ -59,6 +58,7 @@ COMMON_DEPEND="
 	)
 "
 DEPEND="${COMMON_DEPEND}
+	>=app-accessibility/at-spi2-core-2.46.0[introspection?,${MULTILIB_USEDEP}]
 	test? (
 		media-fonts/font-cursor-misc
 		media-fonts/font-misc-misc
@@ -66,6 +66,7 @@ DEPEND="${COMMON_DEPEND}
 	X? ( x11-base/xorg-proto )
 "
 RDEPEND="${COMMON_DEPEND}
+	atk-bridge? ( >=app-accessibility/at-spi2-core-2.46.0[introspection(+)?,${MULTILIB_USEDEP}] )
 	>=dev-util/gtk-update-icon-cache-3
 "
 # librsvg for svg icons (PDEPEND to avoid circular dep), bug #547710
