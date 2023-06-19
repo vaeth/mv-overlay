@@ -1,4 +1,4 @@
-# Copyright 2014-2022 Gentoo Authors
+# Copyright 2014-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,8 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~m68k ~mips ~s390 ~x86"
 IUSE=""
 
-RDEPEND=""
-DEPEND="
-	${RDEPEND}
-	dev-perl/ExtUtils-CChecker
-	dev-perl/Module-Build"
+RDEPEND="virtual/perl-XSLoader"
+BDEPEND="${RDEPEND}
+	dev-perl/Module-Build
+	dev-perl/ExtUtils-CChecker"
