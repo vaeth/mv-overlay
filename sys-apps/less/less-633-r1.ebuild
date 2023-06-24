@@ -5,7 +5,7 @@ EAPI=8
 
 WANT_AUTOMAKE=none
 WANT_LIBTOOL=none
-inherit autotools
+inherit autotools optfeature
 
 DESCRIPTION="Excellent text file viewer, optionally with additional selection feature"
 PATCHN="less-select"
@@ -23,6 +23,9 @@ LICENSE="|| ( GPL-3 BSD-2 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+lesspipe +less-select pcre original-gentoo source"
+# As of 623_beta, lesstest is not included in dist tarballs
+# https://github.com/gwsw/less/issues/344
+RESTRICT="test"
 
 DEPEND="
 	>=app-misc/editor-wrapper-3
@@ -70,18 +73,22 @@ src_compile() {
 	fi
 }
 
+src_test() {
+	emake check VERBOSE=1
+}
+
 src_install() {
 	local a
 	default
 
-	newbin "${FILESDIR}"/lesspipe-r1.sh lesspipe
+	newbin "${FILESDIR}"/lesspipe-r2.sh lesspipe
 
 	if use original-gentoo
 	then	a="-R -M --shift 5"
 	else	a="-sFRiMX --shift 5"
 	fi
 	printf '%s\n' \
-		'LESSOPEN="|lesspipe'$(! use lesspipe || echo .sh)' %s"' \
+		'LESSOPEN="|lesspipe'$(usex lesspipe .sh)' %s"' \
 		"LESS=\"${a}\"" \
 		>70less || die
 	doenvd 70less
@@ -96,4 +103,8 @@ src_install() {
 			newins "${SELECTDIR}/keys/less-normal-key.src" normal-key.src
 		fi
 	fi
+}
+
+pkg_preinst() {
+	use lesspipe || optfeature "Colorized output support" dev-python/pygments
 }

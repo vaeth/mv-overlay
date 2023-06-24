@@ -231,9 +231,9 @@ lesspipe() {
 			always)                   LESSCOLOR=2;;
 			[yY][eE][sS]|[yY]|1|true) LESSCOLOR=1;;
 			[nN][oO]|[nN]|0|false)    LESSCOLOR=0;;
-			*)                        LESSCOLOR=0;; # default to no color #188835
+			*)                        LESSCOLOR=1;;
 		esac
-		if [[ ${LESSCOLOR} != "0" ]] && [[ -n ${LESSCOLORIZER=code2color} ]] ; then
+		if [[ ${LESSCOLOR} != "0" ]] && [[ -n ${LESSCOLORIZER=pygmentize} ]] ; then
 			# 2: Only colorize if user forces it ...
 			# 1: ... or we know less will handle raw codes -- this will
 			#    not detect -seiRM, so set LESSCOLORIZER yourself
@@ -267,7 +267,7 @@ elif [[ $1 == "-h" || $1 == "--help" ]] ; then
 
 		lesspipe specific settings:
 		  LESSCOLOR env     - toggle colorizing of output (no/yes/always; default: no)
-		  LESSCOLORIZER env - program used to colorize output (default: code2color)
+		  LESSCOLORIZER env - program used to colorize output (default: pygmentize)
 		  LESSIGNORE        - list of extensions to ignore (don't do anything fancy)
 
 		You can create per-user filters as well by creating the executable file:
@@ -277,6 +277,10 @@ elif [[ $1 == "-h" || $1 == "--help" ]] ; then
 
 		To use lesspipe, simply add to your environment:
 		  export LESSOPEN="|lesspipe %s"
+
+		For colorization, install dev-python/pygments for the pygmentize program. Note,
+		if using alternative code2color from sys app-text/lesspipe you may run out of
+		memory due to #188835.
 
 		Run 'less --help' or 'man less' for more info.
 	EOF
