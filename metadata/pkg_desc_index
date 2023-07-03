@@ -109,6 +109,7 @@ sys-block/parted 2.4-r3: Create, destroy, resize, check, copy partitions and fil
 sys-block/zram-init 11.1-r2: Scripts to support compressed swap devices or ramdisks with zRAM
 sys-boot/grub-cfg-mv 1.8: A grub.cfg library/example for GRUB2
 sys-fs/emount 3.0.5: mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab
+sys-fs/encfs 1.9.6_alpha0: An implementation of encrypted filesystem in user-space using FUSE
 sys-fs/squash_dir 13.14-r1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-fs/squashfs-tools 99999999: Tool for creating compressed filesystem type squashfs
 sys-fs/squashfuse 0.1.104: FUSE filesystem to mount squashfs archives
