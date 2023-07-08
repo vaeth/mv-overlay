@@ -5,6 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
+DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1
 
 DESCRIPTION="A script for checking the hardening options in the Linux kernel config"
