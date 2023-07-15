@@ -6,7 +6,7 @@ RESTRICT="mirror"
 
 DESCRIPTION="Yet another Linux kernel configuration comparator"
 HOMEPAGE="https://sourceforge.net/projects/cfcfg/"
-SRC_URI="mirror://sourceforge/project/cfcfg/${PN}.tgz -> ${P}.tar.gz"
+SRC_URI="mirror://sourceforge/project/cfcfg/${P}.tgz -> ${P}.tar"
 S="${WORKDIR}/cfcfg.git"
 
 LICENSE="GPL-3+"
@@ -16,11 +16,12 @@ IUSE=""
 
 src_prepare() {
 	mv cfcfg.1.man cfcfg.1
+	mv cfgsymbols.1.man cfgsymbols.1
 	default
 }
 
 src_install() {
-	dobin cfcfg
-	doman cfcfg.1
-	dodoc README.md
+	dobin cfcfg cfgsymbols cfgsymbols.awk
+	doman cfcfg.1 cfgsymbols.1
+	dodoc README.md cfgsymbols.1.md cfcfg.1.md
 }
