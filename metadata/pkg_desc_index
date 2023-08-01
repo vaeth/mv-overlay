@@ -33,7 +33,7 @@ app-portage/eix 0.36.7-r1 99999999: Search and query ebuilds
 app-portage/etcat 1.0.2 99999999: Updated version of an old Portage information extractor
 app-portage/find_cruft 5.2: find cruft files not managed by portage
 app-portage/logclean 18.4.2: Keep only (compressed) logs of installed packages and cleanup emerge.log
-app-portage/portage-bashrc-mv 21.1: Provide support for /etc/portage/bashrc.d and /etc/portage/package.cflags
+app-portage/portage-bashrc-mv 22.0: Provide support for /etc/portage/bashrc.d and /etc/portage/package.cflags
 app-portage/portage-postsyncd-mv 8.4: postsync hooks for portage to sync from git
 app-portage/trickyfetch 10.1: Plugin for FETCHCOMMAND to help organize and cleanup your DISTDIR
 app-portage/useflags 4.2: Print or save the current USE-flag state and compare with older versions
@@ -98,7 +98,7 @@ net-print/foo2zjs 20200221: Support for printing to ZjStream-based printers
 sci-geosciences/googleearth 7.1.8.3036-r4 7.3.0.3832-r4 7.3.4-r2: A 3D interface to the planet
 sci-mathematics/reduce 20141130-r3 20190413: A general-purpose computer algebra system
 sys-apps/cpi 3.2: A wrapper for cp -i -a, making use of diff
-sys-apps/less 633-r1: Excellent text file viewer, optionally with additional selection feature
+sys-apps/less 633-r2: Excellent text file viewer, optionally with additional selection feature
 sys-apps/man 1.6g-r4: Standard commands to read man pages
 sys-apps/openrc-wrapper 2.4: Use openrc init scripts with systemd or other init systems
 sys-apps/paxopen 1.2: A wrapper script to set PAX kernel variables to an insecure/safe state
