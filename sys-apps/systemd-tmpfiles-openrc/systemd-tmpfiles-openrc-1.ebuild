@@ -13,7 +13,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x
 IUSE=""
 
 RDEPEND="
-	!sys-apps/systemd-tmpfiles
+	!sys-apps/systemd-utils[tmpfiles]
 	sys-apps/systemd
 "
 DEPEND=""

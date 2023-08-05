@@ -1,4 +1,4 @@
-# Copyright 2013-2022 Martin V\"ath
+# Copyright 2013-2023 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,9 +26,10 @@ RDEPEND="!<sys-apps/openrc-0.13
 	|| ( dev-perl/File-Which sys-apps/which )
 	|| ( sys-fs/squashfs-tools sys-fs/squashfs-tools-ng )
 	|| (
+		sys-apps/systemd
 		sys-apps/systemd-tmpfiles-openrc
+		sys-apps/systemd-utils[tmpfiles]
 		sys-apps/opentmpfiles
-		sys-apps/systemd-tmpfiles
 	)
 	${OPTIONAL_RDEPEND}"
 #	>=dev-lang/perl-5.12
