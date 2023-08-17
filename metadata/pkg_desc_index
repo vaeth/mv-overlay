@@ -98,7 +98,7 @@ net-print/foo2zjs 20200221: Support for printing to ZjStream-based printers
 sci-geosciences/googleearth 7.1.8.3036-r4 7.3.0.3832-r4 7.3.4-r2: A 3D interface to the planet
 sci-mathematics/reduce 20141130-r3 20190413: A general-purpose computer algebra system
 sys-apps/cpi 3.2: A wrapper for cp -i -a, making use of diff
-sys-apps/less 633-r2: Excellent text file viewer, optionally with additional selection feature
+sys-apps/less 643: Excellent text file viewer, optionally with additional selection feature
 sys-apps/man 1.6g-r4: Standard commands to read man pages
 sys-apps/openrc-wrapper 2.4: Use openrc init scripts with systemd or other init systems
 sys-apps/paxopen 1.2: A wrapper script to set PAX kernel variables to an insecure/safe state
@@ -113,7 +113,7 @@ sys-fs/encfs 1.9.6_alpha0: An implementation of encrypted filesystem in user-spa
 sys-fs/squash_dir 13.14-r1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-fs/squashfs-tools 99999999: Tool for creating compressed filesystem type squashfs
 sys-fs/squashfuse 0.1.104: FUSE filesystem to mount squashfs archives
-sys-fs/squashmount 22.1-r1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
+sys-fs/squashmount 22.1-r2: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-kernel/cfcfg 1.0: Yet another Linux kernel configuration comparator
 sys-kernel/kccmp 0.3-r3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kconfig-hardened-check 0.6.1 99999999: A script for checking the hardening options in the Linux kernel config

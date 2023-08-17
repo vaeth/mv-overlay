@@ -5,7 +5,7 @@ EAPI=8
 
 WANT_AUTOMAKE=none
 WANT_LIBTOOL=none
-inherit autotools flag-o-matic optfeature
+inherit autotools flag-o-matic optfeature toolchain-funcs
 
 DESCRIPTION="Excellent text file viewer, optionally with additional selection feature"
 PATCHN="less-select"
@@ -22,10 +22,8 @@ RESTRICT="mirror"
 LICENSE="|| ( GPL-3 BSD-2 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="+lesspipe +less-select pcre original-gentoo source"
-# As of 623_beta, lesstest is not included in dist tarballs
-# https://github.com/gwsw/less/issues/344
-RESTRICT="test"
+IUSE="+lesspipe +less-select pcre original-gentoo source test"
+RESTRICT="test !test? ( test )"
 
 DEPEND="
 	>=app-misc/editor-wrapper-3
@@ -36,9 +34,10 @@ RDEPEND="${DEPEND}
 	less-select? ( dev-lang/perl )"
 #		|| ( >=dev-lang/perl-5.10.1 >=virtual/perl-File-Temp-0.19 )
 PDEPEND="lesspipe? ( app-text/lesspipe )"
+BDEPEND="test? ( virtual/pkgconfig )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-633-tinfow.patch
+	"${FILESDIR}"/${PN}-643-lesstest-pkg-config.patch
 )
 
 pkg_setup() {
@@ -80,7 +79,7 @@ src_compile() {
 }
 
 src_test() {
-	emake check VERBOSE=1
+	emake check VERBOSE=1 CC="$(tc-getCC)" PKG_CONFIG="$(tc-getPKG_CONFIG)"
 }
 
 src_install() {
