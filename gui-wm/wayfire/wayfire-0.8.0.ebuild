@@ -1,7 +1,7 @@
 # Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 RESTRICT="mirror"
 
 inherit meson toolchain-funcs
@@ -22,6 +22,7 @@ SLOT="0"
 IUSE="debug +gles +system-wfconfig +system-wlroots X"
 
 DEPEND="
+	dev-cpp/nlohmann_json
 	dev-libs/libinput:=
 	dev-libs/wayland
 	gui-libs/gtk-layer-shell
@@ -42,8 +43,7 @@ DEPEND="
 		x11-libs/libxcb
 	)
 	system-wfconfig? (
-		>=gui-libs/wf-config-0.7.1
-		<gui-libs/wf-config-0.8.0
+		>=gui-libs/wf-config-${PV}
 	)
 	!system-wfconfig? ( !gui-libs/wf-config )
 	system-wlroots? (
@@ -67,6 +67,11 @@ src_configure() {
 		"${FILESDIR}"/wayfire-session > "${T}"/wayfire-session || die
 	sed -e "s:@EPREFIX@:${EPREFIX}:" \
 		"${FILESDIR}"/wayfire-session.desktop > "${T}"/wayfire-session.desktop || die
+	sed -i -e 's/git\.found[(][)]/false/' "${S}/meson.build"
+	local i
+	for i in grid wm-actions scale single_plugins; do
+		sed -i -e 's:, json::' "${S}/plugins/${i}/meson.build"
+	done
 	local emesonargs=(
 		$(meson_feature system-wfconfig use_system_wfconfig)
 		$(meson_feature system-wlroots use_system_wlroots)
@@ -74,6 +79,7 @@ src_configure() {
 		$(meson_use gles enable_gles32)
 		$(usex debug --buildtype=debug "")
 		$(usex debug -Db_sanitize=address,undefined "")
+		-Ddebug_ipc=false
 	)
 
 	# Clang will fail to link without this
