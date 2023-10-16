@@ -68,18 +68,21 @@ src_configure() {
 	sed -e "s:@EPREFIX@:${EPREFIX}:" \
 		"${FILESDIR}"/wayfire-session.desktop > "${T}"/wayfire-session.desktop || die
 	sed -i -e 's/git\.found[(][)]/false/' "${S}/meson.build"
-	local i
-	for i in grid wm-actions scale single_plugins; do
-		sed -i -e 's:, json::' "${S}/plugins/${i}/meson.build"
-	done
+	if ! use debug; then
+		# These patches are necessary with -Ddebug_ipc=false
+		local i
+		for i in grid wm-actions scale single_plugins; do
+			sed -i -e 's:, json::' "${S}/plugins/${i}/meson.build"
+		done
+	fi
 	local emesonargs=(
 		$(meson_feature system-wfconfig use_system_wfconfig)
 		$(meson_feature system-wlroots use_system_wlroots)
 		$(meson_feature X xwayland)
 		$(meson_use gles enable_gles32)
+		$(meson_use debug debug_ipc)
 		$(usex debug --buildtype=debug "")
 		$(usex debug -Db_sanitize=address,undefined "")
-		-Ddebug_ipc=false
 	)
 
 	# Clang will fail to link without this
@@ -90,6 +93,7 @@ src_configure() {
 
 src_install() {
 	meson_src_install
+	rm -rf "${ED}"/usr/man || die
 	dobin "${T}"/wayfire-session
 
 	insinto "/usr/share/wayland-sessions/"
