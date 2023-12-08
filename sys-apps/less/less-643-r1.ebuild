@@ -86,7 +86,10 @@ src_install() {
 	local a
 	default
 
-	newbin "${FILESDIR}"/lesspipe-r2.sh lesspipe
+	keepdir /usr/lib/lessfilter.d
+	keepdir /etc/lessfilter.d
+
+	newbin "${FILESDIR}"/lesspipe-r3.sh lesspipe
 
 	if use original-gentoo
 	then	a="-R -M --shift 5"
