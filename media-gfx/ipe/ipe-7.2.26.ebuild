@@ -10,7 +10,7 @@ inherit desktop flag-o-matic lua-single toolchain-funcs
 
 DESCRIPTION="Drawing editor for creating figures in PDF or PS formats"
 HOMEPAGE="http://ipe.otfried.org/"
-SRC_URI="https://github.com/otfried/ipe/releases/download/v${PV}/${PN}-${PV}-src.tar.gz"
+SRC_URI="https://github.com/otfried/old-ipe-releases/releases/download/v${PV}/${PN}-${PV}-src.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
