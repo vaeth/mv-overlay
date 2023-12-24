@@ -4,7 +4,7 @@ acct-user/flexlm 0: User for app-admin/flexlm
 acct-user/schedule 0: User for sys-apps/schedule
 app-admin/flexlm 9.5-r4: Macrovision FLEXlm license manager and utils
 app-admin/sudox 11.0: wrapper for sudo which can pass X authority data and deal with screen and tmux
-app-arch/archwrap 12.2: A collection of POSIX shell scripts to invoke archiver programs
+app-arch/archwrap 12.3: A collection of POSIX shell scripts to invoke archiver programs
 app-arch/bzwc 5.1-r1: A POSIX shell wrapper for wc, supporting compressed files (xz, lzma, bz2, gz)
 app-arch/paq8l 20070308: Open source file compressor and archiver
 app-cdr/cdrtools 99999999: A set of tools for CD/DVD reading and recording, including cdrecord
@@ -101,7 +101,7 @@ net-print/foo2zjs 20200221: Support for printing to ZjStream-based printers
 sci-geosciences/googleearth 7.1.8.3036-r4 7.3.0.3832-r4 7.3.4-r2: A 3D interface to the planet
 sci-mathematics/reduce 20141130-r3 20190413: A general-purpose computer algebra system
 sys-apps/cpi 3.2: A wrapper for cp -i -a, making use of diff
-sys-apps/less 643: Excellent text file viewer, optionally with additional selection feature
+sys-apps/less 643-r1: Excellent text file viewer, optionally with additional selection feature
 sys-apps/man 1.6g-r4: Standard commands to read man pages
 sys-apps/openrc-wrapper 2.4: Use openrc init scripts with systemd or other init systems
 sys-apps/paxopen 1.2: A wrapper script to set PAX kernel variables to an insecure/safe state
