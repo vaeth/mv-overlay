@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2024 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,6 +27,8 @@ pronounce qqwry spell tools updateinfo +wikiparse +wordnet
 +xdxfparse youdaodict"
 
 RESTRICT="test"
+
+S=${WORKDIR}/${P}
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.32:2

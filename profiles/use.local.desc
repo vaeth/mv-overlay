@@ -106,9 +106,6 @@ games-emulation/xmame:net - Add network support
 games-emulation/xmess:bundled-libs - Use bundled version of dev-libs/expat
 games-emulation/xmess:net - Add network support
 games-rpg/m5figur-mv:examples - Compile example character sheet as PDF
-gui-wm/wayfire:gles - use libglvnd to do animations more efficiently
-gui-wm/wayfire:system-wfconfig - use the system-wide wf-config, else build it as a submodule. DO NOT DISABLE UNLESS YOU KNOW WHAT YOU ARE DOING.
-gui-wm/wayfire:system-wlroots - use the system wide wlroots, else build it as a submodule. DO NOT DISABLE UNLESS YOU KNOW WHAT YOU ARE DOING.
 media-gfx/pqiv:archive - Enable support for images in archives and cbX comic book files
 media-gfx/pqiv:gtk2 - Use gtk:2 instead of gtk:3
 media-tv/sundtek-tv:ld-preload-env - Install LD_PRELOAD in /etc/env.d/50sundtek-tv
