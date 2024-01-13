@@ -27,7 +27,7 @@ RDEPEND="${DEPEND}
 	app-shells/quoter:0/1"
 BDEPEND="meson? (
 		>=dev-util/meson-0.41.0
-		>=dev-util/ninja-1.7.2
+		>=dev-build/ninja-1.7.2
 		strong-optimization? ( >=sys-devel/gcc-config-1.9.1 )
 	)
 	protobuf? ( dev-libs/protobuf:= )
