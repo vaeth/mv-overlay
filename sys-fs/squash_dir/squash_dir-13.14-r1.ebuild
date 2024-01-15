@@ -23,7 +23,7 @@ RDEPEND="sys-fs/squashfs-tools
 	>=app-shells/runtitle-2.3
 	!<sys-fs/unionfs-fuse-0.25
 	unionfs-fuse? ( sys-fs/unionfs-fuse )"
-BDEPEND=">=sys-devel/autoconf-2.65"
+BDEPEND=">=dev-build/autoconf-2.65"
 
 DISABLE_AUTOFORMATTING="true"
 DOC_CONTENTS="Please adapt ${EPREFIX}/etc/conf.d/${PN} to your needs.

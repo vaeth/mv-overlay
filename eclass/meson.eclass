@@ -1,4 +1,4 @@
-# Copyright 2017-2022 Gentoo Authors
+# Copyright 2017-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: meson.eclass
@@ -51,9 +51,9 @@ inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
 
 EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 
-_MESON_DEPEND=">=dev-util/meson-0.59.4
+_MESON_DEPEND=">=dev-build/meson-0.59.4
 	${NINJA_DEPEND}
-	dev-util/meson-format-array
+	dev-build/meson-format-array
 "
 
 # @ECLASS_VARIABLE: MESON_AUTO_DEPEND
