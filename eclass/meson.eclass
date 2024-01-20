@@ -3,8 +3,8 @@
 
 # @ECLASS: meson.eclass
 # @MAINTAINER:
-# William Hubbs <williamh@gentoo.org>
-# Mike Gilbert <floppym@gentoo.org>
+# base-system@gentoo.org
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: common ebuild functions for meson-based packages
 # @DESCRIPTION:
 # This eclass contains the default phase functions for packages which
@@ -46,12 +46,9 @@ fi
 if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
-[[ ${EAPI} == 6 ]] && inherit eapi7-ver
 inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
 
-EXPORT_FUNCTIONS src_configure src_compile src_test src_install
-
-_MESON_DEPEND=">=dev-build/meson-0.59.4
+_MESON_DEPEND=">=dev-build/meson-1.3.0
 	${NINJA_DEPEND}
 	dev-build/meson-format-array
 "
@@ -63,11 +60,7 @@ _MESON_DEPEND=">=dev-build/meson-0.59.4
 # their own DEPEND string.
 : ${MESON_AUTO_DEPEND:=yes}
 if [[ ${MESON_AUTO_DEPEND} != "no" ]] ; then
-	if [[ ${EAPI:-0} == [0123456] ]]; then
-		DEPEND=${_MESON_DEPEND}
-	else
-		BDEPEND=${_MESON_DEPEND}
-	fi
+	BDEPEND=${_MESON_DEPEND}
 fi
 __MESON_AUTO_DEPEND=${MESON_AUTO_DEPEND} # See top of eclass
 
@@ -77,10 +70,16 @@ __MESON_AUTO_DEPEND=${MESON_AUTO_DEPEND} # See top of eclass
 # Build directory, location where all generated files should be placed.
 # If this isn't set, it defaults to ${WORKDIR}/${P}-build.
 
+# @ECLASS_VARIABLE: MESON_VERBOSE
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Set to OFF to disable verbose messages during compilation
+: "${MESON_VERBOSE:=ON}"
+
 # @ECLASS_VARIABLE: EMESON_BUILDTYPE
 # @DESCRIPTION:
 # The buildtype value to pass to meson setup.
-: ${EMESON_BUILDTYPE=plain}
+: "${EMESON_BUILDTYPE=plain}"
 
 # @ECLASS_VARIABLE: EMESON_SOURCE
 # @DEFAULT_UNSET
@@ -181,7 +180,7 @@ _meson_create_cross_file() {
 	objc = $(_meson_env_array "$(tc-getPROG OBJC cc)")
 	objcopy = $(_meson_env_array "$(tc-getOBJCOPY)")
 	objcpp = $(_meson_env_array "$(tc-getPROG OBJCXX c++)")
-	pkgconfig = '$(tc-getPKG_CONFIG)'
+	pkg-config = '$(tc-getPKG_CONFIG)'
 	strip = $(_meson_env_array "$(tc-getSTRIP)")
 	windres = $(_meson_env_array "$(tc-getRC)")
 
@@ -235,7 +234,7 @@ _meson_create_native_file() {
 	objc = $(_meson_env_array "$(tc-getBUILD_PROG OBJC cc)")
 	objcopy = $(_meson_env_array "$(tc-getBUILD_OBJCOPY)")
 	objcpp = $(_meson_env_array "$(tc-getBUILD_PROG OBJCXX c++)")
-	pkgconfig = '$(tc-getBUILD_PKG_CONFIG)'
+	pkg-config = '$(tc-getBUILD_PKG_CONFIG)'
 	strip = $(_meson_env_array "$(tc-getBUILD_STRIP)")
 	windres = $(_meson_env_array "$(tc-getBUILD_PROG RC windres)")
 
@@ -311,21 +310,21 @@ meson_src_configure() {
 	local BUILD_PKG_CONFIG_PATH=${BUILD_PKG_CONFIG_PATH}
 
 	if tc-is-cross-compiler; then
-		: ${BUILD_CFLAGS:=-O1 -pipe}
-		: ${BUILD_CXXFLAGS:=-O1 -pipe}
-		: ${BUILD_FCFLAGS:=-O1 -pipe}
-		: ${BUILD_OBJCFLAGS:=-O1 -pipe}
-		: ${BUILD_OBJCXXFLAGS:=-O1 -pipe}
+		: "${BUILD_CFLAGS:=-O1 -pipe}"
+		: "${BUILD_CXXFLAGS:=-O1 -pipe}"
+		: "${BUILD_FCFLAGS:=-O1 -pipe}"
+		: "${BUILD_OBJCFLAGS:=-O1 -pipe}"
+		: "${BUILD_OBJCXXFLAGS:=-O1 -pipe}"
 	else
-		: ${BUILD_CFLAGS:=${CFLAGS}}
-		: ${BUILD_CPPFLAGS:=${CPPFLAGS}}
-		: ${BUILD_CXXFLAGS:=${CXXFLAGS}}
-		: ${BUILD_FCFLAGS:=${FCFLAGS}}
-		: ${BUILD_LDFLAGS:=${LDFLAGS}}
-		: ${BUILD_OBJCFLAGS:=${OBJCFLAGS}}
-		: ${BUILD_OBJCXXFLAGS:=${OBJCXXFLAGS}}
-		: ${BUILD_PKG_CONFIG_LIBDIR:=${PKG_CONFIG_LIBDIR}}
-		: ${BUILD_PKG_CONFIG_PATH:=${PKG_CONFIG_PATH}}
+		: "${BUILD_CFLAGS:=${CFLAGS}}"
+		: "${BUILD_CPPFLAGS:=${CPPFLAGS}}"
+		: "${BUILD_CXXFLAGS:=${CXXFLAGS}}"
+		: "${BUILD_FCFLAGS:=${FCFLAGS}}"
+		: "${BUILD_LDFLAGS:=${LDFLAGS}}"
+		: "${BUILD_OBJCFLAGS:=${OBJCFLAGS}}"
+		: "${BUILD_OBJCXXFLAGS:=${OBJCXXFLAGS}}"
+		: "${BUILD_PKG_CONFIG_LIBDIR:=${PKG_CONFIG_LIBDIR}}"
+		: "${BUILD_PKG_CONFIG_PATH:=${PKG_CONFIG_PATH}}"
 	fi
 
 	local mesonargs=(
@@ -348,6 +347,10 @@ meson_src_configure() {
 		# It's Gentoo policy to not have builds die on blanket -Werror, as it's
 		# an upstream development matter. bug #754279.
 		-Dwerror=false
+
+		# Prevent projects from enabling LTO by default.  In Gentoo, LTO is
+		# enabled via setting *FLAGS appropriately.
+		-Db_lto=false
 	)
 
 	if [[ -n ${EMESON_BUILDTYPE} ]]; then
@@ -408,11 +411,16 @@ meson_src_compile() {
 
 	local mesoncompileargs=(
 		-C "${BUILD_DIR}"
-		--jobs "$(makeopts_jobs "${MAKEOPTS}" 0)"
-		--load-average "$(makeopts_loadavg "${MAKEOPTS}" 0)"
-		--verbose
-		"$@"
+		--jobs "$(get_makeopts_jobs 0)"
+		--load-average "$(get_makeopts_loadavg 0)"
 	)
+
+	case ${MESON_VERBOSE} in
+		OFF) ;;
+		*) mesoncompileargs+=( --verbose ) ;;
+	esac
+
+	mesoncompileargs+=( "$@" )
 
 	set -- meson compile "${mesoncompileargs[@]}"
 	echo "$@" >&2
@@ -427,6 +435,7 @@ meson_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local mesontestargs=(
+		--print-errorlogs
 		-C "${BUILD_DIR}"
 		--num-processes "$(makeopts_jobs "${MAKEOPTS}")"
 		"$@"
@@ -468,3 +477,5 @@ meson_src_install() {
 }
 
 fi
+
+EXPORT_FUNCTIONS src_configure src_compile src_test src_install
