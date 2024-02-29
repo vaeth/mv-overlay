@@ -33,7 +33,7 @@ app-portage/eix 0.36.8 99999999: Search and query ebuilds
 app-portage/etcat 1.0.2 99999999: Updated version of an old Portage information extractor
 app-portage/find_cruft 5.2: find cruft files not managed by portage
 app-portage/logclean 18.4.2: Keep only (compressed) logs of installed packages and cleanup emerge.log
-app-portage/portage-bashrc-mv 22.0: Provide support for /etc/portage/bashrc.d and /etc/portage/package.cflags
+app-portage/portage-bashrc-mv 22.1: Provide support for /etc/portage/bashrc.d and /etc/portage/package.cflags
 app-portage/portage-postsyncd-mv 8.4: postsync hooks for portage to sync from git
 app-portage/trickyfetch 10.1: Plugin for FETCHCOMMAND to help organize and cleanup your DISTDIR
 app-portage/useflags 4.2: Print or save the current USE-flag state and compare with older versions
