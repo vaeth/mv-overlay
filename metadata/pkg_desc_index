@@ -81,7 +81,7 @@ media-gfx/libspiro 20200505-r1: A spline computation library
 media-gfx/pqiv 2.11: powerful GTK based command-line image viewer with a minimal UI
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
 media-tv/sundtek-tv 221030.153539: Sundtek MediaTV Pro III Drivers
-media-tv/w_scan 20170107-r1: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies
+media-tv/w_scan 20170107-r1: Scan DVB-C/DVB-T/DVB-S channels
 media-video/avidemux 2.7.8: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15_p1-r1: Utility for displaying AVI information
 media-video/video-mv 17.3: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
