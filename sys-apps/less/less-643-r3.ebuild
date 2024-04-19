@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2024 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,6 +38,7 @@ BDEPEND="test? ( virtual/pkgconfig )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-643-lesstest-pkg-config.patch
+	"${FILESDIR}"/${PN}-643-LESSOPEN-escape.patch
 )
 
 pkg_setup() {
