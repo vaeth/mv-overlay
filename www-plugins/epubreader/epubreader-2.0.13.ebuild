@@ -1,4 +1,4 @@
-# Copyright 2014-2022 Martin V\"ath
+# Copyright 2014-2024 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ RESTRICT="mirror"
 
 DESCRIPTION="Firefox webextension: read ebook (.epub) files"
 HOMEPAGE="http://addons.mozilla.org/en-US/firefox/addon/epubreader/"
-SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/45281/${P}-fx.xpi"
+SRC_URI="https://addons.mozilla.org/firefox/downloads/file/3594370/${PN//-/_}-${PV}.xpi"
 
 LICENSE="epubreader"
 SLOT="0"

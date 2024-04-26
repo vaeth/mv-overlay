@@ -1,4 +1,4 @@
-# Copyright 2017-2022 Martin V\"ath
+# Copyright 2017-2024 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ RESTRICT="mirror"
 
 DESCRIPTION="Firefox webextension: a global dark theme for the web"
 HOMEPAGE="https://addons.mozilla.org/en-US/firefox/addon/dark-mode-webextension/"
-SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/786990/${PN//-/_}_webextension-${PV}-an+fx.xpi"
+SRC_URI="https://addons.mozilla.org/firefox/downloads/file/3970612/${PN//-/_}_webextension-0.4.5.xpi"
 
 LICENSE="MPL-2.0"
 SLOT="0"
