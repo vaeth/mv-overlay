@@ -1,4 +1,4 @@
-# Copyright 2016-2022 Martin V\"ath and Gentoo Authors
+# Copyright 2016-2024 Martin V\"ath and Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ MY_P="schily-${MY_PV}"
 MY_P_TAR="${MY_P}.tar.bz2"
 S=${WORKDIR}/${MY_P}
 
-SRC_URI="mirror://sourceforge/schilytools/${MY_P}.tar.bz2"
+SRC_URI="https://sourceforge.net/projects/schilytools/files/schily-2021-09-18.tar.bz2"
 DESCRIPTION="Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell"
 HOMEPAGE="https://sourceforge.net/projects/schilytools/"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"

@@ -1,4 +1,4 @@
-# Copyright 2023 Martin V\"ath
+# Copyright 2023-2024 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ RESTRICT="mirror"
 
 DESCRIPTION="Yet another Linux kernel configuration comparator"
 HOMEPAGE="https://sourceforge.net/projects/cfcfg/"
-SRC_URI="mirror://sourceforge/project/cfcfg/${P}.tgz -> ${P}.tar"
+SRC_URI="https://sourceforge.net/projects/cfcfg/files/${P}.tgz -> ${P}.tar"
 S="${WORKDIR}/cfcfg.git"
 
 LICENSE="GPL-3+"
