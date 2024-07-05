@@ -9,8 +9,8 @@ inherit autotools flag-o-matic optfeature toolchain-funcs
 
 DESCRIPTION="Excellent text file viewer, optionally with additional selection feature"
 PATCHN="less-select"
-PATCHV="2.15"
-PATCHVER="633"
+PATCHV="2.16"
+PATCHVER="661"
 PATCHRUMP="${PATCHN}-${PATCHV}"
 PATCHBALL="${PATCHRUMP}.tar.gz"
 SELECTDIR="${WORKDIR}/${PATCHRUMP}"
@@ -38,7 +38,6 @@ BDEPEND="test? ( virtual/pkgconfig )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-643-lesstest-pkg-config.patch
-	"${FILESDIR}"/${PN}-643-LESSOPEN-escape.patch
 )
 
 pkg_setup() {
@@ -90,7 +89,7 @@ src_install() {
 	keepdir /usr/lib/lessfilter.d
 	keepdir /etc/lessfilter.d
 
-	newbin "${FILESDIR}"/lesspipe-r3.sh lesspipe
+	newbin "${FILESDIR}"/lesspipe-r4.sh lesspipe
 
 	if use original-gentoo
 	then	a="-R -M --shift 5"

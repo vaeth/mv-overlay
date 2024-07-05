@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Preprocessor for 'less'. Used when this environment variable is set:
@@ -281,7 +281,10 @@ lesspipe() {
 			[nN][oO]|[nN]|0|false)    LESSCOLOR=0;;
 			*)                        LESSCOLOR=1;;
 		esac
-		if [[ ${LESSCOLOR} != "0" ]] && [[ -n ${LESSCOLORIZER=pygmentize} ]] ; then
+
+		[[ -n ${NO_COLOR} ]] && LESSCOLOR=0
+
+		if [[ ${LESSCOLOR} != "0" ]] && [[ -n ${LESSCOLORIZER=pygmentize -O style=rrt} ]] ; then
 			# 2: Only colorize if user forces it ...
 			# 1: ... or we know less will handle raw codes -- this will
 			#    not detect -seiRM, so set LESSCOLORIZER yourself
@@ -301,7 +304,7 @@ if [[ $# -eq 0 ]] ; then
 elif [[ $1 == "-V" || $1 == "--version" ]] ; then
 	cat <<-EOF
 		lesspipe (git)
-		Copyright 1999-2023 Gentoo Authors
+		Copyright 1999-2024 Gentoo Authors
 		Mike Frysinger <vapier@gentoo.org>
 		     (with plenty of ideas stolen from other projects/distros)
 
@@ -314,7 +317,7 @@ elif [[ $1 == "-h" || $1 == "--help" ]] ; then
 		Usage: lesspipe <file>
 
 		lesspipe specific settings:
-		  LESSCOLOR env     - toggle colorizing of output (no/yes/always; default: no)
+		  LESSCOLOR env     - toggle colorizing of output (no/yes/always; default: yes)
 		  LESSCOLORIZER env - program used to colorize output (default: pygmentize)
 		  LESSIGNORE        - list of extensions to ignore (don't do anything fancy)
 

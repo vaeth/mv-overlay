@@ -83,6 +83,7 @@ media-tv/sundtek-tv 221030.153539: Sundtek MediaTV Pro III Drivers
 media-tv/w_scan 20170107-r1: Scan DVB-C/DVB-T/DVB-S channels
 media-video/avidemux 2.7.8: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15_p1-r1: Utility for displaying AVI information
+media-video/luvcview 0.2.6-r1: USB Video Class grabber
 media-video/video-mv 17.3: Frontends for using mplayer/mencoder, ffmpeg/libav, or tzap as video recorder
 net-dialup/accounting 1.60.45.3.1-r1: Give statistics about dialup connections. Originally part of SuSE's smpppd
 net-dialup/martian-modem 20100123-r3: ltmodem alternative driver providing support for Agere Systems winmodems
@@ -97,7 +98,7 @@ net-print/foo2zjs 20200221: Support for printing to ZjStream-based printers
 sci-geosciences/googleearth 7.1.8.3036-r4 7.3.0.3832-r4 7.3.4-r2 7.3.6: A 3D interface to the planet
 sci-mathematics/reduce 20141130-r3 20190413: A general-purpose computer algebra system
 sys-apps/cpi 3.2: A wrapper for cp -i -a, making use of diff
-sys-apps/less 643-r3: Excellent text file viewer, optionally with additional selection feature
+sys-apps/less 661-r1: Excellent text file viewer, optionally with additional selection feature
 sys-apps/man 1.6g-r4: Standard commands to read man pages
 sys-apps/openrc-wrapper 2.4: Use openrc init scripts with systemd or other init systems
 sys-apps/paxopen 1.2: A wrapper script to set PAX kernel variables to an insecure/safe state
