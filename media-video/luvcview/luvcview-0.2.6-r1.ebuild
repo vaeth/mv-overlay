@@ -29,6 +29,7 @@ src_prepare() {
 	default
 	eapply "${WORKDIR}"/${PN}_${PV}-${PATCH_LEVEL}.diff
 	eapply debian/patches/*.patch
+	eapply "${FILESDIR}/${P}-includes.patch"
 	sed -i -e 's:videodev.h:videodev2.h:' *.{c,h} || die
 	sed -i -e 's:-O2::' Makefile || die
 }
