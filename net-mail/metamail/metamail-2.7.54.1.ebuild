@@ -1,9 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit autotools toolchain-funcs
+
+RESTRICT="mirror"
 
 MY_PV=$(ver_cut 1-2)
 DEB_PV=${MY_PV}-$(ver_cut 3)
@@ -12,6 +14,7 @@ DESCRIPTION="Metamail (with Debian patches) - Generic MIME package"
 HOMEPAGE="http://ftp.funet.fi/pub/unix/mail/metamail/"
 SRC_URI="http://ftp.funet.fi/pub/unix/mail/metamail/mm${MY_PV}.tar.Z
 	mirror://debian/pool/main/m/metamail/metamail_${DEB_PV}.diff.gz"
+#	https://sibelius.debian.org/debian/pool/main/m/metamail/metamail_${DEB_PV}.diff.gz
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -33,7 +36,7 @@ S=${WORKDIR}/mm${MY_PV}/src
 src_prepare() {
 	eapply "${WORKDIR}"/metamail_${DEB_PV}.diff
 	eapply "${FILESDIR}"/${PN}-2.7.45.3-CVE-2006-0709.patch
-	eapply "${FILESDIR}"/${P}-glibc-2.10.patch
+	eapply "${FILESDIR}"/${PN}-2.7.53.3-glibc-2.10.patch
 
 	# respect CFLAGS
 	sed -i -e 's/CFLAGS/LIBS/' \

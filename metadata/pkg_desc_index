@@ -90,7 +90,7 @@ net-dialup/martian-modem 20100123-r3: ltmodem alternative driver providing suppo
 net-dns/host 20070128-r1: A powerful command-line DNS query and test tool
 net-dns/noip-updater 2.1.9-r6: no-ip.com dynamic DNS updater
 net-firewall/firewall-mv 13.3: Initialize iptables and net-related sysctl variables
-net-mail/metamail 2.7.53.3-r3: Metamail (with Debian patches) - Generic MIME package
+net-mail/metamail 2.7.54.1: Metamail (with Debian patches) - Generic MIME package
 net-misc/netctl 1.11: Profile based network connection tool from Arch Linux
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
 net-misc/sshstart 4.10-r1: Start ssh-agent/ssh-add only if you really use ssh or friends
@@ -112,7 +112,6 @@ sys-fs/emount 3.0.5: mount/unmount create/remove dm-crypt filesystems according 
 sys-fs/encfs 1.9.6_alpha0: An implementation of encrypted filesystem in user-space using FUSE
 sys-fs/squash_dir 13.14-r1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-fs/squashfs-tools 99999999: Tool for creating compressed filesystem type squashfs
-sys-fs/squashfuse 0.1.104: FUSE filesystem to mount squashfs archives
 sys-fs/squashmount 22.1-r2: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-kernel/cfcfg 1.0: Yet another Linux kernel configuration comparator
 sys-kernel/kccmp 0.3-r3: A simple tool for comparing two linux kernel .config files
