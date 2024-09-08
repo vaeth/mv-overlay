@@ -1,0 +1,12 @@
+# Martin Vaeth <martin at mvath.de>
+# Fix a missing include when the existence of lutimes is checked.
+--- 1/Build.PL
++++ 1/Build.PL
+@@ -23,6 +23,7 @@
+    source => <<'EOF' );
+ #include <stdlib.h>
+ #include <unistd.h>
++#include <sys/time.h>
+ int main(int argc, char *argv[]) {
+   if(lutimes(".", NULL) != 0)
+     exit(1);
