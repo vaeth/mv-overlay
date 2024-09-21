@@ -59,7 +59,7 @@ app-text/qtspell 1.0.1: Spell checking for Qt text widgets
 app-text/stardict 4.0.0_pre20170304-r1: A international dictionary supporting fuzzy and glob style matching
 dev-cpp/cpplint 99999999: The google styleguide together with cpplint and an emacs file
 dev-libs/osformat 1.0.7 999999999: C++ library for a typesafe printf/sprintf based on << conversion
-dev-perl/File-lchown 0.20-r2: Use the lchown(2) and lutimes(2) system call from Perl
+dev-perl/File-lchown 0.20-r3: Use the lchown(2) and lutimes(2) system call from Perl
 dev-util/comp 4.3.1: compare files or directories, including metadata
 dev-util/diffhelp 1.12: A frontend, beautifier, and path-fixer for diff -u
 dev-util/mv_perl 4.3: A collection of perl scripts (replacement in files, syncing dirs etc)
