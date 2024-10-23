@@ -1,4 +1,4 @@
-# Copyright 2012-2023 Martin V\"ath
+# Copyright 2012-2024 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/google/styleguide"
 SRC_URI=""
 LICENSE="CC-BY-3.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="emacs"
 
 EMACSNAME="google-c-style"

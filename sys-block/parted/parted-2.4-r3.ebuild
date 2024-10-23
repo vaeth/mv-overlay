@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Martin V\"ath and others
+# Copyright 1999-2024 Martin V\"ath and others
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="2"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="+debug device-mapper nls readline selinux standalone static-libs"
 RESTRICT="test"
 

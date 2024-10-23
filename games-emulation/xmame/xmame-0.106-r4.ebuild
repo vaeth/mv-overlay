@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2024 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="http://gentoo.osuosl.org/distfiles/xmame-${PV}.tar.bz2"
 
 LICENSE="XMAME"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc sparc x86"
 IUSE="alsa bundled-libs cpu_flags_x86_mmx dga ggi joystick lirc net opengl sdl svga X xinerama xv"
 
 RDEPEND="
@@ -58,7 +58,6 @@ src_prepare() {
 
 	case ${ARCH} in
 		x86)	mycpu="i386";;
-		ia64)	mycpu="ia64";;
 		amd64)	mycpu="amd64";;
 		ppc)	mycpu="risc";;
 		sparc)	mycpu="risc";;
@@ -112,7 +111,7 @@ EOF
 	toggle_feature xinerama X11_XINERAMA
 
 	case ${ARCH} in
-		x86|ia64|amd64)
+		x86|amd64)
 			append-flags -Wno-unused -fomit-frame-pointer -fstrict-aliasing -fstrength-reduce
 			use amd64 || append-flags -ffast-math #54270
 			[[ $(gcc-major-version) -ge 3 ]] \

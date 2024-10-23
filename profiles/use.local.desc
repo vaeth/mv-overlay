@@ -132,4 +132,3 @@ sys-fs/squashfs-tools:lz4 - Enable support for LZ4 compression using app-arch/lz
 sys-fs/squashfs-tools:xz - Enable support for XZ ("LZMA2") compression using app-arch/xz-utils
 sys-fs/squashfs-tools:zstd - Enable support for ZSTD compression using app-arch/zstd (requires >=linux-4.14 or >=sys-fs/squashfuse-0.1.101_alpha20170917)
 sys-power/pm-utils:ntp - Install support for net-misc/ntp
-x11-libs/motif:motif22-compatibility - Compatibility with Open Motif 2.2

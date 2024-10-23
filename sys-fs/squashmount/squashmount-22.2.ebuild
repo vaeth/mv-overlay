@@ -78,9 +78,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use arm || use ia64 || use sparc
-	then	optfeature "improved output" 'dev-perl/String-ShellQuote'
-	fi
+	optfeature "improved output" 'dev-perl/String-ShellQuote'
 	optfeature "user mounting" \
 		'>=sys-fs/squashfuse-0.1.100 >=sys-fs/unionfs-fuse-0.25' \
 		'>=sys-fs/squashfuse-0.1.100 sys-fs/funionfs'

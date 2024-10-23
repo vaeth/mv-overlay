@@ -1,4 +1,4 @@
-# Copyright 2011-2022 Martin V\"ath
+# Copyright 2011-2024 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit readme.gentoo-r1
 
 RESTRICT="mirror"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 case ${PV} in
 99999999*)
 	EGIT_REPO_URI="https://github.com/zdharma/${PN}.git"

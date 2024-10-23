@@ -1,4 +1,4 @@
-# Copyright 2014-2022 Martin V\"ath
+# Copyright 2014-2024 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ SRC_URI="http://www.sundtek.de/media/sundtek_installer_${PV}.sh"
 RESTRICT="binchecks mirror strip"
 LICENSE="sundtek"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="ld-preload-env +ld-preload-file pax-kernel pulseaudio split-usr"
 RDEPEND="!<sys-apps/openrc-0.13
 pulseaudio? ( media-sound/pulseaudio )"

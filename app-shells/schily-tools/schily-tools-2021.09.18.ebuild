@@ -13,7 +13,7 @@ S=${WORKDIR}/${MY_P}
 SRC_URI="https://sourceforge.net/projects/schilytools/files/schily-2021-09-18.tar.bz2"
 DESCRIPTION="Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell"
 HOMEPAGE="https://sourceforge.net/projects/schilytools/"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="acl caps doc nls split-usr suid unicode xattr"
 
 PATCHES=(

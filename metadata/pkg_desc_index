@@ -130,4 +130,3 @@ www-plugins/google-translator-for-firefox 3.0.3.4: Firefox webextension: transla
 www-plugins/no-color 0.9.5: Firefox webextension: remove colors and background images from the page
 www-plugins/noscript 11.4.29: Firefox webextension: restrict active contents like java/javascript/flash
 www-plugins/translate-to-me 1.2: Firefox webextension: translate the selected text with www.linguee.com
-x11-libs/motif 2.3.8-r5: The Motif user interface component toolkit

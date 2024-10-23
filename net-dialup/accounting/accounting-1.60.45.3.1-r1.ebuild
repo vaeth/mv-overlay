@@ -1,4 +1,4 @@
-# Copyright 2010-2022 Martin V\"ath
+# Copyright 2010-2024 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ SRC_URI="http://download.opensuse.org/source/distribution/11.3/repo/oss/suse/src
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 IUSE=""
 
 : ${ACCOUNTING_LOG:="/var/log/accounting.log"}
