@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2025 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 IUSE="X gtk"
 
@@ -28,6 +28,7 @@ PATCHES=( "${FILESDIR}/respect-cflags.patch" )
 
 src_prepare() {
 	default
+	append-cflags -Wno-implicit-function-declaration
 	sed -e 's/^\(.*_WXCONFIG.*\)/#\1/' -- configure.in >configure.ac || die
 	rm -- configure.in || die
 	eautoreconf
