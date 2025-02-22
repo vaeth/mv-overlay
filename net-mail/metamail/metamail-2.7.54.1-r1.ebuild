@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2025 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 RESTRICT="mirror"
 
@@ -34,6 +34,11 @@ BDEPEND="virtual/pkgconfig"
 S=${WORKDIR}/mm${MY_PV}/src
 
 src_prepare() {
+	# Hackish workaround to make the legacy code work with >=gcc-14.
+	# A cleaner approach would be to add/fix function declarations, but this
+	# should better happen upstream
+	append-cflags -Wno-implicit-int -Wno-implicit-function-declaration -Wno-return-mismatch
+
 	eapply "${WORKDIR}"/metamail_${DEB_PV}.diff
 	eapply "${FILESDIR}"/${PN}-2.7.45.3-CVE-2006-0709.patch
 	eapply "${FILESDIR}"/${PN}-2.7.53.3-glibc-2.10.patch
