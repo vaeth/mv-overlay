@@ -1,4 +1,4 @@
-# Copyright 2016-2022 Martin V\"ath
+# Copyright 2016-2025 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8

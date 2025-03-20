@@ -60,9 +60,9 @@ app-text/stardict 4.0.0_pre20170304-r1: A international dictionary supporting fu
 dev-cpp/cpplint 99999999: The google styleguide together with cpplint and an emacs file
 dev-libs/osformat 1.0.7 999999999: C++ library for a typesafe printf/sprintf based on << conversion
 dev-perl/File-lchown 0.20-r3: Use the lchown(2) and lutimes(2) system call from Perl
-dev-util/comp 4.3.1: compare files or directories, including metadata
+dev-util/comp 4.3.2: compare files or directories, including metadata
 dev-util/diffhelp 1.12: A frontend, beautifier, and path-fixer for diff -u
-dev-util/mv_perl 4.3: A collection of perl scripts (replacement in files, syncing dirs etc)
+dev-util/mv_perl 4.4: A collection of perl scripts (replacement in files, syncing dirs etc)
 dev-util/pyrep 1.5-r1: Search and/or replace regular expressions within many files interactively
 dev-util/replacer 3.3: Search and replace python regular expressions within many files interactively
 dev-vcs/git-wrappers-mv 2.3: Some personal wrappers for the most important git commands
@@ -78,7 +78,7 @@ games-rpg/m5figur-mv 4.2.2: LaTeX2e character sheet layout for the Midgard Role 
 media-gfx/ipe 7.2.26: Drawing editor for creating figures in PDF or PS formats
 media-gfx/libspiro 20200505-r1: A spline computation library
 media-gfx/pqiv 2.11: powerful GTK based command-line image viewer with a minimal UI
-media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
+media-tv/nvtv 0.4.7-r4: TV-Out for NVidia cards
 media-tv/sundtek-tv 221030.153539: Sundtek MediaTV Pro III Drivers
 media-tv/w_scan 20170107-r1: Scan DVB-C/DVB-T/DVB-S channels
 media-video/avidemux 2.7.8: Video editor designed for simple cutting, filtering and encoding tasks
@@ -90,7 +90,7 @@ net-dialup/martian-modem 20100123-r3: ltmodem alternative driver providing suppo
 net-dns/host 20070128-r1: A powerful command-line DNS query and test tool
 net-dns/noip-updater 2.1.9-r6: no-ip.com dynamic DNS updater
 net-firewall/firewall-mv 13.3: Initialize iptables and net-related sysctl variables
-net-mail/metamail 2.7.54.1: Metamail (with Debian patches) - Generic MIME package
+net-mail/metamail 2.7.54.1-r1: Metamail (with Debian patches) - Generic MIME package
 net-misc/netctl 1.11: Profile based network connection tool from Arch Linux
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
 net-misc/sshstart 4.10-r1: Start ssh-agent/ssh-add only if you really use ssh or friends
@@ -106,7 +106,7 @@ sys-apps/schedule 8.0.1-r2: script to schedule jobs in a multiuser multitasking 
 sys-apps/starter 3.0-r1: POSIX shell script and function to schedule commands
 sys-apps/systemd-tmpfiles-openrc 1: openrc init-files for systemd-tmpfiles from sys-apps/systemd
 sys-block/parted 2.4-r3: Create, destroy, resize, check, copy partitions and file systems
-sys-block/zram-init 12.1: Scripts to support compressed swap devices or ramdisks with zRAM
+sys-block/zram-init 12.2: Scripts to support compressed swap devices or ramdisks with zRAM
 sys-boot/grub-cfg-mv 1.8: A grub.cfg library/example for GRUB2
 sys-fs/emount 3.0.5: mount/unmount create/remove dm-crypt filesystems according to your /etc/fstab
 sys-fs/encfs 1.9.6_alpha0: An implementation of encrypted filesystem in user-space using FUSE
