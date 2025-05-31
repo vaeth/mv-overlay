@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2025 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -78,8 +78,10 @@ src_prepare() {
 	# (and these does not work on gcc43)
 	find dict/src/sigc++* -name \*.h -or -name \*.cc | xargs rm -f || die
 
-	# libsigc++ started to require c++11 support
-	append-cxxflags "-std=c++11"
+	# Hackish workaround to make the legacy code work with >=gcc-15.
+	# A cleaner approach would be to add/fix function declarations, but this
+	# should better happen upstream
+	append-cxxflags -Wno-deprecated-declarations -fpermissive
 
 	# bug 604318
 	sed -i '/AM_GCONF_SOURCE_2/d' dict/configure.ac || die

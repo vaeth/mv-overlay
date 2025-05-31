@@ -1,8 +1,8 @@
-# Copyright 1999-2024 Martin V\"ath and others
+# Copyright 1999-2025 Martin V\"ath and others
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Create, destroy, resize, check, copy partitions and file systems"
 HOMEPAGE="https://www.gnu.org/software/parted"
@@ -39,6 +39,10 @@ PATCHES=(
 DOCS=( AUTHORS BUGS ChangeLog NEWS README THANKS TODO doc/{API,FAT,USER.jp} )
 
 src_prepare() {
+	# Hackish workaround to make the legacy code work with >=gcc-15.
+	# A cleaner approach would be to add/fix function declarations, but this
+	# should better happen upstream
+	append-cflags -std=gnu17 -Wno-implicit-int -Wno-implicit-function-declaration -Wno-return-mismatch
 	if ! use standalone; then
 		sed -i -e "s/GNU parted/GNU parted2/" "${S}"/configure.ac
 		sed -i -e "s/partedinclude_HEADERS/partedinclude_NOINST/" \

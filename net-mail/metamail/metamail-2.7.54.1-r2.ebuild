@@ -34,10 +34,10 @@ BDEPEND="virtual/pkgconfig"
 S=${WORKDIR}/mm${MY_PV}/src
 
 src_prepare() {
-	# Hackish workaround to make the legacy code work with >=gcc-14.
+	# Hackish workaround to make the legacy code work with >=gcc-15.
 	# A cleaner approach would be to add/fix function declarations, but this
 	# should better happen upstream
-	append-cflags -Wno-implicit-int -Wno-implicit-function-declaration -Wno-return-mismatch
+	append-cflags -std=gnu17 -Wno-implicit-int -Wno-implicit-function-declaration -Wno-return-mismatch
 
 	eapply "${WORKDIR}"/metamail_${DEB_PV}.diff
 	eapply "${FILESDIR}"/${PN}-2.7.45.3-CVE-2006-0709.patch
