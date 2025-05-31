@@ -9,7 +9,7 @@ IUSE="X gtk"
 
 DESCRIPTION="TV-Out for NVidia cards"
 HOMEPAGE="https://sourceforge.net/projects/nv-tv-out/"
-SRC_URI="mirror://sourceforge/nv-tv-out/${P}.tar.gz"
+SRC_URI="https://sourceforge.net/projects/nv-tv-out/files/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

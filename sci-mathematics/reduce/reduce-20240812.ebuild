@@ -1,29 +1,30 @@
-# Copyright 1999-2022 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2025 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 RESTRICT="mirror"
-inherit elisp-common
+inherit elisp-common flag-o-matic
 
 DESCRIPTION="A general-purpose computer algebra system"
 HOMEPAGE="http://reduce-algebra.sourceforge.net/
 	http://reduce-algebra.com/"
-IUSE="doc emacs gnuplot X"
+IUSE="doc emacs gnuplot tinfo X"
 PVyear=${PV%????}
 PVday=${PV#??????}
 PVmonth=${PV#????}
 PVmonth=${PVmonth%??}
 mPV="${PVyear}-${PVmonth}-${PVday}"
-TARBALL="${PN}-src-${mPV}"
-SRC_URI="mirror://sourceforge/${PN}-algebra/Snapshot_${mPV}/${TARBALL}.tar.bz2"
+TARBALL="Reduce-svn6860-src"
+SRC_URI="https://sourceforge.net/projects/${PN}-algebra/files/snapshot_${mPV}/${TARBALL}.tar.gz"
 LICENSE="BSD-2 X? ( LGPL-2.1 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="" # The ebuild is currently broken
 S="${WORKDIR}/${TARBALL}"
 
 RDEPEND="X? ( x11-libs/libXrandr
 		x11-libs/libXcursor
 		x11-libs/libXft )
+	sys-libs/ncurses[tinfo=]
 	gnuplot? ( sci-visualization/gnuplot )
 	emacs? ( app-editors/emacs )"
 DEPEND="${RDEPEND}"
@@ -33,6 +34,8 @@ src_prepare() {
 	# sed -i -e 's/\${l}/"\${l}"/g' -- "${S}"/scripts/make.sh
 	sed -i -e 's/static char unmapTable/static unsigned char unmapTable/' \
 		-- "${S}"/csl/fox/src/FXShowMath.cpp
+	# This is currently only a hack for testing; a proper fix needs patching
+	! use tinfo || append-ldflags -ltinfo
 	default
 }
 

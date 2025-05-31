@@ -1,4 +1,4 @@
-# Copyright 2016-2022 Gentoo Authors and Martin V\"ath
+# Copyright 2016-2025 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,8 +7,8 @@ RESTRICT="mirror"
 
 DESCRIPTION="simple game similar to the classical game Marble Madness"
 HOMEPAGE="http://trackballs.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
-	mirror://sourceforge/${PN}/${PN}-music-1.4.tar.bz2"
+SRC_URI="https://sourceforge.net/projects/${PN}/files/${P}.tar.gz
+	https://sourceforge.net/projects/${PN}/files/${PN}-music-1.4.tar.bz2"
 
 LICENSE="GPL-2 FML-1"
 SLOT="0"
