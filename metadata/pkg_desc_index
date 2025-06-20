@@ -111,7 +111,7 @@ sys-fs/emount 3.0.5: mount/unmount create/remove dm-crypt filesystems according 
 sys-fs/encfs 1.9.6_alpha0: An implementation of encrypted filesystem in user-space using FUSE
 sys-fs/squash_dir 13.14-r1: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-fs/squashfs-tools 99999999: Tool for creating compressed filesystem type squashfs
-sys-fs/squashmount 22.2: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
+sys-fs/squashmount 22.3: Keep directories compressed with squashfs. Useful for portage tree, texmf-dist
 sys-kernel/cfcfg 1.0: Yet another Linux kernel configuration comparator
 sys-kernel/kccmp 0.3-r3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kernel 6.5: A POSIX shell script to compile the kernel with user permissions
