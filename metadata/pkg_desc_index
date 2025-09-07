@@ -47,7 +47,7 @@ app-shells/quoter 4.2-r1: Quote arguments or standard input for usage in POSIX s
 app-shells/runtitle 2.11: Scripts to run commands and set the hard status line (windows title)
 app-shells/schily-tools 2021.09.18: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
 app-shells/set_prompt 3.2: An intelligent prompt for zsh or bash with status line (window title) support
-app-shells/termcolors-mv 4.9: 256colors sample script and dircolors configuration for standard or 256 colors
+app-shells/termcolors-mv 4.10: 256colors sample script and dircolors configuration for standard or 256 colors
 app-shells/zsh-autosuggestions 0.7.0 99999999: Fish-like autosuggestions for zsh
 app-shells/zsh-syntax-highlighting 0.8.0_alpha1 99999999: Fish shell like syntax highlighting for zsh
 app-shells/zshrc-mv 6.8: A zshrc file initializing zsh specific interactive features
@@ -64,7 +64,7 @@ dev-util/comp 4.3.2: compare files or directories, including metadata
 dev-util/diffhelp 1.12: A frontend, beautifier, and path-fixer for diff -u
 dev-util/mv_perl 4.4: A collection of perl scripts (replacement in files, syncing dirs etc)
 dev-util/pyrep 1.5-r1: Search and/or replace regular expressions within many files interactively
-dev-util/replacer 3.3: Search and replace python regular expressions within many files interactively
+dev-util/replacer 3.4: Search and replace python regular expressions within many files interactively
 dev-vcs/git-wrappers-mv 2.3: Some personal wrappers for the most important git commands
 games-action/trackballs 1.1.4-r3: simple game similar to the classical game Marble Madness
 games-board/chessproblem 1.10 2.13: Find solutions of chess problems (mate, selfmate, and helpmate) with cooks
