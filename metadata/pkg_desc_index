@@ -47,7 +47,7 @@ app-shells/quoter 4.2-r1: Quote arguments or standard input for usage in POSIX s
 app-shells/runtitle 2.11: Scripts to run commands and set the hard status line (windows title)
 app-shells/schily-tools 2021.09.18: Many tools from Joerg Schilling, including a POSIX compliant Bourne Shell
 app-shells/set_prompt 3.2: An intelligent prompt for zsh or bash with status line (window title) support
-app-shells/termcolors-mv 4.10: 256colors sample script and dircolors configuration for standard or 256 colors
+app-shells/termcolors-mv 4.11: 256colors sample script and dircolors configuration for standard or 256 colors
 app-shells/zsh-autosuggestions 0.7.0 99999999: Fish-like autosuggestions for zsh
 app-shells/zsh-syntax-highlighting 0.8.0_alpha1 99999999: Fish shell like syntax highlighting for zsh
 app-shells/zshrc-mv 6.8: A zshrc file initializing zsh specific interactive features
