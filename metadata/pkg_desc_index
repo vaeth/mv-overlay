@@ -4,7 +4,7 @@ acct-user/flexlm 0: User for app-admin/flexlm
 acct-user/schedule 0: User for sys-apps/schedule
 app-admin/flexlm 9.5-r4: Macrovision FLEXlm license manager and utils
 app-admin/sudox 11.0: wrapper for sudo which can pass X authority data and deal with screen and tmux
-app-arch/archwrap 12.3: A collection of POSIX shell scripts to invoke archiver programs
+app-arch/archwrap 12.4: A collection of POSIX shell scripts to invoke archiver programs
 app-arch/bzwc 5.1-r1: A POSIX shell wrapper for wc, supporting compressed files (xz, lzma, bz2, gz)
 app-arch/paq8l 20070308: Open source file compressor and archiver
 app-cdr/cdrtools 99999999: A set of tools for CD/DVD reading and recording, including cdrecord
