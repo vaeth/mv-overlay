@@ -1,8 +1,8 @@
-# Copyright 2012-2024 Martin V\"ath
+# Copyright 2012-2025 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( pypy3 python3_{13..14} )
 EGIT_REPO_URI="https://github.com/google/styleguide.git"
 inherit elisp-common git-r3 python-single-r1
 RESTRICT="mirror"
