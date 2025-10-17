@@ -36,10 +36,6 @@ RDEPEND="${DEPEND}
 PDEPEND="lesspipe? ( app-text/lesspipe )"
 BDEPEND="test? ( virtual/pkgconfig )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-643-lesstest-pkg-config.patch
-)
-
 pkg_setup() {
 	if use source && ! use less-select
 	then	ewarn 'ignoring USE=source without USE=less-select'
