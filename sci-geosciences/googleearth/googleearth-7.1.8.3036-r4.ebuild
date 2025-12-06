@@ -23,6 +23,7 @@ QA_PREBUILT="*"
 
 RDEPEND="
 	dev-libs/glib:2
+	dev-libs/libxml2-compat
 	dev-libs/nspr
 	media-libs/fontconfig
 	media-libs/freetype
