@@ -1,8 +1,8 @@
-# Copyright 2014-2024 Martin V\"ath
+# Copyright 2014-2026 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit linux-info pax-utils readme.gentoo-r1 systemd unpacker
+inherit linux-info pax-utils readme.gentoo-r1 systemd udev unpacker
 
 # The following variable is only for testing purposes. Leave it to "false"
 keep_original=false
@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="ld-preload-env +ld-preload-file pax-kernel pulseaudio split-usr"
 RDEPEND="!<sys-apps/openrc-0.13
-pulseaudio? ( media-sound/pulseaudio )"
+pulseaudio? ( media-libs/libpulse )"
 BDEPEND="pax-kernel? ( || ( sys-apps/elfix sys-apps/paxctl ) )"
 
 DISABLE_AUTOFORMATTING="true"
@@ -199,4 +199,9 @@ pkg_postinst() {
 		fi
 	fi
 	readme.gentoo_print_elog
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }

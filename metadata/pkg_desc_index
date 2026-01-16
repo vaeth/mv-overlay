@@ -79,7 +79,7 @@ media-gfx/ipe 7.2.26: Drawing editor for creating figures in PDF or PS formats
 media-gfx/libspiro 20200505-r1: A spline computation library
 media-gfx/pqiv 2.11: powerful GTK based command-line image viewer with a minimal UI
 media-tv/nvtv 0.4.7-r5: TV-Out for NVidia cards
-media-tv/sundtek-tv 221030.153539: Sundtek MediaTV Pro III Drivers
+media-tv/sundtek-tv 251220.005308: Sundtek MediaTV Pro III Drivers
 media-tv/w_scan 20170107-r1: Scan DVB-C/DVB-T/DVB-S channels
 media-video/avinfo 1.0_alpha15_p1-r1: Utility for displaying AVI information
 media-video/luvcview 0.2.6-r1: USB Video Class grabber
