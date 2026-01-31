@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2026 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,8 +9,8 @@ inherit autotools flag-o-matic optfeature toolchain-funcs
 
 DESCRIPTION="Excellent text file viewer, optionally with additional selection feature"
 PATCHN="less-select"
-PATCHV="2.17"
-PATCHVER="678"
+PATCHV="2.18"
+PATCHVER="691"
 PATCHRUMP="${PATCHN}-${PATCHV}"
 PATCHBALL="${PATCHRUMP}.tar.gz"
 SELECTDIR="${WORKDIR}/${PATCHRUMP}"
