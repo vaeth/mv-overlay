@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2026 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -50,6 +50,20 @@ src_prepare() {
 	# add missing include - QA
 	sed -i -e '/config.h/a #include <string.h>' \
 		"${S}"/src/metamail/shared.c || die
+
+	# Use termios instead of the obsoleted termio
+	sed -i \
+		-e 's/TCGETA/TCGETS/' \
+		-e 's/TCSETA/TCSETS/' \
+		-e 's!#include <termio\.h>!#include <termios.h>\
+#include <sys/ioctl.h>!' \
+		-e 's/termio[ ]/termios /' \
+		-- \
+		"${S}"/metamail/common.h \
+		"${S}"/src/metamail/metamail.c \
+		"${S}"/mailers.txt \
+		"${S}"/configure.in \
+		"${S}"/configure || die
 
 	# Fix building with ncurses[tinfo]
 	sed -i -e "s/-lncurses/$($(tc-getPKG_CONFIG) --libs ncurses)/" \
