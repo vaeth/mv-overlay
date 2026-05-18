@@ -1,4 +1,4 @@
-# Copyright 2017-2024 Martin V\"ath
+# Copyright 2017-2026 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ RESTRICT="mirror"
 DESCRIPTION="Firefox webextension: remove duplicate bookmarks/empty folders/descriptions"
 HOMEPAGE="https://addons.mozilla.org/en-US/firefox/addon/bookmark-dupes/
 https://github.com/vaeth/bookmarkdupes/"
-SRC_URI="https://addons.mozilla.org/firefox/downloads/file/3982686/${P}.xpi"
+SRC_URI="https://addons.mozilla.org/firefox/downloads/file/4808229/bookmark_dupes-${PV}.xpi"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~ppc64 x86"
