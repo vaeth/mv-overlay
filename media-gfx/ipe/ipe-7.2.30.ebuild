@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2026 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,8 +10,7 @@ inherit desktop flag-o-matic lua-single toolchain-funcs
 
 DESCRIPTION="Drawing editor for creating figures in PDF or PS formats"
 HOMEPAGE="http://ipe.otfried.org/"
-SRC_URI="https://github.com/otfried/old-ipe-releases/releases/download/v${PV}/${PN}-${PV}-src.tar.gz"
-
+SRC_URI="https://github.com/otfried/ipe/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
@@ -28,9 +27,7 @@ DEPEND="${LUA_DEPS}
 	sci-libs/gsl:=
 	sys-libs/zlib
 	x11-libs/cairo
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	app-text/qtspell"
+	dev-qt/qtbase"
 RDEPEND="${DEPEND}
 	|| ( app-text/texlive-core net-misc/curl )"
 BDEPEND="virtual/pkgconfig"
@@ -45,13 +42,16 @@ src_prepare() {
 		-e "s'\$(IPEPREFIX)/lib'\$(IPEPREFIX)/$(get_libdir)'g" \
 		-e "s'\(LUA_CFLAGS.*=\).*'\1 $(lua_get_CFLAGS)'" \
 		-e "s'\(LUA_LIBS.*=\).*'\1 $(lua_get_LIBS)'" \
-		-e "s'\(MOC.*=\).*'\1 ${EPREFIX}/usr/$(get_libdir)/qt5/bin/moc'" \
+		-e "s'\(MOC.*=\).*'\1 ${EPREFIX}/usr/$(get_libdir)/qt6/libexec/moc'" \
 		config.mak || die
 	sed -i \
 		-e 's!-std=c++1.!!' \
 		-e 's/install -s/install/' \
 		-e "s'\$(CXX)'\$(CXX) -I${S}/ipecanvas -I${S}/ipecairo -I${S}/include'" \
 		common.mak || die
+	sed -i \
+		-e '1a#include <cstdint>' \
+		include/ipebase.h || die
 	default
 }
 
@@ -68,6 +68,6 @@ src_install() {
 		IPEPREFIX="${EPREFIX}/usr" \
 		IPEDOCDIR="${EPREFIX}/usr/share/doc/${PF}/html" \
 		INSTALL_ROOT="${ED}"
-	dodoc ../{news,readme}.txt
+	dodoc ../doc/news.txt
 	make_desktop_entry ipe Ipe ipe
 }

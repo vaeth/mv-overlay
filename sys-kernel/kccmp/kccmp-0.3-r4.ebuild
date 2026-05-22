@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2026 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,18 +16,17 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 IUSE=""
 
-DEPEND="dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtwidgets:5"
+DEPEND="dev-qt/qtbase
+	dev-qt/qt5compat"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	echo "QT += widgets" >> ${PN}.pro
+	echo "QT += widgets core5compat" >> ${PN}.pro
 	default
 }
 
 src_configure() {
-	eqmake5 "${S}"/kccmp.pro
+	eqmake6 "${S}"/kccmp.pro
 }
 
 src_install() {
