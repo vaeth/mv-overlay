@@ -1,7 +1,7 @@
-# Copyright 2011-2024 Martin V\"ath
+# Copyright 2011-2026 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit readme.gentoo-r1
 

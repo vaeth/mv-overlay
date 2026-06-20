@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2026 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 RESTRICT="mirror"
 DESCRIPTION="Scan DVB-C/DVB-T/DVB-S channels"
 HOMEPAGE="http://wirbel.htpc-forum.de/w_scan/index2.html"

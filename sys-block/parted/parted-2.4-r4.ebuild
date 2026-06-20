@@ -1,7 +1,7 @@
-# Copyright 1999-2025 Martin V\"ath and others
+# Copyright 1999-2026 Martin V\"ath and others
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 inherit autotools flag-o-matic
 
 DESCRIPTION="Create, destroy, resize, check, copy partitions and file systems"

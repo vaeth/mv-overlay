@@ -1,7 +1,7 @@
-# Copyright 2012-2024 Martin V\"ath
+# Copyright 2012-2026 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 DESCRIPTION="A POSIX shell function to treat a variable like an array, quoting args"
 HOMEPAGE="https://github.com/vaeth/push/"

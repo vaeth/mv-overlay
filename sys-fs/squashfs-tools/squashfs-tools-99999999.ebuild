@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2026 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 inherit flag-o-matic toolchain-funcs
 
 PVm=4.3

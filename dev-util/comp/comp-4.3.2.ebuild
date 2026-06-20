@@ -1,7 +1,7 @@
-# Copyright 2016-2025 Martin V\"ath
+# Copyright 2016-2026 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 RESTRICT="mirror"
 
 DESCRIPTION="compare files or directories, including metadata"

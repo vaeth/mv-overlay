@@ -1,7 +1,7 @@
-# Copyright 2012-2024 Martin V\"ath
+# Copyright 2012-2026 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 RESTRICT="mirror"
 
 DESCRIPTION="A wrapper for cp -i -a, making use of diff"

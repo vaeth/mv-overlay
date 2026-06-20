@@ -1,7 +1,7 @@
-# Copyright 2014-2024 Martin V\"ath
+# Copyright 2014-2026 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 # Do *not* inherit latex-package: It DEPENDS unconditionally on texinfo.
 # Moreover, it would attempt to compile the *.tex example with texinfo to dvi.
 RESTRICT="mirror"

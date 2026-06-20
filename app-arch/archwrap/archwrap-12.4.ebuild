@@ -1,7 +1,7 @@
-# Copyright 2012-2025 Martin V\"ath
+# Copyright 2012-2026 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 RESTRICT="mirror"
 
 DESCRIPTION="A collection of POSIX shell scripts to invoke archiver programs"

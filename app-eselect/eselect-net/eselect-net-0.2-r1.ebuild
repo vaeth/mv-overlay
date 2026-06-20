@@ -1,7 +1,7 @@
-# Copyright 2016-2024 Martin V\"ath
+# Copyright 2016-2026 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 DESCRIPTION="eselect module for managing network open-rc service configurations"
 HOMEPAGE="https://github.com/reith/eselect-net/"

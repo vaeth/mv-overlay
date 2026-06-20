@@ -1,7 +1,7 @@
-# Copyright 2013-2024 Gentoo Authors and Martin V\"ath
+# Copyright 2013-2026 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 RESTRICT="mirror"
 
 DESCRIPTION="concatenate postscript files. From new PostScript Utilities"

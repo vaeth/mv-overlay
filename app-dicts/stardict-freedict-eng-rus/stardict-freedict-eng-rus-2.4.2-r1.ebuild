@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors and Martin V\"ath
+# Copyright 1999-2026 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 FROM_LANG="English"
 TO_LANG="Russian"
 DICT_PREFIX="dictd_www.freedict.de_"

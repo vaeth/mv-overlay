@@ -1,7 +1,7 @@
-# Copyright 2020-2024 Gentoo Authors and Martin V\"ath
+# Copyright 2020-2026 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 DESCRIPTION="openrc init-files for systemd-tmpfiles from sys-apps/systemd"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"

@@ -1,7 +1,7 @@
-# Copyright 2018-2025 Martin V\"ath
+# Copyright 2018-2026 Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 RESTRICT="mirror"
 
 DESCRIPTION="Search and replace python regular expressions within many files interactively"
