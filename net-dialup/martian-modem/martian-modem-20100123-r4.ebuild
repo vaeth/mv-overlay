@@ -1,8 +1,8 @@
-# Copyright 2012-2022 Gentoo Authors and Martin V\"ath
+# Copyright 2012-2026 Gentoo Authors and Martin V\"ath
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit linux-mod readme.gentoo-r1
+inherit linux-mod-r1 readme.gentoo-r1
 
 MY_P="martian-full-${PV}"
 DESCRIPTION="ltmodem alternative driver providing support for Agere Systems winmodems"
@@ -40,9 +40,15 @@ If using net-dialup/wvdial, you need
 line."
 
 S="${WORKDIR}/${P/modem/full}"
-MODULE_NAMES="martian_dev(ltmodem::kmodule)"
+
 CONFIG_CHECK="SERIAL_8250"
 SERIAL_8250_ERROR="This driver requires you to compile your kernel with serial core (CONFIG_SERIAL_8250) support."
+
+src_compile() {
+	local modlist=( name=martian_dev=ltmodem::kmodule:all )
+	local modargs=( KERNEL_DIR="${KV_DIR}" SUBLEVEL="${KV_PATCH}" )
+	linux-mod-r1_src_compile
+}
 
 src_prepare() {
 	# Exclude Makefile kernel version check, we used kernel_is above.
@@ -52,9 +58,6 @@ src_prepare() {
 
 	# fix compile on amd64
 	sed -i -e "/^HOST.*$/s:uname -i:uname -m:" modem/Makefile || die "sed failed"
-
-	BUILD_TARGETS="all"
-	BUILD_PARAMS="KERNEL_DIR='${KV_DIR}' SUBLEVEL='${KV_PATCH}'"
 
 	if kernel_is ge 3 8
 	then
@@ -74,7 +77,7 @@ src_prepare() {
 }
 
 src_install() {
-	linux-mod_src_install
+	linux-mod-r1_src_install
 
 	# userspace daemon and initscripts stuff
 	dosbin modem/martian_modem
@@ -84,7 +87,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	linux-mod_pkg_postinst
+	linux-mod-r1_pkg_postinst
 
 	if linux_chkconfig_present SMP ; then
 		elog "You have SMP (symmetric multi processor) support enabled in kernel."
