@@ -52,6 +52,7 @@ app-shells/zsh-autosuggestions 0.7.1 99999999: Fish-like autosuggestions for zsh
 app-shells/zsh-syntax-highlighting 0.8.0_alpha1 99999999: Fish shell like syntax highlighting for zsh
 app-shells/zshrc-mv 6.8: A zshrc file initializing zsh specific interactive features
 app-text/agrep 2.04-r2: A tool for the fast searching of text allowing for errors in the search pattern
+app-text/catdoc 0.95-r1: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
 app-text/ispell 3.4.00-r1: fast screen-oriented spelling checker
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge, extract information from, and update the metadata in PDF
 app-text/psjoin 0.3: concatenate postscript files. From new PostScript Utilities
