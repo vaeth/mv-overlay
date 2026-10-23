@@ -41,6 +41,7 @@ DEPEND="
 	gui-wm/wayfire
 	media-libs/libepoxy
 	media-libs/mesa[opengl]
+	media-libs/vulkan-loader
 	pam? ( sys-libs/pam )
 	x11-libs/libdrm
 	x11-libs/libxkbcommon
