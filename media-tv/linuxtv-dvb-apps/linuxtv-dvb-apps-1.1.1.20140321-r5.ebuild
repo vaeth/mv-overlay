@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-glibc-2.31.patch
 	"${FILESDIR}"/${PN}-1.1.1.20140321-gcc10.patch
 	"${FILESDIR}"/${PN}-1.1.1.20140321-dvbdate.patch
+	"${FILESDIR}"/${PN}-czap-record.patch
 )
 
 src_prepare() {
