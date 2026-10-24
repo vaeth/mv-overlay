@@ -108,6 +108,7 @@ games-emulation/xmess:net - Add network support
 games-rpg/m5figur-mv:examples - Compile example character sheet as PDF
 media-gfx/pqiv:archive - Enable support for images in archives and cbX comic book files
 media-gfx/pqiv:gtk2 - Use gtk:2 instead of gtk:3
+media-tv/linuxtv-dvb-apps:alevt - Build videotext decoder
 media-tv/sundtek-tv:ld-preload-env - Install LD_PRELOAD in /etc/env.d/50sundtek-tv
 media-tv/sundtek-tv:ld-preload-file - Install /etc/ld.so.preload
 media-tv/sundtek-tv:pax-kernel - Mark package which is necessary if you use a PAX kernel

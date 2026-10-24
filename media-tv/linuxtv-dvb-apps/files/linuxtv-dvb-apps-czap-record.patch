@@ -1,0 +1,290 @@
+# Martin Väth <mvath at google.com>
+# Apply an analogous patch for czap as for tzap to support recording to a file.
+
+--- 1/util/szap/czap.c
++++ 1/util/szap/czap.c
+@@ -1,3 +1,7 @@
++#define _FILE_OFFSET_BITS 64
++#define _LARGEFILE_SOURCE 1
++#define _LARGEFILE64_SOURCE 1
++
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
+@@ -9,6 +13,7 @@
+ #include <fcntl.h>
+ #include <ctype.h>
+ #include <errno.h>
++#include <signal.h>
+ 
+ #include <linux/dvb/frontend.h>
+ #include <linux/dvb/dmx.h>
+@@ -18,6 +23,9 @@
+ 
+ static char FRONTEND_DEV [80];
+ static char DEMUX_DEV [80];
++static char DVR_DEV [80];
++static int timeout_flag=0;
++static int silent=0,timeout=0;
+ static int exit_after_tuning;
+ 
+ #define CHANNEL_FILE "channels.conf"
+@@ -194,6 +202,9 @@
+ 		PERROR("SET Delsys failed");
+ 		return -1;
+ 	}
++	if (silent < 2)
++		fprintf (stderr,"tuning to %i Hz\n", frontend->frequency);
++
+ 	if (ioctl(fe_fd, FE_SET_FRONTEND, frontend) < 0) {
+ 		PERROR ("ioctl FE_SET_FRONTEND failed");
+ 		return -1;
+@@ -201,43 +212,91 @@
+ 	return 0;
+ }
+ 
++static void do_timeout(int x)
++{
++	(void)x;
++	if (timeout_flag == 0) {
++		timeout_flag = 1;
++		alarm(2);
++		signal(SIGALRM, do_timeout);
++	} else {
++		/* something has gone wrong ... exit */
++		exit(1);
++	}
++}
+ 
+-static
+-int monitor_frontend (int fe_fd, int human_readable)
++static void print_frontend_stats(int fe_fd, int human_readable)
+ {
+ 	fe_status_t status;
+ 	uint16_t snr, signal;
+ 	uint32_t ber, uncorrected_blocks;
+ 
+-	do {
+-		ioctl(fe_fd, FE_READ_STATUS, &status);
+-		ioctl(fe_fd, FE_READ_SIGNAL_STRENGTH, &signal);
+-		ioctl(fe_fd, FE_READ_SNR, &snr);
+-		ioctl(fe_fd, FE_READ_BER, &ber);
+-		ioctl(fe_fd, FE_READ_UNCORRECTED_BLOCKS, &uncorrected_blocks);
+-
+-		if (human_readable) {
+-			printf ("status %02x | signal %3u%% | snr %3u%% | ber %d | unc %d | ",
+-				status, (signal * 100) / 0xffff, (snr * 100) / 0xffff, ber, uncorrected_blocks);
+-		} else {
+-			printf ("status %02x | signal %04x | snr %04x | ber %08x | unc %08x | ",
+-				status, signal, snr, ber, uncorrected_blocks);
+-		}
+-
+-		if (status & FE_HAS_LOCK)
+-			printf("FE_HAS_LOCK");
++	ioctl(fe_fd, FE_READ_STATUS, &status);
++	ioctl(fe_fd, FE_READ_SIGNAL_STRENGTH, &signal);
++	ioctl(fe_fd, FE_READ_SNR, &snr);
++	ioctl(fe_fd, FE_READ_BER, &ber);
++	ioctl(fe_fd, FE_READ_UNCORRECTED_BLOCKS, &uncorrected_blocks);
++
++	if (human_readable) {
++		fprintf (stderr, "status %02x | signal %3u%% | snr %3u%% | ber %d | unc %d | ",
++			status, (signal * 100) / 0xffff, (snr * 100) / 0xffff, ber, uncorrected_blocks);
++	} else {
++		fprintf (stderr, "status %02x | signal %04x | snr %04x | ber %08x | unc %08x | ",
++			status, signal, snr, ber, uncorrected_blocks);
++	}
+ 
+-		usleep(1000000);
++	if (status & FE_HAS_LOCK)
++		fprintf(stderr, "FE_HAS_LOCK");
+ 
+-		printf("\n");
++	fprintf(stderr, "\n");
++}
+ 
++static
++int monitor_frontend (int fe_fd, int human_readable)
++{
++	fe_status_t status;
++	do {
++	        ioctl(fe_fd, FE_READ_STATUS, &status);
++		if (!silent)
++			print_frontend_stats(fe_fd, human_readable);
+ 		if (exit_after_tuning && (status & FE_HAS_LOCK))
+ 			break;
+-	} while (1);
++		usleep(1000000);
++	} while (!timeout_flag);
++	if (silent < 2)
++		print_frontend_stats (fe_fd, human_readable);
+ 
+ 	return 0;
+ }
+ 
++#define BUFLEN (188*256)
++static void copy_to_file(int in_fd, int out_fd)
++{
++	char buf[BUFLEN];
++	int r;
++	long long int rc = 0LL;
++
++	while (timeout_flag==0) {
++		r=read(in_fd,buf,BUFLEN);
++		if (r < 0) {
++			if (errno == EOVERFLOW) {
++				printf("buffer overrun\n");
++				continue;
++			}
++			PERROR("Read failed");
++			break;
++		}
++		if (write(out_fd,buf,r) < 0) {
++			PERROR("Write failed");
++			break;
++		}
++		rc+=r;
++	}
++
++	if (silent<2) {
++		fprintf(stderr, "copied %lld bytes (%lld Kbytes/sec)\n",rc,rc/(1024*timeout));
++	}
++}
+ 
+ static const char *usage =
+ 	"\nusage: %s [options]  -l\n"
+@@ -251,6 +310,11 @@
+ 	"     -x        : exit after tuning\n"
+ 	"     -H        : human readable output\n"
+ 	"     -r        : set up /dev/dvb/adapterX/dvr0 for TS recording\n"
++	"     -t number : timeout (seconds)\n"
++	"     -o file   : output filename (use -o - for stdout)\n"
++	"     -s        : only print summary\n"
++	"     -S        : run silently (no output)\n"
++	"     -F        : set up frontend only, don't touch demux\n"
+ 	"     -p        : add pat and pmt to TS recording (implies -r)\n";
+ 
+ int main(int argc, char **argv)
+@@ -261,11 +325,14 @@
+ 	char *channel = NULL;
+ 	int adapter = 0, frontend = 0, demux = 0, dvr = 0;
+ 	int vpid, apid, sid, pmtpid = 0;
+-	int frontend_fd, video_fd, audio_fd, pat_fd, pmt_fd;
++	int frontend_fd, video_fd, audio_fd, pat_fd, pmt_fd, dvr_fd, file_fd;
+ 	int opt, list_channels = 0, chan_no = 0;
++	int record = 0;
++	int frontend_only = 0;
++	char *filename = NULL;
+ 	int human_readable = 0, rec_psi = 0;
+ 
+-	while ((opt = getopt(argc, argv, "Hln:hrn:a:f:d:c:x:p")) != -1) {
++	while ((opt = getopt(argc, argv, "Hln:hrn:a:f:d:c:x:pt:o:sSF")) != -1) {
+ 		switch (opt) {
+ 		case 'a':
+ 			adapter = strtoul(optarg, NULL, 0);
+@@ -276,6 +343,13 @@
+ 		case 'd':
+ 			demux = strtoul(optarg, NULL, 0);
+ 			break;
++		case 't':
++			timeout = strtoul(optarg, NULL, 0);
++			break;
++		case 'o':
++			filename = strdup(optarg);
++			record=1;
++			/* fall through */
+ 		case 'r':
+ 			dvr = 1;
+ 			break;
+@@ -288,6 +362,15 @@
+ 		case 'p':
+ 			rec_psi = 1;
+ 			break;
++		case 's':
++			silent = 1;
++			break;
++		case 'S':
++			silent = 2;
++			break;
++		case 'F':
++			frontend_only = 1;
++			break;
+ 		case 'x':
+ 			exit_after_tuning = 1;
+ 			break;
+@@ -322,7 +405,11 @@
+ 	snprintf (DEMUX_DEV, sizeof(DEMUX_DEV),
+ 		  "/dev/dvb/adapter%i/demux%i", adapter, demux);
+ 
+-	printf ("using '%s' and '%s'\n", FRONTEND_DEV, DEMUX_DEV);
++	snprintf (DVR_DEV, sizeof(DVR_DEV),
++		  "/dev/dvb/adapter%i/dvr%i", adapter, demux);
++
++	if (silent < 2)
++		fprintf (stderr, "using '%s' and '%s'\n", FRONTEND_DEV, DEMUX_DEV);
+ 
+ 	if (!confname)
+ 	{
+@@ -353,6 +440,9 @@
+ 	if (setup_frontend(frontend_fd, &frontend_param) < 0)
+ 		return -1;
+ 
++	if (frontend_only)
++		goto just_the_frontend_dude;
++
+ 	if (rec_psi) {
+ 		pmtpid = get_pmt_pid(DEMUX_DEV, sid);
+ 		if (pmtpid <= 0) {
+@@ -380,6 +470,9 @@
+ 		return -1;
+ 	}
+ 
++	if (silent < 2)
++		fprintf(stderr,"video pid 0x%04x, audio pid 0x%04x\n", vpid, apid);
++
+ 	if (set_pesfilter (video_fd, vpid, DMX_PES_VIDEO, dvr) < 0)
+ 		return -1;
+ 
+@@ -391,7 +484,41 @@
+ 	if (set_pesfilter (audio_fd, apid, DMX_PES_AUDIO, dvr) < 0)
+ 		return -1;
+ 
+-	monitor_frontend (frontend_fd, human_readable);
++	signal(SIGALRM,do_timeout);
++	if (timeout > 0)
++		alarm(timeout);
++
++	if (record) {
++		if (filename != NULL) {
++			if (strcmp(filename,"-") != 0) {
++				file_fd = open(filename,O_WRONLY|O_LARGEFILE|O_CREAT,0644);
++				if (file_fd < 0) {
++					PERROR("open of '%s' failed",filename);
++					return -1;
++				}
++			} else {
++				file_fd=1;
++			}
++		} else {
++			PERROR("Record mode but no filename!");
++			return -1;
++		}
++
++		if ((dvr_fd = open(DVR_DEV, O_RDONLY)) < 0) {
++	                PERROR("failed opening '%s'", DVR_DEV);
++	                return -1;
++	        }
++		if (silent < 2)
++			print_frontend_stats(frontend_fd, human_readable);
++
++		copy_to_file(dvr_fd,file_fd);
++
++		if (silent < 2)
++			print_frontend_stats(frontend_fd, human_readable);
++	} else {
++just_the_frontend_dude:
++		monitor_frontend(frontend_fd, human_readable);
++	}
+ 
+ 	close (pat_fd);
+ 	close (pmt_fd);

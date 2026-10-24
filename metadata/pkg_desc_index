@@ -79,6 +79,7 @@ gui-apps/wf-shell 0.11.0-r1: Compiz like 3D wayland compositor
 media-gfx/ipe 7.2.30: Drawing editor for creating figures in PDF or PS formats
 media-gfx/libspiro 20200505-r1: A spline computation library
 media-gfx/pqiv 2.11: powerful GTK based command-line image viewer with a minimal UI
+media-tv/linuxtv-dvb-apps 1.1.1.20140321-r4 99999999: small utils for DVB to scan, zap, view signal strength, ...
 media-tv/nvtv 0.4.7-r5: TV-Out for NVidia cards
 media-tv/sundtek-tv 251220.005308: Sundtek MediaTV Pro III Drivers
 media-tv/w_scan 20170107-r1: Scan DVB-C/DVB-T/DVB-S channels
